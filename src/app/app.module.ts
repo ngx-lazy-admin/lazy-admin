@@ -15,12 +15,15 @@ import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
+import { BasicComponent } from './layout/basic/basic.component';
+
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
     AppComponent,
     UserPipe,
+    BasicComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
