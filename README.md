@@ -35,6 +35,9 @@ ng generate pipe user
 新建一个服务
 ng generate pipe service
 
+添加mock数据
+yarn add angular-in-memory-web-api --save
+
 
 # todo
 

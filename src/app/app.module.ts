@@ -17,6 +17,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 import { BasicComponent } from './layout/basic/basic.component';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './services/in-memory-data.service';
 registerLocaleData(zh);
 
 @NgModule({
@@ -34,6 +36,9 @@ registerLocaleData(zh);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

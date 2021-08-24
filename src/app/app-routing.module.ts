@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
     ]
   },
+  { path: 'charts', loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule) },
 
 ];
 
