@@ -51,3 +51,26 @@ yarn add angular-in-memory-web-api --save
 # 添加bootstrap-utilities
     "./node_modules/bootstrap/dist/css/bootstrap-utilities.min.css"
 
+
+
+
+1. 后端生成路由
+2. 通过路由获取页面配置
+3. 通过数据渲染页面
+4. 配置数据缓存 (indexedDB, web SQL)
+
+5. 页面通常由列表，图标，弹窗组成
+
+前端缓存
+
+1. 建立用户表
+2. 用户配置表
+3. 路由配置表
+4. 表单配置表
+
+优点
+
+1. 是一个通过配置生成的微服务系统，可以集成在任何系统中
+2. 优先的弹窗系统, 可以通过自由放大，正常，关闭。类似window的操作体验
+
+
