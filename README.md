@@ -38,6 +38,12 @@ ng generate pipe service
 添加mock数据
 yarn add angular-in-memory-web-api --save
 
+添加 AppRoutingModule
+
+ng generate module app-routing --flat --module=app
+
+--flat 把这个文件放进了 src/app 中，而不是单独的目录中。
+--module=app 告诉 CLI 把它注册到 AppModule 的 imports 数组中。
 
 # todo
 

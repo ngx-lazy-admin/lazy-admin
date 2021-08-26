@@ -25,18 +25,11 @@
             </li>
           </ul>
         </li>
-        <!-- <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-          <ul>
-            <li nz-menu-item nzMatchRouter>
-              <a>Basic Form</a>
-            </li>
-          </ul>
-        </li> -->
       </ul>
     </nz-sider>
     <nz-layout>
       <nz-header>
-        <div class="app-header">
+        <div class="p-0 bg-white app-header">
           <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
               <i class="trigger"
                  nz-icon
@@ -46,7 +39,7 @@
         </div>
       </nz-header>
       <nz-content>
-        <div class="inner-content">
+        <div class="p-3 bg-white h-100">
           <router-outlet></router-outlet>
         </div>
       </nz-content>
