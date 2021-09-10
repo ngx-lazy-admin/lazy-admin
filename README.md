@@ -59,6 +59,10 @@ ng generate module app-routing --flat --module=app
 
 
 
+页面配置器
+列表配置器
+表单配置器
+弹窗配置器
 
 1. 后端生成路由
 2. 通过路由获取页面配置
@@ -78,5 +82,9 @@ ng generate module app-routing --flat --module=app
 
 1. 是一个通过配置生成的微服务系统，可以集成在任何系统中
 2. 优先的弹窗系统, 可以通过自由放大，正常，关闭。类似window的操作体验
+
+
+
+单页面 + 单接口
 
 
