@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutBlankComponent } from './blank.component';
+import { LayoutSiderComponent } from './sider.component';
 
-describe('BlankComponent', () => {
-  let component: LayoutBlankComponent;
-  let fixture: ComponentFixture<LayoutBlankComponent>;
+describe('SiderComponent', () => {
+  let component: LayoutSiderComponent;
+  let fixture: ComponentFixture<LayoutSiderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LayoutBlankComponent ]
+      declarations: [ LayoutSiderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutBlankComponent);
+    fixture = TestBed.createComponent(LayoutSiderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

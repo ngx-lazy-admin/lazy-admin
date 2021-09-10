@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutBlankComponent } from './blank.component';
+import { LayoutSearchComponent } from './search.component';
 
-describe('BlankComponent', () => {
-  let component: LayoutBlankComponent;
-  let fixture: ComponentFixture<LayoutBlankComponent>;
+describe('SearchComponent', () => {
+  let component: LayoutSearchComponent;
+  let fixture: ComponentFixture<LayoutSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LayoutBlankComponent ]
+      declarations: [ LayoutSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutBlankComponent);
+    fixture = TestBed.createComponent(LayoutSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

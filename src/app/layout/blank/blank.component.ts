@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-blank',
+  selector: 'app-layout-blank',
   templateUrl: './blank.component.html',
   styleUrls: ['./blank.component.less']
 })
-export class BlankComponent implements OnInit {
+export class LayoutBlankComponent implements OnInit {
 
   constructor() { }
 
