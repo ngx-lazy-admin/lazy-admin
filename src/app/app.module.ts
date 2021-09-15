@@ -11,21 +11,23 @@ import zh from '@angular/common/locales/zh';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IconsProviderModule } from './icons-provider.module';
+// import { IconsProviderModule } from './layout/icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
-import { BasicComponent } from './layout/basic/basic.component';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+
+import { LayoutModule } from './layout/layout.modeule'
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
     AppComponent,
     UserPipe,
-    BasicComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -33,9 +35,11 @@ registerLocaleData(zh);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    IconsProviderModule,
+    // IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
+    LayoutModule,
+    NzInputModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

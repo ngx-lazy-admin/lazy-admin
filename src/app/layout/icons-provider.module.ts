@@ -5,10 +5,16 @@ import {
   MenuFoldOutline,
   MenuUnfoldOutline,
   FormOutline,
-  DashboardOutline
+  DashboardOutline,
+  ExpandOutline,
+  GlobalOutline,
+  BellOutline
 } from '@ant-design/icons-angular/icons';
 
-const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];
+const icons = [
+  MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline, ExpandOutline,
+  GlobalOutline, BellOutline
+];
 
 @NgModule({
   imports: [NzIconModule],

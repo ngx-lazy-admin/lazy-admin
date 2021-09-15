@@ -1,48 +1,18 @@
 <nz-layout class="app-layout">
-    <nz-sider class="menu-sidebar"
-              nzCollapsible
-              nzWidth="256px"
-              nzBreakpoint="md"
-              [(nzCollapsed)]="isCollapsed"
-              [nzTrigger]="null">
-      <div class="sidebar-logo">
-        <a href="https://ng.ant.design/" target="_blank">
-          <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-          <h1>Ant Design Of Angular</h1>
-        </a>
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <app-layout-menu></app-layout-menu>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header>
+      <app-layout-header></app-layout-header>
+    </nz-header>
+    
+    <nz-content>
+      <div class="p-3 bg-white h-100">
+        <router-outlet></router-outlet>
       </div>
-      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-        <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
-          <ul>
-            <li nz-menu-item nzMatchRouter>
-              <a routerLink="/welcome">Welcome</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a routerLink="/chart">Monitor</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a routerLink="/dashboard">Workplace</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nz-sider>
-    <nz-layout>
-      <nz-header>
-        <div class="p-0 bg-white app-header">
-          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-              <i class="trigger"
-                 nz-icon
-                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-              ></i>
-          </span>
-        </div>
-      </nz-header>
-      <nz-content>
-        <div class="p-3 bg-white h-100">
-          <router-outlet></router-outlet>
-        </div>
-      </nz-content>
-    </nz-layout>
+    </nz-content>
   </nz-layout>
+</nz-layout>
   

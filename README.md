@@ -38,12 +38,23 @@ ng generate pipe service
 添加mock数据
 yarn add angular-in-memory-web-api --save
 
+新建一个菜单组件
+ng g component layout/basic/menus --skip-import --change-detection OnPush --view-encapsulation none
+
+新建一个接口
+ng g interface menu
+
+--change-detection 在新组件中使用的变更检测策略。
+
 添加 AppRoutingModule
 
-ng generate module app-routing --flat --module=app
+ng generate module app-routing --flat --module=app 
 
 --flat 把这个文件放进了 src/app 中，而不是单独的目录中。
 --module=app 告诉 CLI 把它注册到 AppModule 的 imports 数组中。
+
+
+# 分析页面大小
 
 # todo
 
@@ -86,5 +97,33 @@ ng generate module app-routing --flat --module=app
 
 
 单页面 + 单接口
+
+### 快捷键设计
+
+打开关闭侧边栏
+打开消息通知
+搜索
+全屏
+切换中英文
+退出
+上一页/下一页
+提交
+取消
+确定
+
+### UI
+
+padding 0.25rem 0.5rem 1rem 1.5rem 3rem => 4px 8px 16px 24px 48px
+
+header => 16 * 2 = 32px + 20px  => 52px  
+
+tab => 36px
+
+88px
+
+4.5rem => 16 * 4.5 = 64 + 8 = 72px
+
+
+
 
 
