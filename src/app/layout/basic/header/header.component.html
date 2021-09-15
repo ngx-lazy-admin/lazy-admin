@@ -2,7 +2,7 @@
 	<!-- [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" -->
 	<span class="m-3 f20"><i class="trigger" nz-icon [nzType]="'menu-unfold'"></i></span>
 
-	<nz-breadcrumb class="d-inline-flex">
+	<nz-breadcrumb class="d-inline-flex d-none d-xl-inline-block d-xxl-inline-block">
 		<nz-breadcrumb-item>
 			Home
 		</nz-breadcrumb-item>
@@ -14,8 +14,8 @@
 		</nz-breadcrumb-item>
 	</nz-breadcrumb>
 
-	<div class="float-end d-lg-none d-xl-block">
-		<nz-input-group [nzSuffix]="suffixIconSearch" class="d-inline-flex mx-3" style="width: 240px;">
+	<div class="float-end d-inline-block  ">
+		<nz-input-group class="d-inline-flex mx-3 d-none d-lg-inline-flex d-xl-inline-flex d-xxl-inline-flex" [nzSuffix]="suffixIconSearch" style="width: 240px;">
 			<input type="text" nz-input placeholder="search..." />
 		</nz-input-group>
 
