@@ -7,7 +7,7 @@
   }
   
   .app-layout {
-    height: 100vh;
+    min-height: 100vh;
   }
   
   
@@ -21,10 +21,19 @@
 
 
   ::ng-deep .ant-layout-header {
-    height: 88px;
+    height: 52px;
   }
-  
-  nz-content {
-    margin: 24px;
+    
+  .progress {
+    top: 0;
+    z-index: 1000;
   }
-  
+
+  ::ng-deep .ant-progress-outer {
+    position: relative;
+    top: -11px;
+  }
+
+  ::ng-deep .ant-layout-content {
+    min-height: unset;
+  }

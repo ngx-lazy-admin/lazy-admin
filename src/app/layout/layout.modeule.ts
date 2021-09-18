@@ -12,6 +12,15 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+// angular cdk
+import { OverlayModule } from '@angular/cdk/overlay';
+
 
 import { LayoutBasicComponent } from './basic/basic.component';
 import { LayoutBlankComponent } from './blank/blank.component';
@@ -21,6 +30,9 @@ import { LayoutSearchComponent } from './basic/search/search.component';
 import { LayoutSiderComponent } from './basic/sider/sider.component';
 import { LayoutUserComponent } from './basic/user/user.component';
 import { LayoutMenuComponent } from './basic/menu/menu.component';
+import { LayoutFooterBarComponent } from './basic/footer-bar/footer-bar.component';
+import { LayoutHeaderTabsetComponent } from './basic/header-tabset/header-tabset.component' 
+
 
 @NgModule({
   declarations: [
@@ -31,7 +43,9 @@ import { LayoutMenuComponent } from './basic/menu/menu.component';
     LayoutSearchComponent,
     LayoutSiderComponent,
     LayoutUserComponent,
-    LayoutMenuComponent
+    LayoutMenuComponent,
+    LayoutFooterBarComponent,
+    LayoutHeaderTabsetComponent
   ],
   exports: [],
   imports: [
@@ -46,7 +60,13 @@ import { LayoutMenuComponent } from './basic/menu/menu.component';
     NzInputModule,
     NzAvatarModule,
     NzBadgeModule,
-    NzTabsModule
+    NzTabsModule,
+    NzPopoverModule,
+    OverlayModule,
+    NzDropDownModule,
+    NzProgressModule,
+    NzCheckboxModule,
+    NzButtonModule
   ]
 })
 export class LayoutModule {}

@@ -1,0 +1,37 @@
+<div class="w-100 d-flex flex-nowrap sticky-top">
+	<nz-tabset
+		[(nzSelectedIndex)]="selectedIndex"
+		nzType="editable-card"
+		nzHideAdd="true"
+		class="bg-white w-100"
+		[nzTabBarGutter]="0"
+		(nzAdd)="newTab()"
+		(nzClose)="closeTab($event)"
+		>
+		<ng-container  *ngFor="let tab of tabs">
+			<nz-tab
+				(nzContextmenu)="onContextmenu($event, menu)"
+				nzClosable
+				[nzTitle]="tab"
+				nzType="primary"
+			>
+			</nz-tab>
+		</ng-container>
+	</nz-tabset>
+	<div class="d-flex px-3 justify-content-center align-items-center" style="width: 130px; border: 1px solid #f0f2f5;">
+		<i class="px-2 f16" nz-icon nzType="left"  nzTheme="outline"></i>
+		<i class="px-2 f16" nz-icon nzType="right" nzTheme="outline"></i>
+		<i class="px-2 f16" nz-icon nzType="redo"  nzTheme="outline"></i>
+		<i class="px-2 f16" nz-icon nzType="menu"  nzTheme="outline"></i>
+	</div>
+</div>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+	<ul nz-menu>
+	  <li nz-menu-item>关闭</li>
+	  <li nz-menu-item>关闭其他</li>
+	  <li nz-menu-item>关闭右侧其他</li>
+	  <li nz-menu-item>关闭全部</li>
+	  <li nz-menu-item>重新加载</li>
+	</ul>
+</nz-dropdown-menu>

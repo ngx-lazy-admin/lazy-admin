@@ -8,12 +8,16 @@ import {
   DashboardOutline,
   ExpandOutline,
   GlobalOutline,
-  BellOutline
+  BellOutline,
+  RedoOutline,
+  MenuOutline,
+  RightOutline,
+  LeftOutline
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
   MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline, ExpandOutline,
-  GlobalOutline, BellOutline
+  GlobalOutline, BellOutline, RedoOutline, MenuOutline, RightOutline, LeftOutline
 ];
 
 @NgModule({

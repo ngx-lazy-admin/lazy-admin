@@ -41,6 +41,11 @@ yarn add angular-in-memory-web-api --save
 新建一个菜单组件
 ng g component layout/basic/menus --skip-import --change-detection OnPush --view-encapsulation none
 
+ng g component layout/basic/footer-bar --skip-import --change-detection OnPush --view-encapsulation ""
+
+ng g component layout/basic/header-tabset --skip-import --change-detection OnPush
+
+
 新建一个接口
 ng g interface menu
 
@@ -109,7 +114,17 @@ ng generate module app-routing --flat --module=app
 上一页/下一页
 提交
 取消
+
 确定
+
+全选 ctrl + A 
+保存 Ctrl+S
+
+历史记录 ctrl + h 
+帮助/快捷键 F1
+
+
+取消全选 
 
 ### UI
 

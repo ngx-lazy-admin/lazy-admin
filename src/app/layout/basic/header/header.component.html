@@ -1,6 +1,6 @@
 <div class="p-0 bg-white app-header">
 	<!-- [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" -->
-	<span class="m-3 f20"><i class="trigger" nz-icon [nzType]="'menu-unfold'"></i></span>
+	<i class="trigger f16 p-3" nz-icon [nzType]="'menu-unfold'"></i>
 
 	<nz-breadcrumb class="d-inline-flex d-none d-xl-inline-block d-xxl-inline-block">
 		<nz-breadcrumb-item>
@@ -14,35 +14,32 @@
 		</nz-breadcrumb-item>
 	</nz-breadcrumb>
 
-	<div class="float-end d-inline-block  ">
+	<div class="float-end d-inline-block d-flex  align-items-center">
 		<nz-input-group class="d-inline-flex mx-3 d-none d-lg-inline-flex d-xl-inline-flex d-xxl-inline-flex" [nzSuffix]="suffixIconSearch" style="width: 240px;">
-			<input type="text" nz-input placeholder="search..." />
+			<input class="f16" type="text" nz-input placeholder="search..." />
 		</nz-input-group>
 
 		<ng-template #suffixIconSearch>
-			<i nz-icon nzType="search"></i>
+			<i nz-icon nz-button class="f16 trigger" nzType="search"></i>
 		</ng-template>
 
-		<i nz-icon nzType="expand" class="p-3" nzTheme="outline"></i>
+		<i nz-icon nz-button nzType="expand" class="p-3 f16 trigger" nzTheme="outline"></i>
 
 		<nz-badge [nzCount]="0">
-			<i nz-icon nzType="bell" class="p-3 f18" nzTheme="outline"></i>
+			<i nz-icon nz-button nzType="bell" class="p-3 f16 trigger" nzTheme="outline"></i>
     	</nz-badge>
 
 		<nz-badge [nzCount]="0">
-			<nz-avatar nzSize="large" nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+			<nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
     	</nz-badge>
 		<span>nickName</span>
 		
-		<i nz-icon nzType="global" class="p-3" nzTheme="outline"></i>
+		<i nz-icon nz-button nzType="global" class="p-3 f16 trigger" nzTheme="outline"></i>
 	</div>
 </div>
 
-<nz-tabset
-	[(nzSelectedIndex)]="selectedIndex"
-	nzType="editable-card"
-	(nzAdd)="newTab()"
-	(nzClose)="closeTab($event)"
-	>
-	<nz-tab *ngFor="let tab of tabs" nzClosable [nzTitle]="tab"></nz-tab>
-</nz-tabset>
+
+
+
+
+

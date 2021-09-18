@@ -1,18 +1,32 @@
+<nz-progress 
+  class="progress position-fixed w-100 top-0"
+  [nzPercent]="100"
+  nzStrokeWidth="2"
+  [nzShowInfo]="false"
+  [nzStrokeColor]="{ '0%': '#108ee9', '100%': '#87d068' }">
+</nz-progress>
+
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+  <nz-sider class="menu-sidebar position-fixed h-100" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <app-layout-menu></app-layout-menu>
   </nz-sider>
 
-  <nz-layout>
-    <nz-header>
+  <nz-layout style="margin-left: 256px;">
+    <nz-header >
       <app-layout-header></app-layout-header>
     </nz-header>
+
+    <app-layout-header-tabset class="sticky-top bg-white"></app-layout-header-tabset>
     
-    <nz-content>
-      <div class="p-3 bg-white h-100">
+    <nz-content class="p-3">
+      <div class="p-3 bg-white">
         <router-outlet></router-outlet>
       </div>
     </nz-content>
+
+    <nz-footer class="p-0 m-0">
+      <app-layout-footer-bar></app-layout-footer-bar>
+    </nz-footer>
   </nz-layout>
 </nz-layout>
   
