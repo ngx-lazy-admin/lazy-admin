@@ -29,6 +29,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 新建一个控制面板模块
 ng generate module chart --route chart --module app.module
 
+ng generate module list --route list --module app.module
+
 新建一个过滤器
 ng generate pipe user
 
