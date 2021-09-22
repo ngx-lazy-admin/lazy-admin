@@ -31,6 +31,20 @@ ng generate module chart --route chart --module app.module
 
 ng generate module list --route list --module app.module
 
+ng generate module modal --route modal --module app.module
+
+ng generate module form --route form --module app.module
+
+ng generate module exception --route exception --module app.module
+
+ng generate module pages/exception --route exception --module app.module
+
+ng generate module pages/system --route system --module app.module
+
+
+
+
+
 新建一个过滤器
 ng generate pipe user
 
