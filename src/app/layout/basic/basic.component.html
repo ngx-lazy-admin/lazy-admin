@@ -16,17 +16,37 @@
       <app-layout-header></app-layout-header>
     </nz-header>
 
-    <app-layout-header-tabset class="sticky-top bg-white"></app-layout-header-tabset>
-    
-    <nz-content class="p-3">
-      <div class="p-3 bg-white">
+    <app-layout-header-tabset class="sticky-top bg-white shadow-sm"></app-layout-header-tabset>
+
+    <nz-alert
+      nzType="error"
+      [nzBanner]="true"
+      nzCloseable
+      class="mx-3 mt-3"
+      nzMessage="Error Text"
+      [nzDescription]="Description"
+      (nzOnClose)="afterClose()"
+    ></nz-alert>
+
+    <ng-template #Description>
+      <div [innerHtml]="'Error Description Error Description Error Description Error Description Error Description Error Description <br\>sss '"></div>
+		</ng-template>
+
+    <app-layout-search class="sticky-top m-3 mb-2 shadow-sm" style="top: 38px; background-color: #f0f2f5;"></app-layout-search>
+
+    <nz-content class="p-3 ">
+      <div class="p-3 bg-white shadow-sm">
         <router-outlet></router-outlet>
       </div>
     </nz-content>
 
-    <nz-footer class="p-0 m-0">
-      <app-layout-footer-bar></app-layout-footer-bar>
+    <nz-footer class="bg-white" style="margin-bottom: 52px; height: 52px;">
+        footer...
     </nz-footer>
+
+    <app-layout-footer-bar></app-layout-footer-bar>
   </nz-layout>
 </nz-layout>
+
+<nz-back-top>233</nz-back-top>
   

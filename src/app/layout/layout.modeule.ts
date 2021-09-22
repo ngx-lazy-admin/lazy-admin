@@ -2,6 +2,7 @@ import { BidiModule } from '@angular/cdk/bidi';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -17,6 +18,11 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzBackTopModule } from 'ng-zorro-antd/back-top';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 // angular cdk
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -52,6 +58,9 @@ import { LayoutHeaderTabsetComponent } from './basic/header-tabset/header-tabset
     BidiModule,
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    
     NzLayoutModule,
     NzMenuModule,
     IconsProviderModule,
@@ -66,7 +75,12 @@ import { LayoutHeaderTabsetComponent } from './basic/header-tabset/header-tabset
     NzDropDownModule,
     NzProgressModule,
     NzCheckboxModule,
-    NzButtonModule
+    NzButtonModule,
+    NzBackTopModule,
+    NzAlertModule,
+    NzPaginationModule,
+    NzFormModule,
+    NzRadioModule
   ]
 })
 export class LayoutModule {}

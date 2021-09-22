@@ -13,4 +13,7 @@ export class LayoutBasicComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  afterClose(): void {
+    console.log('close');
+  }
 }
