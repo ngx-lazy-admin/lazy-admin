@@ -127,14 +127,16 @@ ng generate module app-routing --flat --module=app
 全屏
 切换中英文
 退出
-上一页/下一页
+上一页/下一页 Page Up / Page Down
 提交
 取消
 
-确定
+确定 Enter
 
+退出 Esc 
 全选 ctrl + A 
-保存 Ctrl+S
+保存 Ctrl + S
+搜索 Ctrl + K
 
 历史记录 ctrl + h 
 帮助/快捷键 F1
