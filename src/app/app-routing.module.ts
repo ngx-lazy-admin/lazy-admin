@@ -17,14 +17,14 @@ const routes: Routes = [
       { path: 'list', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
       { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
       { path: 'form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: 'exception', loadChildren: () => import('./pages/exception/exception.module').then(m => m.ExceptionModule) },
     ]
   },
   {
     path: 'charts',
     loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule)
   },
-  { path: 'exception', loadChildren: () => import('./pages/exception/exception.module').then(m => m.ExceptionModule) },
-  { path: 'system', loadChildren: () => import('./pages/system/system.module').then(m => m.SystemModule) },
+
 
 
 ];
