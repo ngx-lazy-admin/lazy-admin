@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, ViewChild, TemplateRef,  } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { TemplatePortalDirective, TemplatePortal } from '@angular/cdk/portal';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 
 @Component({

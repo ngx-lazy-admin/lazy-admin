@@ -4,6 +4,7 @@
 		nzType="editable-card"
 		nzHideAdd="true"
 		class="bg-white w-100"
+		[nzTabBarStyle]="{'marginBottom': '0px'}"
 		[nzTabBarGutter]="0"
 		(nzAdd)="newTab()"
 		(nzClose)="closeTab($event)"
@@ -18,7 +19,8 @@
 			</nz-tab>
 		</ng-container>
 	</nz-tabset>
-	<div class="d-flex px-3 justify-content-center align-items-center" style="width: 130px; border: 1px solid #f0f2f5;">
+	<div class="d-flex px-3 justify-content-center align-items-center" 
+		style="width: 130px; border: 1px solid #f0f2f5;">
 		<i class="px-2 f16" nz-icon nzType="left"  nzTheme="outline"></i>
 		<i class="px-2 f16" nz-icon nzType="right" nzTheme="outline"></i>
 		<i class="px-2 f16" nz-icon nzType="redo"  nzTheme="outline"></i>

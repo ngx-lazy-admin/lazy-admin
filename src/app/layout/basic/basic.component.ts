@@ -9,8 +9,11 @@ export class LayoutBasicComponent implements OnInit {
 
   constructor() { }
 
+  percent = 0
+  progress = false
   isCollapsed = false;
-  ngOnInit(): void {
-  }
 
+  ngOnInit(): void {
+    this.progress = true;
+  }
 }
