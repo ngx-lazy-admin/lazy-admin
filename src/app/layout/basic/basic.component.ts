@@ -16,4 +16,8 @@ export class LayoutBasicComponent implements OnInit {
   ngOnInit(): void {
     this.progress = true;
   }
+
+  afterClose(): void {
+    console.log('close');
+  }
 }

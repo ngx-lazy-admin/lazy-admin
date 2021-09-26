@@ -1,1 +1,35 @@
-<p>search works!</p>
+<div class="bg-white mb-0 p-3 ">
+    <form class="mb-3" nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your username!">
+            <nz-input-group nzPrefixIcon="user">
+              <input formControlName="userName" nz-input placeholder="Username" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input formControlName="password" nz-input type="password" placeholder="Password" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button class="mx-3" type="reset" nzType="default">重置</button>
+            <button nz-button nzType="primary" >确定</button>
+          </nz-form-control>
+        </nz-form-item>
+    </form>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <nz-button-group>
+            <button nz-button nzType="text"><i nz-icon nzType="fullscreen"></i></button>
+            <button nz-button nzType="text"><i nz-icon nzType="menu"></i></button>
+            <button nz-button nzType="text"><i nz-icon nzType="reload"></i></button>
+            <button nz-button nzType="text"><i nz-icon nzType="setting"></i></button>
+        </nz-button-group>
+        <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
+    </div>
+</div>
+

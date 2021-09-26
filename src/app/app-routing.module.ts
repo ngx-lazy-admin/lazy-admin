@@ -14,12 +14,19 @@ const routes: Routes = [
       { path: 'chart', loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule) },
       { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
+      { path: 'list', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
+      { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
+      { path: 'form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: 'exception', loadChildren: () => import('./pages/exception/exception.module').then(m => m.ExceptionModule) },
     ]
   },
   {
     path: 'charts',
     loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule)
   },
+
+
+
 ];
 
 @NgModule({

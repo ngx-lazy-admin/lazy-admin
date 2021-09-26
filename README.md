@@ -29,6 +29,22 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 新建一个控制面板模块
 ng generate module chart --route chart --module app.module
 
+ng generate module list --route list --module app.module
+
+ng generate module modal --route modal --module app.module
+
+ng generate module form --route form --module app.module
+
+ng generate module exception --route exception --module app.module
+
+ng generate module pages/exception --route exception --module app.module
+
+ng generate module pages/system --route system --module app.module
+
+
+
+
+
 新建一个过滤器
 ng generate pipe user
 
@@ -111,14 +127,16 @@ ng generate module app-routing --flat --module=app
 全屏
 切换中英文
 退出
-上一页/下一页
+上一页/下一页 Page Up / Page Down
 提交
 取消
 
-确定
+确定 Enter
 
+退出 Esc 
 全选 ctrl + A 
-保存 Ctrl+S
+保存 Ctrl + S
+搜索 Ctrl + K
 
 历史记录 ctrl + h 
 帮助/快捷键 F1

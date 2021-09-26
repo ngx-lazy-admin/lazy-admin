@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
 
+
 import {
   MenuFoldOutline,
   MenuUnfoldOutline,
@@ -12,12 +13,17 @@ import {
   RedoOutline,
   MenuOutline,
   RightOutline,
-  LeftOutline
+  LeftOutline,
+  GithubOutline,
+  FullscreenOutline,
+  ReloadOutline,
+  SettingOutline
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
   MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline, ExpandOutline,
-  GlobalOutline, BellOutline, RedoOutline, MenuOutline, RightOutline, LeftOutline
+  GlobalOutline, BellOutline, RedoOutline, MenuOutline, RightOutline, LeftOutline,
+  GithubOutline, FullscreenOutline, ReloadOutline, SettingOutline
 ];
 
 @NgModule({
