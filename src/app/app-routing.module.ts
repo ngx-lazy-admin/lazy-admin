@@ -18,12 +18,14 @@ const routes: Routes = [
       { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
       { path: 'form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
       { path: 'exception', loadChildren: () => import('./pages/exception/exception.module').then(m => m.ExceptionModule) },
+      { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
     ]
   },
   {
     path: 'charts',
     loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule)
   },
+
 
 
 

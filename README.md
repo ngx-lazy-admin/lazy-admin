@@ -41,6 +41,9 @@ ng generate module pages/exception --route exception --module app.module
 
 ng generate module pages/system --route system --module app.module
 
+ng generate module pages/code --route code --module app.module
+
+
 
 
 
@@ -60,6 +63,9 @@ ng g component layout/basic/menus --skip-import --change-detection OnPush --view
 ng g component layout/basic/footer-bar --skip-import --change-detection OnPush --view-encapsulation ""
 
 ng g component layout/basic/header-tabset --skip-import --change-detection OnPush
+
+ng g component layout/basic/header-tabset --skip-import --change-detection OnPush
+
 
 
 新建一个接口
@@ -157,6 +163,11 @@ tab => 36px
 4.5rem => 16 * 4.5 = 64 + 8 = 72px
 
 1
+
+### 分析包大小
+
+ng build --prod --stats-json
+npm run bundle-report
 
 
 

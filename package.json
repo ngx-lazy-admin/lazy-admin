@@ -21,6 +21,7 @@
     "@angular/router": "~12.2.0",
     "bootstrap": "^5.1.0",
     "hotkeys-js": "^3.8.7",
+    "monaco-editor": "^0.28.1",
     "ng-zorro-antd": "12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
