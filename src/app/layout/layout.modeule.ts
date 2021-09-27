@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// angular cdk
+import { OverlayModule } from '@angular/cdk/overlay';
+
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
@@ -24,13 +27,8 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 
-// angular cdk
-import { OverlayModule } from '@angular/cdk/overlay';
-
-
 import { LayoutBasicComponent } from './basic/basic.component';
 import { LayoutBlankComponent } from './blank/blank.component';
-
 import { LayoutHeaderComponent } from './basic/header/header.component';
 import { LayoutSearchComponent } from './basic/search/search.component';
 import { LayoutSiderComponent } from './basic/sider/sider.component';
