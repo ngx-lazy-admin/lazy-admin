@@ -1,5 +1,5 @@
 <p>code works!</p>
 
-<nz-code-editor  class="editor" [ngModel]="code" [nzEditorOption]="{ language: 'json' }" (nzEditorInitialized)="editorInitialized($event)"></nz-code-editor>
+<nz-code-editor  class="editor" (onChange)="change($event)" [ngModel]="code" [nzEditorOption]="{ language: 'javascript' }" (nzEditorInitialized)="editorInitialized($event)"></nz-code-editor>
 
 <pre>{{code | json}}</pre>
