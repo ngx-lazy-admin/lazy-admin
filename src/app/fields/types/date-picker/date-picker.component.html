@@ -1,0 +1,13 @@
+<nz-date-picker [(ngModel)]="model[key]"
+                [nzFormat] = "to['nzFormat'] || 'yyyy-MM-dd '"
+                [nzAllowClear]="to['nzAllowClear'] || true"
+                [nzAutoFocus] = "to['nzAutoFocus'] || false"
+                [nzClassName] = "to['nzAutoFocus'] || ''"
+                [nzDisabled] = "to['nzDisabled'] || false"
+                [nzPlaceHolder] = "to['nzPlaceHolder'] || ''"
+                (nzOnOk) = "onOk($event)"
+                [nzSize]="to['nzSize'] || null"
+                [nzDisabledDate]="to['nzDisabledDate']"
+                [nzShowTime]="to['nzShowTime']"
+                (ngModelChange) = "onChange($event)"
+                ></nz-date-picker>

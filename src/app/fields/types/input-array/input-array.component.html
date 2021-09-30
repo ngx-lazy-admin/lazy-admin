@@ -1,0 +1,21 @@
+<ng-container *ngFor="let control of controlArray; let i = index">
+  <input
+    nz-input
+    nzSize="small"
+    style="width: 40%; margin-right:8px;"
+    [(ngModel)]="control.zh"
+    (ngModelChange)="change()"
+	  [placeholder]="to['nzPlaceHolder'] || '将作为文本框提示文字显示'"
+  />
+  <input
+    nz-input
+    nzSize="small"
+    style="width: 40%; margin-right:8px;"
+    [(ngModel)]="control.en"
+    (ngModelChange)="change()"
+    [placeholder]="to['nzEnPlaceHolder'] || '将作为文本框提示文字显示'"
+  />
+  <i nz-icon type="minus-circle-o" class="dynamic-button mr-2" (click)="removeField(control, $event)"></i>
+  <i nz-icon type="plus-circle" class="dynamic-button" (click)="addField($event, i)"></i>
+</ng-container >
+

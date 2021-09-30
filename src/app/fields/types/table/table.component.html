@@ -1,0 +1,36 @@
+<nz-table
+    #basicTable
+    [nzData]="model"
+    [nzFrontPagination]="to['nzFrontPagination'] || true"
+    [nzTitle]="to['nzTitle'] || null"
+    [nzFooter]="to['nzFooter'] || null"
+    [nzScroll]="to['nzScroll'] || null"
+    [nzShowPagination]="to['nzShowPagination'] || false"
+    [nzWidthConfig]="to['nzWidthConfig'] || null"
+    [nzNoResult]="to['nzNoResult'] || null">
+    <thead class="border">
+        <tr>
+            <ng-container *ngFor="let item of field.fieldArray?.fieldGroup; trackBy: trackByFn">
+                <th>{{item?.templateOptions?.nzLabel}}</th>
+            </ng-container>
+        </tr>
+    </thead>
+
+    <tbody class="border">
+        <tr *ngFor="let tr of field.fieldGroup; let i = index;trackBy: trackByFn">
+            <td  *ngFor="let td of tr.fieldGroup;trackBy: trackByFn">
+                <ng-container *ngIf="td.templateOptions.edit || to['edit']">
+                    <formly-field
+                        [form]="td.formControl"
+                        [options]="options"
+                        [model]="td.model"
+                        [field]="td">
+                    </formly-field>
+                </ng-container>
+                <ng-container *ngIf="!td.templateOptions.edit && !to['edit'] && td && td['key'];">
+                    {{basicTable['data'][i][td['key']]}}
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

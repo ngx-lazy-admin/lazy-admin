@@ -1,0 +1,13 @@
+
+<input 
+	 nz-input
+	[style.width]="to['width'] ? to['width'] : null"
+	[formControl]="formControl" 
+	[formlyAttributes]="field"
+	[nzSize]="to['nzSize']"
+	[placeholder]="to['nzPlaceHolder'] || '请输入'"
+	[type]="to['nzType'] || 'text' "
+	[autocomplete]="to['autocomplete'] || 'off'"
+	[disabled]="to['disabled']"
+/>
+

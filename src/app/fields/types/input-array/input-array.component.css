@@ -1,0 +1,29 @@
+input{
+  font-size: 13px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  font-size: 13px;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  font-size: 13px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  font-size: 13px;
+}
+
+.dynamic-button {
+  cursor: pointer;
+  position: relative;
+  top: 2px;
+  font-size: 20px;
+  color: #999;
+  transition: all 0.3s;
+}
+
+.dynamic-button:hover {
+  color: #777;
+}
+

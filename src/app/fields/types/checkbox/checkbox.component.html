@@ -1,0 +1,66 @@
+<div [ngSwitch]="to?.type">
+    <!-- 1. 返回boolean值 -->
+    <ng-container  *ngSwitchCase="'isBoolean'">
+        <label  nz-checkbox
+                [class]="to['nzClassName'] ? to['nzClassName'] : null"
+                [formControl]="formControl"
+                [formlyAttributes]="field"
+                [nzAutoFocus]="to['nzAutoFocus'] || false"
+                [nzDisabled]="to['nzDisabled'] || false" >{{to['nzLabel']}}</label>
+    </ng-container>
+
+    <!-- 2. 返回一个对象-->
+    <ng-container  *ngSwitchCase="'isObject'">
+        <label  nz-checkbox
+                [ngModel]="model[key].value"
+                [nzAutoFocus]="to['nzAutoFocus'] || false"
+                [nzDisabled]="to.disabled || false"
+                (ngModelChange)="OnChange($event)">{{model[key]['label']}}</label>
+    </ng-container>
+
+    <!-- 3. 返回一个数组对象 -->
+    <ng-container  *ngSwitchCase="'isArrayObject'">
+        <label  nz-checkbox
+                [formControl]="formControl"
+                [formlyAttributes]="field"
+                [nzAutoFocus]="to['nzAutoFocus'] || false"
+                [nzDisabled]="to.disabled || false">{{model[key]['label']}}</label>
+    </ng-container>
+
+
+    <!-- 5. 返回数组-->
+    <ng-container  *ngSwitchCase="'checkbox-group'">
+        <nz-checkbox-group
+                    [(ngModel)]="to.options"
+                    [nzDisabled]="to.disabled || false"
+                    (ngModelChange)="OnChange($event)"></nz-checkbox-group>
+    </ng-container>
+
+    <ng-container  *ngSwitchCase="'toString'">
+        <nz-checkbox-group
+                    [(ngModel)]="to.options"
+                    [nzDisabled]="to.disabled || false"
+                    (ngModelChange)="OnChange($event)"></nz-checkbox-group>
+    </ng-container>
+
+    <ng-container  *ngSwitchCase="'basic-checkbox'">
+        <nz-checkbox-group
+                    [(ngModel)]="to.options"
+                    [nzDisabled]="to.disabled || false"
+                    (ngModelChange)="OnChange($event)"></nz-checkbox-group>
+    </ng-container>
+
+    <!-- 6. 默认多选框 -->
+    <ng-container *ngSwitchDefault>
+        <nz-checkbox-wrapper (nzOnChange)="onWrapperChange($event)">
+            <ng-container *ngFor="let item of to.options; trackBy: trackByFn">
+                <label  nz-checkbox
+                        [ngModel]="item['checked']"
+                        [nzValue]="to['nzValue'] ?  item[to['nzValue']] : item['value']"
+                        [nzDisabled]="to.disabled || item.disabled"
+                        [nzIndeterminate]="item.indeterminate">{{ item.label }}</label>
+            </ng-container>
+        </nz-checkbox-wrapper>
+    </ng-container>
+</div>
+

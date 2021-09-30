@@ -1,0 +1,16 @@
+<ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
+  <div [style.display]="!field.hide ? 'block' : 'none'">
+    <formly-group
+      [model]="model"
+      [field]="field"
+      [options]="options"
+      [form]="formControl">
+    </formly-group>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="field.fieldGroup.length == 0">
+  <div class="text-center">{{to['nocontent']}}</div>
+</ng-container>
+
+

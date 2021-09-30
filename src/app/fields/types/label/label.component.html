@@ -1,0 +1,29 @@
+
+<ng-container [ngSwitch]="to['type']">
+    <!-- 块级元素 -->
+    <h1      *ngSwitchCase="'h1'" >{{model[key] || 'NA'}}</h1>
+    <h2      *ngSwitchCase="'h2'">{{model[key] || 'NA' }}</h2>
+    <h3      *ngSwitchCase="'h3'">{{model[key] || 'NA'}}</h3>
+    <h4      *ngSwitchCase="'h4'">{{model[key] || 'NA'}}</h4>
+    <h5      *ngSwitchCase="'h5'">{{model[key] || 'NA'}}</h5>
+    <h6      *ngSwitchCase="'h6'">{{model[key] || 'NA'}}</h6>
+    <a       *ngSwitchCase="'a'">{{model[key] || 'NA'}}</a>
+    <time    *ngSwitchCase="'time'">{{model[key] || 'NA'}}</time>
+    <address *ngSwitchCase="'address'">{{model[key] || 'NA'}}</address>
+
+    <p       *ngSwitchCase="'p'">{{model[key] || 'NA'}}</p>
+    <label   *ngSwitchCase="'label'">{{model[key] || 'NA'}}</label>
+
+    <div     *ngSwitchCase="'div'">{{model[key] || 'NA'}}</div>
+    <span    *ngSwitchCase="'span'">{{model[key] || 'NA'}}</span>
+    <div    *ngSwitchCase="'html'" [innerHTML]="model[key]"></div>
+    <div    *ngSwitchCase="'none'" style="display: none"></div>
+    <label  *ngSwitchDefault>{{model[key] || 'NA'}}
+
+      <span nz-tooltip [nzTitle]="to['tooltip']" *ngIf="to['tooltip']">
+        <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+      </span>
+    </label>
+
+</ng-container>
+

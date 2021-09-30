@@ -1,0 +1,19 @@
+<nz-cascader 
+    [(ngModel)]="model[key]"
+    [nzOptions]="to['nzOptions']"
+    [nzAutoFocus]="to['nzAutoFocus'] || false"
+    [nzChangeOnSelect]="to['nzChangeOnSelect']"
+    [nzColumnClassName]="to['nzColumnClassName']"
+    [nzDisabled]="to['nzDisabled']"
+    [nzExpandTrigger]="to['nzExpandTrigger'] || 'click'"
+    [nzMenuClassName]="to['nzMenuClassName']"
+    [nzMenuStyle]="to['nzMenuStyle']"
+    [nzLabelProperty]="to['nzLabelProperty'] || 'label'"
+    [nzPlaceHolder]="to['nzPlaceHolder']"
+    [nzShowSearch]="{
+        filter: filter
+    }"
+    [nzSize]="to['nzSize']"
+    [nzValueProperty]="to['nzValueProperty'] || 'value'"
+    (ngModelChange)="modelChange($event)">
+</nz-cascader>

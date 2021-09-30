@@ -1,0 +1,11 @@
+<button nz-button
+    [nzGhost]="to['nzGhost']"
+    [nzLoading]="to['nzLoading']"
+    [nzShape]="to['nzShape']"
+    [nzSize]="to['nzSize']"
+    [nzType]="to['nzType']"
+    [nzBlock]="to['nzBlock']"
+    (click)="onClick($event)">
+    <i *ngIf="to['nzIcon']" nz-icon [type]="to['nzIcon']"></i>
+    {{to['text']}}
+</button>

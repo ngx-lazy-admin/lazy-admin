@@ -1,0 +1,11 @@
+
+
+<ng-container *ngIf="to['template']">
+  <div [innerHtml]="to['template']" (click)="onClick($event)"></div>
+</ng-container>
+
+<ng-container *ngIf="to['innerHtml']">
+  <div [innerHtml]="to['innerHtml'] | async ">
+    {{to['innerHtml']}}
+  </div>
+</ng-container>

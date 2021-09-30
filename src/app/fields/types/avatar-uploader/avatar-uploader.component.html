@@ -1,0 +1,22 @@
+<nz-upload
+    class="avatar-uploader"
+    nzName="avatar"
+    [nzAction]="to['nzAction'] || '/web/cos/upload?type=' + objtype"
+    nzListType="picture-card"
+    [nzLimit]="1"
+    [nzCustomRequest]="cos.customReqs"
+    [nzBeforeUpload]="cos.beforeUploadImg"
+    [nzShowUploadList]="false"
+    [nzDisabled]="to['nzDisabled']"
+    [nzMultiple]="false"
+    [nzShowUploadList]="showUploadList"
+    (nzChange)="handleChange($event)"
+    >
+    <ng-container *ngIf="!avatarUrl">
+        <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+    </ng-container>
+    <ng-container *ngIf="avatarUrl">
+        <img  [src]="avatarUrl" class="avatar" />
+        <a (click)="$event.stopPropagation()" nz-popconfirm nzTitle="确定要删除?" (nzOnConfirm)="deleteImg()" nzPlacement="top">删除</a>
+    </ng-container>
+</nz-upload>

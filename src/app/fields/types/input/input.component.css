@@ -1,0 +1,15 @@
+input{
+  font-size: 13px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  font-size: 13px;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  font-size: 13px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  font-size: 13px;
+} 

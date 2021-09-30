@@ -1,0 +1,43 @@
+<div class="d-flex align-items-center">
+    <nz-select  style="min-width: 80px;"
+                [formControl]="formControl"
+                [formlyAttributes]="field"
+                [nzAllowClear]="to['nzAllowClear'] || false"
+                [nzOpen]="to['nzOpen'] || false"
+                [nzAutoFocus]="to['nzAutoFocus'] || false"
+                [nzDisabled]="to['nzDisabled']"
+                [nzDropdownMatchSelectWidth]="to['nzDropdownMatchSelectWidth'] || true"
+                [nzDropdownStyle]="to['nzDropdownStyle']"
+                [nzServerSearch] = "to['nzServerSearch'] || false"
+                [nzMaxMultipleCount]="to['nzMaxMultipleCount'] || 'Infinity'"
+                [nzShowSearch] ="to['nzShowSearch'] || true"
+                [nzMode]="to['nzMode'] || 'default'"
+                [nzFilterOption]="filterOption"
+                [nzPlaceHolder] = "to['nzPlaceHolder'] || '输入关键字搜索'"
+                [nzSize]="to['nzSize'] || 'default'"
+                [compareWith]="compareFn"
+                [nzDropdownClassName]="to['nzDropdownClassName']"
+                (nzOnSearch)="OnSearch($event)"
+                (nzOpenChange)="onOpenChange($event)"
+                >
+
+        <ng-container *ngFor="let option of to['options']; trackBy: trackByFn">
+            <nz-option *ngIf="!isLoading"
+                    class="select-option"
+                    nzCustomContent
+                    [nzDisabled]="option['nzDisabled '] || false"
+                    [nzValue]="(to['nzValue'] ? (to['nzValue'] == 'option' ? option : option[to['nzValue']]) : (option && option.value ? option.value : option))"
+                    [nzLabel]="option.label">
+                    <span [title]="option.label">{{option.label}}</span>
+                </nz-option>
+        </ng-container>
+
+        <nz-option  *ngIf="isLoading" nzDisabled nzCustomContent>
+            <i nz-icon type="loading" class="loading-icon"></i>加载中...
+        </nz-option>
+    </nz-select>
+
+    <ng-container *ngIf="description">
+        <i class="mx-2" nz-icon nzType="question-circle" nz-tooltip [nzTitle]="description" nzTheme="outline"></i>
+    </ng-container>
+    </div>

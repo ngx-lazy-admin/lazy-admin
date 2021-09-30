@@ -1,0 +1,13 @@
+<input  nz-input
+        [formControl]="formControl"
+        [formlyAttributes]="field"
+        [placeholder]="to['placeholder'] || '请输入...'"
+        [nzAutocomplete]="auto"
+        (input)="onInput($event.target?.value)">
+
+<nz-autocomplete #auto
+    [nzBackfill]="to['nzBackfill']"
+    [nzDefaultActiveFirstOption]="to['nzDefaultActiveFirstOption'] || 'true'"
+    [nzWidth]="to['nzWidth']"  >
+    <nz-auto-option *ngFor="let option of data" [nzValue]="option.value">{{ option.label }}</nz-auto-option>
+</nz-autocomplete>

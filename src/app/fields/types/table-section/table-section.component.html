@@ -1,0 +1,130 @@
+<nz-table
+    #tableSection
+    [nzData]="dataSet"
+    [nzFrontPagination]="to['nzFrontPagination'] || true"
+    [nzBordered]="to['nzBordered'] || false"
+    [nzTitle]="nzTitle || null"
+    [nzFooter]="to['nzFooter'] || null"
+    [nzScroll]="to['nzScroll'] || null"
+    [nzShowPagination]="to['nzShowPagination'] || false"
+    [nzNoResult]="to['nzNoResult'] || null">
+    <thead class="border">
+        <tr>
+            <th></th>
+            <ng-container *ngIf="field.fieldGroup?.length > 0">
+                <ng-container *ngFor="let item of field.fieldGroup[0].fieldGroup; let i =index; trackBy: trackByFn">
+                    <ng-container *ngIf="!(item.hide || (item.key == 'is_test' && !field.templateOptions.is_test) || (item.key == 'attribute' && !field.templateOptions.is_property))">
+                        <ng-container *ngIf="item?.templateOptions?.nzShowAllCheckbox">
+                            <th nzShowCheckbox
+                                [(nzChecked)]="isAllDisplayDataChecked"
+                                [nzIndeterminate]="isIndeterminate"
+                                (nzCheckedChange)="checkAll($event)"
+                            >
+                                {{item?.templateOptions?.label}}
+                                <span class="text-danger"  *ngIf="item?.templateOptions?.tip">({{item?.templateOptions?.tip}})</span>
+                            </th>
+                        </ng-container>
+                        <ng-container *ngIf="!item?.templateOptions?.nzShowAllCheckbox">
+                            <th [class.ant-form-item-required]="item['templateOptions']['nzRequired']">
+                                {{item?.templateOptions?.label}}
+                                <span class="text-danger" *ngIf="item?.templateOptions?.tip">({{item?.templateOptions?.tip}})</span>
+                            </th>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+                <th *ngIf="to.type === 'action'" >{{to.label}}</th>
+            </ng-container>
+        </tr>
+    </thead>
+
+    <tbody class="border">
+        <tr *ngFor="let fields of field.fieldGroup; let i = index;trackBy: trackByFn">
+            <td>{{i + 1}}</td>
+            <ng-container *ngFor="let item of fields.fieldGroup; trackBy: trackByFn">
+                <ng-container *ngIf="!(item.hide || (item.key == 'is_test' && !field.templateOptions.is_test) || (item.key == 'attribute' && !field.templateOptions.is_property))">
+                    <td>
+                        <formly-field
+                            [form]="item.formControl"
+                            [options]="options"
+                            [model]="item.model"
+                            [field]="item">
+                        </formly-field>
+                    </td>
+                </ng-container>
+            </ng-container>
+
+            <td *ngIf="to['options']">
+                <ng-container *ngFor="let item of to.options; let j = index; trackBy: trackByFn">
+                    <ng-container *ngIf="item?.type">
+                        <button nz-button nzSize="small" (click)="updateValue(item, i)" class="text-primary m-1 mb-2">{{item.label}}</button>
+                    </ng-container>
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+
+<ng-template #TitleTemplate>
+    <ng-container *ngIf="to['nzTitle'] === 'nzAddTemplate'">
+        <div style="display: block" class="d-flex border bg-light">
+            <div class="d-inline-block pr-3 m-2">{{formControl.parent.value.title}}</div>
+
+            <nz-select
+                style="width: 160px;"
+                nzSize="small"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="请选择"
+                class="m-2"
+                [(ngModel)]="category_id"
+            >
+                <ng-container *ngFor="let o of to['categoryOptions']; trackBy: trackByFn">
+                    <nz-option [nzValue]="o.value" [nzLabel]="o.label"></nz-option>
+                </ng-container>
+            </nz-select>
+            <button [disabled]="!category_id" class="m-2" nz-button nzSize="small" nzType="default" (click)="adds()">添加物件</button>
+            <button [disabled]="!category_id" class="m-2" nz-button nzSize="small" nzType="default" (click)="download()">下载模板</button>
+            
+            <nz-upload 
+                nzAction="/web/cos/upload?type=1800"
+                [nzShowUploadList]="false"
+                [(nzFileList)]="fileList"
+                [nzCustomRequest]="cos.customReqs"
+                (nzChange)="uploadChange($event)">
+                <button [disabled]="!category_id" class="m-2" nz-button nzSize="small" nzType="default" nz-button><i nz-icon nzType="upload"></i><span>模板导入</span></button>
+            </nz-upload>
+
+            <ng-container *ngIf="user_role_level == 1">
+                <nz-upload 
+                    nzAction="/web/cos/upload?type=1800"
+                    [nzShowUploadList]="false"
+                    [(nzFileList)]="fileList"
+                    [nzMultiple]="true"
+                    [nzCustomRequest]="cos.customReqs"
+                    (nzChange)="uploadimgChange($event)">
+                    <button [disabled]="!category_id" class="m-2" nz-button nzSize="small" nzType="default" nz-button><i nz-icon nzType="upload"></i><span>缩略图导入</span></button>
+                </nz-upload>
+
+                <nz-upload
+                    class="flex-fill"
+                    nzAction="/web/cos/upload?type=1800"
+                    [(nzFileList)]="fileList"
+                    nzType="drag"
+                    [nzMultiple]="true"
+                    [nzShowUploadList]="false"
+                    [nzCustomRequest]="cos.customReqs"
+                    [nzBeforeUpload]="beforeUpload"
+                    (nzChange)="uploadimgChange($event)"
+                >
+                    <p class="ant-upload-hint" *ngIf="!fileList || fileList && fileList.length == 0">
+                        拖动图标到这里可以自动增加物件（仅为物件图标，不适用需求附件）
+                    </p>
+                    <p class="ant-upload-hint" *ngIf="fileList && fileList.length > 0">
+                        新增数量相同的物件，自动添加上缩略图，物件名称为对应缩略图的文件名
+                    </p>
+                </nz-upload>
+            </ng-container>
+        </div>
+    </ng-container>
+</ng-template>
+
