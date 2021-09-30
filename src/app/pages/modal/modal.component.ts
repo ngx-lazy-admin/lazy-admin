@@ -50,30 +50,4 @@ export class ModalComponent implements OnInit {
     this.tplModalButtonLoading = false;
     modelRef.destroy();
   }
-
-
-  dragStarted($event: any) {
-    if ($event.distance) {
-      this.distance.x = this.distance.x + $event.distance.x
-      this.distance.y = this.distance.y + $event.distance.y
-  
-      let translate = `translate3d(${this.distance.x}px, ${this.distance.y}px, 0px)`
-      this.renderer.setStyle(this.tplModal.getElement().getElementsByClassName('ant-modal-content')[0], 'transform', translate)  
-    }
- }
-
-  dragEnded ($event: any) {
-    if ($event.distance) {
-      this.distance.x += $event.distance.x
-      this.distance.y += $event.distance.y
-  
-      let translate = `translate3d(${this.distance.x}px, ${this.distance.y}px, 0px)`
-      this.renderer.setStyle(this.tplModal.getElement().getElementsByClassName('ant-modal-content')[0], 'transform', translate)  
-    }
-  }
-
-  dragMove ($event: any) {
-    let translate = `translate3d(${this.distance.x + $event.distance.x}px, ${this.distance.y + $event.distance.y}px, 0px)`
-    this.renderer.setStyle(this.tplModal.getElement().getElementsByClassName('ant-modal-content')[0], 'transform', translate)
-  }
 }

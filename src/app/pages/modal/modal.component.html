@@ -3,16 +3,15 @@
     <span>Template</span>
   </button>
 
-  <ng-template #tplTitle>
-    <span 
+  <ng-template #tplTitle >
+    <div 
       cdkDrag
       cdkDrop
       cdkDragBoundary=".ng-trigger-modalContainer" 
-      (cdkDragEnded)="dragEnded($event)"
-      (cdkDragStarted)="dragStarted($event)"
-      (cdkDragMoved)="dragMove($event)" style="cursor: move;">
+      cdkDragRootElement=".ant-modal-content"
+      style="cursor: move;">
       Title Template
-    </span>
+    </div>
   </ng-template>
 
   <ng-template #tplContent let-params>
