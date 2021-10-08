@@ -1,20 +1,18 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 
-
 @Component({
-  selector: 'app-layout-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.less'],
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LayoutMenuComponent implements OnInit {
+export class TestComponent implements OnInit {
 
   constructor(
     public user: UserService,
   ) { }
 
-  isCollapsed = false
   ngOnInit(): void {
   }
 
