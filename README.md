@@ -172,6 +172,9 @@ ng build --prod --stats-json
 npm run bundle-report
 
 
+### 规范
+
+1. 内部私有变量下划线开头
 
 
 
