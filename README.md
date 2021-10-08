@@ -67,6 +67,8 @@ ng g component layout/basic/header-tabset --skip-import --change-detection OnPus
 ng g component layout/basic/header-tabset --skip-import --change-detection OnPush
 
 
+ng g component pages/list/test --skip-import --change-detection OnPush
+
 
 新建一个接口
 ng g interface menu

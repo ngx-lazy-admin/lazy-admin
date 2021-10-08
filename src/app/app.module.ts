@@ -21,6 +21,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { LayoutModule } from './layout/layout.modeule'
+
+
 registerLocaleData(zh);
 
 @NgModule({
