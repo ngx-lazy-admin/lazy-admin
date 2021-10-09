@@ -17,13 +17,19 @@ import {
   GithubOutline,
   FullscreenOutline,
   ReloadOutline,
-  SettingOutline
-} from '@ant-design/icons-angular/icons';
+  SettingOutline,
+  TableOutline,
+  ProfileOutline,
+  CheckCircleOutline,
+  WarningOutline,
+  RadiusSettingOutline 
+} from '@ant-design/icons-angular/icons'; 
 
 const icons = [
   MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline, ExpandOutline,
   GlobalOutline, BellOutline, RedoOutline, MenuOutline, RightOutline, LeftOutline,
-  GithubOutline, FullscreenOutline, ReloadOutline, SettingOutline
+  GithubOutline, FullscreenOutline, ReloadOutline, SettingOutline, TableOutline,
+  ProfileOutline, CheckCircleOutline, WarningOutline, RadiusSettingOutline
 ];
 
 @NgModule({

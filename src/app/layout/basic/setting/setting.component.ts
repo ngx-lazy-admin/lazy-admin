@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import type { NzSafeAny } from 'ng-zorro-antd/core/types';
-// import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './setting.types';
 
@@ -48,7 +48,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    // private msg: NzMessageService,
+    private msg: NzMessageService,
     // private settingSrv: SettingsService,
     // private lazy: LazyService,
     private ngZone: NgZone,
@@ -78,54 +78,69 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     // }
   }
 
-  // @ZoneOutside()
-  // private async loadLess(): Promise<void> {
-  //   if (this.loadedLess) {
-  //     return Promise.resolve();
-  //   }
-  //   return this.lazy
-  //     .loadStyle('./assets/color.less', 'stylesheet/less')
-  //     .then(() => {
-  //       const lessConfigNode = this.doc.createElement('script');
-  //       lessConfigNode.innerHTML = `
-  //         window.less = {
-  //           async: true,
-  //           env: 'production',
-  //           javascriptEnabled: true
-  //         };
-  //       `;
-  //       this.doc.body.appendChild(lessConfigNode);
-  //     })
-  //     .then(() => this.lazy.loadScript('https://gw.alipayobjects.com/os/lib/less.js/3.8.1/less.min.js'))
-  //     .then(() => {
-  //       this.loadedLess = true;
-  //     });
-  // }
+  loadStyle(path: string, rel: string = 'stylesheet', innerContent?: string) {
+    return new Promise(resolve => {
+      const node = this.doc.createElement('link') as HTMLLinkElement;
+      node.rel = rel;
+      node.type = 'text/css';
+      node.href = path;
+      if (innerContent) {
+        node.innerHTML = innerContent;
+      }
+      this.doc.getElementsByTagName('head')[0].appendChild(node);
+      const item = {
+        path,
+        status: 'ok'
+      };
+      resolve(item);
+    });
+  }
 
-  // private genVars(): NzSafeAny {
-  //   const { data, color, validKeys } = this;
-  //   const vars: { [key: string]: string } = {
-  //     [`@primary-color`]: color
-  //   };
-  //   validKeys.filter(key => key !== 'primary-color').forEach(key => (vars[`@${key}`] = data[key].value));
-  //   // this.setLayout(ALAINDEFAULTVAR, vars);
-  //   return vars;
-  // }
+  private async loadLess(): Promise<void> {
+    if (this.loadedLess) {
+      return Promise.resolve();
+    }
+    return this.loadStyle('./assets/color.less', 'stylesheet/less')
+      .then(() => {
+        const lessConfigNode = this.doc.createElement('script');
+        lessConfigNode.innerHTML = `
+          window.less = {
+            async: true,
+            env: 'production',
+            javascriptEnabled: true
+          };
+        `;
+        this.doc.body.appendChild(lessConfigNode);
+      })
+      // .then(() => this.loadScript('https://gw.alipayobjects.com/os/lib/less.js/3.8.1/less.min.js'))
+      .then(() => {
+        this.loadedLess = true;
+      });
+  }
 
-  // @ZoneOutside()
-  // private runLess(): void {
-  //   const { ngZone, msg, cdr } = this;
-  //   const msgId = msg.loading(this.compilingText, { nzDuration: 0 }).messageId;
-  //   setTimeout(() => {
-  //     this.loadLess().then(() => {
-  //       (window as NzSafeAny).less.modifyVars(this.genVars()).then(() => {
-  //         msg.success('成功');
-  //         msg.remove(msgId);
-  //         ngZone.run(() => cdr.detectChanges());
-  //       });
-  //     });
-  //   }, 200);
-  // }
+  private genVars(): NzSafeAny {
+    const { data, color, validKeys } = this;
+    const vars: { [key: string]: string } = {
+      [`@primary-color`]: color
+    };
+    validKeys.filter(key => key !== 'primary-color').forEach(key => (vars[`@${key}`] = data[key].value));
+    // this.setLayout(ALAINDEFAULTVAR, vars);
+    return vars;
+  }
+
+  private runLess(): void {
+    const { ngZone, msg, cdr } = this;
+    const msgId = msg.loading(this.compilingText, { nzDuration: 0 }).messageId;
+    setTimeout(() => {
+      this.loadLess().then(() => {
+        (window as NzSafeAny).less.modifyVars(this.genVars()).then(() => {
+          msg.success('成功');
+          msg.remove(msgId);
+          ngZone.run(() => cdr.detectChanges());
+        });
+      });
+    }, 200);
+  }
 
   toggle(): void {
     this.collapse = !this.collapse;

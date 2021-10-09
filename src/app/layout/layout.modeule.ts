@@ -33,6 +33,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import { LayoutBasicComponent } from './basic/basic.component';
 import { LayoutBlankComponent } from './blank/blank.component';
@@ -97,6 +98,7 @@ import { SettingDrawerItemComponent } from './basic/setting/setting-item.compone
     NzSwitchModule,
     NzIconModule,
     NzInputNumberModule,
+    NzMessageModule,
   ]
 })
 export class LayoutModule {}

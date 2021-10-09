@@ -82,6 +82,9 @@ ng generate module app-routing --flat --module=app
 --flat 把这个文件放进了 src/app 中，而不是单独的目录中。
 --module=app 告诉 CLI 把它注册到 AppModule 的 imports 数组中。
 
+新建一个菜单服务
+
+ng g service services/menu
 
 # 分析页面大小
 
@@ -175,6 +178,15 @@ npm run bundle-report
 ### 规范
 
 1. 内部私有变量下划线开头
+
+
+### 一些小需求
+
+双击选中
+
+双击复制
+
+文本添加复制按钮
 
 
 

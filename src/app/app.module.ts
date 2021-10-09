@@ -29,7 +29,6 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     UserPipe,
-    
   ],
   imports: [
     BrowserModule,
