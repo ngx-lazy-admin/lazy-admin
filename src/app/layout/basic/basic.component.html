@@ -10,11 +10,13 @@
 </nz-progress>
 
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar position-fixed h-100" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+  <nz-sider class="menu-sidebar position-fixed h-100" nzCollapsible [nzWidth]="isCollapsed ? '80px' : '256px'" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <app-layout-menu></app-layout-menu>
   </nz-sider>
 
-  <nz-layout style="margin-left: 256px;">
+  <nz-layout [ngStyle]="{
+    'marginLeft': isCollapsed ? '80px' : '256px'
+  }" >
     <nz-header >
       <app-layout-header></app-layout-header>
     </nz-header>

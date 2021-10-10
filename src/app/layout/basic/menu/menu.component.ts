@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UserService } from '../../../services/user.service';
-
+import { LayoutService } from '../../layout.service';
 
 @Component({
   selector: 'app-layout-menu',
@@ -10,11 +10,20 @@ import { UserService } from '../../../services/user.service';
 })
 export class LayoutMenuComponent implements OnInit {
 
+
+  isCollapsed: boolean = false
+
   constructor(
     public user: UserService,
-  ) { }
+    private layout: LayoutService,
+    private cd: ChangeDetectorRef 
+  ) {
+    this.layout.isCollapsed$().subscribe(item => {
+      this.isCollapsed = item;
+      this.cd.markForCheck();
+    })
+  }
 
-  isCollapsed = false
   ngOnInit(): void {
   }
 

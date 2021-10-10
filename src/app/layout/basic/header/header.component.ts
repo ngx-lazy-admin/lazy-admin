@@ -3,6 +3,7 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { TemplatePortalDirective, TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
+import { LayoutService } from '../../layout.service';
 
 @Component({
   selector: 'app-layout-header',
@@ -12,44 +13,43 @@ import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dro
 export class LayoutHeaderComponent  {
 
   @ViewChild('overlayGlobalTemplate') templateGlobalPortals!: TemplatePortal ;
-
   @ViewChild('contentmenu') _dialogTemplate!: TemplateRef<any>;
 
   private _overlayRef: OverlayRef;
   private _portal!: TemplatePortal;
+  
+  isCollapsed: Boolean = false;
+
+  tabs = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
+  selectedIndex = 0;
+
+  isOpen = true
 
   constructor(
     public overlay: Overlay, 
     public viewContainerRef: ViewContainerRef,
-    private nzContextMenuService: NzContextMenuService
+    private nzContextMenuService: NzContextMenuService,
+    private layout: LayoutService
     
   ) {
     this._overlayRef = this.overlay.create({
       hasBackdrop: true,
     });
-
-    
-    // this._portal = new TemplatePortal(this._dialogTemplate, this.viewContainerRef);
   }
-
-  tabs = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
-  selectedIndex = 0;
-
-  // tabs = ['Tab 1', 'Tab 2'];
-  // selectedIndex = 0;
-
-  isOpen = true
 
   closeTab({ index }: { index: number }): void {
     this.tabs.splice(index, 1);
   }
 
   newTab(): void {
-    
     this.tabs.push('New Tab');
     this.selectedIndex = this.tabs.length;
   }
 
+  collapsChange () {
+    this.isCollapsed = !this.isCollapsed;
+    this.layout.collapsChange();
+  }
 
   ngAfterViewInit() {
     // 弹窗内容
@@ -57,7 +57,6 @@ export class LayoutHeaderComponent  {
     this._overlayRef = this.overlay.create({
       hasBackdrop: true,
     });
-
 
     // 点击遮罩层关闭弹窗
     this._overlayRef.backdropClick().subscribe(($event: any) => {
@@ -86,10 +85,6 @@ export class LayoutHeaderComponent  {
 
   onContextmenu($event: any, menu: any): void {
     $event.preventDefault();
-    console.log($event);
-    console.log('onContextmenu')
-    // this.openDialog($event)
-    // this.isOpen = !this.isOpen;
     this.nzContextMenuService.create($event, menu);
   }
 

@@ -1,6 +1,10 @@
 <div class="p-0 bg-white app-header d-flex justify-content-between align-items-center">
-	<!-- [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" -->
-	<i class="trigger f16 p-3"  nz-button nz-icon [nzType]="'menu-unfold'"></i>
+
+	<i  nz-icon 
+		nz-button 
+		class="trigger f16 p-3" 	
+		[nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" 
+		(click)="collapsChange()"></i>
 
 	<nz-breadcrumb class="d-inline-flex d-none d-xl-inline-block d-xxl-inline-block">
 		<nz-breadcrumb-item>
