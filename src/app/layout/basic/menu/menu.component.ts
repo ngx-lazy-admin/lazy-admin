@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { MenuService } from '../../../services/menu.service';
 import { UserService } from '../../../services/user.service';
 import { LayoutService } from '../../layout.service';
 
@@ -16,6 +17,7 @@ export class LayoutMenuComponent implements OnInit {
   constructor(
     public user: UserService,
     private layout: LayoutService,
+    private menu: MenuService,
     private cd: ChangeDetectorRef 
   ) {
     this.layout.isCollapsed$().subscribe(item => {
@@ -23,8 +25,14 @@ export class LayoutMenuComponent implements OnInit {
       this.cd.markForCheck();
     })
   }
+  menus: any = null
+
 
   ngOnInit(): void {
+    this.menu.getMenu().subscribe(item => {
+      this.menus = item
+      console.log(this.menus)
+      this.cd.markForCheck();
+    })
   }
-
 }

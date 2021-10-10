@@ -1,33 +1,25 @@
 <div class="sidebar-logo">
-	<a href="https://ng.ant.design/" target="_blank">
+	<a href="/" target="_blank">
 		<img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-		<h1>Ant Design Of Angular</h1>
+		<h1>ngx popar admin</h1>
 	</a>
 </div>
 
-<ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-	<li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
-		<ul>
-			<li nz-menu-item nzMatchRouter>
-				<a routerLink="/welcome">Welcome</a>
-			</li>
-			<li nz-menu-item nzMatchRouter>
-				<a routerLink="/chart">Monitor</a>
-			</li>
-			<li nz-menu-item nzMatchRouter>
-				<a routerLink="/dashboard">Workplace</a>
-			</li>
-			<li nz-menu-item nzMatchRouter>
-				<a routerLink="/modal">modal</a>
-			</li>
-			<li nz-menu-item nzMatchRouter>
-				<a routerLink="/code">code</a>
-			</li>
-			<li nz-menu-item nzMatchRouter>
-				<a routerLink="/list">list</a>
-			</li>
-		</ul>
-	</li>
+<ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+	<ng-container *ngFor="let menu of menus">
+		<li nz-submenu nzOpen [nzTitle]="menu.label" [nzIcon]="menu.icon">
+			<ng-container *ngIf="menu.children">
+				<ul>
+					<ng-container *ngFor="let item of menu.children">
+						<li nz-menu-item nzMatchRouter class="d-flex justify-content-between align-items-center">
+							<a [routerLink]="item.link">{{item.label}}</a>
+							<nz-badge nzStandalone [nzCount]="25"></nz-badge>
+						</li>
+					</ng-container>
+				</ul>
+			</ng-container>
+		</li>
+	</ng-container> 
 </ul>
 
 <!-- <pre>2{{ user.user$ | async | json}}</pre> -->
