@@ -1,24 +1,25 @@
 <div class="p-0 bg-white app-header d-flex justify-content-between align-items-center">
+	<div class="d-flex align-items-center">
+		<i  nz-icon 
+			nz-button 
+			class="trigger f16 p-3" 	
+			[nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" 
+			(click)="collapsChange()"></i>
 
-	<i  nz-icon 
-		nz-button 
-		class="trigger f16 p-3" 	
-		[nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" 
-		(click)="collapsChange()"></i>
+		<nz-breadcrumb class="d-inline-flex d-none d-xl-inline-block d-xxl-inline-block">
+			<nz-breadcrumb-item>
+				Home
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item>
+				<a>Application List</a>
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item>
+				An Application
+			</nz-breadcrumb-item>
+		</nz-breadcrumb>
+	</div>
 
-	<nz-breadcrumb class="d-inline-flex d-none d-xl-inline-block d-xxl-inline-block">
-		<nz-breadcrumb-item>
-			Home
-		</nz-breadcrumb-item>
-		<nz-breadcrumb-item>
-			<a>Application List</a>
-		</nz-breadcrumb-item>
-		<nz-breadcrumb-item>
-			An Application
-		</nz-breadcrumb-item>
-	</nz-breadcrumb>
-
-	<div class="float-end d-inline-block d-flex  align-items-center">
+	<div class="d-flex align-items-center">
 		<nz-input-group class="d-inline-flex mx-3 d-none d-lg-inline-flex d-xl-inline-flex d-xxl-inline-flex" [nzSuffix]="suffixIconSearch" style="width: 240px;">
 			<input class="f16" type="text" nz-input placeholder="search..." />
 		</nz-input-group>
