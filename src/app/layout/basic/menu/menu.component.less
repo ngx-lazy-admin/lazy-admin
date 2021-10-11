@@ -5,6 +5,19 @@
     // box-shadow: 2px 0 6px rgba(0,21,41,.35);
   }
   
+  .ant-menu {
+    flex: 1 1 0%;
+  }
+
+  ::ng-deep .ant-layout-sider .ant-menu {
+    overflow: hidden auto;
+    height: 100%;
+  }
+
+  ::ng-deep .ant-layout-sider .ant-menu::-webkit-scrollbar {
+    display: none;
+  }
+
   .sidebar-logo {
     position: relative;
     height: 64px;
@@ -30,3 +43,5 @@
     font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
     vertical-align: middle;
   }
+
+
