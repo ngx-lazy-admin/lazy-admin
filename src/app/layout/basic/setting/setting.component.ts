@@ -13,21 +13,16 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './setting.types';
 
-// import { Layout, SettingsService } from '@delon/theme';
-// import { copy } from '@delon/util/browser';
-// import { InputBoolean, ZoneOutside } from '@delon/util/decorator';
-// import { deepCopy, LazyService } from '@delon/util/other';
-
 
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
   styleUrls: ['./setting.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.setting-drawer]': 'true',
     '[class.setting-drawer-rtl]': `dir === 'rtl'`
   },
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingDrawerComponent implements OnInit, OnDestroy {
   @Input() autoApplyColor = true;

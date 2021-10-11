@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'setting-drawer-item',
   templateUrl: './setting-item.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.setting-drawer__body-item]': 'true'
   }

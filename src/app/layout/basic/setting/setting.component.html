@@ -79,15 +79,19 @@
       nzMessage="配置栏只在开发环境用于预览，生产环境不会展现，请拷贝后手动修改参数配置文件 src/styles/theme.less"
     ></nz-alert>
   </div>
+
+
 </nz-drawer>
 
 <div
-  class="position-fixed bg-primary text-white "
-  style="right: 0; top: 50%; width: 64px; height: 64px;"
+  class="position-fixed bg-primary text-white d-flex justify-content-center align-items-center"
+  style="right: 0; top: 50%; width: 48px; height: 48px; z-index: 1001; border-radius: 4px 0 0 4px; transition: right .3s cubic-bezier(.7,.3,.1,1), transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1), box-shadow 0.3s cubic-bezier(0.7, 0.3, 0.1, 1)"
+  [ngStyle]="{right: collapse ? '300px' : '0'}"
   [ngClass]="{ 'setting-drawer__handle-opened': collapse }"
   (click)="toggle()"
-  nz-tooltip
-  [nzTooltipTitle]="isDev ? devTips : null"
->
-  <i nz-icon [nzType]="!collapse ? 'setting' : 'close'"></i>
+  >
+  <i nz-icon style="font-size: 24px;" [nzType]="!collapse ? 'setting' : 'close'"></i>
 </div>
+
+
+
