@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { LayoutService } from '../layout.service';
 
@@ -34,5 +34,9 @@ export class LayoutBasicComponent implements OnInit {
 
   afterClose(): void {
     console.log('close');
+  }
+
+  collapsedChange ($event: EventEmitter<boolean>) {
+    this.layout.collapsChange();
   }
 }

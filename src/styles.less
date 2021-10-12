@@ -140,14 +140,12 @@
 .trigger:hover {
     color: #1890ff;
     background: #f8f8f9;
-	background-color: red;
 }
 
 // 菜单黑暗主体下的描边
 .ant-menu-dark .ant-badge-count {
     box-shadow: 0 0 0 1px #141414;
 }
-
 
 // 滚动条样式优化
 ::-webkit-scrollbar,
@@ -183,4 +181,34 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-track {
     background: #262626;
 }
+
+.ant-drawer-body::-webkit-scrollbar {
+    display: none;
+}
+
+// 转场动画
+
+.transition-margin-left {
+	transition: margin-left .3s cubic-bezier(.7,.3,.1,1);
+}
+
+.transition-transform {
+	transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+}
+
+.transition-box-shadow {
+	transition: box-shadow 0.3s cubic-bezier(0.7, 0.3, 0.1, 1)
+}
+
+.transition-box-shadow {
+	transition: background-color 0.3s ease 0s, min-width 0.3s ease 0s, max-width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+
+	transition: background-color 0.3s ease 0s, min-width 0.3s ease 0s, max-width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+	transition: background-color 0.3s ease 0s, min-width 0.3s ease 0s, max-width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+
+	transition: transform .3s cubic-bezier(.7,.3,.1,1),box-shadow .3s cubic-bezier(.7,.3,.1,1);
+	transition: transform .3s cubic-bezier(.7,.3,.1,1);
+}
+
+
 

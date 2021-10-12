@@ -5,23 +5,6 @@
 	</a>
 </div>
 
-<!-- <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-	<ng-container *ngFor="let menu of menus">
-		<li nz-submenu nzOpen [nzTitle]="menu.label" [nzIcon]="menu.icon">
-			<ng-container *ngIf="menu.children">
-				<ul>
-					<ng-container *ngFor="let item of menu.children">
-						<li nz-menu-item >
-							<a [routerLink]="item.link">{{item.label}}</a>
-							<nz-badge nzStandalone [nzCount]="25"></nz-badge>
-						</li>
-					</ng-container>
-				</ul>
-			</ng-container>
-		</li>
-	</ng-container> 
-</ul> -->
-
 <ul nz-menu nzMode="inline"  nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
 	<ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
 	<ng-template #menuTpl let-menus>

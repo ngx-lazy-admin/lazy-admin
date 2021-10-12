@@ -188,5 +188,18 @@ npm run bundle-report
 
 文本添加复制按钮
 
+### 通用的搜索
+
+1. Input输入框
+2. InputNumber 数字输入框
+3. Select 选择器
+4. TimePicker 时间选择框
+5. TreeSelect 树选择
+6. Cascader级联选择
+
+
+
+
+
 
 

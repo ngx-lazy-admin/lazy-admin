@@ -10,13 +10,25 @@
 </nz-progress>
 
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar position-fixed h-100" nzCollapsible [nzWidth]="isCollapsed ? '80px' : '256px'" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+  <nz-sider  
+    nzCollapsible
+    [nzWidth]="isCollapsed ? '80px' : '256px'"
+    nzBreakpoint="md"
+   >
+  </nz-sider>
+
+  <nz-sider class="menu-sidebar position-fixed h-100" 
+    nzCollapsible
+    [nzWidth]="isCollapsed ? '80px' : '256px'"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    style="z-index: 1000;"
+    (nzCollapsedChange)="collapsedChange($event)">
     <app-layout-menu></app-layout-menu>
   </nz-sider>
 
-  <nz-layout [ngStyle]="{
-    'marginLeft': isCollapsed ? '80px' : '256px'
-  }" >
+
+  <nz-layout >
     <nz-header >
       <app-layout-header></app-layout-header>
     </nz-header>
@@ -45,9 +57,9 @@
       </div>
     </nz-content>
 
-    <nz-footer class="bg-white" style="margin-bottom: 52px; height: 52px;">
+    <!-- <nz-footer class="bg-white" style="margin-bottom: 52px; height: 52px;">
         footer...
-    </nz-footer>
+    </nz-footer> -->
 
     <app-layout-footer-bar></app-layout-footer-bar>
 
