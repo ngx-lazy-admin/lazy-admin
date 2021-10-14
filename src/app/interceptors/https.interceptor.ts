@@ -21,7 +21,6 @@ export class HttpsInterceptor implements HttpInterceptor {
       'request-id': Math.random().toString(36).slice(-8) +  '-' + new Date().getTime()
     }});
     console.log('request: loading');
-    this.
     
     return next.handle(req).pipe(debounceTime(1000)).pipe(tap(event => {
       console.log(event)
