@@ -69,6 +69,9 @@ ng g component layout/basic/header-tabset --skip-import --change-detection OnPus
 
 ng g component pages/list/test --skip-import --change-detection OnPush
 
+生成路由守卫
+ng g guard guards/routeGuard
+
 
 新建一个接口
 ng g interface menu
@@ -197,7 +200,11 @@ npm run bundle-report
 5. TreeSelect 树选择
 6. Cascader级联选择
 
+### 底部栏常见功能
 
+### 批量操作
+
+全选, 反选，确认，提交，取消， 导入, 保存, 全部展开，全部收起, 删除, 驳回，
 
 ### 列表常用功能 
 
@@ -209,6 +216,41 @@ npm run bundle-report
 6. 全屏
 
 
+### 第三方组件库
+
+ng-zorro-antd
+bootstarp
+quill/slmditor
+rxjs
+momentjs/dayjs => 待定
+
+lazyload-image
+cos-js-sdk-v5
+
+
+### 获取数据后激活路由
+
+```js
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return Observable.create((observer) => {
+        forkJoin(
+          this.menuservice.getMenu(),
+          this.userService.webUserInfoGet()
+        ).subscribe(result => {
+          const [menus, user] = result;
+          if (user['code'] === 0 && user.data && user['data']['is_roles']) {
+            this.userInfoService.user = user['data'];
+            observer.next(true);
+            observer.complete();
+          } else {
+            this.router.navigate(['/un']);
+            observer.next(false);
+          }
+        });
+    });
+  }
+
+```
 
 
 

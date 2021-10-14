@@ -12,16 +12,20 @@ import { Menu } from '../interfaces/menu'
 export class MenuService {
 
   private _destroy$ = new Subject();
-  private _userChanges = new BehaviorSubject<Menu|null>(null);
+  private _menu$ = new BehaviorSubject<Menu|null>(null);
   private _menuUrl = 'api/menu';
 
   constructor(
     private http: HttpClient,
   ) { }
 
+  get menu$() {
+    return this._menu$.asObservable()
+  }
+
   getMenu(): Observable<Menu> {
     return this.http.get<Menu>(this._menuUrl).pipe(tap(Menu => {
-      this._userChanges.next(Menu)
+      this._menu$.next(Menu)
     }))
   }
 

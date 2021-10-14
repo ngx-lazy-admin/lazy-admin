@@ -13,9 +13,9 @@ export class LayoutMenuComponent implements OnInit {
 
 
   isCollapsed: boolean = false
+  menus: any = null
 
   constructor(
-    public user: UserService,
     private layout: LayoutService,
     private menu: MenuService,
     private cd: ChangeDetectorRef 
@@ -24,15 +24,14 @@ export class LayoutMenuComponent implements OnInit {
       this.isCollapsed = item;
       this.cd.markForCheck();
     })
-  }
-  menus: any = null
 
-
-  ngOnInit(): void {
-    this.menu.getMenu().subscribe(item => {
+    this.menu.menu$.subscribe(item => {
       this.menus = item
-      console.log(this.menus)
       this.cd.markForCheck();
     })
+  }
+
+  ngOnInit(): void {
+
   }
 }

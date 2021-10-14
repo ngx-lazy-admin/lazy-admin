@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutBasicComponent } from './layout/basic/basic.component';
+import { RouteGuardGuard } from  './guards/route-guard.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutBasicComponent,
-    // canActivate: [SimpleGuard],
+    canActivate: [RouteGuardGuard],
     // canActivateChild: [SimpleGuard],
     data: {},
     children: [
@@ -25,10 +26,6 @@ const routes: Routes = [
     path: 'charts',
     loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule)
   },
-
-
-
-
 ];
 
 @NgModule({

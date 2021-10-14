@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MenuService } from '../../../services/menu.service';
 
 @Component({
   selector: 'app-layout-search',
@@ -21,7 +22,10 @@ export class LayoutSearchComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private menu: MenuService,
+  ) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -29,5 +33,12 @@ export class LayoutSearchComponent implements OnInit {
       password: [null, [Validators.required]],
       remember: [true]
     });
+  }
+
+  submit () {
+    console.log('submit');
+    this.menu.getMenu().subscribe(item => {
+      console.log('6666')
+    })
   }
 }

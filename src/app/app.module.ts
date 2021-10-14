@@ -1,26 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import zh from '@angular/common/locales/zh';
 
+// ng-zorro
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { IconsProviderModule } from './layout/icons-provider.module';
+
+import { InMemoryDataService } from './services/in-memory-data.service';
+import { LayoutModule } from './layout/layout.modeule'
+import { HttpsInterceptor } from './interceptors/https.interceptor'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserPipe } from './pipes/user.pipe';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { zh_CN } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
-import zh from '@angular/common/locales/zh';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { IconsProviderModule } from './layout/icons-provider.module';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
-
-import { NzInputModule } from 'ng-zorro-antd/input';
-
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data.service';
-
-import { LayoutModule } from './layout/layout.modeule'
+ 
+/** Http interceptor providers in outside-in order */
+const httpInterceptorProviders = [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpsInterceptor,
+      multi: true
+    },
+];
 
 
 registerLocaleData(zh);
@@ -48,7 +56,10 @@ registerLocaleData(zh);
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [
+    httpInterceptorProviders,
+    { provide: NZ_I18N, useValue: zh_CN }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
