@@ -50,7 +50,31 @@ export class InMemoryDataService implements InMemoryDbService {
             label: '工作台',
             link: '/dashboard/workplace',
             badge: '',
-          }
+          },
+          {
+            id: '',
+            label: '编辑器',
+            link: '/dashboard/code',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '弹窗管理',
+            link: '/dashboard/modal',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '表单管理',
+            link: '/dashboard/form',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '表格管理',
+            link: '/dashboard/table',
+            badge: '',
+          },
           
         ]
       },

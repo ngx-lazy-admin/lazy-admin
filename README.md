@@ -44,10 +44,6 @@ ng generate module pages/system --route system --module app.module
 ng generate module pages/code --route code --module app.module
 
 
-
-
-
-
 新建一个过滤器
 ng generate pipe user
 
@@ -225,32 +221,18 @@ rxjs
 momentjs/dayjs => 待定
 
 lazyload-image
-cos-js-sdk-v5
-
-
-### 获取数据后激活路由
-
-```js
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return Observable.create((observer) => {
-        forkJoin(
-          this.menuservice.getMenu(),
-          this.userService.webUserInfoGet()
-        ).subscribe(result => {
-          const [menus, user] = result;
-          if (user['code'] === 0 && user.data && user['data']['is_roles']) {
-            this.userInfoService.user = user['data'];
-            observer.next(true);
-            observer.complete();
-          } else {
-            this.router.navigate(['/un']);
-            observer.next(false);
-          }
-        });
-    });
-  }
-
+cos-js-sdk-v5 (七牛云/阿里云/腾讯云/华为云)
 ```
+
+### 环境配置
+
+1. cos 的配置
+2. 样式配置
+3. 接口配置
+4. 路由配置
+5. 域名配置
+6. 部署配置
+
 
 
 

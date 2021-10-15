@@ -19,7 +19,10 @@ const routes: Routes = [
       { path: 'system/modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
       { path: 'system/form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
       { path: 'exception', loadChildren: () => import('./pages/exception/exception.module').then(m => m.ExceptionModule) },
-      { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
+      { path: 'dashboard/code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
+      { path: 'dashboard/modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
+      { path: 'dashboard/form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: 'dashboard/table', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
     ]
   },
   {

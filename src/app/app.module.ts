@@ -20,6 +20,8 @@ import { HttpsInterceptor } from './interceptors/https.interceptor'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserPipe } from './pipes/user.pipe';
+import { HtmlPipe } from './pipes/html.pipe';
+
  
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [
@@ -37,6 +39,7 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     UserPipe,
+    HtmlPipe,
   ],
   imports: [
     BrowserModule,
