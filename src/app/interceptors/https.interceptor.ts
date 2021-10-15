@@ -20,14 +20,9 @@ export class HttpsInterceptor implements HttpInterceptor {
       'X-Requested-With': 'XMLHttpRequest',
       'request-id': Math.random().toString(36).slice(-8) +  '-' + new Date().getTime()
     }});
-    console.log('request: loading');
     
     return next.handle(req).pipe(debounceTime(1000)).pipe(tap(event => {
-      console.log(event)
-      console.log('request: event')
     }, error => {
-      console.log(error)
-      console.log('request: error')
       if (error.status === 401 && location.pathname !== '/login') {
         location.href = 'login?return_url=' + encodeURIComponent(location.href);
       }
