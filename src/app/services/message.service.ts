@@ -13,8 +13,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class MessageService {
 
-
-
   private _destroy$ = new Subject();
   private _loading$ = new BehaviorSubject<boolean|null>(null);
 
@@ -23,6 +21,18 @@ export class MessageService {
   }
 
   constructor(private message: NzMessageService) {}
+
+  success(str: string): void {
+    this.message.success(str);
+  }
+
+  error(str: string): void {
+    this.message.error(str);
+  }
+
+  warning(str: string): void {
+    this.message.warning(str);
+  }
 
   loading (msg: string, duration: number = 0) {
     this._loading$.next(true);

@@ -25,7 +25,6 @@ export class HttpsInterceptor implements HttpInterceptor {
       'request-id': Math.random().toString(36).slice(-8) +  '-' + new Date().getTime()
     }});
     const messageId = this.message.loading('数据加载中...')
-
     return next.handle(req).pipe(debounceTime(3000)).pipe(tap(event => {
       this.message.remove(messageId);
     }, error => {

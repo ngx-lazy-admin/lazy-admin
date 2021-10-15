@@ -15,6 +15,9 @@ export class MenuService {
   private _menu$ = new BehaviorSubject<Menu|null>(null);
   private _menuUrl = 'api/menu';
 
+  private _tabset$ = new BehaviorSubject<string[]>([]);
+  private _tabset: object[] = []
+
   constructor(
     private http: HttpClient,
   ) { }
@@ -23,10 +26,19 @@ export class MenuService {
     return this._menu$.asObservable()
   }
 
+  get tabset$() {
+    return this._tabset$.asObservable()
+  }
+
   getMenu(): Observable<Menu> {
     return this.http.get<Menu>(this._menuUrl).pipe(tap(Menu => {
       this._menu$.next(Menu)
     }))
+  }
+
+
+  addTabset (item: any) {
+    this._tabset = [...this._tabset, item]
   }
 
   ngOnDestroy() {

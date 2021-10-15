@@ -16,6 +16,7 @@ export class RouteGuardGuard implements CanActivate, CanActivateChild, CanDeacti
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      console.log('canActivate')
     return new Observable(observer => {
       forkJoin([
         this.menuservice.getMenu()
@@ -30,6 +31,8 @@ export class RouteGuardGuard implements CanActivate, CanActivateChild, CanDeacti
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      console.log('canActivateChild')
+
     return true;
   }
   canDeactivate(
@@ -37,11 +40,15 @@ export class RouteGuardGuard implements CanActivate, CanActivateChild, CanDeacti
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      console.log('canDeactivate')
+      
     return true;
   }
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      console.log('canLoad')
+
     return true;
   }
 }

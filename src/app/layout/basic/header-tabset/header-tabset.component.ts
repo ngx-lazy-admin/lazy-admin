@@ -1,7 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, ViewChild, TemplateRef,  } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewContainerRef, ViewChild, TemplateRef,  } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
+import { MenuService } from '../../../services/menu.service';
+
 
 @Component({
   selector: 'app-layout-header-tabset',
@@ -11,8 +13,7 @@ import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dro
 })
 export class LayoutHeaderTabsetComponent implements OnInit {
 
-  ngOnInit(): void {
-  }
+
 
   @ViewChild('overlayGlobalTemplate') templateGlobalPortals!: TemplatePortal ;
 
@@ -21,21 +22,7 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   private _overlayRef: OverlayRef;
   private _portal!: TemplatePortal;
 
-  constructor(
-    public overlay: Overlay, 
-    public viewContainerRef: ViewContainerRef,
-    private nzContextMenuService: NzContextMenuService
-    
-  ) {
-    this._overlayRef = this.overlay.create({
-      hasBackdrop: true,
-    });
-
-    
-    // this._portal = new TemplatePortal(this._dialogTemplate, this.viewContainerRef);
-  }
-
-  tabs = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
+  tabs: string[] = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
   selectedIndex = 0;
 
   // tabs = ['Tab 1', 'Tab 2'];
@@ -43,16 +30,36 @@ export class LayoutHeaderTabsetComponent implements OnInit {
 
   isOpen = true
 
+  constructor(
+    public overlay: Overlay, 
+    public viewContainerRef: ViewContainerRef,
+    private nzContextMenuService: NzContextMenuService,
+    private menu: MenuService,
+    private cd: ChangeDetectorRef
+  ) {
+    this._overlayRef = this.overlay.create({
+      hasBackdrop: true,
+    });
+
+    this.menu.tabset$.subscribe(item => {
+      this.tabs = item
+      this.cd.markForCheck();
+    })
+
+    // 订阅数据
+    // this._portal = new TemplatePortal(this._dialogTemplate, this.viewContainerRef);
+  }
+
+  ngOnInit(): void {}
+
   closeTab({ index }: { index: number }): void {
     this.tabs.splice(index, 1);
   }
 
   newTab(): void {
-    
     this.tabs.push('New Tab');
     this.selectedIndex = this.tabs.length;
   }
-
 
   ngAfterViewInit() {
     // 弹窗内容

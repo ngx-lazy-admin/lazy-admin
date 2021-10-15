@@ -75,7 +75,12 @@ export class InMemoryDataService implements InMemoryDbService {
             link: '/dashboard/table',
             badge: '',
           },
-          
+          {
+            id: '',
+            label: '表格管理',
+            link: '/dashboard/charts',
+            badge: '',
+          },
         ]
       },
       {
