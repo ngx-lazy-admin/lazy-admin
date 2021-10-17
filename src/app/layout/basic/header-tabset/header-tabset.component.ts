@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewContainerRef, ViewChild, TemplateRef,  } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewContainerRef,
+  ViewChild, TemplateRef } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { MenuService } from '../../../services/menu.service';
-
 
 @Component({
   selector: 'app-layout-header-tabset',
@@ -12,8 +12,6 @@ import { MenuService } from '../../../services/menu.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutHeaderTabsetComponent implements OnInit {
-
-
 
   @ViewChild('overlayGlobalTemplate') templateGlobalPortals!: TemplatePortal ;
 

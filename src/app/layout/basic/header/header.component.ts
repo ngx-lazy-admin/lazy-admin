@@ -1,14 +1,15 @@
-import { Component, OnInit, ViewContainerRef, ViewChild, TemplateRef,  } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild, TemplateRef,
+  ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { TemplatePortalDirective, TemplatePortal } from '@angular/cdk/portal';
+import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { LayoutService } from '../../layout.service';
 
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.less']
+  styleUrls: ['./header.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutHeaderComponent  {
 
@@ -18,7 +19,7 @@ export class LayoutHeaderComponent  {
   private _overlayRef: OverlayRef;
   private _portal!: TemplatePortal;
   
-  isCollapsed: Boolean = false;
+  isCollapsed: boolean = false;
 
   tabs = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
   selectedIndex = 0;
@@ -29,9 +30,15 @@ export class LayoutHeaderComponent  {
     public overlay: Overlay, 
     public viewContainerRef: ViewContainerRef,
     private nzContextMenuService: NzContextMenuService,
-    private layout: LayoutService
-    
+    private layout: LayoutService,
+    private cd: ChangeDetectorRef,
   ) {
+
+    this.layout.isCollapsed$().subscribe(item => {
+      this.isCollapsed = item;
+      this.cd.markForCheck();
+    })
+
     this._overlayRef = this.overlay.create({
       hasBackdrop: true,
     });
@@ -46,9 +53,9 @@ export class LayoutHeaderComponent  {
     this.selectedIndex = this.tabs.length;
   }
 
-  collapsChange () {
-    this.isCollapsed = !this.isCollapsed;
-    this.layout.collapsChange();
+  collapsChange (isCollapsed: boolean) {
+    this.isCollapsed = isCollapsed;
+    this.layout.collapsChange(this.isCollapsed);
   }
 
   ngAfterViewInit() {

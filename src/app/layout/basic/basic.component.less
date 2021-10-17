@@ -1,37 +1,35 @@
 :host {
-    display: flex;
-    flex: auto;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .app-layout {
-    min-height: 100vh; 
-    display: flex;
-    flex: auto;
-    flex-direction: row;
-  }
-  
-  
-  nz-header {
-    padding: 0;
-    width: 100%;
-    z-index: 2;
-    background: white;
-  }
-  
+  display: flex;
+  flex: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-layout {
+  min-height: 100vh; 
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+}
 
 
-  ::ng-deep .ant-layout-header {
-    height: 52px;
-  }
-    
+nz-header {
+  padding: 0;
+  width: 100%;
+  z-index: 2;
+  background: white;
+}
 
-  ::ng-deep .ant-layout-content {
-    min-height: unset;
-  }
+::ng-deep .ant-layout-header {
+  height: 52px;
+}
+  
 
-  ::ng-deep .ant-progress-line {
-    font-size: 0;
-  }
+::ng-deep .ant-layout-content {
+  min-height: unset;
+}
+
+::ng-deep .ant-progress-line {
+  font-size: 0;
+}

@@ -43,7 +43,8 @@ export class LayoutBasicComponent implements OnInit {
     console.log('close');
   }
 
-  collapsedChange ($event: EventEmitter<boolean>) {
-    this.layout.collapsChange();
+  collapsedChange ($event: boolean) {
+    console.log($event);
+    this.layout.collapsChange($event);
   }
 }

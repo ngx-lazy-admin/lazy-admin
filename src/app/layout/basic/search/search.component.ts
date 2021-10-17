@@ -13,6 +13,8 @@ export class LayoutSearchComponent implements OnInit {
 
   validateForm!: FormGroup;
 
+  list = [1, 2, 3, 4]
+
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       if (this.validateForm.controls.hasOwnProperty(i)) {

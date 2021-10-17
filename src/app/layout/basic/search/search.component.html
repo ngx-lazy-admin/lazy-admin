@@ -1,56 +1,29 @@
 <div class="bg-white mb-0 p-3 ">
     <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-        <nz-form-item>
-          <nz-form-control nzErrorTip="Please input your username!">
-            <nz-input-group nzPrefixIcon="user">
-              <input formControlName="userName" nz-input placeholder="Username" />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control nzErrorTip="Please input your Password!">
-            <nz-input-group nzPrefixIcon="lock">
-              <input formControlName="password" nz-input type="password" placeholder="Password" />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control nzErrorTip="Please input your Password!">
-            <nz-input-group nzPrefixIcon="lock">
-              <input formControlName="password" nz-input type="password" placeholder="Password" />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>        <nz-form-item>
-          <nz-form-control nzErrorTip="Please input your Password!">
-            <nz-input-group nzPrefixIcon="lock">
-              <input formControlName="password" nz-input type="password" placeholder="Password" />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>        <nz-form-item>
-          <nz-form-control nzErrorTip="Please input your Password!">
-            <nz-input-group nzPrefixIcon="lock">
-              <input formControlName="password" nz-input type="password" placeholder="Password" />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item class="w-100">
-          <nz-form-control>
-            <button nz-button class="me-3" type="reset" nzType="default">重置</button>
-            <button nz-button class="me-3" nzType="primary" (click)="submit()">确定</button>
-            <button nz-button nzType="primary">导出</button>
-
-          </nz-form-control>
-        </nz-form-item>
+      <div nz-row [nzGutter]="16">
+        <ng-container *ngFor="let item of list">
+          <div nz-col class="gutter-row" [nzXXl]="4"  [nzXl]="6" [nzLg]="8" [nzMd]="12" [nzSm]="12" [nzXs]="24" >
+            <nz-form-item>
+              <nz-form-control>
+                <nz-input-group nzPrefixIcon="user">
+                  <input formControlName="userName" nz-input placeholder="Username" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </ng-container>
+        <div nz-col class="gutter-row" [nzSpan]="6">
+          <nz-form-item class="w-100">
+            <nz-form-control>
+              <button nz-button class="me-3" type="reset" nzType="default">重置</button>
+              <button nz-button class="me-3" nzType="primary" (click)="submit()">确定</button>
+              <button nz-button nzType="primary">导出</button>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
     </form>
-
-    <!-- <div class="d-flex justify-content-between align-items-center">
-        <nz-button-group>
-            <button nz-button nzType="text"><i nz-icon nzType="fullscreen"></i></button>
-            <button nz-button nzType="text"><i nz-icon nzType="menu"></i></button>
-            <button nz-button nzType="text"><i nz-icon nzType="reload"></i></button>
-            <button nz-button nzType="text"><i nz-icon nzType="setting"></i></button>
-        </nz-button-group>
-        <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
-    </div> -->
 </div>
+
+
 

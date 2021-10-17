@@ -1,7 +1,6 @@
 
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject,
-  Input, isDevMode, NgZone, OnDestroy, OnInit, Optional
-} from '@angular/core';
+  Input, isDevMode, NgZone, OnDestroy, OnInit, Optional } from '@angular/core';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { DOCUMENT } from '@angular/common';
 

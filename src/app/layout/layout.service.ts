@@ -23,8 +23,8 @@ export class LayoutService {
   }
 
 
-  collapsChange () {
-    this._isCollapsed = !this._isCollapsed;
+  collapsChange (collapsed: boolean) {
+    this._isCollapsed = collapsed;
     this._isCollapsed$.next(this._isCollapsed);
   }
 }
