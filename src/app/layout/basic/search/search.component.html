@@ -2,13 +2,13 @@
   <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <div nz-row [nzGutter]="16">
       <ng-container *ngFor="let item of listFields">
-        <ng-container *ngIf="item.show">
+        <ng-container *ngIf="item?.show">
           <div nz-col class="gutter-row" [nzXXl]="4"  [nzXl]="6" [nzLg]="8" [nzMd]="12" [nzSm]="12" [nzXs]="24" >
             <nz-form-item>
               <nz-form-control>
                 <nz-input-group [nzPrefix]="prefixTemplate" [nzSuffix]="suffixTemplate">
                   <!-- <input nz-input placeholder="Username" /> -->
-                  <app-search-item formControlName="item['key']" [fields]="item"></app-search-item>
+                  <!-- <app-search-item formControlName="item['key']" [fields]="item"></app-search-item> -->
                 </nz-input-group>
                 <ng-template #prefixTemplate>
                   <!-- <span class="text-primary mr-2">状态</span> -->

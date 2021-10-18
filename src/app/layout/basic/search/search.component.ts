@@ -19,10 +19,12 @@ export class LayoutSearchComponent implements OnInit {
     {
       key: 'userName',
       type: 'input',
+      show: true
     },
     {
       key: 'password',
       type: 'input',
+      show: true
     }
   ]
 
