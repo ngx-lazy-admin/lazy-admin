@@ -4,6 +4,7 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { MenuService } from '../../../services/menu.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-layout-header-tabset',
@@ -28,6 +29,11 @@ export class LayoutHeaderTabsetComponent implements OnInit {
 
   isOpen = true
 
+  private destroy$ = new Subject<void>();
+
+
+  
+
   constructor(
     public overlay: Overlay, 
     public viewContainerRef: ViewContainerRef,
@@ -39,7 +45,7 @@ export class LayoutHeaderTabsetComponent implements OnInit {
       hasBackdrop: true,
     });
 
-    this.menu.tabset$.subscribe(item => {
+    this.menu.tabsetChange$.subscribe(item => {
       this.tabs = item
       this.cd.markForCheck();
     })
@@ -139,5 +145,10 @@ export class LayoutHeaderTabsetComponent implements OnInit {
 
   closeMenu(): void {
     this.nzContextMenuService.close();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

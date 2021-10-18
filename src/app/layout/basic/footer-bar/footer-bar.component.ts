@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Subject } from 'rxjs';
 import { UserService } from '../../../services/user.service';
 import { LayoutService } from '../../layout.service';
 
@@ -12,19 +13,26 @@ export class LayoutFooterBarComponent implements OnInit {
 
   isCollapsed = false;
 
+  checked = true;
+
+  private destroy$ = new Subject<void>();
+
+
   constructor(
     public user: UserService,
     private layout: LayoutService,
     private cd: ChangeDetectorRef 
   ) {
-    this.layout.isCollapsed$().subscribe(item => {
+    this.layout.change$?.subscribe(item => {
       this.isCollapsed = item;
       this.cd.markForCheck();
     })
   }
 
-  checked = true;
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }
