@@ -1,10 +1,16 @@
 
 <ng-container  [ngSwitch]="i.type" >
 	<ng-container *ngSwitchCase="'input'">
-		<input nz-input [formControlName]="i.key" [attr.id]="i.key" [ngModelOptions]="{ standalone: true }" />
+		<input nz-input [formControlName]="i.key" [attr.id]="i.key" />
 	</ng-container>
 
-	<ng-container *ngSwitchCase="'number'">
+	<ng-container *ngSwitchDefault>
+		<ng-template nzDrawerContent></ng-template>
+	</ng-container>
+</ng-container>
+
+
+	<!-- <ng-container *ngSwitchCase="'number'">
 		<nz-input-number [formControlName]="i.key" [nzMin]="i.min" [nzMax]="i.max" [nzStep]="i.step || 2" [nzFormatter]="format"></nz-input-number>
 	</ng-container>
 
@@ -42,20 +48,5 @@
 
 	<ng-container *ngSwitchCase="'date-picker'">
 		<nz-date-picker [formControlName]="i.key" [ngModelOptions]="{ standalone: true }" (ngModelChange)="onChange($event)"></nz-date-picker>
-	</ng-container>
-
-	<ng-container *ngSwitchCase="'upload'">
-		<nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/">
-			<button nz-button>
-				<i nz-icon nzType="upload"></i>
-				<span>上传</span>
-			</button>
-		</nz-upload>
-	</ng-container>
-
-	<ng-container *ngSwitchDefault>
-		<ng-template nzDrawerContent></ng-template>
-	</ng-container>
-</ng-container>
-
+	</ng-container> -->
   
