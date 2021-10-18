@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MenuService } from '../../../services/menu.service';
 
 @Component({
@@ -7,40 +7,52 @@ import { MenuService } from '../../../services/menu.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class LayoutSearchComponent implements OnInit {
 
   validateForm!: FormGroup;
 
-  list = [1, 2, 3, 4]
+  list: Array<{ index: number; show: boolean }> = [];
 
-  submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      if (this.validateForm.controls.hasOwnProperty(i)) {
-        this.validateForm.controls[i].markAsDirty();
-        this.validateForm.controls[i].updateValueAndValidity();
-      }
+  lists = [
+    {
+      key: '',
+      value: '',
+      type: '',
+      label: '',
+      icon: '',
+      info: ''
     }
-  }
+  ]
+
+  isCollapse = false
 
   constructor(
     private fb: FormBuilder,
     private menu: MenuService,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-      remember: [true]
-    });
+    this.validateForm = this.fb.group({});
+    this.isCollapse = true;
+    for (let i = 0; i < 10; i++) {
+      this.list.push({ index: i, show: i < 6 });
+    }
   }
 
-  submit () {
-    console.log('submit');
+  submitForm(): void {
+    console.log('submitForm');
     this.menu.getMenu().subscribe(item => {
       console.log('6666')
     })
+  }
+
+  toggleCollapse () {
+    this.isCollapse = !this.isCollapse;
+    this.list.forEach((c, index) => {
+      c.show = this.isCollapse ? index < 6 : true;
+    });
+    this.cd.markForCheck();
   }
 }
