@@ -47,6 +47,8 @@ import { LayoutHeaderTabsetComponent } from './basic/header-tabset/header-tabset
 import { SettingDrawerComponent } from './basic/setting/setting.component';
 import { SettingDrawerItemComponent } from './basic/setting/setting-item.component';
 
+import { SearchItemComponent } from './basic/search/search-item/search-item.component';
+ 
  
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { SettingDrawerItemComponent } from './basic/setting/setting-item.compone
     LayoutMenuComponent,
     LayoutFooterBarComponent,
     LayoutHeaderTabsetComponent,
+
+    SearchItemComponent,
 
     SettingDrawerComponent,
     SettingDrawerItemComponent

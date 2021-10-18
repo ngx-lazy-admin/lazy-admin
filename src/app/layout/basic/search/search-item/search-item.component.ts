@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'app-search-item',
@@ -7,6 +8,9 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchItemComponent implements OnInit {
+
+
+  i: NzSafeAny = {};
 
   constructor(
     private cd: ChangeDetectorRef

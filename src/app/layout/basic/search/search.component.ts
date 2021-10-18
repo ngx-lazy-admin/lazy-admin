@@ -15,16 +15,21 @@ export class LayoutSearchComponent implements OnInit {
 
   list: Array<{ index: number; show: boolean }> = [];
 
-  lists = [
+  listFields = [
     {
-      key: '',
-      value: '',
-      type: '',
-      label: '',
-      icon: '',
-      info: ''
+      key: 'userName',
+      type: 'input',
+    },
+    {
+      key: 'password',
+      type: 'input',
     }
   ]
+
+  listModel = {
+    userName: '',
+    password: ''
+  }
 
   isCollapse = false
 
@@ -42,6 +47,12 @@ export class LayoutSearchComponent implements OnInit {
     for (let i = 0; i < 10; i++) {
       this.list.push({ index: i, show: i < 6 });
     }
+
+    this.validateForm = this.fb.group({
+      userName: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      remember: [true]
+    });
   }
 
   submitForm(): void {

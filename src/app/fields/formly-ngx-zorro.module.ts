@@ -30,15 +30,13 @@ import { FormlyFieldSwitchComponent } from './types/switch/switch.component';
 import { FormlyFieldTimePickerComponent } from './types/time-picker/time-picker.component';
 import { NzTreeSelectComponent } from './types/tree-select/tree-select.component';
 import { FormlyFieldDateRangePickerComponent } from './types/date-range-picker/date-range-picker.component';
-import { FormlyFieldTooltipComponent } from './types/tool-tip/tool-tip.component';
 import { FormlyFieldTitleComponent } from './types/title/title.component';
-import { FormlyFieldRepeatComponent } from './types/repeat/repeat.component';
+import { FormlyFieldRepeatComponent } from './repeat/repeat/repeat.component';
 import { FormlyFieldLabelComponent } from './types/label/label.component';
 import { FormlyFieldButtonComponent } from './types/button/button.component';
 import { FormlyFieldTemplateComponent } from './types/template/template.component';
 import { FormlyFieldGridComponent } from './types/grid/grid.component';
-import { FormlyFieldTableComponent } from './types/table/table.component';
-import { FormlyFieldModelComponent } from './types/model/model.component';
+import { FormlyFieldTableComponent } from './repeat/table/table.component';
 import { FormlyFieldDividerComponent } from './types/divider/divider.component';
 import { NzAvatarUploaderComponent } from './types/avatar-uploader/avatar-uploader.component';
 import { FormlyFieldSelectDateComponent } from './types/select-date/select-date.component';
@@ -46,10 +44,10 @@ import { FormlyFieldSelectDateComponent } from './types/select-date/select-date.
 import { FormlyFieldInputArrayComponent } from './types/input-array/input-array.component';
 
 // repeat
-import { TableSectionComponent } from './types/table-section/table-section.component';
-import { TabSectionComponent } from './types/tab-section/tab-section.component';
-import { TabsSectionComponent } from './types/tabs-section/tabs-section.component';
-import { NzDesSectionComponent } from './types/des-section/des-section.component';
+import { TableSectionComponent } from './repeat/table-section/table-section.component';
+import { TabSectionComponent } from './repeat/tab-section/tab-section.component';
+import { TabsSectionComponent } from './repeat/tabs-section/tabs-section.component';
+import { NzDesSectionComponent } from './repeat/des-section/des-section.component';
 
 // wrappers
 import { FormlyFieldPanelWrapperComponent } from './wrappers/panel/formly-field-panel-wrapper.component';
@@ -150,11 +148,6 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
             component: NzTreeSelectComponent
         },
         {
-            name: 'tool-tip',
-            wrappers: ['field-wrapper'],
-            component: FormlyFieldTooltipComponent
-        },
-        {
             name: 'table-section',
             component: TableSectionComponent
         },
@@ -198,10 +191,6 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
         {
             name: 'nz-table',
             component: FormlyFieldTableComponent
-        },
-        {
-            name: 'nz-model',
-            component: FormlyFieldModelComponent
         },
         {
             name: 'nz-divider',
@@ -266,7 +255,6 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
         FormlyFieldTimePickerComponent,
         NzTreeSelectComponent,
 
-        FormlyFieldTooltipComponent,
         TableSectionComponent,
         FormlyFieldTitleComponent,
         TabSectionComponent,
@@ -280,7 +268,6 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
         TabsSectionComponent,
         FormlyFieldTemplateComponent,
         FormlyFieldTableComponent,
-        FormlyFieldModelComponent,
         FormlyFieldDividerComponent,
         NgxQuillComponent,
         NzDesSectionComponent,
