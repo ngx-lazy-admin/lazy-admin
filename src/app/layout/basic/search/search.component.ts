@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { MenuService } from '../../../services/menu.service';
 
 @Component({
@@ -26,6 +27,8 @@ export class LayoutSearchComponent implements OnInit {
   ]
 
   isCollapse = false
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -54,5 +57,10 @@ export class LayoutSearchComponent implements OnInit {
       c.show = this.isCollapse ? index < 6 : true;
     });
     this.cd.markForCheck();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

@@ -18,7 +18,7 @@ export class LayoutService {
 
   // isCollapsed$ = this._isCollapsed$.asObservable();
 
-  isCollapsed$ () {
+  get change$ () {
     return this._isCollapsed$.asObservable();
   }
 

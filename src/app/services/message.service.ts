@@ -16,7 +16,7 @@ export class MessageService {
   private _destroy$ = new Subject();
   private _loading$ = new BehaviorSubject<boolean|null>(null);
 
-  get loading$() {
+  get loadingChange$() {
     return this._loading$.asObservable()
   }
 

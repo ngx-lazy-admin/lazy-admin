@@ -1,16 +1,15 @@
 
 <ng-container  [ngSwitch]="i.type" >
-
 	<ng-container *ngSwitchCase="'input'">
-		<input nz-input [(ngModel)]="i.value" [ngModelOptions]="{ standalone: true }" />
+		<input nz-input [formControlName]="i.key" [attr.id]="i.key" [ngModelOptions]="{ standalone: true }" />
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'number'">
-		<nz-input-number [(ngModel)]="i.value" [nzMin]="i.min" [nzMax]="i.max" [nzStep]="i.step || 2" [nzFormatter]="format"></nz-input-number>
+		<nz-input-number [formControlName]="i.key" [nzMin]="i.min" [nzMax]="i.max" [nzStep]="i.step || 2" [nzFormatter]="format"></nz-input-number>
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'select'">
-		<nz-select [(ngModel)]="i.value" style="width: 120px;"  [ngModelOptions]="{ standalone: true }" nzAllowClear nzPlaceHolder="Choose">
+		<nz-select [formControlName]="i.key" style="width: 120px;"  [ngModelOptions]="{ standalone: true }" nzAllowClear nzPlaceHolder="Choose">
 			<ng-container *ngFor="let item of i.options">
 				<nz-option [nzValue]="item.value" [nzLabel]="item.label" nzDisabled="item.disabled || false"></nz-option>
 			</ng-container>
@@ -18,31 +17,31 @@
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'cascader'">
-		<nz-cascader [(ngModel)]="i.value" [nzOptions]="i.options"  (ngModelChange)="onChanges($event)"></nz-cascader>
+		<nz-cascader [formControlName]="i.key" [nzOptions]="i.options"  (ngModelChange)="onChanges($event)"></nz-cascader>
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'tree-select'">
-		<nz-tree-select 	style="width: 250px"  [(ngModel)]="i.value" [nzNodes]="i.options" 	[nzPlaceHolder]="i.placeholder || 'Please select'" nzShowSearch (ngModelChange)="onChanges($event)"></nz-tree-select>
+		<nz-tree-select style="width: 250px" [formControlName]="i.key" [nzNodes]="i.options" 	[nzPlaceHolder]="i.placeholder || 'Please select'" nzShowSearch (ngModelChange)="onChanges($event)"></nz-tree-select>
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'switch'">
-		<nz-switch [(ngModel)]="i.value" [ngModelOptions]="{ standalone: true }"></nz-switch>
+		<nz-switch [formControlName]="i.key" [ngModelOptions]="{ standalone: true }"></nz-switch>
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'radio'">
-		<label nz-radio  [(ngModel)]="i.value" [ngModelOptions]="{ standalone: true }">Radio</label>
+		<label nz-radio  [formControlName]="i.key" [ngModelOptions]="{ standalone: true }">Radio</label>
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'checkbox'">
-		<label nz-checkbox [(ngModel)]="i.value" [ngModelOptions]="{ standalone: true }">Checkbox</label>
+		<label nz-checkbox [formControlName]="i.key" [ngModelOptions]="{ standalone: true }">Checkbox</label>
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'time-picker'">
-		<nz-time-picker [(ngModel)]="i.value" [ngModelOptions]="{ standalone: true }"></nz-time-picker>
+		<nz-time-picker [formControlName]="i.key" [ngModelOptions]="{ standalone: true }"></nz-time-picker>
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'date-picker'">
-		<nz-date-picker [(ngModel)]="i.value" [ngModelOptions]="{ standalone: true }" (ngModelChange)="onChange($event)"></nz-date-picker>
+		<nz-date-picker [formControlName]="i.key" [ngModelOptions]="{ standalone: true }" (ngModelChange)="onChange($event)"></nz-date-picker>
 	</ng-container>
 
 	<ng-container *ngSwitchCase="'upload'">
