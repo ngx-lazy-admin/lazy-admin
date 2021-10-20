@@ -1,5 +1,18 @@
-<p>code works!</p>
+<p>code works! {{ error }}</p>
 
-<nz-code-editor  class="editor" (onChange)="change($event)" [ngModel]="code" [nzEditorOption]="{ language: 'javascript' }" (nzEditorInitialized)="editorInitialized($event)"></nz-code-editor>
+<div class="d-flex flex-nowarp">
+    <nz-code-editor 
+        class="editor w-50" 
+        style="height: 500px;"
+        (onChange)="change($event)"
+        [ngModel]="code"
+        [nzEditorOption]="{ language: 'js' }" 
+        (nzEditorInitialized)="editorInitialized($event)">
+    </nz-code-editor>
+    <div class="w-50">
+        <div class="mGraph-wrapper">
+            <div class="mGraph" id="main"></div>
+        </div>
+    </div>
+</div>
 
-<pre>{{code | json}}</pre>

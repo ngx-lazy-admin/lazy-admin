@@ -1,13 +1,17 @@
-
-<input 
-	 nz-input
-	[style.width]="to['width'] ? to['width'] : null"
-	[formControl]="formControl" 
+<input
+	nz-input
+	[formControl]="control"
 	[formlyAttributes]="field"
-	[nzSize]="to['nzSize']"
-	[placeholder]="to['nzPlaceHolder'] || '请输入'"
-	[type]="to['nzType'] || 'text' "
-	[autocomplete]="to['autocomplete'] || 'off'"
-	[disabled]="to['disabled']"
-/>
+
+	[nzSize]="to.nzSize"
+	[nzBorderless]="to.nzBorderless"
+
+	[type]="type || 'text'"
+	[readonly]="to.readonly"
+	[placeholder]="to.placeholder"
+
+ />
+
+ <!-- [required]="required" -->
+
 

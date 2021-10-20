@@ -15,13 +15,13 @@ import { OverlayModule } from '@angular/cdk/overlay';
 // import QuillBetterTable from 'quill-better-table'
 
 // 自定义的formly组件库
-import { FormlyFieldInputComponent } from './types/input/input.component';
+
 import { FormlyFieldTextareaComponent } from './types/textarea/textarea.component';
 import { AutocompleteComponent } from './types/autocomplete/autocomplete.component';
 import { FormlyFieldCascaderComponent } from './types/cascader/cascader.component';
 import { FormlyFieldCheckboxComponent } from './types/checkbox/checkbox.component';
 import { FormlyFieldDatePickerComponent } from './types/date-picker/date-picker.component';
-import { FormlyFieldNumberComponent } from './types/number/number.component';
+import { FormlyFieldNumberComponent } from './types/input-number/number.component';
 import { FormlyFieldRadioComponent } from './types/radio/radio.component';
 import { FormlyFieldRateComponent } from './types/rate/rate.component';
 import { FormlyFieldSelectComponent } from './types/select/select.component';
@@ -30,18 +30,17 @@ import { FormlyFieldSwitchComponent } from './types/switch/switch.component';
 import { FormlyFieldTimePickerComponent } from './types/time-picker/time-picker.component';
 import { NzTreeSelectComponent } from './types/tree-select/tree-select.component';
 import { FormlyFieldDateRangePickerComponent } from './types/date-range-picker/date-range-picker.component';
-import { FormlyFieldTitleComponent } from './types/title/title.component';
+
 import { FormlyFieldRepeatComponent } from './repeat/repeat/repeat.component';
 import { FormlyFieldLabelComponent } from './types/label/label.component';
 import { FormlyFieldButtonComponent } from './types/button/button.component';
 import { FormlyFieldTemplateComponent } from './types/template/template.component';
-import { FormlyFieldGridComponent } from './types/grid/grid.component';
+import { FormlyFieldGridComponent } from './repeat/grid/grid.component';
 import { FormlyFieldTableComponent } from './repeat/table/table.component';
-import { FormlyFieldDividerComponent } from './types/divider/divider.component';
+
 import { NzAvatarUploaderComponent } from './types/avatar-uploader/avatar-uploader.component';
 import { FormlyFieldSelectDateComponent } from './types/select-date/select-date.component';
 
-import { FormlyFieldInputArrayComponent } from './types/input-array/input-array.component';
 
 // repeat
 import { TableSectionComponent } from './repeat/table-section/table-section.component';
@@ -55,6 +54,12 @@ import { EmptyWrapperComponent } from './wrappers/empty-wrapper/empty-wrapper.co
 import { FormlyFieldWrapperComponent } from './wrappers/formly-field-wrapper/formly-field-wrapper.component';
 import { InlineFieldWrapperComponent } from './wrappers/inline-field-wrapper/inline-field-wrapper.component';
 
+// 基本组件
+
+// 重复组件
+
+// 图表
+
 // editor
 import { NgxQuillComponent } from './types/ngx-quill/ngx-quill.component';
 // import { TinyEditorComponent } from './types/tiny-editor/tiny-editor.component'
@@ -67,16 +72,6 @@ const antDesignIcons = AllIcons as {
 // 引入继承的多选框
 export const ForRootFormlyModule = FormlyModule.forRoot({
     types: [
-        {
-            name: 'nz-input',
-            wrappers: ['field-wrapper'],
-            component: FormlyFieldInputComponent,
-        },
-        {
-          name: 'nz-input-array',
-          wrappers: ['field-wrapper'],
-          component: FormlyFieldInputArrayComponent,
-        },
         {
             name: 'nz-textarea',
             wrappers: ['field-wrapper'],
@@ -152,10 +147,6 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
             component: TableSectionComponent
         },
         {
-            name: 'nz-title',
-            component: FormlyFieldTitleComponent
-        },
-        {
             name: 'tabs-section',
             component: TabsSectionComponent
         },
@@ -192,10 +183,7 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
             name: 'nz-table',
             component: FormlyFieldTableComponent
         },
-        {
-            name: 'nz-divider',
-            component: FormlyFieldDividerComponent
-        },
+
         {
             name: 'rich-text',
             component: NgxQuillComponent
@@ -238,8 +226,7 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
         // QuillModule.forRoot()
     ],
     declarations: [
-        FormlyFieldInputComponent,
-        FormlyFieldInputArrayComponent,
+
         FormlyFieldTextareaComponent,
         AutocompleteComponent,
         FormlyFieldCascaderComponent,
@@ -256,7 +243,7 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
         NzTreeSelectComponent,
 
         TableSectionComponent,
-        FormlyFieldTitleComponent,
+
         TabSectionComponent,
         FormlyFieldSelectDateComponent,
 
@@ -268,7 +255,7 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
         TabsSectionComponent,
         FormlyFieldTemplateComponent,
         FormlyFieldTableComponent,
-        FormlyFieldDividerComponent,
+
         NgxQuillComponent,
         NzDesSectionComponent,
         EmptyWrapperComponent,
@@ -277,7 +264,7 @@ export const ForRootFormlyModule = FormlyModule.forRoot({
         InlineFieldWrapperComponent,
     ],
     exports: [
-        NgZorroAntdModule,
+
         ReactiveFormsModule,
         FormlyModule,
         OverlayModule
