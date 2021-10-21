@@ -35,7 +35,7 @@ export class FormComponent implements OnInit {
   ];
 
   onSubmit(model:any) {
-    console.log(this.form)
+    console.log(this.form.valid)
     console.log(model);
   }
 }

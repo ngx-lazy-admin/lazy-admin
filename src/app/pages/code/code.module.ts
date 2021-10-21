@@ -6,6 +6,11 @@ import { CodeRoutingModule } from './code-routing.module';
 import { CodeComponent } from './code.component';
 import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 
+// import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { FormlyModule } from '@ngx-formly/core';
+import { InputField } from '../../fields/types/input/input.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +21,15 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
     FormsModule,
     ReactiveFormsModule,
     CodeRoutingModule,
-    NzCodeEditorModule
+    NzCodeEditorModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NzInputModule,
+    FormlyModule.forRoot({
+      types: [
+        { name: 'nz-input', component: InputField },
+      ]
+    })
   ]
 })
 export class CodeModule { }

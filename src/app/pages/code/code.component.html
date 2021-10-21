@@ -1,4 +1,4 @@
-<p>code works! {{ error }}</p>
+<p>code works! {{ model | json }}</p>
 
 <div class="d-flex flex-nowarp">
     <nz-code-editor 
@@ -10,9 +10,12 @@
         (nzEditorInitialized)="editorInitialized($event)">
     </nz-code-editor>
     <div class="w-50">
-        <div class="mGraph-wrapper">
+        <!-- <div class="mGraph-wrapper">
             <div class="mGraph" id="main"></div>
-        </div>
+        </div> -->
+        <form [formGroup]="form" >
+            <formly-form [form]="form" [fields]="fields" [(model)]="model"></formly-form>
+        </form>
     </div>
 </div>
 
