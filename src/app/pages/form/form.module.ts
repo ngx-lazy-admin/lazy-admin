@@ -7,12 +7,12 @@ import { FormComponent } from './form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormlyModule } from '@ngx-formly/core';
-import { InputField } from '../../fields/types/input/input.component';
+// import { InputField } from '../../fields/types/input/input.component';
 
 @NgModule({
   declarations: [
     FormComponent,
-    InputField
+    // InputField
   ],
   imports: [
     CommonModule,
@@ -20,11 +20,11 @@ import { InputField } from '../../fields/types/input/input.component';
     FormsModule,
     ReactiveFormsModule,
     NzInputModule,
-    FormlyModule.forRoot({
-      types: [
-        { name: 'nz-input', component: InputField },
-      ]
-    }),
+    // FormlyModule.forRoot({
+    //   types: [
+    //     { name: 'nz-input', component: InputField },
+    //   ]
+    // }),
   ]
 })
 export class FormModule { }

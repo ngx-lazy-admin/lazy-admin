@@ -31,6 +31,16 @@ export class CodeComponent implements OnInit {
         placeholder: 'Enter email',
         required: true,
       }
+    },
+    {
+      key: 'email',
+      type: 'nz-autocomplete',
+      className: 'w-25 mb-2 d-inline-block',
+      templateOptions: {
+        label: 'Email address',
+        placeholder: 'Enter email',
+        required: true,
+      }
     }
   ]
   `;
