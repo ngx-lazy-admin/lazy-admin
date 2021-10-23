@@ -10,7 +10,6 @@ export class LayoutSiderComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

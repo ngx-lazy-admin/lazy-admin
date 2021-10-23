@@ -1,1 +1,7 @@
-<p>form works!</p>
+<p>form works! {{ model | json}}</p>
+
+<!-- <form [formGroup]="form" >
+    <formly-form [form]="form" [fields]="fields" [(model)]="model"></formly-form>
+</form> -->
+
+<button nz-button type="submit" (click)="onSubmit(model)">Submit</button>

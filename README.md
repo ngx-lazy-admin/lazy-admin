@@ -65,6 +65,9 @@ ng g component layout/basic/header-tabset --skip-import --change-detection OnPus
 
 ng g component pages/list/test --skip-import --change-detection OnPush
 
+
+ng g component layout/basic/search/search-item --skip-import --change-detection OnPush
+
 生成路由守卫
 ng g guard guards/routeGuard
 
@@ -233,6 +236,13 @@ cos-js-sdk-v5 (七牛云/阿里云/腾讯云/华为云)
 5. 域名配置
 6. 部署配置
 
+
+
+xs: '480px',  1
+sm: '768px',  2
+md: '992px',  3
+lg: '1200px', 3
+xl: '1600px', 4 =>
 
 
 

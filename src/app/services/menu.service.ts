@@ -22,11 +22,11 @@ export class MenuService {
     private http: HttpClient,
   ) { }
 
-  get menu$() {
+  get change$() {
     return this._menu$.asObservable()
   }
 
-  get tabset$() {
+  get tabsetChange$() {
     return this._tabset$.asObservable()
   }
 

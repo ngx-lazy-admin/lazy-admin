@@ -21,6 +21,7 @@
     nzCollapsible
     [nzWidth]="isCollapsed ? '80px' : '256px'"
     nzBreakpoint="md"
+    [nzCollapsedWidth]="80"
     [(nzCollapsed)]="isCollapsed"
     style="z-index: 1000;"
     (nzCollapsedChange)="collapsedChange($event)">

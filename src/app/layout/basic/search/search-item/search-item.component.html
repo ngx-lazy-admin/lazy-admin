@@ -1,0 +1,52 @@
+
+<ng-container  [ngSwitch]="i.type" >
+	<ng-container *ngSwitchCase="'input'">
+		<input nz-input [formControlName]="i.key" [attr.id]="i.key" />
+	</ng-container>
+
+	<ng-container *ngSwitchDefault>
+		<ng-template nzDrawerContent></ng-template>
+	</ng-container>
+</ng-container>
+
+
+	<!-- <ng-container *ngSwitchCase="'number'">
+		<nz-input-number [formControlName]="i.key" [nzMin]="i.min" [nzMax]="i.max" [nzStep]="i.step || 2" [nzFormatter]="format"></nz-input-number>
+	</ng-container>
+
+	<ng-container *ngSwitchCase="'select'">
+		<nz-select [formControlName]="i.key" style="width: 120px;"  [ngModelOptions]="{ standalone: true }" nzAllowClear nzPlaceHolder="Choose">
+			<ng-container *ngFor="let item of i.options">
+				<nz-option [nzValue]="item.value" [nzLabel]="item.label" nzDisabled="item.disabled || false"></nz-option>
+			</ng-container>
+		</nz-select>
+	</ng-container>
+
+	<ng-container *ngSwitchCase="'cascader'">
+		<nz-cascader [formControlName]="i.key" [nzOptions]="i.options"  (ngModelChange)="onChanges($event)"></nz-cascader>
+	</ng-container>
+
+	<ng-container *ngSwitchCase="'tree-select'">
+		<nz-tree-select style="width: 250px" [formControlName]="i.key" [nzNodes]="i.options" 	[nzPlaceHolder]="i.placeholder || 'Please select'" nzShowSearch (ngModelChange)="onChanges($event)"></nz-tree-select>
+	</ng-container>
+
+	<ng-container *ngSwitchCase="'switch'">
+		<nz-switch [formControlName]="i.key" [ngModelOptions]="{ standalone: true }"></nz-switch>
+	</ng-container>
+
+	<ng-container *ngSwitchCase="'radio'">
+		<label nz-radio  [formControlName]="i.key" [ngModelOptions]="{ standalone: true }">Radio</label>
+	</ng-container>
+
+	<ng-container *ngSwitchCase="'checkbox'">
+		<label nz-checkbox [formControlName]="i.key" [ngModelOptions]="{ standalone: true }">Checkbox</label>
+	</ng-container>
+
+	<ng-container *ngSwitchCase="'time-picker'">
+		<nz-time-picker [formControlName]="i.key" [ngModelOptions]="{ standalone: true }"></nz-time-picker>
+	</ng-container>
+
+	<ng-container *ngSwitchCase="'date-picker'">
+		<nz-date-picker [formControlName]="i.key" [ngModelOptions]="{ standalone: true }" (ngModelChange)="onChange($event)"></nz-date-picker>
+	</ng-container> -->
+  

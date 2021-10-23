@@ -12,9 +12,11 @@
     <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
         <nz-tab  [nzTitle]="titleTemplate">
             <ng-template #titleTemplate>
-                <div>{{ field['model']?.label }} <span class="text-danger mr-2" *ngIf="field['model']?.disable">[禁] </span><i style="color: #60ab72" *ngIf="field['model']?.checked" nz-icon nzType="check" nzTheme="outline"></i></div>
+                <div>
+                    {{ field['model']?.label }} <span class="text-danger mr-2" *ngIf="field['model']?.disable">[禁] </span>
+                    <i style="color: #60ab72" *ngIf="field['model']?.checked" nz-icon nzType="check" nzTheme="outline"></i>
+                </div>
             </ng-template>
-        <!-- <nz-tab  [nzTitle]="field['model']?.label + field['model']?.checked"> -->
             <div class="mb-3" style="margin-left: 130px; color: black" *ngIf="!to['btnhide']">
                 <button nz-button nzSize="small" nzType="primary" class="mr-2" (click)="copyText(field, i)">复制</button>
                 <button nz-button nzSize="small" (click)="paste(field, i)">黏贴</button>

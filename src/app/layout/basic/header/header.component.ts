@@ -4,6 +4,7 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { LayoutService } from '../../layout.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-layout-header',
@@ -26,6 +27,8 @@ export class LayoutHeaderComponent  {
 
   isOpen = true
 
+  private destroy$ = new Subject<void>();
+
   constructor(
     public overlay: Overlay, 
     public viewContainerRef: ViewContainerRef,
@@ -34,7 +37,7 @@ export class LayoutHeaderComponent  {
     private cd: ChangeDetectorRef,
   ) {
 
-    this.layout.isCollapsed$().subscribe(item => {
+    this.layout.change$?.subscribe(item => {
       this.isCollapsed = item;
       this.cd.markForCheck();
     })
@@ -133,5 +136,10 @@ export class LayoutHeaderComponent  {
 
   closeMenu(): void {
     this.nzContextMenuService.close();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

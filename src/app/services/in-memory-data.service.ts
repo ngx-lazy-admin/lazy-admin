@@ -246,6 +246,33 @@ export class InMemoryDataService implements InMemoryDbService {
           },
         ]
       },
+      {
+        id: '',
+        label: 'Bootstarp',
+        icon: 'warning',
+        link: '',
+        badge: '',
+        children: [
+          {
+            id: '',
+            label: '403',
+            link: '/exception/403',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '404',
+            link: '/exception/404',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '405',
+            link: '/exception/405',
+            badge: '',
+          },
+        ]
+      },
     ]
 
     return { heroes, user, menu };

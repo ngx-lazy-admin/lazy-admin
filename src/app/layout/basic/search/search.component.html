@@ -1,28 +1,39 @@
 <div class="bg-white mb-0 p-3 ">
-    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-      <div nz-row [nzGutter]="16">
-        <ng-container *ngFor="let item of list">
+  <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <div nz-row [nzGutter]="16">
+      <ng-container *ngFor="let item of listFields">
+        <ng-container *ngIf="item?.show">
           <div nz-col class="gutter-row" [nzXXl]="4"  [nzXl]="6" [nzLg]="8" [nzMd]="12" [nzSm]="12" [nzXs]="24" >
             <nz-form-item>
               <nz-form-control>
-                <nz-input-group nzPrefixIcon="user">
-                  <input formControlName="userName" nz-input placeholder="Username" />
+                <nz-input-group [nzPrefix]="prefixTemplate" [nzSuffix]="suffixTemplate">
+                  <!-- <input nz-input placeholder="Username" /> -->
+                  <!-- <app-search-item formControlName="item['key']" [fields]="item"></app-search-item> -->
                 </nz-input-group>
+                <ng-template #prefixTemplate>
+                  <!-- <span class="text-primary mr-2">状态</span> -->
+                  <i nz-icon nzType="user" nzTheme="outline"></i>
+                </ng-template>
+                <ng-template #suffixTemplate>
+                  <i nz-icon nz-tooltip nzTooltipTitle="Extra information" nzType="info-circle"></i>
+                </ng-template>
               </nz-form-control>
             </nz-form-item>
           </div>
         </ng-container>
-        <div nz-col class="gutter-row" [nzSpan]="6">
-          <nz-form-item class="w-100">
-            <nz-form-control>
-              <button nz-button class="me-3" type="reset" nzType="default">重置</button>
-              <button nz-button class="me-3" nzType="primary" (click)="submit()">确定</button>
-              <button nz-button nzType="primary">导出</button>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+      </ng-container>
+      <div nz-col class="gutter-row" [nzXXl]="4"  [nzXl]="6" [nzLg]="8" [nzMd]="12" [nzSm]="12" [nzXs]="24" >
+        <nz-form-item class="w-100">
+          <nz-form-control>
+            <button nz-button class="me-1" nzType="primary" type="submit">查询</button>
+            <button nz-button class="me-1" type="reset" nzType="default">重置</button>
+            <a nzSize="small" nz-button nzType="text" *ngIf="isCollapse" (click)="toggleCollapse()">展开 <i nz-icon nzType="down" nzTheme="outline"></i></a>
+            <a nzSize="small" nz-button nzType="text" *ngIf="!isCollapse" (click)="toggleCollapse()">收起 <i nz-icon nzType="up" nzTheme="outline"></i> </a>
+          </nz-form-control>
+        </nz-form-item>
       </div>
-    </form>
+    </div>
+  </form>
 </div>
 
 

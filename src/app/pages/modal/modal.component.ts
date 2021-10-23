@@ -43,7 +43,6 @@ export class ModalComponent implements OnInit {
       },
       nzOnOk: () => console.log('Click ok')
     });
-    console.log(this.tplModal.getElement())
   }
 
   destroyTplModal(modelRef: NzModalRef): void {
