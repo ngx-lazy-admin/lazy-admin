@@ -13,23 +13,23 @@
 				nz-menu-item
 				nzMatchRouter
 				class="d-flex align-items-center"
-				[nzPaddingLeft]="menu.level * 24"
+				[nzPaddingLeft]="48"
 				[nzDisabled]="menu.disabled"
 				[nzSelected]="menu.selected">
 				<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
 				<a [routerLink]="menu.link">{{menu.label}}</a>
-				<nz-badge nzSize="small" class="mx-2" nzStandalone [nzCount]="25"></nz-badge>
+				<nz-badge nzSize="small " class="mx-2 float-end" nzStandalone [nzCount]="25"></nz-badge>
 			</li>
 			<li *ngIf="menu.children"
 				nz-submenu
-				[nzPaddingLeft]="menu.level * 24"
+				[nzPaddingLeft]="24"
 				[nzOpen]="menu.open"
 				[nzTitle]="titleTpl"
-				[nzIcon]="menu.icon"
 				[nzDisabled]="menu.disabled">
 				<ng-template #titleTpl>
 					<span class="d-flex justify-content-between align-items-center">
-						<span >{{menu.label}}</span>
+						<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+						<span>{{menu.label}}</span>
 						<nz-badge class="mx-2" nzStandalone [nzCount]="25"></nz-badge>
 					</span>
 				</ng-template>

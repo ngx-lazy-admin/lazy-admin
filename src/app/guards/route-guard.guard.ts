@@ -13,6 +13,7 @@ export class RouteGuardGuard implements CanActivate, CanActivateChild, CanDeacti
     private menuservice: MenuService
   ) {}
 
+  // 身份验证
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -28,13 +29,15 @@ export class RouteGuardGuard implements CanActivate, CanActivateChild, CanDeacti
       });
     })
   }
+
+  // 保护子路由
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log('canActivateChild')
-
     return true;
   }
+  // 处理未保存的更改
   canDeactivate(
     component: unknown,
     currentRoute: ActivatedRouteSnapshot,

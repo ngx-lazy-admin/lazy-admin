@@ -246,4 +246,25 @@ xl: '1600px', 4 =>
 
 
 
+常见问题
 
+1. OpenSSL SSL_read: Connection was reset, errno 10054
+
+这是服务器的SSL证书没有经过第三方机构的签署，所以报错。
+
+解决办法：
+
+git config --global http.sslVerify "false"
+
+2. Failed to connect to github.com port 443: Timed out
+
+查询域名ip, https://tool.lu/ip
+
+1. windows
+C:\Windows\System32\drivers\etc\hosts
+
+2. linux
+/etc/hosts
+
+
+添加 hosts 地址

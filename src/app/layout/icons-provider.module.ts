@@ -25,7 +25,8 @@ import {
   RadiusSettingOutline,
   LockOutline,
   UserOutline,
-  QuestionCircleOutline
+  QuestionCircleOutline,
+  HomeOutline
 } from '@ant-design/icons-angular/icons'; 
 
 const icons = [
@@ -33,7 +34,7 @@ const icons = [
   GlobalOutline, BellOutline, RedoOutline, MenuOutline, RightOutline, LeftOutline,
   GithubOutline, FullscreenOutline, ReloadOutline, SettingOutline, TableOutline,
   ProfileOutline, CheckCircleOutline, WarningOutline, RadiusSettingOutline, LockOutline,
-  UserOutline, QuestionCircleOutline
+  UserOutline, QuestionCircleOutline, HomeOutline
 ];
 
 @NgModule({
