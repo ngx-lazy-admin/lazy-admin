@@ -12,7 +12,6 @@ import { User } from '../interfaces/user'
 export class LayoutService {
 
   private _isCollapsed: boolean = false;
-  constructor() { }
 
   private _isCollapsed$ = new BehaviorSubject<boolean>(false);
 
@@ -22,6 +21,7 @@ export class LayoutService {
     return this._isCollapsed$.asObservable();
   }
 
+  constructor() { }
 
   collapsChange (collapsed: boolean) {
     this._isCollapsed = collapsed;
