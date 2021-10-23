@@ -13,9 +13,12 @@
 			<nz-tab
 				(nzContextmenu)="onContextmenu($event, menu)"
 				nzClosable
-				[nzTitle]="tab"
+				[nzTitle]="tabTitle"
 				nzType="primary"
 			>
+				<ng-template #tabTitle>
+					<a [routerLink]="tab?.link">{{tab?.label}}</a>
+				</ng-template>
 			</nz-tab>
 		</ng-container>
 	</nz-tabset>

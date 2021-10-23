@@ -5,6 +5,7 @@ import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { MenuService } from '../../../services/menu.service';
 import { Subject } from 'rxjs';
+import { Menu } from 'src/app/interfaces/menu';
 
 @Component({
   selector: 'app-layout-header-tabset',
@@ -21,8 +22,9 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   private _overlayRef: OverlayRef;
   private _portal!: TemplatePortal;
 
-  tabs: string[] = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
+  // tabs: string[] = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
   selectedIndex = 0;
+  tabs: Array<Menu|null> | null = []
 
   // tabs = ['Tab 1', 'Tab 2'];
   // selectedIndex = 0;
@@ -30,9 +32,6 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   isOpen = true
 
   private destroy$ = new Subject<void>();
-
-
-  
 
   constructor(
     public overlay: Overlay, 
@@ -47,6 +46,10 @@ export class LayoutHeaderTabsetComponent implements OnInit {
 
     this.menu.tabsetChange$.subscribe(item => {
       this.tabs = item
+      if (this.tabs?.findIndex(item => item?.selected) || this.tabs?.findIndex(item => item?.selected) === 0) {
+        this.selectedIndex = this.tabs?.findIndex(item => item?.selected)
+      }
+      
       this.cd.markForCheck();
     })
 
@@ -57,12 +60,12 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   ngOnInit(): void {}
 
   closeTab({ index }: { index: number }): void {
-    this.tabs.splice(index, 1);
+    // this.tabs.splice(index, 1);
   }
 
   newTab(): void {
-    this.tabs.push('New Tab');
-    this.selectedIndex = this.tabs.length;
+    // this.tabs.push('New Tab');
+    // this.selectedIndex = this.tabs.length;
   }
 
   ngAfterViewInit() {
