@@ -13,8 +13,6 @@ export class ThemeService {
     private renderer: Renderer2,
   ) { }
 
-  
-
   initTheme(): void {
     if (!this.platform.isBrowser) {
       return;

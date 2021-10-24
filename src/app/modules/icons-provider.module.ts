@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
 
-
 import {
   MenuFoldOutline,
   MenuUnfoldOutline,
@@ -44,5 +43,4 @@ const icons = [
     { provide: NZ_ICONS, useValue: icons }
   ]
 })
-export class IconsProviderModule {
-}
+export class IconsProviderModule {}

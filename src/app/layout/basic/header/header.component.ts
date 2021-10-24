@@ -4,6 +4,8 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { LayoutService } from '../../layout.service';
+import { MenuService } from '../../../services/menu.service';
+
 import { Subject } from 'rxjs';
 
 @Component({
@@ -22,11 +24,6 @@ export class LayoutHeaderComponent  {
   
   isCollapsed: boolean = false;
 
-  tabs = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
-  selectedIndex = 0;
-
-  isOpen = true
-
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -34,6 +31,7 @@ export class LayoutHeaderComponent  {
     public viewContainerRef: ViewContainerRef,
     private nzContextMenuService: NzContextMenuService,
     private layout: LayoutService,
+    public menu: MenuService,
     private cd: ChangeDetectorRef,
   ) {
 
@@ -45,15 +43,10 @@ export class LayoutHeaderComponent  {
     this._overlayRef = this.overlay.create({
       hasBackdrop: true,
     });
-  }
 
-  closeTab({ index }: { index: number }): void {
-    this.tabs.splice(index, 1);
-  }
-
-  newTab(): void {
-    this.tabs.push('New Tab');
-    this.selectedIndex = this.tabs.length;
+    this.menu.tabsetChange$.subscribe(item => {
+      this.cd.markForCheck();
+    })
   }
 
   collapsChange (isCollapsed: boolean) {

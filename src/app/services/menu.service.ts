@@ -14,11 +14,12 @@ export class MenuService {
   private _destroy$ = new Subject();
   private _menu$ = new BehaviorSubject<Array<Menu|null>|null>(null);
   private _menuUrl = 'api/menu';
-  private _menus: Array<Menu> = []
-  private _activeMenu: Menu|null = null
+  private _menus: Array<Menu> = [];
+  private _activeMenu: Menu|null = null;
 
   private _tabset$ = new BehaviorSubject<Array<Menu|null>|null>([]);
-  private _tabset:  Array<Menu> = []
+  private _tabset:  Array<Menu> = [];
+  public breadcrumb: Array<any> = [];
 
   constructor(
     private http: HttpClient,
@@ -33,9 +34,12 @@ export class MenuService {
   }
 
   canActive(url: string): boolean {
+    this.breadcrumb = [];
     this._menus.some(item => {
+
       let menu = item.children.find(item => item.link === url) 
       if (menu) {
+        this.breadcrumb = [item.label, menu.label]
         this.addTabset(menu)
         return true
       } else {
@@ -45,8 +49,6 @@ export class MenuService {
     return true;
   }
 
-
-
   getMenu(): Observable<Array<Menu>> {
     return this.http.get<Array<Menu>>(this._menuUrl).pipe(tap(menu => {
       this._menus = menu;
@@ -54,14 +56,23 @@ export class MenuService {
     }))
   }
 
-
   addTabset (menu: any) {
     if (!this._tabset.some(item => item.link === menu.link)) {
       this._tabset = [...this._tabset, menu]
       this._tabset$.next(this._tabset);
     } else {
-      // this._tabset = this._tabset.map(item => item.selected)
       this.activeTabset(menu)
+    }
+  }
+
+  closeTabSet (index: number) {
+    if (this._tabset.length === 1) {
+      return;
+    }
+    let seletcted = this._tabset[index].selected;
+    this._tabset.splice(index, 1);
+    if (seletcted) {
+      this.activeTabset(this._tabset[index])
     }
   }
 

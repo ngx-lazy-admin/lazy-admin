@@ -1,11 +1,13 @@
 <div class="w-100 d-flex flex-nowrap sticky-top">
 	<nz-tabset
 		[(nzSelectedIndex)]="selectedIndex"
+		nzLinkRouter
 		nzType="editable-card"
 		nzHideAdd="true"
 		class="bg-white w-100"
 		[nzTabBarStyle]="{'marginBottom': '0px'}"
 		[nzTabBarGutter]="0"
+
 		(nzAdd)="newTab()"
 		(nzClose)="closeTab($event)"
 		>
@@ -13,12 +15,9 @@
 			<nz-tab
 				(nzContextmenu)="onContextmenu($event, menu)"
 				nzClosable
-				[nzTitle]="tabTitle"
 				nzType="primary"
 			>
-				<ng-template #tabTitle>
-					<a [routerLink]="tab?.link">{{tab?.label}}</a>
-				</ng-template>
+				<a *nzTabLink nz-tab-link [routerLink]="tab?.link">{{tab?.label}}</a>
 			</nz-tab>
 		</ng-container>
 	</nz-tabset>

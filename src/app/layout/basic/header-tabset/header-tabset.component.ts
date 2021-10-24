@@ -22,16 +22,10 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   private _overlayRef: OverlayRef;
   private _portal!: TemplatePortal;
 
-  // tabs: string[] = ['Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 'Tab 1', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', ];
-  selectedIndex = 0;
+  selectedIndex: number = 0;
   tabs: Array<Menu|null> | null = []
 
-  // tabs = ['Tab 1', 'Tab 2'];
-  // selectedIndex = 0;
-
-  isOpen = true
-
-  private destroy$ = new Subject<void>();
+  private _destroy$ = new Subject<void>();
 
   constructor(
     public overlay: Overlay, 
@@ -49,7 +43,6 @@ export class LayoutHeaderTabsetComponent implements OnInit {
       if (this.tabs?.findIndex(item => item?.selected) || this.tabs?.findIndex(item => item?.selected) === 0) {
         this.selectedIndex = this.tabs?.findIndex(item => item?.selected)
       }
-      
       this.cd.markForCheck();
     })
 
@@ -60,7 +53,7 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   ngOnInit(): void {}
 
   closeTab({ index }: { index: number }): void {
-    // this.tabs.splice(index, 1);
+    this.menu.closeTabSet(index)
   }
 
   newTab(): void {
@@ -151,7 +144,7 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 }

@@ -8,13 +8,10 @@ import zh from '@angular/common/locales/zh';
 
 // ng-zorro
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NzInputModule } from 'ng-zorro-antd/input';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { IconsProviderModule } from './layout/icons-provider.module';
 
-
+import { IconsProviderModule } from './modules/icons-provider.module';
+import { NgZorroAntdModule } from './modules/ng-zorro-antd.modules';
 
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { LayoutModule } from './layout/layout.modeule'
@@ -24,9 +21,6 @@ import { AppComponent } from './app.component';
 import { UserPipe } from './pipes/user.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 
-
-
- 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [
     {
@@ -52,12 +46,11 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    // IconsProviderModule,
-    NzLayoutModule,
-    NzMenuModule,
-    LayoutModule,
-    NzInputModule,
+
+    IconsProviderModule,
+    NgZorroAntdModule,
     // FormlyModule,
+    LayoutModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

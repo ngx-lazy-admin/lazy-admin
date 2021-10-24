@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'charts',
     loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule)
   },
+  {
+    path: 'form',
+    loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule)
+  },
 ];
 
 @NgModule({
