@@ -1,13 +1,10 @@
-<input  nz-input
+<input nz-input
     [formControl]="control"
 	[formlyAttributes]="field"
-
     [nzSize]="nzSize"
 	[nzBorderless]="nzBorderless"
 	[type]="type"
 
-    [placeholder]="to['placeholder'] || '请输入...'"
-    [nzAutocomplete]="auto"
     (input)="onInput($event)">
 
 <nz-autocomplete #auto

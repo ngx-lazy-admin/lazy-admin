@@ -6,6 +6,7 @@ import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dro
 import { MenuService } from '../../../services/menu.service';
 import { Subject } from 'rxjs';
 import { Menu } from 'src/app/interfaces/menu';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-layout-header-tabset',
@@ -38,11 +39,12 @@ export class LayoutHeaderTabsetComponent implements OnInit {
       hasBackdrop: true,
     });
 
-    this.menu.tabsetChange$.subscribe(item => {
+    this.menu.tabsetChange$.pipe(takeUntil(this._destroy$), debounceTime(60)).subscribe(item => {
       this.tabs = item
       if (this.tabs?.findIndex(item => item?.selected) || this.tabs?.findIndex(item => item?.selected) === 0) {
         this.selectedIndex = this.tabs?.findIndex(item => item?.selected)
       }
+      console.log('6666')
       this.cd.markForCheck();
     })
 
