@@ -13,6 +13,8 @@ export class ActivateGuard implements CanActivate {
     private menuservice: MenuService
   ) {}
 
+  // 初始化菜单
+  // 用户信息
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

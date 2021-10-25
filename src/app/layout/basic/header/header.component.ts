@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewContainerRef, ViewChild, TemplateRef,
-  ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+  ChangeDetectionStrategy, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
@@ -33,6 +33,7 @@ export class LayoutHeaderComponent  {
     private layout: LayoutService,
     public menu: MenuService,
     private cd: ChangeDetectorRef,
+    private el: ElementRef
   ) {
 
     this.layout.change$?.subscribe(item => {
@@ -52,6 +53,11 @@ export class LayoutHeaderComponent  {
   collapsChange (isCollapsed: boolean) {
     this.isCollapsed = isCollapsed;
     this.layout.collapsChange(this.isCollapsed);
+  }
+
+  fullScreen(el: Event) {
+    console.log('fullScreen');
+    // this.el.nativeElement.requestFullscreen();
   }
 
   ngAfterViewInit() {
