@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { BehaviorSubject } from 'rxjs';
-import { debounceTime, switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 
@@ -10,9 +9,6 @@ import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button'
   templateUrl: './button.component.html'
 })
 export class ButtonField extends FieldType implements OnInit {
-
-  // 定义一个点击的观察事件
-  clickChange$ = new BehaviorSubject({});
 
   get disabled(): boolean {
 		return this.to.disabled || false;
@@ -50,21 +46,18 @@ export class ButtonField extends FieldType implements OnInit {
 		return this.to.nzDanger || false;
 	}
 
+  private _destroy$ = new Subject<void>();
+
   onClick ($event: Event) {
-    if (this.to.onClick) {
-      this.to.onClick($event, this.field, this.model)
+    if (this.to.click) {
+      this.to.click(this.field, $event);
     }
   }
 
-  ngOnInit(): void {
-    // if (this.to.onClick) {
-    //   if (this.model && this.key) {
-    //     this.clickChange$.pipe(debounceTime(100)).pipe(switchMap(this.to.onClick)).subscribe(item => {
-    //         this.formControl.setValue(item);
-    //     });
-    //   } else {
-    //     this.clickChange$.pipe(debounceTime(100)).pipe(switchMap(this.to.onClick)).subscribe(item => {});
-    //   }
-    // }
+  ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 }

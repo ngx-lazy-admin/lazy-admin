@@ -31,6 +31,19 @@ export class FormComponent implements OnInit {
         placeholder: 'Enter email',
         required: true,
       }
+    },
+    {
+      type: 'nz-button',
+      className: 'w-25 mb-2 d-inline-block',
+      templateOptions: {
+        label: 'Email address',
+        placeholder: 'Enter email',
+        required: true,
+        text: '确定',
+        click: (field, $event) => {
+          console.log(field, $event)
+        }
+      }
     }
   ];
 
