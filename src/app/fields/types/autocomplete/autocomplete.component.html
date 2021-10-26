@@ -4,12 +4,14 @@
     [nzSize]="nzSize"
 	[nzBorderless]="nzBorderless"
 	[type]="type"
-
+    [nzAutocomplete]="auto"
     (input)="onInput($event)">
 
 <nz-autocomplete #auto
     [nzBackfill]="nzBackfill"
     [nzDefaultActiveFirstOption]="nzDefaultActiveFirstOption"
-    [nzWidth]="nzWidth"  >
-    <nz-auto-option *ngFor="let option of data" [nzValue]="option.value">{{ option.label }}</nz-auto-option>
+    [nzWidth]="nzWidth"
+    [nzDataSource]="nzDataSource"
+    [compareWith]="compareWith">
+
 </nz-autocomplete>

@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
-import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { NzSizeLDSType,  } from 'ng-zorro-antd/core/types';
 import { Observable } from 'rxjs';
+// import { AutocompleteDataSource } from 'ng-zorro-antd/auto-complete';
+
+interface AutocompleteDataSourceItem {
+  value: string;
+  label: string;
+  disabled?: boolean
+}
+
+declare type AutocompleteDataSource = Array<AutocompleteDataSourceItem | string | number>;
 
 @Component({
-    selector: 'app-autocomplete-component',
+    selector: 'div[autocomplete-field]',
     templateUrl: './autocomplete.component.html'
 })
 export class AutocompleteFields extends FieldType implements OnInit {
@@ -31,6 +40,10 @@ export class AutocompleteFields extends FieldType implements OnInit {
 		return this.to.nzBackfill || false
 	}
 
+  get nzDataSource(): AutocompleteDataSource {
+    return this.to.nzDataSource 
+  }
+
   get nzDefaultActiveFirstOption(): boolean {
     return this.to.nzDefaultActiveFirstOption || false
   }
@@ -39,6 +52,17 @@ export class AutocompleteFields extends FieldType implements OnInit {
     return this.to.nzWidth
   }
 
+  get nzOverlayClassName (): string {
+    return this.to.nzOverlayClassName
+  }
+
+  get nzOverlayStyle (): string {
+    return this.to.nzOverlayStyle
+  }
+
+  get compareWith(): any {
+    return this.to.compareWith
+  }
   // set nzAutocompleteOptions(value) {
   //   this._options = value;
   // }
@@ -46,9 +70,6 @@ export class AutocompleteFields extends FieldType implements OnInit {
   //   return this.to.options === undefined ? this._options : false;
   // }
 
-  get autocompleteOptions() {
-    return this.to.options
-  } 
 
   private _options: boolean | undefined;
 

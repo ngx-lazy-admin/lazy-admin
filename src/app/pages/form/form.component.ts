@@ -33,6 +33,35 @@ export class FormComponent implements OnInit {
       }
     },
     {
+      key: 'autocomplete',
+      type: 'nz-autocomplete',
+      className: 'w-25 mb-2 d-inline-block',
+      templateOptions: {
+        label: 'Email address',
+        placeholder: 'Enter email',
+        required: true,
+        compareWith: (o1: any, o2: any) => {
+          return o1 == o2.value
+        },
+        nzDataSource: [
+          {
+            label: '233',
+            value: '2332',
+            disabled: true,
+          },
+          {
+            label: '111',
+            value: '1111',
+            disabled: false,
+          },
+          {
+            label: '333',
+            value: '3333',
+          },
+        ]
+      }
+    },
+    {
       type: 'nz-button',
       className: 'w-25 mb-2 d-inline-block',
       templateOptions: {
