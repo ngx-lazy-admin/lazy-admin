@@ -1,10 +1,7 @@
-<label 
-    nz-checkbox 
+<nz-checkbox-group 
     [formControl]="control"
-	[formlyAttributes]="field"
+    [formlyAttributes]="field"
     [nzDisabled]="nzDisabled"
-    [nzIndeterminate]="nzIndeterminate"
     (ngModelChange)="ngModelChange($event)"
     ngDefaultControl>
-    {{text}}
-</label>
+</nz-checkbox-group>

@@ -2,37 +2,23 @@ import { Component, OnChanges, OnInit, ChangeDetectionStrategy } from '@angular/
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+
 @Component({
   selector: 'div[checkbox-field]',
-  templateUrl: './checkbox.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './checkbox-group.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush 
 })
 
-export class CheckboxField extends FieldType {
+export class CheckboxGroupField extends FieldType {
 
   get control() : FormControl {
 		return this.formControl as FormControl
   }
 
-  get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
-	}
-
   get nzDisabled(): boolean {
 		return this.to.nzDisabled || false;
 	}
-
-	get nzIndeterminate(): boolean {
-		return this.to.nzIndeterminate || false
-	}
-
-  get nzBackfill(): boolean {
-		return this.to.nzBackfill || false
-	}
-
-  get text(): string {
-    return this.to.text || ''
-  }
 
   ngModelChange ($event: Event) {
     if (this.to.change) {

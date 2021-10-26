@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -6,7 +6,9 @@ import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button'
 
 @Component({
   selector: 'div[button-field]',
-  templateUrl: './button.component.html'
+  templateUrl: './button.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ButtonField extends FieldType implements OnInit {
 

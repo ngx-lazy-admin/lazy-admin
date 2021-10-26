@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
   }
 
   form = new FormGroup({});
-  model = { email: 'email@gmail.com' };
+  model = { email: 'email@gmail.com', checkbox: ['222'] };
   fields: FormlyFieldConfig[] = [
     {
       key: 'email',
@@ -33,44 +33,29 @@ export class FormComponent implements OnInit {
       }
     },
     {
-      key: 'autocomplete',
-      type: 'nz-autocomplete',
+      key: 'checkbox',
+      type: 'nz-checkbox-wrapper',
       className: 'w-25 mb-2 d-inline-block',
       templateOptions: {
         label: 'Email address',
         placeholder: 'Enter email',
         required: true,
-        compareWith: (o1: any, o2: any) => {
-          return o1 == o2.value
-        },
-        nzDataSource: [
+        text: '哈哈哈',
+        options: [
           {
-            label: '233',
-            value: '2332',
-            disabled: true,
+            label: '苹果',
+            value: '222',
+            checked: false
           },
           {
-            label: '111',
-            value: '1111',
-            disabled: false,
+            label: '香蕉',
+            value: '233',
+            checked: false
           },
-          {
-            label: '333',
-            value: '3333',
-          },
-        ]
-      }
-    },
-    {
-      type: 'nz-button',
-      className: 'w-25 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Email address',
-        placeholder: 'Enter email',
-        required: true,
-        text: '确定',
-        click: (field, $event) => {
-          console.log(field, $event)
+        ],
+        change: (field, $event) => {
+          // console.log(field, $event)
+          // console.log(this)
         }
       }
     }

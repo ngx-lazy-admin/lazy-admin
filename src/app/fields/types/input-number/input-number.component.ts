@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
+import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({
     selector: 'div[input-number-field]',
-    templateUrl: './number.component.html'
+    templateUrl: './input-number.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush 
 })
 export class InputNumberField extends FieldType {
     get control() : FormControl {
@@ -35,7 +37,7 @@ export class InputNumberField extends FieldType {
 
     private  _parser = (value: string) => value.trim().replace(/。/g, '.').replace(/[^\w\.-]+/g, '');
 
-    get nzParser(): number {
+    get nzParser(): (value: string) => string {
 		return this.to.nzParser || this._parser
 	}
 
@@ -47,11 +49,11 @@ export class InputNumberField extends FieldType {
 		return this.to.nzPrecisionMode || 'toFixed'
 	}
 
-    get nzSize(): number {
+    get nzSize(): NzSizeLDSType {
 		return this.to.nzSize || 'default'
 	}
 
-    get nzStep(): number|string {
+    get nzStep(): number {
 		return this.to.nzStep || 1
 	}
 

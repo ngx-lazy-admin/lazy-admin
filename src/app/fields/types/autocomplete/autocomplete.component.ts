@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType,  } from 'ng-zorro-antd/core/types';
@@ -15,18 +15,20 @@ declare type AutocompleteDataSource = Array<AutocompleteDataSourceItem | string 
 
 @Component({
     selector: 'div[autocomplete-field]',
-    templateUrl: './autocomplete.component.html'
+    templateUrl: './autocomplete.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class AutocompleteFields extends FieldType implements OnInit {
   data: any = [];
 
-  get nzBorderless(): boolean {
-		return this.to.nzBorderless || 'false'
-	}
-
   get control() : FormControl {
 		return this.formControl as FormControl
   }
+
+  get nzBorderless(): boolean {
+		return this.to.nzBorderless || 'false'
+	}
 
   get nzSize(): NzSizeLDSType {
 		return this.to.nzSize || 'default'
