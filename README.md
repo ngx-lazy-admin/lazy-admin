@@ -268,3 +268,6 @@ C:\Windows\System32\drivers\etc\hosts
 
 
 添加 hosts 地址
+
+# 访问 github 的方式
+https://zhuanlan.zhihu.com/p/107334179?ivk_sa=1024320u
