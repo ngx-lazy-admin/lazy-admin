@@ -1,6 +1,6 @@
 <nz-progress 
   class="progress position-fixed w-100 top-0 f0"
-  *ngIf="progress"
+  *ngIf="progress && percent"
   [nzPercent]="percent"
   nzStrokeWidth="2"
   [nzShowInfo]="false"
@@ -14,18 +14,13 @@
     nzCollapsible
     [nzWidth]="isCollapsed ? '80px' : '256px'"
     nzBreakpoint="md"
-   >
-  </nz-sider>
-
-  <nz-sider class="menu-sidebar position-fixed h-100" 
-    nzCollapsible
-    [nzWidth]="isCollapsed ? '80px' : '256px'"
-    nzBreakpoint="md"
     [nzCollapsedWidth]="80"
     [(nzCollapsed)]="isCollapsed"
-    style="z-index: 1000;"
     (nzCollapsedChange)="collapsedChange($event)">
-    <app-layout-menu></app-layout-menu>
+    <app-layout-menu 
+      class="menu-sidebar transition-width position-fixed h-100" 
+      [ngStyle]="{width: isCollapsed ? '80px' : '256px'}">
+    </app-layout-menu>
   </nz-sider>
 
   <nz-layout >
@@ -33,7 +28,7 @@
       <app-layout-header></app-layout-header>
     </nz-header>
 
-    <app-layout-header-tabset class="sticky-top shadow-sm"></app-layout-header-tabset>
+    <app-layout-header-tabset class="sticky-top"></app-layout-header-tabset>
 
     <nz-alert
       nzType="error"
@@ -52,7 +47,7 @@
     <app-layout-search class="m-3 mb-2 shadow-sm"></app-layout-search>
 
     <nz-content class="p-3 ">
-      <div class="p-3 bg-white shadow-sm">
+      <div class="p-3 bg-white shadow-sm" style="height: 1000px;">
         <router-outlet></router-outlet>
       </div>
     </nz-content>

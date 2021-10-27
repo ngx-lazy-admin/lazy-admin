@@ -32,3 +32,20 @@
 ::ng-deep .ant-tabs > .ant-tabs-nav .ant-tabs-nav-more {
     display: none;
 }
+
+::ng-deep .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab, 
+::ng-deep .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab {
+    border-radius: 0px 0px 0 0;
+}
+
+::ng-deep .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab,
+::ng-deep .ant-tabs-card.ant-tabs-bottom > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab, 
+::ng-deep .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab, 
+::ng-deep .ant-tabs-card.ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab {
+    margin-left: 0;
+}
+
+::ng-deep .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab,
+::ng-deep .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active {
+    border-left: 0;
+}
