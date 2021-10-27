@@ -20,7 +20,14 @@ export class FormComponent implements OnInit {
   }
 
   form = new FormGroup({});
-  model = { email: 'email@gmail.com', checkbox: ['222'] };
+  model = { email: 'email@gmail.com', checkbox: ['222'], 'checkbox-group': [{
+    label: '苹果',
+    value: '1'
+  },
+  {
+    label: '香蕉',
+    value: '2'
+  }]};
   fields: FormlyFieldConfig[] = [
     {
       key: 'email',
@@ -33,6 +40,21 @@ export class FormComponent implements OnInit {
       }
     },
     {
+      key: 'checkbox-group',
+      type: 'nz-checkbox-group',
+      className: 'w-25 mb-2 d-inline-block',
+      templateOptions: {
+        label: 'Email address',
+        placeholder: 'Enter email',
+        required: true,
+        text: '哈哈哈',
+        change: (field, $event) => {
+          // console.log(field, $event)
+          // console.log(this)
+        }
+      }
+    },
+    {
       key: 'checkbox',
       type: 'nz-checkbox-wrapper',
       className: 'w-25 mb-2 d-inline-block',
@@ -41,11 +63,12 @@ export class FormComponent implements OnInit {
         placeholder: 'Enter email',
         required: true,
         text: '哈哈哈',
-        options: [
+        nzOptions: [
           {
             label: '苹果',
             value: '222',
-            checked: false
+            checked: false,
+            disabled: true
           },
           {
             label: '香蕉',
@@ -56,6 +79,12 @@ export class FormComponent implements OnInit {
         change: (field, $event) => {
           // console.log(field, $event)
           // console.log(this)
+
+          field.templateOptions?.nzOptions.push([{
+            label: '香蕉',
+            value: '233',
+            checked: false
+          }])
         }
       }
     }

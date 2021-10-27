@@ -4,7 +4,18 @@ import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'div[checkbox-field]',
-  templateUrl: './checkbox.component.html',
+  template: `
+    <label 
+      nz-checkbox 
+      [formControl]="control"
+      [formlyAttributes]="field"
+      [nzDisabled]="nzDisabled"
+      [nzIndeterminate]="nzIndeterminate"
+      (ngModelChange)="ngModelChange($event)"
+      ngDefaultControl>
+      {{text}}
+    </label>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 

@@ -6,8 +6,6 @@ import { AutocompleteFieldModule } from './autocomplete';
 import { ButtonFieldModule } from './button';
 import { InputNumberFieldModule } from './input-number';
 import { CheckboxFieldModule } from './checkbox';
-import { CheckboxGroupFieldModule } from './checkbox-group';
-import { CheckboxWrapperFieldModule } from './checkbox-wrapper';
 
 
 @NgModule({
@@ -17,8 +15,6 @@ import { CheckboxWrapperFieldModule } from './checkbox-wrapper';
     ButtonFieldModule,
     InputNumberFieldModule,
     CheckboxFieldModule,
-    CheckboxGroupFieldModule,
-    CheckboxWrapperFieldModule
   ],
 })
 export class FieldTypeModule {}

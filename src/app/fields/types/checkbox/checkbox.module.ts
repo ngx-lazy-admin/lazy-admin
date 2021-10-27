@@ -4,10 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
-import { CheckboxField } from './checkbox.component'
+import { CheckboxField } from './checkbox.component';
+import { CheckboxGroupField } from '../checkbox/checkbox-group.component';
+import { CheckboxWrapperField } from '../checkbox/checkbox-wrapper.component'
+import { NzCheckboxWrapperItemComponent } from '../checkbox/checkbox-wrapper-item.component'
+
 
 @NgModule({
-  declarations: [CheckboxField],
+  declarations: [
+    CheckboxField,
+    CheckboxGroupField,
+    CheckboxWrapperField,
+    NzCheckboxWrapperItemComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -17,6 +26,14 @@ import { CheckboxField } from './checkbox.component'
         {
           name: 'nz-checkbox',
           component: CheckboxField,
+        },
+        {
+          name: 'nz-checkbox-group',
+          component: CheckboxGroupField,
+        },
+        {
+          name: 'nz-checkbox-wrapper',
+          component: CheckboxWrapperField,
         }
       ],
     }),

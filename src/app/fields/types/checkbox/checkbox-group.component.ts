@@ -6,7 +6,15 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 @Component({
   selector: 'div[checkbox-field]',
-  templateUrl: './checkbox-group.component.html',
+  template: `
+    <nz-checkbox-group 
+      [formControl]="control"
+      [formlyAttributes]="field"
+      [nzDisabled]="nzDisabled"
+      (ngModelChange)="ngModelChange($event)"
+      ngDefaultControl>
+    </nz-checkbox-group>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush 
 })
 
