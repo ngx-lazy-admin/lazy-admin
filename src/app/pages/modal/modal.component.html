@@ -1,35 +1,6 @@
+<app-modals>111</app-modals>
+  
 
-  <button nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)">
-    <span>Template</span>
-  </button>
-
-  <ng-template #tplTitle >
-    <div 
-      cdkDrag
-      cdkDrop
-      cdkDragBoundary=".ng-trigger-modalContainer" 
-      cdkDragRootElement=".ant-modal-content"
-      style="cursor: move;">
-      Title Template
-    </div>
-  </ng-template>
-
-  <ng-template #tplContent let-params>
-    <p>some contents...</p>
-    <p>some contents...</p>
-    <p>{{ params.value }}</p>
-    <button nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)">
-        <span>Template</span>
-    </button>
-    <pre>{{ distance | json}}</pre>
-  </ng-template>
-
-  <ng-template #tplFooter let-ref="modalRef">
-    <button nz-button (click)="ref.destroy()">Destroy</button>
-    <button nz-button nzType="primary" (click)="destroyTplModal(ref)" [nzLoading]="tplModalButtonLoading">
-      Close after submit
-    </button>
-  </ng-template>
 
 
 

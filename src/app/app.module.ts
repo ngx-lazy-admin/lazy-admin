@@ -21,6 +21,8 @@ import { AppComponent } from './app.component';
 import { UserPipe } from './pipes/user.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 
+import { ModalsModule } from './modules/modal/modal.module';
+
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [
     {
@@ -51,6 +53,7 @@ registerLocaleData(zh);
     NgZorroAntdModule,
     // FormlyModule,
     LayoutModule,
+    ModalsModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

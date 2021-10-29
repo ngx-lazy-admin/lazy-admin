@@ -1,0 +1,38 @@
+  
+  <button nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)">
+    <span>Template</span>
+  </button>
+
+  <ng-template #tplTitle >
+    <div 
+      cdkDrag
+      cdkDrop
+      cdkDragBoundary=".ng-trigger-modalContainer" 
+      cdkDragRootElement=".ant-modal-content"
+      style="cursor: move;">
+      Title Template
+    </div>
+  </ng-template>
+
+  <ng-template #tplContent let-params>
+    <ng-container *ngIf="fields && model">
+        <form [formGroup]="form" >
+            <formly-form [form]="form" [fields]="fields" [(model)]="model"></formly-form>
+        </form>
+        <pre>{{model | json}}</pre>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #tplFooter let-ref="modalRef">
+    <button nz-button (click)="ref.destroy()">Destroy</button>
+    <button nz-button nzType="primary" (click)="destroyTplModal(ref)" [nzLoading]="tplModalButtonLoading">
+      Close after submit
+    </button>
+  </ng-template>
+
+
+
+
+
+
+
