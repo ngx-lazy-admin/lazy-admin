@@ -12,10 +12,13 @@ import { ModalComponent } from './modal.component';
 import { IconsProviderModule } from '../../modules/icons-provider.module';
 import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
 import { FieldTypeModule } from '../../fields/types';
+import { NzModalCustomComponent } from './modal-form.component';
+
 
 @NgModule({
   declarations: [
     ModalComponent,
+    NzModalCustomComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { FieldTypeModule } from '../../fields/types';
     IconsProviderModule,
     NgZorroAntdModule,
     FormlyModule.forRoot(),
-    FieldTypeModule
+    FieldTypeModule,
+    
   ],
   exports: [
     ModalComponent,

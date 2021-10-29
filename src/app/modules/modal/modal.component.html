@@ -1,5 +1,5 @@
   
-  <button nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)">
+  <button nz-button  (click)="createComponentModal()">
     <span>Template</span>
   </button>
 
@@ -7,19 +7,18 @@
     <div 
       cdkDrag
       cdkDrop
+      cdkDragHandle
       cdkDragBoundary=".ng-trigger-modalContainer" 
-      cdkDragRootElement=".ant-modal-content"
+      cdkDragRootElement=".dragModal"
       style="cursor: move;">
       Title Template
     </div>
   </ng-template>
 
+
   <ng-template #tplContent let-params>
-    <ng-container *ngIf="fields && model">
-        <form [formGroup]="form" >
-            <formly-form [form]="form" [fields]="fields" [(model)]="model"></formly-form>
-        </form>
-        <pre>{{model | json}}</pre>
+    <ng-container>
+
     </ng-container>
   </ng-template>
 
