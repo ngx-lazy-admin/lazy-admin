@@ -2,42 +2,32 @@ import { Component, OnChanges, OnInit, ChangeDetectionStrategy } from '@angular/
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+
+
 @Component({
   selector: 'div[radio-field]',
   template: `
-    <label 
-      nz-radio 
+    <nz-radio-group 
       [formControl]="control"
       [formlyAttributes]="field"
+      [nzDisabled]="nzDisabled"
       (ngModelChange)="ngModelChange($event)"
       ngDefaultControl>
-      {{text}}
-    </label>
+    </nz-radio-group>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush 
 })
 
-export class RadioField extends FieldType {
+export class RadioGroupField extends FieldType {
 
   get control() : FormControl {
 		return this.formControl as FormControl
   }
 
-  get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
-	}
-
   get nzDisabled(): boolean {
 		return this.to.nzDisabled || false;
 	}
-
-	get nzIndeterminate(): boolean {
-		return this.to.nzIndeterminate || false
-	}
-
-  get text(): string {
-    return this.to.text || ''
-  }
 
   ngModelChange ($event: Event) {
     if (this.to.change) {

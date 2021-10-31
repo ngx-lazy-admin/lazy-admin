@@ -1,8 +1,26 @@
-<nz-rate [formControl]="formControl"
-         [formlyAttributes]="field"
-         [nzAllowClear]="to['nzAllowClear']"
-         [nzAllowHalf]="to['nzAllowHalf']"
-         [nzAutoFocus]="to['nzAutoFocus']"
-         [nzCount]="to['nzCount']"
-         [nzDisabled]="to['nzDisabled']"
-         ngDefaultControl></nz-rate>
+<nz-rate 
+
+    [formControl]="control"
+    [formlyAttributes]="field"
+
+    [nzAllowClear]="nzAllowClear"
+    [nzAllowHalf]="nzAllowHalf"
+    [nzAutoFocus]="nzAutoFocus"
+    [nzCharacter]="nzCharacter"
+    [nzCount]="nzCount"
+    [nzDisabled]="nzDisabled"
+    [nzTooltips]="nzTooltips"
+    (ngModelChange)="ngModelChange($event)"
+    (nzOnBlur)="nzOnBlur($event)"
+    (nzOnFocus)="nzOnFocus($event)"
+    (nzOnHoverChange)="nzOnHoverChange($event)"
+    (nzOnKeyDown)="nzOnKeyDown($event)"
+
+
+
+
+    (ngModelChange)="ngModelChange($event)"
+    ngDefaultControl>
+    
+    
+</nz-rate>

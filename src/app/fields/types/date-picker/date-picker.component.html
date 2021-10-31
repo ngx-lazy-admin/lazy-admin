@@ -1,13 +1,25 @@
-<nz-date-picker [(ngModel)]="model[key]"
-                [nzFormat] = "to['nzFormat'] || 'yyyy-MM-dd '"
-                [nzAllowClear]="to['nzAllowClear'] || true"
-                [nzAutoFocus] = "to['nzAutoFocus'] || false"
-                [nzClassName] = "to['nzAutoFocus'] || ''"
-                [nzDisabled] = "to['nzDisabled'] || false"
-                [nzPlaceHolder] = "to['nzPlaceHolder'] || ''"
-                (nzOnOk) = "onOk($event)"
-                [nzSize]="to['nzSize'] || null"
-                [nzDisabledDate]="to['nzDisabledDate']"
-                [nzShowTime]="to['nzShowTime']"
-                (ngModelChange) = "onChange($event)"
-                ></nz-date-picker>
+<nz-date-picker 
+    [nzId]="nzId"
+    [nzAllowClear]="nzAllowClear"
+    [nzAutoFocus]="nzAutoFocus"
+    [nzBackdrop]="nzBackrop"
+    [nzDefaultPickerValue]="nzDefaultPickerValue"
+    [nzDisabled]="nzDisabled"
+    
+    [nzDropdownClassName]="nzDropdownClassName"
+    [nzFormat]="nzFormat"
+    [nzInputReadOnly]="nzInputReadOnly"
+
+    [nzMode]="nzMode"
+    [nzPlaceHolder]="nzPlaceHolder"
+    [nzPopupStyle]="nzPopupStyle"
+    
+    [nzSize]="nzSize"
+    [nzSuffixIcon]="nzSuffixIcon"
+    [nzInline]="nzInline"
+
+    [formControl]="control"
+    [formlyAttributes]="field"
+    (nzOnOpenChange)="onOpenChange($event)"
+    (ngModelChange)="onModelChange($event)">
+</nz-date-picker>
