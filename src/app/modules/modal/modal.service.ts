@@ -19,14 +19,6 @@ import { NzModalCustomComponent } from './modal-form.component';
 })
 export class ModalService   {
   
-  // tplModalButtonLoading = false;
-  // disabled = false;
-
-  // tplModal:any = null;
-  // distance = {x: 0, y: 0}
-
-  // componentPortal: ComponentPortal<ComponentPortalExample> = new ComponentPortal(ComponentPortalExample);
-  // private _document = DOCUMENT;
   hero!: any;
 
 
@@ -129,6 +121,7 @@ export class ModalService   {
   createComponentModal(): void {
     const modal = this.modal.create({
       nzTitle: 'Modal Title1',
+      nzWidth: 1200,
       nzContent: NzModalCustomComponent,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
@@ -138,58 +131,38 @@ export class ModalService   {
       nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
       nzFooter: [
         {
-          label: 'change component title from outside',
-          onClick: componentInstance => {
-            // componentInstance!.title = 'title in inner component is changed';
-            console.log(componentInstance)
+          label: '取消',
+          onClick: ($event) => {
+            console.log('取消');
+            return true;
+          }
+        },
+        {
+          label: '确定',
+          type: 'primary',
+          onClick: ($event: Partial<NzModalCustomComponent>) => {
+            console.log('确定')
+            modal.close();
+            return true;
           }
         }
       ]
     });
+
     const instance = modal.getContentComponent();
-    modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
-    // Return a result when closed
-    modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
+    modal.afterOpen.subscribe(() => {
+      console.log('[afterOpen] emitted!')
+    });
+
+    modal.afterClose.subscribe(result =>  {
+      console.log('[afterClose] The result is:', result)
+    });
 
     // delay until modal instance created
     setTimeout(() => {
       console.log(instance)
     }, 2000);
   }
-
-
-  
-
-  ceateModal () {
-    // let container = this._document.createElement('div');
-    // container.classList.add('component-portal');
-    // container = this._document.body.appendChild(container);
-    // let container = this.element.nativeElement.createElement('div');
-    // container.classList.add('component-portal');
-    // container = this.element.nativeElement.body.appendChild(container);
-  }
 }
 
-// @Component({
-//   selector: 'nz-modal-custom-component',
-//   template: `
-//     <div>
-//       <h2>{{ title }}</h2>
-//       <h4>{{ subtitle }}</h4>
-//       <p>
-//         <span>Get Modal instance in component</span>
-//         <button  (click)="destroyModal()">destroy 1modal in the component</button>
-//       </p>
-//     </div>
-//   `
-// })
-// export class NzModalHeaderComponent {
-//   @Input() title?: string;
-//   @Input() subtitle?: string;
 
-//   constructor(private modal: NzModalRef) {}
-
-//   destroyModal(): void {
-//     this.modal.destroy({ data: 'this the result data' });
-//   }
-// }

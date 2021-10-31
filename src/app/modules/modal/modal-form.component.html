@@ -1,8 +1,6 @@
 
-<ng-container  *ngIf="fields && fields.length">
+<ng-container *ngIf="fields && fields.length">
   <form [formGroup]="form" >
     <formly-form [form]="form" [fields]="fields" [(model)]="model"></formly-form>
-</form>
+  </form>
 </ng-container>
-
-<pre>{{model | json}}</pre>
