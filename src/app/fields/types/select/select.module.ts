@@ -2,27 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { NzRateModule } from 'ng-zorro-antd/rate';
-
-import { RateField } from './rate.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { SelectField } from './select.component';
 
 @NgModule({
   declarations: [
-    RateField,
+    SelectField,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NzRateModule,
+    NzSelectModule,
     FormlyModule.forChild({
       types: [
         {
-          name: 'nz-rate',
-          component: RateField,
+          name: 'nz-select',
+          component: SelectField,
         }
       ],
     }),
   ],
 })
 
-export class RateFieldModule {}
+export class SelectFieldModule {}

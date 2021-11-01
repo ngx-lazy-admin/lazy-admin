@@ -1,17 +1,16 @@
 <input nz-input
-    [formControl]="control"
+  [formControl]="control"
 	[formlyAttributes]="field"
-    [nzSize]="nzSize"
+  [nzSize]="nzSize"
 	[nzBorderless]="nzBorderless"
 	[type]="type"
-    [nzAutocomplete]="auto"
-    (input)="onInput($event)">
+  [nzAutocomplete]="auto"
+  (input)="onInput($event)">
 
 <nz-autocomplete #auto
-    [nzBackfill]="nzBackfill"
-    [nzDefaultActiveFirstOption]="nzDefaultActiveFirstOption"
-    [nzWidth]="nzWidth"
-    [nzDataSource]="nzDataSource"
-    [compareWith]="compareWith">
-
+	[nzBackfill]="nzBackfill"
+	[nzDefaultActiveFirstOption]="nzDefaultActiveFirstOption"
+	[nzWidth]="nzWidth"
+	[nzDataSource]="nzDataSource"
+	[compareWith]="compareWith">
 </nz-autocomplete>

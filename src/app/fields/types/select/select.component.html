@@ -1,43 +1,59 @@
-<div class="d-flex align-items-center">
-    <nz-select  style="min-width: 80px;"
-                [formControl]="formControl"
-                [formlyAttributes]="field"
-                [nzAllowClear]="to['nzAllowClear'] || false"
-                [nzOpen]="to['nzOpen'] || false"
-                [nzAutoFocus]="to['nzAutoFocus'] || false"
-                [nzDisabled]="to['nzDisabled']"
-                [nzDropdownMatchSelectWidth]="to['nzDropdownMatchSelectWidth'] || true"
-                [nzDropdownStyle]="to['nzDropdownStyle']"
-                [nzServerSearch] = "to['nzServerSearch'] || false"
-                [nzMaxMultipleCount]="to['nzMaxMultipleCount'] || 'Infinity'"
-                [nzShowSearch] ="to['nzShowSearch'] || true"
-                [nzMode]="to['nzMode'] || 'default'"
-                [nzFilterOption]="filterOption"
-                [nzPlaceHolder] = "to['nzPlaceHolder'] || '输入关键字搜索'"
-                [nzSize]="to['nzSize'] || 'default'"
-                [compareWith]="compareFn"
-                [nzDropdownClassName]="to['nzDropdownClassName']"
-                (nzOnSearch)="OnSearch($event)"
-                (nzOpenChange)="onOpenChange($event)"
-                >
+<nz-select 
+	[formControl]="formControl"
+	[formlyAttributes]="field"
+	[nzId]="nzId"
+	[compareWith]="compareWith"
+	[nzAutoClearSearchValue]="nzAutoClearSearchValue"
+	[nzAllowClear]="nzAllowClear"
+	[nzBackdrop]="nzBackdrop"
+	[nzBorderless]="nzBorderless"
+	[nzOpen]="nzOpen"
+	[nzAutoFocus]="nzAutoFocus"
+	[nzDisabled]="nzDisabled"
+	[nzDropdownClassName]="nzDropdownClassName"
+	[nzDropdownMatchSelectWidth]="nzDropdownMatchSelectWidth"
+	[nzDropdownStyle]="nzDropdownStyle"
+	[nzCustomTemplate]="nzCustomTemplate"
+	[nzServerSearch]="nzServerSearch"
+	[nzFilterOption]="nzFilterOption"
+	[nzMaxMultipleCount]="nzMaxMultipleCount"
+	[nzMode]="nzMode"
+	[nzNotFoundContent]="nzNotFoundContent"
+	[nzPlaceHolder] = "nzPlaceHolder"
+	[nzShowArrow]="nzShowArrow"
+	[nzShowSearch] ="to['nzShowSearch'] || true"
+	[nzSize]="nzSize"
+	[nzSuffixIcon]="nzSuffixIcon"
+	[nzRemoveIcon]="nzRemoveIcon"
+	[nzClearIcon]="nzClearIcon"
+	[nzMenuItemSelectedIcon]="nzMenuItemSelectedIcon"
+	[nzTokenSeparators]="nzTokenSeparators"
+	[nzLoading]="nzLoading"
+	[nzMaxTagCount]="nzMaxTagCount"
+	[nzMaxTagPlaceholder]="nzMaxTagPlaceholder"
+	[nzOptions]="nzOptions"
+	[nzOptionHeightPx]="nzOptionHeightPx"
+	[nzOptionOverflowSize]="nzOptionOverflowSize"
+	[nzFilterOption]="nzFilterOption"
 
-        <ng-container *ngFor="let option of to['options']; trackBy: trackByFn">
-            <nz-option *ngIf="!isLoading"
-                    class="select-option"
-                    nzCustomContent
-                    [nzDisabled]="option['nzDisabled '] || false"
-                    [nzValue]="(to['nzValue'] ? (to['nzValue'] == 'option' ? option : option[to['nzValue']]) : (option && option.value ? option.value : option))"
-                    [nzLabel]="option.label">
-                    <span [title]="option.label">{{option.label}}</span>
-                </nz-option>
-        </ng-container>
-
-        <nz-option  *ngIf="isLoading" nzDisabled nzCustomContent>
-            <i nz-icon type="loading" class="loading-icon"></i>加载中...
-        </nz-option>
-    </nz-select>
-
-    <ng-container *ngIf="description">
-        <i class="mx-2" nz-icon nzType="question-circle" nz-tooltip [nzTitle]="description" nzTheme="outline"></i>
-    </ng-container>
-    </div>
+	(ngModelChange)="ngModelChange($event)"
+	(nzOpenChange)="nzOpenChange($event)"
+	(nzOnSearch)="nzOnSearch($event)"
+	(nzFocus)="nzFocus($event)"
+	(nzBlur)="nzBlur($event)"
+	>
+		
+	<ng-container *ngFor="let option of to['nzOptions']; trackBy: trackByFn">
+		<nz-option *ngIf="!isLoading"
+			class="select-option"
+			nzCustomContent
+			[nzDisabled]="option['nzDisabled '] || false"
+			[nzValue]="nzValue ? (nzValue == 'option' ? option : option[nzValue]) : (option && option.value ? option.value : option))"
+			[nzLabel]="option.label">
+			<span [title]="option.label">{{option.label}}</span>
+		</nz-option>
+	</ng-container>
+	<nz-option  *ngIf="isLoading" nzDisabled nzCustomContent>
+		<i nz-icon type="loading" class="loading-icon"></i> 加载中...
+	</nz-option>
+</nz-select>
