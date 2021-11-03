@@ -28,6 +28,10 @@ const routes: Routes = [
       { path: 'dashboard/form',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
       { path: 'dashboard/table', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
       { path: 'dashboard/charts', loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule) },
+      {
+        path: '**',
+        loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule)
+      },
     ]
   },
   {
@@ -38,6 +42,7 @@ const routes: Routes = [
     path: 'form',
     loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule)
   },
+
 ];
 
 @NgModule({
