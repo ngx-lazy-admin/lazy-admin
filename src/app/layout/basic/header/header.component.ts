@@ -5,6 +5,8 @@ import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { LayoutService } from '../../layout.service';
 import { MenuService } from '../../../services/menu.service';
+import hotkeys from 'hotkeys-js';
+
 
 import { Subject } from 'rxjs';
 
@@ -48,6 +50,12 @@ export class LayoutHeaderComponent  {
     this.menu.tabsetChange$.subscribe(item => {
       this.cd.markForCheck();
     })
+
+    // hotkeys('f5', (event, handler) => {
+    //   // Prevent the default refresh event under WINDOWS system
+    //   event.preventDefault() 
+    //   alert('you pressed F5!') 
+    // });
   }
 
   collapsChange (isCollapsed: boolean) {
@@ -75,6 +83,12 @@ export class LayoutHeaderComponent  {
     this._overlayRef.keydownEvents().subscribe(($event: any) => {
       $event.stopPropagation()
     })
+
+    // hotkeys('ctrl + f', (event, handler) => {
+    //   // Prevent the default refresh event under WINDOWS system
+    //   event.preventDefault() 
+    //   alert('you pressed F5!') 
+    // });
   }
 
   openDialog($event:any) {
