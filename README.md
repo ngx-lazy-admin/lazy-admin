@@ -271,3 +271,15 @@ C:\Windows\System32\drivers\etc\hosts
 
 # 访问 github 的方式
 https://zhuanlan.zhihu.com/p/107334179?ivk_sa=1024320u
+
+127.0.0.1:58641
+
+https://www.jianshu.com/p/b9047a59ffc9
+
+git config --global http.proxy http://127.0.0.1:58641
+git config --global https.proxy http://127.0.0.1:58641
+
+
+- 代办 是要做的
+- 通知 
+- 消息: 
