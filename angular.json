@@ -81,6 +81,13 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend:build",
+            "proxyConfig": "src/proxy.config.json",
+
+            "host": "test.idea.waibao.oa.com",
+            "port": 4200
+          },
           "configurations": {
             "production": {
               "browserTarget": "go-admin-ng:build:production"

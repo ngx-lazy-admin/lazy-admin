@@ -1,0 +1,6 @@
+{
+  "/web": {
+    "target": "http://oa.cpm.cm.com:8212",
+    "secure": true
+  }
+}

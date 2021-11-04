@@ -25,7 +25,7 @@ export class RouteGuardGuard implements CanActivate, CanActivateChild, CanDeacti
         observer.next(true);
         observer.complete();
       }, () => {
-        observer.error(false);
+        observer.next(true);
       });
     })
   }

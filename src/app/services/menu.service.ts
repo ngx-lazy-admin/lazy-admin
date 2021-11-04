@@ -35,17 +35,18 @@ export class MenuService {
 
   canActive(url: string): boolean {
     this.breadcrumb = [];
-    this._menus.some(item => {
-
-      let menu = item.children.find(item => item.link === url) 
-      if (menu) {
-        this.breadcrumb = [item.label, menu.label]
-        this.addTabset(menu)
-        return true
-      } else {
-        return false
-      }
-    })
+    if (this._menus && this._menus instanceof Array && this._menus.length) {
+      this._menus.some(item => {
+        let menu = item.children.find(item => item.link === url) 
+        if (menu) {
+          this.breadcrumb = [item.label, menu.label]
+          this.addTabset(menu)
+          return true
+        } else {
+          return false
+        }
+      })
+    }
     return true;
   }
 

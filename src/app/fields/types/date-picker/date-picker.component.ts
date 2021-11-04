@@ -1,12 +1,21 @@
-import { Component, OnChanges, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnChanges, OnInit, ChangeDetectionStrategy, TemplateRef } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { FormControl } from '@angular/forms';
 
 import { FieldType } from '@ngx-formly/core';
-import { NzDatePickerSizeType } from 'ng-zorro-antd/date-picker';
+import { NzDatePickerSizeType, NzDateMode } from 'ng-zorro-antd/date-picker';
+import {
+  DateHelperService,
+  NzDatePickerI18nInterface,
+  NzDatePickerLangI18nInterface,
+  NzI18nService
+} from 'ng-zorro-antd/i18n';
 
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+registerLocaleData(zh);
 
-
+type FunctionProp<T> = (...args: any[]) => T;
 
 @Component({
   selector: 'div[date-picker-field]',
@@ -17,6 +26,8 @@ export class DatePickerField extends FieldType {
   constructor() {
     super();
   }
+
+  static ngAcceptInputType_nzMode: NzDateMode | NzDateMode[] | string | string[] | null | undefined;
 
   get control() : FormControl {
 		return this.formControl as FormControl
@@ -46,28 +57,28 @@ export class DatePickerField extends FieldType {
 		return this.to.nzDisabled || false;
 	}
 
-  // get nzDisabledDate:  {
-  //   return this.to.nzDisabledDate 
-  // }
+  get nzDisabledDate(): (d: Date) => boolean {
+    return this.to.nzDisabledDate 
+  }
 
   get nzDropdownClassName() : string {
     return this.to.nzDropdownClassName || ''
   }
 
   get nzFormat(): string {
-    return this.to.nzFormat || ''
+    return this.to.nzFormat || 'yyyy-MM-dd'
   }
 
   get nzInputReadOnly(): boolean {
     return this.to.nzInputReadOnly || false
   }
 
-  get nzLocale() : object {
+  get nzLocale(): NzDatePickerI18nInterface {
     return this.to.nzLocale() || null
   }
 
-  get nzMode(): string {
-    return this.to.nzMode || 'week'
+  get nzMode(): NzDateMode  {
+    return this.to.nzMode || 'date'
   }
 
   get nzPlaceHolder(): string {
@@ -78,7 +89,7 @@ export class DatePickerField extends FieldType {
     return this.to.nzPopupStyle || {}
   }
 
-  get nzRenderExtraFooter (): string {
+  get nzRenderExtraFooter (): TemplateRef<any> | string | FunctionProp<TemplateRef<any> | string> {
     return this.to.nzRenderExtraFooter || ''
   }
 
@@ -103,11 +114,16 @@ export class DatePickerField extends FieldType {
         this.to.nzOnOpenChange(this.field, $event)
     }
   }
-  onModelChange ($event: Event) {
+
+  onModelChange (date: Date) {
+    console.log(date);
     if (this.to.change) {
-        this.to.change(this.field, $event)
+        this.to.change(this.field, date)
+    }
+
+    // 设定默认格式
+    if (this.nzFormat) {
+      // this.formControl.setValue(formatDate(date, this.nzFormat, 'zh-ch'));
     }
   }
-
-  // onOk (date) {}
 }

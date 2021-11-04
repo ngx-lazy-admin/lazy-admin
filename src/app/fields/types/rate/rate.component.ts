@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-    selector: 'div[radio-field]',
+    selector: 'div[rate-field]',
     templateUrl: './rate.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -30,15 +30,19 @@ export class RateField extends FieldType {
 	}
 
     get nzCount (): number {
-        return this.to.nzCount || false;
+        return this.to.nzCount || 5;
     }
 
     get nzDisabled(): boolean {
 		return this.to.nzDisabled || false;
 	}
 
-    get nzTooltips(): string [] {
-        return this.to.nzTooltips 
+    get nzTooltips(): string[] {
+        return this.to.nzTooltips || []
+    }
+
+    get text (): string [] {
+        return this.to.text || ''
     }
 
 

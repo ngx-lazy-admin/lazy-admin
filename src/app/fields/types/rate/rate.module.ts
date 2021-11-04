@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { NzRateModule } from 'ng-zorro-antd/rate';
-
 import { RateField } from './rate.component';
 
 @NgModule({

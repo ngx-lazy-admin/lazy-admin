@@ -14,6 +14,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
       [nzDisabled]="nzDisabled"
       (ngModelChange)="ngModelChange($event)"
       ngDefaultControl>
+      <label nz-radio [nzValue]="o.value" *ngFor="let o of nzOptions">{{ o.label }}</label>1
     </nz-radio-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush 
@@ -28,6 +29,10 @@ export class RadioGroupField extends FieldType {
   get nzDisabled(): boolean {
 		return this.to.nzDisabled || false;
 	}
+
+  get nzOptions(): any[] {
+    return this.to.nzOptions || []
+  }
 
   ngModelChange ($event: Event) {
     if (this.to.change) {

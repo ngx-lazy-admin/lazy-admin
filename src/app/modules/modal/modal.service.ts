@@ -103,7 +103,6 @@ export class ModalService   {
 
   constructor(
     private modal: NzModalService,
-
   ) {}
 
   // constructor(
@@ -131,9 +130,9 @@ export class ModalService   {
       nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
       nzFooter: [
         {
-          label: '取消',
-          onClick: ($event) => {
-            console.log('取消');
+          label: '取消1',
+          onClick: ($event: Partial<NzModalCustomComponent>) => {
+            console.log('取消1');
             return true;
           }
         },
@@ -141,8 +140,8 @@ export class ModalService   {
           label: '确定',
           type: 'primary',
           onClick: ($event: Partial<NzModalCustomComponent>) => {
-            console.log('确定')
-            modal.close();
+            console.log('确定1')
+            // modal.close();
             return true;
           }
         }

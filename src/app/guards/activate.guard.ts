@@ -26,7 +26,7 @@ export class ActivateGuard implements CanActivate {
         observer.next(true);
         observer.complete();
       }, () => {
-        observer.error(false);
+        observer.next(true);
       });
     })
   }

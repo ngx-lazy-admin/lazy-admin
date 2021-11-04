@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DownloadService } from '../../services/download.service'
 
 
 @Component({
@@ -8,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private download: DownloadService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  donwloadFile (url: string) {
+    this.download.file(url)
+  }
+
+  donwloadImage (url: string) {
+    this.download.image(url)
   }
 
 }

@@ -16,4 +16,6 @@
 	(nzOnKeyDown)="nzOnKeyDown($event)"
 	(ngModelChange)="ngModelChange($event)"
 	ngDefaultControl>	
-</nz-rate>
+</nz-rate> 
+
+<span *ngIf="control.value" class="ant-rate-text">{{ control.value ? nzTooltips[control.value - 1] : '' }}</span>
