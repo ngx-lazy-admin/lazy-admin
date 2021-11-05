@@ -29,8 +29,12 @@ export class LayoutHeaderComponent  {
 
   private _overlayRef: OverlayRef;
   private _portal!: TemplatePortal;
+
+  isVisible: boolean = false;
   
   isCollapsed: boolean = false;
+
+  searchValue: string|null = null;
 
   private destroy$ = new Subject<void>();
 
@@ -57,16 +61,31 @@ export class LayoutHeaderComponent  {
       this.cd.markForCheck();
     })
 
-    // hotkeys('f5', (event, handler) => {
-    //   // Prevent the default refresh event under WINDOWS system
-    //   event.preventDefault() 
-    //   alert('you pressed F5!') 
-    // });
+    hotkeys('ctrl + k', (event, handler) => {
+      // Prevent the default refresh event under WINDOWS system
+      event.preventDefault();
+      this.isVisible = true;
+      this.cd.markForCheck();
+    });
   }
 
   collapsChange (isCollapsed: boolean) {
     this.isCollapsed = isCollapsed;
     this.layout.collapsChange(this.isCollapsed);
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
   }
 
   fullScreen(el: Event) {

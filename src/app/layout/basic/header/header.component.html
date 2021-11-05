@@ -26,11 +26,16 @@
 
 		</nz-input-group> -->
 
-		<input nzBorderless="true" class="f13" type="text" nzSize="small" nz-input placeholder="搜索..." />
+		<!-- <input nzBorderless="true" class="f13" type="text" nzSize="small" nz-input placeholder="搜索..." />
 
 		<ng-template #suffixIconSearch>
 			<i nz-icon nz-button class="f18 trigger" nzType="search"></i>
-		</ng-template>
+		</ng-template> -->
+
+		<div class="px-3 f18 trigger d-none d-xl-inline-flex d-xxl-inline-flex" (click)="isVisible = true">
+			<i nz-icon nz-button nzType="search" nzTheme="outline"></i>
+		</div>
+
 
 		<div class="px-3 f18 trigger d-none d-xl-inline-flex d-xxl-inline-flex">
 			<i nz-icon nz-button nzType="expand" nzTheme="outline"></i>
@@ -62,6 +67,20 @@
 </div>
 
 
+<nz-modal [(nzVisible)]="isVisible" [nzKeyboard]="true" [nzMask]="true" [nzMaskClosable]="true" [nzFooter]="null" 
+[nzClosable]="false" (nzOnCancel)="handleCancel()">
+	<ng-container *nzModalContent>
+		<nz-input-group [nzSuffix]="suffixTemplateInfo">
+			<input nz-input placeholder="搜索..." [(ngModel)]="searchValue" />
+    </nz-input-group>
+
+		<ng-template #suffixTemplateInfo>
+      <!-- <i nz-icon nz-tooltip nzTooltipTitle="Extra information" nzType="info-circle"></i> -->
+			<span style="color: #969696;">ctrl + k</span>
+    </ng-template>
+
+	</ng-container>
+</nz-modal>
 
 
 
