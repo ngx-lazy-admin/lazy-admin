@@ -15,7 +15,7 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 export class InputField extends FieldType {
 
 	get nzBorderless(): boolean {
-		return this.to.nzBorderless || 'false'
+		return this.to.nzBorderless || false
 	}
 
 	get nzSize(): NzSizeLDSType {

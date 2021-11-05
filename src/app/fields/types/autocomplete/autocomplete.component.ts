@@ -27,7 +27,7 @@ export class AutocompleteFields extends FieldType implements OnInit {
   }
 
   get nzBorderless(): boolean {
-		return this.to.nzBorderless || 'false'
+		return this.to.nzBorderless || false
 	}
 
   get nzSize(): NzSizeLDSType {

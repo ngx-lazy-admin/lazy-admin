@@ -283,3 +283,13 @@ git config --global https.proxy http://127.0.0.1:58641
 - 代办 是要做的
 - 通知 
 - 消息: 
+
+```
+"options": {
+    "browserTarget": "frontend:build",
+    "proxyConfig": "src/proxy.config.json",
+
+    "host": "test.idea.waibao.oa.com",
+    "port": 4200
+}
+```

@@ -21,7 +21,7 @@ export class InputGroupField extends FieldType {
 	@Input()
 	@InputBoolean()
 	get nzBorderless(): boolean {
-		return this.to.nzBorderless || 'false'
+		return this.to.nzBorderless || false
 	}
 
 	@Input()
