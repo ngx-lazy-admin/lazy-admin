@@ -1,9 +1,9 @@
 
 export interface Search {
-    key: ''
-    value: '',
-    label: '',
-    icon: '',
-    info: '',
-    
+	key: ''
+	value: '',
+	label: '',
+	icon: '',
+	info: '',
+	
 }

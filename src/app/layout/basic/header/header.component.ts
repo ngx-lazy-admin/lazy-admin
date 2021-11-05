@@ -1,14 +1,20 @@
-import { Component, OnInit, ViewContainerRef, ViewChild, TemplateRef,
-  ChangeDetectionStrategy, ChangeDetectorRef, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewContainerRef,
+  ViewChild,
+  TemplateRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  ElementRef
+} from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
+import { Subject } from 'rxjs';
+import hotkeys from 'hotkeys-js';
 import { LayoutService } from '../../layout.service';
 import { MenuService } from '../../../services/menu.service';
-import hotkeys from 'hotkeys-js';
-
-
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-layout-header',

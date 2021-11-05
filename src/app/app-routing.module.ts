@@ -5,8 +5,6 @@ import { RouteGuardGuard } from  './guards/route-guard.guard';
 import { ActivateGuard } from './guards/activate.guard';
 import { ActivateChildGuard } from './guards/activate-child.guard';
 
-
-
 const routes: Routes = [
   {
     path: '',

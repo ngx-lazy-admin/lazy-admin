@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMentionModule } from 'ng-zorro-antd/mention';
 import { MentionField } from './mention.component'
-
 
 @NgModule({
   declarations: [MentionField],
