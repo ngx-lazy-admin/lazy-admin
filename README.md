@@ -279,19 +279,11 @@ https://www.jianshu.com/p/b9047a59ffc9
 git config --global http.proxy http://127.0.0.1:58641
 git config --global https.proxy http://127.0.0.1:58641
 
+60356
 
 - 代办 是要做的
 - 通知 
 - 消息: 
 
-```
-"options": {
-    "browserTarget": "frontend:build",
-    "proxyConfig": "src/proxy.config.json",
-
-    "host": "test.idea.waibao.oa.com",
-    "port": 4200
-}
-```
 
 https://blog.csdn.net/henzhuanxin/article/details/109047195

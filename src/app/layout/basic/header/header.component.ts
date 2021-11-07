@@ -16,13 +16,19 @@ import hotkeys from 'hotkeys-js';
 import { LayoutService } from '../../layout.service';
 import { MenuService } from '../../../services/menu.service';
 
+export interface AutocompleteOptionGroups {
+  title: string;
+  count?: number;
+  children?: AutocompleteOptionGroups[];
+}
+
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutHeaderComponent  {
+export class LayoutHeaderComponent implements OnInit {
 
   @ViewChild('overlayGlobalTemplate') templateGlobalPortals!: TemplatePortal ;
   @ViewChild('contentmenu') _dialogTemplate!: TemplateRef<any>;
@@ -35,6 +41,9 @@ export class LayoutHeaderComponent  {
   isCollapsed: boolean = false;
 
   searchValue: string|null = null;
+
+  inputValue?: string;
+  optionGroups: AutocompleteOptionGroups[] = [];
 
   private destroy$ = new Subject<void>();
 
@@ -174,6 +183,54 @@ export class LayoutHeaderComponent  {
 
   closeMenu(): void {
     this.nzContextMenuService.close();
+  }
+
+  onChange ($event: Event) {
+
+  }
+
+
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.optionGroups = [
+        {
+          title: '话题',
+          children: [
+            {
+              title: 'AntDesign',
+              count: 10000
+            },
+            {
+              title: 'AntDesign UI',
+              count: 10600
+            }
+          ]
+        },
+        {
+          title: '问题',
+          children: [
+            {
+              title: 'AntDesign UI 有多好',
+              count: 60100
+            },
+            {
+              title: 'AntDesign 是啥',
+              count: 30010
+            }
+          ]
+        },
+        {
+          title: '文章',
+          children: [
+            {
+              title: 'AntDesign 是一个设计语言',
+              count: 100000
+            }
+          ]
+        }
+      ];
+    }, 1000);
   }
 
   ngOnDestroy(): void {

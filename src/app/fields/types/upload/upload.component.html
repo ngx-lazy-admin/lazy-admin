@@ -1,7 +1,8 @@
-<nz-cascader
+
+  
+<nz-upload-item
     [formControl]="control"
     [formlyAttributes]="field"
-    [nzOptions]="nzOptions" 
-
+    [nzDisabled]="disabled"
     (ngModelChange)="ngModelChange($event)">
-</nz-cascader>
+</nz-upload-item>

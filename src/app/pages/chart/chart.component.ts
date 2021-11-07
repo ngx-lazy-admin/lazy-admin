@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Routes } from '@angular/router';
 
 @Component({
   selector: 'app-chart',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    // private route: Routes
+  ) { }
 
   ngOnInit(): void {
+    console.log('chart')
+    // console.log(this.route)
   }
-
 }

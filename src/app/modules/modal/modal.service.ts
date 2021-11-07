@@ -1,16 +1,25 @@
 import {
-  Injectable,
-  ViewChild,
+  AfterViewInit,
+  Component,
+  ElementRef,
   Inject,
-  AfterViewInit, Component, OnInit, Input, TemplateRef, ViewContainerRef, Renderer2, ElementRef  } from '@angular/core';
-import { ComponentPortal, DomPortal, Portal, TemplatePortal, DomPortalOutlet,  } from '@angular/cdk/portal';
+  Injectable,
+  Input,
+  OnInit,
+  Renderer2,
+  ViewChild,
+  ViewContainerRef,
+  TemplateRef,
+} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { FormGroup, AbstractControl } from '@angular/forms';
+import { ComponentPortal, DomPortalOutlet, DomPortal, Portal, TemplatePortal,   } from '@angular/cdk/portal';
 
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+
 import hotkeys from 'hotkeys-js';
 import { ModalComponent } from './modal.component';
-import { DOCUMENT,  } from '@angular/common';
-import { FormGroup, AbstractControl } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NzModalCustomComponent } from './modal-form.component';
 
 

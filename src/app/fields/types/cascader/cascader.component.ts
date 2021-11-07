@@ -1,33 +1,42 @@
-import { Component, OnDestroy, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  OnDestroy,
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'app-formly-field-cascader-component',
+  selector: 'div[cascader-field]',
   templateUrl: './cascader.component.html',
-  styles  : [`
-    .ant-cascader-picker {
-        width: 100%;
-    }
-  `]
 })
-export class FormlyFieldCascaderComponent extends FieldType implements OnDestroy {
+export class CascaderField extends FieldType {
 
-  filter = (i, p) => {
-    return p.some(o => {
-      const label = o.label;
-      return !!label && label.trim().toLowerCase().indexOf(i.trim().toLowerCase()) !== -1;
-    })
-  }
+  // filter = (i, p) => {
+  //   return p.some(o => {
+  //     const label = o.label;
+  //     return !!label && label.trim().toLowerCase().indexOf(i.trim().toLowerCase()) !== -1;
+  //   })
+  // }
 
-  constructor( private _cdRef: ChangeDetectorRef ) {
+  constructor(
+    private cd: ChangeDetectorRef
+  ) {
     super();
   }
 
-  get nzOptions () {
+  get control() : FormControl {
+		return this.formControl as FormControl
+  }
+
+  get nzOptions (): object[] {
     return this.to['nzOptions'] || [];
   }
 
-  modelChange ($event) {
-    this.formControl.setValue($event);
+  ngModelChange ($event: Event) {
+    if (this.to.change) {
+      this.to.change(this.field, $event);
+    }
   }
 }
