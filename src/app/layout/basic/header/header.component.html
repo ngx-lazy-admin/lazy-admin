@@ -21,21 +21,10 @@
 	</div>
 
 	<div class="d-flex align-items-center">
-		<!-- <nz-input-group  class="d-inline-flex mx-3 d-none d-lg-inline-flex d-xl-inline-flex d-xxl-inline-flex" 
-			[nzSuffix]="suffixIconSearch" style="width: 240px;">
-
-		</nz-input-group> -->
-
-		<!-- <input nzBorderless="true" class="f13" type="text" nzSize="small" nz-input placeholder="搜索..." />
-
-		<ng-template #suffixIconSearch>
-			<i nz-icon nz-button class="f18 trigger" nzType="search"></i>
-		</ng-template> -->
 
 		<div class="px-3 f18 trigger d-none d-xl-inline-flex d-xxl-inline-flex" (click)="isVisible = true">
 			<i nz-icon nz-button nzType="search" nzTheme="outline"></i>
 		</div>
-
 
 		<div class="px-3 f18 trigger d-none d-xl-inline-flex d-xxl-inline-flex">
 			<i nz-icon nz-button nzType="expand" nzTheme="outline"></i>
@@ -62,10 +51,8 @@
 		<div class="px-3 f18 trigger">
 			<i nz-icon nz-button nzType="global" nzTheme="outline"></i>
 		</div>
-
 	</div>
 </div>
-
 
 <nz-modal 
 	[(nzVisible)]="isVisible" 

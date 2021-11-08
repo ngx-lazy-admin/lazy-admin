@@ -10,13 +10,14 @@ import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button'
 import { FieldType } from '@ngx-formly/core';
 
 import { MessageService } from '../../../services/message.service';
-import { CosService } from '../../../services/cos.service';
+// import { CosService } from '../../../services/cos.service';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+
 
 @Component({
   selector: 'div[upload-field]',
   templateUrl: './upload.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class UploadField extends FieldType implements OnInit {
 
@@ -62,7 +63,6 @@ export class UploadField extends FieldType implements OnInit {
     private http: HttpClient,
     private msg: MessageService,
     private cd: ChangeDetectorRef,
-    public cos: CosService
   ) {
     super();
   }
@@ -73,9 +73,9 @@ export class UploadField extends FieldType implements OnInit {
     }
   }
 
-  ngModelChange ($event: Event) {
+  ngModelChange (info: NzUploadChangeParam) {
     if (this.to.change) {
-      this.to.change(this.field, $event);
+      this.to.change(this.field, info);
     }
   }
 

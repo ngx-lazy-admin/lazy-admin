@@ -15,19 +15,40 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form.valueChanges.subscribe(item => {
-      console.log(item)
+      // console.log(item)
     })
   }
 
   form = new FormGroup({});
-  model = {rate: 1, email: 'email@gmail.com', checkbox: ['222'], 'checkbox-group': [{
+  model = {
+    rate: 1, 
+    email: 'email@gmail.com', 
+    checkbox: ['222'], 
+    'checkbox-group': [{
     label: '苹果',
     value: '1'
   },
   {
     label: '香蕉',
     value: '2'
-  }]};
+  }], 
+  upload: [
+    {
+      uid: '-1',
+      name: 'xxx.png',
+      status: 'done',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+    },
+    {
+      uid: '-2',
+      name: 'yyy.png',
+      url: 'https://pic1.zhimg.com/v2-1a289c30879b143c920efb0fc1741cf9_xl.jpg',
+      status: 'done'
+    }
+  ]};
+
+
   fields: FormlyFieldConfig[] = [
     {
       key: 'email',
@@ -72,30 +93,15 @@ export class FormComponent implements OnInit {
       }
     },
     {
-      key: 'radio-group',
-      type: 'nz-radio-group',
-      className: 'w-100 mb-2 d-inline-block',
+      key: 'upload',
+      type: 'nz-upload',
+      className: 'w-25 mb-2 d-inline-block',
       templateOptions: {
         label: 'Date',
-        placeholder: 'Enter Date',
         required: true,
-        text: '这是文案',
-        nzOptions: [
-          {
-            value: 'A',
-            label: 'A'
-          },
-          {
-            value: 'B',
-            label: 'B'
-          },
-          {
-            value: 'C',
-            label: 'C'
-          }
-        ],
-        change: (fields, $event) => {
-          console.log($event)
+        text: '上传',
+        change: (fields, info) => {
+          console.log(info)
         }
       }
     },

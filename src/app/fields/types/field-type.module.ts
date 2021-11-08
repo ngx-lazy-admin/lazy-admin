@@ -8,6 +8,7 @@ import { InputFieldModule } from './input';
 import { InputNumberFieldModule } from './input-number';
 import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
+import { UploadFieldModule } from './upload';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { RateFieldModule } from './rate';
     InputFieldModule,
     InputNumberFieldModule,
     RadioFieldModule,
-    RateFieldModule
+    RateFieldModule,
+    UploadFieldModule
   ],
 })
 export class FieldTypeModule {}
