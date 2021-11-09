@@ -9,6 +9,7 @@ import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 import { FieldTypeModule } from '../../fields/types';
+import { FormFieldModule } from '../../fields/wrappers/form'
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { FieldTypeModule } from '../../fields/types';
     NgZorroAntdModule,
     FormlyModule.forRoot(),
     FieldTypeModule,
+    FormFieldModule
   ]
 })
 export class FormModule { }

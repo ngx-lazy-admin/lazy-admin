@@ -22,7 +22,7 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
   model = {
     rate: 1, 
-    email: 'email@gmail.com', 
+    email: '', 
     checkbox: ['222'], 
     'checkbox-group': [{
     label: '苹果',
@@ -54,6 +54,7 @@ export class FormComponent implements OnInit {
       key: 'email',
       type: 'nz-input',
       className: 'w-100 mb-2 d-inline-block',
+      wrappers: ['form'],
       templateOptions: {
         label: 'Email address',
         placeholder: 'Enter email',
@@ -109,6 +110,6 @@ export class FormComponent implements OnInit {
 
   onSubmit(model:any) {
     console.log(this.form.valid)
-    console.log(model);
+    console.log(this.form)
   }
 }
