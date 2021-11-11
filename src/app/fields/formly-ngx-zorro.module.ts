@@ -38,8 +38,8 @@ import { FormlyFieldTemplateComponent } from './types/template/template.componen
 import { FormlyFieldGridComponent } from './repeat/grid/grid.component';
 import { FormlyFieldTableComponent } from './repeat/table/table.component';
 
-import { NzAvatarUploaderComponent } from './types/avatar-uploader/avatar-uploader.component';
-import { FormlyFieldSelectDateComponent } from './types/select-date/select-date.component';
+import { NzAvatarUploaderComponent } from './types/upload/avatar-uploader/avatar-uploader.component';
+import { FormlyFieldSelectDateComponent } from './types/date-picker/select-date/select-date.component';
 
 
 // repeat

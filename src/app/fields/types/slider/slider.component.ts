@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, TemplateRef } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
-import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({
 	selector: 'div[slider-field]',
@@ -89,12 +88,11 @@ export class SliderField extends FieldType {
 		return this.to.nzControl || false
 	}
 
-    nzOnAfterChange ($event: Event) {
-        if (this.to.nzOnAfterChange) {
-            this.to.nzOnAfterChange(this.field, $event)
-        }
-    }
-
+	nzOnAfterChange ($event: Event) {
+		if (this.to.nzOnAfterChange) {
+			this.to.nzOnAfterChange(this.field, $event)
+		}
+	}
 
 	ngModelChange ($event: Event) {
 		if (this.to.change) {

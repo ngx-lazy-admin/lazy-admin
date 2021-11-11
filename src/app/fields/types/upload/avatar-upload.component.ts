@@ -1,50 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
-import { NzMessageService, UploadXHRArgs } from 'ng-zorro-antd';
 import { Observable, Observer } from 'rxjs';
-import { UploadService } from '../../../../services/upload.service';
 import { Subject } from 'rxjs';
-import { CosService } from '../../../../services/cos.service';
 
 @Component({
-    selector: 'app-avatar-uploader',
-    templateUrl: './avatar-uploader.component.html',
-    styles: [
-      `
-				.avatar {
-					width: 64px;
-					height: 64px;
-				}
-				.upload-icon {
-					font-size: 16px;
-					color: #999;
-				}
-				.ant-upload-text {
-					margin-top: 8px;
-					color: #666;
-        }
-        ::ng-deep .ant-upload.ant-upload-select-picture-card{
-          width: 64px;
-          height: 64px;
-        }
-
-        .delete {
-          position: absolute;
-          left: 54px;
-          bottom: 14px;
-          color: white !important;
-        }
-
-        ::ng-deep .ant-upload {
-          position: relative;
-        }
-      `
-    ]
-
+  selector: 'div[avatar-upload-field]',
+  templateUrl: './avatar-uploader.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NzAvatarUploaderComponent extends FieldArrayType implements OnInit, OnDestroy {
   loading = false;
-  avatarUrl: string;
+  
+  avatarUrl: string = '';
 
   get objtype () {
     return this.to['objtype'] ? this.to['objtype'] : '1800';

@@ -1,16 +1,5 @@
 <nz-slider 
-  [formControl]="formControl"
-  [formlyAttributes]="field"
-  [nzRange]="to['nzRange']"
-  [nzDefaultValue]="to['nzDefaultValue']"
-  [nzDisabled]="to['nzDisabled']"
-  [nzDots]="to['nzDots']"
-  [nzIncluded]="to['nzIncluded']"
-  [nzMarks]="to['nzMarks']"
-  [nzMax]="to['nzMax']"
-  [nzMin]="to['nzMin']"
-  [nzStep]="to['nzStep']"
-  [nzTipFormatter]="to['nzTipFormatter']"
-  [nzVertical]="to['nzVertical']"
-  ngDefaultControl>
+  [(ngModel)]="model[key]" 
+
+  [nzDisabled]="nzDisabled">
 </nz-slider>

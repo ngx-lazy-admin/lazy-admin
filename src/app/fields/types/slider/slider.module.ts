@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { SliderField } from './slider.component'
 
-
 @NgModule({
   declarations: [SliderField],
   imports: [
