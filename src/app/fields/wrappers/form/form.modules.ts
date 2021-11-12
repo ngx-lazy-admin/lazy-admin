@@ -20,7 +20,7 @@ import { FormWrapper } from './form.wrapper';
         },
       ],
       validationMessages: [
-        { name: 'required', message: 'This field is required1' },
+        { name: 'required', message: 'This field is required' },
       ],
     }), 
   ],

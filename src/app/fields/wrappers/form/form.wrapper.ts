@@ -11,10 +11,21 @@ const isObject = (x: any) => {
 @Component({
   selector: 'app-form-field-wrapper',
   templateUrl: './form.wrapper.html',
+  host: {
+    '[class.ant-form-horizontal]': 'nzLayout === "horizontal"',
+    '[class.ant-form-vertical]': 'nzLayout === "vertical"',
+    '[class.ant-form-inline]': 'nzLayout === "inline"',
+  },
 })
 
 export class FormWrapper extends FieldWrapper {
   // @ViewChild('fieldTpl', { read: ViewContainerRef })
+
+  // ant-form-horizontal ant-form-vertical ant-form-inline
+
+  get nzLayout(): string {
+    return this.to.nzLayout ? this.to.nzLayout : 'horizontal'
+  }
 
   get errorState() {
     return this.showError ? 'error' : '';
@@ -35,8 +46,6 @@ export class FormWrapper extends FieldWrapper {
   get nzTooltipIcon(): string | NzFormTooltipIcon {
     return this.to.NzFormTooltipIcon || null
   }
-
-  // nz-form-control
 
   get nzValidateStatus(): string | NzFormTooltipIcon {
     return this.to.nzValidateStatus || null
@@ -77,6 +86,7 @@ export class FormWrapper extends FieldWrapper {
 
   get errorMessage(): any {
     const fieldForm = this.field.formControl;
+
     if (fieldForm) {
       for (const error in fieldForm.errors) {
         if (fieldForm.errors.hasOwnProperty(error)) {

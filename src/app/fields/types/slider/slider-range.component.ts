@@ -1,101 +1,110 @@
-
-import { FocusMonitor } from '@angular/cdk/a11y';
-import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  forwardRef,
-  Input,
-  OnDestroy,
-  OnInit,
-  Optional,
-  ViewEncapsulation
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-
-import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
-import { InputBoolean } from 'ng-zorro-antd/core/util';
+import { Component, ChangeDetectionStrategy, Input, TemplateRef } from '@angular/core';
+import { FieldType,  } from '@ngx-formly/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'nz-checkbox-wrapper-item',
-  exportAs: 'nzCheckboxGroup',
-  preserveWhitespaces: false,
-  encapsulation: ViewEncapsulation.None,
-  template: `
-    <nz-slider nzRange [(ngModel)]="model" [nzDisabled]="disabled"></nz-slider>
-  `,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NzCheckboxWrapperItemComponent),
-      multi: true
-    }
-  ]
+	selector: 'div[slider-field]',
+	template: `
+		<nz-slider-range-item
+			nzRange 
+			[formControl]="control"
+			[formlyAttributes]="field"
+			[nzDisabled]="nzDisabled"
+			(ngModelChange)="ngModelChange($event)"
+		>
+		</nz-slider-range-item>
+	`,
+	host: {
+		'display': 'contents',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NzCheckboxWrapperItemComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  static ngAcceptInputType_nzDisabled: BooleanInput;
+export class SliderRangeField extends FieldType {
 
-  onChange: OnChangeType = () => {};
-  onTouched: OnTouchedType = () => {};
-
-  @Input() 
-  @InputBoolean() 
-  nzDisabled = false;
-
-  private _destroy$ = new Subject<void>();
-
-  model: string | null = null;
-
-  constructor(
-    private elementRef: ElementRef,
-    private focusMonitor: FocusMonitor,
-    private cd: ChangeDetectorRef,
-  ) {
-    // TODO: move to host after View Engine deprecation
-    this.elementRef.nativeElement.classList.add('ant-checkbox-wrapper-list');
+	get control() : FormControl {
+		return this.formControl as FormControl
   }
 
-  ngOnInit(): void {
-    this.focusMonitor
-      .monitor(this.elementRef, true)
-      .pipe(takeUntil(this._destroy$))
-      .subscribe(focusOrigin => {
-        if (!focusOrigin) {
-          Promise.resolve().then(() => this.onTouched());
-        }
-      });
-  }
+	get nzCheckedChildren(): string | TemplateRef<void> | null {
+		return this.to.nzBorderless || null
+	}
 
-  ngOnDestroy(): void {
-    this.focusMonitor.stopMonitoring(this.elementRef);
-    this._destroy$.next();
-    this._destroy$.complete();
-  }
+	get nzUnCheckedChildren(): string | TemplateRef<void> | null  {
+		return this.to.nzBorderless || null
+	}
 
-  writeValue(value: string[]): void {
-    // this.nzOptions = this.nzOptions.map(item => {
-    //   const v = value.some((v: string) => v === item.value)
-    //   return {
-    //     ...item,
-    //     checked: v
-    //   }
-    // });
-    this.cd.markForCheck();
-  }
+	get nzDisabled(): boolean {
+		return this.to.nzDisabled || false
+	}
 
-  registerOnChange(fn: OnChangeType): void {
-    this.onChange = fn;
-  }
+	get nzSize(): 'small' | 'default' {
+		return this.to.nzSize || 'default'
+	}
 
-  registerOnTouched(fn: OnTouchedType): void {
-    this.onTouched = fn;
-  }
+	get nzLoading(): boolean {
+		return this.to.nzLoading || false
+	}
 
-  setDisabledState(disabled: boolean): void {
-    this.nzDisabled = disabled;
-    this.cd.markForCheck();
-  }
+	get nzControl(): boolean {
+		return this.to.nzControl || false
+	}
+
+  get nzDots(): boolean {
+		return this.to.nzDots || false
+	}
+
+  get nzIncluded(): boolean {
+		return this.to.nzIncluded || false
+	}
+
+  get nzMarks(): boolean {
+		return this.to.nzMarks || false
+	}
+
+  get nzMax(): boolean {
+		return this.to.nzMax || false
+	}
+
+  get nzMin(): boolean {
+		return this.to.nzMin || false
+	}
+
+  get nzRange(): boolean {
+		return this.to.nzRange || false
+	}
+
+  get nzStep(): boolean {
+		return this.to.nzStep || false
+	}
+
+  get nzTipFormatter(): boolean {
+		return this.to.nzTipFormatter || false
+	}
+
+  get nzVertical(): boolean {
+		return this.to.nzVertical || false
+	}
+
+  get nzReverse(): boolean {
+		return this.to.nzReverse || false
+	}
+  get nzTooltipVisible(): boolean {
+		return this.to.nzTooltipVisible || false
+	}
+
+  get nzTooltipPlacement(): boolean {
+		return this.to.nzTooltipPlacement || false
+	}
+
+	nzOnAfterChange ($event: Event) {
+		if (this.to.nzOnAfterChange) {
+			this.to.nzOnAfterChange(this.field, $event)
+		}
+	}
+
+	ngModelChange ($event: Event) {
+		if (this.to.change) {
+			this.to.change(this.field, $event)
+		}
+	}
 }
-

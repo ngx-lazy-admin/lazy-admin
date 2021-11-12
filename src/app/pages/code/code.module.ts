@@ -11,6 +11,8 @@ import { CodeRoutingModule } from './code-routing.module';
 import { CodeComponent } from './code.component';
 
 import { FieldTypeModule } from '../../fields/types';
+import { FormFieldModule } from '../../fields/wrappers/form'
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { FieldTypeModule } from '../../fields/types';
     NgZorroAntdModule,
     FormlyModule.forRoot(),
     FieldTypeModule,
+    FormFieldModule,
   ]
 })
 export class CodeModule { }

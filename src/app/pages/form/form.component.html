@@ -2,3 +2,5 @@
     <formly-form [form]="form" [fields]="fields" [(model)]="model"></formly-form>
     <button nz-button type="submit" (click)="onSubmit(model)">Submit</button>
 </form>
+
+<pre> {{model | json}}</pre>

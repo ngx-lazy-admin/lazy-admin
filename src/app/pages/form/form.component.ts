@@ -46,16 +46,20 @@ export class FormComponent implements OnInit {
       url: 'https://pic1.zhimg.com/v2-1a289c30879b143c920efb0fc1741cf9_xl.jpg',
       status: 'done'
     }
-  ]};
+  ],
+  slider: 100,
+  sliderRange: [15, 20]
+};
 
 
   fields: FormlyFieldConfig[] = [
     {
       key: 'email',
       type: 'nz-input',
-      className: 'w-100 mb-2 d-inline-block',
+      className: 'mb-2 d-inline-block',
       wrappers: ['form'],
       templateOptions: {
+        nzLayout: 'inline',
         label: 'Email address',
         placeholder: 'Enter email',
         required: true,
@@ -64,7 +68,7 @@ export class FormComponent implements OnInit {
     {
       key: 'date',
       type: 'nz-date-picker',
-      className: 'w-100 mb-2 d-inline-block',
+      className: 'mb-2 d-inline-block',
       templateOptions: {
         label: 'Date',
         placeholder: 'Enter Date',
@@ -106,6 +110,33 @@ export class FormComponent implements OnInit {
         }
       }
     },
+    {
+      key: 'slider',
+      type: 'nz-slider',
+      className: 'w-100 mb-2 d-inline-block',
+      templateOptions: {
+        label: 'Date',
+        required: true,
+        text: '上传',
+        change: (fields, info) => {
+          console.log(info)
+        }
+      },
+    },
+    {
+      key: 'sliderRange',
+      type: 'nz-slider-range',
+      className: 'w-100 mb-2 d-inline-block',
+      templateOptions: {
+        label: 'Date',
+        required: true,
+        text: '上传',
+        change: (fields, info) => {
+          console.log(info)
+        }
+      }
+    }
+  
   ];
 
   onSubmit(model:any) {

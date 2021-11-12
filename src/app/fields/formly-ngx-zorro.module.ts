@@ -25,7 +25,7 @@ import { FormlyFieldNumberComponent } from './types/input-number/number.componen
 import { FormlyFieldRadioComponent } from './types/radio/radio.component';
 import { FormlyFieldRateComponent } from './types/rate/rate.component';
 import { FormlyFieldSelectComponent } from './types/select/select.component';
-import { FormlyFieldSliderComponent } from './types/slider/slider.component';
+import { FormlyFieldSliderComponent } from './types/slider/slider-range.component';
 import { FormlyFieldSwitchComponent } from './types/switch/switch.component';
 import { FormlyFieldTimePickerComponent } from './types/time-picker/time-picker.component';
 import { NzTreeSelectComponent } from './types/tree-select/tree-select.component';
