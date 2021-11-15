@@ -12,7 +12,6 @@ import { SliderFieldModule } from './slider';
 import { TimePickerFieldModule } from './time-picker';
 import { UploadFieldModule } from './upload';
 
-
 @NgModule({
   imports: [
     AutocompleteFieldModule,

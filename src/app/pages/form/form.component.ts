@@ -22,36 +22,8 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
   model = {
     rate: 1, 
-    email: '', 
-    checkbox: ['222'], 
-    'checkbox-group': [{
-    label: '苹果',
-    value: '1'
-  },
-  {
-    label: '香蕉',
-    value: '2'
-  }], 
-  upload: [
-    {
-      uid: '-1',
-      name: 'xxx.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-    },
-    {
-      uid: '-2',
-      name: 'yyy.png',
-      url: 'https://pic1.zhimg.com/v2-1a289c30879b143c920efb0fc1741cf9_xl.jpg',
-      status: 'done'
-    }
-  ],
-  slider: 100,
-  sliderRange: [15, 20],
-  dateTime: null
-};
-
+    quill: '<p>1111</p><p>1111</p><p>11111111</p><p>1111</p><p>111</p><p><br></p><h1>工作经验</h1><h3>  开始日期 – 结束日期</h3><h2>职务，<span style=\"color: windowtext;\">公司</span></h2><p>描述你的职责和在影响力和成果方面取得的成就。举例说明，但尽量保持简洁。</p><p>  </p><p><br></p>'
+  }
 
   fields: FormlyFieldConfig[] = [
     {
@@ -67,8 +39,8 @@ export class FormComponent implements OnInit {
       }
     },
     {
-      key: 'dateTime',
-      type: 'nz-time-picker',
+      key: 'quill',
+      type: 'quill',
       className: 'mb-2 d-inline-block',
       templateOptions: {
         label: 'Date',
