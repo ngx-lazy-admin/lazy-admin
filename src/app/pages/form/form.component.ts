@@ -48,7 +48,8 @@ export class FormComponent implements OnInit {
     }
   ],
   slider: 100,
-  sliderRange: [15, 20]
+  sliderRange: [15, 20],
+  dateTime: null
 };
 
 
@@ -66,77 +67,16 @@ export class FormComponent implements OnInit {
       }
     },
     {
-      key: 'date',
-      type: 'nz-date-picker',
+      key: 'dateTime',
+      type: 'nz-time-picker',
       className: 'mb-2 d-inline-block',
       templateOptions: {
         label: 'Date',
         placeholder: 'Enter Date',
         required: true,
+        nzFormat: 'HH:mm:ss'
       }
-    },
-    {
-      key: 'radio',
-      type: 'nz-radio',
-      className: 'w-100 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Date',
-        placeholder: 'Enter Date',
-        required: true,
-        text: '这是文案'
-      }
-    },
-    {
-      key: 'rate ',
-      type: 'nz-rate',
-      className: 'w-100 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Date',
-        placeholder: 'Enter Date',
-        required: true,
-        text: '这是文案'
-      }
-    },
-    {
-      key: 'upload',
-      type: 'nz-upload',
-      className: 'w-25 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Date',
-        required: true,
-        text: '上传',
-        change: (fields, info) => {
-          console.log(info)
-        }
-      }
-    },
-    {
-      key: 'slider',
-      type: 'nz-slider',
-      className: 'w-100 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Date',
-        required: true,
-        text: '上传',
-        change: (fields, info) => {
-          console.log(info)
-        }
-      },
-    },
-    {
-      key: 'sliderRange',
-      type: 'nz-slider-range',
-      className: 'w-100 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Date',
-        required: true,
-        text: '上传',
-        change: (fields, info) => {
-          console.log(info)
-        }
-      }
-    }
-  
+    },  
   ];
 
   onSubmit(model:any) {
