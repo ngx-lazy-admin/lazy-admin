@@ -66,7 +66,8 @@ export class QuillField extends FieldType implements AfterViewInit {
     this.quillEditor = new Quill(this.editorElem, Object.assign({
       modules: this.defaultModules,
       placeholder: this.to.placeholder || '请输入',
-      theme: 'snow',
+      readOnly: false,
+      theme: 'bubble',
       boundary: document.body
     }, this.options || {}));
 

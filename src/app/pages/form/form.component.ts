@@ -41,7 +41,7 @@ export class FormComponent implements OnInit {
     {
       key: 'quill',
       type: 'quill',
-      className: 'mb-2 d-inline-block',
+      className: 'mb-2 w-50 d-inline-block',
       templateOptions: {
         label: 'Date',
         placeholder: 'Enter Date',

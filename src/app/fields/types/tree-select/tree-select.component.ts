@@ -1,11 +1,18 @@
-import { Component, OnInit} from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { Component, ChangeDetectionStrategy, Input, EventEmitter } from '@angular/core';
+import { FieldType,  } from '@ngx-formly/core';
+import { FormControl } from '@angular/forms';
+import { NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/core/tree';
 
 @Component({
-    selector: 'app-tree-select-component',
-    templateUrl: './tree-select.component.html'
+    selector: 'div[tree-select-field]',
+    templateUrl: './tree-select.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+      'display': 'contents',
+      '[class.display-contents]': `true`,
+    }
 })
-export class NzTreeSelectComponent extends FieldType implements OnInit {
+export class TreeSelectField extends FieldType  {
   show: Boolean = false;
   value = null;
   nodes = [
@@ -47,8 +54,42 @@ export class NzTreeSelectComponent extends FieldType implements OnInit {
           }
         ]
       }
-    ];
+  ];
 
+  get control() : FormControl {
+		return this.formControl as FormControl
+  }
+
+  get nzId(): boolean {
+		return this.to.nzId || false
+	}
+
+  
+  get nzExpandedKeys(): string[] {
+		return this.to.nzExpandedKeys || []
+	}
+
+  get nzNodes():  Array<NzTreeNode | NzTreeNodeOptions> {
+		return this.to.nzNodes || []
+	}
+
+
+  get nzSuffixIcon(): boolean {
+		return this.to.nzSuffixIcon || false
+	}
+  
+    
+	ngModelChange ($event: Date) {
+    if (this.to.change) {
+      this.to.change(this.field, $event)
+    }
+  }
+
+  nzExpandChange ($event: Event) {
+    if (this.to.nzOpenChange) {
+      this.to.nzExpandChange(this.field, $event)
+    }
+	}
 
   onChange($event: string): void {}
 

@@ -2,6 +2,9 @@
 @import url("~quill/dist/quill.bubble.css");
 @import url("~quill/dist/quill.snow.css");
 
-:host ::ng-deep .quill-editor .ql-editor {
+.quill-editor .ql-editor {
   min-height: 200px;
+  font-family: -apple-system, Microsoft YaHei, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 }

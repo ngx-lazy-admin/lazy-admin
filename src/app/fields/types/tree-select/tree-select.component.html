@@ -1,27 +1,9 @@
-
-<ng-container *ngIf="show">
-    <nz-tree-select
-        style="width: 100%"
-        [formControl]="formControl"
-        [formlyAttributes]="field"
-        [(ngModel)]="model[key]"
-        [nzAllowClear]="to['nzAllowClear']"
-        [nzPlaceHolder]="to['nzPlaceHolder'] || 'Please select'"
-        [nzDisabled]="to['nzDisabled']"
-        [nzShowSearch]="to['nzShowSearch'] || true"
-        [nzDropdownMatchSelectWidth]="to['nzDropdownMatchSelectWidth']"
-        [nzDropdownStyle]="to['nzDropdownStyle']"
-        [nzMultiple]="to['nzMultiple']"
-        [nzSize]="to['nzSize']"
-        [nzCheckable]="to['nzCheckable'] || true"
-        [nzShowExpand]="to['nzShowExpand'] || true"
-        [nzShowLine]="to['nzShowLine']"
-        [nzAsyncData]="to['nzAsyncData']"
-        [nzNodes]="to['nzNodes '] || nodes"
-        [nzDefaultExpandAll]="to['nzDefaultExpandAll']"
-        [nzDefaultExpandedKeys]="to['nzDefaultExpandedKeys']"
-        [nzDisplayWith]="to['nzDisplayWith']"
-        (ngModelChange)="onChange($event)">
-    </nz-tree-select>
-</ng-container>
-
+<nz-tree-select
+	[formControl]="control"
+	[formlyAttributes]="field"
+	[nzExpandedKeys]="nzExpandedKeys"
+	[nzNodes]="nodes"
+	nzShowSearch
+	[nzPlaceHolder]="nzPlaceHolder"
+	(ngModelChange)="onChange($event)"
+></nz-tree-select>
