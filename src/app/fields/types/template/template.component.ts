@@ -6,13 +6,11 @@ import { Subject } from 'rxjs';
   selector: 'app-template',
   templateUrl: './template.component.html'
 })
-export class FormlyFieldTemplateComponent extends FieldType implements OnInit {
+export class FormlyFieldTemplateComponent extends FieldType {
 
   innerHtml = null;
 
-  ngOnInit () {}
-
-  onClick ($event) {
+  onClick ($event: Event) {
     if (this.to.onClick) {
       this.to.onClick(this.model, $event);
     }
