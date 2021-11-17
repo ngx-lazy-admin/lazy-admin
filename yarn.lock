@@ -3770,6 +3770,11 @@ hdr-histogram-percentiles-obj@^3.0.0:
   resolved "https://registry.npmjs.org/hdr-histogram-percentiles-obj/-/hdr-histogram-percentiles-obj-3.0.0.tgz"
   integrity sha512-7kIufnBqdsBGcSZLPJwqHT3yhk1QTsSlFsVD3kx5ixH/AlgBs9yM1q6DPhXZ8f8gtdqgh7N7/5btRLpQsS2gHw==
 
+highcharts@^9.3.1:
+  version "9.3.1"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-9.3.1.tgz#dbeb39c2e5b298b02ccc459103f5f1c8daea1264"
+  integrity sha512-T5BjvY2CDtqlKRbid1Jd22psBp8tV9+7fm+x7h+EZuXF0OVDLR5128sRuC6WCWVss4cTVzS6PKnlnXKfYskIhw==
+
 hosted-git-info@^4.0.1:
   version "4.0.2"
   resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-4.0.2.tgz"

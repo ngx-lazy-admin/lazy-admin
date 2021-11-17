@@ -22,8 +22,27 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
   model = {
     rate: 1, 
-    quill: '<p>1111</p><p>1111</p><p>11111111</p><p>1111</p><p>111</p><p><br></p><h1>工作经验</h1><h3>  开始日期 – 结束日期</h3><h2>职务，<span style=\"color: windowtext;\">公司</span></h2><p>描述你的职责和在影响力和成果方面取得的成就。举例说明，但尽量保持简洁。</p><p>  </p><p><br></p>'
-  }
+    echart: {
+      title: {
+        text: 'ECharts 入门示例'
+      },
+      tooltip: {},
+      legend: {
+        data: ['销量']
+      },
+      xAxis: {
+        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+      },
+      yAxis: {},
+      series: [
+        {
+          name: '销量',
+          type: 'bar',
+          data: [5, 20, 36, 10, 10, 20]
+        }
+      ]
+    }
+ }
 
   fields: FormlyFieldConfig[] = [
     {
@@ -39,8 +58,8 @@ export class FormComponent implements OnInit {
       }
     },
     {
-      key: 'quill',
-      type: 'quill',
+      key: 'echart',
+      type: 'echarts',
       className: 'mb-2 w-50 d-inline-block',
       templateOptions: {
         label: 'Date',

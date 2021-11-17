@@ -6,6 +6,7 @@ import * as echarts from 'echarts';
 
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -67,6 +68,7 @@ export class CodeComponent implements OnInit {
     private nzConfigService: NzConfigService,
     private elRef:ElementRef,
     private cd: ChangeDetectorRef,
+    private sanitizer: DomSanitizer
 
   ) {
     const defaultEditorOption = this.nzConfigService.getConfigForComponent('codeEditor')?.defaultEditorOption || {};
@@ -99,10 +101,15 @@ export class CodeComponent implements OnInit {
 
   editorInitialized ($event: any) {
     $event.onDidChangeModelContent(() => {
-      const codes = $event.getValue()
+      let codes = $event.getValue()
       try {
         // 1. 使用eval
-        let options = this.execEval(codes)
+        codes = this.sanitizer.bypassSecurityTrustHtml(codes)
+        console.log(codes.changingThisBreaksApplicationSecurity)
+        const options = this.execEval(codes.changingThisBreaksApplicationSecurity)
+
+
+
         this.fields = options
         this.cd.markForCheck();
       } catch (error) {
@@ -117,6 +124,8 @@ export class CodeComponent implements OnInit {
     try {
       // 1. 使用eval
       let options = this.execEval(code)
+      options = this.sanitizer.bypassSecurityTrustHtml(options)
+      console.log(options)
       this.myChart.setOption(options)
     } catch (error) {
       this.error  = error;
@@ -126,6 +135,7 @@ export class CodeComponent implements OnInit {
   }
 
   execFunction = (name: string) => (new Function( 'return ' + name))();
+
   execEval = (code: string) => eval('(' + code + ')')
 
   change ($event: any) {

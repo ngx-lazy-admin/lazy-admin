@@ -17,7 +17,7 @@
 // @import "../node_modules/bootstrap/scss/type";
 // @import "../node_modules/bootstrap/scss/images";
 // @import "../node_modules/bootstrap/scss/containers";
-// @import "../node_modules/bootstrap/scss/grid";
+
 // @import "../node_modules/bootstrap/scss/helpers";
 
 // // 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
@@ -36,6 +36,12 @@ $zindex-modal-backdrop:             999;
 $zindex-modal:                      999;
 $zindex-popover:                    999;
 $zindex-tooltip:                    999;
+
+$enable-grid-classes: true;
+$enable-cssgrid: true;
+
+@import "../node_modules/bootstrap/scss/grid";
+
 
 // "./node_modules/bootstrap/dist/css/bootstrap-utilities.min.css"
 
@@ -108,7 +114,6 @@ $zindex-tooltip:                    999;
 	--bs-body-color: #212529;
 	--bs-body-bg: #fff;
 }
-
 
 
 

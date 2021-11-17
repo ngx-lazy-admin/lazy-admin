@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { QuillField } from './quill.component';
+import { EchartsField } from './echart.component';
 
 @NgModule({
   declarations: [
-    QuillField
+    EchartsField
   ],
   imports: [
     CommonModule,
@@ -14,11 +14,11 @@ import { QuillField } from './quill.component';
     FormlyModule.forChild({
       types: [
         {
-          name: 'quill',
-          component: QuillField,
+          name: 'echarts',
+          component: EchartsField,
         },
       ],
     }),
   ],
 })
-export class QuillFieldModule {}
+export class EchartsFieldModule {}

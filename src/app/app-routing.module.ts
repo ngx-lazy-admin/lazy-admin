@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: '/welcome' },
       { path: 'chart', loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule) },
-      { path: 'dashboard1', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
+      { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
       { path: 'system/list', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
       { path: 'system/modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
