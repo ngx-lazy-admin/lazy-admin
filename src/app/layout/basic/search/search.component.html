@@ -1,4 +1,4 @@
-<div class="bg-white mb-0 p-3 ">
+<nz-card>
   <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <div nz-row [nzGutter]="16">
       <ng-container *ngFor="let item of listFields">
@@ -34,7 +34,7 @@
       </div>
     </div>
   </form>
-</div>
+</nz-card>
 
 
 

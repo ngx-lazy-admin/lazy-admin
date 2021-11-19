@@ -42,7 +42,16 @@ export const DEFAULT_COLORS = [
 ];
 
 export const DEFAULT_VARS: { [key: string]: NzSafeAny } = {
-  'primary-color': { label: '主颜色', type: 'color', default: '#1890ff' },
+  'default-theme': {
+    label: '默认主体', 
+    type: 'switch', 
+    default: true 
+  },
+  'primary-color': { 
+    label: '主颜色', 
+    type: 'color', 
+    default: '#1890ff' 
+  },
   'alain-default-header-hg': {
     label: '高',
     type: 'px',

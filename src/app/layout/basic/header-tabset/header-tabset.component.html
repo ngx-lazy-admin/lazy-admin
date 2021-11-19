@@ -1,4 +1,4 @@
-<div class="w-100 d-flex flex-nowrap sticky-top">
+<nz-card nzSize="small" [nzBodyStyle]="{padding: 0, width: '100%'}" [nzBorderless]="true" class="w-100 d-flex flex-nowrap sticky-top">
 	<nz-tabset
 		[nzSelectedIndex]="selectedIndex"
 		[nzTabBarExtraContent]="extraTemplate"
@@ -6,7 +6,7 @@
 		nzType="editable-card"
 		[nzHideAdd]="true"
 		[nzAnimated]="false"
-		class="bg-white w-100"
+		class="w-100"
 		[nzTabBarStyle]="{'marginBottom': '0px'}"
 		[nzTabBarGutter]="0"
 		(nzAdd)="newTab()"
@@ -18,23 +18,38 @@
 		</ng-container>
 	</nz-tabset>
 	<ng-template #extraTemplate>
-		<nz-button-group>
+		<nz-button-group class="w-100">
 			<button nz-button nzType="text">
-				<i class="px-2 f16 trigger" nz-icon nzType="left"  nzTheme="outline"></i>
+				<i nz-icon nzType="left"  nzTheme="outline"></i>
 			</button>
 			<button nz-button nzType="text">
-				<i class="px-2 f16 trigger" nz-icon nzType="right"  nzTheme="outline"></i>
+				<i nz-icon nzType="right"  nzTheme="outline"></i>
 			</button>
 			<button nz-button nzType="text">
-				<i class="px-2 f16 trigger" nz-icon nzType="redo"  nzTheme="outline"></i>
+				<i nz-icon nzType="redo"  nzTheme="outline"></i>
 			</button>
 
 			<button nz-button nzType="text">
-				<i class="px-2 f16 trigger" nz-icon nzType="menu"  nzTheme="outline"></i>
+				<i nz-icon nzType="menu"  nzTheme="outline"></i>
 			</button>
 		</nz-button-group>
+
+		<!-- <ul nz-menu nzTheme="light" nzMode="horizontal" class="d-flex w-100" style="line-height: 40px;" nzSelectable="false">
+			<li nz-menu-item>
+				<i  nz-icon nzType="left"  nzTheme="outline"></i>
+			</li>
+			<li nz-menu-item>
+				<i  nz-icon nzType="right"  nzTheme="outline"></i>
+			</li>
+			<li nz-menu-item>
+				<i nz-icon nzType="redo"  nzTheme="outline"></i>
+			</li>
+			<li nz-menu-item>
+				<i nz-icon nzType="menu"  nzTheme="outline"></i>
+			</li>
+		</ul> -->
 	</ng-template>
-</div>
+</nz-card>
 
 <nz-dropdown-menu #menu="nzDropdownMenu">
 	<ul nz-menu>

@@ -42,7 +42,17 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles.less"
+              "src/styles.less",
+              {
+                "input": "src/styles/default.less",
+                "bundleName": "default",
+                "inject": false
+              },
+              {
+                "input": "src/styles/dark.less",
+                "bundleName": "dark",
+                "inject": false
+              }
             ],
             "scripts": []
           },
