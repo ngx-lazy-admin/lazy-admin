@@ -79,6 +79,7 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   collapsChange (isCollapsed: boolean) {
+    console.log('collapsChange')
     this.isCollapsed = isCollapsed;
     this.layout.collapsChange(this.isCollapsed);
   }

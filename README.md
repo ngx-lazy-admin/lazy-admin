@@ -279,6 +279,10 @@ https://www.jianshu.com/p/b9047a59ffc9
 git config --global http.proxy http://127.0.0.1:58641
 git config --global https.proxy http://127.0.0.1:58641
 
+### 访问 github 加速
+
+https://juejin.cn/post/6876715404455051272
+
 60356
 
 - 代办 是要做的

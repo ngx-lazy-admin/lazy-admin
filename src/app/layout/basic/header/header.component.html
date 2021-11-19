@@ -1,57 +1,46 @@
-<div class="p-0 bg-white app-header d-flex justify-content-between align-items-center">
-	<div class="d-flex align-items-center">
-		<div class="trigger f18 px-3 me-3">
-			<i  nz-icon 
+<div class="app-header">
+	<ul nz-menu nzTheme="dark" nzMode="horizontal" class="d-flex w-100" nzSelectable="false">
+		<li nz-menu-item>
+			<i nz-icon 
 				nz-button	
 				[nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" 
 				(click)="collapsChange(!isCollapsed)">
 			</i>
-		</div>
-
-		<nz-breadcrumb class="d-inline-flex d-none d-xl-inline-block d-xxl-inline-block">
-			<nz-breadcrumb-item>
-				<a [routerLink]="['/']"><i nz-icon nzType="home"></i></a>
-			</nz-breadcrumb-item>
-			<ng-container *ngFor="let item of menu.breadcrumb">
+		</li>
+		<li class="me-auto">
+			<nz-breadcrumb style="width: 240px;" class="d-inline-flex d-none d-xl-inline-block d-xxl-inline-block">
 				<nz-breadcrumb-item>
-					<span>{{item}}</span>
+					<a [routerLink]="['/']"><i nz-icon nzType="home"></i></a>
 				</nz-breadcrumb-item>
-			</ng-container>
-		</nz-breadcrumb>
-	</div>
-
-	<div class="d-flex align-items-center">
-
-		<div class="px-3 f18 trigger d-none d-xl-inline-flex d-xxl-inline-flex" (click)="isVisible = true">
+				<ng-container *ngFor="let item of menu.breadcrumb">
+					<nz-breadcrumb-item>
+						<span>{{item}}</span>
+					</nz-breadcrumb-item>
+				</ng-container>
+			</nz-breadcrumb>
+		</li>
+		<li nz-menu-item>
 			<i nz-icon nz-button nzType="search" nzTheme="outline"></i>
-		</div>
-
-		<div class="px-3 f18 trigger d-none d-xl-inline-flex d-xxl-inline-flex">
+		</li>
+		<li nz-menu-item>
 			<i nz-icon nz-button nzType="expand" nzTheme="outline"></i>
-		</div>
-
-		<div class="px-3 f18 trigger">
+		</li>
+		<li nz-menu-item>
 			<i nz-icon nz-button nzType="github" nzTheme="outline"></i>
-		</div>
-
-		<div class="px-3 f18 trigger">
+		</li>
+		<li nz-menu-item>
 			<i nz-icon nz-button nzType="question-circle" nzTheme="outline"></i>
-		</div>
-
-		<div class="px-3 f18 trigger">
-			<nz-badge [nzCount]="0">
-				<i nz-icon nz-button nzType="bell" class="f18" nzTheme="outline"></i>
-			</nz-badge>
-		</div>
-
-		<div class="px-3 trigger">
+		</li>
+		<li nz-menu-item>
+			<i nz-icon nz-button nzType="bell" class="f18" nzTheme="outline"></i>
+		</li>
+		<li nz-menu-item>
 			<nz-avatar nzIcon="user" nzSize="small" style="margin-top: -5px;"  nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
-		</div>
-
-		<div class="px-3 f18 trigger">
+		</li>
+		<li nz-menu-item>
 			<i nz-icon nz-button nzType="global" nzTheme="outline"></i>
-		</div>
-	</div>
+		</li>
+	</ul>
 </div>
 
 <nz-modal 
