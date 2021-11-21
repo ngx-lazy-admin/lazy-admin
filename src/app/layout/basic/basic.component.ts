@@ -16,8 +16,8 @@ import { MessageService } from '../../services/message.service'
 })
 export class LayoutBasicComponent implements OnInit {
 
-  percent = 0
-  progress: boolean | null = false
+  percent: number = 100;
+  progress: boolean | null = false;
   isCollapsed = false;
   dir: Direction = 'ltr';
 

@@ -1,11 +1,12 @@
+<!-- *ngIf="progress && percent" -->
 <nz-progress 
   class="progress position-fixed w-100 top-0 f0"
-  *ngIf="progress && percent"
+
   [nzPercent]="percent"
   nzStrokeWidth="2"
   [nzShowInfo]="false"
   nzStrokeLinecap="square"
-  style="z-index: 1000;"
+  style="z-index: 1000; line-height: 0;"
   [nzStrokeColor]="{ '0%': '#108ee9', '100%': '#87d068' }">
 </nz-progress>
 
@@ -24,7 +25,7 @@
   </nz-sider>
 
   <nz-layout >
-    <nz-header nzTheme="light">
+    <nz-header nzTheme="light" class="p-0">
       <app-layout-header></app-layout-header>
     </nz-header>
 

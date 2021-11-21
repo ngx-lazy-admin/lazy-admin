@@ -52,6 +52,11 @@
                 "input": "src/styles/dark.less",
                 "bundleName": "dark",
                 "inject": false
+              },
+              {
+                "input": "src/styles/custom.less",
+                "bundleName": "custom",
+                "inject": false
               }
             ],
             "scripts": []

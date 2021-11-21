@@ -128,8 +128,9 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     if (this.loadedLess) {
       return Promise.resolve();
     }
-    return this.loadStyle('./assets/custom.less', 'stylesheet/less')
-      .then(() => {
+    return this.loadStyle('/assets/styles/dark.less', 'stylesheet/less')
+      .then((res) => {
+        console.log(res)
         const lessConfigNode = this.doc.createElement('script');
         lessConfigNode.innerHTML = `
           window.less = {
@@ -159,16 +160,24 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
   private runLess(): void {
     const { ngZone, msg, cdr } = this;
     const msgId = msg.loading(this.compilingText, { nzDuration: 0 }).messageId;
-    console.log(this.genVars)
+    console.log(this.genVars())
     setTimeout(() => {
       this.loadLess().then(() => {
         msg.remove(msgId);
-        // console.log()
-        (window as NzSafeAny).less.modifyVars(this.genVars()).then(() => {
-          msg.success('成功');
-          msg.remove(msgId);
-          ngZone.run(() => cdr.detectChanges());
-        });
+        console.log('loadLess');
+        setTimeout(() => {
+          let v = `
+            @primary-color: #ff8877;
+          `;
+
+          (window as NzSafeAny).less.modifyVars({
+            '@primary-color': '#5B83AD',
+            '@buttonText': '#D9EEF2'
+          }).then(() => {
+            msg.remove(msgId);
+            ngZone.run(() => cdr.detectChanges());
+          });   
+        }, 1000);
       });
     }, 200);
   }
@@ -254,7 +263,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
   reset(): void {
     // this.color = this.DEFAULT_PRIMARY;
     // this.settingSrv.setLayout(ALAINDEFAULTVAR, {});
-    // this.resetData({});
+    this.resetData();
   }
 
   // 复制剪贴板
