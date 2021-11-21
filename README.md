@@ -291,3 +291,20 @@ https://juejin.cn/post/6876715404455051272
 
 
 https://blog.csdn.net/henzhuanxin/article/details/109047195
+
+### git 代理设置
+
+# 设置ss
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+
+# 设置代理
+git config --global https.proxy http://127.0.0.1:1080
+
+git config --global https.proxy https://127.0.0.1:1080
+
+# 取消代理
+git config --global --unset http.proxy
+
+git config --global --unset https.proxy
