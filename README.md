@@ -308,3 +308,9 @@ git config --global https.proxy https://127.0.0.1:1080
 git config --global --unset http.proxy
 
 git config --global --unset https.proxy
+
+
+页面 => 拆分成大组件 => 组件组成页面
+
+git config user.name "John Doe"
+git config user.email johndoe@example.com

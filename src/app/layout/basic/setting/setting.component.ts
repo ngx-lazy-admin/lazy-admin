@@ -37,22 +37,15 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
   dir: Direction = 'ltr';
   isDev = isDevMode();
   collapse = false;
-  // get layout() {
-  //   return this.settingSrv.layout;
-  // }
   data: NzSafeAny = {};
   color: string;
   colors = DEFAULT_COLORS;
   theme: boolean = false;
   currentTheme = ThemeType.default;
 
-  
-
   constructor(
     private cdr: ChangeDetectorRef,
     private msg: NzMessageService,
-    // private settingSrv: SettingsService,
-    // private lazy: LazyService,
     private ngZone: NgZone,
     @Inject(DOCUMENT) private doc: NzSafeAny,
     @Optional() private directionality: Directionality
@@ -60,10 +53,6 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     this.color = this.DEFAULT_PRIMARY;
     this.resetData();
   }
-
-  // private get cachedData(): { [key: string]: NzSafeAny } {
-  //   return this.settingSrv.layout[ALAINDEFAULTVAR] || {};
-  // }
 
   private get DEFAULT_PRIMARY(): string {
     return DEFAULT_VARS['primary-color'].default;
@@ -74,11 +63,6 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     this.directionality.change?.pipe(takeUntil(this.destroy$)).subscribe((direction: Direction) => {
       this.dir = direction;
     });
-
-    // if (this.autoApplyColor && this.color !== this.DEFAULT_PRIMARY) {
-    //   this.changeColor(this.color);
-    //   this.runLess();
-    // }
   }
 
   pxChange(val: number): void {
@@ -87,6 +71,16 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
 
   format = (value: number) => `${value} px`;
 
+  genVars(): NzSafeAny {
+    const { data, color, validKeys } = this;
+    const vars: { [key: string]: string } = {
+      [`@primary-color`]: color
+    };
+    validKeys.filter(key => key !== 'primary-color').forEach(key => (vars[`@${key}`] = data[key].value));
+    return vars;
+  }
+
+  // 加载css
   loadStyle(path: string, rel: string = 'stylesheet', innerContent?: string) {
     return new Promise(resolve => {
       const node = this.doc.createElement('link') as HTMLLinkElement;
@@ -105,6 +99,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     });
   }
 
+  // 加载JavaScript
   loadScript(path: string, innerContent?: string) {
     return new Promise(resolve => {
       const node = this.doc.createElement('script') as NzSafeAny;
@@ -124,13 +119,13 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     });
   }
 
-  private async loadLess(): Promise<void> {
+  // 加载less
+  loadLess(): Promise<void> {
     if (this.loadedLess) {
       return Promise.resolve();
     }
-    return this.loadStyle('/assets/styles/dark.less', 'stylesheet/less')
+    return this.loadStyle('/assets/styles/custom.less', 'stylesheet/less')
       .then((res) => {
-        console.log(res)
         const lessConfigNode = this.doc.createElement('script');
         lessConfigNode.innerHTML = `
           window.less = {
@@ -147,71 +142,36 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
       });
   }
 
-  private genVars(): NzSafeAny {
-    const { data, color, validKeys } = this;
-    const vars: { [key: string]: string } = {
-      [`@primary-color`]: color
-    };
-    validKeys.filter(key => key !== 'primary-color').forEach(key => (vars[`@${key}`] = data[key].value));
-    // this.setLayout(ALAINDEFAULTVAR, vars);
-    return vars;
+  // 运行less
+  runLess(): void {
+    this.loadLess().then(() => {
+      if ((window as NzSafeAny).less.modifyVars) {
+        (window as NzSafeAny).less.modifyVars(this.genVars()).then(() => {
+          this.ngZone.run(() => this.cdr.detectChanges());
+        });
+      }
+    });
   }
 
-  private runLess(): void {
-    const { ngZone, msg, cdr } = this;
-    const msgId = msg.loading(this.compilingText, { nzDuration: 0 }).messageId;
-    console.log(this.genVars())
-    setTimeout(() => {
-      this.loadLess().then(() => {
-        msg.remove(msgId);
-        console.log('loadLess');
-        setTimeout(() => {
-          let v = `
-            @primary-color: #ff8877;
-          `;
-
-          (window as NzSafeAny).less.modifyVars({
-            '@primary-color': '#5B83AD',
-            '@buttonText': '#D9EEF2'
-          }).then(() => {
-            msg.remove(msgId);
-            ngZone.run(() => cdr.detectChanges());
-          });   
-        }, 1000);
-      });
-    }, 200);
-  }
-
+  // 弹窗
   toggle(): void {
     this.collapse = !this.collapse;
   }
 
+  // 颜色变更
   changeColor(color: string): void {
     this.color = color;
-    console.log(this.color)
     Object.keys(DEFAULT_VARS)
       .filter(key => DEFAULT_VARS[key].default === '@primary-color')
-      // .forEach(key => delete this.cachedData[`@${key}`]);
     this.resetData();
   }
 
-  private loadCss(href: string, id: string): Promise<Event> {
-    return new Promise((resolve, reject) => {
-      const style = document.createElement('link');
-      style.rel = 'stylesheet';
-      style.href = href;
-      style.id = id;
-      style.onload = resolve;
-      style.onerror = reject;
-      document.head.append(style);
-    });
-  }
-
-  private reverseTheme(theme: string): ThemeType {
+  // 改变主题
+  reverseTheme(theme: string): ThemeType {
     return theme === ThemeType.dark ? ThemeType.default : ThemeType.dark;
   }
 
-  private removeUnusedTheme(theme: ThemeType): void {
+  removeUnusedTheme(theme: ThemeType): void {
     document.documentElement.classList.remove(theme);
     const removedThemeStyle = document.getElementById(theme);
     if (removedThemeStyle) {
@@ -219,10 +179,11 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     }
   }
 
-  public loadTheme(firstLoad = true) {
+
+  loadTheme(firstLoad = true) {
     const theme = this.currentTheme;
 
-    this.loadCss(`${theme}.css`, theme).then((res) => {
+    this.loadStyle(`${theme}.css`).then((res) => {
       this.removeUnusedTheme(this.reverseTheme(theme));
     }, (err) => {
       console.log(err)
@@ -233,7 +194,6 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
   changeTheme (type: Event): void {
     
     this.currentTheme = this.reverseTheme(this.currentTheme)
-    
     // 修改默认主题
     document.querySelector('html')?.setAttribute('data-theme', this.currentTheme)
     this.loadTheme(false); 
@@ -244,7 +204,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
   }
 
   // 重置
-  private resetData(): void {
+  resetData(): void {
     const data = DEFAULT_VARS;
     Object.keys(data).forEach(key => {
       const value = data[key].default || '';
@@ -274,7 +234,6 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
       .join('\n');
     // copy(copyContent);
     this.msg.success('Copy success');
-    console.log(copyContent)
   }
 
   ngOnDestroy(): void {
