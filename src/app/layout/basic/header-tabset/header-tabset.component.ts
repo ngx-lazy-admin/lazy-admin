@@ -44,7 +44,6 @@ export class LayoutHeaderTabsetComponent implements OnInit {
       if (this.tabs?.findIndex(item => item?.selected) || this.tabs?.findIndex(item => item?.selected) === 0) {
         this.selectedIndex = this.tabs?.findIndex(item => item?.selected)
       }
-      console.log('6666')
       this.cd.markForCheck();
     })
 
