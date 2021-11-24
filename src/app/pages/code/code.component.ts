@@ -25,17 +25,7 @@ export class CodeComponent implements OnInit {
   [
     {
       key: 'email',
-      type: 'nz-input',
-      className: 'w-25 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Email address',
-        placeholder: 'Enter email',
-        required: true,
-      }
-    },
-    {
-      key: 'email',
-      type: 'nz-autocomplete',
+      type: 'quill',
       className: 'w-25 mb-2 d-inline-block',
       templateOptions: {
         label: 'Email address',

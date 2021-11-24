@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { QuillField } from './quill.component';
+import { QuillEditField } from './quill-edit.component';
 
 @NgModule({
   declarations: [
-    QuillField
+    QuillEditField,
+    QuillField,
   ],
   imports: [
     CommonModule,

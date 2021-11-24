@@ -11,6 +11,7 @@ import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './setting.types';
+import { environment } from '../../../../environments/environment';
 
 enum ThemeType {
   dark = 'dark',
@@ -42,6 +43,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
   colors = DEFAULT_COLORS;
   theme: boolean = false;
   currentTheme = ThemeType.default;
+  colorWeek: boolean = false;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -63,6 +65,8 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     this.directionality.change?.pipe(takeUntil(this.destroy$)).subscribe((direction: Direction) => {
       this.dir = direction;
     });
+
+    console.log(environment)
   }
 
   pxChange(val: number): void {
@@ -225,6 +229,11 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     // this.settingSrv.setLayout(ALAINDEFAULTVAR, {});
     this.resetData();
   }
+
+  changeColorWeek ($event: Event) {
+    this.doc.body.classList[$event ? 'add' : 'remove']('color-weak');
+  }
+
 
   // 复制剪贴板
   copyVar(): void {
