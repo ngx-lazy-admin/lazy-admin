@@ -173,8 +173,8 @@ tab => 36px
 
 ### 分析包大小
 
-ng build --prod --stats-json
-npm run bundle-report
+ng build --stats-json
+npm run bundle
 
 
 ### 规范
