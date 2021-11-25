@@ -21,13 +21,13 @@ export class FormComponent implements OnInit {
 
   form = new FormGroup({});
   model = {
-    email: 'ssssssss', 
+    email: '# 啊啊啊 \n\n啊啊啊~~~~', 
  }
 
   fields: FormlyFieldConfig[] = [
     {
       key: 'email',
-      type: 'quill',
+      type: 'tui',
       className: 'w-100 mb-2 d-inline-block',
       templateOptions: {
         label: 'Email address',
