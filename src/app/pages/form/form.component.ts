@@ -26,7 +26,17 @@ export class FormComponent implements OnInit {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'email',
+      key: 'email1',
+      type: 'quill',
+      className: 'w-100 mb-2 d-inline-block',
+      templateOptions: {
+        label: 'Email address',
+        placeholder: 'Enter email',
+        required: true,
+      }
+    },
+    {
+      key: 'email2',
       type: 'tui',
       className: 'w-100 mb-2 d-inline-block',
       templateOptions: {
