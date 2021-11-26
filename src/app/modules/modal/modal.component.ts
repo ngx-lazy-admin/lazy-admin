@@ -1,5 +1,3 @@
-
-/* declarations: NzModalCustomComponent */
 import { Component, OnInit, Input, TemplateRef, ViewContainerRef, Renderer2, Optional   } from '@angular/core';
 import { ModalService } from './modal.service';
 
@@ -20,7 +18,4 @@ export class ModalComponent implements OnInit {
     // this.modalService.viewContainerRef = this.viewContainerRef
   }
 
-  createComponentModal(): void {
-    this.modalService.createComponentModal()
-  }
 }
