@@ -1,5 +1,6 @@
 <!-- *ngIf="progress && percent" -->
-<nz-progress 
+<div class="w-100" (click)="click($event)">
+  <nz-progress 
   class="progress position-fixed w-100 top-0 f0"
 
   [nzPercent]="percent"
@@ -65,4 +66,6 @@
 <nz-back-top></nz-back-top>
 
 <app-setting></app-setting>
+</div>
+
   

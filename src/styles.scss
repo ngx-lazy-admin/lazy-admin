@@ -241,3 +241,9 @@ body {
 .color-weak {
 	filter: invert(80%);
 }
+
+.cdk-overlay-container,
+.cdk-overlay-backdrop,
+.ant-modal-wrap  {
+    pointer-events: none !important;
+}

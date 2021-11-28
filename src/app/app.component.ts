@@ -9,4 +9,8 @@ import { Component, ChangeDetectionStrategy} from '@angular/core';
 export class AppComponent {
   isCollapsed = false;
   title = 'go-admin-ng'
+
+  closeModal () {
+    console.log('closeModal')
+  }
 }

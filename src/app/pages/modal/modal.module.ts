@@ -4,6 +4,7 @@ import { ModalRoutingModule } from './modal-routing.module';
 import { ModalComponent } from './modal.component';
 import { ModalsModule } from '../../modules/modal/modal.module';
 import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
     CommonModule,
     ModalRoutingModule,
     ModalsModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    DragDropModule
   ]
 })
 export class ModalModule { }

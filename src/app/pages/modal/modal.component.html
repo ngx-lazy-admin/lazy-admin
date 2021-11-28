@@ -1,1 +1,17 @@
-<button nz-button (click)="open()"> 弹窗 </button>
+
+<button nz-button (click)="open(tplTitle)"> 弹窗 </button>
+
+<button nz-button (click)="close()"> 关闭 </button>
+
+
+
+
+
+<ng-template #tplTitle >
+  <div 
+    cdkDrag
+    cdkDragRootElement=".dragModal"
+    style="cursor: move;">
+    Title Template
+  </div>
+</ng-template>

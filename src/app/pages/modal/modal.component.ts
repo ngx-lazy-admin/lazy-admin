@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, TemplateRef, ViewContainerRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, ViewContainerRef, Renderer2, ElementRef } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { ModalService } from '../../modules/modal';
 
@@ -18,11 +18,14 @@ export class ModalComponent implements OnInit {
   tplModal:any = null;
   distance = {x: 0, y: 0}
 
+  currentIndex: number = 1001;
+
   constructor(
     private modal: NzModalService,
     private viewContainerRef: ViewContainerRef,
-    private renderer: Renderer2,
-    private modals: ModalService
+    private modals: ModalService,
+    private elementRef: ElementRef,
+    private renderer: Renderer2
   ) {
     // hotkeys('f5', (event, handler) => {
     //   // Prevent the default refresh event under WINDOWS system
@@ -48,17 +51,17 @@ export class ModalComponent implements OnInit {
     }
   ]
 
-  open() {
+  open(title: any) {
     // this.modals.createComponentModal(this.fields, this.model)
-
-
+    // console.log(title)
 
    const modal = this.modals.ceateForm({
-      nzTitle: '111',
       nzWidth: '900px',
+      nzWrapClassName: 'dragModal',
       nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
       field: this.fields,
       model: this.model,
+      nzMask: false,
       nzFooter: [
         {
           label: '取消1',
@@ -70,11 +73,38 @@ export class ModalComponent implements OnInit {
           onClick: ($event: any) => {
             return new Promise(resolve => setTimeout(() => {
               console.log($event)
-              modal.destroy()
+              modal.containerInstance.config.nzZIndex = this.currentIndex++;
+              // modal.destroy()
             }, 60));
           }
         }
       ]
     })
+
+    // 容器实例添加监听事件, 如果z-index < max, 另 max + 1 , 并赋值给 z-index
+    // 关闭弹窗, 则最大值减一
+
+    console.log()
+    modal.containerInstance.containerClick.subscribe(item => {
+      console.log('containerClick')
+    })
+
+    console.log();
+
+    this.renderer.listen( modal.containerInstance.modalElementRef.nativeElement,'click',(event) => {
+      if ((modal.containerInstance.config.nzZIndex || 0) < this.currentIndex) {
+        modal.containerInstance.config.nzZIndex = ++this.currentIndex;
+      }
+    })
+
+    modal.containerInstance.containerClick.subscribe(res => {
+
+    })
   }
+
+  close () {
+    this.modals.closeAll()
+  }
+
+  
 }

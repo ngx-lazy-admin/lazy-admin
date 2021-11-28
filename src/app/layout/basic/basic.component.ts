@@ -12,7 +12,6 @@ import { MessageService } from '../../services/message.service'
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class LayoutBasicComponent implements OnInit {
 
@@ -63,5 +62,9 @@ export class LayoutBasicComponent implements OnInit {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  click ($event: Event) {
+    console.log('click')
   }
 }
