@@ -11,6 +11,8 @@ import { FormComponent } from './form.component';
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
 import { CustomFieldModule } from '../../fields/custom'
+import { AntvFieldModule } from '../../fields/custom/antv'
+
 
 
 @NgModule({
@@ -23,18 +25,14 @@ import { CustomFieldModule } from '../../fields/custom'
     FormRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    // FormlyModule.forRoot({
-    //   types: [
-    //     { name: 'nz-input', component: InputField },
-    //   ]
-    // }),
-
+    
     IconsProviderModule,
     NgZorroAntdModule,
     FormlyModule.forRoot(),
     FieldTypeModule,
     FormFieldModule,
-    CustomFieldModule
+    CustomFieldModule,
+    AntvFieldModule
   ]
 })
 export class FormModule { }

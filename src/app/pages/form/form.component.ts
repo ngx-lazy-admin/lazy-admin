@@ -21,23 +21,18 @@ export class FormComponent implements OnInit {
 
   form = new FormGroup({});
   model = {
-    email: '# 啊啊啊 \n\n啊啊啊~~~~', 
+    data: [
+      { month: '一月', temperature: 5, city: '北京' },
+      { month: '二月', temperature: 10, city: '北京' },
+      { month: '一月', temperature: 8, city: '南京' },
+      { month: '二月', temperature: 14, city: '南京' }
+    ]
  }
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'email1',
-      type: 'quill',
-      className: 'w-100 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Email address',
-        placeholder: 'Enter email',
-        required: true,
-      }
-    },
-    {
-      key: 'email2',
-      type: 'tui',
+      key: 'data',
+      type: 'g2',
       className: 'w-100 mb-2 d-inline-block',
       templateOptions: {
         label: 'Email address',
@@ -47,31 +42,13 @@ export class FormComponent implements OnInit {
     },
     {
       type: 'nz-button',
-      className: 'w-25 mb-2 d-inline-block',
       templateOptions: {
-        text: '添加',
-        placeholder: 'Enter email',
-        required: true,
-        click: (fields, model) => {
-          let value =  fields.form?.root.get('email')?.value;
-          fields.form?.root.get('email')?.patchValue(value + '哈哈哈哈哈哈哈')
-          // console.log()
+        text: '修改数据',
+        click: (fields, event) => {
+          const temperature = Math.random() * 10;
+          fields.form?.get('data')?.patchValue([...fields.form?.get('data')?.value,  { month: '二月', temperature: temperature, city: '赣州' }])
         }
-      },
-    },
-    {
-      type: 'nz-button',
-      className: 'w-25 mb-2 d-inline-block',
-      templateOptions: {
-        text: '清空',
-        placeholder: 'Enter email',
-        required: true,
-        click: (fields, model) => {
-          let value =  fields.form?.root.get('email')?.value;
-          fields.form?.root.get('email')?.patchValue('')
-          // console.log()
-        }
-      },
+      }
     }
   ];
 
