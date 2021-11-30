@@ -41,6 +41,9 @@ export class ModalService   {
 
   private renderer: Renderer2;
 
+  private _modals: NzModalRef[] = [];
+  private _hideAllStatus: boolean = false;
+
   constructor(
     private modal: NzModalService,
     private injector: Injector,
@@ -71,8 +74,10 @@ export class ModalService   {
       console.log(popupEl)
     }
 
-  ceateForm(params: any): NzModalRef {
+  ceateForm(params: any, $event: any): NzModalRef {
+    console.log('ceateForm')
 
+    $event.stopPropagation();
     // this.showAsElement('3333')
     // const componentPortal = new ComponentPortal(ComponentPortalExample);
 
@@ -96,6 +101,7 @@ export class ModalService   {
     // // Attach to the view so that the change detector knows to run
     // this.applicationRef.attachView(popupComponentRef.hostView);
     // console.log(params.title)
+    this._hideAllStatus = false;
     const modal = this.modal.create({
       nzContent: NzModalCustomComponent,
       nzViewContainerRef: this.viewContainerRef,
@@ -107,6 +113,11 @@ export class ModalService   {
       },
       ...params
     });
+
+    modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
+    modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
+
+    this._modals.push(modal)
     // const instance = modal.getContentComponent();
     // modal.afterOpen.subscribe(() => {
     //   console.log('[afterOpen] emitted!')
@@ -126,7 +137,61 @@ export class ModalService   {
 
   closeAll () {
     console.log(this.modal)
+
+
     this.modal.closeAll()
+  }
+
+  hideAll () {
+    console.log('666')
+    if (!this._hideAllStatus) {
+      this._hideAllStatus = true
+      this._modals.map(modal => {
+        this.hideModal(modal)
+      })
+      this.currentIndex = 1001
+    }
+  }
+
+  show ($event: any) {
+    console.log('show')
+    $event.stopPropagation();
+    // console.log
+    this._hideAllStatus = false;
+    this._modals.map(modal => {
+      this.showModal(modal)
+    })
+
+  }
+
+  // 显示移除 d-none
+  showModal (modal: NzModalRef) {
+    const config = modal.getConfig()
+    let className = config.nzWrapClassName?.split(" ")
+    console.log(className)
+
+    if (className?.find(name => name === 'd-none')) {
+      className = className?.filter(item => item !== 'd-none')
+    }
+    console.log(className)
+    modal.updateConfig({
+      ...config,
+      nzWrapClassName: className?.join(' ')
+    })
+  }
+
+  // 隐藏添加 d-none
+  hideModal (modal: NzModalRef) {
+    const config = modal.getConfig()
+    let className = config.nzWrapClassName?.split(" ")
+    if (!className?.find(name => name === 'd-none')) {
+      className?.push('d-none')
+    }
+    modal.updateConfig({
+      ...config,
+      nzZIndex: 1000,
+      nzWrapClassName: className?.join(' ')
+    })
   }
 }
 

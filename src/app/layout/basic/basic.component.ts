@@ -6,6 +6,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
 import { LayoutService } from '../layout.service';
 import { MessageService } from '../../services/message.service'
+import { ModalService } from 'src/app/modules/modal';
 
 @Component({
   selector: 'app-layout-basic',
@@ -20,6 +21,8 @@ export class LayoutBasicComponent implements OnInit {
   isCollapsed = false;
   dir: Direction = 'ltr';
 
+  
+
   private destroy$ = new Subject<void>();
   // private _dirChangeSubscription = Subscription.EMPTY;
   constructor(
@@ -27,7 +30,8 @@ export class LayoutBasicComponent implements OnInit {
     private layout: LayoutService,
     private cd: ChangeDetectorRef,
     private message: MessageService,
-    @Optional() private directionality: Directionality
+    private modal: ModalService,
+    @Optional() private directionality: Directionality,
   ) {
     // 布局状态
     this.layout.change$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
@@ -64,7 +68,7 @@ export class LayoutBasicComponent implements OnInit {
     this.destroy$.complete();
   }
 
-  click ($event: Event) {
-    console.log('click')
+  hideModal ($event: Event) {
+    this.modal.hideAll()
   }
 }

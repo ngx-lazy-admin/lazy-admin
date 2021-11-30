@@ -1,9 +1,10 @@
 <div 
+  class="d-block mx-n3"
   cdkDrag
   cdkDragHandle
   cdkDragRootElement=".dragModal"
   style="cursor: move;">
-  Title Template
+  {{ nzTitle }}
 </div>
 
 <ng-container *ngIf="fields && fields.length">

@@ -51,7 +51,7 @@ export class ModalComponent implements OnInit {
     }
   ]
 
-  open(title: any) {
+  open(title: any, $event: any) {
     // this.modals.createComponentModal(this.fields, this.model)
     // console.log(title)
 
@@ -79,7 +79,7 @@ export class ModalComponent implements OnInit {
           }
         }
       ]
-    })
+    }, $event)
 
     // 容器实例添加监听事件, 如果z-index < max, 另 max + 1 , 并赋值给 z-index
     // 关闭弹窗, 则最大值减一
@@ -104,6 +104,10 @@ export class ModalComponent implements OnInit {
 
   close () {
     this.modals.closeAll()
+  }
+
+  show ($event: any) {
+    this.modals.show($event)
   }
 
   
