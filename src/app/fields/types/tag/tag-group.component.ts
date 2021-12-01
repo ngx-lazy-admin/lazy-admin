@@ -3,14 +3,15 @@ import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'div[checkbox-field]',
+  selector: 'div[tag-group-field]',
   template: `
-    <nz-checkbox-group 
+    <tag-checkbox-group
       [formControl]="control"
       [formlyAttributes]="field"
       (ngModelChange)="ngModelChange($event)"
       ngDefaultControl>
-    </nz-checkbox-group>
+      {{ text }}
+    </tag-checkbox-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush 
 })
@@ -24,6 +25,10 @@ export class TagGroupField extends FieldType {
   get nzDisabled(): boolean {
 		return this.to.nzDisabled || false;
 	}
+
+  get text(): string {
+    return this.to.text || ''
+  }
 
   ngModelChange ($event: Event) {
     if (this.to.change) {

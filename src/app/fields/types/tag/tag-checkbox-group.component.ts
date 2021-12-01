@@ -23,26 +23,36 @@ import { takeUntil } from 'rxjs/operators';
 import { BooleanInput, NzSafeAny, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 import { InputBoolean } from 'ng-zorro-antd/core/util';
 
+
+export interface NzCheckBoxOptionInterface {
+  label: string;
+  value: string;
+  checked?: boolean;
+  disabled?: boolean;
+}
+
 @Component({
-  selector: '[tag-checkbox]',
-  exportAs: 'tagCheckbox',
+  selector: 'tag-checkbox-group',
+  exportAs: 'tagCheckboxGroup',
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-    <nz-tag 
-      nzMode="checkable" 
-      [attr.id]="nzId"
-      [nzChecked]="nzChecked"
-      (nzCheckedChange)="checkChange($event)"
-    >
-      <ng-content></ng-content>
-    </nz-tag>
+    <ng-container *ngFor="let item of options">
+      <nz-tag 
+        nzMode="checkable" 
+        [attr.id]="item.value"
+        [nzChecked]="item.checked"
+        (nzCheckedChange)="checkChange($event, item)"
+      >
+        {{ item['label'] }}
+      </nz-tag>
+    </ng-container>
   `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NzTagCheckboxComponent),
+      useExisting: forwardRef(() => NzTagCheckboxGroupComponent),
       multi: true
     }
   ],
@@ -51,8 +61,7 @@ import { InputBoolean } from 'ng-zorro-antd/core/util';
   }
 })
 
-
-export class NzTagCheckboxComponent implements OnInit, ControlValueAccessor, OnDestroy {
+export class NzTagCheckboxGroupComponent implements OnInit, ControlValueAccessor, OnDestroy {
   static ngAcceptInputType_nzAutoFocus: BooleanInput;
   static ngAcceptInputType_nzDisabled: BooleanInput;
   static ngAcceptInputType_nzIndeterminate: BooleanInput;
@@ -68,14 +77,18 @@ export class NzTagCheckboxComponent implements OnInit, ControlValueAccessor, OnD
   @Input() @InputBoolean() nzDisabled = false;
 
   @Input() nzId: string | null = null;
-  @Output() readonly nzCheckedChange = new EventEmitter<boolean>();
+  @Output() readonly nzCheckedChange = new EventEmitter<NzCheckBoxOptionInterface[]>();
+
+
+  @Input() 
+  options: NzCheckBoxOptionInterface[] = []
 
   hostClick(e: MouseEvent): void {
     e.preventDefault();
   }
 
-  writeValue(value: boolean): void {
-    this.nzChecked = value;
+  writeValue(value: NzCheckBoxOptionInterface[]): void {
+    this.options = value;
     this.cd.markForCheck();
   }
 
@@ -116,12 +129,11 @@ export class NzTagCheckboxComponent implements OnInit, ControlValueAccessor, OnD
     this.dir = this.directionality.value;
   }
 
-  checkChange(checked: boolean): void {
+  checkChange(checked: boolean, item: NzCheckBoxOptionInterface): void {
     if (!this.nzDisabled) {
-      this.nzChecked = checked;
-
-      this.onChange(this.nzChecked);
-      this.nzCheckedChange.emit(this.nzChecked);
+      item.checked = checked;
+      this.onChange(this.options);
+      this.nzCheckedChange.emit(this.options);
     }
   }
 

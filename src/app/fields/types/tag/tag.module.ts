@@ -6,15 +6,18 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 
 import { TagField } from './tag.component';
 import { TagGroupField } from './tag-group.component';
-import { TagWrapperField } from './tag-wrapper.component'
-import { NzTagsCheckboxComponent } from './tag-checkbox.component';
+import { NzTagCheckboxGroupComponent } from './tag-checkbox-group.component';
+import { NzTagCheckboxComponent } from './tag-checkbox.component';
 
 @NgModule({
   declarations: [
     TagField,
+    NzTagCheckboxComponent,
+
     TagGroupField,
-    TagWrapperField,
-    NzTagsCheckboxComponent,
+    NzTagCheckboxGroupComponent,
+    // TagWrapperField,
+
   ],
   imports: [
     CommonModule,
@@ -30,10 +33,6 @@ import { NzTagsCheckboxComponent } from './tag-checkbox.component';
         {
           name: 'nz-tag-group',
           component: TagGroupField,
-        },
-        {
-          name: 'nz-tag-wrapper',
-          component: TagWrapperField,
         }
       ],
     }),

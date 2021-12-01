@@ -5,14 +5,15 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'div[tag-field]',
   template: `
-    <nz-tag-checkbox
+    <label
+      tag-checkbox
       [formControl]="control"
       [formlyAttributes]="field"
       [nzDisabled]="disabled"
       (nzCheckedChange)="ngModelChange($event)"
     >
       {{ text }}
-    </nz-tag-checkbox>
+    </label>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -44,7 +45,6 @@ export class TagField extends FieldType {
   }
 
   ngModelChange ($event: boolean) {
-    console.log($event)
     if (this.to.change) {
       this.to.change(this.field, $event)
     }
