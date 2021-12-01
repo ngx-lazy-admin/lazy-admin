@@ -6,6 +6,13 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'nz-modal-custom-component',
   templateUrl: './modal-form.component.html',
+  styles: [
+    `
+    .modal-wrap {
+      margin: -24px;
+    }
+    `
+  ]
 })
 export class NzModalCustomComponent {
 

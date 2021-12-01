@@ -84,12 +84,9 @@ export class ModalComponent implements OnInit {
     // 容器实例添加监听事件, 如果z-index < max, 另 max + 1 , 并赋值给 z-index
     // 关闭弹窗, 则最大值减一
 
-    console.log()
     modal.containerInstance.containerClick.subscribe(item => {
       console.log('containerClick')
     })
-
-    console.log();
 
     this.renderer.listen( modal.containerInstance.modalElementRef.nativeElement,'click',(event) => {
       if ((modal.containerInstance.config.nzZIndex || 0) < this.currentIndex) {
@@ -108,6 +105,7 @@ export class ModalComponent implements OnInit {
 
   show ($event: any) {
     this.modals.show($event)
+    // this.modals.openAll()
   }
 
   
