@@ -9,6 +9,7 @@ import { InputNumberFieldModule } from './input-number';
 import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
 import { SliderFieldModule } from './slider';
+import { TagFieldModule } from './tag';
 import { TimePickerFieldModule } from './time-picker';
 import { UploadFieldModule } from './upload';
 
@@ -24,7 +25,8 @@ import { UploadFieldModule } from './upload';
     RateFieldModule,
     UploadFieldModule,
     SliderFieldModule,
-    TimePickerFieldModule
+    TimePickerFieldModule,
+    TagFieldModule
   ],
 })
 export class FieldTypeModule {}

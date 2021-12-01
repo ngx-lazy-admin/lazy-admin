@@ -16,8 +16,6 @@ export interface NzCheckBoxOptionInterface {
     <nz-checkbox-wrapper-item
       [formControl]="control"
       [formlyAttributes]="field"
-      [nzDisabled]="nzDisabled"
-      [nzOptions]="nzOptions"
       (ngModelChange)="ngModelChange($event)">
     </nz-checkbox-wrapper-item>
   `,

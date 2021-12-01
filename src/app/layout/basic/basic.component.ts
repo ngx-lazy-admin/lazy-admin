@@ -12,7 +12,10 @@ import { ModalService } from 'src/app/modules/modal';
   selector: 'app-layout-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(click)': 'hostClick($event)'
+  }
 })
 export class LayoutBasicComponent implements OnInit {
 
@@ -20,8 +23,6 @@ export class LayoutBasicComponent implements OnInit {
   progress: boolean | null = false;
   isCollapsed = false;
   dir: Direction = 'ltr';
-
-  
 
   private destroy$ = new Subject<void>();
   // private _dirChangeSubscription = Subscription.EMPTY;
@@ -68,7 +69,7 @@ export class LayoutBasicComponent implements OnInit {
     this.destroy$.complete();
   }
 
-  hideModal ($event: Event) {
+  hostClick ($event: Event) {
     this.modal.hideAll()
   }
 }

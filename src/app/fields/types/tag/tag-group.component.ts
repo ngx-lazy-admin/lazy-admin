@@ -8,7 +8,6 @@ import { FieldType } from '@ngx-formly/core';
     <nz-checkbox-group 
       [formControl]="control"
       [formlyAttributes]="field"
-      [nzDisabled]="nzDisabled"
       (ngModelChange)="ngModelChange($event)"
       ngDefaultControl>
     </nz-checkbox-group>

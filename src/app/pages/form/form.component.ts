@@ -21,6 +21,7 @@ export class FormComponent implements OnInit {
 
   form = new FormGroup({});
   model = {
+    tag: true,
     data: [
       { month: '一月', temperature: 5, city: '北京' },
       { month: '二月', temperature: 10, city: '北京' },
@@ -31,13 +32,12 @@ export class FormComponent implements OnInit {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'data',
-      type: 'g2',
-      className: 'w-100 mb-2 d-inline-block',
+      key: 'tag',
+      type: 'nz-tag',
+      className: 'm-5',
       templateOptions: {
-        label: 'Email address',
-        placeholder: 'Enter email',
-        required: true,
+        label: 'Categories',
+        text: 'tags'
       }
     },
     {

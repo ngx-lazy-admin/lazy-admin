@@ -5,16 +5,14 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'div[tag-field]',
   template: `
-    <label 
-      nz-checkbox 
+    <nz-tag-checkbox
       [formControl]="control"
       [formlyAttributes]="field"
-      [nzDisabled]="nzDisabled"
-      [nzIndeterminate]="nzIndeterminate"
-      (ngModelChange)="ngModelChange($event)"
-      ngDefaultControl>
-      {{text}}
-    </label>
+      [nzDisabled]="disabled"
+      (nzCheckedChange)="ngModelChange($event)"
+    >
+      {{ text }}
+    </nz-tag-checkbox>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -29,8 +27,8 @@ export class TagField extends FieldType {
 		return this.to.nzAutoFocus || false;
 	}
 
-  get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+  get disabled(): boolean {
+		return this.to.nzDisabled || this.to.disabled || false;
 	}
 
 	get nzIndeterminate(): boolean {
@@ -45,7 +43,8 @@ export class TagField extends FieldType {
     return this.to.text || ''
   }
 
-  ngModelChange ($event: Event) {
+  ngModelChange ($event: boolean) {
+    console.log($event)
     if (this.to.change) {
       this.to.change(this.field, $event)
     }

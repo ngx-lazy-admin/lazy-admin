@@ -4,15 +4,14 @@
 
 export const environment = {
   production: false,
-
-  "navTheme": "light",
-  "primaryColor": "#1890ff",
-  "layout": "mix",
-  "contentWidth": "Fluid",
-  "fixedHeader": false,
-  "fixSiderbar": true,
-  "title": "Ant Design Pro",
-  "headerHeight": 48
+  navTheme: "light",
+  primaryColor: "#1890ff",
+  layout: "mix",
+  contentWidth: "Fluid",
+  fixedHeader: false,
+  fixSiderbar: true,
+  title: "Ant Design Pro",
+  headerHeight: 48
 };
 
 /*

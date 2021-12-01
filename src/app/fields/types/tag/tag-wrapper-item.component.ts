@@ -26,21 +26,12 @@ export interface NzCheckBoxOptionInterface {
 }
 
 @Component({
-  selector: 'nz-checkbox-wrapper-item',
+  selector: 'nz-tag-checkbox-item',
   exportAs: 'nzCheckboxGroup',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
   template: `
-    <label
-      nz-checkbox
-      class="ant-checkbox-wrapper-item"
-      *ngFor="let o of nzOptions; trackBy: trackByOption"
-      [nzDisabled]="o.disabled || nzDisabled"
-      [nzChecked]="o.checked!"
-      (nzCheckedChange)="onCheckedChange(o, $event)"
-    >
-      <span>{{ o.label }}</span>
-    </label>
+      <span></span>
   `,
   providers: [
     {
