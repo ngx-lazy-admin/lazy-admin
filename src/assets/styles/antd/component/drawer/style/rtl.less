@@ -1,0 +1,16 @@
+
+
+@drawer-prefix-cls: ~'@{ant-prefix}-drawer';
+
+.@{drawer-prefix-cls} {
+  &-rtl {
+    direction: rtl;
+  }
+
+  &-close {
+    .@{drawer-prefix-cls}-rtl & {
+      right: auto;
+      left: 0;
+    }
+  }
+}

@@ -15,7 +15,7 @@ import { environment } from '../../../../environments/environment';
 
 enum ThemeType {
   dark = 'dark',
-  default = 'default',
+  default = '',
 }
 
 @Component({
@@ -84,24 +84,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     return vars;
   }
 
-  // 加载css
-  loadStyle(path: string, rel: string = 'stylesheet', innerContent?: string) {
-    return new Promise(resolve => {
-      const node = this.doc.createElement('link') as HTMLLinkElement;
-      node.rel = rel;
-      node.type = 'text/css';
-      node.href = path;
-      if (innerContent) {
-        node.innerHTML = innerContent;
-      }
-      this.doc.getElementsByTagName('head')[0].appendChild(node);
-      const item = {
-        path,
-        status: 'ok'
-      };
-      resolve(item);
-    });
-  }
+
 
   // 加载JavaScript
   loadScript(path: string, innerContent?: string) {
@@ -170,38 +153,71 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
     this.resetData();
   }
 
+
+
+  removeUnusedTheme(theme: ThemeType): void {
+    if (theme) {
+      document.documentElement.classList.remove(theme);
+      const removedThemeStyle = document.getElementById(theme);
+      if (removedThemeStyle) {
+        document.head.removeChild(removedThemeStyle);
+      }
+    }
+  }
+
+  changeTheme (type: Event): void {
+    let head = document.querySelector('head')
+
+    let child = this.currentTheme ? document.querySelector('#' + this.currentTheme) : null;
+    if (this.currentTheme && document.querySelector('#' + this.currentTheme)) {
+      if (child) {
+        head?.removeChild(child)
+      }
+    }
+
+    // 设置当前主体
+    this.currentTheme = this.reverseTheme(this.currentTheme)
+    document.querySelector('html')?.setAttribute('data-theme', this.currentTheme)
+
+
+    this.loadTheme(false); 
+  } 
+
   // 改变主题
   reverseTheme(theme: string): ThemeType {
     return theme === ThemeType.dark ? ThemeType.default : ThemeType.dark;
   }
 
-  removeUnusedTheme(theme: ThemeType): void {
-    document.documentElement.classList.remove(theme);
-    const removedThemeStyle = document.getElementById(theme);
-    if (removedThemeStyle) {
-      document.head.removeChild(removedThemeStyle);
+  loadTheme(firstLoad = true) {
+    const theme = this.currentTheme;
+    if (theme) {
+      this.loadStyle(`${theme}.css`).then((res) => {
+        this.removeUnusedTheme(this.reverseTheme(theme));
+      }, (err) => {
+        console.log(err)
+      });
     }
   }
 
-
-  loadTheme(firstLoad = true) {
-    const theme = this.currentTheme;
-
-    this.loadStyle(`${theme}.css`).then((res) => {
-      this.removeUnusedTheme(this.reverseTheme(theme));
-    }, (err) => {
-      console.log(err)
+  // 加载css
+  loadStyle(path: string, rel: string = 'stylesheet', innerContent?: string) {
+    return new Promise(resolve => {
+      const node = this.doc.createElement('link') as HTMLLinkElement;
+      node.rel = rel;
+      node.type = 'text/css';
+      node.id = this.currentTheme;
+      node.href = path;
+      if (innerContent) {
+        node.innerHTML = innerContent;
+      }
+      this.doc.getElementsByTagName('head')[0].appendChild(node);
+      const item = {
+        path,
+        status: 'ok'
+      };
+      resolve(item);
     });
   }
-
-
-  changeTheme (type: Event): void {
-    
-    this.currentTheme = this.reverseTheme(this.currentTheme)
-    // 修改默认主题
-    document.querySelector('html')?.setAttribute('data-theme', this.currentTheme)
-    this.loadTheme(false); 
-  } 
 
   setLayout(name: string, value: NzSafeAny = null): void {
     // this.settingSrv.setLayout(name, value);
