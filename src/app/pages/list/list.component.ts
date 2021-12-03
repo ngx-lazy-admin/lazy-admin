@@ -21,18 +21,12 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user.getUser().subscribe(() => {})
 
-    for (let i=0; i< 10000; i++) {
-      this.list.push(i)
-    }
   }
 
   list = [0]
 
   add () {
-    this.user.add().subscribe(hero => {}); 
-    this.users.id++
-    this.cd.markForCheck()
+
   }
 }

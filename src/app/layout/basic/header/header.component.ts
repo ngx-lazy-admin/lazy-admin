@@ -27,6 +27,10 @@ export interface AutocompleteOptionGroups {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.bg-gray-100]': 'true',
+    '[class.d-block]': 'true'
+  }
 })
 export class LayoutHeaderComponent implements OnInit {
 

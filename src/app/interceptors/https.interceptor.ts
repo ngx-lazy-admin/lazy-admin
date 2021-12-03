@@ -24,11 +24,8 @@ export class HttpsInterceptor implements HttpInterceptor {
       'X-Requested-With': 'XMLHttpRequest',
       'request-id': Math.random().toString(36).slice(-8) +  '-' + new Date().getTime()
     }});
-    const messageId = this.message.loading('数据加载中...')
-    return next.handle(req).pipe(debounceTime(3000)).pipe(tap(event => {
-      this.message.remove(messageId);
+    return next.handle(req).pipe(tap(event => {
     }, error => {
-      this.message.remove(messageId);
       if (error.status === 401 && location.pathname !== '/login') {
         location.href = 'login?return_url=' + encodeURIComponent(location.href);
       }
