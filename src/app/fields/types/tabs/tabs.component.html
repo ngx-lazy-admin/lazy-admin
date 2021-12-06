@@ -1,0 +1,24 @@
+<nz-tabset
+  [nzSelectedIndex]="nzSelectedIndex"
+  [nzAnimated]="nzAnimated"
+  [nzSize]="nzSize"
+  [nzTabPosition]="nzTabPosition"
+  [nzType]="nzType"
+  [nzTabBarGutter]="nzTabBarGutter"
+  [nzHideAll]="nzHideAll"
+  [nzType]="nzType">
+
+  <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
+    <nz-tab 
+      [nzTitle]="field?.templateOptions?.nzTitle"
+      [nzForceRender]="field?.templateOptions?.nzForceRender"
+      [nzDisabled]="field?.templateOptions?.nzDisabled"
+      (nzClick)="field?.templateOptions?.nzClick"
+      (nzContextmenu)="field?.templateOptions?.nzContextmenu"
+      (nzSelect)="field?.templateOptions?.nzSelect"
+      (nzDeselect)="field?.templateOptions?.nzDeselect"
+    >
+      <formly-field [field]="field"></formly-field>
+    </nz-tab>
+  </ng-container>
+</nz-tabset>

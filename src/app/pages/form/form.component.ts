@@ -22,9 +22,11 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
   model = {
     data: {
-      month: 1, 
-      temperature: 5, 
-      city1: 2 
+      UserName: 'Zhou Maomao', 
+      Telephone: '18100000000', 
+      Live: 'Hangzhou, Zhejiang',
+      Remark: 'Empty',
+      Address: 'No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China' 
     }, 
  }
 
@@ -35,51 +37,47 @@ export class FormComponent implements OnInit {
       className: 'm-5',
       templateOptions: {
         nzLabel: 'Categories',
-        nzBordered: true,
         nzColumn: { xxl: 4, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }
       },
       fieldGroup: [
         {
           type: 'text',
-          key: 'month',
+          key: 'UserName',
           templateOptions: {
-            nzLabel: 'month',
+            nzLabel: 'UserName',
             required: true,
           },
         },
         {
           type: 'text',
-          key: 'temperature',
+          key: 'Telephone',
           templateOptions: {
-            nzLabel: 'temperature',
+            nzLabel: 'Telephone',
           },
         },
         {
           type: 'text',
-          key: 'city',
+          key: 'Live',
           templateOptions: {
-            nzLabel: 'city',
+            nzLabel: 'Live',
           },
         },
         {
           type: 'text',
-          key: 'city1',
+          key: 'Remark',
           templateOptions: {
-            nzLabel: 'city1',
+            nzLabel: 'Remark',
           },
         },
-        
+        {
+          type: 'text',
+          key: 'Address',
+          templateOptions: {
+            nzLabel: 'Address',
+          },
+        },
       ],
     },
-    {
-      type: 'nz-input',
-      key: 'month1',
-      templateOptions: {
-        nzLabel: 'month1',
-        required: true,
-      },
-    },
-
   ];
 
   onSubmit(model:any) {
