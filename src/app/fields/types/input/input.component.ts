@@ -8,9 +8,6 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 	templateUrl: './input.component.html',
 	styleUrls: ['./input.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	host: {
-		'display': 'contents',
-	}
 })
 export class InputField extends FieldType {
 
@@ -24,9 +21,9 @@ export class InputField extends FieldType {
 
 	get control() : FormControl {
 		return this.formControl as FormControl
-  	}
+  }
 
-	get type(): string {
-		return this.to.type || 'text'
-	}
+	// get type(): string {
+	// 	return this.to.type || 'text'
+	// }
 }

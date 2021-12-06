@@ -1,18 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { Subject } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({
-  selector: 'app-template',
-  templateUrl: './template.component.html'
+    selector: 'div[template-field]',
+    templateUrl: './template.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush 
 })
-export class FormlyFieldTemplateComponent extends FieldType {
+export class TemplateField extends FieldType {
 
-  innerHtml = null;
-
-  onClick ($event: Event) {
-    if (this.to.onClick) {
-      this.to.onClick(this.model, $event);
-    }
-  }
 }
