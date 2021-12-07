@@ -1,15 +1,35 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  TemplateRef,
+  ChangeDetectionStrategy,
+  EventEmitter,
+  ViewChild,
+ } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
-import { NzTabComponent, NzTabPosition, NzTabType } from 'ng-zorro-antd/tabs'; 
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { NzTableComponent } from 'ng-zorro-antd/table';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+export interface VirtualDataInterface {
+  index: number;
+  name: string;
+  age: number;
+  address: string;
+}
 
 @Component({
-  selector: 'div[tabs-field]',
-  templateUrl: './tabs.component.html',
+  selector: 'div[table-field]',
+  templateUrl: './table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class TabsField extends FieldArrayType implements OnDestroy {
+export class TableField extends FieldArrayType implements OnDestroy {
+
+  @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
+
+  private destroy$ = new Subject();
 
   get nzSelectedIndex(): number {
 		return this.to.nzSelectedIndex || 0;
@@ -31,13 +51,6 @@ export class TabsField extends FieldArrayType implements OnDestroy {
 		return this.to.nzTabBarStyle || false;
 	}
 
-  get nzTabPosition(): NzTabPosition  {
-		return this.to.nzTabPosition || false;
-	}
-
-  get nzType(): NzTabType  {
-		return this.to.nzType || false;
-	}
 
   get nzTabBarGutter():  number {
 		return this.to.nzTabBarGutter || false;
@@ -72,7 +85,15 @@ export class TabsField extends FieldArrayType implements OnDestroy {
   }
 
   trackByFn(index: number, item: any) {
-    return item.id ? item.id : index; // or item.id
+    return item.id ? item.id : index;
+  }
+
+  ngAfterViewInit(): void {
+    this.nzTableComponent?.cdkVirtualScrollViewport?.scrolledIndexChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: number) => {
+        console.log('scroll index to', data);
+      });
   }
 
   ngOnDestroy() {
@@ -81,6 +102,8 @@ export class TabsField extends FieldArrayType implements OnDestroy {
         super.remove(index)
       });
     }
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   nzSelectedIndexChange ($event: EventEmitter<number>) {
@@ -88,12 +111,6 @@ export class TabsField extends FieldArrayType implements OnDestroy {
       this.to.nzSelectedIndexChange($event)
     }
   } 
-
-  nzSelectChange ($event: EventEmitter<{index: number,tab: NzTabComponent}>) {
-    if (this.to.nzSelectChange) {
-      this.to.nzSelectChange($event)
-    }
-  }
 
   nzAdd ($event: EventEmitter<{}>) {
     if (this.to.nzAdd) {
@@ -105,5 +122,9 @@ export class TabsField extends FieldArrayType implements OnDestroy {
     if (this.to.nzClose) {
       this.to.nzClose($event)
     }
+  }
+
+  trackByIndex(_: number, data: VirtualDataInterface): number {
+    return data.index;
   }
 } 

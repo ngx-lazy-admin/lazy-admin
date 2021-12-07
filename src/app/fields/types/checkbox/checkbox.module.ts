@@ -24,12 +24,24 @@ import { NzCheckboxWrapperItemComponent } from '../checkbox/checkbox-wrapper-ite
     FormlyModule.forChild({
       types: [
         {
+          name: 'checkbox',
+          component: CheckboxField,
+        },,
+        {
           name: 'nz-checkbox',
           component: CheckboxField,
         },
         {
+          name: 'checkbox-group',
+          component: CheckboxGroupField,
+        },
+        {
           name: 'nz-checkbox-group',
           component: CheckboxGroupField,
+        },
+        {
+          name: 'checkbox-wrapper',
+          component: CheckboxWrapperField,
         },
         {
           name: 'nz-checkbox-wrapper',

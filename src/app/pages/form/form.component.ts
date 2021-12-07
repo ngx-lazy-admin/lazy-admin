@@ -20,19 +20,17 @@ export class FormComponent implements OnInit {
   }
 
   form = new FormGroup({});
+
   model = {
-    data: {
-      UserName: 'Zhou Maomao', 
-      Telephone: '18100000000', 
-      Live: 'Hangzhou, Zhejiang',
-      Remark: 'Empty',
-      Address: 'No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China' 
-    }, 
- }
+    UserName: 'Zhou Maomao', 
+    Telephone: '18100000000', 
+    Live: 'Hangzhou, Zhejiang',
+    Remark: 'Template <script>alert("0wned")</script> <b>Syntax</b>',
+    Address: 'No. 18,  <script>console.log("0wned")</script> Wantang Road, Xihu District, <span class="text-primary">Hangzhou, Zhejiang, China</span>' 
+  }
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'data',
       type: 'nz-description',
       className: 'm-5',
       templateOptions: {
@@ -41,7 +39,7 @@ export class FormComponent implements OnInit {
       },
       fieldGroup: [
         {
-          type: 'text',
+          type: 'nz-input',
           key: 'UserName',
           templateOptions: {
             nzLabel: 'UserName',
@@ -78,7 +76,19 @@ export class FormComponent implements OnInit {
         },
       ],
     },
+    {
+      type: 'nz-button',
+      className: 'd-block',
+      templateOptions: {
+        text: '按钮',
+        click: (field, $event) => {
+          console.log(field.form?.get('Address')?.value)
+          field.form?.get('Address')?.patchValue(field.form?.get('Address')?.value + 1)
+        }
+      }
+    }
   ];
+
 
   onSubmit(model:any) {
     console.log(this.form.valid)

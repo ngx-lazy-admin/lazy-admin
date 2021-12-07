@@ -14,6 +14,10 @@ import { ButtonField } from './button.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'button',
+          component: ButtonField,
+        },
+        {
           name: 'nz-button',
           component: ButtonField,
         }

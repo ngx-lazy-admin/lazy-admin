@@ -10,6 +10,7 @@ import { InputNumberFieldModule } from './input-number';
 import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
 import { SliderFieldModule } from './slider';
+import { TabsFieldModule } from './tabs';
 import { TagFieldModule } from './tag';
 import { TemplateFieldModule } from './template';
 import { TimePickerFieldModule } from './time-picker';
@@ -30,7 +31,8 @@ import { UploadFieldModule } from './upload';
     TimePickerFieldModule,
     TagFieldModule,
     DescriptionFieldModule,
-    TemplateFieldModule
+    TemplateFieldModule,
+    TabsFieldModule
   ],
 })
 export class FieldTypeModule {}

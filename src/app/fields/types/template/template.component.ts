@@ -1,13 +1,35 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { FormControl } from '@angular/forms';
-import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
-    selector: 'div[template-field]',
-    templateUrl: './template.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush 
+	selector: 'div[template-field]',
+	template: `
+		<div [innerHTML]="formControl.value | nzSanitizer: 'html'"></div>
+	`,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TemplateField extends FieldType {
 
+  private destroy$ = new Subject();
+
+	constructor(
+    private cd: ChangeDetectorRef,
+	) {
+		super()
+	}
+
+	ngAfterViewInit(): void {
+		this.formControl.valueChanges
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(() => {
+				this.cd.markForCheck();
+			});
+	}
+
+	ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

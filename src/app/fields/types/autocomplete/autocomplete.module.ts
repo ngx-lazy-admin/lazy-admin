@@ -16,6 +16,10 @@ import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
     FormlyModule.forChild({
       types: [
         {
+          name: 'autocomplete',
+          component: AutocompleteFields,
+        },
+        {
           name: 'nz-autocomplete',
           component: AutocompleteFields,
         }
