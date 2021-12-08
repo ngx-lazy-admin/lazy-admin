@@ -15,6 +15,10 @@ import { TableField } from './table.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'table',
+          component: TableField,
+        },
+        {
           name: 'nz-table',
           component: TableField,
         }

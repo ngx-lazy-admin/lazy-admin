@@ -1,4 +1,4 @@
-<nz-card nzSize="small" [nzBodyStyle]="{padding: 0, width: '100%'}" [nzBorderless]="true" class="w-100 d-flex flex-nowrap sticky-top">
+<nz-card class="card-container" [nzBodyStyle]="{padding: '1px', width: '100%'}" [nzBorderless]="true" class="w-100 d-flex flex-nowrap sticky-top">
 	<nz-tabset
 		[nzSelectedIndex]="selectedIndex"
 		[nzTabBarExtraContent]="extraTemplate"
@@ -7,8 +7,6 @@
 		[nzHideAdd]="true"
 		[nzAnimated]="false"
 		class="w-100"
-		[nzTabBarStyle]="{'marginBottom': '0px'}"
-		[nzTabBarGutter]="0"
 		(nzAdd)="newTab()"
 		(nzClose)="closeTab($event)">
 		<ng-container  *ngFor="let tab of tabs">

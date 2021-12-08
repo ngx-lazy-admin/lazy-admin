@@ -26,7 +26,7 @@ import { NzCheckboxWrapperItemComponent } from '../checkbox/checkbox-wrapper-ite
         {
           name: 'checkbox',
           component: CheckboxField,
-        },,
+        },
         {
           name: 'nz-checkbox',
           component: CheckboxField,
