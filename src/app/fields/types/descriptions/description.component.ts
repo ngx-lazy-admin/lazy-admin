@@ -33,7 +33,7 @@ export class DescriptionField extends FieldArrayType implements OnDestroy {
   }
 
   get nzBordered() : boolean {
-		return this.to.nzBordered || false;;
+		return this.to.nzBordered || false;
   }
 
   get nzColumn() : number | { [key in NzBreakpointEnum]: number } {

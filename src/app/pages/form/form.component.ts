@@ -22,6 +22,7 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
 
   model = {
+    select: '1',
     UserName: 'Zhou Maomao', 
     Telephone: '18100000000', 
     Live: 'Hangzhou, Zhejiang',
@@ -77,10 +78,21 @@ export class FormComponent implements OnInit {
       ],
     },
     {
-      type: 'nz-button',
+      key: 'select',
+      type: 'nz-select',
       className: 'd-block',
       templateOptions: {
         text: '按钮',
+        nzOptions: [
+          {
+            label: '1111',
+            value: '1'
+          },
+          {
+            label: '2222',
+            value: '2'
+          }
+        ],
         click: (field, $event) => {
           console.log(field.form?.get('Address')?.value)
           field.form?.get('Address')?.patchValue(field.form?.get('Address')?.value + 1)

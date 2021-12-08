@@ -15,6 +15,10 @@ import { DescriptionField } from './description.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'description',
+          component: DescriptionField,
+        },
+        {
           name: 'nz-description',
           component: DescriptionField,
         }

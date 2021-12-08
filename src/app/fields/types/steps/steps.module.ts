@@ -2,28 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NzTableModule } from 'ng-zorro-antd/table';
-import { TableField } from './table.component'
+import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { StepsField } from './steps.component';
 
 @NgModule({
-  declarations: [TableField],
+  declarations: [ StepsField ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    NzTableModule,
+    NzStepsModule,
     FormlyModule.forChild({
       types: [
         {
-          name: 'table',
-          component: TableField,
+          name: 'description',
+          component: StepsField,
         },
         {
-          name: 'nz-table',
-          component: TableField,
+          name: 'nz-description',
+          component: StepsField,
         }
       ],
     }),
   ],
 })
-export class TableFieldModule {}
+export class StepsFieldModule {}

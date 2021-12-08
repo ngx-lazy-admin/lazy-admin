@@ -9,7 +9,9 @@ import { InputFieldModule } from './input';
 import { InputNumberFieldModule } from './input-number';
 import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
+import { SelectFieldModule } from './select';
 import { SliderFieldModule } from './slider';
+import { StepsFieldModule } from './steps';
 import { TabsFieldModule } from './tabs';
 import { TagFieldModule } from './tag';
 import { TemplateFieldModule } from './template';
@@ -32,7 +34,9 @@ import { UploadFieldModule } from './upload';
     TagFieldModule,
     DescriptionFieldModule,
     TemplateFieldModule,
-    TabsFieldModule
+    TabsFieldModule,
+    StepsFieldModule,
+    SelectFieldModule
   ],
 })
 export class FieldTypeModule {}

@@ -69,7 +69,7 @@ export class TableField extends FieldArrayType implements OnDestroy {
   }
 
   get nzCanDeactivate() : boolean {
-		return this.to.nzCanDeactivate || false;;
+		return this.to.nzCanDeactivate || false;
   }
 
   get nzCentered() : boolean {

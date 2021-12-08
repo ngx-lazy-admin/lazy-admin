@@ -1,8 +1,25 @@
-import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit} from '@angular/core';
+import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { map, debounceTime, switchMap, skip, takeUntil, distinctUntilChanged } from 'rxjs/operators';
+import { 
+  NzOptionComponent,
+  NzSelectItemInterface,
+  NzFilterOptionType,
+  NzSelectSizeType,
+  NzSelectModeType
+} from 'ng-zorro-antd/select';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
+
+export interface NzSelectOptionInterface {
+  label: string | number | null ;
+  value: NzSafeAny | null;
+  disabled?: boolean;
+  hide?: boolean;
+  groupLabel?: string | number | null;
+}
+
 
 @Component({
   selector: 'div[select-field]',
@@ -16,140 +33,149 @@ import { map, debounceTime, switchMap, skip, takeUntil, distinctUntilChanged } f
 export class SelectField extends FieldType implements OnInit,  OnDestroy {
 
   get control() : FormControl {
-		return this.formControl as FormControl
+		return this.formControl as FormControl;
   }
 
   get nzId () : string{
-    return this.to.nzId || ''
+    return this.to.nzId || '';
   }
 
+  get compareWith (): (o1: any, o2: any) => boolean{
+    const compareFn = (o1: any, o2: any) => o1===o2;
+    return this.to.compareWith || compareFn
+  }
 
   get nzAutoClearSearchValue () : boolean {
-    return this.to.nzAutoClearSearchValue || true
+    return this.to.nzAutoClearSearchValue || true;
   }
 
   get nzAllowClear () : boolean {
-    return this.to.nzAllowClear || false
+    return this.to.nzAllowClear || false;
   }
 
   get nzBackdrop (): boolean {
-    return this.to.nzBackdrop || false
+    return this.to.nzBackdrop || false;
   }
 
   get nzBorderless (): boolean {
-    return this.to.nzBackdrop || false
+    return this.to.nzBackdrop || false;
   }
 
   get nzOpen (): boolean {
-    return this.to.nzOpen || false
+    return this.to.nzOpen || false;
   }
 
   get nzAutoFocus (): boolean {
-    return this.to.nzAutoFocus || false
+    return this.to.nzAutoFocus || false;
   }
 
   get nzDisabled (): boolean {
-    return this.to.nzDisabled || false
+    return this.to.nzDisabled || false;
   }
 
-  get nzDropdownClassName (): boolean {
-    return this.to.nzDropdownClassName || false
+  get nzDropdownClassName (): string {
+    return this.to.nzDropdownClassName || '';
   }
 
   get nzDropdownMatchSelectWidth (): boolean {
-    return this.to.nzDropdownMatchSelectWidth || false
+    return this.to.nzDropdownMatchSelectWidth || true;
   }
 
-  get nzDropdownStyle (): boolean {
-    return this.to.nzDropdownStyle || false
+  get nzDropdownStyle (): { [key: string]: string; } | null {
+    return this.to.nzDropdownStyle || null;
   }
 
-  get nzCustomTemplate (): boolean {
-    return this.to.nzCustomTemplate || false
+  get nzCustomTemplate (): TemplateRef<{ $implicit: NzOptionComponent }> {
+    return this.to.nzCustomTemplate || false;
   }
 
   get nzServerSearch (): boolean {
-    return this.to.nzServerSearch || false
+    return this.to.nzServerSearch || false;
   }
 
-  get nzFilterOption (): boolean {
-    return this.to.nzFilterOption || false
+  get nzFilterOption (): NzFilterOptionType  {
+    const compareFn = (o1: any, o2: any) => {
+      return o1 && o2 && o1.value && o2.value  ?  (o1?.value?.trim() === o2?.value?.trim()) : (o1 === o2);
+    }
+    return this.to.nzFilterOption || compareFn;
   }
 
-  get nzMaxMultipleCount (): boolean {
-    return this.to.nzMaxMultipleCount || false
+  get nzMaxMultipleCount (): number {
+    return this.to.nzMaxMultipleCount || Infinity;
   }
 
-  get nzMode (): boolean {
-    return this.to.nzMode || false
+  get nzMode (): NzSelectModeType  {
+    return this.to.nzMode || 'default';
   }
 
-  get nzNotFoundContent (): boolean {
-    return this.to.nzNotFoundContent || false
+  get nzNotFoundContent (): string | TemplateRef<void> {
+    return this.to.nzNotFoundContent || null;
   }
 
 
-  get nzPlaceHolder (): boolean {
-    return this.to.nzPlaceHolder || false
+  get nzPlaceHolder (): string {
+    return this.to.nzPlaceHolder || null;
   }
 
 
   get nzShowArrow (): boolean {
-    return this.to.nzShowArrow || false
+    return this.to.nzShowArrow || false;
   }
 
-  get nzSize (): boolean {
-    return this.to.nzSize || false
+  get nzShowSearch (): boolean {
+    return this.to.nzShowSearch || false;
+  }
+
+  get nzSize (): NzSelectSizeType  {
+    return this.to.nzSize || 'default';
   }
 
   
-  get nzSuffixIcon (): boolean {
-    return this.to.nzSuffixIcon || false
+  get nzSuffixIcon (): TemplateRef<any> | string {
+    return this.to.nzSuffixIcon || null;
   }
 
   
-  get nzRemoveIcon (): boolean {
-    return this.to.nzRemoveIcon || false
+  get nzRemoveIcon (): 	TemplateRef<any> {
+    return this.to.nzRemoveIcon || null;
   }
 
-  get nzClearIcon (): boolean {
-    return this.to.nzClearIcon || false
+  get nzClearIcon (): TemplateRef<any> {
+    return this.to.nzClearIcon || null;
   }
 
-  get nzMenuItemSelectedIcon (): boolean {
-    return this.to.nzMenuItemSelectedIcon || false
+  get nzMenuItemSelectedIcon (): TemplateRef<any> {
+    return this.to.nzMenuItemSelectedIcon || null;
   }
 
-  get nzTokenSeparators (): boolean {
-    return this.to.nzTokenSeparators || false
+  get nzTokenSeparators (): string[] {
+    return this.to.nzTokenSeparators || [];
   }
 
   get nzLoading (): boolean {
-    return this.to.nzLoading || false
+    return this.to.nzLoading || false;
   }
 
-  get nzMaxTagCount (): boolean {
-    return this.to.nzMaxTagCount || false
-  }
-
-
-  get nzMaxTagPlaceholder (): boolean {
-    return this.to.nzMaxTagPlaceholder || false
+  get nzMaxTagCount (): number {
+    return this.to.nzMaxTagCount || null;
   }
 
 
-  get nzOptions (): boolean {
-    return this.to.nzOptions || false
+  get nzMaxTagPlaceholder (): TemplateRef<{ $implicit: any[] }> {
+    return this.to.nzMaxTagPlaceholder || null;
+  }
+
+  get nzOptionHeightPx (): number {
+    return this.to.nzOptionHeightPx || 32;
   }
 
 
-  get nzOptionHeightPx (): boolean {
-    return this.to.nzOptionHeightPx || false
+  get nzOptionOverflowSize (): number {
+    return this.to.nzOptionOverflowSize || 8;
   }
 
-
-  get nzOptionOverflowSize (): boolean {
-    return this.to.nzOptionOverflowSize || false
+  get nzOptions () : NzSelectOptionInterface[] {
+    return this.to.nzOptions || []
   }
 
   ngModelChange ($event: Event) {
@@ -158,13 +184,9 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
     }
   }
 
-  nzOpenChange ($event: Event) {
+  nzOpenChange ($event: boolean) {
     if (this.to.nzOpenChange) {
       this.to.nzOpenChange(this.field, $event)
-    }
-
-    if (!this.optionsCache['_default']) {
-      this.searchChange$.next(this.searchValue);
     }
   }
 
@@ -178,45 +200,21 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
     if (this.to.nzOnSearch) {
       this.to.nzOnSearch(this.field, value)
     }
-
-    // 判断是否是异步搜索
-    if (this.nzServerSearch && value) {
-      this.searchValue = value;
-      if (this.optionsCache[this.searchValue]) {
-        this.isLoading = false;
-        this.to['options'] = this.optionsCache[this.searchValue];
-      } else {
-        this.isLoading = true;
-        this.searchChange$.next(this.searchValue);
-      }
-    }
     this.cd.markForCheck();
   }
 
-  nzFocus ($event: Event) {
+  nzFocus () {
     if (this.to.focus) {
-      this.to.focus(this.field, $event)
+      this.to.focus(this.field)
     }
   }
 
   
-  nzBlur ($event: Event) {
+  nzBlur () {
     if (this.to.blur) {
-      this.to.blur(this.field, $event)
+      this.to.blur(this.field)
     }
   }
-
-
-  searchValue: string | null = '';
-  searchChange$ = new BehaviorSubject<string|null>(null);
-  isLoading = false;
-  option = [];
-  optionsCache:any = {};
-
-
-  // 判断是否是多选
-  isTags = false;
-  isMultiple = false;
 
   private _destroy$ = new Subject<void>();
 
@@ -226,76 +224,9 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
     super();
   }
 
-  compareFn = (o1: any, o2: any) => {
-    return o1 && o2 && o1.value && o2.value ? trim(o1.value) === trim(o2.value) : o1 === o2;
-  }
+  ngOnInit() { }
 
-  filterOption = (input, option) => {
-    return option['nzLabel'].toUpperCase().indexOf(input.trim().toUpperCase()) > -1 ? true : false;
-  }
-
-
-  ngOnInit() {
-
-    // 如果是异步，则搜索
-    // if (this.isAsyn) {
-    //   // 当前是异步搜索
-    //   if (this.model[this.key]) {
-    //     if (this.model[this.key] instanceof Array) {
-    //       // 如果不是单选
-    //       this.to['options'] = this.model[this.key];
-    //     } else {
-    //       this.to['options'] = [this.model[this.key]];
-    //     }
-    //   }
-    //   this.getOptionsBySearchUrl();
-    // }
-
-    if (this.formControl.value) {
-      if (Array.isArray(this.to['options']) && this.to['options'].length > 0) {
-        const option = this.to['options'].find(item => item.value === this.formControl.value);
-      }
-    }
-
-    // 监听值变更
-    this.formControl.valueChanges
-      .pipe(takeUntil(this._destroy$))
-      .pipe(debounceTime(120))
-      .subscribe(value => {
-      if (Array.isArray(this.to['options']) && this.to['options'].length > 0) {
-        const option = this.to['options'].find(item => item.value === value);
-      }
-      this.cd.markForCheck();
-    });
-
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-    const getRandomNameList = (name: string) =>
-      this.http
-        .get(`${this.randomUserUrl}`)
-        .pipe(
-          catchError(() => of({ results: [] })),
-          map((res: any) => res.results)
-        )
-        .pipe(map((list: any) => list.map((item: any) => `${item.name.first} ${name}`)));
-
-
-    const optionList$: Observable<string[]> = this.searchChange$
-      .asObservable()
-      .pipe(debounceTime(500))
-      .pipe(switchMap(getRandomNameList));
-
-    optionList$.subscribe(data => {
-      if (data && data instanceof Array) {
-        this.nzOptions = list;
-        this.optionsCache[this.searchValue] = this.to['options'];
-      }
-      this.isLoading = false;
-      this.cd.markForCheck();
-    });
-  
-  }
-
-  trackByFn(index, item) {
+  trackByFn(index: any, item: any) {
     return item.id ? item.id : index; // or item.id
   }
 

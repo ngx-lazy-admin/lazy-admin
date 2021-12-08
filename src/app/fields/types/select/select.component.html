@@ -1,5 +1,5 @@
 <nz-select 
-	[formControl]="formControl"
+	[formControl]="control"
 	[formlyAttributes]="field"
 	[nzId]="nzId"
 	[compareWith]="compareWith"
@@ -19,9 +19,9 @@
 	[nzMaxMultipleCount]="nzMaxMultipleCount"
 	[nzMode]="nzMode"
 	[nzNotFoundContent]="nzNotFoundContent"
-	[nzPlaceHolder] = "nzPlaceHolder"
+	[nzPlaceHolder]="nzPlaceHolder"
 	[nzShowArrow]="nzShowArrow"
-	[nzShowSearch] ="to['nzShowSearch'] || true"
+	[nzShowSearch]="nzShowSearch"
 	[nzSize]="nzSize"
 	[nzSuffixIcon]="nzSuffixIcon"
 	[nzRemoveIcon]="nzRemoveIcon"
@@ -31,29 +31,23 @@
 	[nzLoading]="nzLoading"
 	[nzMaxTagCount]="nzMaxTagCount"
 	[nzMaxTagPlaceholder]="nzMaxTagPlaceholder"
-	[nzOptions]="nzOptions"
 	[nzOptionHeightPx]="nzOptionHeightPx"
 	[nzOptionOverflowSize]="nzOptionOverflowSize"
-	[nzFilterOption]="nzFilterOption"
 
 	(ngModelChange)="ngModelChange($event)"
 	(nzOpenChange)="nzOpenChange($event)"
 	(nzOnSearch)="nzOnSearch($event)"
-	(nzFocus)="nzFocus($event)"
-	(nzBlur)="nzBlur($event)"
+	(nzFocus)="nzFocus()"
+	(nzBlur)="nzBlur()"
 	>
 		
-	<ng-container *ngFor="let option of to['nzOptions']; trackBy: trackByFn">
-		<nz-option *ngIf="!isLoading"
+	<ng-container *ngFor="let option of nzOptions; trackBy: trackByFn">
+		<nz-option
 			class="select-option"
-			nzCustomContent
-			[nzDisabled]="option['nzDisabled '] || false"
-			[nzValue]="nzValue ? (nzValue == 'option' ? option : option[nzValue]) : (option && option.value ? option.value : option))"
-			[nzLabel]="option.label">
-			<span [title]="option.label">{{option.label}}</span>
+			[nzDisabled]="option?.disabled"
+			[nzLabel]="option.label"
+			[nzValue]="option.value"
+		>
 		</nz-option>
 	</ng-container>
-	<nz-option  *ngIf="isLoading" nzDisabled nzCustomContent>
-		<i nz-icon type="loading" class="loading-icon"></i> 加载中...
-	</nz-option>
 </nz-select>

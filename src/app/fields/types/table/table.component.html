@@ -16,8 +16,8 @@
   </thead>
   <tbody>
     <ng-template nz-virtual-scroll>
-      <tr *ngFor="let tr of field.fieldGroup; let i = index;trackBy: trackByFn">
-        <td  *ngFor="let td of tr.fieldGroup;trackBy: trackByFn">
+      <tr *ngFor="let tr of field.fieldGroup; let i = index; trackBy: trackByFn">
+        <td  *ngFor="let td of tr.fieldGroup; trackBy: trackByFn">
           <formly-field [field]="td"></formly-field>
         </td>
       </tr>
