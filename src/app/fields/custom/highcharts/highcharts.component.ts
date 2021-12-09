@@ -1,7 +1,6 @@
 import { Component, ElementRef, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FieldType,  } from '@ngx-formly/core';
-// import Highcharts from 'highcharts';
 import * as Highcharts from 'highcharts';
 
 import Exporting from 'highcharts/modules/exporting';

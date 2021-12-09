@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { AutocompleteFieldModule } from './autocomplete';
 import { ButtonFieldModule } from './button';
+import { CardFieldModule } from './card';
 import { CheckboxFieldModule } from './checkbox';
 import { DatePickerFieldModule } from './date-picker';
 import { DescriptionFieldModule } from './descriptions';
@@ -36,7 +37,8 @@ import { UploadFieldModule } from './upload';
     TemplateFieldModule,
     TabsFieldModule,
     StepsFieldModule,
-    SelectFieldModule
+    SelectFieldModule,
+    CardFieldModule
   ],
 })
 export class FieldTypeModule {}

@@ -1,0 +1,12 @@
+<nz-card [nzTitle]="nzTitle" [nzExtra]="extraTemplate">
+  <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
+    <formly-field [field]="item"></formly-field>
+  </ng-container>
+
+  <button nz-button (click)="onClick($event)">按钮</button>
+</nz-card>
+
+<ng-template #extraTemplate>
+  <!-- <div [innerHtml]="nzExtra"></div> -->
+  <formly-form [fields]="extraFields"></formly-form>
+</ng-template>
