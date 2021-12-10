@@ -4,13 +4,19 @@ import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ButtonField } from './button.component'
+import { ButtonGroupField } from './button-group.component';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
-  declarations: [ButtonField],
+  declarations: [
+    ButtonField,
+    ButtonGroupField
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     NzButtonModule,
+    NzDividerModule,
     FormlyModule.forChild({
       types: [
         {
@@ -20,6 +26,10 @@ import { ButtonField } from './button.component'
         {
           name: 'nz-button',
           component: ButtonField,
+        },
+        {
+          name: 'nz-button-group',
+          component: ButtonGroupField
         }
       ],
     }),

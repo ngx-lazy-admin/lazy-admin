@@ -33,6 +33,7 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
 
   model = {
+    text: 'text',
     select: '1',
     UserName: 'Zhou Maomao', 
     Telephone: '18100000000', 
@@ -41,7 +42,35 @@ export class FormComponent implements OnInit {
     Address: 'No. 18,  <script>console.log("0wned")</script> Wantang Road, Xihu District, <span class="text-primary">Hangzhou, Zhejiang, China</span>' 
   }
 
-  fields: FormlyFieldConfig[] = []
+  fields: FormlyFieldConfig[] = [
+    {
+      type: 'text',
+      key: 'text'
+    },
+    {
+      type: 'nz-button-group',
+      className: 'w-25',
+      templateOptions: {
+        groupOptions: [
+          {
+            label: '增加',
+            click: (field: any, $event: any) => {
+
+            }
+          },
+          {
+            label: '删除'
+          },
+          {
+            label: '修改'
+          },
+          {
+            label: '导出'
+          }
+        ]
+      }
+    }
+  ];
 
 
   onSubmit(model:any) {
@@ -50,137 +79,6 @@ export class FormComponent implements OnInit {
   }
 
   ngAfterViewInit () {
-    console.log(this.templatePortalContent)
-    this.fields = [
-      {
-        type: 'nz-description',
-        className: 'm-5',
-        templateOptions: {
-          nzLabel: 'Categories',
-          nzColumn: { xxl: 4, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }
-        },
-        fieldGroup: [
-          {
-            type: 'nz-input',
-            key: 'UserName',
-            templateOptions: {
-              nzLabel: 'UserName',
-              required: true,
-            },
-          },
-          {
-            type: 'text',
-            key: 'Telephone',
-            templateOptions: {
-              nzLabel: 'Telephone',
-            },
-          },
-          {
-            type: 'text',
-            key: 'Live',
-            templateOptions: {
-              nzLabel: 'Live',
-            },
-          },
-          {
-            type: 'text',
-            key: 'Remark',
-            templateOptions: {
-              nzLabel: 'Remark',
-            },
-          },
-          {
-            type: 'text',
-            key: 'Address',
-            templateOptions: {
-              nzLabel: 'Address',
-            },
-          },
-        ],
-      },
-      {
-        type: 'nz-card-tabs',
-        className: 'd-block mx-2',
-        templateOptions: {
-          nzTitle: 'Card title',
-          extraFields: [
-            {
-              type: 'nz-input',
-              key: 'UserName',
-              className: 'd-inline-block mx-2',
-              defaultValue: '11',
-              templateOptions: {
-                nzLabel: 'UserName',
-                required: true,
-              },
-            },
-            {
-              type: 'nz-button',
-              key: 'UserName',
-              defaultValue: '11',
-              className: 'd-inline-block',
-              templateOptions: {
-                nzLabel: 'UserName',
-                text: '确定',
-                click: (fields: any, $event: any) => {
-                  console.log(fields)
-                }
-              },
-            },
-          ],
-          click: (field, $event) => {
-            if (field?.templateOptions) {
-              // field.templateOptions.nzExtra = this.templatePortalContent;
-            }
-          }
-        },
-        fieldGroup: [
-          {
-            type: 'nz-input',
-            key: 'UserName',
-            templateOptions: {
-              nzLabel: 'UserName',
-              required: true,
-            },
-          },
-          {
-            type: 'text',
-            key: 'Telephone',
-            templateOptions: {
-              nzLabel: 'Telephone',
-            },
-          },
-          {
-            type: 'text',
-            key: 'Live',
-            templateOptions: {
-              nzLabel: 'Live',
-            },
-          },
-          {
-            type: 'text',
-            key: 'Remark',
-            templateOptions: {
-              nzLabel: 'Remark',
-            },
-          },
-          {
-            type: 'text',
-            key: 'Address',
-            templateOptions: {
-              nzLabel: 'Address',
-            },
-          },
-        ],
-      }
-    ];
-    // this.form = new FormGroup({});
-    console.log(this.fields)
 
-    console.log('23333')
-
-    // this.cd.markForCheck();
-
-    this.cd.detectChanges();
   }
 }

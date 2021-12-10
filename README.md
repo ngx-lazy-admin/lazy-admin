@@ -329,3 +329,5 @@ desiption
 step
 
 card
+
+打开方式有两种，弹窗 和 新标签页
