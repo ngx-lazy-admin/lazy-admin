@@ -51,7 +51,7 @@ export class ButtonField extends FieldType implements OnInit {
   }
 
   get nzType() : NzButtonType {
-		return this.to.nzType || '';
+		return this.to.nzType || 'link';
   }
 
   get nzBlock() : boolean {

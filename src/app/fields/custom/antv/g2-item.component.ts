@@ -17,9 +17,6 @@ import { Chart } from '@antv/g2';
 
 @Component({
   selector: 'g2-field-item',
-  template: `
-    <div id="g2-container"></div>
-  `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -28,7 +25,10 @@ import { Chart } from '@antv/g2';
       useExisting: forwardRef(() => G2FieldItem),
       multi: true
     }
-  ]
+  ],
+  template: `
+    <div id="g2-container"></div>
+  `,
 })
 export class G2FieldItem extends FieldType implements AfterViewInit {
 

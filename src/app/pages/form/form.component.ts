@@ -48,7 +48,6 @@ export class FormComponent implements OnInit {
       key: 'text',
       templateOptions: {
         icon: 'download',
-        nzType: 'primary',
         click: (field, $event) => {
           console.log(field.name)
         }
