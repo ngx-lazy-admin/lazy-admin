@@ -11,7 +11,7 @@ import Exporting from 'highcharts/modules/exporting';
     <div class="mGraph" id="main"></div>
   `,
   styleUrls: [
-    './echart.component.css',
+    './highcharts.component.css',
   ],
   encapsulation: ViewEncapsulation.None
 })

@@ -1,6 +1,7 @@
 
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -30,6 +31,7 @@ export interface NzCheckBoxOptionInterface {
   exportAs: 'nzRadioGroup',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <label
       nz-radio

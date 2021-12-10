@@ -10,6 +10,7 @@ type ButtonClickType = (field: FormlyFieldConfig, input: Event) => boolean;
 export interface ButtonGroupOptionInterface {
   label: string | number | null ;
   value?: NzSafeAny | null;
+  icon?: string,
   disabled?: boolean;
   type?: NzButtonType,
   hide?: boolean;
@@ -22,11 +23,13 @@ export interface ButtonGroupOptionInterface {
   template: `
     <ng-container *ngFor="let item of groupOptions; let i = index">
       <a nz-button 
-        [nzType]="item?.type || 'link'" 
+        [nzType]="item?.type || 'primary'" 
         [disabled]="item.disabled"
-        [nzSize]="item?.size || 'small'" 
+        [nzSize]="item?.size || 'small'"
+        class="mx-1" 
         (click)="onClick(item, $event)"
       >
+        <i *ngIf="item?.icon" nz-icon nzType="item?.icon"></i>
         {{item.label}}
       </a>
       <ng-container *ngIf="i != groupOptions.length - 1">

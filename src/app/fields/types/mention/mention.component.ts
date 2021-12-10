@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
@@ -6,7 +6,8 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 @Component({
 	selector: 'div[mention-field]',
 	templateUrl: './mention.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush 
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.None,
 })
 export class MentionField extends FieldType {
 	get control() : FormControl {

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 
@@ -18,6 +18,7 @@ import { FormControl } from '@angular/forms';
 		'display': 'contents',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.None,
 })
 export class SliderField extends FieldType {
 

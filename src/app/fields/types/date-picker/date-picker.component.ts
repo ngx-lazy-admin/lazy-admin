@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, ChangeDetectionStrategy, TemplateRef } from '@angular/core';
+import { Component, OnChanges, OnInit, ChangeDetectionStrategy, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { FormControl } from '@angular/forms';
 
@@ -20,7 +20,8 @@ type FunctionProp<T> = (...args: any[]) => T;
 @Component({
   selector: 'div[date-picker-field]',
   templateUrl: './date-picker.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class DatePickerField extends FieldType {
   constructor() {

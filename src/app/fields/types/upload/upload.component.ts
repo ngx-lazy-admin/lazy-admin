@@ -1,5 +1,5 @@
 
-import { Component, OnDestroy, OnInit, ChangeDetectorRef,  ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectorRef,  ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,7 +17,8 @@ import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 @Component({
   selector: 'div[upload-field]',
   templateUrl: './upload.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class UploadField extends FieldType implements OnInit {
 

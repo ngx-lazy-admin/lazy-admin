@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
 import { Observable, Observer } from 'rxjs';
 import { Subject } from 'rxjs';
@@ -6,7 +6,8 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'div[avatar-upload-field]',
   templateUrl: './avatar-uploader.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class NzAvatarUploaderComponent extends FieldArrayType implements OnInit, OnDestroy {
   loading = false;

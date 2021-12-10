@@ -5,6 +5,7 @@ import {
   ChangeDetectionStrategy,
   EventEmitter,
   ViewChild,
+  ViewEncapsulation,
  } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
@@ -23,6 +24,7 @@ export interface VirtualDataInterface {
   selector: 'div[table-field]',
   templateUrl: './table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class TableField extends FieldArrayType implements OnDestroy {

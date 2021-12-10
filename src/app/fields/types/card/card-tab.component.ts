@@ -23,7 +23,6 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
     <ng-template #extraTemplate>
       <formly-form [fields]="extraFields"></formly-form>
     </ng-template>
-  
   `
 })
 
@@ -34,7 +33,6 @@ export class CardTabsField extends FieldArrayType implements OnDestroy {
 	}
 
 	get nzExtra(): string|TemplateRef<void> {
-    console.log(this.to.nzExtra)
 		return this.to.nzExtra || '';
   }
 

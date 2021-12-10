@@ -1,4 +1,4 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
 import { NzTabComponent, NzTabPosition, NzTabType } from 'ng-zorro-antd/tabs'; 
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
@@ -7,6 +7,7 @@ import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-an
   selector: 'div[tabs-field]',
   templateUrl: './tabs.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class TabsField extends FieldArrayType implements OnDestroy {

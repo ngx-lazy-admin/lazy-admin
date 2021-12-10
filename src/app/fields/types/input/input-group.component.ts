@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy,
-	Input, Self, Optional } from '@angular/core';
+	Input, Self, Optional, ViewEncapsulation } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
 import { NgControl } from '@angular/forms';
 import { FormControl } from '@angular/forms';
@@ -12,6 +12,7 @@ import { InputBoolean } from 'ng-zorro-antd/core/util';
 	templateUrl: './input-group.component.html',
 	styleUrls: ['./input-group.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 	host: {
 		'display': 'contents',
 	}

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/core/tree';
@@ -7,6 +7,7 @@ import { NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/core/tree';
     selector: 'div[tree-select-field]',
     templateUrl: './tree-select.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
     host: {
       'display': 'contents',
       '[class.display-contents]': `true`,

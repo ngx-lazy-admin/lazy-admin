@@ -1,4 +1,4 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
@@ -6,6 +6,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
   selector: 'div[steps-field]',
   templateUrl: './steps.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   styles: [
     `
       .ant-form-item-required:before {

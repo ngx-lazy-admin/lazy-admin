@@ -1,6 +1,7 @@
 
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -24,6 +25,7 @@ import { InputBoolean } from 'ng-zorro-antd/core/util';
   exportAs: 'nzSliderRangeItem',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
+	changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nz-slider 
       nzRange 

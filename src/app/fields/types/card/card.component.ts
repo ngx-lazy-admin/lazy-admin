@@ -1,4 +1,4 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldArrayType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzDescriptionsSize  } from 'ng-zorro-antd/descriptions';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
@@ -7,6 +7,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
   selector: 'div[card-field]',
   templateUrl: './card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   styles: [
     `
       .ant-form-item-required:before {

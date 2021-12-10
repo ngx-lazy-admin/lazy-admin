@@ -9,7 +9,8 @@ import {
   OnDestroy,
   OnInit,
   Optional,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -30,6 +31,7 @@ export interface NzCheckBoxOptionInterface {
   exportAs: 'nzCheckboxGroup',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <label
       nz-checkbox

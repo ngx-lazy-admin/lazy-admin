@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -28,6 +28,7 @@ export interface NzSelectOptionInterface {
     './select.component.less'
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.None,
 })
 
 export class SelectField extends FieldType implements OnInit,  OnDestroy {

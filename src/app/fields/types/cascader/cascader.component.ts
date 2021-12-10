@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
   OnDestroy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
@@ -10,6 +11,8 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'div[cascader-field]',
   templateUrl: './cascader.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CascaderField extends FieldType {
 

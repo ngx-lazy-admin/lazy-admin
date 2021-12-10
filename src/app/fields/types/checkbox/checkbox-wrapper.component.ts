@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectionStrategy,} from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
@@ -22,6 +22,7 @@ export interface NzCheckBoxOptionInterface {
     </nz-checkbox-wrapper-item>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class CheckboxWrapperField extends FieldType implements OnDestroy {
 

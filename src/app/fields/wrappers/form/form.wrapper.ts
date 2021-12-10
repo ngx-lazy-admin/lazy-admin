@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, OnInit, TemplateRef } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, OnInit, TemplateRef, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FieldWrapper, FormlyConfig } from '@ngx-formly/core';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { isObservable, Observable, of } from 'rxjs';
@@ -16,6 +16,8 @@ const isObject = (x: any) => {
     '[class.ant-form-vertical]': 'nzLayout === "vertical"',
     '[class.ant-form-inline]': 'nzLayout === "inline"',
   },
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class FormWrapper extends FieldWrapper {

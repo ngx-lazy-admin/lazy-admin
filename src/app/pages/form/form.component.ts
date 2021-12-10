@@ -44,8 +44,15 @@ export class FormComponent implements OnInit {
 
   fields: FormlyFieldConfig[] = [
     {
-      type: 'text',
-      key: 'text'
+      type: 'button',
+      key: 'text',
+      templateOptions: {
+        icon: 'download',
+        nzType: 'primary',
+        click: (field, $event) => {
+          console.log(field.name)
+        }
+      }
     },
     {
       type: 'nz-button-group',

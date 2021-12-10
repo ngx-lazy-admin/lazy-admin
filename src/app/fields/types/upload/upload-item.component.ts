@@ -1,5 +1,6 @@
 
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -41,6 +42,7 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   exportAs: 'nzUploadItem',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nz-upload
       nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"

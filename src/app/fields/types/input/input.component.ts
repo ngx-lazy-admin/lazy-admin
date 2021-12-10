@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
@@ -8,6 +8,8 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 	templateUrl: './input.component.html',
 	styleUrls: ['./input.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+
 })
 export class InputField extends FieldType {
 

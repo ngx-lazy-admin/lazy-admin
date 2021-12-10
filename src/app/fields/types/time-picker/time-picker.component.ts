@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
@@ -9,6 +9,7 @@ import { formatDate } from '@angular/common';
 	selector: 'div[time-picker-field]',
 	templateUrl: './time-picker.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 	host: {
 		'display': 'contents',
 		'[class.display-contents]': `true`,

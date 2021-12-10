@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnChanges, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
@@ -17,7 +17,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
       <label nz-radio [nzValue]="o.value" *ngFor="let o of nzOptions">{{ o.label }}</label>1
     </nz-radio-group>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush 
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class RadioGroupField extends FieldType {

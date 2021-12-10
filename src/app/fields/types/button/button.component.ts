@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -6,8 +6,22 @@ import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button'
 
 @Component({
   selector: 'div[button-field]',
-  templateUrl: './button.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  template: `
+    <button nz-button
+      [nzGhost]="nzGhost"
+      [nzLoading]="nzLoading"
+      [nzShape]="nzShape"
+      [nzSize]="nzSize"
+      [nzType]="nzType"
+      [nzBlock]="nzBlock"
+      (click)="onClick($event)">
+        <i *ngIf="icon" nz-icon [nzType]="icon"></i>
+        <ng-container *ngIf="text">{{ text }}</ng-container>
+    </button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+
 
 })
 export class ButtonField extends FieldType implements OnInit {
@@ -33,7 +47,7 @@ export class ButtonField extends FieldType implements OnInit {
   }
 
   get nzSize() : NzButtonSize {
-		return this.to.nzSize || 'default';
+		return this.to.nzSize || 'small';
   }
 
   get nzType() : NzButtonType {
@@ -47,6 +61,14 @@ export class ButtonField extends FieldType implements OnInit {
 	get nzDanger(): boolean {
 		return this.to.nzDanger || false;
 	}
+
+  get text(): string {
+    return this.to.text || ''
+  }
+
+  get icon(): string {
+    return this.to.icon || ''
+  }
 
   private _destroy$ = new Subject<void>();
 

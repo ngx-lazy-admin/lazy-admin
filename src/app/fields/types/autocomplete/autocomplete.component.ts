@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType,  } from 'ng-zorro-antd/core/types';
@@ -16,6 +16,7 @@ declare type AutocompleteDataSource = Array<AutocompleteDataSourceItem | string 
 @Component({
     selector: 'div[autocomplete-field]',
     templateUrl: './autocomplete.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 
 })

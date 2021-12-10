@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnChanges, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
@@ -13,7 +13,8 @@ import { FieldType } from '@ngx-formly/core';
       {{ text }}
     </tag-checkbox-group>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush 
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class TagGroupField extends FieldType {
