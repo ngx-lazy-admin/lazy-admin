@@ -51,7 +51,7 @@ export class CardField extends FieldArrayType implements OnDestroy {
   }
 
   get extraFields(): FormlyFieldConfig[] {
-    return this.to.extraFields || []
+    return this.to.extraFields ? this.to.extraFields(this.field) : []
   }
 
   trackByFn(index: number, item: any) {
