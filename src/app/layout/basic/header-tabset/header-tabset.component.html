@@ -6,11 +6,11 @@
 		nzType="card"
 		[nzHideAdd]="true"
 		[nzAnimated]="false"
-		class="w-100"
+		class="w-100 mx-2"
 		(nzAdd)="newTab()"
 		(nzClose)="closeTab($event)">
 		<ng-container  *ngFor="let tab of tabs">
-			<nz-tab nzClosable nzType="primary" (nzContextmenu)="onContextmenu($event, menu)">
+			<nz-tab nzClosable nzType="primary" class="mb-0" (nzContextmenu)="onContextmenu($event, menu)">
 				<span *nzTabLink nz-tab-link [routerLink]="tab?.link">{{tab?.label}}</span>
 			</nz-tab>
 		</ng-container>

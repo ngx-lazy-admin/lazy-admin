@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, TemplateRef, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
   selector: 'app-form',
@@ -39,9 +39,21 @@ export class FormComponent implements OnInit {
     Telephone: '18100000000', 
     Live: 'Hangzhou, Zhejiang',
     Remark: 'Template <script>alert("0wned")</script> <b>Syntax</b>',
-    Address: 'No. 18,  <script>console.log("0wned")</script> Wantang Road, Xihu District, <span class="text-primary">Hangzhou, Zhejiang, China</span>' 
+    list: [{
+      index: 1,
+      name: `Edward`,
+      age: 1,
+      address: `London`,
+      date: 1
+    }, {
+      index: 2,
+      name: `Edward2`,
+      age: 2,
+      address: `London2`,
+      date: 2
+    }]
   }
-
+  options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
       type: 'button',
@@ -54,29 +66,41 @@ export class FormComponent implements OnInit {
       }
     },
     {
-      type: 'nz-button-group',
+      key: 'list',
+      type: 'virtual-table',
       className: 'w-25',
       templateOptions: {
-        groupOptions: [
+      },
+      fieldArray: {
+        fieldGroup: [
           {
-            label: '增加',
-            click: (field: any, $event: any) => {
-
-            }
+            type: 'input',
+            key: 'name',
+            templateOptions: {
+              required: true,
+              label: '姓名'
+            },
           },
           {
-            label: '删除'
+            type: 'input',
+            key: 'date',
+            templateOptions: {
+              label: '时间'
+            },
           },
           {
-            label: '修改'
+            type: 'input',
+            key: 'address',
+            templateOptions: {
+              label: 'id'
+            },
           },
-          {
-            label: '导出'
-          }
-        ]
+        ],
       }
     }
   ];
+
+  loading = false
 
 
   onSubmit(model:any) {
@@ -85,6 +109,21 @@ export class FormComponent implements OnInit {
   }
 
   ngAfterViewInit () {
-
+    let list = []
+    for (let i = 3; i < 10; i++) {
+      list.push({
+        index: i,
+        name: `Edward`,
+        age: i,
+        address: `London`,
+        date: i
+      });
+    }
+    this.model.list = [...this.model.list, ...list]
+    console.log(this.model)
+    // this.options.resetModel();
+    // this.options?.resetModel()
+    this.loading = true
+    this.cd.detectChanges();
   }
 }

@@ -13,6 +13,7 @@ import { RateFieldModule } from './rate';
 import { SelectFieldModule } from './select';
 import { SliderFieldModule } from './slider';
 import { StepsFieldModule } from './steps';
+import { TableFieldModule } from './table';
 import { TabsFieldModule } from './tabs';
 import { TagFieldModule } from './tag';
 import { TemplateFieldModule } from './template';
@@ -38,7 +39,8 @@ import { UploadFieldModule } from './upload';
     TabsFieldModule,
     StepsFieldModule,
     SelectFieldModule,
-    CardFieldModule
+    CardFieldModule,
+    TableFieldModule
   ],
 })
 export class FieldTypeModule {}

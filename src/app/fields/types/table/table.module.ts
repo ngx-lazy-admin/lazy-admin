@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { TableField } from './table.component'
+import { TableField } from './table.component';
+import { VirtualTableField } from './virtual-table.component';
 
 @NgModule({
-  declarations: [TableField],
+  declarations: [
+    TableField,
+    VirtualTableField
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -21,7 +25,11 @@ import { TableField } from './table.component'
         {
           name: 'nz-table',
           component: TableField,
-        }
+        },
+        {
+          name: 'virtual-table',
+          component: VirtualTableField,
+        },
       ],
     }),
   ],

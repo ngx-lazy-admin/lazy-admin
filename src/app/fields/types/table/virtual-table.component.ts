@@ -22,16 +22,19 @@ export interface VirtualDataInterface {
 }
 
 @Component({
-  selector: 'div[table-field]',
+  selector: 'div[virtual-table-field]',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
     <nz-table
-      #basicTable
-      nzTemplateMode
+      #virtualTable
       [nzBordered]="true"
+      [nzVirtualItemSize]="54"
+      [nzVirtualForTrackBy]="trackByIndex"
       [nzFrontPagination]="false"
       [nzShowPagination]="false"
+      [nzData]="formControl?.value"
+      [nzScroll]="{ x: '1200px', y: '240px' }"
     >
       <thead>
         <tr>
@@ -41,20 +44,21 @@ export interface VirtualDataInterface {
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of field.fieldGroup; let index = index">
-          <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
-            <td *ngFor="let td of field.fieldGroup[index].fieldGroup">
-              <formly-field [field]="td"></formly-field>
-            </td>
-          </ng-container>
-        </tr>
+        <ng-template nz-virtual-scroll let-data let-index="index">
+          <tr>
+            <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
+              <td *ngFor="let td of field.fieldGroup[index].fieldGroup">
+                <formly-field [field]="td"></formly-field>
+              </td>
+            </ng-container>
+          </tr>
+        </ng-template>
       </tbody>
     </nz-table>
-
   `
 })
 
-export class TableField extends FieldArrayType implements OnDestroy {
+export class VirtualTableField extends FieldArrayType implements OnDestroy {
 
   @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
 
@@ -113,6 +117,10 @@ export class TableField extends FieldArrayType implements OnDestroy {
     return this.to.nzAddIcon || false;
   }
 
+  get nzVirtualItemSize(): number {
+    return this.to.nzVirtualItemSize || 0
+  }
+
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index;
   }
@@ -128,7 +136,12 @@ export class TableField extends FieldArrayType implements OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: number) => {
         console.log('scroll index to', data);
-      });    
+      });
+
+    this.formControl.valueChanges.subscribe(() => {
+      this.cd.markForCheck()
+      console.log(this)
+    })
   }
 
   ngOnDestroy() {

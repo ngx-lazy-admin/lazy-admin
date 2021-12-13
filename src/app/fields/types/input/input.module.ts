@@ -15,8 +15,16 @@ import { TextareaField } from './textarea.component';
     FormlyModule.forChild({
       types: [
         {
+          name: 'input',
+          component: InputField,
+        },
+        {
           name: 'nz-input',
           component: InputField,
+        },
+        {
+          name: 'textarea',
+          component: TextareaField,
         },
         {
           name: 'nz-textarea',
