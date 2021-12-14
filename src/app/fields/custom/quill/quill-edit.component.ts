@@ -33,9 +33,6 @@ export class QuillEditField extends FieldType implements AfterViewInit {
   @Input() 
   placeholder: string = '';
 
-  @Input()
-  options: Object = {}
-
   constructor(
     private elementRef: ElementRef,
     private http: HttpClient,

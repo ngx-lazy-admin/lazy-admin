@@ -12,7 +12,7 @@ import { FieldArrayType } from '@ngx-formly/core';
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
 
 export interface VirtualDataInterface {
   index: number;
@@ -138,10 +138,14 @@ export class VirtualTableField extends FieldArrayType implements OnDestroy {
         console.log('scroll index to', data);
       });
 
-    this.formControl.valueChanges.subscribe(() => {
-      this.cd.markForCheck()
-      console.log(this)
-    })
+    // this.formControl.valueChanges
+    //   .pipe(distinctUntilChanged())
+    //   .subscribe((item) => {
+    //   console.log(item)
+    //   console.log(new Date().getTime())
+    //   // this.cd.markForCheck()
+
+    // })
   }
 
   ngOnDestroy() {

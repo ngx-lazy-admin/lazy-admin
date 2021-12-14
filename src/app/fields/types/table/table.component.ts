@@ -51,6 +51,8 @@ export interface VirtualDataInterface {
       </tbody>
     </nz-table>
 
+    <button nz-button (click)="add()">添加一行</button>
+
   `
 })
 
