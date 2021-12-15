@@ -6,16 +6,25 @@ import { FormControl } from '@angular/forms';
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { InputBoolean } from 'ng-zorro-antd/core/util';
 
-
 @Component({
 	selector: 'div[input-group-field]',
-	templateUrl: './input-group.component.html',
 	styleUrls: ['./input-group.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 	host: {
 		'display': 'contents',
-	}
+	},
+	template: `
+		<input
+			nz-input
+			[formControl]="control"
+			[formlyAttributes]="field"
+
+			[nzSize]="nzSize"
+			[nzBorderless]="nzBorderless"
+			[type]="type"
+		/>
+	`
 })
 export class InputGroupField extends FieldType {
 

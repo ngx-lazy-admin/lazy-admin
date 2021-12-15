@@ -40,23 +40,27 @@ export class FormComponent implements OnInit {
       indexs: 1,
       name: `Edward`,
       age: 1,
+      tagList: ['ss'],
       address: `London`,
       date: 1
     }, {
       indexs: 2,
-      name: `Edward2`,
+      name: `🐛 [BUG]无法创建工程npm creat`,
       age: 2,
       address: `London2`,
+      tagList: ['ss'],
       date: 2
     },{
       indexs: 2,
       name: `Edward2`,
       age: 2,
+      tagList: ['ss'],
       address: `London2`,
       date: 2
     },{
       indexs: 2,
       name: `Edward2`,
+      tagList: ['ss'],
       age: 2,
       address: `London2`,
       date: 2
@@ -113,15 +117,16 @@ export class FormComponent implements OnInit {
             }
           },
           {
-            type: 'input',
+            type: 'tag',
             key: 'indexs',
             templateOptions: {
-              label: '序列'
+              label: '序列',
+              text: '食物',
             }
           },
           {
-            type: 'input',
-            key: 'age',
+            type: 'tag-list',
+            key: 'tagList',
             templateOptions: {
               label: '序列'
             }
@@ -137,7 +142,8 @@ export class FormComponent implements OnInit {
             type: 'input',
             key: 'date',
             templateOptions: {
-              label: '序列'
+              label: '序列',
+              nzBorderless: false
             }
           },
         ]
