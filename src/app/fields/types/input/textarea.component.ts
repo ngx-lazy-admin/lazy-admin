@@ -38,7 +38,7 @@ export class TextareaField extends FieldType {
 
 	get control() : FormControl {
 		return this.formControl as FormControl
-  	}
+  }
 
 	get type(): string {
 		return this.to.type || 'text';
