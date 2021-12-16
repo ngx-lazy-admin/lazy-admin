@@ -9,7 +9,7 @@ import {
   forwardRef 
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FieldType,  } from '@ngx-formly/core';
+import { FieldType } from '@ngx-formly/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 

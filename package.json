@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@antv/g2": "^4.1.34",
+    "@antv/g6": "^4.5.1",
+    "@antv/s2": "^1.3.0",
     "@ngx-formly/core": "^5.10.23",
     "@toast-ui/editor": "^3.1.1",
     "bootstrap": "^5.1.0",

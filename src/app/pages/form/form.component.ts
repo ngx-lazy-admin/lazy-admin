@@ -30,124 +30,23 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
 
   model = {
-    text: 'text',
-    select: '1',
-    UserName: 'Zhou Maomao', 
-    Telephone: '18100000000', 
-    Live: 'Hangzhou, Zhejiang',
-    Remark: 'Template <script>alert("0wned")</script> <b>Syntax</b>',
-    list: [{
-      indexs: 1,
-      name: `Edward`,
-      age: 1,
-      tagList: ['ss'],
-      address: `London`,
-      date: 1
-    }, {
-      indexs: 2,
-      name: `🐛 [BUG]无法创建工程npm creat`,
-      age: 2,
-      address: `London2`,
-      tagList: ['ss'],
-      date: 2
-    },{
-      indexs: 2,
-      name: `Edward2`,
-      age: 2,
-      tagList: ['ss'],
-      address: `London2`,
-      date: 2
-    },{
-      indexs: 2,
-      name: `Edward2`,
-      tagList: ['ss'],
-      age: 2,
-      address: `London2`,
-      date: 2
-    }]
+    s2: 1
   }
 
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
       type: 'button',
-      key: 'text',
       templateOptions: {
-        icon: 'download',
-        click: (field, $event) => {
-
-          let list = []
-          for (let i = 3; i < 10; i++) {
-            list.push({
-              index: i,
-              name: `Edward`,
-              age: i,
-              address: `London`,
-              date: i
-            });
-          }
-
-          let listgroup = field.form?.get('list');
-          let listField = (listgroup as any)._fields[0]
-
-          // fieldChange(listField, list)
-    
-          // let i = listField.fieldGroup.length;
-          
-          // if (!listField.model) {
-          //   assignFieldValue(listField, []);
-          // }
-      
-          // listField.model.splice(0, i, list[0], ...clone(list));
-          // listField.options._buildForm();
-        }
-      },
+        label: 'Email address',
+        placeholder: 'Enter email',
+        required: true,
+        text: '按钮'
+      }
     },
     {
-      key: 'list',
-      type: 'virtual-table',
-      fieldArray: {
-        fieldGroup: [
-
-          {
-            type: 'input',
-            key: 'name',
-            templateOptions: {
-              label: '序列'
-            }
-          },
-          {
-            type: 'tag',
-            key: 'indexs',
-            templateOptions: {
-              label: '序列',
-              text: '食物',
-            }
-          },
-          {
-            type: 'tag-list',
-            key: 'tagList',
-            templateOptions: {
-              label: '序列'
-            }
-          },
-          {
-            type: 'input',
-            key: 'address',
-            templateOptions: {
-              label: '序列'
-            }
-          },
-          {
-            type: 'input',
-            key: 'date',
-            templateOptions: {
-              label: '序列',
-              nzBorderless: false
-            }
-          },
-        ]
-      }
+      key: 'S2',
+      type: 's2'
     }
   ];
 

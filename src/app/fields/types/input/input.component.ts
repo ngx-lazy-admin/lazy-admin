@@ -5,7 +5,6 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({
 	selector: 'div[input-field]',
-	styleUrls: ['./input.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 	template: `
