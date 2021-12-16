@@ -30,13 +30,15 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
 
   model = {
-    name: null
+    name: null,
+    fenshu: null,
+    age: null
   }
 
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'name',
+      key: 'age',
       type: 'input',
       wrappers: ['inline'],
       className: 'w-25 d-block mt-5',
@@ -44,7 +46,21 @@ export class FormComponent implements OnInit {
         label: 'Email address',
         placeholder: 'Enter email',
         required: true,
-        text: '按钮'
+        min: 28,
+        max: 60,
+      }
+    },
+    {
+      key: 'fenshu',
+      type: 'input',
+      wrappers: ['inline'],
+      className: 'w-25 d-block',
+      templateOptions: {
+        label: 'Email address',
+        placeholder: 'Enter email',
+        required: true,
+        min: 0,
+        max: 150,
       }
     },
     {

@@ -13,17 +13,19 @@ const isObject = (x: any) => {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <nz-form-item>
+    <nz-form-item class="mb-2">
       <nz-form-control 
         nz-tooltip 
         [nzTooltipVisible]="showError" 
-        [nzTooltipTrigger]="null" 
+        [nzTooltipTrigger]="'focus'" 
         [nzValidateStatus]="errorState"
-        [nzTooltipTitle]="errorMessage"
-        nzTooltipColor="#fff" 
-        [nzTooltipOverlayStyle]="{color: 'red'}"
+        [nzTooltipTitle]="showError ? titleTemplate : null" 
+        nzTooltipColor="#fff"
         nzTooltipPlacement="topRight">
         <ng-container #fieldComponent></ng-container>
+        <ng-template #titleTemplate let-thing>
+          <span class="ant-form-item-explain ant-form-item-explain-error">{{errorMessage}}</span>
+        </ng-template>
       </nz-form-control>
     </nz-form-item>
   `
@@ -105,6 +107,7 @@ export class InlineWrapper extends FieldWrapper {
     if (fieldForm) {
       for (const error in fieldForm.errors) {
         if (fieldForm.errors.hasOwnProperty(error)) {
+          console.log(error)
           let message = this.config.getValidatorMessage(error);
   
           if (isObject(fieldForm.errors[error])) {
@@ -129,6 +132,7 @@ export class InlineWrapper extends FieldWrapper {
             message = this.field.asyncValidators[error].message;
           }
   
+          console.log(message)
           if (typeof message === 'function') {
             return message(fieldForm.errors[error], this.field);
           }

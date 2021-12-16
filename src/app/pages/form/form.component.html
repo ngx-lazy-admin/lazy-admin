@@ -1,3 +1,4 @@
+<div style="height: 500px; padding-top: 100px;"> 
 <form [formGroup]="form">
     <formly-form [form]="form" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
     <button nz-button type="submit" (click)="onSubmit(model)">onSubmit</button>
@@ -19,3 +20,4 @@
 
 
 <ng-template #templatePortalContent> <i nz-icon nzType="menu-fold" nzTheme="outline"></i> Hello, this is a template portal</ng-template>
+</div>
