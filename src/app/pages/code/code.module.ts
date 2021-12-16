@@ -12,7 +12,6 @@ import { CodeComponent } from './code.component';
 
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
-import { CustomFieldModule } from '../../fields/custom';
 
 
 @NgModule({
@@ -30,7 +29,6 @@ import { CustomFieldModule } from '../../fields/custom';
     FormlyModule.forRoot(),
     FieldTypeModule,
     FormFieldModule,
-    CustomFieldModule,
   ]
 })
 export class CodeModule { }
