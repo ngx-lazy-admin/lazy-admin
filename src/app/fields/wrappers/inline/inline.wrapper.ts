@@ -1,6 +1,6 @@
 import { Component, ViewChild, ViewContainerRef, OnInit, TemplateRef, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FieldWrapper, FormlyConfig } from '@ngx-formly/core';
-import { NzFormTooltipIcon, NzFormLayoutType } from 'ng-zorro-antd/form';
+import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { isObservable, Observable, of } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
 
@@ -10,41 +10,23 @@ const isObject = (x: any) => {
 
 @Component({
   selector: 'app-form-field-wrapper',
-  host: {
-    '[class.ant-form-horizontal]': 'nzLayout === "horizontal"',
-    '[class.ant-form-vertical]': 'nzLayout === "vertical"',
-    '[class.ant-form-inline]': 'nzLayout === "inline"',
-  },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nz-form-item>
-      <ng-container *ngIf="to.label && to.hideLabel !== true">
-        <nz-form-label 
-          [nzNoColon]="nzNoColon" 
-          [nzRequired]="required" 
-          [nzFor]="id" 
-          [nzTooltipTitle]="nzTooltipTitle"
-          [nzTooltipIcon]="nzTooltipIcon">
-          {{ to.label }}
-        </nz-form-label>
-      </ng-container>
-      <nz-form-control 
-        [nzValidateStatus]="errorState" 
-        [nzErrorTip]="errorTpl"
-        [nzHasFeedback]="nzHasFeedback">
+      <nz-form-control [nzValidateStatus]="errorState" zTooltipTitle="prompt text" nzTooltipPlacement="topLeft" nz-tooltip>
         <ng-container #fieldComponent></ng-container>
-        <ng-template #errorTpl let-control>
-          <span>{{ errorMessage }}</span>
-        </ng-template>
       </nz-form-control>
     </nz-form-item>
   `
 })
 
-export class FormWrapper extends FieldWrapper {
+export class InlineWrapper extends FieldWrapper {
+  // @ViewChild('fieldTpl', { read: ViewContainerRef })
 
-  get nzLayout(): NzFormLayoutType  {
+  // ant-form-horizontal ant-form-vertical ant-form-inline
+
+  get nzLayout(): string {
     return this.to.nzLayout ? this.to.nzLayout : 'horizontal'
   }
 
@@ -56,7 +38,7 @@ export class FormWrapper extends FieldWrapper {
     return this.to.nzNoColon || false
   }
 
-  get required(): boolean {
+  get nzRequired(): boolean {
     return  (this.to.nzRequired || this.to.required) && this.to.hideRequiredMarker !== true || false
   }
 
@@ -73,7 +55,7 @@ export class FormWrapper extends FieldWrapper {
   }
 
   get nzHasFeedback(): boolean {
-    return this.to.nzHasFeedback || true
+    return this.to.nzHasFeedback() || false
   }
 
   get nzExtra(): string | TemplateRef<void> {
@@ -163,6 +145,12 @@ export class FormWrapper extends FieldWrapper {
         }),
         switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
       );
+    }
+  }
+
+  onBtnClick () {
+    if (this.to.buttonClick) {
+      this.to.buttonClick(this.model, this.options);
     }
   }
 }

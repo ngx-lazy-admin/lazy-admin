@@ -30,13 +30,16 @@ export class FormComponent implements OnInit {
   form = new FormGroup({});
 
   model = {
-    s2: 1
+    name: null
   }
 
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      type: 'button',
+      key: 'name',
+      type: 'input',
+      wrappers: ['inline'],
+      className: 'w-25 d-block mt-5',
       templateOptions: {
         label: 'Email address',
         placeholder: 'Enter email',
@@ -45,31 +48,20 @@ export class FormComponent implements OnInit {
       }
     },
     {
-      key: 'S2',
-      type: 's2'
-    }
+      type: 'button',
+      className: 'w-25 d-block mt-2',
+      templateOptions: {
+        placeholder: 'Enter email',
+        text: '确定'
+      }
+    },
   ];
 
   loading = false
 
 
   onSubmit(model:any) {
-
-    let list = []
-    for (let i = 3; i < 200; i++) {
-      list.push({
-        index: i,
-        name: `Edward`,
-        age: i,
-        address: `London`,
-        date: i
-      });
-    }
-    
-    let listgroup = this.form.root.get('list');
-    let listField = (listgroup as any)._fields[0]
-
-    fieldChange(listField, list)
+    console.log(model)
   }
 
   ngAfterViewInit () {}
