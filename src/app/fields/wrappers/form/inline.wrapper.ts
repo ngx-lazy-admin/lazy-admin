@@ -107,7 +107,6 @@ export class InlineWrapper extends FieldWrapper {
     if (fieldForm) {
       for (const error in fieldForm.errors) {
         if (fieldForm.errors.hasOwnProperty(error)) {
-          console.log(error)
           let message = this.config.getValidatorMessage(error);
   
           if (isObject(fieldForm.errors[error])) {
@@ -132,7 +131,6 @@ export class InlineWrapper extends FieldWrapper {
             message = this.field.asyncValidators[error].message;
           }
   
-          console.log(message)
           if (typeof message === 'function') {
             return message(fieldForm.errors[error], this.field);
           }
@@ -168,8 +166,6 @@ export class InlineWrapper extends FieldWrapper {
         switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
       );
     }
-
-    console.log('ngOnChanges')
   }
 
   ngAfterViewInit() {

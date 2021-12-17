@@ -9,7 +9,6 @@ import { InlineWrapper } from './inline.wrapper';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
 
-
 export function minValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This value should be more than ${field.templateOptions?.min}`;
 }

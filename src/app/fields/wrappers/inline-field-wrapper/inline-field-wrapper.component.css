@@ -1,5 +1,0 @@
-::ng-deep .ant-form-inline.ant-form-item>.ant-form-item-control-wrapper, 
-::ng-deep .ant-form-inline.ant-form-item>.ant-form-item-label {
-    display: inline-block;
-    vertical-align: top;
-}
