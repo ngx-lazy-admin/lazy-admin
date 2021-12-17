@@ -13,61 +13,93 @@ export class FormComponent implements OnInit {
 
   constructor(
     private cd: ChangeDetectorRef,
-  ) { }
+  ) {}
 
   ngOnInit(): void { }
 
   form = new FormGroup({});
 
   model = {
-    name: null,
+    name: 1,
     fenshu: null,
-    age: null
+    age: 2,
+    data: [{
+      name: '1',
+      age: '1',
+      address: '1',
+      height: '1',
+      weight: '1'
+    }]
   }
 
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'age',
-      type: 'input',
-      wrappers: ['inline'],
-      className: 'w-25 d-block mt-5',
-      templateOptions: {
-        label: 'Email address',
-        placeholder: 'Enter email',
-        required: true,
-        min: 28,
-        max: 60,
-      }
-    },
-    {
-      key: 'fenshu',
-      type: 'input',
-      wrappers: ['inline'],
+      key: 'data',
+      type: 'virtual-table',
       className: 'w-25 d-block',
-      templateOptions: {
-        label: 'Email address',
-        placeholder: 'Enter email',
-        required: true,
-        min: 0,
-        max: 150,
+      fieldArray: {
+        fieldGroup: [
+          {
+            type: 'input',
+            key: 'name',
+          },
+          {
+            type: 'input',
+            key: 'age',
+          },
+          {
+            type: 'input',
+            key: 'address',
+          },
+          {
+            type: 'input',
+            key: 'weight',
+          },
+          {
+            type: 'input',
+            key: 'height',
+          }
+        ]
       }
     },
     {
-      type: 'button',
-      className: 'w-25 d-block mt-2',
-      templateOptions: {
-        placeholder: 'Enter email',
-        text: '确定'
-      }
-    },
+      key: 'name',
+      type: 'input'
+    }
   ];
 
   loading = false
 
 
   onSubmit(model:any) {
-    console.log(model)
+    let data = {}
+    for (let i = 0; i < 500; i++ ) {
+      this.model.data.push({
+        name: 'name' + i,
+        age: 'age' + i,
+        address: 'address' + i,
+        height: 'height' + i,
+        weight: 'weight' + i
+      })
+    }
+
+    let lastTime = new Date().getTime()
+
+    // this.model = JSON.parse(JSON.stringify(this.model))
+
+    this.fields.push({
+      key: 'age',
+      type: 'input'
+    })
+
+    this.model = clone(this.model)
+    // (this.form?.optons as any)._buildForm();
+
+    console.log(new Date().getTime() - lastTime)
+    // this.cd.detectChanges();
+
+
   }
 
   ngAfterViewInit () {}
