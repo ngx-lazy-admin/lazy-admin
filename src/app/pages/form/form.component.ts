@@ -11,21 +11,11 @@ import { assignFieldValue, getFieldValue, clone, fieldChange } from '../../utils
 })
 export class FormComponent implements OnInit {
 
-  
-  @ViewChild('templatePortalContent', {static: true}) templatePortalContent!: TemplateRef<unknown>;
-
   constructor(
     private cd: ChangeDetectorRef,
-  ) { 
-    // this.templatePortal = new TemplatePortal(this.templatePortalContent, this._viewContainerRef);
-  }
+  ) { }
 
-  ngOnInit(): void {
-    // this.form.valueChanges.subscribe(item => {
-    //   console.log(item)
-    // })
-    console.log(this.templatePortalContent)
-  }
+  ngOnInit(): void { }
 
   form = new FormGroup({});
 
