@@ -7,13 +7,20 @@ import { formatDate } from '@angular/common';
 
 @Component({
 	selector: 'div[time-picker-field]',
-	templateUrl: './time-picker.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 	host: {
 		'display': 'contents',
 		'[class.display-contents]': `true`,
-	}
+	},
+	template: `
+		<nz-time-picker 
+			[formControl]="control"
+			[formlyAttributes]="field"
+			[nzDefaultOpenValue]="nzDefaultOpenValue"
+			(ngModelChange)="ngModelChange($event)">
+		</nz-time-picker>
+	`
 })
 export class TimePickerField extends FieldType {
 

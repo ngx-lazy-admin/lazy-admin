@@ -1,10 +1,22 @@
 import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { FieldArrayType } from '@ngx-formly/core';
+import { FieldArrayType, FieldType } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+export interface StepsOptionInterface {
+  value: any | null;
+  description?: string | TemplateRef<void>;
+  icon: string | string[] | Set<string> | { [klass: string]: any; }
+  status: 'wait' | 'process' | 'finish' | 'error';
+  label: string | TemplateRef<void>;
+  subtitle: string | TemplateRef<void>;
+  disabled?: boolean;
+  percentage?: number;
+}
 
 @Component({
   selector: 'div[steps-field]',
-  templateUrl: './steps.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styles: [
@@ -19,10 +31,27 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
         content: "*";
       }
     `
-  ]
+  ],
+  template: `
+
+    <nz-steps-item 
+      [formControl]="control"
+	    [formlyAttributes]="field"
+      [options]="configOptions"
+      (nzIndexChange)="nzIndexChange($event)"
+      >
+        <ng-content></ng-content>
+    </nz-steps-item>
+
+  `
 })
 
-export class StepsField extends FieldArrayType implements OnDestroy {
+export class StepsField extends FieldType {
+
+  get control() : FormControl {
+		return this.formControl as FormControl;
+  }
+
 
 	get nzType(): 'default' | 'navigation'{
 		return this.to.nzType || 'default';
@@ -53,21 +82,17 @@ export class StepsField extends FieldArrayType implements OnDestroy {
     return this.to.nzStartIndex || 0
   }
 
+  get configOptions(): StepsOptionInterface[] {
+    return this.to.configOptions || []
+  }
+
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id
   }
 
-  nzIndexChange ($event: number) {
+  nzIndexChange ($event: any) {
     if (this.to.nzIndexChange) {
       this.to.nzIndexChange($event)
-    }
-  }
-
-  ngOnDestroy() {
-    if (this.field && this.field.fieldGroup) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
-      });
     }
   }
 }

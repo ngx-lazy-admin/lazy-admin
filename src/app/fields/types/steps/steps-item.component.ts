@@ -10,48 +10,66 @@ import {
   OnDestroy,
   OnInit,
   Optional,
-  ViewEncapsulation
+  ViewEncapsulation,
+  TemplateRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
-import { InputBoolean } from 'ng-zorro-antd/core/util';
+import { InputBoolean, InputNumber } from 'ng-zorro-antd/core/util';
+
+
+export interface StepsOptionInterface {
+  value: any | null;
+  description?: string | TemplateRef<void>;
+  icon: string | string[] | Set<string> | { [klass: string]: any; }
+  status: 'wait' | 'process' | 'finish' | 'error';
+  label: string | TemplateRef<void>;
+  subtitle: string | TemplateRef<void>;
+  disabled?: boolean;
+  percentage?: number;
+}
 
 @Component({
   selector: 'nz-steps-item',
   exportAs: 'nzSliderItem',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
-  template: `
-    <nz-steps 
-      [nzCurrent]="current"
-      [nzType]="nzType"
-      [nzDirection]="nzDirection"
-      [nzLabelPlacement]="nzLabelPlacement"
-      [nzProgressDot]="nzProgressDot"
-      [nzSize]="nzSize"
-      [nzStatus]="nzStatus"
-      [nzStartIndex]="nzStartIndex"
-      (nzIndexChange)="nzIndexChange($event)"
-      >
-        <ng-content></ng-content>
-    </nz-steps>
-  `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NzStepsComponent),
+      useExisting: forwardRef(() => NzStepsItemComponent),
       multi: true
     }
-  ]
+  ],
+  template: `
+    <nz-steps 
+      [nzCurrent]="current"
+      [nzProgressDot]="nzProgressDot"
+      [nzStartIndex]="nzStartIndex">
+      <ng-container *ngFor="let item of options; let i = index; trackBy: trackByFn">
+        <nz-step 
+          [nzTitle]="item.label"
+          [nzIcon]="item?.icon"
+          [nzTitle]="item?.label"
+          [nzSubtitle]="item?.subtitle"
+          [nzDisabled]="item?.disabled"
+          [nzPercentage]="item.percentage || null"
+        >
+        </nz-step>
+      </ng-container>
+    </nz-steps>
+  `,
 })
-export class NzStepsComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDestroy {
   static ngAcceptInputType_nzDisabled: BooleanInput;
 
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
+
+  current: number = 0;
 
   @Input() @InputBoolean() nzDisabled: boolean = false;
   @Input() @InputBoolean() nzReverse: boolean = false;
@@ -61,10 +79,10 @@ export class NzStepsComponent implements ControlValueAccessor, OnInit, OnDestroy
   @Input() @InputBoolean() nzProgressDot: boolean = false;  
   @Input() @InputBoolean() nzSize: string = 'default';
   @Input() @InputBoolean() nzStatus: string = 'process';
+  @Input() @InputNumber() nzStartIndex: number = 0;
+  @Input() options: StepsOptionInterface[] = []
 
   private _destroy$ = new Subject<void>();
-
-  current: number  = 0;
 
   constructor(
     private elementRef: ElementRef,
@@ -86,6 +104,14 @@ export class NzStepsComponent implements ControlValueAccessor, OnInit, OnDestroy
 
   onModelChange ($event: EventEmitter<number>) {
     this.onChange($event);
+  }
+
+  nzIndexChange ($event: boolean) {
+    // this.to
+  }
+
+  trackByFn(index: number, item: any) {
+    return item.id ? item.id : index; // or item.id
   }
 
   ngOnDestroy(): void {

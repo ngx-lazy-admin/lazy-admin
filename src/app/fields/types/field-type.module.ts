@@ -4,6 +4,7 @@ import { AutocompleteFieldModule } from './autocomplete';
 import { ButtonFieldModule } from './button';
 import { CardFieldModule } from './card';
 import { CheckboxFieldModule } from './checkbox';
+import { CollapseFieldModule } from './collapse';
 import { DatePickerFieldModule } from './date-picker';
 import { DescriptionFieldModule } from './descriptions';
 import { InputFieldModule } from './input';
@@ -40,7 +41,8 @@ import { UploadFieldModule } from './upload';
     StepsFieldModule,
     SelectFieldModule,
     CardFieldModule,
-    TableFieldModule
+    TableFieldModule,
+    CollapseFieldModule
   ],
 })
 export class FieldTypeModule {}

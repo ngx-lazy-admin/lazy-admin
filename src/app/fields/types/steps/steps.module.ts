@@ -4,9 +4,13 @@ import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { StepsField } from './steps.component';
+import { NzStepsItemComponent } from './steps-item.component';
 
 @NgModule({
-  declarations: [ StepsField ],
+  declarations: [ 
+    StepsField,
+    NzStepsItemComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -15,11 +19,11 @@ import { StepsField } from './steps.component';
     FormlyModule.forChild({
       types: [
         {
-          name: 'description',
+          name: 'steps',
           component: StepsField,
         },
         {
-          name: 'nz-description',
+          name: 'nz-steps',
           component: StepsField,
         }
       ],

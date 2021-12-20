@@ -21,51 +21,56 @@ export class FormComponent implements OnInit {
 
   model = {
     name: 1,
-    fenshu: null,
-    age: 2,
-    data: [{
-      name: '1',
-      age: '1',
-      address: '1',
-      height: '1',
-      weight: '1'
-    }]
   }
 
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'data',
-      type: 'virtual-table',
-      className: 'w-25 d-block',
-      fieldArray: {
-        fieldGroup: [
+      type: 'steps',
+      key: 'name',
+      className: "w-50 d-block",
+      wrappers: ['inline'],
+      templateOptions: {
+        label: "姓名",
+        required: true,
+        placeholder: '姓名',
+        nzShowArrow: false,
+        status: 'wait',
+        configOptions: [
           {
-            type: 'input',
-            key: 'name',
+            label: 'Finished',
+            description: 'This is a description.'
           },
           {
-            type: 'input',
-            key: 'age',
+            label: 'In Progress',
+            description: 'This is a description.'
           },
           {
-            type: 'input',
-            key: 'address',
+            label: 'Waiting',
+            description: 'This is a description.'
           },
-          {
-            type: 'input',
-            key: 'weight',
-          },
-          {
-            type: 'input',
-            key: 'height',
-          }
         ]
       }
     },
     {
-      key: 'name',
-      type: 'input'
+      type: 'button',
+      templateOptions: {
+        text: '下一步',
+        click: (field, $event) => {
+          console.log(field)
+          field.form?.root.get('name')?.patchValue(field.form?.root.get('name')?.value + 1)
+        }
+      }
+    },
+    {
+      type: 'button',
+      templateOptions: {
+        text: '上一步',
+        click: (field, $event) => {
+          console.log(field)
+          field.form?.root.get('name')?.patchValue(field.form?.root.get('name')?.value - 1)
+        }
+      }
     }
   ];
 
@@ -74,32 +79,30 @@ export class FormComponent implements OnInit {
 
   onSubmit(model:any) {
     let data = {}
-    for (let i = 0; i < 500; i++ ) {
-      this.model.data.push({
-        name: 'name' + i,
-        age: 'age' + i,
-        address: 'address' + i,
-        height: 'height' + i,
-        weight: 'weight' + i
-      })
-    }
+    // for (let i = 0; i < 500; i++ ) {
+    //   this.model.data.push({
+    //     name: 'name' + i,
+    //     age: 'age' + i,
+    //     address: 'address' + i,
+    //     height: 'height' + i,
+    //     weight: 'weight' + i
+    //   })
+    // }
 
     let lastTime = new Date().getTime()
 
     // this.model = JSON.parse(JSON.stringify(this.model))
 
-    this.fields.push({
-      key: 'age',
-      type: 'input'
-    })
+    // this.fields.push({
+    //   key: 'age',
+    //   type: 'input'
+    // })
 
-    this.model = clone(this.model)
+    // this.model = clone(this.model)
     // (this.form?.optons as any)._buildForm();
 
-    console.log(new Date().getTime() - lastTime)
+    // console.log(new Date().getTime() - lastTime)
     // this.cd.detectChanges();
-
-
   }
 
   ngAfterViewInit () {}

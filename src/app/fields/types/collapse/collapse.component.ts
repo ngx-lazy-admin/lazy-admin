@@ -20,12 +20,22 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
     `
   ],
   template: `
-    <nz-collapse>
+    <nz-collapse 
+      [nzAccordion]="nzAccordion"
+      [nzBordered]="nzBordered"
+      [nzGhost]="nzGhost"
+      [nzExpandIconPosition]="nzExpandIconPosition"
+    >
+      
       <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
         <nz-collapse-panel
-          [nzHeader]="field?.templateOptions?.name"
+          [nzDisabled]="field?.templateOptions?.disabled || false"
+          [nzHeader]="field?.templateOptions?.label || ''"
+          [nzExpandedIcon]="field?.templateOptions?.expandedIcon"
+          [nzExtra]="field?.templateOptions?.extra"
+          [nzShowArrow]="field?.templateOptions?.showArrow || true"
           [nzActive]="field?.templateOptions?.active"
-          [nzDisabled]="field?.templateOptions?.disabled"
+          (nzActiveChange)="activeChange($event, field.templateOptions?.activeChange)"
         >
           <formly-field [field]="field"></formly-field>
         </nz-collapse-panel>
@@ -36,43 +46,31 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 export class CollapseField extends FieldArrayType implements OnDestroy {
 
-	get nzType(): 'default' | 'navigation'{
-		return this.to.nzType || 'default';
+	get nzAccordion(): boolean {
+		return this.to.nzAccordion || false;
 	}
 
-	get nzDirection(): 'vertical' | 'horizontal' {
-		return this.to.nzDirection || 'horizontal';
+	get nzBordered(): boolean {
+		return this.to.nzBordered || false;
   }
 
-  get nzLabelPlacement() : 'vertical' | 'horizontal' {
-		return this.to.nzBordered || 'horizontal';
+  get nzGhost() : boolean {
+		return this.to.nzGhost || false;
   }
 
-  get nzProgressDot() : boolean | TemplateRef<{ $implicit: TemplateRef<void>, status: string, index: number }> {
-		return this.to.nzColumn || false;
+  get nzExpandIconPosition() : 'left' | 'right' {
+		return this.to.nzExpandIconPosition || 'right';
   }
 
 
-  get nzSize() : 'small' | 'default' {
-		return this.to.nzSize || 'default';
-  }
-
-  get nzStatus() : 'wait' | 'process' | 'finish' | 'error' {
-		return this.to.nzStatus || 'process';
-  }
-
-  get nzStartIndex(): number {
-    return this.to.nzStartIndex || 0
+  activeChange ($event: boolean, fn: any) {
+    if (fn) {
+      fn($event)
+    }
   }
 
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id
-  }
-
-  nzIndexChange ($event: number) {
-    if (this.to.nzIndexChange) {
-      this.to.nzIndexChange($event)
-    }
   }
 
   ngOnDestroy() {

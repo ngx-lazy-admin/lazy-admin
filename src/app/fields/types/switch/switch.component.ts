@@ -10,7 +10,13 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
   encapsulation: ViewEncapsulation.None,
 	host: {
 		'display': 'contents',
-	}
+	},
+	template: `
+		<nz-switch 
+			[ngModel]="true"
+			nzLoading>
+		</nz-switch>
+	`
 })
 export class SwitchField extends FieldType {
 
