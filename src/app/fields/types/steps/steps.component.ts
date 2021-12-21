@@ -1,8 +1,6 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { FieldArrayType, FieldType } from '@ngx-formly/core';
-import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
+import { Component, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 export interface StepsOptionInterface {
   value: any | null;
@@ -33,16 +31,15 @@ export interface StepsOptionInterface {
     `
   ],
   template: `
-
     <nz-steps-item 
       [formControl]="control"
 	    [formlyAttributes]="field"
       [options]="configOptions"
+      [readonly]="readonly"
       (nzIndexChange)="nzIndexChange($event)"
       >
         <ng-content></ng-content>
     </nz-steps-item>
-
   `
 })
 
@@ -51,7 +48,6 @@ export class StepsField extends FieldType {
   get control() : FormControl {
 		return this.formControl as FormControl;
   }
-
 
 	get nzType(): 'default' | 'navigation'{
 		return this.to.nzType || 'default';
@@ -69,7 +65,6 @@ export class StepsField extends FieldType {
 		return this.to.nzColumn || false;
   }
 
-
   get nzSize() : 'small' | 'default' {
 		return this.to.nzSize || 'default';
   }
@@ -84,6 +79,10 @@ export class StepsField extends FieldType {
 
   get configOptions(): StepsOptionInterface[] {
     return this.to.configOptions || []
+  }
+
+  get readonly(): boolean {
+    return this.to.readonly || false
   }
 
   trackByFn(index: number, item: any) {

@@ -34,6 +34,7 @@ export class FormComponent implements OnInit {
         label: "姓名",
         required: true,
         placeholder: '姓名',
+        readonly: true,
         nzShowArrow: false,
         status: 'wait',
         configOptions: [
@@ -59,6 +60,7 @@ export class FormComponent implements OnInit {
         click: (field, $event) => {
           console.log(field)
           field.form?.root.get('name')?.patchValue(field.form?.root.get('name')?.value + 1)
+          this.cd.detectChanges();
         }
       }
     },
@@ -69,6 +71,7 @@ export class FormComponent implements OnInit {
         click: (field, $event) => {
           console.log(field)
           field.form?.root.get('name')?.patchValue(field.form?.root.get('name')?.value - 1)
+          this.cd.detectChanges(); 
         }
       }
     }

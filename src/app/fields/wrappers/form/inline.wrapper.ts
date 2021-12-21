@@ -172,11 +172,9 @@ export class InlineWrapper extends FieldWrapper {
     // this.formControl?.valueChanges(item => {
     //   console.log(itme)
     // })
-    this.formControl.valueChanges.subscribe(item => {
-      console.log(item)
-      console.log(this)
-      console.log(this.errorState)
-    })
+    // this.formControl.valueChanges.subscribe(item => {
+
+    // })
   }
 
   onBtnClick () {

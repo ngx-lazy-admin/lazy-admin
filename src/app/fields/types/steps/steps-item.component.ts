@@ -4,12 +4,10 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  EventEmitter,
   forwardRef,
   Input,
   OnDestroy,
   OnInit,
-  Optional,
   ViewEncapsulation,
   TemplateRef
 } from '@angular/core';
@@ -19,7 +17,6 @@ import { takeUntil } from 'rxjs/operators';
 
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 import { InputBoolean, InputNumber } from 'ng-zorro-antd/core/util';
-
 
 export interface StepsOptionInterface {
   value: any | null;
@@ -48,7 +45,8 @@ export interface StepsOptionInterface {
     <nz-steps 
       [nzCurrent]="current"
       [nzProgressDot]="nzProgressDot"
-      [nzStartIndex]="nzStartIndex">
+      [nzStartIndex]="nzStartIndex"
+      (nzIndexChange)="onIndexChange($event)">
       <ng-container *ngFor="let item of options; let i = index; trackBy: trackByFn">
         <nz-step 
           [nzTitle]="item.label"
@@ -73,13 +71,15 @@ export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDes
 
   @Input() @InputBoolean() nzDisabled: boolean = false;
   @Input() @InputBoolean() nzReverse: boolean = false;
-  @Input() @InputBoolean() nzType: string = 'default';
-  @Input() @InputBoolean() nzDirection: string = 'horizontal';
-  @Input() @InputBoolean() nzLabelPlacement: string = 'horizontal';
+  @Input() nzType: string = 'default';
+  @Input() nzDirection: string = 'horizontal';
+  @Input() nzLabelPlacement: string = 'horizontal';
   @Input() @InputBoolean() nzProgressDot: boolean = false;  
-  @Input() @InputBoolean() nzSize: string = 'default';
-  @Input() @InputBoolean() nzStatus: string = 'process';
+  @Input() nzSize: string = 'default';
+  @Input() nzStatus: string = 'process';
   @Input() @InputNumber() nzStartIndex: number = 0;
+  @Input() @InputBoolean() readonly: boolean = false;
+
   @Input() options: StepsOptionInterface[] = []
 
   private _destroy$ = new Subject<void>();
@@ -102,12 +102,11 @@ export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDes
       });
   }
 
-  onModelChange ($event: EventEmitter<number>) {
-    this.onChange($event);
-  }
-
-  nzIndexChange ($event: boolean) {
-    // this.to
+  onIndexChange(index: number): void {
+    // if (!this.readonly) {
+    //   this.current = index;
+    //   this.onChange(index);
+    // }
   }
 
   trackByFn(index: number, item: any) {
@@ -121,7 +120,7 @@ export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDes
   }
 
   writeValue(value: number): void {
-    this.current = value
+    this.current = value;
     this.cd.markForCheck();
   }
 

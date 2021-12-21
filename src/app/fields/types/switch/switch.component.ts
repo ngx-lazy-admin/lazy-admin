@@ -5,7 +5,6 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({
 	selector: 'div[switch-field]',
-	templateUrl: './switch.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 	host: {
