@@ -40,7 +40,8 @@ export class FormComponent implements OnInit {
         configOptions: [
           {
             label: 'Finished',
-            description: 'This is a description.'
+            description: 'This is a description.',
+            subtitle: 'nzSubtitle'
           },
           {
             label: 'In Progress',

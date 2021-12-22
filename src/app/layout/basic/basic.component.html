@@ -1,6 +1,5 @@
 <nz-progress
   class="progress position-fixed w-100 top-0 f0"
-
   [nzPercent]="percent"
   nzStrokeWidth="2"
   [nzShowInfo]="false"
@@ -9,26 +8,56 @@
   [nzStrokeColor]="{ '0%': '#108ee9', '100%': '#87d068' }">
 </nz-progress>
 
-<nz-layout class="app-layout">
-  <nz-sider  
-    nzCollapsible
-    [nzWidth]="isCollapsed ? '80px' : '256px'"
-    nzBreakpoint="md"
-    [nzCollapsedWidth]="80"
-    [(nzCollapsed)]="isCollapsed"
-    (nzCollapsedChange)="collapsedChange($event)">
-    <app-layout-menu 
-      class="menu-sidebar transition-width position-fixed h-100" 
-      [ngStyle]="{width: isCollapsed ? '80px' : '256px'}">
-    </app-layout-menu>
-  </nz-sider>
+<nz-layout class="app-layout" style="height: 100vh; width: 100%;">
+
+  <ng-container *ngIf="nzWidthRange[0]">
+    <nz-sider  
+      nzCollapsible
+      style="z-index: 1000;"
+      class="h-100"
+      [nzCollapsedWidth]="nzWidthRange[index]"
+      [nzCollapsed]="!!index"
+      [nzWidth]="nzWidthRange[index]"
+      [nzTrigger]="null"
+      (nzCollapsedChange)="collapsedChange($event)">
+      <app-layout-menu 
+        [isCollapsed]="!index"
+        class="menu-sidebar">
+      </app-layout-menu>
+    </nz-sider>
+  </ng-container>
+
+  <ng-container *ngIf="!nzWidthRange[0]">
+    <nz-drawer
+      [nzClosable]="false"
+      [nzVisible]="!!index"
+      nzPlacement="left"
+      [nzBodyStyle]="{padding: 0, 'backgroundColor': '#001529'}"
+      (nzOnClose)="close()"
+      >
+      <ng-container *nzDrawerContent>
+        <app-layout-menu 
+          [isCollapsed]="false"
+          class="menu-sidebar">
+        </app-layout-menu>
+      </ng-container>
+    </nz-drawer>
+  </ng-container>
+  
 
   <nz-layout >
     <nz-header nzTheme="light" class="p-0">
       <app-layout-header></app-layout-header>
     </nz-header>
 
-    <app-layout-header-tabset class="sticky-top"></app-layout-header-tabset>
+    <!-- {{'nzWidthRange:' + nzWidthRange | json}} <br/>
+    {{'index:' + index}} <br/>
+    {{'nzWidthRange[index]：' + nzWidthRange[index]}} <br/> -->
+
+    
+<!-- [ 90, 256 ] 1 false -->
+
+    <!-- <app-layout-header-tabset class="sticky-top"></app-layout-header-tabset> -->
 
     <!-- <nz-alert
       nzType="error"
@@ -56,7 +85,7 @@
         footer...
     </nz-footer> -->
 
-    <app-layout-footer-bar></app-layout-footer-bar>
+    <!-- <app-layout-footer-bar></app-layout-footer-bar> -->
 
   </nz-layout>
 </nz-layout>

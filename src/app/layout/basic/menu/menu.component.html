@@ -16,8 +16,8 @@
 				[nzPaddingLeft]="48"
 				[nzDisabled]="menu.disabled"
 				[nzSelected]="menu.selected">
-				<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
-				<a [routerLink]="menu.link">{{menu.label}}</a>
+				<i nz-icon [nzType]="menu.icon" class="me-2" *ngIf="menu.icon"></i>
+				<a [routerLink]="menu.link" class="me-auto">{{menu.label}}</a>
 				<nz-badge nzSize="small " class="mx-2 float-end" nzStandalone [nzCount]="25"></nz-badge>
 			</li>
 			<li *ngIf="menu.children"
@@ -26,9 +26,9 @@
 				[nzTitle]="titleTpl"
 				[nzDisabled]="menu.disabled">
 				<ng-template #titleTpl>
-					<span class="d-flex justify-content-between align-items-center">
+					<span class="d-flex justify-content-between align-items-center w-100">
 						<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
-						<span>{{menu.label}}</span>
+						<span class="d-inline-block me-auto">{{menu.label}}</span>
 						<nz-badge class="mx-2" nzStandalone [nzCount]="25"></nz-badge>
 					</span>
 				</ng-template>

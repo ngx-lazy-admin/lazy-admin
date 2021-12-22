@@ -83,7 +83,6 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   collapsChange (isCollapsed: boolean) {
-    console.log('collapsChange')
     this.isCollapsed = isCollapsed;
     this.layout.collapsChange(this.isCollapsed);
   }
@@ -193,8 +192,6 @@ export class LayoutHeaderComponent implements OnInit {
   onChange ($event: Event) {
 
   }
-
-
 
   ngOnInit(): void {
     setTimeout(() => {

@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { LayoutService } from '../layout.service';
 import { MessageService } from '../../services/message.service'
 import { ModalService } from 'src/app/modules/modal';
+import { BreakpointMap, NzBreakpointKey, NzBreakpointService, siderResponsiveMap } from 'ng-zorro-antd/core/services';
 
 @Component({
   selector: 'app-layout-basic',
@@ -21,8 +22,21 @@ export class LayoutBasicComponent implements OnInit {
 
   percent: number = 100;
   progress: boolean | null = false;
-  isCollapsed = false;
+
+  // 是否收缩
+  isCollapsed: boolean = false;
   dir: Direction = 'ltr';
+
+  nzWidth = 256
+  nzCollapsedWidth = 256;
+  isXs = false;
+
+  map: any = {};
+
+  nzWidthRange: number[] = []
+
+  isVisible: boolean = true;
+  index: number = 0;
 
   private destroy$ = new Subject<void>();
   // private _dirChangeSubscription = Subscription.EMPTY;
@@ -32,12 +46,16 @@ export class LayoutBasicComponent implements OnInit {
     private cd: ChangeDetectorRef,
     private message: MessageService,
     private modal: ModalService,
+    private breakpointService: NzBreakpointService,
     @Optional() private directionality: Directionality,
   ) {
     // 布局状态
     this.layout.change$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
-      this.isCollapsed = item;
-      this.cd.markForCheck();
+      if (item) {
+        this.index = 0
+      } else {
+        this.index = 1
+      }
     })
 
     // 进度条的加载状态
@@ -50,6 +68,29 @@ export class LayoutBasicComponent implements OnInit {
     this.directionality.change?.pipe(takeUntil(this.destroy$)).subscribe((direction: Direction) => {
       this.dir = direction;
     });
+
+    this.breakpointService
+      .subscribe(siderResponsiveMap, true)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((map: any) => {
+        this.map = map;
+        if (map['lg'] || map['xl'] || map['xxl']) {
+          this.index = 1;
+          this.isVisible = false;
+          this.nzWidthRange = [90, 256]
+        } else if (map['sm'] || map['md']) {
+          this.index = 0;
+          this.isVisible = false;
+          this.nzWidthRange = [90, 256]
+        } else if (map['xs']) {
+          this.isVisible = false;
+          this.index = 0;
+          this.nzWidthRange = [0, 256]
+        }
+
+        this.layout.collapsChange(!this.index);
+        this.cd.markForCheck();
+      });
   }
 
   ngOnInit(): void {
@@ -62,6 +103,10 @@ export class LayoutBasicComponent implements OnInit {
 
   collapsedChange ($event: boolean) {
     this.layout.collapsChange($event);
+  }
+
+  close () {
+    this.layout.collapsChange(!this.isCollapsed);
   }
 
   ngOnDestroy(): void {

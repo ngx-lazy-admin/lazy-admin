@@ -50,6 +50,7 @@ export interface StepsOptionInterface {
       <ng-container *ngFor="let item of options; let i = index; trackBy: trackByFn">
         <nz-step 
           [nzTitle]="item.label"
+          [nzDescription]="item.description"
           [nzIcon]="item?.icon"
           [nzTitle]="item?.label"
           [nzSubtitle]="item?.subtitle"

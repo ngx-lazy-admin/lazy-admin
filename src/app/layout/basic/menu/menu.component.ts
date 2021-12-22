@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import { InputBoolean, InputNumber } from 'ng-zorro-antd/core/util';
 import { Subject } from 'rxjs';
 import { MenuService } from '../../../services/menu.service';
 import { UserService } from '../../../services/user.service';
@@ -13,21 +14,16 @@ import { LayoutService } from '../../layout.service';
 export class LayoutMenuComponent implements OnInit {
 
 
-  isCollapsed: boolean = false
   menus: any = null
   private destroy$ = new Subject<void>();
 
+  @Input() @InputBoolean() isCollapsed = false;
 
   constructor(
     private layout: LayoutService,
     private menu: MenuService,
     private cd: ChangeDetectorRef 
   ) {
-    this.layout.change$?.subscribe(item => {
-      this.isCollapsed = item;
-      this.cd.markForCheck();
-    })
-
     this.menu.change$?.subscribe(item => {
       this.menus = item
       this.cd.markForCheck();
@@ -41,3 +37,5 @@ export class LayoutMenuComponent implements OnInit {
     this.destroy$.complete();
   }
 }
+
+

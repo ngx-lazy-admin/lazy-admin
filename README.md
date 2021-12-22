@@ -336,3 +336,18 @@ card
 ### 跳过库的检查
 
 "skipLibCheck": true,
+
+
+
+xxl = "xxl", xl = "xl", lg = "lg",
+md = "md",
+sm = "sm",
+xs = "xs"
+
+xs      sm     md  lg  xl  xxl
+
+isCollapsed
+
+(0, 256)  (90 256)  (90 256)
+
+收起    收起   收起  展开 展开  展开

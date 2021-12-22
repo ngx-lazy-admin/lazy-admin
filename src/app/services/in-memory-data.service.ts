@@ -37,6 +37,7 @@ export class InMemoryDataService implements InMemoryDbService {
             id: '',
             label: '分析页',
             link: '/dashboard/analysis',
+            icon: 'dashboard',
             badge: '',
           },
           {

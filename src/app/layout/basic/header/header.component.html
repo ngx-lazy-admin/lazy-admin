@@ -1,8 +1,9 @@
 <div class="app-header">
-	<ul nz-menu nzTheme="light" nzMode="horizontal" class="d-flex w-100" nzSelectable="false">
+	<ul nz-menu nzTheme="light" nzMode="horizontal" class="d-flex w-100 " nzSelectable="false">
 		<li nz-menu-item (click)="collapsChange(!isCollapsed)">
 			<i nz-icon 
 				nz-button	
+				class="f16"
 				[nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'">
 			</i>
 		</li>
@@ -18,26 +19,26 @@
 				</ng-container>
 			</nz-breadcrumb>
 		</li>
-		<li nz-menu-item>
-			<i nz-icon nz-button nzType="search" nzTheme="outline"></i>
+		<li nz-menu-item class="d-none  d-sm-block">
+			<i nz-icon class="f16" nz-button nzType="search" nzTheme="outline"></i>
+		</li>
+		<li nz-menu-item class="d-none d-sm-block">
+			<i nz-icon class="f16" nz-button nzType="expand" nzTheme="outline"></i>
+		</li>
+		<li nz-menu-item class="d-none d-sm-block">
+			<i nz-icon class="f16" nz-button nzType="github" nzTheme="outline"></i>
 		</li>
 		<li nz-menu-item>
-			<i nz-icon nz-button nzType="expand" nzTheme="outline"></i>
+			<i nz-icon class="f16" nz-button nzType="question-circle" nzTheme="outline"></i>
+		</li>
+		<li nz-menu-item class="f16">
+			<i nz-icon class="f16" nz-button nzType="bell" nzTheme="outline"></i>
 		</li>
 		<li nz-menu-item>
-			<i nz-icon nz-button nzType="github" nzTheme="outline"></i>
-		</li>
-		<li nz-menu-item>
-			<i nz-icon nz-button nzType="question-circle" nzTheme="outline"></i>
-		</li>
-		<li nz-menu-item>
-			<i nz-icon nz-button nzType="bell" class="f18" nzTheme="outline"></i>
+			<i nz-icon class="f16" nz-button nzType="global" nzTheme="outline"></i>
 		</li>
 		<li nz-menu-item>
 			<nz-avatar nzIcon="user" nzSize="small" style="margin-top: -5px;"  nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
-		</li>
-		<li nz-menu-item>
-			<i nz-icon nz-button nzType="global" nzTheme="outline"></i>
 		</li>
 	</ul>
 </div>
