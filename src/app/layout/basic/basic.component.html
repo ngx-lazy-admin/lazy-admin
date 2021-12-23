@@ -50,13 +50,6 @@
       <app-layout-header></app-layout-header>
     </nz-header>
 
-    <!-- {{'nzWidthRange:' + nzWidthRange | json}} <br/>
-    {{'index:' + index}} <br/>
-    {{'nzWidthRange[index]：' + nzWidthRange[index]}} <br/> -->
-
-    
-<!-- [ 90, 256 ] 1 false -->
-
     <!-- <app-layout-header-tabset class="sticky-top"></app-layout-header-tabset> -->
 
     <!-- <nz-alert
@@ -77,8 +70,20 @@
 
     <nz-content class="p-3 ">
       <nz-card nzBorderless="false">
-        <router-outlet></router-outlet>
+
+        <nz-tabset>
+          <nz-tab nzTitle="Tab 1">
+            <router-outlet></router-outlet>
+          </nz-tab>
+          <nz-tab nzTitle="Tab 2">
+            <router-outlet></router-outlet>
+          </nz-tab>
+          <nz-tab nzTitle="Tab 3">
+            <router-outlet></router-outlet>
+          </nz-tab>
+        </nz-tabset>
       </nz-card>
+
     </nz-content>
 
     <!-- <nz-footer class="bg-white" style="margin-bottom: 52px; height: 52px;">

@@ -228,7 +228,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
       data[key].value = value === `@primary-color` ? '' : value;
     });
     this.data = data;
-    this.runLess();
+    // this.runLess();
   }
 
   private get validKeys(): string[] {

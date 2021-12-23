@@ -13,7 +13,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { IconsProviderModule } from './modules/icons-provider.module';
 import { NgZorroAntdModule } from './modules/ng-zorro-antd.modules';
 
-import { InMemoryDataService } from './services/in-memory-data.service';
 import { LayoutModule } from './layout/layout.modeule'
 import { HttpsInterceptor } from './interceptors/https.interceptor'
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +21,7 @@ import { UserPipe } from './pipes/user.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 
 import { ModalsModule } from './modules/modal/modal.module';
+import { InMemoryDataService } from './api/in-memory-data.service';
 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [
@@ -54,13 +54,10 @@ registerLocaleData(zh);
     // FormlyModule,
     LayoutModule,
     ModalsModule,
-
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
   ],
   providers: [
     httpInterceptorProviders,

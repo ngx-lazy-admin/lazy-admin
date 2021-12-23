@@ -13,7 +13,7 @@ export class ChartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('chart')
+    // console.log('chart')
     // console.log(this.route)
   }
 }

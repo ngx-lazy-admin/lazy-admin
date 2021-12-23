@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UserService } from '../../services/user.service';
@@ -12,7 +13,9 @@ export class ListComponent implements OnInit {
 
   constructor(
     public user: UserService,
-    private cd: ChangeDetectorRef 
+    private cd: ChangeDetectorRef,
+    private http: HttpClient,
+
   ) { }
 
   users = {
@@ -21,7 +24,9 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.http.get('api/menu').subscribe(item => {
+      console.log(item)
+    })
   }
 
   list = [0]

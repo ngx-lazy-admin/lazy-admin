@@ -8,6 +8,8 @@ import { LayoutService } from '../layout.service';
 import { MessageService } from '../../services/message.service'
 import { ModalService } from 'src/app/modules/modal';
 import { BreakpointMap, NzBreakpointKey, NzBreakpointService, siderResponsiveMap } from 'ng-zorro-antd/core/services';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-layout-basic',
@@ -38,6 +40,8 @@ export class LayoutBasicComponent implements OnInit {
   isVisible: boolean = true;
   index: number = 0;
 
+  menus: any = null
+
   private destroy$ = new Subject<void>();
   // private _dirChangeSubscription = Subscription.EMPTY;
   constructor(
@@ -46,7 +50,11 @@ export class LayoutBasicComponent implements OnInit {
     private cd: ChangeDetectorRef,
     private message: MessageService,
     private modal: ModalService,
+    private menu: MenuService,
     private breakpointService: NzBreakpointService,
+    private route: ActivatedRoute,
+    private router: Router,
+
     @Optional() private directionality: Directionality,
   ) {
     // 布局状态
@@ -56,6 +64,11 @@ export class LayoutBasicComponent implements OnInit {
       } else {
         this.index = 1
       }
+    })
+
+    this.menu.change$?.subscribe(item => {
+      this.menus = item;
+      this.cd.markForCheck();
     })
 
     // 进度条的加载状态
@@ -77,11 +90,11 @@ export class LayoutBasicComponent implements OnInit {
         if (map['lg'] || map['xl'] || map['xxl']) {
           this.index = 1;
           this.isVisible = false;
-          this.nzWidthRange = [90, 256]
+          this.nzWidthRange = [80, 256]
         } else if (map['sm'] || map['md']) {
           this.index = 0;
           this.isVisible = false;
-          this.nzWidthRange = [90, 256]
+          this.nzWidthRange = [80, 256]
         } else if (map['xs']) {
           this.isVisible = false;
           this.index = 0;
@@ -95,6 +108,8 @@ export class LayoutBasicComponent implements OnInit {
 
   ngOnInit(): void {
     this.progress = true;
+    console.log(this.route)
+    console.log(this.router)
   }
 
   afterClose(): void {

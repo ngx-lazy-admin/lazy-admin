@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, TemplateRef, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -13,9 +14,17 @@ export class FormComponent implements OnInit {
 
   constructor(
     private cd: ChangeDetectorRef,
+    private http: HttpClient,
+
   ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+
+    console.log('2333')
+    this.http.get('api/menu').subscribe(item => {
+      console.log(item)
+    })
+  }
 
   form = new FormGroup({});
 
