@@ -4,28 +4,28 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-export interface MenuType {
+export interface FieldType {
 	label: string,
 	icon: string,
 	link: string,
 	badge: string,
 	selected: boolean,
-	children: Array<MenuType>
+	children: Array<FieldType>
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuService {
+export class FieldService {
 
   private _destroy$ = new Subject();
-  private _menu$ = new BehaviorSubject<Array<MenuType|null>|null>(null);
-  private _menuUrl = 'api/menu';
-  private _menus: Array<MenuType> = [];
-  private _activeMenu: MenuType|null = null;
+  private _menu$ = new BehaviorSubject<Array<FieldType|null>|null>(null);
+  private _menuUrl = 'api/field';
+  private _menus: Array<FieldType> = [];
+  private _activeMenu: FieldType|null = null;
 
-  private _tabset$ = new BehaviorSubject<Array<MenuType|null>|null>([]);
-  private _tabset:  Array<MenuType> = [];
+  private _tabset$ = new BehaviorSubject<Array<FieldType|null>|null>([]);
+  private _tabset:  Array<FieldType> = [];
   public breadcrumb: Array<any> = [];
 
   constructor(
@@ -57,8 +57,8 @@ export class MenuService {
     return true;
   }
 
-  getMenu(): Observable<Array<MenuType>> {
-    return this.http.get<Array<MenuType>>(this._menuUrl).pipe(tap(menu => {
+  getMenu(): Observable<Array<FieldType>> {
+    return this.http.get<Array<FieldType>>(this._menuUrl).pipe(tap(menu => {
       this._menus = menu;
       this._menu$.next(this._menus)
     }))
@@ -84,7 +84,7 @@ export class MenuService {
     }
   }
 
-  activeTabset (menu: MenuType) {
+  activeTabset (menu: FieldType) {
     this._tabset.forEach(item => {
       item.selected = false
       if (item.link === menu.link) {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, TemplateRef, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import { UserService } from 'src/app/api/user';
 import { assignFieldValue, getFieldValue, clone, fieldChange } from '../../utils/utils';
 
 @Component({
@@ -15,15 +16,13 @@ export class FormComponent implements OnInit {
   constructor(
     private cd: ChangeDetectorRef,
     private http: HttpClient,
-
+    private userServices: UserService
   ) {}
 
   ngOnInit(): void { 
-
-    console.log('2333')
-    this.http.get('api/menu').subscribe(item => {
-      console.log(item)
-    })
+    this.userServices.getUser().subscribe(res => {
+      console.log(res)
+    })    
   }
 
   form = new FormGroup({});

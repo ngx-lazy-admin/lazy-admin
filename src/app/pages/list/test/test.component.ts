@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { UserService } from '../../../services/user.service';
+import { UserService } from 'src/app/api/user';
 
 @Component({
   selector: 'app-test',
