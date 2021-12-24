@@ -3,6 +3,8 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, Temp
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { UserService } from 'src/app/api/user';
+import { FieldService } from 'src/app/api/field';
+
 import { assignFieldValue, getFieldValue, clone, fieldChange } from '../../utils/utils';
 
 @Component({
@@ -16,13 +18,28 @@ export class FormComponent implements OnInit {
   constructor(
     private cd: ChangeDetectorRef,
     private http: HttpClient,
-    private userServices: UserService
+    private userServices: UserService,
+    private fieldService: FieldService
   ) {}
 
   ngOnInit(): void { 
     this.userServices.getUser().subscribe(res => {
       console.log(res)
     })    
+
+    // this.http.get<FormlyFieldConfig[]>('api/filed').subscribe(res => {
+    //   this.fields = res
+    //   // this.model = clone(this.model)
+    //   // (this.options as any)._buildForm();
+    // })
+
+    this.fieldService.getField().subscribe(field => {
+      console.log(field)
+      // let options = this.execFunction(field)
+      // console.log(options)
+
+      this.cd.markForCheck();
+    })
   }
 
   form = new FormGroup({});
@@ -32,59 +49,7 @@ export class FormComponent implements OnInit {
   }
 
   options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = [
-    {
-      type: 'steps',
-      key: 'name',
-      className: "w-50 d-block",
-      wrappers: ['inline'],
-      templateOptions: {
-        label: "姓名",
-        required: true,
-        placeholder: '姓名',
-        readonly: true,
-        nzShowArrow: false,
-        status: 'wait',
-        configOptions: [
-          {
-            label: 'Finished',
-            description: 'This is a description.',
-            subtitle: 'nzSubtitle'
-          },
-          {
-            label: 'In Progress',
-            description: 'This is a description.'
-          },
-          {
-            label: 'Waiting',
-            description: 'This is a description.'
-          },
-        ]
-      }
-    },
-    {
-      type: 'button',
-      templateOptions: {
-        text: '下一步',
-        click: (field, $event) => {
-          console.log(field)
-          field.form?.root.get('name')?.patchValue(field.form?.root.get('name')?.value + 1)
-          this.cd.detectChanges();
-        }
-      }
-    },
-    {
-      type: 'button',
-      templateOptions: {
-        text: '上一步',
-        click: (field, $event) => {
-          console.log(field)
-          field.form?.root.get('name')?.patchValue(field.form?.root.get('name')?.value - 1)
-          this.cd.detectChanges(); 
-        }
-      }
-    }
-  ];
+  fields: FormlyFieldConfig[] = []
 
   loading = false
 
@@ -116,6 +81,8 @@ export class FormComponent implements OnInit {
     // console.log(new Date().getTime() - lastTime)
     // this.cd.detectChanges();
   }
+
+  execFunction = (name: string) => (new Function( 'return ' + name))();
 
   ngAfterViewInit () {}
 

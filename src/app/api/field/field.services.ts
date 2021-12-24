@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { FieldMockService  } from './field.mock';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export interface FieldType {
 	label: string,
@@ -30,6 +32,7 @@ export class FieldService {
 
   constructor(
     private http: HttpClient,
+    private fieldMock: FieldMockService
   ) {}
 
   get change$() {
@@ -57,9 +60,43 @@ export class FieldService {
     return true;
   }
 
-  getMenu(): Observable<Array<FieldType>> {
-    return this.http.get<Array<FieldType>>(this._menuUrl).pipe(tap(menu => {
+  // getMenu(): Observable<Array<FieldType>> {
+  //   return this.http.get<Array<FieldType>>(this._menuUrl).pipe(tap(menu => {
+  //     // this._menus = menu;
+  //     console.log(menu)
+  //     this._menu$.next(this._menus)
+  //   }))
+  // }
+
+  getField(): Observable<Array<any>> {
+    return this.http.get<Array<any>>('api/field').pipe(tap(menu => {
+      // this._menus = menu;
+      console.log(menu)
+      this._menu$.next(this._menus)
+    }))
+  }
+
+  // 获取 Field 数据
+  // - of
+  // - http get {}
+  //  fields model formState
+  // 
+  // getField(): Observable<Array<FormlyFieldConfig>> {
+  //   console.log(this.fieldMock.field.toString())
+  //   return of(this.fieldMock.field)
+  // }
+
+  // getField(): Observable<string> {
+
+  //   console.log(this.fieldMock.field)
+  //   return of(this.fieldMock.field.toString())
+  // }
+
+  save (model: any) {
+    console.log(model)
+    return this.http.post<Array<FieldType>>(this._menuUrl, model).pipe(tap(menu => {
       this._menus = menu;
+      console.log(menu)
       this._menu$.next(this._menus)
     }))
   }

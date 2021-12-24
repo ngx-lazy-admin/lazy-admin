@@ -1,14 +1,24 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { user } from './user/user.faker';
-import { menu } from './menu/menu.faker';
+import { user } from './user/user.mock';
+import { menu } from './menu/menu.mock';
+import { FieldMockService } from './field/field.mock';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
+
+  constructor(
+    private fieldMock: FieldMockService,
+  ) {}
+
   createDb() {
-    return { user, menu };
+    return { 
+      user: user,
+      menu: menu,
+      field: this.fieldMock.field
+     };
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
