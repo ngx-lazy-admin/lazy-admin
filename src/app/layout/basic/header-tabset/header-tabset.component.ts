@@ -5,9 +5,8 @@ import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 
 import { Subject } from 'rxjs';
-import { Menu } from 'src/app/interfaces/menu';
 import { takeUntil, debounceTime } from 'rxjs/operators';
-import { MenuService } from '../../../api/menu/menu.services';
+import { MenuService, MenuType } from '../../../api/menu/menu.services';
 
 @Component({
   selector: 'app-layout-header-tabset',
@@ -25,7 +24,7 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   private _portal!: TemplatePortal;
 
   selectedIndex: number = 0;
-  tabs: Array<Menu|null> | null = []
+  tabs: Array<MenuType|null> | null = []
 
   private _destroy$ = new Subject<void>();
 
