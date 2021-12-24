@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { MenuService } from '../../../api/menus/menus.services';
+import { MenuService } from '../../../api/menu/menu.services';
 
 @Component({
   selector: 'app-layout-search',

@@ -3,10 +3,11 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewCont
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
-import { MenuService } from '../../../services/menu.service';
+
 import { Subject } from 'rxjs';
 import { Menu } from 'src/app/interfaces/menu';
 import { takeUntil, debounceTime } from 'rxjs/operators';
+import { MenuService } from '../../../api/menu/menu.services';
 
 @Component({
   selector: 'app-layout-header-tabset',

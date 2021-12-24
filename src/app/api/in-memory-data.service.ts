@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { user } from './user/user.faker';
-import { menu } from './menus/menu.faker';
+import { menu } from './menu/menu.faker';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-
     return { user, menu };
   }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, forkJoin, observable } from 'rxjs';
 import { debounce, debounceTime } from 'rxjs/operators';
-import { MenuService } from '../services/menu.service'
+import { MenuService } from '../api/menu/menu.services'
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,8 @@ export class ActivateChildGuard implements CanActivateChild {
 
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.menuservice.canActive(state.url)
-    // return true;
   }
-  
 }

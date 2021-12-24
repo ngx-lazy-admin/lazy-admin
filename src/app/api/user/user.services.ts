@@ -4,93 +4,79 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Menu } from './user.type'
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+export interface UserType {
+	id: number;
+	name: string;
+	sex: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuService {
+export class UserService {
 
-  private _destroy$ = new Subject();
-  private _menu$ = new BehaviorSubject<Array<Menu|null>|null>(null);
-  private _menuUrl = 'api/menu';
-  private _menus: Array<Menu> = [];
-  private _activeMenu: Menu|null = null;
+  // 声明
+  private destroy$ = new Subject();
+  private _userChanges = new BehaviorSubject<UserType|null>(null);
 
-  private _tabset$ = new BehaviorSubject<Array<Menu|null>|null>([]);
-  private _tabset:  Array<Menu> = [];
-  public breadcrumb: Array<any> = [];
-
+  // 构造器初始化
   constructor(
     private http: HttpClient,
-  ) {}
+    // private messageService: MessageService
+  ) { }
 
-  get change$() {
-    return this._menu$.asObservable()
+
+  private heroesUrl = 'api/user';  // URL to web api
+  
+  get userChange() {
+    // if (!this._user) {
+    //   this._user = { ...this.getData(this.KEYS.user) };
+    //   this.setData(this.KEYS.user, this._user);
+    // }
+    // return this._user as U;
+    return this._userChanges.asObservable()
   }
 
-  get tabsetChange$() {
-    return this._tabset$.asObservable()
-  }
-
-  canActive(url: string): boolean {
-    this.breadcrumb = [];
-    if (this._menus && this._menus instanceof Array && this._menus.length) {
-      this._menus.some(item => {
-        let menu = item.children.find(item => item.link === url) 
-        if (menu) {
-          this.breadcrumb = [item.label, menu.label]
-          this.addTabset(menu)
-          return true
-        } else {
-          return false
-        }
-      })
-    }
-    return true;
-  }
-
-  getMenu(): Observable<Array<Menu>> {
-    return this.http.get<Array<Menu>>(this._menuUrl).pipe(tap(menu => {
-      this._menus = menu;
-      this._menu$.next(this._menus)
+  // action
+  getUser(): Observable<UserType> {
+    return this.http.get<UserType>(this.heroesUrl).pipe(tap(user => {
+      this._userChanges.next(user)
     }))
   }
 
-  addTabset (menu: any) {
-    if (!this._tabset.some(item => item.link === menu.link)) {
-      this._tabset = [...this._tabset, menu]
-      this._tabset$.next(this._tabset);
-    } else {
-      this.activeTabset(menu)
-    }
+  /** POST: add a new hero to the server */
+  add(): Observable<UserType> {
+    return this.http.get<UserType>(this.heroesUrl).pipe(tap(user => {
+      // this.user = {
+      //   ...this.user,
+      //   id: this.user.id + 1
+      // }
+      // console.log(this.user)
+      this._userChanges.next(user)
+    }))
   }
 
-  closeTabSet (index: number) {
-    if (this._tabset.length === 1) {
-      return;
-    }
-    let seletcted = this._tabset[index].selected;
-    this._tabset.splice(index, 1);
-    if (seletcted) {
-      this.activeTabset(this._tabset[index])
-    }
-  }
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
 
-  activeTabset (menu: Menu) {
-    this._tabset.forEach(item => {
-      item.selected = false
-      if (item.link === menu.link) {
-        item.selected = true
-      }
-    })
-    this._tabset = [...this._tabset]
-    
-    this._tabset$.next(this._tabset);
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      // this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
 
   ngOnDestroy() {
-    this._destroy$.next();
-    this._destroy$.complete();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

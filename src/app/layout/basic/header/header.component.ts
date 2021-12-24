@@ -14,7 +14,7 @@ import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dro
 import { Subject } from 'rxjs';
 import hotkeys from 'hotkeys-js';
 import { LayoutService } from '../../layout.service';
-import { MenuService } from '../../../services/menu.service';
+import { MenuService } from '../../../api/menu/menu.services';
 
 export interface AutocompleteOptionGroups {
   title: string;

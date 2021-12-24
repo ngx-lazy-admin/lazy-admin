@@ -8,10 +8,10 @@ import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
 
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
+
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from 'src/app/api/in-memory-data.service';
+
 
 @NgModule({
   declarations: [
@@ -28,8 +28,6 @@ import { InMemoryDataService } from 'src/app/api/in-memory-data.service';
     FormlyModule.forRoot(),
     FieldTypeModule,
     FormFieldModule,
-
-
   ]
 })
 export class FormModule { }
