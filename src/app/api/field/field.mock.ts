@@ -50,8 +50,8 @@ export class FieldMockService {
       type: 'button',
       templateOptions: {
         text: '下一步',
-        click: (field: any, _this: any) => {
-          console.log(field)
+        click: (field: FormlyFieldConfig, _this: any) => {
+          console.log(field?.formControl?.value)
           console.log(_this.message.error('hello world'))
         }
       }
@@ -61,13 +61,10 @@ export class FieldMockService {
       templateOptions: {
         text: '上一步',
         click: (field: any, _this: any) => {
-          console.log(field)
-          console.log(_this.message.error('hello world'))
           _this.http.get('api/user')
             .subscribe((item: any) => {
               console.log(item)
-            });
-          
+            }); 
         }
       }
     }

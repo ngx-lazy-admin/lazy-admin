@@ -4,8 +4,9 @@ import { Observable, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { ShareFieldType } from '../share-field.type';
 
-type ButtonClickType = (field: FormlyFieldConfig, input: Event) => boolean;
+type ButtonClickType = (field: FormlyFieldConfig, that?: any) => boolean;
 
 export interface ButtonGroupOptionInterface {
   label: string | number | null ;
@@ -40,7 +41,7 @@ export interface ButtonGroupOptionInterface {
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export class ButtonGroupField extends FieldType implements OnInit {
+export class ButtonGroupField extends ShareFieldType implements OnInit {
 
   get disabled(): boolean {
 		return this.to.disabled || false;
@@ -86,7 +87,7 @@ export class ButtonGroupField extends FieldType implements OnInit {
 
   onClick (item: ButtonGroupOptionInterface, $event: Event) {
     if (item.click) {
-      item.click(this.field, $event);
+      item.click(this.field, this);
     }
   }
 

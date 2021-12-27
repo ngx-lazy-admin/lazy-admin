@@ -13,4 +13,11 @@ export abstract class ShareFieldType extends FieldType {
   ) {
     super();
   }
+
+  // 通用事件处理
+  click ($event: Event) {
+    if (this.to.click) {
+      this.to.click(this.field, this);
+    }
+  }
 }

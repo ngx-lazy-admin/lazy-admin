@@ -1,9 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { ShareFieldType } from '../share-field.type';
 
 @Component({
@@ -16,7 +14,7 @@ import { ShareFieldType } from '../share-field.type';
       [nzSize]="nzSize"
       [nzType]="nzType"
       [nzBlock]="nzBlock"
-      (click)="onClick($event)">
+      (click)="click($event)">
         <i *ngIf="icon" nz-icon [nzType]="icon"></i>
         <ng-container *ngIf="text">{{ text }}</ng-container>
     </button>
@@ -74,11 +72,6 @@ export class ButtonField extends ShareFieldType implements OnInit {
 
   private _destroy$ = new Subject<void>();
 
-  onClick ($event: Event) {
-    if (this.to.click) {
-      this.to.click(this.field, this);
-    }
-  }
 
   ngOnInit(): void {}
 

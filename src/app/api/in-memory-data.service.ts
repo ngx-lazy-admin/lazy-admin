@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { user } from './user/user.faker';
+import { user } from './user/user.mock';
 import { menu } from './menu/menu.mock';
 import { FieldMockService } from './field/field.mock';
 
