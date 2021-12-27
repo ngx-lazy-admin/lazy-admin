@@ -22,7 +22,7 @@ export class FieldService {
 
   private _destroy$ = new Subject();
   private _menu$ = new BehaviorSubject<Array<FieldType|null>|null>(null);
-  private _menuUrl = 'api/field';
+  private _baseFieldUrl = 'api/field';
   private _menus: Array<FieldType> = [];
   private _activeMenu: FieldType|null = null;
 
@@ -68,11 +68,9 @@ export class FieldService {
   //   }))
   // }
 
-  getField(): Observable<Array<any>> {
-    return this.http.get<Array<any>>('api/field').pipe(tap(menu => {
-      // this._menus = menu;
-      console.log(menu)
-      this._menu$.next(this._menus)
+  getField(): Observable<any> {
+    return this.http.get<any>(this._baseFieldUrl).pipe(tap(field => {
+      console.log(field)
     }))
   }
 
@@ -81,10 +79,10 @@ export class FieldService {
   // - http get {}
   //  fields model formState
   // 
-  // getField(): Observable<Array<FormlyFieldConfig>> {
-  //   console.log(this.fieldMock.field.toString())
-  //   return of(this.fieldMock.field)
-  // }
+  getFieldByOf(): Observable<Array<FormlyFieldConfig>> {
+    console.log(this.fieldMock.field.toString())
+    return of(this.fieldMock.field)
+  }
 
   // getField(): Observable<string> {
 
@@ -92,14 +90,14 @@ export class FieldService {
   //   return of(this.fieldMock.field.toString())
   // }
 
-  save (model: any) {
-    console.log(model)
-    return this.http.post<Array<FieldType>>(this._menuUrl, model).pipe(tap(menu => {
-      this._menus = menu;
-      console.log(menu)
-      this._menu$.next(this._menus)
-    }))
-  }
+  // save (model: any) {
+  //   console.log(model)
+  //   return this.http.post<Array<FieldType>>(this._menuUrl, model).pipe(tap(menu => {
+  //     this._menus = menu;
+  //     console.log(menu)
+  //     this._menu$.next(this._menus)
+  //   }))
+  // }
 
   addTabset (menu: any) {
     if (!this._tabset.some(item => item.link === menu.link)) {

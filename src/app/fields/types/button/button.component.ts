@@ -3,6 +3,8 @@ import { FieldType } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { ShareFieldType } from '../share-field.type';
 
 @Component({
   selector: 'div[button-field]',
@@ -24,7 +26,7 @@ import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button'
 
 
 })
-export class ButtonField extends FieldType implements OnInit {
+export class ButtonField extends ShareFieldType implements OnInit {
 
   get disabled(): boolean {
 		return this.to.disabled || false;
@@ -74,7 +76,7 @@ export class ButtonField extends FieldType implements OnInit {
 
   onClick ($event: Event) {
     if (this.to.click) {
-      this.to.click(this.field, $event);
+      this.to.click(this.field, this);
     }
   }
 

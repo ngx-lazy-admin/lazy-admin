@@ -16,7 +16,7 @@ export class FieldMockService {
     return this.injector.get(FieldService)
   }
   
-  _field =  ` [
+  field: FormlyFieldConfig[] =  [
     {
       type: 'steps',
       key: 'name',
@@ -50,12 +50,9 @@ export class FieldMockService {
       type: 'button',
       templateOptions: {
         text: '下一步',
-        click: (field, $event) => {
-          console.log(this)
-          field.form?.root.get('name')?.patchValue(field.form?.root.get('name')?.value + 1)
-          // this.cd.detectChanges();
-          this.fieldService.save(field.form?.root.value)
-          // HttpClient.
+        click: (field: any, _this: any) => {
+          console.log(field)
+          console.log(_this.message.error('hello world'))
         }
       }
     },
@@ -63,19 +60,16 @@ export class FieldMockService {
       type: 'button',
       templateOptions: {
         text: '上一步',
-        click: (field, $event) => {
+        click: (field: any, _this: any) => {
           console.log(field)
-          field.form?.root.get('name')?.patchValue(field.form?.root.get('name')?.value - 1)
-          // this.cd.detectChanges(); 
+          console.log(_this.message.error('hello world'))
+          _this.http.get('api/user')
+            .subscribe((item: any) => {
+              console.log(item)
+            });
+          
         }
       }
     }
-  ]`
-
-  field = [
-    {
-      field: this._field,
-      model: null
-    }
-  ]  
+  ]
 }

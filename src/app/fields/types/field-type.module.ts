@@ -42,7 +42,7 @@ import { UploadFieldModule } from './upload';
     SelectFieldModule,
     CardFieldModule,
     TableFieldModule,
-    CollapseFieldModule
+    CollapseFieldModule,
   ],
 })
 export class FieldTypeModule {}

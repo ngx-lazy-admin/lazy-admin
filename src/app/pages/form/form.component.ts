@@ -33,11 +33,18 @@ export class FormComponent implements OnInit {
     //   // (this.options as any)._buildForm();
     // })
 
-    this.fieldService.getField().subscribe(field => {
-      console.log(field)
-      // let options = this.execFunction(field)
-      // console.log(options)
+    // this.fieldService.getField().subscribe(field => {
+    //   console.log(field)
+    //   this.fields = this.execFunction(field)
+    //   // (this.options as any)._buildForm();
+    //   this.cd.markForCheck();
+    // })
 
+    this.fieldService.getFieldByOf().subscribe((field: any) => {
+      console.log(field)
+      this.fields = field
+      // this.fields = this.execFunction(field)
+      // (this.options as any)._buildForm();
       this.cd.markForCheck();
     })
   }
