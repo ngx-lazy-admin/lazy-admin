@@ -5,6 +5,7 @@ import { RouteGuardGuard } from  './guards/route-guard.guard';
 import { ActivateGuard } from './guards/activate.guard';
 import { ActivateChildGuard } from './guards/activate-child.guard';
 import { LayoutBlankComponent } from './layout/blank/blank.component';
+import { TabsComponent } from './layout/tabs/tabs.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,16 @@ const routes: Routes = [
     data: {},
     children: [
       { path: '', pathMatch: 'full', redirectTo: '/welcome' },
+      { 
+        path: 'tabs',  
+        component: TabsComponent,
+        children: [
+          { path: '**',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+        ]
+      },  
+      { path: 'welcome',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: 'tabs',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },  
+
       { path: 'chart', loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule) },
       { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },

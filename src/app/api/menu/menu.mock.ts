@@ -14,6 +14,22 @@ export const menu = [
         link: '/dashboard/analysis',
         icon: 'dashboard',
         badge: '',
+        children: [
+          {
+            id: '',
+            label: '分析页11',
+            link: '/dashboard/analysis',
+            icon: 'dashboard',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '分析页12',
+            link: '/dashboard/analysis',
+            icon: 'dashboard',
+            badge: '',
+          },
+        ]
       },
       {
         id: '',

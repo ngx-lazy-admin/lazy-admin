@@ -2,22 +2,18 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { user } from './user/user.mock';
 import { menu } from './menu/menu.mock';
-import { FieldMockService } from './field/field.mock';
+import { field } from './field/field.mock';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
 
-  constructor(
-    private fieldMock: FieldMockService,
-  ) {}
-
   createDb() {
     return { 
       user: user,
       menu: menu,
-      field: this.fieldMock.field
+      field: field
      };
   }
 

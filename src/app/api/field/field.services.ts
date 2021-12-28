@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { FieldMockService  } from './field.mock';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { field } from './field.mock';
 
 export interface FieldType {
 	label: string,
@@ -32,7 +32,6 @@ export class FieldService {
 
   constructor(
     private http: HttpClient,
-    private fieldMock: FieldMockService
   ) {}
 
   get change$() {
@@ -80,8 +79,7 @@ export class FieldService {
   //  fields model formState
   // 
   getFieldByOf(): Observable<Array<FormlyFieldConfig>> {
-    console.log(this.fieldMock.field.toString())
-    return of(this.fieldMock.field)
+    return of(field)
   }
 
   // getField(): Observable<string> {

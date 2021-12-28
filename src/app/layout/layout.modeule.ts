@@ -23,6 +23,7 @@ import { LayoutHeaderTabsetComponent } from './basic/header-tabset/header-tabset
 import { SettingDrawerComponent } from './basic/setting/setting.component';
 import { SettingDrawerItemComponent } from './basic/setting/setting-item.component';
 import { SearchItemComponent } from './basic/search/search-item/search-item.component';
+import { TabsComponent } from './tabs/tabs.component';
  
  
 @NgModule({
@@ -35,6 +36,7 @@ import { SearchItemComponent } from './basic/search/search-item/search-item.comp
     LayoutSiderComponent,
     LayoutUserComponent,
     LayoutMenuComponent,
+    TabsComponent,
     LayoutFooterBarComponent,
     LayoutHeaderTabsetComponent,
 

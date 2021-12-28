@@ -48,7 +48,6 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
     IconsProviderModule,
     NgZorroAntdModule,
     // FormlyModule,
