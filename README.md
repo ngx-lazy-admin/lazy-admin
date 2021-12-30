@@ -1952,3 +1952,15 @@ Use Extension
 考虑使用 Sublime Text的代码片断 来实施本风格指南。
 
 考虑使用 Vim 的代码片断来实施本风格指南。
+
+
+ <a routerLink="/heroes">Heroes</a>
+
+ <a routerLink="/first-component" routerLinkActive="active">
+
+ <a [routerLink]="['/heroes']">Heroes</a>
+
+ <a [routerLink]="['/hero', hero.id]">
+ <a [routerLink]="['/crisis-center', { foo: 'foo' }]">Crisis Center</a>
+
+ { path: 'detail/:id', component: HeroDetailComponent },

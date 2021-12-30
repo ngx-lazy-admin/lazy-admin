@@ -20,7 +20,7 @@ export class LayoutMenuComponent implements OnInit {
 
   constructor(
     private layout: LayoutService,
-    private menu: MenuService,
+    public menu: MenuService,
     private cd: ChangeDetectorRef 
   ) {
     this.menu.change$?.subscribe(item => {

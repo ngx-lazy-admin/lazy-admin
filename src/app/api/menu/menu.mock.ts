@@ -11,21 +11,21 @@ export const menu = [
       {
         id: '',
         label: '分析页1',
-        link: '/dashboard/analysis',
+        link: '/tabs/one/1',
         icon: 'dashboard',
         badge: '',
         children: [
           {
             id: '',
             label: '分析页11',
-            link: '/dashboard/analysis',
+            link: '/tabs/one/1',
             icon: 'dashboard',
             badge: '',
           },
           {
             id: '',
             label: '分析页12',
-            link: '/dashboard/analysis',
+            link: '/tabs/one/2',
             icon: 'dashboard',
             badge: '',
           },
@@ -33,26 +33,44 @@ export const menu = [
       },
       {
         id: '',
-        label: '监控页',
-        link: '/dashboard/monitor',
+        label: '分析页2',
+        link: '/tabs/two',
+        icon: 'dashboard',
+        isTabs: true,
         badge: '',
+        children: [
+          {
+            id: '',
+            label: '分析页21',
+            link: '/tabs/two/1',
+            icon: 'dashboard',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '分析页22',
+            link: '/tabs/two/2',
+            icon: 'dashboard',
+            badge: '',
+          },
+        ]
       },
       {
         id: '',
         label: '工作台',
-        link: '/dashboard/workplace',
+        link: '/tabs/three',
         badge: '',
       },
       {
         id: '',
         label: '编辑器',
-        link: '/dashboard/code',
+        link: '/tabs/four',
         badge: '',
       },
       {
         id: '',
         label: '弹窗管理',
-        link: '/dashboard/modal',
+        link: '/tabs/five',
         badge: '',
       },
       {
@@ -261,6 +279,33 @@ export const menu = [
         id: '',
         label: '405',
         link: '/exception/405',
+        badge: '',
+      },
+    ]
+  },
+  {
+    id: '',
+    label: 'Tabs',
+    icon: 'warning',
+    link: '',
+    badge: '',
+    children: [
+      {
+        id: '',
+        label: 'one',
+        link: '/tabs/one',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'two',
+        link: '/tabs/two',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'three',
+        link: '/tabs/three',
         badge: '',
       },
     ]

@@ -109,8 +109,6 @@ export class LayoutBasicComponent implements OnInit {
 
   ngOnInit(): void {
     this.progress = true;
-    console.log(this.route)
-    console.log(this.router)
   }
 
   afterClose(): void {

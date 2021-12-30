@@ -2,5 +2,5 @@
     <formly-form [form]="form" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
     <button nz-button type="submit" (click)="onSubmit(model)">onSubmit</button>
 </form>
-
+{{this.route.url | async}}
 <pre> {{ model | json}} </pre>

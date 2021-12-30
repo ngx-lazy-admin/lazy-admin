@@ -6,6 +6,8 @@ import { UserService } from 'src/app/api/user';
 import { FieldService } from 'src/app/api/field';
 
 import { assignFieldValue, getFieldValue, clone, fieldChange } from '../../utils/utils';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form',
@@ -19,32 +21,58 @@ export class FormComponent implements OnInit {
     private cd: ChangeDetectorRef,
     private http: HttpClient,
     private userServices: UserService,
-    private fieldService: FieldService
+    private fieldService: FieldService,
+    public route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void { 
-    this.userServices.getUser().subscribe(res => {
-      console.log(res)
-    })    
 
-    // this.http.get<FormlyFieldConfig[]>('api/filed').subscribe(res => {
-    //   this.fields = res
-    //   // this.model = clone(this.model)
-    //   // (this.options as any)._buildForm();
-    // })
+    // console.log(this.route)
+    // console.log(this.router)
 
-    // this.fieldService.getField().subscribe(field => {
-    //   console.log(field)
-    //   this.fields = this.execFunction(field)
-    //   // (this.options as any)._buildForm();
+    // this.route.queryParams.subscribe(params => {
+    //   console.log(params);
+    //   this.cd.markForCheck();
+
+    // });
+
+    // this.route.params.subscribe(params => {
+    //   console.log(params);
     //   this.cd.markForCheck();
     // })
 
+    this.route.url.subscribe(url => {
+      this.fieldService.getField(url).subscribe(field => {
+        // console.log(field)
+        // console.log('current route name')
+
+        // console.log(this.router.url)
+        // this.fields = this.execFunction(field)
+
+        this.cd.markForCheck();
+      })
+    })
+
+    // this.router.getCurrentNavigation()
+
+    // this.route.paramMap.pipe(
+    //   map((params: ParamMap) => params)
+    // ).subscribe(res => {
+    //   console.log(res)
+    // });
+
+    
+
+    // this.route.snapshot.subscribe(params => {
+    //   console.log(params)
+    // })
+
+    // this.router.navigations.this.service.function
+    //   .subscribe(arg => this.property = arg);
+    
     this.fieldService.getFieldByOf().subscribe((field: any) => {
-      console.log(field)
       this.fields = field
-      // this.fields = this.execFunction(field)
-      // (this.options as any)._buildForm();
       this.cd.markForCheck();
     })
   }
@@ -88,8 +116,6 @@ export class FormComponent implements OnInit {
     // console.log(new Date().getTime() - lastTime)
     // this.cd.detectChanges();
   }
-
-  execFunction = (name: string) => (new Function( 'return ' + name))();
 
   ngAfterViewInit () {}
 

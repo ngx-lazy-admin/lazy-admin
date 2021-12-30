@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { menu } from './menu.mock';
 
 export interface MenuType {
 	label: string,
@@ -10,6 +11,7 @@ export interface MenuType {
 	link: string,
 	badge: string,
 	selected: boolean,
+  isTabs?: boolean,
 	children: Array<MenuType>
 }
 
@@ -27,6 +29,7 @@ export class MenuService {
   private _tabset$ = new BehaviorSubject<Array<MenuType|null>|null>([]);
   private _tabset:  Array<MenuType> = [];
   public breadcrumb: Array<any> = [];
+  public tabsMenu: MenuType[] = []; 
 
   constructor(
     private http: HttpClient,
@@ -41,20 +44,80 @@ export class MenuService {
   }
 
   canActive(url: string): boolean {
+    console.log('canActive')
     this.breadcrumb = [];
     if (this._menus && this._menus instanceof Array && this._menus.length) {
-      this._menus.some(item => {
-        let menu = item.children.find(item => item.link === url) 
-        if (menu) {
-          this.breadcrumb = [item.label, menu.label]
-          this.addTabset(menu)
-          return true
-        } else {
-          return false
-        }
-      })
+      this.isMenu(url, this._menus)
     }
     return true;
+  }
+
+  setTabsMenu (menu: MenuType) {
+    if (menu?.children && menu.isTabs) {
+      this.tabsMenu = menu.children
+      console.log(this.tabsMenu)
+    }
+  }
+
+  isMenu (url: string, menus: MenuType[]): void {
+    menus.forEach(menu => {
+      if (menu.link == url) {
+        this.breadcrumb = [menu.label, menu.label]
+        this.addTabset(menu)
+      } else if (menu?.children) {
+        this.isMenu(url, menu.children)
+      }
+    })
+    // if (menus.length) {
+    //   menus.some(item => {
+    //     if (item.children) {
+    //       let menu = item.children.find(item => url == item.label) 
+    //       // console.log(url, menu)
+    //       if (menu) {
+    //         console.log()
+    //         this.breadcrumb = [item.label, menu.label]
+    //         this.activeMenu = menu
+    //         this.addTabset(menu)
+    //       } else {
+    //         this.isMenu(url, item.children)
+    //       }
+    //     } else {
+    //       return false
+    //     }
+    //   })
+    // } else {
+    //   return false
+    // }
+    // menus.map(menu => {
+    //   if (menu.children) {
+    //     let menu = menu.children.find(menu => url == menu.label) 
+    //     // console.log(url, menu)
+    //     if (menu) {
+    //       console.log()
+    //       this.breadcrumb = [menu.label, menu.label]
+    //       this.activeMenu = menu
+    //       this.addTabset(menu)
+    //     } else {
+    //       this.isMenu(url, menu.children)
+    //     }
+    //   } else {
+    //     return false
+    //   }
+    //   return menu
+    // })
+
+    // if (menus.some(menu => url == menu.label)) {
+    //   let menu = menus.find(menu => url == menu.label) 
+    //   this.breadcrumb = [menu?.label, menu?.label]
+    //   this.activeMenu = menu
+    //   this.addTabset(menu)
+    // } else {
+    //   menus.map(item => {
+
+    //   })
+    // }
+
+    // return this.isMenu(url, menus.children)
   }
 
   getMenu(): Observable<Array<MenuType>> {
@@ -64,7 +127,7 @@ export class MenuService {
     }))
   }
 
-  addTabset (menu: any) {
+  addTabset (menu?: any) {
     if (!this._tabset.some(item => item.link === menu.link)) {
       this._tabset = [...this._tabset, menu]
       this._tabset$.next(this._tabset);

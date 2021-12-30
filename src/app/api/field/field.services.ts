@@ -1,6 +1,6 @@
 import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { UrlSegment } from '@angular/router';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -42,22 +42,26 @@ export class FieldService {
     return this._tabset$.asObservable()
   }
 
-  canActive(url: string): boolean {
-    this.breadcrumb = [];
-    if (this._menus && this._menus instanceof Array && this._menus.length) {
-      this._menus.some(item => {
-        let menu = item.children.find(item => item.link === url) 
-        if (menu) {
-          this.breadcrumb = [item.label, menu.label]
-          this.addTabset(menu)
-          return true
-        } else {
-          return false
-        }
-      })
-    }
-    return true;
-  }
+  // canActive(url: string): boolean {
+  //   this.breadcrumb = [];
+  //   if (this._menus && this._menus instanceof Array && this._menus.length) {
+  //     this._menus.some(item => {
+
+  //       let menu = item.children.find(item => item.link === url) 
+  //       console.log(url,item.children, menu )
+  //       if (menu) {
+  //         this.breadcrumb = [item.label, menu.label]
+  //         this.addTabset(menu)
+  //         return true
+  //       } else {
+  //         return true
+  //       }
+  //     })
+  //   }
+  //   return true;
+  // }
+  
+
 
   // getMenu(): Observable<Array<FieldType>> {
   //   return this.http.get<Array<FieldType>>(this._menuUrl).pipe(tap(menu => {
@@ -67,11 +71,14 @@ export class FieldService {
   //   }))
   // }
 
-  getField(): Observable<any> {
-    return this.http.get<any>(this._baseFieldUrl).pipe(tap(field => {
-      console.log(field)
+  getField(url: UrlSegment[]): Observable<any> {
+    console.log(url)
+    return this.http.get<any>(this._baseFieldUrl + '/' + url).pipe(tap(field => {
+      // console.log(field)
     }))
   }
+
+  execFunction = (name: string) => (new Function( 'return ' + name))();
 
   // 获取 Field 数据
   // - of

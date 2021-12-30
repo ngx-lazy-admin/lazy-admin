@@ -19,8 +19,10 @@ const routes: Routes = [
       { 
         path: 'tabs',  
         component: TabsComponent,
+        canActivateChild: [ActivateChildGuard],
         children: [
-          { path: '**',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+          { path: 'one',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+          { path: 'two',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
         ]
       },  
       { path: 'welcome',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
@@ -38,6 +40,7 @@ const routes: Routes = [
       { path: 'dashboard/form',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
       { path: 'dashboard/table', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
       { path: 'dashboard/charts', loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule) },
+      // { path: '**', component: PageNotFoundComponent }
 
     ]
   },
@@ -62,7 +65,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      // { enableTracing: true } 
+    )
+  ],
   exports: [RouterModule]
 })
 
