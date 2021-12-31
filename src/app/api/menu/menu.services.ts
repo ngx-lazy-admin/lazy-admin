@@ -9,8 +9,10 @@ export interface MenuType {
 	label: string,
 	icon: string,
 	link: string,
+  level: number,
 	badge: string,
 	selected: boolean,
+  isOpen?: boolean,
   isTabs?: boolean,
 	children: Array<MenuType>
 }
@@ -44,7 +46,6 @@ export class MenuService {
   }
 
   canActive(url: string): boolean {
-    console.log('canActive')
     this.breadcrumb = [];
     if (this._menus && this._menus instanceof Array && this._menus.length) {
       this.isMenu(url, this._menus)
@@ -55,69 +56,49 @@ export class MenuService {
   setTabsMenu (menu: MenuType) {
     if (menu?.children && menu.isTabs) {
       this.tabsMenu = menu.children
-      console.log(this.tabsMenu)
+      menu.isOpen = true
     }
   }
 
-  isMenu (url: string, menus: MenuType[]): void {
+  isMenu (url: string, menus: MenuType[], level: number = 1): void {
     menus.forEach(menu => {
+      if (Array.isArray(menu.children)) {
+        const list = this.flatten(menu.children)
+        menu.isOpen = list.some(item => item.link == url)
+      }
+
+      if (!menu.level) {
+        menu.level = level
+      }
+
       if (menu.link == url) {
         this.breadcrumb = [menu.label, menu.label]
         this.addTabset(menu)
       } else if (menu?.children) {
-        this.isMenu(url, menu.children)
+        this.isMenu(url, menu.children, level + 1)
       }
     })
-    // if (menus.length) {
-    //   menus.some(item => {
-    //     if (item.children) {
-    //       let menu = item.children.find(item => url == item.label) 
-    //       // console.log(url, menu)
-    //       if (menu) {
-    //         console.log()
-    //         this.breadcrumb = [item.label, menu.label]
-    //         this.activeMenu = menu
-    //         this.addTabset(menu)
-    //       } else {
-    //         this.isMenu(url, item.children)
-    //       }
-    //     } else {
-    //       return false
-    //     }
-    //   })
-    // } else {
-    //   return false
-    // }
-    // menus.map(menu => {
-    //   if (menu.children) {
-    //     let menu = menu.children.find(menu => url == menu.label) 
-    //     // console.log(url, menu)
-    //     if (menu) {
-    //       console.log()
-    //       this.breadcrumb = [menu.label, menu.label]
-    //       this.activeMenu = menu
-    //       this.addTabset(menu)
-    //     } else {
-    //       this.isMenu(url, menu.children)
-    //     }
-    //   } else {
-    //     return false
-    //   }
-    //   return menu
-    // })
+  }
 
-    // if (menus.some(menu => url == menu.label)) {
-    //   let menu = menus.find(menu => url == menu.label) 
-    //   this.breadcrumb = [menu?.label, menu?.label]
-    //   this.activeMenu = menu
-    //   this.addTabset(menu)
-    // } else {
-    //   menus.map(item => {
+  isMenuOpen (url: string, menus: MenuType[]): boolean {
+    
+    // var flat_entries = menus.flat(Infinity);
+    // console.log(this.flatten(menus))
+    return menus.some(item => item.link === url)
+  }
 
-    //   })
-    // }
+  flatten(arr:  MenuType[]):  MenuType[] {
+    let result: MenuType[] = [];
 
-    // return this.isMenu(url, menus.children)
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i]['children'])) {
+        let list = this.flatten(arr[i]['children'])
+        result = result.concat(list);
+      } else {
+        result.push(arr[i]);
+      }
+    }
+    return result;
   }
 
   getMenu(): Observable<Array<MenuType>> {

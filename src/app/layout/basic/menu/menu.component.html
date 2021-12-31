@@ -8,36 +8,49 @@
 <ul nz-menu nzMode="inline"  nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
 	<ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
 	<ng-template #menuTpl let-menus>
-		<ng-container *ngFor="let menuItem of menus">
-			<li *ngIf="!(menuItem.children && !menuItem.isTabs)"
+		<ng-container *ngFor="let menu of menus">
+			<li *ngIf="!(menu.children && !menu.isTabs)"
 				nz-menu-item
-				nzMatchRouter
+				[nzMatchRouter]="true"
+				[routerLink]="menu.link"
 				class="d-flex align-items-center"
-				[nzPaddingLeft]="48"
-				[nzDisabled]="menuItem.disabled"
-				[nzSelected]="menuItem.selected">
-				<i nz-icon [nzType]="menuItem.icon" class="me-2" *ngIf="menuItem.icon"></i>
-				<a [routerLink]="menuItem.link" class="me-auto" (click)="menu.setTabsMenu(menuItem)">{{menuItem.label}}</a>
+				[nzPaddingLeft]="menu.level * 24"
+				[nzDisabled]="menu.disabled">
+				<i nz-icon [nzType]="menu.icon" class="me-2" *ngIf="menu.icon"></i>
+				<a  (click)="menuService.setTabsMenu(menu)">{{menu.label}}</a>
 				<nz-badge nzSize="small " class="mx-2 float-end" nzStandalone [nzCount]="25"></nz-badge>
 			</li>
-			<li *ngIf="menuItem.children && !menuItem.isTabs"
+			<li *ngIf="menu.children && !menu.isTabs"
 				nz-submenu
-				[nzOpen]="menuItem.open"
+				[nzOpen]="menu.isOpen"
 				[nzTitle]="titleTpl"
-				[nzDisabled]="menuItem.disabled">
+				[nzPaddingLeft]="menu.level * 24"
+				[nzDisabled]="menu.disabled">
 				<ng-template #titleTpl>
-					<span class="d-flex justify-content-between align-items-center w-100">
-						<i nz-icon [nzType]="menuItem.icon" *ngIf="menuItem.icon"></i>
-						<span class="d-inline-block me-auto">{{menuItem.label}}</span>
+					<span class="d-flex justify-content-start align-items-center w-100">
+						<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+						<span class="d-inline-block">{{menu.label}}</span>
 						<nz-badge class="mx-2" nzStandalone [nzCount]="25"></nz-badge>
 					</span>
 				</ng-template>
 				<ul>
-					<ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menuItem.children }"></ng-container>
+					<ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
 				</ul>
 			</li>
 		</ng-container>
 	</ng-template>
 </ul>
+
+<!-- <ul nz-menu nzMode="inline" nzTheme="dark">
+	<ng-container *ngFor="let menu of menus">
+		<li nz-submenu [nzTitle]="menu.label"  [nzIcon]="menu.icon" nzOpen>
+			<ul>
+				<ng-container *ngFor="let item of menu.children">
+					<li nz-menu-item [nzMatchRouter]="true" [routerLink]="item.link" >{{item.label}}</li>
+				</ng-container>
+			</ul>
+		</li>
+	</ng-container>
+</ul> -->
 
 

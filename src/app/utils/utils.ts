@@ -288,3 +288,9 @@ export function fieldChange (field: FormlyFieldConfigCache, model: any) {
   field.model.splice(0, i, ...clone(model));
   (field.options as any)._buildForm();
 }
+
+// export function  flatten (arr: Array<any>, func) {
+//   let arr 
+  
+// }
+

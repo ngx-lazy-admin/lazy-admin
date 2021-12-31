@@ -98,26 +98,26 @@ export const menu = [
       {
         id: '',
         label: '搜索列表',
-        link: 'list/search',
+        link: '/list/search',
         badge: '',
         children: [
           {
             id: '',
             label: '搜索列表(文章)',
-            link: 'list/search/articles',
+            link: '/list/search/articles',
             badge: '',
           },
           {
             id: '',
             label: '搜索列表(项目)',
 
-            link: 'list/search/articles',
+            link: '/list/search/project',
             badge: '',
           },
           {
             id: '',
             label: '搜索列表(应用)',
-            link: 'list/search/articles',
+            link: '/list/search/applications',
             badge: '',
           },
         ]
@@ -213,21 +213,21 @@ export const menu = [
   },
   {
     id: '',
-    label: 'Bootstarp',
+    label: '射中页面',
     icon: 'warning',
     link: '',
     badge: '',
     children: [
       {
         id: '',
-        label: '403',
-        link: '/exception/403',
+        label: '个人中心',
+        link: '/setting/user',
         badge: '',
       },
       {
         id: '',
-        label: '404',
-        link: '/exception/404',
+        label: '个人设置',
+        link: '/setting/account',
         badge: '',
       },
       {
@@ -240,14 +240,35 @@ export const menu = [
   },
   {
     id: '',
-    label: 'Tabs',
+    label: '编辑器',
     icon: 'warning',
     link: '',
     badge: '',
     children: [
       {
         id: '',
-        label: 'one',
+        label: '富文本编辑器',
+        link: '/exception/403',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'Markdown编辑器',
+        link: '/exception/404',
+        badge: '',
+      },
+    ]
+  },
+  {
+    id: '',
+    label: '工具',
+    icon: 'warning',
+    link: '',
+    badge: '',
+    children: [
+      {
+        id: '',
+        label: '内嵌页面',
         link: '/tabs/one',
         badge: '',
       },
@@ -261,98 +282,6 @@ export const menu = [
         id: '',
         label: 'three',
         link: '/tabs/three',
-        badge: '',
-      },
-    ]
-  },
-  {
-    id: '',
-    label: 'Dashboard',
-    icon: 'dashboard',
-    link: '',
-    badge: '',
-    children: [
-      {
-        id: '',
-        label: '分析页1',
-        link: '/tabs/one/1',
-        icon: 'dashboard',
-        badge: '',
-        children: [
-          {
-            id: '',
-            label: '分析页11',
-            link: '/tabs/one/1',
-            icon: 'dashboard',
-            badge: '',
-          },
-          {
-            id: '',
-            label: '分析页12',
-            link: '/tabs/one/2',
-            icon: 'dashboard',
-            badge: '',
-          },
-        ]
-      },
-      {
-        id: '',
-        label: '分析页2',
-        link: '/tabs/two',
-        icon: 'dashboard',
-        isTabs: true,
-        badge: '',
-        children: [
-          {
-            id: '',
-            label: '分析页21',
-            link: '/tabs/two/1',
-            icon: 'dashboard',
-            badge: '',
-          },
-          {
-            id: '',
-            label: '分析页22',
-            link: '/tabs/two/2',
-            icon: 'dashboard',
-            badge: '',
-          },
-        ]
-      },
-      {
-        id: '',
-        label: '工作台',
-        link: '/tabs/three',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '编辑器',
-        link: '/tabs/four',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '弹窗管理',
-        link: '/tabs/five',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '表单管理',
-        link: '/dashboard/form',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '表格管理',
-        link: '/dashboard/table',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '表格管理',
-        link: '/dashboard/charts',
         badge: '',
       },
     ]

@@ -32,21 +32,17 @@ export class FormComponent implements OnInit {
   rooterChange?: Subscription;
 
   ngOnInit(): void { 
-
-    // console.log(this.route)
-    console.log('ngOnInit')
-
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-      console.log('rooterChange')
-
         const messageId = this.message.loading('加载中...').messageId
         this.fieldService.getField(event.url).subscribe(result => {
-          // console.log(field)
-          console.log('2333')
           this.message.remove(messageId)
           this.fields = result['field']
           this.cd.markForCheck();
+        }, err => {
+          this.message.remove(messageId)
+          // this.message.error(err.msg)
+          console.log(err)
         })
       }
     });

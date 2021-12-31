@@ -20,11 +20,11 @@ export class LayoutMenuComponent implements OnInit {
 
   constructor(
     private layout: LayoutService,
-    public menu: MenuService,
+    public menuService: MenuService,
     private cd: ChangeDetectorRef 
   ) {
-    this.menu.change$?.subscribe(item => {
-      this.menus = item
+    this.menuService.change$?.subscribe(item => {
+      this.menus = item;
       this.cd.markForCheck();
     })
   }
