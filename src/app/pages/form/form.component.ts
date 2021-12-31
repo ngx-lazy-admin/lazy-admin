@@ -11,6 +11,12 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
 
+export interface headerInfoType {
+  title: string,
+  content: string,
+  subtitle: string,
+}
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -31,36 +37,72 @@ export class FormComponent implements OnInit {
 
   rooterChange?: Subscription;
 
+  info?: headerInfoType | null;
+
+  form = new FormGroup({});
+
+  model = {
+    name: 1,
+  }
+
+  options: FormlyFormOptions = {};
+  fields: FormlyFieldConfig[] = []
+
+  loading = false
+
   ngOnInit(): void { 
+    console.log(this.route)
+    console.log(this.router)
+
+    this.route.params.subscribe(params => {
+      console.log('params')
+      console.log(params)
+    })
+
+    this.route.queryParams.subscribe(params => {
+      console.log('queryParams')
+    });
+
+    this.route.url.subscribe(url => {
+      console.log('url')
+      const messageId = this.message.loading('加载中...').messageId
+      this.fieldService.getField(this.router.url).subscribe(result => {
+        this.fields = result?.fields;
+        this.info = result?.info;
+        this.message.remove(messageId)
+        this.cd.markForCheck();
+      }, err => {
+        this.fields = [];
+        this.info = null;
+        this.message.remove(messageId)
+        this.cd.markForCheck();
+      })
+    })
+
     this.rooterChange = this.router.events.subscribe((event) => {
+      console.log(event)
       if (event instanceof NavigationEnd) {
+        console.log(event?.url)
+        console.log(this.router.url)
+
         const messageId = this.message.loading('加载中...').messageId
-        this.fieldService.getField(event.url).subscribe(result => {
+        this.fieldService.getField(this.router.url).subscribe(result => {
+          this.fields = result?.fields;
+          this.info = result?.info;
           this.message.remove(messageId)
-          this.fields = result['field']
           this.cd.markForCheck();
         }, err => {
+          this.fields = [];
+          this.info = null;
           this.message.remove(messageId)
-          // this.message.error(err.msg)
-          console.log(err)
+          this.cd.markForCheck();
         })
       }
     });
 
 
-    // this.route.queryParams.subscribe(params => {
-    //   console.log(params);
-    // });
 
-    // this.route.params.subscribe(params => {
-    //   console.log(params);
-    // })
 
-    // this.route.url.subscribe(url => {
-    //   console.log(url)
-    //   console.log(this.route)
-
-    // })
 
     // // this.router.getCurrentNavigation()
 
@@ -85,16 +127,7 @@ export class FormComponent implements OnInit {
     // })
   }
 
-  form = new FormGroup({});
 
-  model = {
-    name: 1,
-  }
-
-  options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = []
-
-  loading = false
 
 
   onSubmit(model:any) {

@@ -52,7 +52,7 @@
   </ng-container>
   
 
-  <nz-layout >
+  <nz-layout style="min-height: 100vh;">
     <nz-header nzTheme="light" class="p-0">
       <app-layout-header></app-layout-header>
     </nz-header>
@@ -77,11 +77,11 @@
 		</ng-template>
 
     <app-layout-search class="m-3 mb-2 shadow-sm"></app-layout-search> -->
+    
 
-    <nz-content class="p-3 ">
-      <nz-card nzBorderless="false" style="height: 1000px;">
-        <router-outlet></router-outlet>
-      </nz-card>
+  
+    <nz-content class="p-3">
+      <router-outlet></router-outlet>
     </nz-content>
 
     <!-- <nz-footer class="bg-white" style="margin-bottom: 52px; height: 52px;">

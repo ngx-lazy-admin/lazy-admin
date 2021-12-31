@@ -19,12 +19,12 @@ const routes: Routes = [
 
       { path: 'system', pathMatch: 'full', redirectTo: '/system/user' },
       
+      { path: 'dashboard', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: 'dashboard/workplace', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
 
-      { path: 'system/user', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      { path: 'system/user', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      { path: 'system/menu', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      { path: 'system/role', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      { path: 'system/form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      // { path: 'system/menu', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      // { path: 'system/role', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      // { path: 'system/form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
 
       // { path: 'dashboard', pathMatch: 'full', redirectTo: '/dashboard/workplace' },
       // { path: 'dashboard/workplace', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },

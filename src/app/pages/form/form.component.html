@@ -1,4 +1,14 @@
-<form [formGroup]="form">
-    <formly-form [form]="form" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
-    <!-- <button nz-button type="submit" (click)="onSubmit(model)">onSubmit</button> -->
-</form>
+<nz-page-header class="bg-white mb-3">
+	<nz-page-header-title>{{info?.title}}</nz-page-header-title>
+	<nz-page-header-content>
+		{{info?.content}}
+	</nz-page-header-content>
+</nz-page-header>
+
+<nz-card>
+	<form [formGroup]="form">
+		<formly-form [form]="form" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
+	</form>
+</nz-card>
+
+

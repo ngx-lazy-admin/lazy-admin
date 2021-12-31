@@ -187,7 +187,7 @@ export const menu = [
   {
     id: '',
     label: '异常页',
-    icon: 'warning',
+    icon: '',
     link: '',
     badge: '',
     children: [
@@ -213,8 +213,8 @@ export const menu = [
   },
   {
     id: '',
-    label: '射中页面',
-    icon: 'warning',
+    label: '设置页面',
+    icon: 'setting',
     link: '',
     badge: '',
     children: [
@@ -230,31 +230,25 @@ export const menu = [
         link: '/setting/account',
         badge: '',
       },
-      {
-        id: '',
-        label: '405',
-        link: '/exception/405',
-        badge: '',
-      },
     ]
   },
   {
     id: '',
     label: '编辑器',
-    icon: 'warning',
+    icon: '',
     link: '',
     badge: '',
     children: [
       {
         id: '',
         label: '富文本编辑器',
-        link: '/exception/403',
+        link: '/editor/editor',
         badge: '',
       },
       {
         id: '',
         label: 'Markdown编辑器',
-        link: '/exception/404',
+        link: '/editor/markdonw',
         badge: '',
       },
     ]

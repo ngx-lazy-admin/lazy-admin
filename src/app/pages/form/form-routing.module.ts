@@ -4,9 +4,15 @@ import { FormComponent } from './form.component';
 
 const routes: Routes = [
   { 
-    path: '', pathMatch: 'full', component: FormComponent 
+    path: '', pathMatch: 'full', component: FormComponent, 
   },
 
+  {
+    path: 'dashboard/analysis', pathMatch: 'full', component: FormComponent    
+  },
+  {
+    path: 'monitor', pathMatch: 'full', component: FormComponent,  
+  }
 ];
 
 @NgModule({
