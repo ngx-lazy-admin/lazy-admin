@@ -81,7 +81,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
           }
           // 切换less 的位置
           // less:assets-styles-custom
-          // this.ngZone.run(() => this.cdr.detectChanges());
+          this.ngZone.run(() => this.cdr.detectChanges());
         });
       }
     });
@@ -196,16 +196,6 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
   }
   
   removeUnusedTheme(theme: ThemeType): void {
-
-    // let head = document.querySelector('head')
-
-    // let child = this.currentTheme ? document.querySelector('#' + this.currentTheme) : null;
-    // if (this.currentTheme && document.querySelector('#' + this.currentTheme)) {
-    //   if (child) {
-    //     head?.removeChild(child)
-    //   }
-    // }
-
     if (theme) {
       document.documentElement.classList.remove(theme);
       const removedThemeStyle = document.getElementById(theme);
@@ -228,7 +218,7 @@ export class SettingDrawerComponent implements OnInit, OnDestroy {
       data[key].value = value === `@primary-color` ? '' : value;
     });
     this.data = data;
-    // this.runLess();
+    this.runLess();
   }
 
   private get validKeys(): string[] {

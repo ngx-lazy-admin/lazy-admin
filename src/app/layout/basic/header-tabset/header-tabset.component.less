@@ -1,15 +1,17 @@
-// ::ng-deep p {
-//     margin: 0;
-// }
+:host ::ng-deep .ant-tabs-top > .ant-tabs-nav {
+  margin-bottom: 0;
+  padding: 4px;
+}
 
-// ::ng-deep  .ant-tabs-card > .ant-tabs-nav::before {
-//     display: none;
-// }
-// ::ng-deep  .ant-tabs-card .ant-tabs-tab {
-//     border-color: transparent;
-//     background: transparent;
-// }
-// ::ng-deep  .ant-tabs-card .ant-tabs-tab-active {
-//     border-color: #fff;
-//     background: #fff;
-// }
+:host ::ng-deep .ant-tabs-card {
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+  background-color: #fff;
+}
+
+:host ::ng-deep .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active {
+  border-color: #f0f0f0;
+}
+
+:host ::ng-deep .ant-tabs-top > .ant-tabs-nav::before {
+  border: unset;
+}

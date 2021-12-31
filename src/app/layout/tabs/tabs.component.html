@@ -1,13 +1,13 @@
 <nz-tabset nzLinkRouter>
   <ng-container *ngFor="let item of menu?.tabsMenu">
     <nz-tab>
-      <a *nzTabLink nz-tab-link [routerLink]="item.link" queryParamsHandling="merge">
+      <a class="red" *nzTabLink nz-tab-link [routerLink]="item.link" queryParamsHandling="merge">
         {{item.label}}
       </a>
     </nz-tab>
   </ng-container>
 </nz-tabset>
-<pre>{{ menu.tabsMenu | json}}</pre>
+
 <router-outlet></router-outlet>
 
 

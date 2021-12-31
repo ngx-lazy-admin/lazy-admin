@@ -22,7 +22,7 @@ export class FieldService {
 
   private _destroy$ = new Subject();
   private _menu$ = new BehaviorSubject<Array<FieldType|null>|null>(null);
-  private _baseFieldUrl = 'api/field';
+  private _baseFieldUrl = 'api';
   private _menus: Array<FieldType> = [];
   private _activeMenu: FieldType|null = null;
 
@@ -71,9 +71,9 @@ export class FieldService {
   //   }))
   // }
 
-  getField(url: UrlSegment[]): Observable<any> {
-    console.log(url)
-    return this.http.get<any>(this._baseFieldUrl + '/' + url).pipe(tap(field => {
+  getField(url: string): Observable<any> {
+    console.log(this._baseFieldUrl + url)
+    return this.http.get<any>(this._baseFieldUrl + url).pipe(tap(field => {
       // console.log(field)
     }))
   }

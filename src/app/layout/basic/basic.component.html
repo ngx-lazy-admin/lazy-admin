@@ -1,4 +1,4 @@
-<nz-progress
+<!-- <nz-progress
   class="progress position-fixed w-100 top-0 f0"
   [nzPercent]="percent"
   nzStrokeWidth="2"
@@ -6,14 +6,21 @@
   nzStrokeLinecap="square"
   style="z-index: 1000; line-height: 0;"
   [nzStrokeColor]="{ '0%': '#108ee9', '100%': '#87d068' }">
-</nz-progress>
+</nz-progress> -->
 
-<nz-layout class="app-layout" style="height: 100vh; width: 100%;">
-
+<nz-layout class="app-layout" style="width: 100%;">
   <ng-container *ngIf="nzWidthRange[0]">
     <nz-sider  
       nzCollapsible
-      style="z-index: 1000;"
+      [nzCollapsedWidth]="nzWidthRange[index]"
+      [nzCollapsed]="!!index"
+      [nzWidth]="nzWidthRange[index]"
+      [nzTrigger]="null"
+    >
+    </nz-sider>
+    <nz-sider  
+      nzCollapsible
+      style="z-index: 1000; position: fixed;"
       class="h-100"
       [nzCollapsedWidth]="nzWidthRange[index]"
       [nzCollapsed]="!!index"
@@ -50,7 +57,10 @@
       <app-layout-header></app-layout-header>
     </nz-header>
 
-    <app-layout-header-tabset class="sticky-top"></app-layout-header-tabset>
+    <nz-affix [nzOffsetTop]="0">
+      <app-layout-header-tabset></app-layout-header-tabset>
+    </nz-affix>
+
 
     <!-- <nz-alert
       nzType="error"
@@ -69,7 +79,7 @@
     <app-layout-search class="m-3 mb-2 shadow-sm"></app-layout-search> -->
 
     <nz-content class="p-3 ">
-      <nz-card nzBorderless="false">
+      <nz-card nzBorderless="false" style="height: 1000px;">
         <router-outlet></router-outlet>
       </nz-card>
     </nz-content>

@@ -15,32 +15,31 @@ const routes: Routes = [
     canActivateChild: [ActivateChildGuard],
     data: {},
     children: [
-      { path: '', pathMatch: 'full', redirectTo: '/welcome' },
-      { 
-        path: 'tabs',  
-        component: TabsComponent,
-        canActivateChild: [ActivateChildGuard],
-        children: [
-          { path: 'one',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-          { path: 'two',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-        ]
-      },  
-      { path: 'welcome',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      { path: 'tabs',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },  
+      { path: '', pathMatch: 'full', redirectTo: '/dashboard/workplace' },
 
-      { path: 'chart', loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule) },
-      { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
-      { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
-      { path: 'system/list', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
-      { path: 'system/modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
+      { path: 'system', pathMatch: 'full', redirectTo: '/system/user' },
+      
+
+      { path: 'system/user', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: 'system/user', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: 'system/menu', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: 'system/role', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
       { path: 'system/form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      { path: 'exception', loadChildren: () => import('./pages/exception/exception.module').then(m => m.ExceptionModule) },
-      { path: 'dashboard/code',     canActivateChild: [ActivateChildGuard], loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
-      { path: 'dashboard/modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
-      { path: 'dashboard/form',  loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      { path: 'dashboard/table', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
-      { path: 'dashboard/charts', loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule) },
+
+      // { path: 'dashboard', pathMatch: 'full', redirectTo: '/dashboard/workplace' },
+      // { path: 'dashboard/workplace', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      // { path: 'dashboard/monitor', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      // { path: 'dashboard/analysis', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+
+      // { path: 'form', pathMatch: 'full', redirectTo: '/form/basic' },
+      // { path: 'form/basic', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      // { path: 'form/step', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      // { path: 'form/advanced', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+
+
       // { path: '**', component: PageNotFoundComponent }
+      { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+
 
     ]
   },

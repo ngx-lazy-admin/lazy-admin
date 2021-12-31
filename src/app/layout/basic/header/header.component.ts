@@ -12,9 +12,9 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { Subject } from 'rxjs';
-import hotkeys from 'hotkeys-js';
 import { LayoutService } from '../../layout.service';
 import { MenuService } from '../../../api/menu/menu.services';
+import hotkeys from 'hotkeys-js';
 
 export interface AutocompleteOptionGroups {
   title: string;

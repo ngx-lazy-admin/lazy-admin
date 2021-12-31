@@ -6,8 +6,10 @@ import { UserService } from 'src/app/api/user';
 import { FieldService } from 'src/app/api/field';
 
 import { assignFieldValue, getFieldValue, clone, fieldChange } from '../../utils/utils';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { ActivatedRoute, Router, ParamMap, NavigationEnd } from '@angular/router';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-form',
@@ -24,37 +26,47 @@ export class FormComponent implements OnInit {
     private fieldService: FieldService,
     public route: ActivatedRoute,
     private router: Router,
+    private message: NzMessageService
   ) {}
+
+  rooterChange?: Subscription;
 
   ngOnInit(): void { 
 
     // console.log(this.route)
-    // console.log(this.router)
+    console.log('ngOnInit')
+
+    this.rooterChange = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+      console.log('rooterChange')
+
+        const messageId = this.message.loading('加载中...').messageId
+        this.fieldService.getField(event.url).subscribe(result => {
+          // console.log(field)
+          console.log('2333')
+          this.message.remove(messageId)
+          this.fields = result['field']
+          this.cd.markForCheck();
+        })
+      }
+    });
+
 
     // this.route.queryParams.subscribe(params => {
     //   console.log(params);
-    //   this.cd.markForCheck();
-
     // });
 
     // this.route.params.subscribe(params => {
     //   console.log(params);
-    //   this.cd.markForCheck();
     // })
 
-    this.route.url.subscribe(url => {
-      this.fieldService.getField(url).subscribe(field => {
-        // console.log(field)
-        // console.log('current route name')
+    // this.route.url.subscribe(url => {
+    //   console.log(url)
+    //   console.log(this.route)
 
-        // console.log(this.router.url)
-        // this.fields = this.execFunction(field)
+    // })
 
-        this.cd.markForCheck();
-      })
-    })
-
-    // this.router.getCurrentNavigation()
+    // // this.router.getCurrentNavigation()
 
     // this.route.paramMap.pipe(
     //   map((params: ParamMap) => params)
@@ -71,10 +83,10 @@ export class FormComponent implements OnInit {
     // this.router.navigations.this.service.function
     //   .subscribe(arg => this.property = arg);
     
-    this.fieldService.getFieldByOf().subscribe((field: any) => {
-      this.fields = field
-      this.cd.markForCheck();
-    })
+    // this.fieldService.getFieldByOf().subscribe((field: any) => {
+    //   this.fields = field
+    //   this.cd.markForCheck();
+    // })
   }
 
   form = new FormGroup({});
@@ -118,5 +130,11 @@ export class FormComponent implements OnInit {
   }
 
   ngAfterViewInit () {}
+
+  ngOnDestroy() {
+    if (this.rooterChange) {
+      this.rooterChange.unsubscribe();
+    }
+  }
 
 }

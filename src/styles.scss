@@ -25,6 +25,7 @@
 
 // 6. Add additional custom code here
 
+
 @import "bootstrap/scss/bootstrap-utilities.scss";
 
 $zindex-dropdown:                   999;
@@ -45,6 +46,7 @@ $enable-cssgrid: true;
 
 // "./node_modules/bootstrap/dist/css/bootstrap-utilities.min.css"
 
+$box-shadow-sm: 0 .125rem .125rem rgba($black, 0);
 
 
 
@@ -246,4 +248,16 @@ body {
 
 .bg-gray-100 {
 	background-color: #d1d1d1 ;
+}
+
+
+.ant-btn-group .ant-btn .anticon {
+	flex: none;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
 }

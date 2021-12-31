@@ -10,87 +10,22 @@ export const menu = [
     children: [
       {
         id: '',
-        label: '分析页1',
-        link: '/tabs/one/1',
-        icon: 'dashboard',
+        label: '分析页',
+        link: '/dashboard/analysis',
         badge: '',
-        children: [
-          {
-            id: '',
-            label: '分析页11',
-            link: '/tabs/one/1',
-            icon: 'dashboard',
-            badge: '',
-          },
-          {
-            id: '',
-            label: '分析页12',
-            link: '/tabs/one/2',
-            icon: 'dashboard',
-            badge: '',
-          },
-        ]
       },
       {
         id: '',
-        label: '分析页2',
-        link: '/tabs/two',
-        icon: 'dashboard',
-        isTabs: true,
+        label: '监控页',
+        link: '/dashboard/monitor',
         badge: '',
-        children: [
-          {
-            id: '',
-            label: '分析页21',
-            link: '/tabs/two/1',
-            icon: 'dashboard',
-            badge: '',
-          },
-          {
-            id: '',
-            label: '分析页22',
-            link: '/tabs/two/2',
-            icon: 'dashboard',
-            badge: '',
-          },
-        ]
       },
       {
         id: '',
         label: '工作台',
-        link: '/tabs/three',
+        link: '/dashboard/workplace',
         badge: '',
-      },
-      {
-        id: '',
-        label: '编辑器',
-        link: '/tabs/four',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '弹窗管理',
-        link: '/tabs/five',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '表单管理',
-        link: '/dashboard/form',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '表格管理',
-        link: '/dashboard/table',
-        badge: '',
-      },
-      {
-        id: '',
-        label: '表格管理',
-        link: '/dashboard/charts',
-        badge: '',
-      },
+      }
     ]
   },
   {
@@ -114,16 +49,16 @@ export const menu = [
       },
       {
         id: '',
-        label: '表单管理',
-        link: '/system/form',
+        label: '角色管理',
+        link: '/system/role',
         badge: '',
       },
       {
         id: '',
-        label: '弹窗管理',
-        link: '/system/modal',
+        label: '表单管理',
+        link: '/system/form',
         badge: '',
-      }   
+      }
     ]
   },
   {
@@ -136,22 +71,21 @@ export const menu = [
       {
         id: '',
         label: '基础表单',
-        link: '/form/basic-form',
+        link: '/form/basic',
         badge: '',
       },
       {
         id: '',
         label: '分步表单',
-        link: '/form/step-form',
+        link: '/form/step',
         badge: '',
       },
       {
         id: '',
         label: '高级表单',
-        link: '/form/advanced-form',
+        link: '/form/advanced',
         badge: '',
-      }
-      
+      } 
     ]
   },
   {
@@ -164,8 +98,29 @@ export const menu = [
       {
         id: '',
         label: '搜索列表',
-        link: 'list/search-list',
+        link: 'list/search',
         badge: '',
+        children: [
+          {
+            id: '',
+            label: '搜索列表(文章)',
+            link: 'list/search/articles',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '搜索列表(项目)',
+
+            link: 'list/search/articles',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '搜索列表(应用)',
+            link: 'list/search/articles',
+            badge: '',
+          },
+        ]
       },
       {
         id: '',
@@ -306,6 +261,98 @@ export const menu = [
         id: '',
         label: 'three',
         link: '/tabs/three',
+        badge: '',
+      },
+    ]
+  },
+  {
+    id: '',
+    label: 'Dashboard',
+    icon: 'dashboard',
+    link: '',
+    badge: '',
+    children: [
+      {
+        id: '',
+        label: '分析页1',
+        link: '/tabs/one/1',
+        icon: 'dashboard',
+        badge: '',
+        children: [
+          {
+            id: '',
+            label: '分析页11',
+            link: '/tabs/one/1',
+            icon: 'dashboard',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '分析页12',
+            link: '/tabs/one/2',
+            icon: 'dashboard',
+            badge: '',
+          },
+        ]
+      },
+      {
+        id: '',
+        label: '分析页2',
+        link: '/tabs/two',
+        icon: 'dashboard',
+        isTabs: true,
+        badge: '',
+        children: [
+          {
+            id: '',
+            label: '分析页21',
+            link: '/tabs/two/1',
+            icon: 'dashboard',
+            badge: '',
+          },
+          {
+            id: '',
+            label: '分析页22',
+            link: '/tabs/two/2',
+            icon: 'dashboard',
+            badge: '',
+          },
+        ]
+      },
+      {
+        id: '',
+        label: '工作台',
+        link: '/tabs/three',
+        badge: '',
+      },
+      {
+        id: '',
+        label: '编辑器',
+        link: '/tabs/four',
+        badge: '',
+      },
+      {
+        id: '',
+        label: '弹窗管理',
+        link: '/tabs/five',
+        badge: '',
+      },
+      {
+        id: '',
+        label: '表单管理',
+        link: '/dashboard/form',
+        badge: '',
+      },
+      {
+        id: '',
+        label: '表格管理',
+        link: '/dashboard/table',
+        badge: '',
+      },
+      {
+        id: '',
+        label: '表格管理',
+        link: '/dashboard/charts',
         badge: '',
       },
     ]

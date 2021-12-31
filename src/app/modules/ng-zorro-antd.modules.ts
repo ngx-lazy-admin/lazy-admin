@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 
-// import { NzAffixModule } from 'ng-zorro-antd/affix';
+import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 // import { NzAnchorModule } from 'ng-zorro-antd/anchor';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
@@ -72,7 +72,7 @@ import { NzPipesModule } from 'ng-zorro-antd/pipes';
 
 @NgModule({
   exports: [
-    // NzAffixModule,
+    NzAffixModule,
     NzAlertModule,
     // NzAnchorModule,
     NzAutocompleteModule,

@@ -14,7 +14,6 @@ import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
 import { FieldTypeModule } from '../../fields/types';
 import { NzModalCustomComponent } from './modal-form.component';
 
-
 @NgModule({
   declarations: [
     ModalComponent,
@@ -32,7 +31,6 @@ import { NzModalCustomComponent } from './modal-form.component';
     NgZorroAntdModule,
     FormlyModule.forRoot(),
     FieldTypeModule,
-    
   ],
   exports: [
     ModalComponent,
