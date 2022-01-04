@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
-import { Input, Directive, ChangeDetectorRef } from '@angular/core';
-import { FieldType, FormlyFieldConfig, FormlyTemplateOptions } from '@ngx-formly/core';
+import { Directive, ChangeDetectorRef } from '@angular/core';
+import { FieldType } from '@ngx-formly/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Directive()

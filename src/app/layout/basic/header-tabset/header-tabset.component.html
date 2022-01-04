@@ -9,10 +9,21 @@
 		class="w-100"
 		(nzAdd)="newTab()"
 		(nzClose)="closeTab($event)">
-		<ng-container  *ngFor="let tab of tabs">
-			<nz-tab nzClosable nzType="primary" class="mb-0" (nzContextmenu)="onContextmenu($event, menu)">
+		<ng-container *ngFor="let tab of tabs">
+			<nz-tab nzClosable nzType="primary" class="mb-0"  (nzContextmenu)="contextMenu($event, menu)">
+				<i *ngIf="tab?.icon" nz-icon nzType="tab?.icon"  class="button-group-icon" nzTheme="outline"></i>
 				<span *nzTabLink nz-tab-link [routerLink]="tab?.link">{{tab?.label}}</span>
 			</nz-tab>
+
+			<nz-dropdown-menu #menu="nzDropdownMenu">
+				<ul nz-menu>
+					<li nz-menu-item (click)="closeMenu(tab)">关闭</li>
+					<li nz-menu-item (click)="closeMenu(tab, 'other')">关闭其他</li>
+					<li nz-menu-item (click)="closeMenu(tab, 'right')">关闭右侧其他</li>
+					<li nz-menu-item (click)="closeMenu(tab, 'all')"> 关闭全部</li>
+					<li nz-menu-item (click)="closeMenu(tab, 'reload')">重新加载</li>
+				</ul>
+			</nz-dropdown-menu>
 		</ng-container>
 	</nz-tabset>
 	<ng-template #extraTemplate>
@@ -31,13 +42,3 @@
 			</button>
 		</nz-button-group>
 	</ng-template>
-	
-<nz-dropdown-menu #menu="nzDropdownMenu">
-	<ul nz-menu>
-	  <li nz-menu-item>关闭</li>
-	  <li nz-menu-item>关闭其他</li>
-	  <li nz-menu-item>关闭右侧其他</li>
-	  <li nz-menu-item>关闭全部</li>
-	  <li nz-menu-item>重新加载</li>
-	</ul>
-</nz-dropdown-menu>

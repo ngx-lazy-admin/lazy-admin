@@ -3,7 +3,6 @@ import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType,  } from 'ng-zorro-antd/core/types';
 import { Observable } from 'rxjs';
-// import { AutocompleteDataSource } from 'ng-zorro-antd/auto-complete';
 
 interface AutocompleteDataSourceItem {
   value: string;
@@ -18,7 +17,6 @@ declare type AutocompleteDataSource = Array<AutocompleteDataSourceItem | string 
     templateUrl: './autocomplete.component.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class AutocompleteFields extends FieldType implements OnInit {
   data: any = [];

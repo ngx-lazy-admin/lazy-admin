@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, TemplateRef, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, AbstractControl } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { UserService } from 'src/app/api/user';
 import { FieldService } from 'src/app/api/field';
 
-import { assignFieldValue, getFieldValue, clone, fieldChange } from '../../utils/utils';
-import { ActivatedRoute, Router, ParamMap, NavigationEnd } from '@angular/router';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
-import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Subject, Subscription } from 'rxjs';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 export interface headerInfoType {
   title: string,
@@ -27,13 +25,30 @@ export class FormComponent implements OnInit {
 
   constructor(
     private cd: ChangeDetectorRef,
-    private http: HttpClient,
-    private userServices: UserService,
     private fieldService: FieldService,
     public route: ActivatedRoute,
     private router: Router,
-    private message: NzMessageService
-  ) {}
+  ) {
+    this.rooterChange = this.router.events.subscribe((event) => {
+      // console.log(event)
+      if (event instanceof NavigationEnd) {
+        // const messageId = this.message.loading('加载中...').messageId
+        this.loading = true;
+        this.fieldService.getField(this.router.url).subscribe(result => {
+          this.loading = false;
+          this.fields = result?.fields;
+          this.info = result?.info;
+          // this.message.remove(messageId)
+          this.cd.markForCheck();
+        }, err => {
+          this.fields = [];
+          this.info = null;
+          // this.message.remove(messageId)
+          this.cd.markForCheck();
+        })
+      }
+    });
+  }
 
   rooterChange?: Subscription;
 
@@ -48,83 +63,18 @@ export class FormComponent implements OnInit {
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = []
 
-  loading = false
+  loading = false;
+
+  private route$ = new Subject<void>();
 
   ngOnInit(): void { 
-    console.log(this.route)
-    console.log(this.router)
-
     this.route.params.subscribe(params => {
       console.log('params')
-      console.log(params)
     })
 
     this.route.queryParams.subscribe(params => {
       console.log('queryParams')
     });
-
-    this.route.url.subscribe(url => {
-      console.log('url')
-      const messageId = this.message.loading('加载中...').messageId
-      this.fieldService.getField(this.router.url).subscribe(result => {
-        this.fields = result?.fields;
-        this.info = result?.info;
-        this.message.remove(messageId)
-        this.cd.markForCheck();
-      }, err => {
-        this.fields = [];
-        this.info = null;
-        this.message.remove(messageId)
-        this.cd.markForCheck();
-      })
-    })
-
-    this.rooterChange = this.router.events.subscribe((event) => {
-      console.log(event)
-      if (event instanceof NavigationEnd) {
-        console.log(event?.url)
-        console.log(this.router.url)
-
-        const messageId = this.message.loading('加载中...').messageId
-        this.fieldService.getField(this.router.url).subscribe(result => {
-          this.fields = result?.fields;
-          this.info = result?.info;
-          this.message.remove(messageId)
-          this.cd.markForCheck();
-        }, err => {
-          this.fields = [];
-          this.info = null;
-          this.message.remove(messageId)
-          this.cd.markForCheck();
-        })
-      }
-    });
-
-
-
-
-
-    // // this.router.getCurrentNavigation()
-
-    // this.route.paramMap.pipe(
-    //   map((params: ParamMap) => params)
-    // ).subscribe(res => {
-    //   console.log(res)
-    // });
-
-    
-
-    // this.route.snapshot.subscribe(params => {
-    //   console.log(params)
-    // })
-
-    // this.router.navigations.this.service.function
-    //   .subscribe(arg => this.property = arg);
-    
-    // this.fieldService.getFieldByOf().subscribe((field: any) => {
-    //   this.fields = field
-    //   this.cd.markForCheck();
-    // })
   }
 
 

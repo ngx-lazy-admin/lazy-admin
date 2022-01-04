@@ -61,7 +61,7 @@ export class InMemoryDataService implements InMemoryDbService {
       nobodies, 
       stringers, 
       menu: menu,
-      dashboard
+      dashboard,
     };
 
     switch (returnType) {

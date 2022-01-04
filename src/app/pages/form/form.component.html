@@ -1,14 +1,29 @@
-<nz-page-header class="bg-white mb-3">
-	<nz-page-header-title>{{info?.title}}</nz-page-header-title>
-	<nz-page-header-content>
-		{{info?.content}}
-	</nz-page-header-content>
-</nz-page-header>
+<!-- <nz-spin class="d-inline-block mx-auto mt-5 w-100" *ngIf="true" nzSimple></nz-spin> -->
 
-<nz-card>
-	<form [formGroup]="form">
-		<formly-form [form]="form" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
-	</form>
-</nz-card>
+<nz-spin [nzSpinning]="loading">
+	<nz-card *ngIf="loading" >
+		<nz-skeleton ></nz-skeleton>
+	</nz-card>
+</nz-spin>
+
+<ng-container *ngIf="!loading">
+	<nz-page-header class="bg-white mb-3">
+		<nz-page-header-title>{{info?.title}}</nz-page-header-title>
+		<nz-page-header-content>
+			{{info?.content}}
+		</nz-page-header-content>
+	</nz-page-header>
+	
+	<nz-card>
+		<form [formGroup]="form">
+			<formly-form [form]="form" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
+		</form>
+	</nz-card>
+</ng-container>
+
+
+
+
+
 
 

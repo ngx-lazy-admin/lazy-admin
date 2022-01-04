@@ -13,6 +13,7 @@ export const menu = [
         label: '分析页',
         link: '/dashboard/analysis',
         badge: '',
+        count: 1
       },
       {
         id: '',
@@ -280,4 +281,55 @@ export const menu = [
       },
     ]
   },
+  {
+    id: '',
+    label: 'ant-design',
+    icon: 'ant-design',
+    link: '',
+    badge: '',
+    children: [
+      {
+        id: '',
+        label: 'Autocomplete',
+        link: '/ant/autocomplete',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'Button',
+        link: '/ant/button',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'Card',
+        link: '/ant/card',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'Cascader',
+        link: '/ant/cascader',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'Checkbox',
+        link: '/ant/checkbox',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'Collapse',
+        link: '/ant/collapse',
+        badge: '',
+      },
+      {
+        id: '',
+        label: 'date-picker',
+        link: '/ant/date-picker',
+        badge: '',
+      },
+    ]
+  }
 ]

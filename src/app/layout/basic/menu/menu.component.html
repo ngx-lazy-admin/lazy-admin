@@ -17,8 +17,8 @@
 				[nzPaddingLeft]="menu.level * 24"
 				[nzDisabled]="menu.disabled">
 				<i nz-icon [nzType]="menu.icon" class="me-2" *ngIf="menu.icon"></i>
-				<a  (click)="menuService.setTabsMenu(menu)">{{menu.label}}</a>
-				<nz-badge nzSize="small " class="mx-2 float-end" nzStandalone [nzCount]="25"></nz-badge>
+				<a (click)="menuService.setTabsMenu(menu)">{{menu.label}}</a>
+				<nz-badge nzSize="small " class="mx-2 float-end" [nzDot]="isCollapsed" nzStandalone [nzCount]="menu.count"></nz-badge>
 			</li>
 			<li *ngIf="menu.children && !menu.isTabs"
 				nz-submenu
@@ -30,7 +30,7 @@
 					<span class="d-flex justify-content-start align-items-center w-100">
 						<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
 						<span class="d-inline-block">{{menu.label}}</span>
-						<nz-badge class="mx-2" nzStandalone [nzCount]="25"></nz-badge>
+						<nz-badge class="mx-2" nzStandalone [nzCount]="menu.count"></nz-badge>
 					</span>
 				</ng-template>
 				<ul>
@@ -40,17 +40,3 @@
 		</ng-container>
 	</ng-template>
 </ul>
-
-<!-- <ul nz-menu nzMode="inline" nzTheme="dark">
-	<ng-container *ngFor="let menu of menus">
-		<li nz-submenu [nzTitle]="menu.label"  [nzIcon]="menu.icon" nzOpen>
-			<ul>
-				<ng-container *ngFor="let item of menu.children">
-					<li nz-menu-item [nzMatchRouter]="true" [routerLink]="item.link" >{{item.label}}</li>
-				</ng-container>
-			</ul>
-		</li>
-	</ng-container>
-</ul> -->
-
-
