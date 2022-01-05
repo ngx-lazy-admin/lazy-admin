@@ -1,10 +1,9 @@
-import { Injectable, ChangeDetectorRef } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UrlSegment } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { field } from './field.mock';
+import { field } from './mock';
 
 export interface FieldType {
 	label: string,
@@ -73,8 +72,11 @@ export class FieldService {
 
   getField(url: string): Observable<any> {
     console.log(this._baseFieldUrl + url)
+    console.log('1')
     return this.http.get<any>(this._baseFieldUrl + url).pipe(tap(field => {
       console.log(field)
+    console.log('2')
+
     }))
   }
 

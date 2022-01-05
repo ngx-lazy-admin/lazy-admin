@@ -1,6 +1,5 @@
 import { FormlyFieldConfig } from "@ngx-formly/core";
 
-// 
 export const field: FormlyFieldConfig[] =  [
   {
     id: 'dashboard',
@@ -53,52 +52,5 @@ export const field: FormlyFieldConfig[] =  [
           }); 
       }
     }
-  }
-]
-
-
-
-export const dashboard = [
-  {
-    id: 'analysis',
-    field: [  {
-      type: 'button',
-      templateOptions: {
-        text: 'analysis',
-        click: (field: FormlyFieldConfig, _this: any) => {
-          console.log(field?.formControl?.value)
-          console.log(_this.message.error('hello world'))
-        }
-      }
-    },
-  ]
-  },
-  {
-    id: 'monitor',
-    field: [  {
-      type: 'button',
-      templateOptions: {
-        text: 'monitor',
-        click: (field: FormlyFieldConfig, _this: any) => {
-          console.log(field?.formControl?.value)
-          console.log(_this.message.error('hello world'))
-        }
-      }
-    },
-  ]
-  },
-  {
-    id: 'workplace',
-    field: [  {
-      type: 'button',
-      templateOptions: {
-        text: 'workplace',
-        click: (field: FormlyFieldConfig, _this: any) => {
-          console.log(field?.formControl?.value)
-          console.log(_this.message.error('hello world'))
-        }
-      }
-    },
-  ]
   }
 ]

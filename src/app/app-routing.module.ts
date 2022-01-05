@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'system' },
       { path: 'system', loadChildren: () => import('./pages/system/system.module').then(m => m.SystemModule) },
-      { path: 'form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
     ]
   }
 ];

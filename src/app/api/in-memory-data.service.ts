@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { user } from './user/user.mock';
 import { menu } from './menu/menu.mock';
-import { field } from './field/field.mock';
+
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { dashboard } from './dashboard/dashboard.mock';
+
+import { field, system, dashboard, components } from './field/mock';
 
 @Injectable({
   providedIn: 'root',
@@ -62,6 +63,8 @@ export class InMemoryDataService implements InMemoryDbService {
       stringers, 
       menu: menu,
       dashboard,
+      system,
+      components
     };
 
     switch (returnType) {

@@ -18,7 +18,7 @@ export interface headerInfoType {
   styleUrls: ['./form.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
 
   rooterChange?: Subscription;
 
@@ -46,6 +46,7 @@ export class FormComponent implements OnInit {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.loading = true;
+        
         this.fieldService.getField(this.router.url).subscribe(result => {
           this.loading = false;
           this.fields = result?.fields;
