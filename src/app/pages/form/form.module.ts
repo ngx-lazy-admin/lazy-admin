@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 
-import { IconsProviderModule } from '../../modules/icons-provider.module';
-import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
-
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 
+import { IconsProviderModule } from '../../modules/icons-provider.module';
+import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
 
@@ -16,7 +15,6 @@ import { FormFieldModule } from '../../fields/wrappers/form';
 @NgModule({
   declarations: [
     FormComponent,
-    // InputField
   ],
   imports: [
     CommonModule,

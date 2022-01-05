@@ -1,3 +1,5 @@
+> 保持一致性, 减少心智负担
+
 # GoAdminNg
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.2.
@@ -1964,3 +1966,25 @@ Use Extension
  <a [routerLink]="['/crisis-center', { foo: 'foo' }]">Crisis Center</a>
 
  { path: 'detail/:id', component: HeroDetailComponent },
+
+
+ 保持一致性, 减少心智负担
+
+### 安装 source-map-explorer
+首先我们先来在当前项目中安装 source-map-explorer：
+
+```bash
+npm i source-map-explorer --save-dev
+```
+
+然后在重新进行项目构建：
+
+```bash
+ng build --source-map
+```
+
+构建完成后，在根目录下的 dist 文件夹下会生成 main bundle 文件，这时我们可以在命令行执行下列命令来查看结果：
+
+```bash
+$ node_modules/.bin/source-map-explorer dist/main.d72e9d91fd17f9fe7b8c.js
+```

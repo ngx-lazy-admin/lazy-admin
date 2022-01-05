@@ -4,14 +4,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// angular cdk
-import { OverlayModule } from '@angular/cdk/overlay';
-
 // ng-zorro
 import { IconsProviderModule } from '../modules/icons-provider.module';
-import { NgZorroAntdModule } from '../modules/ng-zorro-antd.modules'
-
-
+import { NgZorroAntdModule } from './ng-zorro-antd.modules'
 
 import { LayoutBasicComponent } from './basic/basic.component';
 import { LayoutBlankComponent } from './blank/blank.component';
@@ -32,7 +27,6 @@ import { TabsComponent } from './tabs/tabs.component';
   declarations: [
     LayoutBasicComponent,
     LayoutBlankComponent,
-
     LayoutHeaderComponent,
     LayoutSearchComponent,
     LayoutSiderComponent,
@@ -41,9 +35,7 @@ import { TabsComponent } from './tabs/tabs.component';
     TabsComponent,
     LayoutFooterBarComponent,
     LayoutHeaderTabsetComponent,
-
     SearchItemComponent,
-
     SettingDrawerComponent,
     SettingDrawerItemComponent
   ],

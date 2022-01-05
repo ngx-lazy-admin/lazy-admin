@@ -6,12 +6,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import zh from '@angular/common/locales/zh';
 
-// ng-zorro
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-
-import { IconsProviderModule } from './modules/icons-provider.module';
-import { NgZorroAntdModule } from './modules/ng-zorro-antd.modules';
 
 import { LayoutModule } from './layout/layout.modeule'
 import { HttpsInterceptor } from './interceptors/https.interceptor'
@@ -20,7 +16,6 @@ import { AppComponent } from './app.component';
 import { UserPipe } from './pipes/user.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 
-import { ModalsModule } from './modules/modal/modal.module';
 import { InMemoryDataService } from './api/in-memory-data.service';
 
 /** Http interceptor providers in outside-in order */
@@ -48,11 +43,7 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    IconsProviderModule,
-    NgZorroAntdModule,
-    // FormlyModule,
     LayoutModule,
-    ModalsModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

@@ -15,52 +15,11 @@ const routes: Routes = [
     canActivateChild: [ActivateChildGuard],
     data: {},
     children: [
-      { path: '', pathMatch: 'full', redirectTo: '/dashboard/workplace' },
-
-      { path: 'system', pathMatch: 'full', redirectTo: '/system/user' },
-      
-      { path: 'dashboard', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      { path: 'dashboard/workplace', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-
-      // { path: 'system/menu', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      // { path: 'system/role', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      // { path: 'system/form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-
-      // { path: 'dashboard', pathMatch: 'full', redirectTo: '/dashboard/workplace' },
-      // { path: 'dashboard/workplace', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      // { path: 'dashboard/monitor', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      // { path: 'dashboard/analysis', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-
-      // { path: 'form', pathMatch: 'full', redirectTo: '/form/basic' },
-      // { path: 'form/basic', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      // { path: 'form/step', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-      // { path: 'form/advanced', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-
-
-      // { path: '**', component: PageNotFoundComponent }
-      { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-
-
+      { path: '', pathMatch: 'full', redirectTo: 'system' },
+      { path: 'system', loadChildren: () => import('./pages/system/system.module').then(m => m.SystemModule) },
+      { path: 'form', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
     ]
-  },
-  {
-    path: 'charts',
-    loadChildren: () => import('./pages/chart/chart.module').then(m => m.ChartModule)
-  },
-  {
-    path: 'form',
-    component: LayoutBlankComponent,
-    data: {},
-    children: [
-      {
-        path: '**',
-        pathMatch: 'full',
-        loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule)
-      },
-    ]
-  },
-  
-
+  }
 ];
 
 @NgModule({
