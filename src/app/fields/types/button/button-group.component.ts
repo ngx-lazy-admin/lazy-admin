@@ -48,7 +48,7 @@ export class ButtonGroupField extends ShareFieldType implements OnInit {
 	}
 
 	get nzGhost(): boolean {
-		return this.to.nzGhost || false;
+		return this.to.nzGhost || this.to.ghost || false;
 	}
 
 	get control() : FormControl {
@@ -56,27 +56,27 @@ export class ButtonGroupField extends ShareFieldType implements OnInit {
   }
 
   get nzShape() : NzButtonShape {
-		return this.to.nzShape || '';
+		return this.to.nzShape || this.to.shape || '';
   }
 
   get nzLoading(): boolean {
-    return this.to.nzLoading || false;
+    return this.to.nzLoading || this.to.loading || false;
   }
 
   get nzSize() : NzButtonSize {
-		return this.to.nzSize || 'default';
+		return this.to.nzSize || this.to.size || 'default';
   }
 
   get nzType() : NzButtonType {
-		return this.to.nzType || '';
+		return this.to.nzType || this.to.type || '';
   }
 
   get nzBlock() : boolean {
-		return this.to.nzBlock || false;
+		return this.to.nzBlock || this.to.block || false;
   }
 
 	get nzDanger(): boolean {
-		return this.to.nzDanger || false;
+		return this.to.nzDanger || this.to.danger || false;
 	}
 
   get groupOptions(): ButtonGroupOptionInterface[] {

@@ -75,8 +75,7 @@ export class FieldService {
     console.log('1')
     return this.http.get<any>(this._baseFieldUrl + url).pipe(tap(field => {
       console.log(field)
-    console.log('2')
-
+      console.log('2')
     }))
   }
 
