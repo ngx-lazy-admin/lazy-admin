@@ -5,6 +5,7 @@ import { FieldService } from 'src/app/api/field';
 
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
+import { field } from 'src/app/api/field/mock';
 
 export interface headerInfoType {
   title: string,
@@ -46,10 +47,25 @@ export class FormComponent {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.loading = true;
-        
+        this.cd.markForCheck();
+
+        this.loading = false;
+
+        // return
         this.fieldService.getField(this.router.url).subscribe(result => {
-          this.loading = false;
-          this.fields = result?.fields;
+
+          if (typeof result?.fields === 'string') {
+            try {
+              // 1. 使用eval
+              this.fields =  this.execEval(result?.fields)
+              this.cd.markForCheck();
+            } catch (error) {
+              console.log(error)
+            }
+          } else {
+            this.fields = result?.fields
+          }
+
           this.info = result?.info;
           this.cd.markForCheck();
         }, err => {
@@ -60,6 +76,10 @@ export class FormComponent {
       }
     });
   }
+
+  execFunction = (name: string) => (new Function( 'return ' + name))();
+
+  execEval = (code: string) => eval('(' + code + ')')
 
   ngAfterViewInit () {}
 

@@ -14,6 +14,8 @@ export abstract class ShareFieldType extends FieldType {
     super();
   }
 
+  execEval = (code: string) => eval('(' + code + ')')
+
   // 通用事件处理
   click ($event: Event) {
     if (this.to.click) {

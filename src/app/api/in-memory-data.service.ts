@@ -55,7 +55,7 @@ export class InMemoryDataService implements InMemoryDbService {
       }
 
       // 'returnType` can be 'object' | 'observable' | 'promise'
-      returnType = body.returnType || 'object';
+      returnType = body.returnType || 'observable';
     }
     const db = { 
       heroes, 
@@ -78,6 +78,7 @@ export class InMemoryDataService implements InMemoryDbService {
         return db;
     }
   }
+
 
   
 

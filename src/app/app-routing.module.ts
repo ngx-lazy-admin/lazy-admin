@@ -17,6 +17,8 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'system' },
       { path: 'system', loadChildren: () => import('./pages/system/system.module').then(m => m.SystemModule) },
+      { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
+
       { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
     ]
   }

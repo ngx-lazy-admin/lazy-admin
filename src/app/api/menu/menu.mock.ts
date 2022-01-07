@@ -188,7 +188,7 @@ export const menu = [
   {
     id: '',
     label: '异常页',
-    icon: '',
+    icon: 'warning',
     link: '',
     badge: '',
     children: [
@@ -236,7 +236,7 @@ export const menu = [
   {
     id: '',
     label: '编辑器',
-    icon: '',
+    icon: 'edit',
     link: '',
     badge: '',
     children: [

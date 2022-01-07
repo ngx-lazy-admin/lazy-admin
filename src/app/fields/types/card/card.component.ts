@@ -26,7 +26,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 export class CardField extends FieldArrayType implements OnDestroy {
 
 	get nzTitle(): string|TemplateRef<void> {
-		return this.to.nzTitle || false;
+		return this.to.nzTitle || this.to.title || '';
 	}
 
 	get nzExtra(): string|TemplateRef<void> {

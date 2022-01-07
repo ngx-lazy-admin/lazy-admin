@@ -4,6 +4,7 @@ import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { field } from './mock';
+import { InMemoryDataService } from '../in-memory-data.service';
 
 export interface FieldType {
 	label: string,
@@ -31,6 +32,7 @@ export class FieldService {
 
   constructor(
     private http: HttpClient,
+    private InMemoryData: InMemoryDataService
   ) {}
 
   get change$() {
@@ -71,11 +73,10 @@ export class FieldService {
   // }
 
   getField(url: string): Observable<any> {
-    console.log(this._baseFieldUrl + url)
-    console.log('1')
+    // console.log(this.InMemoryData.db)
+    // const url.split('/')
     return this.http.get<any>(this._baseFieldUrl + url).pipe(tap(field => {
       console.log(field)
-      console.log('2')
     }))
   }
 

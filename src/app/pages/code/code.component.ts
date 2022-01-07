@@ -25,7 +25,7 @@ export class CodeComponent implements OnInit {
   [
     {
       key: 'email',
-      type: 'quill',
+      type: 'input',
       className: 'w-25 mb-2 d-inline-block',
       templateOptions: {
         label: 'Email address',
@@ -40,18 +40,7 @@ export class CodeComponent implements OnInit {
 
   form = new FormGroup({});
   model = { email: 'email@gmail.com' };
-  fields: FormlyFieldConfig[] = [
-    {
-      key: 'email',
-      type: 'nz-input',
-      className: 'w-25 mb-2 d-inline-block',
-      templateOptions: {
-        label: 'Email address',
-        placeholder: 'Enter email',
-        required: true,
-      }
-    }
-  ];
+  fields: FormlyFieldConfig[] = []
 
 
   constructor(
@@ -79,6 +68,11 @@ export class CodeComponent implements OnInit {
     // this.myChart = echarts.init(this.elRef.nativeElement.querySelector('#main'));
     // // 绘制图表
     // this.myChart.setOption();
+
+    console.log(this.code)
+    const options = this.execEval(this.code)
+    console.log(options)
+    this.fields = options
   }
 
   dark = false;
