@@ -17,7 +17,7 @@
 				[nzPaddingLeft]="menu.level * 24"
 				[nzDisabled]="menu.disabled">
 				<i nz-icon [nzType]="menu.icon" class="me-2" *ngIf="menu.icon"></i>
-				<a (click)="menuService.setTabsMenu(menu)">{{menu.label}}</a>
+				<a (click)="menuService.setTabsMenu(menu)">{{menu.name}}</a>
 				<nz-badge nzSize="small " class="mx-2 float-end" [nzDot]="isCollapsed" nzStandalone [nzCount]="menu.count"></nz-badge>
 			</li>
 			<li *ngIf="menu.children && !menu.isTabs"
@@ -29,7 +29,7 @@
 				<ng-template #titleTpl>
 					<span class="d-flex justify-content-start align-items-center w-100">
 						<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
-						<span class="d-inline-block">{{menu.label}}</span>
+						<span class="d-inline-block">{{menu.name}}</span>
 						<nz-badge class="mx-2" nzStandalone [nzCount]="menu.count"></nz-badge>
 					</span>
 				</ng-template>

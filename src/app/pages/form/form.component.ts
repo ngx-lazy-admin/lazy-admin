@@ -36,6 +36,8 @@ export class FormComponent {
 
   loading = false;
 
+  status = 200
+
   private route$ = new Subject<void>();
 
   constructor(
@@ -47,30 +49,33 @@ export class FormComponent {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.loading = true;
+        // this.fields = [];
         this.cd.markForCheck();
-
-        this.loading = false;
-
-        // return
         this.fieldService.getField(this.router.url).subscribe(result => {
-
           if (typeof result?.fields === 'string') {
             try {
-              // 1. 使用eval
-              this.fields =  this.execEval(result?.fields)
-              this.cd.markForCheck();
+              console.log('1')
+              this.fields = this.execEval(result?.fields);
+              // this.model = result?.data;
             } catch (error) {
-              console.log(error)
+              console.log(error);
             }
           } else {
-            this.fields = result?.fields
+            if (result.fields) {
+              this.fields = result.fields;
+            }
+            this.model = result?.data;
           }
-
+          console.log('666')
+          this.status = 200;
+          this.loading = false;
           this.info = result?.info;
           this.cd.markForCheck();
         }, err => {
           this.fields = [];
           this.info = null;
+          this.loading = false;
+          this.status = err.status;
           this.cd.markForCheck();
         })
       }
@@ -88,5 +93,4 @@ export class FormComponent {
       this.rooterChange.unsubscribe();
     }
   }
-
 }

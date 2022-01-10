@@ -2,7 +2,7 @@
   <ng-container *ngFor="let item of menu?.tabsMenu">
     <nz-tab>
       <a class="red" *nzTabLink nz-tab-link [routerLink]="item.link" queryParamsHandling="merge">
-        {{item.label}}
+        {{item.name}}
       </a>
     </nz-tab>
   </ng-container>

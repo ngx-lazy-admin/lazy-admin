@@ -3,7 +3,6 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { Subject, Subscription } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-
 import { LayoutService } from '../layout.service';
 import { MessageService } from '../../services/message.service'
 import { ModalService } from 'src/app/modules/modal';

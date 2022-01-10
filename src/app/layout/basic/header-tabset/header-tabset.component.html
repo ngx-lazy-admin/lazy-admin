@@ -12,7 +12,7 @@
 		<ng-container *ngFor="let tab of tabs">
 			<nz-tab nzClosable nzType="primary" class="mb-0"  (nzContextmenu)="contextMenu($event, menu)">
 				<i *ngIf="tab?.icon" nz-icon nzType="tab?.icon"  class="button-group-icon" nzTheme="outline"></i>
-				<span *nzTabLink nz-tab-link [routerLink]="tab?.link">{{tab?.label}}</span>
+				<span *nzTabLink nz-tab-link [routerLink]="tab?.link">{{tab?.name}}</span>
 			</nz-tab>
 
 			<nz-dropdown-menu #menu="nzDropdownMenu">

@@ -20,18 +20,14 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 export class InputField extends FieldType {
 
 	get nzBorderless(): boolean {
-		return this.to.nzBorderless || false
+		return this.to.nzBorderless || this.to.borderless || false
 	}
 
 	get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || 'default'
+		return this.to.nzSize || this.to.size || 'default'
 	}
 
 	get control() : FormControl {
 		return this.formControl as FormControl
   }
-
-	// get type(): string {
-	// 	return this.to.type || 'text'
-	// }
 }
