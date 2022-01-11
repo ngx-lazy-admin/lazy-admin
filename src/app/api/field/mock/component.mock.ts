@@ -67,7 +67,7 @@ export const components = [
         fieldGroup: [
           {
             type: 'input',
-            className: 'col-sm-4 mb-2',
+            className: 'col-sm-4 d-inline-block mb-2',
             templateOptions: {
               label: 'Name of Investment',
               required: true,
@@ -75,7 +75,7 @@ export const components = [
           },
           {
             type: 'input',
-            className: 'col-sm-4',
+            className: 'col-sm-4 d-inline-block mb-2',
             templateOptions: {
               type: 'date',
               label: 'Date of Investment:',
@@ -83,7 +83,7 @@ export const components = [
           },
           {
             type: 'input',
-            className: 'col-sm-4',
+            className: 'col-sm-4 d-inline-block mb-2',
             templateOptions: {
               label: 'Stock Identifier:',
             },
@@ -95,7 +95,7 @@ export const components = [
               text: '提交',
               type: 'primary',
             }
-          },
+          }
         ]
       }
     ],

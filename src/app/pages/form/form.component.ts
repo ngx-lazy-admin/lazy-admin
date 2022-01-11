@@ -49,14 +49,13 @@ export class FormComponent {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.loading = true;
-        // this.fields = [];
+        this.fields = [];
         this.cd.markForCheck();
         this.fieldService.getField(this.router.url).subscribe(result => {
           if (typeof result?.fields === 'string') {
             try {
-              console.log('1')
               this.fields = this.execEval(result?.fields);
-              // this.model = result?.data;
+              this.model = result?.data;
             } catch (error) {
               console.log(error);
             }
@@ -66,7 +65,6 @@ export class FormComponent {
             }
             this.model = result?.data;
           }
-          console.log('666')
           this.status = 200;
           this.loading = false;
           this.info = result?.info;
