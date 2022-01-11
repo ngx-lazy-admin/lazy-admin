@@ -29,7 +29,7 @@
     "hotkeys-js": "^3.8.7",
     "mockjs": "^1.1.0",
     "monaco-editor": "^0.28.1",
-    "ng-zorro-antd": "^12.1.0",
+    "ng-zorro-antd": "^13.0.0",
     "quill": "^1.3.7",
     "rxjs": "~6.6.0",
     "save": "^2.4.0",
