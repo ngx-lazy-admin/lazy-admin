@@ -6,7 +6,6 @@ export const field: FormlyFieldConfig[] =  [
     type: 'steps',
     key: 'name',
     className: "w-50 d-block",
-    wrappers: ['inline'],
     templateOptions: {
       label: "姓名",
       required: true,
@@ -67,7 +66,6 @@ export const dashboard = [
         wrappers: ['inline'],
         templateOptions: {
           label: "姓名",
-          required: true,
           placeholder: '姓名',
           readonly: true,
           nzShowArrow: false,
@@ -105,9 +103,6 @@ export const dashboard = [
         className: "w-50 d-block",
         wrappers: ['inline'],
         templateOptions: {
-          label: "姓名1",
-          required: true,
-          placeholder: '姓名2',
           readonly: true,
           nzShowArrow: false,
           status: 'wait',
