@@ -18,7 +18,7 @@
 				[nzDisabled]="menu.disabled">
 				<i nz-icon [nzType]="menu.icon" class="me-2" *ngIf="menu.icon"></i>
 				<a (click)="menuService.setTabsMenu(menu)">{{menu.name}}</a>
-				<nz-badge nzSize="small " class="mx-2 float-end" [nzDot]="isCollapsed" nzStandalone [nzCount]="menu.count"></nz-badge>
+				<nz-badge nzSize="small" *ngIf="menu.count && menu.count != 0" class="mx-2 float-end" [nzDot]="isCollapsed" nzStandalone [nzCount]="menu.count"></nz-badge>
 			</li>
 			<li *ngIf="menu.children && !menu.isTabs"
 				nz-submenu

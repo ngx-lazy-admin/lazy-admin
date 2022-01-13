@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 import { ShareFieldType } from '../share-field.type';
+import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'div[button-field]',
@@ -14,9 +15,10 @@ import { ShareFieldType } from '../share-field.type';
       [nzSize]="nzSize"
       [nzType]="nzType"
       [nzBlock]="nzBlock"
-      (click)="click($event)">
-        <i *ngIf="icon" nz-icon [nzType]="icon"></i>
-        <ng-container *ngIf="text">{{ text }}</ng-container>
+      (click)="click($event)"
+    >
+      <i *ngIf="icon" nz-icon [nzType]="icon"></i>
+      <ng-container *ngIf="text">{{ text }}</ng-container>
     </button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,7 +26,7 @@ import { ShareFieldType } from '../share-field.type';
 
 
 })
-export class ButtonField extends ShareFieldType implements OnInit {
+export class ButtonField extends ShareFieldType {
 
   get disabled(): boolean {
 		return this.to.disabled || false;
@@ -71,9 +73,6 @@ export class ButtonField extends ShareFieldType implements OnInit {
   }
 
   private _destroy$ = new Subject<void>();
-
-
-  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this._destroy$.next();

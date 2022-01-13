@@ -31,7 +31,7 @@ import {
   FileTwoTone,
   StepBackwardOutline,
   AntDesignOutline,
-  EditOutline
+  EditOutline,
 } from '@ant-design/icons-angular/icons'; 
 
 const icons = [

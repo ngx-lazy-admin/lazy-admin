@@ -11,8 +11,10 @@
 		(nzClose)="closeTab($event)">
 		<ng-container *ngFor="let tab of tabs">
 			<nz-tab nzClosable nzType="primary" class="mb-0"  (nzContextmenu)="contextMenu($event, menu)">
-				<i *ngIf="tab?.icon" nz-icon nzType="tab?.icon"  class="button-group-icon" nzTheme="outline"></i>
-				<span *nzTabLink nz-tab-link [routerLink]="tab?.link">{{tab?.name}}</span>
+				<div *nzTabLink nz-tab-link [routerLink]="tab?.link" class="d-inline-block ps-3 py-2 flex-nowrap">
+					<i *ngIf="tab?.icon" nz-icon nzType="tab?.icon"  class="button-group-icon" nzTheme="outline"></i>
+					{{tab?.name}}
+				</div>
 			</nz-tab>
 
 			<nz-dropdown-menu #menu="nzDropdownMenu">

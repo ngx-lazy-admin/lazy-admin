@@ -52,6 +52,8 @@ export class FormComponent {
         this.fields = [];
         this.cd.markForCheck();
         this.fieldService.getField(this.router.url).subscribe(result => {
+          this.loading = false;
+          this.cd.markForCheck();
           if (typeof result?.fields === 'string') {
             try {
               this.fields = this.execEval(result?.fields);
@@ -66,7 +68,7 @@ export class FormComponent {
             this.model = result?.data;
           }
           this.status = 200;
-          this.loading = false;
+
           this.info = result?.info;
           this.cd.markForCheck();
         }, err => {

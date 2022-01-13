@@ -10,6 +10,10 @@ export const components = [
         templateOptions: {
           text: "Primary Button",
           type: 'primary',
+          click: (field, _this) => {
+            console.log(field)
+            _this.message.success(field.templateOptions.text)
+          }
         }
       },
       {
@@ -29,25 +33,7 @@ export const components = [
           text: "Dashed Button",
           type: 'dashed',
         }
-      },
-      {
-        key: 'name',
-        type: 'button',
-        className: "d-inline-block mx-2",
-        templateOptions: {
-          text: "Text Button",
-          type: 'text',
-        }
-      },
-      {
-        key: 'name',
-        type: 'button',
-        className: "d-inline-block mx-2",
-        templateOptions: {
-          text: "Link Button",
-          type: 'link',
-        }
-      },
+      }
     ]`,
     info: {
       title: 'Button 按钮',
@@ -133,9 +119,8 @@ export const components = [
   },
   {
     id: 'input',
-    fields: `[
+    fields: [
       {
-        key: 'input1',
         type: 'input',
         className: "d-block mb-2",
         templateOptions: {
@@ -143,7 +128,6 @@ export const components = [
         }
       },
       {
-        key: 'input2',
         type: 'input',
         className: "d-block mb-2",
         templateOptions: {
@@ -152,10 +136,8 @@ export const components = [
         }
       },
       {
-        key: 'input3',
         type: 'input',
         className: "d-block mb-2",
-        wrappers: ['form'],
         templateOptions: {
           label: "标签",
           placeholder: 'Basic usage',
@@ -163,10 +145,8 @@ export const components = [
         }
       },
       {
-        key: 'input3',
         type: 'input',
         className: "d-block mb-2",
-        wrappers: ['form'],
         templateOptions: {
           label: "large size",
           placeholder: 'large size',
@@ -174,7 +154,7 @@ export const components = [
           disabled: true
         }
       }
-    ]`,
+    ],
     data: {},
     info: {
       title: 'Input输入框',

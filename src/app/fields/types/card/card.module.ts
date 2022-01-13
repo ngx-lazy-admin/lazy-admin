@@ -7,11 +7,15 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 
 import { CardField } from './card.component'
 import { CardTabsField } from './card-tab.component';
+import { CardSmallField } from './card-small.component';
+import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 @NgModule({
   declarations: [
     CardField,
     CardTabsField,
+    CardSmallField,
   ],
   imports: [
     CommonModule,
@@ -19,11 +23,17 @@ import { CardTabsField } from './card-tab.component';
     ReactiveFormsModule,
     NzCardModule,
     NzDescriptionsModule,
+    IconsProviderModule,
+    NzToolTipModule,
     FormlyModule.forChild({
       types: [
         {
           name: 'card',
           component: CardField,
+        },
+        {
+          name: 'card-small',
+          component: CardSmallField,
         },
         {
           name: 'nz-card',

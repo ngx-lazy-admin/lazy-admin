@@ -6,17 +6,24 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 @Component({
   selector: 'div[card-field]',
   template: `
-  <nz-card [nzTitle]="nzTitle" [nzExtra]="extraTemplate">
-    <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
-      <formly-field [field]="item"></formly-field>
-    </ng-container>
-  </nz-card>
-
-  <ng-template #extraTemplate>
-    <ng-container *ngIf="extraFields">
-      <formly-form [fields]="extraFields"></formly-form>
-    </ng-container>
-  </ng-template>
+    <nz-card>
+      <div class="d-flex justify-content-between bd-highlight">
+        {{to.label}} 
+        <i *ngIf="to.tooltip" 
+          class="gray-500 text-dark"
+          style="--bs-text-opacity: 0.45"
+          nz-tooltip 
+          [nzTooltipTitle]="to.tooltip"
+          nz-icon
+          nzType="question-circle" 
+          nzTheme="outline">
+        </i>
+      </div>
+      
+      <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
+        <formly-field [field]="item"></formly-field>
+      </ng-container>
+    </nz-card>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -35,14 +42,13 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
   ]
 })
 
-export class CardField extends FieldType  implements OnDestroy {
+export class CardSmallField extends FieldType  implements OnDestroy {
 
 	get nzTitle(): string|TemplateRef<void> {
 		return this.to.nzTitle || this.to.title || '';
 	}
 
 	get nzExtra(): string|TemplateRef<void> {
-    console.log(this.to.nzExtra)
 		return this.to.nzExtra || '';
   }
 
@@ -71,11 +77,5 @@ export class CardField extends FieldType  implements OnDestroy {
   }
 
   ngOnDestroy() {
-  }
-
-  onClick($event: any) {
-    if (this.to.click) {
-      this.to.click(this.field, $event)
-    }
   }
 }
