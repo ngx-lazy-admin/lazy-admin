@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutBasicComponent } from './layout/basic/basic.component';
-import { RouteGuardGuard } from  './guards/route-guard.guard';
 import { ActivateGuard } from './guards/activate.guard';
 import { ActivateChildGuard } from './guards/activate-child.guard';
-import { LayoutBlankComponent } from './layout/blank/blank.component';
-import { TabsComponent } from './layout/tabs/tabs.component';
 
 const routes: Routes = [
   {
@@ -16,9 +13,7 @@ const routes: Routes = [
     data: {},
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'system' },
-      { path: 'system', loadChildren: () => import('./pages/system/system.module').then(m => m.SystemModule) },
       { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
-
       { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
     ]
   }

@@ -5,12 +5,11 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 @Component({
   selector: 'div[card-taps-field]',
-  templateUrl: './card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nz-card [nzTitle]="nzTitle" [nzExtra]="extraTemplate">
       <nz-card-tab>
-        <nz-tabset [(nzSelectedIndex)]="index2">
+        <nz-tabset>
           <nz-tab *ngFor="let tr of field.fieldGroup; let i = index; trackBy: trackByFn">
             <ng-container *ngFor="let td of tr.fieldGroup; trackBy: trackByFn">
               <formly-field [field]="td"></formly-field>

@@ -1,4 +1,3 @@
-// import * as faker from 'faker/locale/en';
 import { Random } from 'mockjs';
 
 const userRandom = () => {

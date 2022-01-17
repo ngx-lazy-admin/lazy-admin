@@ -5,7 +5,6 @@ import { FieldService } from 'src/app/api/field';
 
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
-import { field } from 'src/app/api/field/mock';
 
 export interface headerInfoType {
   title: string,
@@ -27,7 +26,7 @@ export class FormComponent {
 
   form = new FormGroup({});
 
-  model = {
+  model: any = {
     name: 1,
   }
 
@@ -35,10 +34,12 @@ export class FormComponent {
   fields: FormlyFieldConfig[] = []
 
   loading = false;
+  status = 200;
 
-  status = 200
+  routeCache : any= {};
 
   private route$ = new Subject<void>();
+
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -48,29 +49,15 @@ export class FormComponent {
   ) {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.loading = true;
-        this.fields = [];
-        this.cd.markForCheck();
-        this.fieldService.getField(this.router.url).subscribe(result => {
-          this.loading = false;
-          this.cd.markForCheck();
-          if (typeof result?.fields === 'string') {
-            try {
-              this.fields = this.execEval(result?.fields);
-              this.model = result?.data;
-            } catch (error) {
-              console.log(error);
-            }
-          } else {
-            if (result.fields) {
-              this.fields = result.fields;
-            }
-            this.model = result?.data;
-          }
-          this.status = 200;
+        if (this.routeCache[this.router.url]) {
+          this.render(this.routeCache[this.router.url])
+        } else {
+          this.init()
+        }
 
-          this.info = result?.info;
-          this.cd.markForCheck();
+        this.fieldService.getField(this.router.url).subscribe(result => {
+          this.routeCache[this.router.url] = result;
+          this.render(result)
         }, err => {
           this.fields = [];
           this.info = null;
@@ -80,6 +67,36 @@ export class FormComponent {
         })
       }
     });
+  }
+
+  render (result: any) {
+    if (typeof result?.fields === 'string') {
+      try {
+        this.fields = this.execEval(result?.fields);
+        this.model = result?.data;
+        this.info = result?.info;
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      if (result.fields) {
+        this.fields = result.fields;
+        this.model = result?.data;
+        this.info = result?.info;
+      }
+    }
+    this.status = 200;
+    this.loading = false;
+
+    this.cd.markForCheck();
+  }
+
+  init () {
+    this.fields = [];
+    this.model = null;
+    this.info = null;
+    this.loading = true;
+    this.cd.markForCheck();
   }
 
   execFunction = (name: string) => (new Function( 'return ' + name))();
