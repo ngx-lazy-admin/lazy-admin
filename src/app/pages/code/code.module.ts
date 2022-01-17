@@ -5,7 +5,6 @@ import { FormlyModule } from '@ngx-formly/core';
 
 import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { IconsProviderModule } from '../../modules/icons-provider.module';
-import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
 
 import { CodeRoutingModule } from './code-routing.module';
 import { CodeComponent } from './code.component';
@@ -25,7 +24,6 @@ import { FormFieldModule } from '../../fields/wrappers/form';
     CodeRoutingModule,
     NzCodeEditorModule,
     IconsProviderModule,
-    NgZorroAntdModule,
     FormlyModule.forRoot(),
     FieldTypeModule,
     FormFieldModule,

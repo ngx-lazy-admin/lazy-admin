@@ -12,6 +12,11 @@ export interface headerInfoType {
   subtitle: string,
 }
 
+export interface errorResultType {
+  status: string,
+  subTitle: string,
+}
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -38,6 +43,10 @@ export class FormComponent {
 
   routeCache : any= {};
 
+  errResult = {
+
+  }
+
   private route$ = new Subject<void>();
 
 
@@ -58,7 +67,10 @@ export class FormComponent {
         this.fieldService.getField(this.router.url).subscribe(result => {
           this.routeCache[this.router.url] = result;
           this.render(result)
+          
         }, err => {
+
+          this.errResult = err;
           this.fields = [];
           this.info = null;
           this.loading = false;

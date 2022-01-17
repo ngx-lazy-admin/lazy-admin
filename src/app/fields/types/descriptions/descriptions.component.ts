@@ -5,7 +5,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 @Component({
   selector: 'div[description-field]',
-  templateUrl: './description.component.html',
+  templateUrl: './descriptions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styles: [
@@ -23,10 +23,10 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
   ]
 })
 
-export class DescriptionField extends FieldArrayType implements OnDestroy {
+export class DescriptionsField extends FieldArrayType implements OnDestroy {
 
 	get nzTitle(): string|TemplateRef<void> {
-		return this.to.nzTitle || false;
+		return this.to.nzTitle || this.to.title || '';
 	}
 
 	get nzExtra(): string|TemplateRef<void> {

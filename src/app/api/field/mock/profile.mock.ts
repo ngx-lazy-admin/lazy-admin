@@ -4,12 +4,13 @@ export const profile = [
     id: 'basic',
     fields: [
       {
-        type: 'card-small',
+        type: 'descriptions',
         key: 'name',
         className: "col-12 d-block",
         wrappers: ['inline'],
         templateOptions: {
-          label: "用户信息",
+          label: "",
+          title: '退款详情',
           tooltip: '指标说明',
         }
       },

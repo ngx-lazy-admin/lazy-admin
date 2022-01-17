@@ -10,8 +10,7 @@ import { FormlyModule } from '@ngx-formly/core';
 
 import { ModalComponent } from './modal.component';
 import { IconsProviderModule } from '../../modules/icons-provider.module';
-import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
-import { FieldTypeModule } from '../../fields/types';
+// import { FieldTypeModule } from '../../fields/types';
 import { NzModalCustomComponent } from './modal-form.component';
 
 @NgModule({
@@ -28,9 +27,8 @@ import { NzModalCustomComponent } from './modal-form.component';
     FormsModule,
     ReactiveFormsModule,
     IconsProviderModule,
-    NgZorroAntdModule,
     FormlyModule.forRoot(),
-    FieldTypeModule,
+    // FieldTypeModule,
   ],
   exports: [
     ModalComponent,

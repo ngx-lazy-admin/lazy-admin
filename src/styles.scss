@@ -103,6 +103,9 @@ $box-shadow-sm: 0 .125rem .125rem rgba($black, 0);
 	--bs-body-bg: #fff;
 }
 
+.row {
+	--bs-gutter-x: 1rem;
+}
 
 // 字体设置
 

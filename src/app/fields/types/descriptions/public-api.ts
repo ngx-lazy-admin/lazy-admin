@@ -1,2 +1,2 @@
-export { DescriptionFieldModule } from './description.module';
-export { DescriptionField } from './description.component';
+export { DescriptionFieldModule } from './descriptions.module';
+export { DescriptionsField } from './descriptions.component';

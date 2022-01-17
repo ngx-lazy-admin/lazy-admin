@@ -10,12 +10,9 @@
 			</nz-page-header-content>
 		</nz-page-header>
 	
-		<nz-card>
-			<form [formGroup]="form">
-				<formly-form [form]="form" class="row" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
-			</form>
-		</nz-card>
-
+		<form [formGroup]="form">
+			<formly-form [form]="form" class="row" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
+		</form>
 	</ng-container>
 
 	<ng-container *ngIf="status == 403">

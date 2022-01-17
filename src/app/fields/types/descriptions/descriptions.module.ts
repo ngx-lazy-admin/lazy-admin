@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
-import { DescriptionField } from './description.component'
+import { DescriptionsField } from './descriptions.component'
 
 @NgModule({
-  declarations: [DescriptionField],
+  declarations: [DescriptionsField],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -15,12 +15,12 @@ import { DescriptionField } from './description.component'
     FormlyModule.forChild({
       types: [
         {
-          name: 'description',
-          component: DescriptionField,
+          name: 'descriptions',
+          component: DescriptionsField,
         },
         {
-          name: 'nz-description',
-          component: DescriptionField,
+          name: 'nz-descriptions',
+          component: DescriptionsField,
         }
       ],
     }),

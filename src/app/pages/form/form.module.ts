@@ -7,7 +7,10 @@ import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 
 import { IconsProviderModule } from '../../modules/icons-provider.module';
-import { NgZorroAntdModule } from '../../modules/ng-zorro-antd.modules';
+import { NzResultModule } from 'ng-zorro-antd/result';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
 
@@ -22,7 +25,9 @@ import { FormFieldModule } from '../../fields/wrappers/form';
     FormsModule,
     ReactiveFormsModule,
     IconsProviderModule,
-    NgZorroAntdModule,
+    NzResultModule,
+    NzPageHeaderModule,
+    NzSpinModule,
     FormlyModule.forRoot(),
     FieldTypeModule,
     FormFieldModule,
