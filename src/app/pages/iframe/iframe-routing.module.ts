@@ -6,7 +6,6 @@ import { QiankunComponent } from './qiankun/qiankun.component';
 const routes: Routes = [
   { path: 'iframe', component: IframeComponent },
   { path: 'qiankun', component: QiankunComponent },
-
 ];
 
 @NgModule({

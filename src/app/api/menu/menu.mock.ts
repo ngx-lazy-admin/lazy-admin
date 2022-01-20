@@ -281,7 +281,7 @@ export const menu = [
       {
         id: '1402',
         pid: '14',
-        name: 'qiankun',
+        name: '乾坤',
         link: '/iframe/qiankun',
         badge: '',
       }

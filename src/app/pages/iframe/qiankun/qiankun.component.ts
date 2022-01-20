@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { loadMicroApp, registerMicroApps, start } from 'qiankun';
 
 @Component({
   selector: 'app-qiankun',
@@ -8,9 +9,31 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class QiankunComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-  
+
+    loadMicroApp({
+      name: 'app',
+      entry: 'http://tdesign.tencent.com/',
+      container: '#qiankun',
+    });
+
+    // registerMicroApps([
+    //   {
+    //     name: 'react app', // app name registered
+    //     entry: 'https://tdesign.tencent.com/',
+    //     container: '#qiankun',
+    //     activeRule: '/iframe/qiankun',
+    //   },
+    //   // {
+    //   //   name: 'vue app',
+    //   //   entry: { scripts: ['//localhost:7100/main.js'] },
+    //   //   container: '#yourContainer2',
+    //   //   activeRule: '/yourActiveRule2',
+    //   // },
+    // ]);
+    
+    // start();
   }
 }
