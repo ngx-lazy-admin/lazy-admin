@@ -70,6 +70,8 @@ ng g component pages/list/test --skip-import --change-detection OnPush
 
 ng g component layout/basic/search/search-item --skip-import --change-detection OnPush
 
+ng g component pages/iframe/qiankun --skip-import --change-detection OnPush
+
 生成路由守卫
 ng g guard guards/routeGuard
 
