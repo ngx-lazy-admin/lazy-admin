@@ -1,5 +1,5 @@
 import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { FieldArrayType } from '@ngx-formly/core';
+import { FieldArrayType, FieldType } from '@ngx-formly/core';
 import { NzDescriptionsSize  } from 'ng-zorro-antd/descriptions';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
@@ -23,7 +23,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
   ]
 })
 
-export class DescriptionsField extends FieldArrayType implements OnDestroy {
+export class DescriptionsField extends FieldType implements OnDestroy {
 
 	get nzTitle(): string|TemplateRef<void> {
 		return this.to.nzTitle || this.to.title || '';
@@ -55,9 +55,9 @@ export class DescriptionsField extends FieldArrayType implements OnDestroy {
 
   ngOnDestroy() {
     if (this.field && this.field.fieldGroup) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
-      });
+      // this.field.fieldGroup.map((item, index) => {
+      //   super.remove(index)
+      // });
     }
   }
 }

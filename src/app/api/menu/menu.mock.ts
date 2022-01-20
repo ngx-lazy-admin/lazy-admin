@@ -264,6 +264,30 @@ export const menu = [
     ]
   },
   {
+    id: '14',
+    pid: '0',
+    name: '嵌套页面',
+    icon: 'edit',
+    link: '',
+    badge: '',
+    children: [
+      {
+        id: '1401',
+        pid: '14',
+        name: 'iframe',
+        link: '/iframe/iframe',
+        badge: '',
+      },
+      {
+        id: '1402',
+        pid: '14',
+        name: 'qiankun',
+        link: '/iframe/qiankun',
+        badge: '',
+      }
+    ]
+  },
+  {
     id: '9',
     pid: '0',
     name: '编辑器',

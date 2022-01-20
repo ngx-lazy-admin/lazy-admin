@@ -1,6 +1,7 @@
 import { Component, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
+import { Observable, of } from 'rxjs';
 
 export interface StepsOptionInterface {
   value: any | null;
@@ -35,6 +36,7 @@ export interface StepsOptionInterface {
       [formControl]="control"
 	    [formlyAttributes]="field"
       [options]="configOptions"
+      [nzProgressDot]="nzProgressDot"
       [readonly]="readonly"
       (nzIndexChange)="nzIndexChange($event)"
       >
@@ -62,7 +64,7 @@ export class StepsField extends FieldType {
   }
 
   get nzProgressDot() : boolean | TemplateRef<{ $implicit: TemplateRef<void>, status: string, index: number }> {
-		return this.to.nzColumn || false;
+		return this.to.nzProgressDot || this.to.progressDot || false;
   }
 
   get nzSize() : 'small' | 'default' {
@@ -77,8 +79,12 @@ export class StepsField extends FieldType {
     return this.to.nzStartIndex || 0
   }
 
-  get configOptions(): StepsOptionInterface[] {
-    return this.to.configOptions || []
+  get configOptions(): Observable<any[]> {
+    if (!(this.to.options instanceof Observable)) {
+      return of(this.to.options || []);
+    } else {
+      return this.to.options
+    }
   }
 
   get readonly(): boolean {

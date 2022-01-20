@@ -6,7 +6,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 @Component({
   selector: 'div[card-field]',
   template: `
-  <nz-card [nzTitle]="nzTitle" [nzExtra]="extraTemplate">
+  <nz-card [nzTitle]="nzTitle" [nzExtra]="extraFields ? extraTemplate : ''">
     <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
       <formly-field [field]="item"></formly-field>
     </ng-container>
@@ -63,7 +63,7 @@ export class CardField extends FieldType  implements OnDestroy {
   }
 
   get extraFields(): FormlyFieldConfig[] {
-    return this.to.extraFields ? this.to.extraFields(this.field) : []
+    return this.to.extraFields ? this.to.extraFields(this.field) : null
   }
 
   trackByFn(index: number, item: any) {

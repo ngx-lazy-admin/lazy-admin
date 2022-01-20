@@ -12,7 +12,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
@@ -46,13 +46,12 @@ export interface StepsOptionInterface {
       [nzCurrent]="current"
       [nzProgressDot]="nzProgressDot"
       [nzStartIndex]="nzStartIndex"
-      (nzIndexChange)="onIndexChange($event)">
-      <ng-container *ngFor="let item of options; let i = index; trackBy: trackByFn">
+      (nzIndexChange)="null">
+      <ng-container *ngFor="let item of options | async; let i = index; trackBy: trackByFn">
         <nz-step 
-          [nzTitle]="item.label"
+          [nzTitle]="item.title"
           [nzDescription]="item.description"
           [nzIcon]="item?.icon"
-          [nzTitle]="item?.label"
           [nzSubtitle]="item?.subtitle"
           [nzDisabled]="item?.disabled"
           [nzPercentage]="item.percentage || null"
@@ -60,7 +59,7 @@ export interface StepsOptionInterface {
         </nz-step>
       </ng-container>
     </nz-steps>
-  `,
+  `
 })
 export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDestroy {
   static ngAcceptInputType_nzDisabled: BooleanInput;
@@ -75,13 +74,14 @@ export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDes
   @Input() nzType: string = 'default';
   @Input() nzDirection: string = 'horizontal';
   @Input() nzLabelPlacement: string = 'horizontal';
-  @Input() @InputBoolean() nzProgressDot: boolean = false;  
+  @Input() @InputBoolean() nzProgressDot: boolean | TemplateRef<{ $implicit: TemplateRef<void>, status: string, index: number }> = false;  
   @Input() nzSize: string = 'default';
   @Input() nzStatus: string = 'process';
   @Input() @InputNumber() nzStartIndex: number = 0;
   @Input() @InputBoolean() readonly: boolean = false;
-
-  @Input() options: StepsOptionInterface[] = []
+  @Input() options: Observable<any[]> = of([])
+  
+  IndexChange: boolean = false
 
   private _destroy$ = new Subject<void>();
 
@@ -104,10 +104,10 @@ export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDes
   }
 
   onIndexChange(index: number): void {
-    // if (!this.readonly) {
-    //   this.current = index;
-    //   this.onChange(index);
-    // }
+    if (!this.readonly) {
+      this.current = index;
+      this.onChange(index);
+    }
   }
 
   trackByFn(index: number, item: any) {

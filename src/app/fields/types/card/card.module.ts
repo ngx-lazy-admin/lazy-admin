@@ -42,6 +42,10 @@ import { NzTabsModule} from 'ng-zorro-antd/tabs';
           component: CardField,
         },
         {
+          name: 'card-tabs',
+          component: CardTabsField,
+        },
+        {
           name: 'nz-card-tabs',
           component: CardTabsField,
         }

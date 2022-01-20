@@ -10,11 +10,13 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
     <nz-card [nzTitle]="nzTitle" [nzExtra]="extraTemplate">
       <nz-card-tab>
         <nz-tabset>
-          <nz-tab *ngFor="let tr of field.fieldGroup; let i = index; trackBy: trackByFn">
-            <ng-container *ngFor="let td of tr.fieldGroup; trackBy: trackByFn">
-              <formly-field [field]="td"></formly-field>
-            </ng-container>
-          </nz-tab>
+          <ng-container *ngFor="let tr of field.fieldGroup; let i = index; trackBy: trackByFn">
+            <nz-tab nzTitle="article">
+              <ng-container *ngFor="let td of tr.fieldGroup; trackBy: trackByFn">
+                <formly-field [field]="td"></formly-field>
+              </ng-container>
+            </nz-tab>
+          </ng-container>
         </nz-tabset>
       </nz-card-tab>
     </nz-card>
@@ -44,7 +46,7 @@ export class CardTabsField extends FieldArrayType implements OnDestroy {
   }
 
   get nzSize() : NzDescriptionsSize  {
-		return this.to.nzSize || 'deafult';
+		return this.to.nzSize || 'default';
   }
 
   get nzColon() : boolean {

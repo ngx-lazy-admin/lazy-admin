@@ -3,6 +3,9 @@
     "Antd",
     "echart",
     "Echarts",
-    "Formly"
+    "Formly",
+    "qiankun",
+    "tabset",
+    "Whitespaces"
   ]
 }

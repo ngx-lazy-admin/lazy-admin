@@ -26,6 +26,7 @@ export interface VirtualDataInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
+    <div class="font-weight-bold f16 my-3">{{ nzTitle }}</div>
     <nz-table
       #basicTable
       nzTemplateMode
@@ -50,9 +51,6 @@ export interface VirtualDataInterface {
         </tr>
       </tbody>
     </nz-table>
-
-    <button nz-button (click)="add()">添加一行</button>
-
   `
 })
 
@@ -69,6 +67,10 @@ export class TableField extends FieldArrayType implements OnDestroy {
   get nzAnimated(): boolean  {
 		return this.to.nzAnimated || false;
 	}
+
+  get nzTitle(): string | TemplateRef<void> {
+    return this.to.title || this.to.nzTitle || ''
+  }
 
   get nzSize(): NzSizeLDSType {
 		return this.to.nzSize || 'default';
