@@ -1,4 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit, 
+  ChangeDetectionStrategy, 
+  ElementRef, 
+  ChangeDetectorRef
+} from '@angular/core';
 import { loadMicroApp, registerMicroApps, start } from 'qiankun';
 
 @Component({
@@ -9,31 +15,37 @@ import { loadMicroApp, registerMicroApps, start } from 'qiankun';
 })
 export class QiankunComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    private elRef: ElementRef,
+    private cd: ChangeDetectorRef,
+  ) {}
 
+  qiankunStarted: boolean = false;
   ngOnInit(): void {
-
-    loadMicroApp({
-      name: 'app',
-      entry: 'http://tdesign.tencent.com/',
-      container: '#qiankun',
-    });
-
-    // registerMicroApps([
-    //   {
-    //     name: 'react app', // app name registered
-    //     entry: 'https://tdesign.tencent.com/',
-    //     container: '#qiankun',
-    //     activeRule: '/iframe/qiankun',
-    //   },
-    //   // {
-    //   //   name: 'vue app',
-    //   //   entry: { scripts: ['//localhost:7100/main.js'] },
-    //   //   container: '#yourContainer2',
-    //   //   activeRule: '/yourActiveRule2',
-    //   // },
-    // ]);
-    
+    // loadMicroApp({
+    //   name: 'app1',
+    //   // entry: 'https://wujie-angular12.pages.woa.com',
+    //   entry: '//localhost:7105',
+    //   container: this.elRef.nativeElement.querySelector('#qiankun'),
+    // });
     // start();
+    // const getActiveRule  = (location: any) => location.hash.startsWith(hash);
+
+    // let home = getActiveRule('/home')
+    // console.log( location.hash)
+
+  }
+
+  ngAfterViewInit(): void {
+    // if (!this.qiankunStarted) {
+    //   this.qiankunStarted = true;
+    //   start();
+    // }
+    // loadMicroApp({
+    //   name: 'angular12',
+    //   entry: 'https://wujie-angular12.pages.woa.com',
+    //   container: this.elRef.nativeElement.querySelector('#qiankuns'),
+    //   props: { brand: 'qiankun' },
+    // });
   }
 }

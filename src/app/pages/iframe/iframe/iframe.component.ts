@@ -22,25 +22,16 @@ export class IframeComponent implements OnInit, AfterViewInit {
   loading = true;
 
   constructor(
-    private modal: NzModalService,
-    private viewContainerRef: ViewContainerRef,
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
     private elRef: ElementRef,
     private cd: ChangeDetectorRef,
   ) {
-    // hotkeys('f5', (event, handler) => {
-    //   // Prevent the default refresh event under WINDOWS system
-    //   event.preventDefault() 
-    //   alert('you pressed F5!') 
-    // });
     console.log(document.body)
   }
 
   ngAfterViewInit() { 
     this.loading = true;
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://mytable.woa.com/app/wbp/20/63'; 
+    iframe.src = 'https://wujie-angular12.pages.woa.com'; 
     iframe.className="w-100 h-100";
     iframe.frameBorder="0";
     iframe.onload = () => { 

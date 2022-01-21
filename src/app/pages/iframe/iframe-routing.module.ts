@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IframeComponent } from './iframe.component';
+import { IframeComponent } from './iframe/iframe.component';
 import { QiankunComponent } from './qiankun/qiankun.component';
 
 const routes: Routes = [
   { path: 'iframe', component: IframeComponent },
-  { path: 'qiankun', component: QiankunComponent },
+  // { path: 'qiankun', component: QiankunComponent },
+  { path: '**', component: QiankunComponent },
 ];
 
 @NgModule({
