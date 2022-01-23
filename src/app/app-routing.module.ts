@@ -14,8 +14,11 @@ registerMicroApps([
     // entry: 'https://wujie-react17.pages.woa.com',
     entry: '//localhost:7105',
     // entry: 'https://mytable.woa.com/worksheet/ieg_cpm_v2/create_epo_order_log/wbp/20/111?group_by=thing_id',
-    container: '#qiankuns',
-    activeRule: 'vue3'
+    container: '#qiankun',
+    activeRule: 'iframe/qiankun',
+    props: {
+      page_url: `//localhost:7105` // 自定义页面需要传 page_url字段，值为在MyTable中自定义页面的路径
+    }
   },
 ]);
 
