@@ -1,20 +1,18 @@
 import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
-import { FieldArrayType, FormlyFieldConfig } from '@ngx-formly/core';
+import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzDescriptionsSize  } from 'ng-zorro-antd/descriptions';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 @Component({
-  selector: 'div[card-taps-field]',
+  selector: 'div[card-tabs-field]',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nz-card [nzTitle]="nzTitle" [nzExtra]="extraTemplate">
       <nz-card-tab>
         <nz-tabset>
           <ng-container *ngFor="let tr of field.fieldGroup; let i = index; trackBy: trackByFn">
-            <nz-tab nzTitle="article">
-              <ng-container *ngFor="let td of tr.fieldGroup; trackBy: trackByFn">
-                <formly-field [field]="td"></formly-field>
-              </ng-container>
+            <nz-tab [nzTitle]="tr.templateOptions?.title">
+              <formly-field [field]="tr"></formly-field>
             </nz-tab>
           </ng-container>
         </nz-tabset>
@@ -27,15 +25,40 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
   `
 })
 
-export class CardTabsField extends FieldArrayType implements OnDestroy {
+export class CardTabsField extends FieldType implements OnDestroy {
+
+
+  get nzActions(): Array<TemplateRef<void>> {
+		return this.to.nzActions || this.to.actions || '';
+	}
+
+  get nzBodyStyle(): { [key: string]: string } {
+		return this.to.nzBodyStyle || this.to.bodyStyle || '';
+	}
+
+  get nzBorderless(): boolean {
+		return this.to.nzBorderless || this.to.borderless || false;
+	}
+
+	get nzCover(): TemplateRef<void> {
+		return this.to.nzCover || this.to.cover || '';
+	}
+
+  get nzExtra(): string|TemplateRef<void> {
+		return this.to.nzExtra || this.to.extra || '';
+	}
+
+  get nzHoverable(): boolean {
+		return this.to.nzHoverable || this.to.hoverable || false;
+	}
+
+  get nzLoading(): boolean {
+		return this.to.nzLoading || this.to.loading || false;
+	}
 
 	get nzTitle(): string|TemplateRef<void> {
 		return this.to.nzTitle || false;
 	}
-
-	get nzExtra(): string|TemplateRef<void> {
-		return this.to.nzExtra || '';
-  }
 
   get nzBordered() : boolean {
 		return this.to.nzBordered || false;
@@ -61,13 +84,7 @@ export class CardTabsField extends FieldArrayType implements OnDestroy {
     return item.id ? item.id : index; // or item.id
   }
 
-  ngOnDestroy() {
-    if (this.field && this.field.fieldGroup) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
-      });
-    }
-  }
+  ngOnDestroy() {}
 
   onClick($event: any) {
     if (this.to.click) {

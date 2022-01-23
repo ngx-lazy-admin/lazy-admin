@@ -26,26 +26,31 @@ export interface VirtualDataInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-    <div class="font-weight-bold f16 my-3">{{ nzTitle }}</div>
+    <!-- <div class="font-weight-bold f16 my-3" *ngIf="nzTitle">{{ nzTitle }}</div> -->
     <nz-table
-      #basicTable
-      nzTemplateMode
+      #nzTable
+      [nzData]="formControl.value"
       [nzBordered]="true"
       [nzFrontPagination]="false"
       [nzShowPagination]="false"
     >
       <thead>
         <tr>
-          <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup; trackBy: trackByFn">
+          <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup;">
             <th>{{item?.templateOptions?.label}}</th>
           </ng-container>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of field.fieldGroup; let index = index">
+        <tr *ngFor="let data of nzTable.data; let index = index;">
           <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
             <td *ngFor="let td of field.fieldGroup[index].fieldGroup">
-              <formly-field [field]="td"></formly-field>
+              <ng-container *ngIf="td.type == 'text'">
+                {{ td.formControl?.value }}
+              </ng-container>
+              <ng-container *ngIf="td.type != 'text'">
+                <formly-field [field]="td"></formly-field>
+              </ng-container>
             </td>
           </ng-container>
         </tr>
@@ -132,14 +137,14 @@ export class TableField extends FieldArrayType implements OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: number) => {
         console.log('scroll index to', data);
-      });    
+      });
   }
 
   ngOnDestroy() {
     if (this.field && this.field.fieldGroup) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
-      });
+      // this.field.fieldGroup.map((item, index) => {
+      //   super.remove(index)
+      // });
     }
     this.destroy$.next();
     this.destroy$.complete();    

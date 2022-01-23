@@ -6,7 +6,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 @Component({
   selector: 'div[card-field]',
   template: `
-  <nz-card [nzTitle]="nzTitle" [nzExtra]="extraFields ? extraTemplate : ''">
+  <nz-card [nzTitle]="nzTitle" [nzType]="nzType" [nzExtra]="extraFields ? extraTemplate : ''">
     <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
       <formly-field [field]="item"></formly-field>
     </ng-container>
@@ -37,14 +37,45 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 export class CardField extends FieldType  implements OnDestroy {
 
-	get nzTitle(): string|TemplateRef<void> {
+  get nzActions(): Array<TemplateRef<void>> {
+		return this.to.nzActions || this.to.actions || '';
+	}
+
+  get nzBodyStyle(): { [key: string]: string } {
+		return this.to.nzBodyStyle || this.to.bodyStyle || '';
+	}
+
+  get nzBorderless(): boolean {
+		return this.to.nzBorderless || this.to.borderless || false;
+	}
+
+	get nzCover(): TemplateRef<void> {
+		return this.to.nzCover || this.to.cover || '';
+	}
+
+  get nzExtra(): string|TemplateRef<void> {
+		return this.to.nzExtra || this.to.extra || '';
+	}
+
+  get nzHoverable(): boolean {
+		return this.to.nzHoverable || this.to.hoverable || false;
+	}
+
+  get nzLoading(): boolean {
+		return this.to.nzLoading || this.to.loading || false;
+	}
+
+  get nzTitle(): string|TemplateRef<void> {
 		return this.to.nzTitle || this.to.title || '';
 	}
 
-	get nzExtra(): string|TemplateRef<void> {
-    console.log(this.to.nzExtra)
-		return this.to.nzExtra || '';
-  }
+  get nzType(): 'inner' {
+		return this.to.nzType || this.to.type || '';
+	}
+
+  get nzSize(): 'default'|'small' {
+		return this.to.nzSize || this.to.size || 'default';
+	}
 
   get nzBordered() : boolean {
 		return this.to.nzBordered || false;
@@ -52,10 +83,6 @@ export class CardField extends FieldType  implements OnDestroy {
 
   get nzColumn() : number | { [key in NzBreakpointEnum]: number } {
 		return this.to.nzColumn || null;
-  }
-
-  get nzSize() : NzDescriptionsSize  {
-		return this.to.nzSize || 'deafult';
   }
 
   get nzColon() : boolean {
@@ -70,8 +97,7 @@ export class CardField extends FieldType  implements OnDestroy {
     return item.id ? item.id : index; // or item.id
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   onClick($event: any) {
     if (this.to.click) {

@@ -34,7 +34,7 @@ export interface VirtualDataInterface {
       [nzFrontPagination]="false"
       [nzShowPagination]="false"
       [nzData]="formControl?.value"
-      [nzScroll]="{ x: '1200px', y: '240px' }"
+      [nzScroll]="{ x: '1200px', y: '400px' }"
     >
       <thead>
         <tr>
@@ -137,15 +137,6 @@ export class VirtualTableField extends FieldArrayType implements OnDestroy {
       .subscribe((data: number) => {
         console.log('scroll index to', data);
       });
-
-    // this.formControl.valueChanges
-    //   .pipe(distinctUntilChanged())
-    //   .subscribe((item) => {
-    //   console.log(item)
-    //   console.log(new Date().getTime())
-    //   // this.cd.markForCheck()
-
-    // })
   }
 
   ngOnDestroy() {

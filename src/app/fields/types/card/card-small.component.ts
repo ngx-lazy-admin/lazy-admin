@@ -44,13 +44,38 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 export class CardSmallField extends FieldType  implements OnDestroy {
 
+  get nzActions(): Array<TemplateRef<void>> {
+		return this.to.nzActions || this.to.actions || '';
+	}
+
+  get nzBodyStyle(): { [key: string]: string } {
+		return this.to.nzBodyStyle || this.to.bodyStyle || '';
+	}
+
+  get nzBorderless(): boolean {
+		return this.to.nzBorderless || this.to.borderless || false;
+	}
+
+	get nzCover(): TemplateRef<void> {
+		return this.to.nzCover || this.to.cover || '';
+	}
+
+  get nzExtra(): string|TemplateRef<void> {
+		return this.to.nzExtra || this.to.extra || '';
+	}
+
+  get nzHoverable(): boolean {
+		return this.to.nzHoverable || this.to.hoverable || false;
+	}
+
+  get nzLoading(): boolean {
+		return this.to.nzLoading || this.to.loading || false;
+	}
+
+
 	get nzTitle(): string|TemplateRef<void> {
 		return this.to.nzTitle || this.to.title || '';
 	}
-
-	get nzExtra(): string|TemplateRef<void> {
-		return this.to.nzExtra || '';
-  }
 
   get nzBordered() : boolean {
 		return this.to.nzBordered || false;

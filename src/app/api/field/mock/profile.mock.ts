@@ -19,7 +19,7 @@ export const profile: configOptions[] = [
           {
             type: 'descriptions',
             key: 'basic',
-            className: "col-12 d-inline-block pb-5 mb-4 border-bottom border-light",
+            className: "col-12 d-inline-block pb-4 mb-4 border-bottom border-light",
             templateOptions: {
               label: "",
               title: '退款申请',
@@ -58,7 +58,7 @@ export const profile: configOptions[] = [
           {
             type: 'descriptions',
             key: 'userInfo',
-            className: "col-12 d-inline-block pb-5 mb-4 border-bottom border-light",
+            className: "col-12 d-inline-block pb-4 mb-4 border-bottom border-light",
             templateOptions: {
               label: "",
               title: '用户信息',
@@ -105,7 +105,7 @@ export const profile: configOptions[] = [
           {
             type: 'table',
             key: 'table',
-            className: "col-12 d-inline-block pb-5 mb-4 border-bottom border-light",
+            className: "col-12 d-inline-block mb-4",
             templateOptions: {
               label: "",
               title: '退货商品',
@@ -160,7 +160,7 @@ export const profile: configOptions[] = [
           {
             type: 'table',
             key: 'progress',
-            className: "col-12 d-inline-block pb-5 mb-4 border-bottom border-light",
+            className: "col-12 d-inline-block mb-4",
             templateOptions: {
               label: "",
               title: '退货进度',
@@ -220,12 +220,21 @@ export const profile: configOptions[] = [
       },
       progress: [
         {
+          id: '1',
           time: '2017-10-01 14:10',
           progress: '联系客户',
           status: '进行中',
           operation_id: '取货员 ID1234',
           take_up_time: '5mins'
-        }
+        },
+        {
+          id: '2',
+          time: '2017-10-01 14:10',
+          progress: '联系客户1',
+          status: '进行中2',
+          operation_id: '取货员 ID12343',
+          take_up_time: '5mins'
+        },
       ]
     }
   },
@@ -233,10 +242,9 @@ export const profile: configOptions[] = [
     id: 'advanced',
     fields: [
       {
-        id: 'dashboard',
         type: 'card',
         key: 'name',
-        className: "col-12 mb-3",
+        className: "col-12",
         templateOptions: {
           title: "流程进度",
         },
@@ -269,7 +277,6 @@ export const profile: configOptions[] = [
         ]
       },
       {
-        id: 'dashboard',
         type: 'card',
         key: 'name',
         className: "col-12 mb-3 mt-3",
@@ -280,7 +287,7 @@ export const profile: configOptions[] = [
           {
             type: 'descriptions',
             key: 'userInfo',
-            className: "col-12 d-inline-block pb-5 mb-4 border-bottom border-light",
+            className: "d-block  mb-4",
             fieldGroup: [
               {
                 key: 'thing_code',
@@ -322,7 +329,7 @@ export const profile: configOptions[] = [
           {
             type: 'descriptions',
             key: 'userInfo',
-            className: "col-12 d-inline-block pb-5 mb-4 border-bottom border-light",
+            className: "d-block mb-4",
             templateOptions: {
               title: '信息组',
             },
@@ -368,11 +375,13 @@ export const profile: configOptions[] = [
             type: 'card',
             templateOptions: {
               title: '多层级信息组',
+              type: 'inner'
             },
             fieldGroup: [
                 {
                   key: 'thing_code',
                   type: 'descriptions',
+                  className: "d-block pb-4 mb-4 border-bottom border-light",
                   templateOptions: {
                     title: '组名称',
                   },
@@ -417,7 +426,7 @@ export const profile: configOptions[] = [
                 {
                   key: 'status',
                   type: 'descriptions',
-                  className: "pb-5 mb-3 border-bottom border-light",
+                  className: "d-block pb-4 mb-4 border-bottom border-light",
                   templateOptions: {
                     title: '组名称',
                   },
@@ -462,6 +471,7 @@ export const profile: configOptions[] = [
                 {
                   key: 'sale_code',
                   type: 'descriptions',
+                  className: "d-block mb-4",
                   templateOptions: {
                     title: '组名称',
                   },
@@ -509,21 +519,182 @@ export const profile: configOptions[] = [
         ]
       },
       {
-        id: 'dashboard',
         type: 'card',
         key: 'name',
         className: "col-12 mb-3",
         templateOptions: {
           title: "用户近半年来电记录",
-        }
+        },
+        fieldGroup: [
+          {
+            type: 'table',
+            key: 'table',
+            className: "d-block",
+            fieldArray: {
+              fieldGroup: [
+                {
+                  key: 'thing_code',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品编号',
+                  },
+                },
+                {
+                  key: 'status',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品名称',
+                  },
+                },
+                {
+                  key: 'sale_code',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品条码',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '单价',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '数量（件）',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '金额',
+                  },
+                }
+              ]
+            }
+          },
+        ],
+        
       },
+      
       {
         type: 'card-tabs',
         key: 'name',
         className: "col-12 mb-3",
-        templateOptions: {
-          title: "用户近半年来电记录",
-        }
+        fieldGroup: [
+          {
+            type: 'table',
+            key: 'table',
+            className: "d-block",
+            templateOptions: {
+              title: '操作日志一'
+            },
+            fieldArray: {
+              fieldGroup: [
+                {
+                  key: 'thing_code',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品编号',
+                  },
+                },
+                {
+                  key: 'status',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品名称',
+                  },
+                },
+                {
+                  key: 'sale_code',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品条码',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '单价',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '数量（件）',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '金额',
+                  },
+                }
+              ]
+            }
+          },
+          {
+            type: 'table',
+            key: 'table',
+            className: "d-block",
+            templateOptions: {
+              title: '操作日志二'
+            },
+            fieldArray: {
+              fieldGroup: [
+                {
+                  key: 'thing_code',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品编号',
+                  },
+                },
+                {
+                  key: 'status',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品名称',
+                  },
+                },
+                {
+                  key: 'sale_code',
+                  type: 'text',
+                  templateOptions: {
+                    label: '商品条码',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '单价',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '数量（件）',
+                  },
+                },
+                {
+                  key: 'suborder',
+                  type: 'text',
+                  templateOptions: {
+                    label: '金额',
+                  },
+                }
+              ]
+            }
+          },
+        ]
       },
     ],
     info: {

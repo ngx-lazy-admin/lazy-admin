@@ -1,7 +1,6 @@
 <nz-spin *ngIf="loading" [nzSpinning]="loading" class="mt-5"></nz-spin>
 
 <ng-container *ngIf="!loading">
-
 	<ng-container  *ngIf="status == 200">
 		<nz-page-header class="bg-white mb-3">
 			<nz-page-header-title>{{info?.title}}</nz-page-header-title>

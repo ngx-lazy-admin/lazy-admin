@@ -5,6 +5,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { TableField } from './table.component';
 import { VirtualTableField } from './virtual-table.component';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { VirtualTableField } from './virtual-table.component';
     ReactiveFormsModule,
     FormsModule,
     NzTableModule,
+    NzEmptyModule,
     FormlyModule.forChild({
       types: [
         {
