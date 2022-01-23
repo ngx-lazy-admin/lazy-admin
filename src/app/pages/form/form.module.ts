@@ -13,6 +13,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { FormFieldModule } from '../../fields/wrappers/form';
     IconsProviderModule,
     NzResultModule,
     NzPageHeaderModule,
+    NzButtonModule,
     NzSpinModule,
     FormlyModule.forRoot(),
     FieldTypeModule,

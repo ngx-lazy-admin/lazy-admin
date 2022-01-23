@@ -64,20 +64,17 @@ export class FormComponent {
         if (this.routeCache[this.router.url]) {
           this.render(this.routeCache[this.router.url])
         } else {
-          this.init()
+          this.clearData()
         }
 
         this.fieldService.getField(this.router.url).subscribe(result => {
           this.routeCache[this.router.url] = result;
           this.render(result)
-          
         }, err => {
           this.errResult = err;
-          this.fields = [];
-          this.info = null;
           this.loading = false;
-          this.status = err.status;
-          this.cd.markForCheck();
+          this.status = err?.status
+          this.clearData();
         })
       }
     });
@@ -101,16 +98,14 @@ export class FormComponent {
     }
     this.status = 200;
     this.loading = false;
-
-    this.cd.markForCheck();
+    this.cd.detectChanges();
   }
 
-  init () {
+  clearData () {
     this.fields = [];
     this.model = null;
     this.info = null;
-    this.loading = true;
-    this.cd.markForCheck();
+    this.cd.detectChanges();
   }
 
   execFunction = (name: string) => (new Function( 'return ' + name))();

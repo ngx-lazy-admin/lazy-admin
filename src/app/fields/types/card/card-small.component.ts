@@ -15,7 +15,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
           nz-tooltip 
           [nzTooltipTitle]="to.tooltip"
           nz-icon
-          nzType="question-circle" 
+          nzType="exclamation-circle" 
           nzTheme="outline">
         </i>
       </div>
