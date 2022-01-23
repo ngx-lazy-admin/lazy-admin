@@ -1990,3 +1990,10 @@ ng build --source-map
 ```bash
 $ node_modules/.bin/source-map-explorer dist/main.d72e9d91fd17f9fe7b8c.js
 ```
+
+
+## 切换 gitee 源
+
+git remote add origin https://gitee.com/strawbreey/lazy-admin-pro.git
+
+git push --set-upstream origin master

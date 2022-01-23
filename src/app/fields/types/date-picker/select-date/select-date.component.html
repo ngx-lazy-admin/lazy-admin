@@ -3,25 +3,23 @@
 <ng-container *ngIf="!to['type']">
   <div class="d-flex justify-content-between">
   <nz-month-picker
-      [nzDisabledDate]="disabledStartDate"
-      nzFormat="yyyy-MM"
-      [(ngModel)]="startValue"
-      class="mr-2"
-      nzPlaceHolder="开始日期"
-      (ngModelChange)="onStartChange($event)"
-    >
-    </nz-month-picker>
-    <div style="line-height: 36px; width: 40px; text-align: center;">至</div>
-    <nz-month-picker
-      [nzDisabledDate]="disabledEndDate"
-      nzFormat="yyyy-MM"
-      [(ngModel)]="endValue"
-      nzPlaceHolder="截止日期"
-      class="ml-2"
-      (ngModelChange)="onEndChange($event)"
-    >
-    </nz-month-picker>
-    </div>
+    [nzDisabledDate]="disabledStartDate"
+    nzFormat="yyyy-MM"
+    [(ngModel)]="startValue"
+    class="mr-2"
+    nzPlaceHolder="开始日期"
+    (ngModelChange)="onStartChange($event)"
+  ></nz-month-picker>
+  <div style="line-height: 36px; width: 40px; text-align: center;">至</div>
+  <nz-month-picker
+    [nzDisabledDate]="disabledEndDate"
+    nzFormat="yyyy-MM"
+    [(ngModel)]="endValue"
+    nzPlaceHolder="截止日期"
+    class="ml-2"
+    (ngModelChange)="onEndChange($event)"
+  ></nz-month-picker>
+  </div>
 </ng-container>
 
 <ng-container *ngIf="to['type']">
@@ -36,8 +34,7 @@
     (ngModelChange)="onChange($event)"
     [nzAllowClear]="false"
     nzPlaceHolder=""
-  >
-  </nz-month-picker>
+  ></nz-month-picker>
 </ng-container>
 
 

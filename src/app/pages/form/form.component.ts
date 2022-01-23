@@ -21,7 +21,10 @@ export interface errorResultType {
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'p-3 d-block',
+  }
 })
 export class FormComponent {
 
@@ -69,7 +72,6 @@ export class FormComponent {
           this.render(result)
           
         }, err => {
-
           this.errResult = err;
           this.fields = [];
           this.info = null;

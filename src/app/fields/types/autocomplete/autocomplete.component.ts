@@ -13,10 +13,10 @@ interface AutocompleteDataSourceItem {
 declare type AutocompleteDataSource = Array<AutocompleteDataSourceItem | string | number>;
 
 @Component({
-    selector: 'div[autocomplete-field]',
-    templateUrl: './autocomplete.component.html',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'div[autocomplete-field]',
+  templateUrl: './autocomplete.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AutocompleteFields extends FieldType implements OnInit {
   data: any = [];
