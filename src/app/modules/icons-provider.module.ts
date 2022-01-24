@@ -32,7 +32,9 @@ import {
   StepBackwardOutline,
   AntDesignOutline,
   EditOutline,
+  ExclamationCircleOutline
 } from '@ant-design/icons-angular/icons'; 
+
 
 const icons = [
   MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline, ExpandOutline,
@@ -40,7 +42,7 @@ const icons = [
   GithubOutline, FullscreenOutline, ReloadOutline, SettingOutline, TableOutline,
   ProfileOutline, CheckCircleOutline, WarningOutline, RadiusSettingOutline, LockOutline,
   UserOutline, QuestionCircleOutline, HomeOutline, DeleteOutline, DownloadOutline,
-  FileTwoTone, StepBackwardOutline, AntDesignOutline, EditOutline
+  FileTwoTone, StepBackwardOutline, AntDesignOutline, EditOutline, ExclamationCircleOutline
 ];
 
 @NgModule({

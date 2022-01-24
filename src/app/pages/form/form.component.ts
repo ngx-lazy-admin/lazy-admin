@@ -50,9 +50,6 @@ export class FormComponent {
 
   }
 
-  private route$ = new Subject<void>();
-
-
   constructor(
     private cd: ChangeDetectorRef,
     private fieldService: FieldService,

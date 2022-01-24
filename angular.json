@@ -40,6 +40,9 @@
                 "output": "/assets/vs/"
               }
             ],
+            "allowedCommonJsDependencies": [
+              "lodash"
+            ],
             "styles": [
               "src/styles.scss",
               "src/styles.less"
