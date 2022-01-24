@@ -13,6 +13,7 @@ import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
 import { SelectFieldModule } from './select';
 import { SliderFieldModule } from './slider';
+import { StatisticFieldModule } from './statistic';
 import { StepsFieldModule } from './steps';
 import { TableFieldModule } from './table';
 import { TabsFieldModule } from './tabs';
@@ -43,6 +44,7 @@ import { UploadFieldModule } from './upload';
     CardFieldModule,
     TableFieldModule,
     CollapseFieldModule,
+    StatisticFieldModule,
   ],
 })
 export class FieldTypeModule {}

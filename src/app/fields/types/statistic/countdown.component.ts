@@ -1,9 +1,8 @@
-import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit, TemplateRef, ViewEncapsulation, Injector } from '@angular/core';
+import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { pipeTokenType } from 'src/app/pipes/dynamic.pipe'
 
 export interface NzSelectOptionInterface {
   label: string | number | null ;
@@ -22,20 +21,17 @@ export interface NzSelectOptionInterface {
     }`
   ],
   template: `
-    <nz-statistic 
-      [nzPrefix]="nzPrefix"
-      [nzSuffix]="nzSuffix"
-      [nzValueStyle]="nzValueStyle"
-      [nzValueTemplate]="nzValueTemplate"
-      [nzValue]="(nzValue | dynamic: nzValuePipe: pipeArgs)!" 
-      [nzTitle]="nzTitle">
-    </nz-statistic>
+    <nz-countdown 
+      [nzValue]="nzValue" 
+      [nzTitle]="nzTitle"
+      >
+    </nz-countdown>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 })
 
-export class StatisticField extends FieldType implements OnInit,  OnDestroy {
+export class CountdownField extends FieldType implements OnInit,  OnDestroy {
 
   get control() : FormControl {
 		return this.formControl as FormControl;
@@ -43,6 +39,10 @@ export class StatisticField extends FieldType implements OnInit,  OnDestroy {
 
   get nzId () : string{
     return this.to.nzId || '';
+  }
+
+  get nzFormat () : string {
+    return this.to.nzFormat || this.to.format || "HH:mm:ss";
   }
 
   get nzPrefix () : string | TemplateRef<void> {
@@ -57,24 +57,16 @@ export class StatisticField extends FieldType implements OnInit,  OnDestroy {
     return this.to.nzTitle || this.to.title || '';
   }
 
+  get nzValue () : string | number {
+    return this.formControl.value || '1949101';
+  }
+
   get nzValueStyle () : Object {
     return this.to.nzValueStyle || this.to.valueStyle || null;
   }
 
   get nzValueTemplate() : TemplateRef<{ $implicit: string | number }> {
     return this.to.nzValueTemplate || this.to.valueTemplate || null
-  }
-
-  get nzValue () : string | number {
-    return this.formControl.value || '';
-  }
-
-  get nzValuePipe (): pipeTokenType {
-    return this.to.nzValuePipe || this.to.valuePipe || ''
-  }
-
-  get pipeArgs (): Array<any>{
-    return this.to.pipeArgs || this.to.pipeArgs || ''
   }
 
   ngModelChange ($event: Event) {
@@ -107,6 +99,7 @@ export class StatisticField extends FieldType implements OnInit,  OnDestroy {
       this.to.focus(this.field)
     }
   }
+
   
   nzBlur () {
     if (this.to.blur) {
@@ -118,7 +111,6 @@ export class StatisticField extends FieldType implements OnInit,  OnDestroy {
 
   constructor(
     private cd: ChangeDetectorRef,
-    private injector: Injector
   ) {
     super();
   }

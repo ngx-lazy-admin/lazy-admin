@@ -1,10 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FieldService } from 'src/app/api/field';
 
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
+import { inNextTick } from 'ng-zorro-antd/core/util';
+import { takeUntil } from 'rxjs/operators';
 
 export interface headerInfoType {
   title: string,
@@ -46,6 +48,8 @@ export class FormComponent {
 
   routeCache : any= {};
 
+  private destroy$ = new Subject<void>();
+
   errResult = {
 
   }
@@ -55,6 +59,7 @@ export class FormComponent {
     private fieldService: FieldService,
     public route: ActivatedRoute,
     private router: Router,
+    private ngZone: NgZone,
   ) {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -105,6 +110,22 @@ export class FormComponent {
     this.cd.detectChanges();
   }
 
+
+  private setup(): void {
+    // The `setup()` is invoked when the Monaco editor is loaded. This may happen asynchronously for the first
+    // time, and it'll always happen synchronously afterwards. The first `setup()` invokation is outside the Angular
+    // zone, but further invokations will happen within the Angular zone. We call the `setModel()` on the editor
+    // instance, which tells Monaco to add event listeners lazily internally (`mousemove`, `mouseout`, etc.).
+    // We should avoid adding them within the Angular zone since this will drastically affect the performance.
+    this.ngZone.runOutsideAngular(() =>
+      inNextTick()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(() => {
+
+        })
+    );
+  }
+
   execFunction = (name: string) => (new Function( 'return ' + name))();
 
   execEval = (code: string) => eval('(' + code + ')')
@@ -115,5 +136,7 @@ export class FormComponent {
     if (this.rooterChange) {
       this.rooterChange.unsubscribe();
     }
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
