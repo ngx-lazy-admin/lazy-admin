@@ -85,6 +85,7 @@ export class FormComponent {
   render (result: any) {
     if (typeof result?.fields === 'string') {
       try {
+        console.log('11')
         this.fields = this.execEval(result?.fields);
         this.model = result?.data;
         this.info = result?.info;

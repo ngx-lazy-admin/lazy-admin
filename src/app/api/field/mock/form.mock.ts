@@ -1,113 +1,106 @@
 
+// @ts-nocheck
+
 export const form = [
   {
     id: 'basic-form',
-    fields: [
+    fields: `[
       {
         type: 'card',
-        key: 'name',
         className: "col-12  d-block",
         templateOptions: {
           bodyStyle: {
             maxWidth: '600px',
             margin: '0 auto'
-          },
+          }
         },
         fieldGroup: [
           {
-            key: '',
+            key: 'title',
             type: 'input',
-            defaultValue: '1949101',
-            className: 'col-12 d-block',
+            className: 'col-12',
             wrappers: ['form'],
             templateOptions: {
               label: '标题',
               layout : 'vertical',
               placeholder: '给目标起个名字'
-            },
+            }
           },
           {
-            key: '',
+            key: 'date',
             type: 'input',
-            className: 'col-12 d-inline-block',
+            className: 'col-12',
             wrappers: ['form'],
             templateOptions: {
               label: '起止时间',
-              layout : 'vertical',
-
-            },
+              layout : 'vertical'
+            }
           },
           {
-            key: '',
+            key: 'des',
             type: 'textarea',
-            className: 'col-12 d-inline-block',
+            className: 'col-12',
             wrappers: ['form'],
             templateOptions: {
               label: '目标描述',
               placeholder: '请输入你的阶段性工作目标',
-              layout : 'vertical',
-
-
-            },
+              layout : 'vertical'
+            }
           },
           {
-            key: '',
+            key: 'standard',
             type: 'textarea',
-            className: 'col-12   d-inline-block',
-            defaultValue: '12423',
+            className: 'col-12',
             wrappers: ['form'],
             templateOptions: {
               label: '衡量标准',
               layout : 'vertical',
-
               placeholder: '请输入衡量标准'
-            },
+            }
           },
           {
-            key: '',
+            key: 'customer',
             type: 'textarea',
             className: 'col-12  d-inline-block',
-            defaultValue: '12423',
             wrappers: ['form'],
             templateOptions: {
-              label: '客户',
+              label: '客户<span class="text-black text-opacity-50">（选填）</span>',
+              tooltipTitle: '目标的服务对象',
               layout : 'vertical',
-
-              labelTip: '目标的服务对象'
-            },
+              placeholder: '请描述你服务的客户，内部客户直接 @姓名／工号',
+            }
           },
           {
-            key: '',
+            key: 'invitee',
             type: 'textarea',
             className: 'col-12  d-inline-block',
-            defaultValue: '12423',
             wrappers: ['form'],
             templateOptions: {
-              label: '邀评人',
+              label: '邀评人<span class="text-black text-opacity-50">（选填）</span>',
               layout : 'vertical',
+              placeholder: '请直接 @姓名／工号，最多可邀请 5 人',
               labelTip: '目标的服务对象'
-            },
+            }
           },
           {
-            key: '',
+            key: 'weight',
             type: 'input-number',
             className: 'col-12 d-inline-block',
-            defaultValue: '0',
             wrappers: ['form'],
             templateOptions: {
-              label: '权重',
-              layout : 'vertical',
-            },
+              label: '权重<span class="text-black text-opacity-50">（选填）</span>',
+              layout : 'vertical'
+            }
           },
           {
-            key: '',
-            type: 'radio',
+            key: 'target',
+            type: 'radio-group',
             className: 'col-12 d-inline-block',
-            defaultValue: '0',
             wrappers: ['form'],
             templateOptions: {
               label: '目标公开',
               layout : 'vertical',
+              nzExtra: '客户、邀评人默认被分享',
               options: [
                 {
                   label: '公开',
@@ -120,19 +113,19 @@ export const form = [
                 {
                   label: '不公开',
                   value: '3'
-                },
+                }
               ]
-            },
+            }
           },
           {
-            key: '',
+            key: 'weight',
             type: 'select',
             className: 'col-12 d-inline-block',
-            defaultValue: '0',
             wrappers: ['form'],
             templateOptions: {
               label: '权重',
               layout : 'vertical',
+              placeholder: '请选择',
               options: [
                 {
                   label: '同事甲',
@@ -145,13 +138,39 @@ export const form = [
                 {
                   label: '同事丙',
                   value: '3'
-                },
+                }
               ]
-            },
+            }
           },
+          {
+            type: 'button-group',
+            className: 'col-12 d-inline-block',
+            templateOptions: {
+              layout : 'vertical',
+              groupOptions: [
+                {
+                  label: '提交',
+                  value: '1',
+                  size: 'default',
+                  click: (field, _this) => {
+                    console.log(field.form.root.value);
+                  }
+                },
+                {
+                  label: '重置',
+                  value: '2',
+                  size: 'default',
+                  type: 'default',
+                  click: (field, _this) => {
+                    field.options.resetModel();
+                  }
+                }
+              ]
+            }
+          }
         ]
-      },
-    ],
+      }
+    ]`,
     info: {
       title: '基础表单',
       content: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'

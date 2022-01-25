@@ -26,12 +26,13 @@ const isObject = (x: any) => {
           [nzFor]="id" 
           [nzTooltipTitle]="nzTooltipTitle"
           [nzTooltipIcon]="nzTooltipIcon">
-          {{ to.label }}
+          <span [innerHTML]="to.label"></span>
         </nz-form-label>
       </ng-container>
       <nz-form-control 
         [nzValidateStatus]="errorState" 
         [nzErrorTip]="errorTpl"
+        [nzExtra]="nzExtra"
         [nzHasFeedback]="nzHasFeedback">
         <ng-container #fieldComponent></ng-container>
         <ng-template #errorTpl let-control>
@@ -61,11 +62,11 @@ export class FormWrapper extends FieldWrapper {
   }
 
   get nzTooltipTitle(): string | TemplateRef<void> {
-    return this.to.nzTooltipTitle
+    return this.to.nzTooltipTitle || this.to.tooltipTitle || ''
   }
 
   get nzTooltipIcon(): string | NzFormTooltipIcon {
-    return this.to.NzFormTooltipIcon || null
+    return this.to.NzFormTooltipIcon || { type: 'question-circle', theme: 'outline' }
   }
 
   get nzValidateStatus(): string | NzFormTooltipIcon {

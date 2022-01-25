@@ -176,7 +176,7 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
   }
 
   get nzOptions () : NzSelectOptionInterface[] {
-    return this.to.nzOptions || []
+    return this.to.nzOptions || this.to.options || []
   }
 
   ngModelChange ($event: Event) {

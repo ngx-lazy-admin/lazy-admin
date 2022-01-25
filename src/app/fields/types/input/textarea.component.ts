@@ -19,6 +19,7 @@ export interface AutoSizeType {
 		<textarea
 			nz-input
 			[formControl]="control"
+			[rows]="rows"
 			[formlyAttributes]="field"
 			[nzSize]="nzSize"
 			[nzBorderless]="nzBorderless"
@@ -42,6 +43,10 @@ export class TextareaField extends FieldType {
 
 	get type(): string {
 		return this.to.type || 'text';
+	}
+
+	get rows(): number {
+		return this.to.rows || 3
 	}
 
 	get nzAutosize(): boolean | AutoSizeType {

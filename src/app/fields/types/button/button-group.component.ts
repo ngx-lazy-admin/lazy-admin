@@ -33,7 +33,7 @@ export interface ButtonGroupOptionInterface {
         <i *ngIf="item?.icon" nz-icon nzType="item?.icon"></i>
         {{item.label}}
       </a>
-      <ng-container *ngIf="i != groupOptions.length - 1">
+      <ng-container *ngIf="nzGhost && i != groupOptions.length - 1">
         <nz-divider class="mx-0" nzType="vertical"></nz-divider>
       </ng-container>
     </ng-container>

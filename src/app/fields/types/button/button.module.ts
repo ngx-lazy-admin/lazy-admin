@@ -30,6 +30,10 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
           component: ButtonField,
         },
         {
+          name: 'button-group',
+          component: ButtonGroupField
+        },
+        {
           name: 'nz-button-group',
           component: ButtonGroupField
         }

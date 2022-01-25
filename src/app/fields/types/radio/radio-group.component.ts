@@ -32,7 +32,7 @@ export class RadioGroupField extends FieldType {
 	}
 
   get nzOptions(): any[] {
-    return this.to.nzOptions || []
+    return this.to.nzOptions || this.to.options || []
   }
 
   ngModelChange ($event: Event) {
