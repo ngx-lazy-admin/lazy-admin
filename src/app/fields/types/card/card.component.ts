@@ -6,7 +6,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 @Component({
   selector: 'div[card-field]',
   template: `
-  <nz-card [nzTitle]="nzTitle" [nzType]="nzType" [nzExtra]="extraFields ? extraTemplate : ''">
+  <nz-card [nzBodyStyle]="nzBodyStyle" [nzTitle]="nzTitle" [nzType]="nzType" [nzExtra]="extraFields ? extraTemplate : ''">
     <i *ngIf="to.tooltip" 
       class="gray-500 text-dark position-absolute  top-0 end-0 me-3 mt-3"
       style="--bs-text-opacity: 0.45"

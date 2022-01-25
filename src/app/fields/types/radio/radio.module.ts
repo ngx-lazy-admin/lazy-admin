@@ -24,12 +24,24 @@ import { NzRadioWrapperItemComponent } from './radio-wrapper-item.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'radio',
+          component: RadioField,
+        },
+        {
           name: 'nz-radio',
           component: RadioField,
         },
         {
+          name: 'radio-group',
+          component: RadioGroupField,
+        },
+        {
           name: 'nz-radio-group',
           component: RadioGroupField,
+        },
+        {
+          name: 'radio-wrapper',
+          component: RadioWrapperField,
         },
         {
           name: 'nz-radio-wrapper',

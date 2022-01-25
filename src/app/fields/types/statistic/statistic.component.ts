@@ -35,7 +35,7 @@ export interface NzSelectOptionInterface {
 	encapsulation: ViewEncapsulation.None,
 })
 
-export class StatisticField extends FieldType implements OnInit,  OnDestroy {
+export class StatisticField extends FieldType implements OnInit, OnDestroy {
 
   get control() : FormControl {
 		return this.formControl as FormControl;

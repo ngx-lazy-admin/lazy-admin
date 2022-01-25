@@ -45,7 +45,7 @@ const isObject = (x: any) => {
 export class FormWrapper extends FieldWrapper {
 
   get nzLayout(): NzFormLayoutType  {
-    return this.to.nzLayout ? this.to.nzLayout : 'horizontal'
+    return this.to.layout || this.to.layout || 'horizontal'
   }
 
   get errorState() {

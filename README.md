@@ -1,4 +1,9 @@
+## 设计哲学
+
+
 > 保持一致性, 减少心智负担
+
+> 如无必要，勿增实体
 
 # GoAdminNg
 
@@ -1997,3 +2002,5 @@ $ node_modules/.bin/source-map-explorer dist/main.d72e9d91fd17f9fe7b8c.js
 git remote add origin https://gitee.com/strawbreey/lazy-admin-pro.git
 
 git push --set-upstream origin master
+
+

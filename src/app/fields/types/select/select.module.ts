@@ -16,6 +16,10 @@ import { SelectField } from './select.component';
     FormlyModule.forChild({
       types: [
         {
+          name: 'select',
+          component: SelectField,
+        },
+        {
           name: 'nz-select',
           component: SelectField,
         }

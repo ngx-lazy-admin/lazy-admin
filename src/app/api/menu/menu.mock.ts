@@ -81,21 +81,21 @@ export const menu = [
         id: '0301',
         pid: '3',
         name: '基础表单',
-        link: '/form/basic',
+        link: '/form/basic-form',
         badge: '',
       },
       {
         id: '0302',
         pid: '3',
         name: '分步表单',
-        link: '/form/step',
+        link: '/form/step-form',
         badge: '',
       },
       {
         id: '0302',
         pid: '3',
         name: '高级表单',
-        link: '/form/advanced',
+        link: '/form/advanced-form',
         badge: '',
       } 
     ]

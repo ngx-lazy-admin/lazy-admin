@@ -51,6 +51,19 @@ export const dashboard = [
               },
             },
           },
+          {
+            key: '',
+            type: 'statistic',
+            className: 'col-12 mt-2 pt-2 border-top  d-inline-block',
+            defaultValue: '12423',
+            templateOptions: {
+              nzPrefix: '日销售额',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+              },
+            },
+          },
         ]
       },
       {
@@ -58,25 +71,123 @@ export const dashboard = [
         key: 'name',
         className: "col-md-3 col-sm-6  d-inline-block",
         templateOptions: {
-          label: "总销售额",
+          label: "访问量",
           tooltip: '指标说明',
-        }
+        },
+        fieldGroup: [
+          {
+            key: '',
+            type: 'statistic',
+            defaultValue: '1949101',
+            className: 'col-12 d-block',
+            templateOptions: {
+              title: '总销售额 ',
+              valuePipe: 'number',
+              pipeArgs: '1.0-2'
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            defaultValue: '12% ',
+            className: 'col-4 d-inline-block',
+            templateOptions: {
+              nzPrefix: '周同比',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+                color: '#00000073'
+              },
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            className: 'col-4 d-inline-block',
+            defaultValue: '12%',
+            templateOptions: {
+              nzPrefix: '周同比',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+                color: '#00000073'
+              },
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            className: 'col-12 mt-2 pt-2 border-top  d-inline-block',
+            defaultValue: '12423',
+            templateOptions: {
+              nzPrefix: '日销售额',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+              },
+            },
+          },
+        ]
       },
       {
         key: 'name',
         type: 'card',
         className: "col-md-3 col-sm-6 d-inline-block",
         templateOptions: {
-          label: "总销售额",
+          label: "支付笔数",
           tooltip: '指标说明',
         },
         fieldGroup: [
           {
-            key: 'statistic',
-            type: 'text',
+            key: '',
+            type: 'statistic',
+            defaultValue: '1949101',
+            className: 'col-12 d-block',
             templateOptions: {
-              title: '总销售额',
-              template: ''
+              title: '总销售额 ',
+              valuePipe: 'number',
+              pipeArgs: '1.0-2'
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            defaultValue: '12% ',
+            className: 'col-4 d-inline-block',
+            templateOptions: {
+              nzPrefix: '周同比',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+                color: '#00000073'
+              },
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            className: 'col-4 d-inline-block',
+            defaultValue: '12%',
+            templateOptions: {
+              nzPrefix: '周同比',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+                color: '#00000073'
+              },
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            className: 'col-12 mt-2 pt-2 border-top  d-inline-block',
+            defaultValue: '12423',
+            templateOptions: {
+              nzPrefix: '日销售额',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+              },
             },
           },
         ]
@@ -85,11 +196,64 @@ export const dashboard = [
         type: 'card',
         key: 'name',
         className: "col-md-3 col-sm-6 d-inline-block",
-        wrappers: ['inline'],
         templateOptions: {
-          label: "总销售额",
+          label: "运营效果",
           tooltip: '指标说明',
-        }
+        },
+        fieldGroup: [
+          {
+            key: '',
+            type: 'statistic',
+            defaultValue: '1949101',
+            className: 'col-12 d-block',
+            templateOptions: {
+              title: '总销售额 ',
+              valuePipe: 'number',
+              pipeArgs: '1.0-2'
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            defaultValue: '12% ',
+            className: 'col-4 d-inline-block',
+            templateOptions: {
+              nzPrefix: '周同比',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+                color: '#00000073'
+              },
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            className: 'col-4 d-inline-block',
+            defaultValue: '12%',
+            templateOptions: {
+              nzPrefix: '周同比',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+                color: '#00000073'
+              },
+            },
+          },
+          {
+            key: '',
+            type: 'statistic',
+            className: 'col-12 mt-2 pt-2 border-top  d-inline-block',
+            defaultValue: '12423',
+            templateOptions: {
+              nzPrefix: '日销售额',
+              nzSuffixIcon: 'caret-down',
+              nzValueStyle: {
+                fontSize: '14px',
+              },
+            },
+          },
+        ]
       },
     ],
     info: {
