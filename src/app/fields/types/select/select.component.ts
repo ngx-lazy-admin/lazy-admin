@@ -115,7 +115,7 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
 
 
   get nzPlaceHolder (): string {
-    return this.to.nzPlaceHolder || null;
+    return this.to.nzPlaceHolder || this.to.placeholder || '';
   }
 
 

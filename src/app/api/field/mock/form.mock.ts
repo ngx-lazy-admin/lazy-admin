@@ -61,7 +61,7 @@ export const form = [
           {
             key: 'customer',
             type: 'textarea',
-            className: 'col-12  d-inline-block',
+            className: 'col-12  ',
             wrappers: ['form'],
             templateOptions: {
               label: '客户<span class="text-black text-opacity-50">（选填）</span>',
@@ -73,7 +73,7 @@ export const form = [
           {
             key: 'invitee',
             type: 'textarea',
-            className: 'col-12  d-inline-block',
+            className: 'col-12  ',
             wrappers: ['form'],
             templateOptions: {
               label: '邀评人<span class="text-black text-opacity-50">（选填）</span>',
@@ -85,7 +85,7 @@ export const form = [
           {
             key: 'weight',
             type: 'input-number',
-            className: 'col-12 d-inline-block',
+            className: 'col-12 ',
             wrappers: ['form'],
             templateOptions: {
               label: '权重<span class="text-black text-opacity-50">（选填）</span>',
@@ -95,7 +95,7 @@ export const form = [
           {
             key: 'target',
             type: 'radio-group',
-            className: 'col-12 d-inline-block',
+            className: 'col-12',
             wrappers: ['form'],
             templateOptions: {
               label: '目标公开',
@@ -118,12 +118,14 @@ export const form = [
             }
           },
           {
-            key: 'weight',
+            key: 'colleague',
             type: 'select',
-            className: 'col-12 d-inline-block',
+            className: 'col-12',
             wrappers: ['form'],
+            expressionProperties: {
+              hide: 'model.target != "2"'
+            },
             templateOptions: {
-              label: '权重',
               layout : 'vertical',
               placeholder: '请选择',
               options: [
@@ -144,7 +146,7 @@ export const form = [
           },
           {
             type: 'button-group',
-            className: 'col-12 d-inline-block',
+            className: 'col-12 ',
             templateOptions: {
               layout : 'vertical',
               groupOptions: [
