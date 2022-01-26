@@ -182,35 +182,256 @@ export const form = [
     id: 'step-form',
     fields: [
       {
-        id: 'dashboard',
-        type: 'steps',
-        key: 'name',
-        className: "w-50 d-block",
-        wrapperss: ['inline'],
+        type: 'card',
+        className: "col-12",
         templateOptions: {
-          label: "姓名1",
-          required: true,
-          placeholder: '姓名2',
-          readonly: true,
-          nzShowArrow: false,
-          status: 'wait',
-          configOptions: [
-            {
-              label: 'Finished',
-              description: 'This is a description.',
-              subtitle: 'nzSubtitle'
+          bodyStyle: {
+            maxWidth: '960px',
+            margin: '0 auto'
+          }
+        },
+        fieldGroup: [
+          {
+            key: 'steps',
+            type: 'steps',
+            className: 'col-12',
+            defaultValue: '1',
+            templateOptions: {
+              options: [
+                {
+                  title: '填写转账信息',
+                  value: '1'
+                },
+                {
+                  title: '确认转账信息',
+                  value: '2'
+                },
+                {
+                  title: '完成',
+                  value: '3'
+                }
+              ]
+            }
+          },
+          {
+            type: 'card',
+            className: "col-12 row",
+            templateOptions: {
+              borderless: true,
+              bodyStyle: {
+                maxWidth: '520px',
+                margin: '0 auto',
+              }
             },
-            {
-              label: 'In Progress',
-              description: 'This is a description.'
+            hideExpression: 'model.steps != 1',
+            fieldGroup: [
+              {
+                key: 'account_name',
+                type: 'select',
+                className: 'col-7',
+                wrappers: ['form'],
+                templateOptions: {
+                  label: '付款账户',
+                  required: true,
+                  layout : 'vertical',
+                  placeholder: '请选择',
+                  options: [
+                    {
+                      label: 'ant-design@alipay.com',
+                      value: 'ant-design@alipay.com'
+                    }
+                  ]
+                },
+                validation: {
+                  messages: {
+                    required: '请选择付款账户'
+                  }
+                }
+              },
+              {
+                key: 'account_type',
+                type: 'select',
+                className: 'col-4 d-inline-block',
+                wrappers: ['form'],
+                templateOptions: {
+                  label: '收款账户',
+                  required: true,
+                  layout : 'vertical',
+                  placeholder: '请选择',
+                  options: [
+                    {
+                      label: '支付宝',
+                      value: '微信'
+                    }
+                  ]
+                },
+                validation: {
+                  messages: {
+                    required: '请选择付款账户'
+                  }
+                }
+              },
+              {
+                key: 'account_user',
+                type: 'input',
+                className: 'col-7 ms-2 d-inline-block align-bottom',
+                wrappers: ['form'],
+                templateOptions: {
+                  label: '',
+                  required: true,
+                  layout : 'vertical',
+                  placeholder: 'test@example.com',
+                },
+                validation: {
+                  messages: {
+                    required: '请输入收款人账户'
+                  }
+                }
+              },
+              {
+                key: 'username',
+                type: 'input',
+                className: 'col-7',
+                wrappers: ['form'],
+                templateOptions: {
+                  label: '收款人姓名',
+                  required: true,
+                  layout : 'vertical',
+                  placeholder: '请输入收款人姓名',
+                },
+                validation: {
+                  messages: {
+                    required: '请输入收款人姓名'
+                  }
+                }
+              },
+              {
+                key: 'account',
+                type: 'input-number',
+                className: 'col-7',
+                wrappers: ['form'],
+                templateOptions: {
+                  label: '转账金额',
+                  required: true,
+                  layout : 'vertical',
+                },
+                validation: {
+                  messages: {
+                    required: '请输入转账金额'
+                  }
+                }
+              },
+              {
+                type: 'button',
+                className: 'col-7',
+                wrappers: ['form'],
+                templateOptions: {
+                  text: '下一步',
+                  type: 'primary',
+                  type: 'submit'
+                }
+              },
+            ]
+          },
+          {
+            type: 'card',
+            className: "col-12",
+            templateOptions: {
+              borderless: true,
+              bodyStyle: {
+                maxWidth: '520px',
+                margin: '0 auto'
+              }
             },
-            {
-              label: 'Waiting',
-              description: 'This is a description.'
+            hideExpression: 'model.steps != 2',
+            fieldGroup: [
+              {
+                type: 'alert',
+                className: 'col-12 d-inline-block mb-3',
+                templateOptions: {
+                  message: '确认转账后，资金将直接打入对方账户，无法退回。',
+                  showIcon: true
+                },
+              },
+              {
+                type: 'descriptions-group',
+                className: 'col-12 d-inline-block mb-4 border-bottom pb-4',
+                defaultValue: [
+                  {
+                    title: '付款账户',
+                    value: 'ant-design@alipay.com',
+                  },
+                  {
+                    title: '收款账户',
+                    value: 'test@example.com',
+                  },
+                  {
+                    title: '收款人姓名',
+                    value: 'Alex',
+                  },
+                  {
+                    title: '转账金额',
+                    value: '500.00元',
+                  }
+                ],
+                templateOptions: {
+                  message: '确认转账后，资金将直接打入对方账户，无法退回。',
+                  nzColumn: 1,
+                  showIcon: true,
+                  bordered: true
+                }
+              },
+              {
+                type: 'password',
+                className: '',
+                wrappers: ['form'],
+                templateOptions: {
+                  label: '支付密码',
+                  type: 'password',
+                  layout : 'vertical',
+                },
+                validation: {
+                  messages: {
+                    required: '需要支付密码才能进行支付'
+                  }
+                }
+              },
+              {
+                type: 'button-group',
+                className: 'col-7',
+                templateOptions: {
+                  type: 'primary',
+                  options: [
+                    {
+                      text: '上一步',
+                      size: 'default',
+                      type: 'submit'
+                    },
+                    {
+                      text: '下一步',
+                      size: 'default'
+                    },
+                  ]
+                }
+              },
+            ]
+          },
+          {
+            type: 'card',
+            className: "col-12",
+            templateOptions: {
+              bodyStyle: {
+                maxWidth: '520px',
+                margin: '0 auto'
+              }
             },
-          ]
-        }
-      },
+            hideExpression: 'model.steps != 3',
+            fieldGroup: [{
+
+            }]
+          }
+        ]
+      }
     ],
     info: {
       title: '分步表单',

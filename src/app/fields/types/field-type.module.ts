@@ -1,5 +1,6 @@
    
 import { NgModule } from '@angular/core';
+import { AlertFieldModule } from './alert';
 import { AutocompleteFieldModule } from './autocomplete';
 import { ButtonFieldModule } from './button';
 import { CardFieldModule } from './card';
@@ -24,6 +25,7 @@ import { UploadFieldModule } from './upload';
 
 @NgModule({
   imports: [
+    AlertFieldModule,
     AutocompleteFieldModule,
     ButtonFieldModule,
     CheckboxFieldModule,

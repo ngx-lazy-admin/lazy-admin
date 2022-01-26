@@ -25,4 +25,12 @@ export abstract class ShareFieldType extends FieldType {
       }
     });
   }
+
+  close ($event: boolean) {
+    this.zone.runOutsideAngular(() => {
+      if (this.to.close) {
+        this.to.close(this.field, this);
+      }
+    });
+  }
 }

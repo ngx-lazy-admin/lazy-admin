@@ -5,7 +5,26 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({
 	selector: 'div[input-number-field]',
-	templateUrl: './input-number.component.html',
+	template: `
+		<nz-input-number  
+			class="w-100"
+			[formControl]="control"
+			[formlyAttributes]="field"
+			[nzMin]="nzMin"
+			[nzMax]="nzMax"
+			[nzDisabled]="nzDisabled"
+			[nzPrecision]="nzPrecision"
+			[nzSize]="nzSize"
+			[nzPlaceHolder]="nzPlaceHolder"
+			[nzFormatter]="nzFormatter"
+			[nzParser]="nzParser"
+			[nzStep]="nzStep" 
+			(ngModelChange)="ngModelChange($event)"
+			(nzFocus)="nzFocus($event)"
+			(nzBlur)="nzBlur($event)"
+			ngDefaultControl
+		></nz-input-number>
+	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 })

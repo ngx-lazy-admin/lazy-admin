@@ -15,10 +15,12 @@ import { IconsProviderModule } from '../../modules/icons-provider.module';
 
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
+import { WatermarkPipe } from '../../pipes/watermark.pipe';
 
 @NgModule({
   declarations: [
     FormComponent,
+    WatermarkPipe
   ],
   imports: [
     CommonModule,

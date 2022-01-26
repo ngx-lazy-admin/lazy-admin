@@ -9,7 +9,7 @@ import { ShareFieldType } from '../share-field.type';
 type ButtonClickType = (field: FormlyFieldConfig, that?: any) => boolean;
 
 export interface ButtonGroupOptionInterface {
-  label: string | number | null ;
+  text: string | number | null ;
   value?: NzSafeAny | null;
   icon?: string,
   disabled?: boolean;
@@ -22,18 +22,18 @@ export interface ButtonGroupOptionInterface {
 @Component({
   selector: 'div[button-field]',
   template: `
-    <ng-container *ngFor="let item of groupOptions; let i = index">
+    <ng-container *ngFor="let item of nzOptions; let i = index">
       <a nz-button 
         [nzType]="item?.type || 'primary'" 
         [disabled]="item.disabled"
         [nzSize]="item?.size || 'small'"
-        class="mx-1" 
+        class="me-2" 
         (click)="onClick(item, $event)"
       >
         <i *ngIf="item?.icon" nz-icon nzType="item?.icon"></i>
-        {{item.label}}
+        {{item.text}}
       </a>
-      <ng-container *ngIf="nzGhost && i != groupOptions.length - 1">
+      <ng-container *ngIf="nzGhost && i != nzOptions.length - 1">
         <nz-divider class="mx-0" nzType="vertical"></nz-divider>
       </ng-container>
     </ng-container>
@@ -79,9 +79,10 @@ export class ButtonGroupField extends ShareFieldType implements OnInit {
 		return this.to.nzDanger || this.to.danger || false;
 	}
 
-  get groupOptions(): ButtonGroupOptionInterface[] {
-    return this.to.groupOptions || []
+  get nzOptions () : ButtonGroupOptionInterface[] {
+    return this.to.nzOptions || this.to.options || []
   }
+
 
   private _destroy$ = new Subject<void>();
 

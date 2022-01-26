@@ -14,6 +14,10 @@ import { InputNumberField } from './input-number.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'number',
+          component: InputNumberField,
+        },
+        {
           name: 'input-number',
           component: InputNumberField,
         },

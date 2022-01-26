@@ -2,17 +2,8 @@ import { Component, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } fr
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
+import { StepsOptionInterface } from './steps.type';
 
-export interface StepsOptionInterface {
-  value: any | null;
-  description?: string | TemplateRef<void>;
-  icon: string | string[] | Set<string> | { [klass: string]: any; }
-  status: 'wait' | 'process' | 'finish' | 'error';
-  label: string | TemplateRef<void>;
-  subtitle: string | TemplateRef<void>;
-  disabled?: boolean;
-  percentage?: number;
-}
 
 @Component({
   selector: 'div[steps-field]',
@@ -35,7 +26,7 @@ export interface StepsOptionInterface {
     <nz-steps-item 
       [formControl]="control"
 	    [formlyAttributes]="field"
-      [options]="configOptions"
+      [nzOptions]="nzOptions"
       [nzProgressDot]="nzProgressDot"
       [readonly]="readonly"
       (nzIndexChange)="nzIndexChange($event)"
@@ -79,12 +70,8 @@ export class StepsField extends FieldType {
     return this.to.nzStartIndex || 0
   }
 
-  get configOptions(): Observable<any[]> {
-    if (!(this.to.options instanceof Observable)) {
-      return of(this.to.options || []);
-    } else {
-      return this.to.options
-    }
+  get nzOptions () : StepsOptionInterface[] {
+    return this.to.nzOptions || this.to.options || []
   }
 
   get readonly(): boolean {

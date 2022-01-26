@@ -6,9 +6,13 @@ import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
 import { DescriptionsField } from './descriptions.component';
+import { DescriptionsGroupField } from './descriptions-group.component';
 
 @NgModule({
-  declarations: [DescriptionsField],
+  declarations: [
+    DescriptionsField,
+    DescriptionsGroupField
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -24,6 +28,14 @@ import { DescriptionsField } from './descriptions.component';
         {
           name: 'nz-descriptions',
           component: DescriptionsField,
+        },
+        {
+          name: 'descriptions-group',
+          component: DescriptionsGroupField,
+        },
+        {
+          name: 'nz-descriptions-group',
+          component: DescriptionsGroupField,
         }
       ],
     }),

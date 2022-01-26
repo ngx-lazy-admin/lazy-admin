@@ -3,6 +3,7 @@ import { FieldWrapper, FormlyConfig } from '@ngx-formly/core';
 import { NzFormTooltipIcon, NzFormLayoutType } from 'ng-zorro-antd/form';
 import { isObservable, Observable, of } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
+import { field } from 'src/app/api/field/mock';
 
 const isObject = (x: any) => {
   return x != null && typeof x === 'object';
@@ -22,7 +23,7 @@ const isObject = (x: any) => {
       <ng-container *ngIf="to.label && to.hideLabel !== true">
         <nz-form-label 
           [nzNoColon]="nzNoColon" 
-          [nzRequired]="required" 
+          [nzRequired]="nzRequired" 
           [nzFor]="id" 
           [nzTooltipTitle]="nzTooltipTitle"
           [nzTooltipIcon]="nzTooltipIcon">
@@ -57,7 +58,7 @@ export class FormWrapper extends FieldWrapper {
     return this.to.nzNoColon || false
   }
 
-  get required(): boolean {
+  get nzRequired(): boolean {
     return  (this.to.nzRequired || this.to.required) && this.to.hideRequiredMarker !== true || false
   }
 
@@ -107,44 +108,46 @@ export class FormWrapper extends FieldWrapper {
   }
 
   get errorMessage(): any {
-    const fieldForm = this.field.formControl;
-
-    if (fieldForm) {
-      for (const error in fieldForm.errors) {
-        if (fieldForm.errors.hasOwnProperty(error)) {
-          let message = this.config.getValidatorMessage(error);
+    // debugger
+    // const fieldForm = this.field.formControl;
+    // console.log(this.key)
+    return '1111'
+    // if (fieldForm) {
+    //   for (const error in fieldForm.errors) {
+    //     if (fieldForm.errors.hasOwnProperty(error)) {
+    //       let message = this.config.getValidatorMessage(error);
   
-          if (isObject(fieldForm.errors[error])) {
-            if (fieldForm.errors[error].errorPath) {
-              return;
-            }
+    //       if (isObject(fieldForm.errors[error])) {
+    //         if (fieldForm.errors[error].errorPath) {
+    //           return;
+    //         }
   
-            if (fieldForm.errors[error].message) {
-              message = fieldForm.errors[error].message;
-            }
-          }
+    //         if (fieldForm.errors[error].message) {
+    //           message = fieldForm.errors[error].message;
+    //         }
+    //       }
   
-          if (this.field.validation?.messages?.[error]) {
-            message = this.field.validation.messages[error];
-          }
+    //       if (this.field.validation?.messages?.[error]) {
+    //         message = this.field.validation.messages[error];
+    //       }
   
-          if (this.field.validators?.[error]?.message) {
-            message = this.field.validators[error].message;
-          }
+    //       if (this.field.validators?.[error]?.message) {
+    //         message = this.field.validators[error].message;
+    //       }
   
-          if (this.field.asyncValidators?.[error]?.message) {
-            message = this.field.asyncValidators[error].message;
-          }
+    //       if (this.field.asyncValidators?.[error]?.message) {
+    //         message = this.field.asyncValidators[error].message;
+    //       }
   
-          if (typeof message === 'function') {
-            return message(fieldForm.errors[error], this.field);
-          }
+    //       if (typeof message === 'function') {
+    //         return message(fieldForm.errors[error], this.field);
+    //       }
   
-          return message;
-        }
-      }
+    //       return message;
+    //     }
+    //   }
   
-    }
+    // }
   }
 
   constructor(
@@ -153,17 +156,31 @@ export class FormWrapper extends FieldWrapper {
     super();
   }
 
+  
+
+
   errorMessage$?: Observable<string>;
 
+  ngOnInit () {
+    this.errorMessage$ = this.field.formControl?.statusChanges.pipe(
+      startWith(null),
+      tap(() => {
+        console.log(this)
+      }),
+      switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
+    );
+  }
+
   ngOnChanges() {
-    if (this.field.formControl) {
-      this.errorMessage$ = this.field.formControl.statusChanges.pipe(
-        startWith(null),
-        tap(() => {
-          console.log(this)
-        }),
-        switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
-      );
-    }
+    console.log('666');
+    // if (this.field.formControl) {
+    //   this.errorMessage$ = this.field.formControl.statusChanges.pipe(
+    //     startWith(null),
+    //     tap(() => {
+    //       console.log(this)
+    //     }),
+    //     switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
+    //   );
+    // }
   }
 }

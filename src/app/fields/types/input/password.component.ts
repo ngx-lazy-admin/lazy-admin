@@ -8,17 +8,21 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 	changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 	template: `
-		<input
-			nz-input
-			[formControl]="control"
-			[type]="nzType"
-			[formlyAttributes]="field"
-			[nzSize]="nzSize"
-			[nzBorderless]="nzBorderless"
-		/>
+    <nz-input-group [nzSuffix]="suffixTemplate">
+      <input
+        nz-input
+				[type]="passwordVisible ? 'text' : 'password'"
+				[formControl]="control"
+				[formlyAttributes]="field"
+        [placeholder]="placeholder"
+      />
+    </nz-input-group>
+    <ng-template #suffixTemplate>
+      <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+    </ng-template>
 	`
 })
-export class InputField extends FieldType {
+export class PasswordField extends FieldType {
 
 	get nzBorderless(): boolean {
 		return this.to.nzBorderless || this.to.borderless || false
@@ -32,7 +36,13 @@ export class InputField extends FieldType {
 		return this.to.nzType || this.to.type || 'text'
 	}
 
+	get placeholder(): string {
+		return this.to.nzPlaceholder || this.to.placeholder || ''
+	}
+
 	get control() : FormControl {
 		return this.formControl as FormControl
   }
+
+	passwordVisible: boolean = false;
 }

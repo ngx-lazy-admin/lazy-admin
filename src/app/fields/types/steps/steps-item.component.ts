@@ -17,17 +17,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 import { InputBoolean, InputNumber } from 'ng-zorro-antd/core/util';
-
-export interface StepsOptionInterface {
-  value: any | null;
-  description?: string | TemplateRef<void>;
-  icon: string | string[] | Set<string> | { [klass: string]: any; }
-  status: 'wait' | 'process' | 'finish' | 'error';
-  label: string | TemplateRef<void>;
-  subtitle: string | TemplateRef<void>;
-  disabled?: boolean;
-  percentage?: number;
-}
+import { StepsOptionInterface } from './steps.type';
 
 @Component({
   selector: 'nz-steps-item',
@@ -47,7 +37,7 @@ export interface StepsOptionInterface {
       [nzProgressDot]="nzProgressDot"
       [nzStartIndex]="nzStartIndex"
       (nzIndexChange)="null">
-      <ng-container *ngFor="let item of options | async; let i = index; trackBy: trackByFn">
+      <ng-container *ngFor="let item of nzOptions; let i = index; trackBy: trackByFn">
         <nz-step 
           [nzTitle]="item.title"
           [nzDescription]="item.description"
@@ -79,7 +69,7 @@ export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDes
   @Input() nzStatus: string = 'process';
   @Input() @InputNumber() nzStartIndex: number = 0;
   @Input() @InputBoolean() readonly: boolean = false;
-  @Input() options: Observable<any[]> = of([])
+  @Input() nzOptions: StepsOptionInterface[] = []
   
   IndexChange: boolean = false
 

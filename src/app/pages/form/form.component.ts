@@ -43,7 +43,7 @@ export class FormComponent {
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = []
 
-  loading = false;
+  loading: boolean = true;
   status = 200;
 
   routeCache : any= {};
@@ -67,6 +67,7 @@ export class FormComponent {
           this.render(this.routeCache[this.router.url])
         } else {
           this.clearData()
+          this.loading = true;
         }
 
         this.fieldService.getField(this.router.url).subscribe(result => {
@@ -85,7 +86,6 @@ export class FormComponent {
   render (result: any) {
     if (typeof result?.fields === 'string') {
       try {
-        console.log('11')
         this.fields = this.execEval(result?.fields);
         this.model = result?.data;
         this.info = result?.info;
@@ -99,6 +99,11 @@ export class FormComponent {
         this.info = result?.info;
       }
     }
+
+    // this.form.clearValidators()
+    // this.form.clearAsyncValidators()
+    // this.form.reset()
+
     this.status = 200;
     this.loading = false;
     this.cd.detectChanges();
@@ -108,6 +113,7 @@ export class FormComponent {
     this.fields = [];
     this.model = null;
     this.info = null;
+    this.form.reset();
     this.cd.detectChanges();
   }
 
