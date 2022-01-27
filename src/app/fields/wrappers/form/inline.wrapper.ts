@@ -170,7 +170,7 @@ export class InlineWrapper extends FieldWrapper {
 
   ngAfterViewInit() {
     // this.formControl?.valueChanges(item => {
-    //   console.log(itme)
+    //   console.log(item)
     // })
     // this.formControl.valueChanges.subscribe(item => {
 
