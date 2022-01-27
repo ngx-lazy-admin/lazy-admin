@@ -6,7 +6,12 @@ import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button'
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { ShareFieldType } from '../share-field.type';
 
+type clickFn = (field: FormlyFieldConfig, that?: any) => boolean;
+type confirmFn = (field: FormlyFieldConfig, that?: any) => boolean;
+
+
 type ButtonClickType = (field: FormlyFieldConfig, that?: any) => boolean;
+
 
 export interface ButtonGroupOptionInterface {
   text: string | number | null ;
@@ -16,19 +21,29 @@ export interface ButtonGroupOptionInterface {
   type?: NzButtonType,
   hide?: boolean;
   size?: NzButtonSize;
-  click?: ButtonClickType;
+  click?: clickFn;
+  confirm?: confirmFn,
+  cancel: confirmFn
 }
 
 @Component({
   selector: 'div[button-field]',
   template: `
     <ng-container *ngFor="let item of nzOptions; let i = index">
-      <a nz-button 
+      <a 
+        nz-button 
+        class="me-2" 
         [nzType]="item?.type || 'primary'" 
         [disabled]="item.disabled"
         [nzSize]="item?.size || 'small'"
-        class="me-2" 
+
+        nz-popconfirm
+        nzPopconfirmTitle="111"
+        nzPopconfirmPlacement="bottom"
+
         (click)="onClick(item, $event)"
+        (nzOnConfirm)="onConfirm(item)"
+        (nzOnCancel)="onCancel(item)"
       >
         <i *ngIf="item?.icon" nz-icon nzType="item?.icon"></i>
         {{item.text}}
@@ -89,6 +104,18 @@ export class ButtonGroupField extends ShareFieldType implements OnInit {
   onClick (item: ButtonGroupOptionInterface, $event: Event) {
     if (item.click) {
       item.click(this.field, this);
+    }
+  }
+
+  onConfirm (item: ButtonGroupOptionInterface) {
+    if (item.confirm) {
+      item.confirm(this.field, this);
+    }
+  }
+
+  onCancel (item: ButtonGroupOptionInterface) {
+    if (item.cancel) {
+      item.cancel(this.field, this);
     }
   }
 

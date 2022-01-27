@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FieldService } from 'src/app/api/field';
@@ -7,6 +7,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { inNextTick } from 'ng-zorro-antd/core/util';
 import { takeUntil } from 'rxjs/operators';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 export interface headerInfoType {
   title: string,
@@ -40,7 +41,11 @@ export class FormComponent {
     name: 1,
   }
 
-  options: FormlyFormOptions = {};
+  options: FormlyFormOptions = {
+    formState: {
+      caches: '1'
+    }
+  };
   fields: FormlyFieldConfig[] = []
 
   loading: boolean = true;
@@ -100,13 +105,23 @@ export class FormComponent {
       }
     }
 
-    // this.form.clearValidators()
-    // this.form.clearAsyncValidators()
-    // this.form.reset()
 
     this.status = 200;
     this.loading = false;
     this.cd.detectChanges();
+  }
+
+  submit (form: FormGroup) {
+    form.markAsDirty();
+    console.log(form);
+  }
+
+  resetForm(): void {
+    setTimeout(() => {
+      this.options.parentForm?.resetForm();
+      this.form.markAsUntouched();
+      console.log('resetForm')
+    }, 0);
   }
 
   clearData () {

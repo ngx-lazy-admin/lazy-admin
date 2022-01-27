@@ -26,7 +26,6 @@ export interface VirtualDataInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-    <!-- <div class="font-weight-bold f16 my-3" *ngIf="nzTitle">{{ nzTitle }}</div> -->
     <nz-table
       #nzTable
       [nzData]="formControl.value"
@@ -42,10 +41,10 @@ export interface VirtualDataInterface {
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of nzTable.data; let index = index;">
+        <tr *ngFor="let data of nzTable.data; trackBy: trackByFn; let index = index;">
           <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
             <td *ngFor="let td of field.fieldGroup[index].fieldGroup">
-              <ng-container *ngIf="td.type == 'text'">
+              <ng-container *ngIf="td.type == 'text' ">
                 {{ td.formControl?.value }}
               </ng-container>
               <ng-container *ngIf="td.type != 'text'">
@@ -122,14 +121,21 @@ export class TableField extends FieldArrayType implements OnDestroy {
     return this.to.nzAddIcon || false;
   }
 
-  trackByFn(index: number, item: any) {
-    return item.id ? item.id : index;
+  // { [key: string]: { edit: boolean; data: ItemData } } = {}
+  get editCache(): { [key: string]: { edit: boolean } } {
+    return this.to.editCache || false;
   }
+
+  // editCache: { [key: string]: { edit: boolean; data: ItemData } } = {};
 
   constructor(
     private cd: ChangeDetectorRef,
   ) { 
     super();
+  }
+
+  trackByFn(index: number, item: any) {
+    return item.id ? item.id : index;
   }
 
   ngAfterViewInit(): void {
@@ -138,6 +144,10 @@ export class TableField extends FieldArrayType implements OnDestroy {
       .subscribe((data: number) => {
         console.log('scroll index to', data);
       });
+
+    if (this.options && this.options.formState) {
+      // this.options.formState[this.id]['caches'] = 
+    }
   }
 
   ngOnDestroy() {

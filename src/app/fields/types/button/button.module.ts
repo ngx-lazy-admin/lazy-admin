@@ -7,6 +7,7 @@ import { ButtonField } from './button.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ButtonGroupField } from './button-group.component';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
   ],
   imports: [
     CommonModule,
+    NzPopconfirmModule,
     ReactiveFormsModule,
     NzButtonModule,
     NzDividerModule,

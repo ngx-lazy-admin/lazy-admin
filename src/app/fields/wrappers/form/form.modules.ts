@@ -2,13 +2,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
-import { FormControl, ReactiveFormsModule, ValidationErrors } from '@angular/forms';
+import { AbstractControl, FormControl, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormWrapper } from './form.wrapper';
 import { InlineWrapper } from './inline.wrapper';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
 import { FieldValidatorFn } from '@ngx-formly/core/lib/services/formly.config';
+import { TableWrapper } from './table.wrapper';
 
 export function minValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This value should be more than ${field.templateOptions?.min}`;
@@ -26,10 +27,19 @@ export function IpValidatorMessage(err: any, field: FormlyFieldConfig) {
   return `"${field.formControl?.value}" is not a valid IP Address`;
 }
 
+// https://angular.cn/guide/form-validation#defining-custom-validators
+export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const forbidden = nameRe.test(control.value);
+    return forbidden ? {forbiddenName: {value: control.value}} : null;
+  };
+}
+
 @NgModule({
   declarations: [
     FormWrapper,
     InlineWrapper,
+    TableWrapper,
   ],
   imports: [
     CommonModule,
@@ -46,6 +56,10 @@ export function IpValidatorMessage(err: any, field: FormlyFieldConfig) {
           name: 'inline',
           component: InlineWrapper,
         },
+        {
+          name: 'table',
+          component: TableWrapper
+        }
       ],
       validators: [
         // { name: 'ip', validation: IpValidator },

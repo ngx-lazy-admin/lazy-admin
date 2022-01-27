@@ -1,6 +1,6 @@
 <nz-spin *ngIf="loading" [nzSpinning]="loading" class="mt-5"></nz-spin>
 
-<ng-container *ngIf="!loading">
+<ng-container *ngIf="!loading && form">
 	<ng-container  *ngIf="status == 200">
 		<nz-page-header class="bg-white mb-3">
 			<nz-page-header-title>{{info?.title}}</nz-page-header-title>
@@ -10,6 +10,10 @@
 		</nz-page-header>
 		<form [formGroup]="form">
 			<formly-form [form]="form" class="row" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
+			{{model | json}}
+			<button type="submit" class="btn btn-primary submit-button" (click)="submit(form)">Submit</button>
+			<button  class="btn btn-primary submit-button" (click)="resetForm()">resetForm</button>
+
 		</form>
 	</ng-container>
 

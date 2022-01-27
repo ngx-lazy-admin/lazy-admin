@@ -1,63 +1,46 @@
 import { Component, ViewChild, ViewContainerRef, OnInit, TemplateRef, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FieldWrapper, FormlyConfig } from '@ngx-formly/core';
-import { NzFormTooltipIcon, NzFormLayoutType } from 'ng-zorro-antd/form';
+import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { isObservable, Observable, of } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
-import { field } from 'src/app/api/field/mock';
 
 const isObject = (x: any) => {
   return x != null && typeof x === 'object';
 }
 
 @Component({
-  selector: 'app-form-field-wrapper',
-  host: {
-    '[class.ant-form-horizontal]': 'nzLayout === "horizontal"',
-    '[class.ant-form-vertical]': 'nzLayout === "vertical"',
-    '[class.ant-form-inline]': 'nzLayout === "inline"',
-  },
+  selector: 'app-table-wrapper',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <nz-form-item>
-      <ng-container *ngIf="to.label && to.hideLabel !== true">
-        <nz-form-label 
-          [nzNoColon]="nzNoColon" 
-          [nzRequired]="nzRequired" 
-          [nzFor]="id" 
-          [nzTooltipTitle]="nzTooltipTitle"
-          [nzTooltipIcon]="nzTooltipIcon">
-          <span [innerHTML]="to.label"></span>
-        </nz-form-label>
-      </ng-container>
+    <nz-form-item class="mb-2">
       <nz-form-control 
-        [nzValidateStatus]="errorState" 
-        [nzErrorTip]="errorTpl"
-        [nzExtra]="nzExtra"
-        [nzHasFeedback]="nzHasFeedback">
+        nz-tooltip 
+        [nzTooltipVisible]="showError" 
+        [nzTooltipTrigger]="'focus'" 
+        [nzValidateStatus]="errorState"
+        [nzTooltipTitle]="showError ? titleTemplate : null" 
+        nzTooltipColor="#fff"
+        nzTooltipPlacement="topRight">
         <ng-container #fieldComponent></ng-container>
-        <ng-template #errorTpl let-control>
-          <span>{{ errorMessage }}</span>
+        <ng-template #titleTemplate let-thing>
+          <span class="ant-form-item-explain ant-form-item-explain-error">{{errorMessage}}</span>
         </ng-template>
       </nz-form-control>
-      <!-- {{ 'invalid：' + field.formControl?.invalid  
-          + ', touched: ' +  field.formControl?.touched 
-          + ', submitted: ' + this.options?.parentForm?.submitted
-          + ', show: ' + !!field.validation?.show
-      }}  -->
     </nz-form-item>
   `
 })
 
-export class FormWrapper extends FieldWrapper {
+export class TableWrapper extends FieldWrapper {
+  // @ViewChild('fieldTpl', { read: ViewContainerRef })
 
-  get nzLayout(): NzFormLayoutType  {
-    return this.to.layout || this.to.layout || 'horizontal'
+  // ant-form-horizontal ant-form-vertical ant-form-inline
+
+  get nzLayout(): string {
+    return this.to.nzLayout ? this.to.nzLayout : 'horizontal'
   }
 
   get errorState() {
-    // return  this.field.formControl?.invalid && 
-    //   (this.field.formControl?.touched || this.options?.parentForm?.submitted || !!this.field.validation?.show)
     return this.showError ? 'error' : '';
   }
 
@@ -70,19 +53,23 @@ export class FormWrapper extends FieldWrapper {
   }
 
   get nzTooltipTitle(): string | TemplateRef<void> {
-    return this.to.nzTooltipTitle || this.to.tooltipTitle || ''
+    return this.to.nzTooltipTitle
   }
 
   get nzTooltipIcon(): string | NzFormTooltipIcon {
-    return this.to.NzFormTooltipIcon || { type: 'question-circle', theme: 'outline' }
+    return this.to.NzFormTooltipIcon || null
   }
 
   get nzValidateStatus(): string | NzFormTooltipIcon {
     return this.to.nzValidateStatus || null
   }
 
+  get nzTooltipStatus (): boolean {
+    return false
+  }
+
   get nzHasFeedback(): boolean {
-    return this.to.nzHasFeedback || true
+    return this.to.nzHasFeedback() || false
   }
 
   get nzExtra(): string | TemplateRef<void> {
@@ -115,9 +102,8 @@ export class FormWrapper extends FieldWrapper {
   }
 
   get errorMessage(): any {
-    // debugger
     const fieldForm = this.field.formControl;
-    console.log(this)
+
     if (fieldForm) {
       for (const error in fieldForm.errors) {
         if (fieldForm.errors.hasOwnProperty(error)) {
@@ -160,28 +146,40 @@ export class FormWrapper extends FieldWrapper {
     private config: FormlyConfig
   ) {
     super();
-  }
 
+    // console.log(this)
+    // this.formControl.valueChanges.subscribe(item => {
+    //   console.log(item)
+    //   console.log(this.errorState)
+    // })
+  }
 
   errorMessage$?: Observable<string>;
 
-  ngOnInit () {
-    this.errorMessage$ = this.field.formControl?.statusChanges.pipe(
-      tap(() => {
-      }),
-      switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
-    );
+  ngOnChanges() {
+    if (this.field.formControl) {
+      this.errorMessage$ = this.field.formControl.statusChanges.pipe(
+        startWith(null),
+        tap(() => {
+          console.log(this)
+        }),
+        switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
+      );
+    }
   }
 
-  ngOnChanges() {
-    // if (this.field.formControl) {
-    //   this.errorMessage$ = this.field.formControl.statusChanges.pipe(
-    //     startWith(null),
-    //     tap(() => {
-    //       console.log(this)
-    //     }),
-    //     switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
-    //   );
-    // }
+  ngAfterViewInit() {
+    // this.formControl?.valueChanges(item => {
+    //   console.log(itme)
+    // })
+    // this.formControl.valueChanges.subscribe(item => {
+
+    // })
+  }
+
+  onBtnClick () {
+    if (this.to.buttonClick) {
+      this.to.buttonClick(this.model, this.options);
+    }
   }
 }

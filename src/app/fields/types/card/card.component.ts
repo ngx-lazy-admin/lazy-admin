@@ -1,13 +1,12 @@
 import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { FieldArrayType, FieldType, FormlyFieldConfig } from '@ngx-formly/core';
-import { NzDescriptionsSize  } from 'ng-zorro-antd/descriptions';
+import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 @Component({
   selector: 'div[card-field]',
   template: `
   <nz-card 
-    [nzBodyStyle]="nzBodyStyle" 
+    [nzBodyStyle]="nzBodyStyle"
     [nzTitle]="nzTitle" 
     [nzType]="nzType" 
     [nzExtra]="extraFields ? extraTemplate : ''"

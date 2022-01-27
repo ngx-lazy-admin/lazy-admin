@@ -1,6 +1,10 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { 
+  Component, 
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ViewEncapsulation
+} from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
-import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 @Component({
   selector: 'div[collapse-field]',
@@ -61,7 +65,6 @@ export class CollapseField extends FieldArrayType implements OnDestroy {
   get nzExpandIconPosition() : 'left' | 'right' {
 		return this.to.nzExpandIconPosition || 'right';
   }
-
 
   activeChange ($event: boolean, fn: any) {
     if (fn) {

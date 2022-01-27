@@ -215,7 +215,7 @@ export const form = [
           },
           {
             type: 'card',
-            className: "col-12 row",
+            className: "col-12",
             templateOptions: {
               borderless: true,
               bodyStyle: {
@@ -223,7 +223,6 @@ export const form = [
                 margin: '0 auto',
               }
             },
-            hideExpression: 'model.steps != 1',
             fieldGroup: [
               {
                 key: 'account_name',
@@ -343,7 +342,6 @@ export const form = [
                 margin: '0 auto'
               }
             },
-            hideExpression: 'model.steps != 2',
             fieldGroup: [
               {
                 type: 'alert',
@@ -425,7 +423,6 @@ export const form = [
                 margin: '0 auto'
               }
             },
-            hideExpression: 'model.steps != 3',
             fieldGroup: [{
 
             }]
@@ -442,34 +439,395 @@ export const form = [
     id: 'advanced-form',
     fields: [
       {
-        id: 'dashboard',
-        type: 'steps',
+        type: 'card',
         key: 'name',
-        className: "w-50 d-block",
-        wrapperss: ['inline'],
+        className: "col-12",
+
         templateOptions: {
-          label: "姓名1",
-          required: true,
-          placeholder: '姓名2',
-          readonly: true,
-          nzShowArrow: false,
-          status: 'wait',
-          configOptions: [
-            {
-              label: 'Finished',
-              description: 'This is a description.',
-              subtitle: 'nzSubtitle'
+          title: "仓库管理",
+          bodyClassName: 'row',
+        },
+        fieldGroup: [
+          {
+            key: 'account_name',
+            type: 'input',
+            className: 'col-3 d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '仓库名',
+              required: true,
+              layout : 'vertical',
+              placeholder: '请输入仓库名称',
             },
-            {
-              label: 'In Progress',
-              description: 'This is a description.'
+            validation: {
+              messages: {
+                required: '请输入仓库名称'
+              }
+            }
+          },
+          {
+            key: 'account_type',
+            type: 'input',
+            className: 'col-3 offset-1 d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '仓库域名',
+              required: true,
+              layout : 'vertical',
+              placeholder: '请输入',
             },
-            {
-              label: 'Waiting',
-              description: 'This is a description.'
+            validation: {
+              messages: {
+                required: '请输入仓库域名'
+              }
+            }
+          },
+          {
+            key: 'account_user',
+            type: 'select',
+            className: 'col-4 offset-1 d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '仓库管理员',
+              required: true,
+              layout : 'vertical',
+              placeholder: 'test@example.com',
+              options: [
+                {
+                  value: 'zhou',
+                  label: '周毛毛'
+                },
+                {
+                  value: 'xiao',
+                  label: '付小小'
+                },
+              ]
             },
-          ]
-        }
+            validation: {
+              messages: {
+                required: '请输入收款人账户'
+              }
+            }
+          },
+          {
+            key: 'username',
+            type: 'select',
+            className: 'col-3  d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '审批人',
+              required: true,
+              layout : 'vertical',
+              placeholder: '请选择管理员',
+              options: [
+                {
+                  value: 'zhou',
+                  label: '周毛毛'
+                },
+                {
+                  value: 'xiao',
+                  label: '付小小'
+                },
+              ]
+            },
+            validation: {
+              messages: {
+                required: '请输入收款人姓名'
+              }
+            }
+          },
+          {
+            key: 'account',
+            type: 'input-number',
+            className: 'col-3 offset-1  d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '生效日期',
+              required: true,
+              layout : 'vertical',
+            },
+            validation: {
+              messages: {
+                required: '请输入转账金额'
+              }
+            }
+          },
+          {
+            type: 'select',
+            className: 'col-4  offset-1  d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '仓库类型',
+              layout : 'vertical',
+              options: [
+                {
+                  value: 'zhou',
+                  label: '周毛毛'
+                },
+                {
+                  value: 'xiao',
+                  label: '付小小'
+                },
+              ]
+            }
+          },
+        ]
+      },
+      {
+        type: 'card',
+        key: 'name',
+        className: "col-12 mt-3",
+
+        templateOptions: {
+          title: "任务管理",
+          bodyClassName: 'row',
+        },
+        fieldGroup: [
+          {
+            key: 'account_name',
+            type: 'input',
+            className: 'col-3 d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '任务名',
+              required: true,
+              layout : 'vertical',
+              placeholder: '请输入',
+            },
+            validation: {
+              messages: {
+                required: '请输入仓库名称'
+              }
+            }
+          },
+          {
+            key: 'account_type',
+            type: 'input',
+            className: 'col-3 offset-1 d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '任务描述',
+              required: true,
+              layout : 'vertical',
+              placeholder: '请输入',
+            },
+            validation: {
+              messages: {
+                required: '请输入仓库域名'
+              }
+            }
+          },
+          {
+            key: 'account_user',
+            type: 'select',
+            className: 'col-4 offset-1 d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '执行人',
+              required: true,
+              layout : 'vertical',
+              placeholder: 'test@example.com',
+              options: [
+                {
+                  value: 'zhou',
+                  label: '周毛毛'
+                },
+                {
+                  value: 'xiao',
+                  label: '付小小'
+                },
+              ]
+            },
+            validation: {
+              messages: {
+                required: '请输入收款人账户'
+              }
+            }
+          },
+          {
+            key: 'username',
+            type: 'select',
+            className: 'col-3  d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '责任人',
+              required: true,
+              layout : 'vertical',
+              placeholder: '请选择管理员',
+              options: [
+                {
+                  value: 'zhou',
+                  label: '周毛毛'
+                },
+                {
+                  value: 'xiao',
+                  label: '付小小'
+                },
+              ]
+            },
+            validation: {
+              messages: {
+                required: '请输入收款人姓名'
+              }
+            }
+          },
+          {
+            key: 'account',
+            type: 'input-number',
+            className: 'col-3 offset-1  d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '生效日期',
+              required: true,
+              layout : 'vertical',
+            },
+            validation: {
+              messages: {
+                required: '请输入转账金额'
+              }
+            }
+          },
+          {
+            type: 'select',
+            className: 'col-4  offset-1  d-inline-block',
+            wrappers: ['form'],
+            templateOptions: {
+              label: '任务类型',
+              layout : 'vertical',
+              options: [
+                {
+                  value: 'public',
+                  label: '公开'
+                },
+                {
+                  value: 'primary',
+                  label: '私密'
+                },
+              ]
+            }
+          },
+        ]
+      },
+      {
+        type: 'card',
+        className: "col-12 mt-3",
+        templateOptions: {
+          title: "成员管理",
+          bodyClassName: 'row',
+        },        
+        fieldGroup: [
+          {
+            key: 'people',
+            type: 'table',
+            defaultValue: [
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+            ],
+            fieldArray: {
+              fieldGroup: [
+                {
+                  key: 'name',
+                  type: 'input',
+                  wrappers: ['table'],
+                  templateOptions: {
+                    label: '成员姓名',
+                    required: true,
+                    layout : 'vertical',
+                    placeholder: '请输入',
+                  },
+                  validation: {
+                    messages: {
+                      required: '请输入仓库域名'
+                    }
+                  }
+                },
+                {
+                  key: 'number',
+                  type: 'input',
+                  wrappers: ['table'],
+                  templateOptions: {
+                    label: '工号',
+                    placeholder: 'test@example.com',
+                    options: [
+                      {
+                        value: 'zhou',
+                        label: '周毛毛'
+                      },
+                      {
+                        value: 'xiao',
+                        label: '付小小'
+                      },
+                    ]
+                  },
+                  validation: {
+                    messages: {
+                      required: '请输入收款人账户'
+                    }
+                  }
+                },
+                {
+                  key: 'department',
+                  type: 'input',
+                  wrappers: ['table'],
+                  templateOptions: {
+                    label: '所属部门',
+                    placeholder: 'test@example.com',
+                    options: [
+                      {
+                        value: 'zhou',
+                        label: '周毛毛'
+                      },
+                      {
+                        value: 'xiao',
+                        label: '付小小'
+                      },
+                    ]
+                  },
+                  validation: {
+                    messages: {
+                      required: '请输入收款人账户'
+                    }
+                  }
+                },
+                {
+                  type: 'button-group',
+                  wrappers: ['table'],
+                  templateOptions: {
+                    label: '操作',
+                    placeholder: '请选择管理员',
+                    options: [
+                      {
+                        value: '编辑',
+                        text: '编辑'
+                      },
+                      {
+                        value: '删除',
+                        text: '删除'
+                      },
+                      {
+                        value: '取消',
+                        text: '取消'
+                      }
+                    ]
+                  }
+                },
+              ]
+            }
+          }
+        ]
       },
     ],
     info: {

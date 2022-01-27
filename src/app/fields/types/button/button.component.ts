@@ -3,19 +3,24 @@ import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 import { ShareFieldType } from '../share-field.type';
-import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'div[button-field]',
   template: `
-    <button nz-button
+    <button 
+      nz-button
       [nzGhost]="nzGhost"
       [nzLoading]="nzLoading"
       [nzShape]="nzShape"
       [nzSize]="nzSize"
       [nzType]="nzType"
+      nz-popconfirm
+      nzPopconfirmTitle="Are you sure delete this task?"
+      nzPopconfirmPlacement="bottom"
+      type="submit"
       [nzBlock]="nzBlock"
       (click)="click($event)"
+      (nzOnCancel)="cancel()"
     >
       <i *ngIf="icon" nz-icon [nzType]="icon"></i>
       <ng-container *ngIf="text">{{ text }}</ng-container>
