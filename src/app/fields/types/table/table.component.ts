@@ -7,8 +7,9 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectorRef,
+  SimpleChanges,
  } from '@angular/core';
-import { FieldArrayType } from '@ngx-formly/core';
+import { FieldArrayType, FormlyFieldConfig } from '@ngx-formly/core';
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
@@ -30,25 +31,32 @@ export interface VirtualDataInterface {
       #nzTable
       [nzData]="formControl.value"
       [nzBordered]="true"
-      [nzFrontPagination]="false"
+      [nzFrontPagination]="nzFrontPagination"
       [nzShowPagination]="false"
     >
       <thead>
         <tr>
           <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup;">
-            <th>{{item?.templateOptions?.label}}</th>
+            <th [nzWidth]="nzWidth">{{item?.templateOptions?.label}}</th>
           </ng-container>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of nzTable.data; trackBy: trackByFn; let index = index;">
+        <tr  *ngFor="let data of nzTable.data; trackBy: trackByFn; let index = index;">
           <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
-            <td *ngFor="let td of field.fieldGroup[index].fieldGroup">
-              <ng-container *ngIf="td.type == 'text' ">
-                {{ td.formControl?.value }}
-              </ng-container>
-              <ng-container *ngIf="td.type != 'text'">
+            <td  *ngFor="let td of field.fieldGroup[index].fieldGroup">
+              <ng-container *ngIf="td.id && editCache[td.id] && td.type != 'text' ">
                 <formly-field [field]="td"></formly-field>
+
+                <ng-container *ngIf="editor">
+                  <i nz-icon nzType="check" nzTheme="outline" (click)="confirm(td)"></i>
+                  <i nz-icon nzType="close" nzTheme="outline" (click)="cancel(td)"></i>
+                </ng-container>
+              </ng-container>
+
+              <ng-container *ngIf="!(td.id && editCache[td.id] && td.type != 'text' )">
+                {{ td.formControl?.value }} 
+                <i *ngIf="editor" nz-icon nzType="edit" nzTheme="outline" (click)="edit(td)"></i>
               </ng-container>
             </td>
           </ng-container>
@@ -76,7 +84,16 @@ export class TableField extends FieldArrayType implements OnDestroy {
     return this.to.title || this.to.nzTitle || ''
   }
 
+  get nzWidth(): string {
+    return '10%'
+  }
+
+  get editor(): boolean {
+    return this.to.editor || false
+  }
+
   get nzSize(): NzSizeLDSType {
+       console.log('get')
 		return this.to.nzSize || 'default';
 	}
 
@@ -87,6 +104,10 @@ export class TableField extends FieldArrayType implements OnDestroy {
   get nzTabBarStyle():  { [key: string]: string } | null {
 		return this.to.nzTabBarStyle || false;
 	}
+
+  get nzFrontPagination (): boolean {
+    return this.to.nzFrontPagination || false
+  }
 
 
   get nzTabBarGutter():  number {
@@ -121,17 +142,34 @@ export class TableField extends FieldArrayType implements OnDestroy {
     return this.to.nzAddIcon || false;
   }
 
-  // { [key: string]: { edit: boolean; data: ItemData } } = {}
-  get editCache(): { [key: string]: { edit: boolean } } {
-    return this.to.editCache || false;
-  }
-
-  // editCache: { [key: string]: { edit: boolean; data: ItemData } } = {};
+  editCache: { [key: string]: boolean } = {};
 
   constructor(
     private cd: ChangeDetectorRef,
   ) { 
     super();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
+
+  edit (field: FormlyFieldConfig) {
+    if (field.id) {
+      this.editCache[field.id] = true;
+    }
+  }
+
+  confirm (field: FormlyFieldConfig) {
+    if (field.id) {
+      this.editCache[field.id] = false;
+    }
+  }
+
+  cancel (field: FormlyFieldConfig) {
+    if (field.id) {
+      this.editCache[field.id] = false;
+    }
   }
 
   trackByFn(index: number, item: any) {

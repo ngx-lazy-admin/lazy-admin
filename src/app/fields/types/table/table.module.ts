@@ -6,6 +6,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { TableField } from './table.component';
 import { VirtualTableField } from './virtual-table.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    IconsProviderModule,
     NzTableModule,
     NzEmptyModule,
     FormlyModule.forChild({

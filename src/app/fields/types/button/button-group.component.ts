@@ -21,6 +21,8 @@ export interface ButtonGroupOptionInterface {
   type?: NzButtonType,
   hide?: boolean;
   size?: NzButtonSize;
+  popconfirmTitle?: string,
+  popconfirmPlacement?: string,
   click?: clickFn;
   confirm?: confirmFn,
   cancel: confirmFn
@@ -32,14 +34,16 @@ export interface ButtonGroupOptionInterface {
     <ng-container *ngFor="let item of nzOptions; let i = index">
       <a 
         nz-button 
-        class="me-2" 
+        class="me-2"
+        [class.me-2]="item?.type != 'link'" 
         [nzType]="item?.type || 'primary'" 
         [disabled]="item.disabled"
         [nzSize]="item?.size || 'small'"
 
         nz-popconfirm
-        nzPopconfirmTitle="111"
-        nzPopconfirmPlacement="bottom"
+
+        [nzPopconfirmTitle]="item.popconfirmTitle"
+        [nzPopconfirmPlacement]="item.popconfirmPlacement"
 
         (click)="onClick(item, $event)"
         (nzOnConfirm)="onConfirm(item)"

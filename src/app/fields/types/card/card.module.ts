@@ -11,12 +11,15 @@ import { CardSmallField } from './card-small.component';
 import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTabsModule} from 'ng-zorro-antd/tabs';
+import { SearchCardField } from './search-card.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
     CardField,
     CardTabsField,
     CardSmallField,
+    SearchCardField,
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,7 @@ import { NzTabsModule} from 'ng-zorro-antd/tabs';
     NzDescriptionsModule,
     IconsProviderModule,
     NzToolTipModule,
+    NzButtonModule,
     NzTabsModule,
     FormlyModule.forChild({
       types: [
@@ -49,6 +53,10 @@ import { NzTabsModule} from 'ng-zorro-antd/tabs';
         {
           name: 'nz-card-tabs',
           component: CardTabsField,
+        },
+        {
+          name: 'search-card',
+          component: SearchCardField
         }
       ],
     }),

@@ -735,6 +735,343 @@ export const form = [
                 number: '	00001',
                 department: 'John Brown',
               },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown',
+              },
             ],
             fieldArray: {
               fieldGroup: [
@@ -811,15 +1148,19 @@ export const form = [
                     options: [
                       {
                         value: '编辑',
-                        text: '编辑'
+                        text: '编辑',
+                        type: 'link'
                       },
                       {
                         value: '删除',
-                        text: '删除'
+                        text: '删除',
+                        type: 'link'
+
                       },
                       {
                         value: '取消',
-                        text: '取消'
+                        text: '取消',
+                        type: 'link'
                       }
                     ]
                   }

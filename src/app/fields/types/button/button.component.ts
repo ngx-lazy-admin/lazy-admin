@@ -15,8 +15,8 @@ import { ShareFieldType } from '../share-field.type';
       [nzSize]="nzSize"
       [nzType]="nzType"
       nz-popconfirm
-      nzPopconfirmTitle="Are you sure delete this task?"
-      nzPopconfirmPlacement="bottom"
+      [nzPopconfirmTitle]="nzPopconfirmTitle"
+      [nzPopconfirmPlacement]="nzPopconfirmPlacement"
       type="submit"
       [nzBlock]="nzBlock"
       (click)="click($event)"
@@ -75,6 +75,14 @@ export class ButtonField extends ShareFieldType {
 
   get icon(): string {
     return this.to.icon || ''
+  }
+
+  get nzPopconfirmPlacement(): string {
+    return this.to.nzPopconfirmPlacement || 'bottom'
+  }
+
+  get nzPopconfirmTitle(): string {
+    return this.to.nzPopconfirmTitle || null
   }
 
   private _destroy$ = new Subject<void>();
