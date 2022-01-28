@@ -85,9 +85,48 @@ export const list = [
             className: "col-12 d-block",
             templateOptions: {
               bodyClass: 'row',
+              bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              }
+              },
+              toolbarOptions: [
+                {
+                  text: '查询表格',
+                  type: 'text',
+                  className: 'me-auto',
+                  size: 'default',
+                },
+                {
+                  text: '新建',
+                  type: 'primary',
+                  className: '',
+                  size: 'default',
+                  icon: 'plus',
+                  className: 'mx-1'
+                },
+                {
+                  type: 'default',
+                  icon: 'redo',
+                  type: 'text',
+                  size: 'default',
+                  className: 'mx-1'
+                },
+                {
+                  type: 'default',
+                  type: 'text',
+                  icon: 'column-height',
+                  size: 'default',
+                  className: 'mx-1'
+                },
+                {
+                  type: 'default',
+                  type: 'text',
+                  icon: 'setting',
+                  size: 'default',
+                  className: 'mx-1'
+
+                },
+              ]
             },
             defaultValue: [
               {
@@ -113,6 +152,7 @@ export const list = [
                   templateOptions: {
                     label: '规则名称',
                     tooltipTitle: '目标的服务对象',
+                    tooltipIcon: 'question-circle',
                     layout : 'horizontal',
                     placeholder: '给目标起个名字'
                   }

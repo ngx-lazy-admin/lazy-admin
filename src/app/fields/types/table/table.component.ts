@@ -14,6 +14,7 @@ import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-an
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ButtonGroupOptionInterface } from '../button/button-group.component';
 
 export interface VirtualDataInterface {
   index: number;
@@ -27,17 +28,47 @@ export interface VirtualDataInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
+
+    <div class="table-toolbar mb-3 d-flex">
+      <ng-container *ngFor="let item of toolbarOptions; let i = index">
+        <a 
+          nz-button 
+          [nzType]="item?.type || 'primary'" 
+          [disabled]="item.disabled"
+          [nzSize]="item?.size || 'small'"
+          [class]="item?.className"
+          nz-popconfirm
+          [nzPopconfirmTitle]="item.popconfirmTitle"
+          [nzPopconfirmPlacement]="item.popconfirmPlacement"
+        >
+          <i *ngIf="item?.icon" nz-icon [nzType]="item.icon || 'default'"></i>
+          <span *ngIf="item?.text">{{item?.text}}</span>
+        </a>
+      </ng-container>
+    </div> 
+    
     <nz-table
       #nzTable
       [nzData]="formControl.value"
-      [nzBordered]="true"
+      [nzBordered]="nzBordered"
       [nzFrontPagination]="nzFrontPagination"
       [nzShowPagination]="false"
     >
       <thead>
         <tr>
           <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup;">
-            <th [nzWidth]="nzWidth">{{item?.templateOptions?.label}}</th>
+            <th [nzWidth]="nzWidth">
+              {{item?.templateOptions?.label}}
+
+              <ng-container *ngIf="item?.templateOptions?.tooltipTitle">
+                <i nz-icon 
+                  [nzType]="item?.templateOptions?.tooltipIcon || 'close'" 
+                  nzTheme="outline" 
+                  nz-tooltip 
+                  [nzTooltipTitle]="item?.templateOptions?.tooltipTitle">
+                </i>
+              </ng-container>
+            </th>
           </ng-container>
         </tr>
       </thead>
@@ -53,7 +84,6 @@ export interface VirtualDataInterface {
                   <i nz-icon nzType="close" nzTheme="outline" (click)="cancel(td)"></i>
                 </ng-container>
               </ng-container>
-
               <ng-container *ngIf="!(td.id && editCache[td.id] && td.type != 'text' )">
                 {{ td.formControl?.value }} 
                 <i *ngIf="editor" nz-icon nzType="edit" nzTheme="outline" (click)="edit(td)"></i>
@@ -86,6 +116,10 @@ export class TableField extends FieldArrayType implements OnDestroy {
 
   get nzWidth(): string {
     return '10%'
+  }
+
+  get nzBordered(): boolean {
+    return this.to.nzBordered || this.to.bordered || false
   }
 
   get editor(): boolean {
@@ -143,6 +177,10 @@ export class TableField extends FieldArrayType implements OnDestroy {
   }
 
   editCache: { [key: string]: boolean } = {};
+
+  get toolbarOptions () : ButtonGroupOptionInterface[] {
+    return this.to.toolbarOptions || []
+  }
 
   constructor(
     private cd: ChangeDetectorRef,

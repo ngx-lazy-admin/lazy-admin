@@ -23,6 +23,7 @@ export interface ButtonGroupOptionInterface {
   size?: NzButtonSize;
   popconfirmTitle?: string,
   popconfirmPlacement?: string,
+  className?: string,
   click?: clickFn;
   confirm?: confirmFn,
   cancel: confirmFn
