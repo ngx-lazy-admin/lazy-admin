@@ -1,6 +1,7 @@
 import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
+import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'div[card-field]',
@@ -10,6 +11,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
     [nzTitle]="nzTitle" 
     [nzType]="nzType" 
     [nzExtra]="extraFields ? extraTemplate : ''"
+    [nzActions]="[actionEdit, actionEllipsis]"
     [nzBorderless]="nzBorderless">
     <i *ngIf="to.tooltip" 
       class="gray-500 text-dark position-absolute  top-0 end-0 me-3 mt-3"
@@ -30,6 +32,36 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
       <formly-form [fields]="extraFields"></formly-form>
     </ng-container>
   </ng-template>
+
+  <ng-template #actionSetting>
+    <i nz-icon nzType="setting"></i>
+  </ng-template>
+
+  <ng-container *ngFor="let item of nzActions">
+
+    <!-- <span *ngIf="true">Value: {{ hero | json }}</span> -->
+  </ng-container>
+
+  <ng-template #hero>
+    <div>111</div>
+  </ng-template>
+
+  <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+
+  <ng-template #templatePortalContent>Hello, this is a template portal</ng-template>
+
+  <input #ref2 type="text" />
+
+  <button (click)="log(hero)">11 {{ref2.value}}</button>
+
+  <ng-template #actionEdit>
+    <i nz-icon nzType="edit"></i>
+  </ng-template>
+  <ng-template #actionEllipsis>
+    <i nz-icon nzType="ellipsis"></i>
+  </ng-template>
+
+  {{ heros | json}}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -50,8 +82,11 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 export class CardField extends FieldType  implements OnDestroy {
 
+  heros = [1,2,3]
+  isOdd = '112'
+
   get nzActions(): Array<TemplateRef<void>> {
-		return this.to.nzActions || this.to.actions || '';
+		return this.to.nzActions || this.to.actions || [111,222,333];
 	}
 
   get nzBodyStyle(): { [key: string]: string } {
@@ -104,6 +139,10 @@ export class CardField extends FieldType  implements OnDestroy {
 
   get extraFields(): FormlyFieldConfig[] {
     return this.to.extraFields ? this.to.extraFields(this.field) : null
+  }
+
+  log (tmp: any) {
+    console.log(tmp)
   }
 
   trackByFn(index: number, item: any) {

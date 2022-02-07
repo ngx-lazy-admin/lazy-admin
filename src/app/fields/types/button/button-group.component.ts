@@ -24,6 +24,7 @@ export interface ButtonGroupOptionInterface {
   popconfirmTitle?: string,
   popconfirmPlacement?: string,
   className?: string,
+  options?: [],
   click?: clickFn;
   confirm?: confirmFn,
   cancel: confirmFn
@@ -77,6 +78,10 @@ export class ButtonGroupField extends ShareFieldType implements OnInit {
 
   get nzShape() : NzButtonShape {
 		return this.to.nzShape || this.to.shape || '';
+  }
+
+  get nzMaxCount() : number {
+    return this.to.nzMaxCount || 99;
   }
 
   get nzLoading(): boolean {

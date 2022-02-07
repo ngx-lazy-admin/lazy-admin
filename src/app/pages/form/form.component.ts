@@ -99,12 +99,15 @@ export class FormComponent {
       }
     } else {
       if (result.fields) {
-        this.fields = result.fields;
-        this.model = result?.data;
-        this.info = result?.info;
+        try {
+          this.fields = result.fields;
+          this.model = result?.data;
+          this.info = result?.info;
+        } catch (error) {
+          console.log(error);
+        }
       }
     }
-
 
     this.status = 200;
     this.loading = false;

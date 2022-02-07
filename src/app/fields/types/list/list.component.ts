@@ -24,7 +24,7 @@ export interface VirtualDataInterface {
 }
 
 @Component({
-  selector: 'div[table-field]',
+  selector: 'div[list-field]',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -57,63 +57,25 @@ export interface VirtualDataInterface {
       </ng-container>
     </div> 
 
-    <nz-table
-      #nzTable
-      [nzData]="formControl.value"
-      [nzBordered]="nzBordered"
-      [nzFrontPagination]="nzFrontPagination"
-      [nzShowPagination]="nzShowPagination"
-      (nzPageIndexChange)="pageIndexChange($event)"
-      (nzPageSizeChange)="pageSizeChange($event)"
-      (nzCurrentPageDataChange)="currentPageDataChange($event)"
-    >
-      <thead>
-        <tr>
-          <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup;">
-            <th [nzWidth]="nzWidth">
-              {{item?.templateOptions?.label}}
+    <nz-list >
+      <div [class]="field.className">
+      <ng-container  *ngFor="let data of formControl.value; trackBy: trackByFn; let index = index;">
+        <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
 
-              <ng-container *ngIf="item?.templateOptions?.tooltipTitle">
-                <i nz-icon 
-                  [nzType]="item?.templateOptions?.tooltipIcon || 'close'" 
-                  nzTheme="outline" 
-                  nz-tooltip 
-                  [nzTooltipTitle]="item?.templateOptions?.tooltipTitle">
-                </i>
-              </ng-container>
-            </th>
-          </ng-container>
-        </tr>
-      </thead>
-      <tbody>
-        <tr  *ngFor="let data of nzTable.data; trackBy: trackByFn; let index = index;">
-          <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
-            <td  *ngFor="let td of field.fieldGroup[index].fieldGroup">
-              <ng-container *ngIf="td.id && editCache[td.id] && td.type != 'text' ">
-                <formly-field [field]="td"></formly-field>
-
-                <ng-container *ngIf="editor">
-                  <i nz-icon nzType="check" nzTheme="outline" (click)="confirm(td)"></i>
-                  <i nz-icon nzType="close" nzTheme="outline" (click)="cancel(td)"></i>
+              <nz-list-item [class]="field.fieldGroup[index].className">
+                <ng-container  *ngFor="let td of field.fieldGroup[index].fieldGroup">
+                  <formly-field [field]="td"></formly-field>
                 </ng-container>
-              </ng-container>
-              <ng-container *ngIf="!(td.id && editCache[td.id] && td.type != 'text' )">
-                <!-- {{ td.formControl?.value }}  -->
-                <formly-field [field]="td"></formly-field>
+              </nz-list-item>
 
-                <i *ngIf="editor" nz-icon nzType="edit" nzTheme="outline" (click)="edit(td)"></i>
-              </ng-container>
-            </td>
-          </ng-container>
-        </tr>
-      </tbody>
-    </nz-table>
+        </ng-container>
+      </ng-container>
+      </div>
+    </nz-list>
   `
 })
 
-export class TableField extends FieldArrayType implements OnDestroy {
-
-  @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
+export class ListField extends FieldArrayType implements OnDestroy {
 
   private destroy$ = new Subject();
 
@@ -245,15 +207,16 @@ export class TableField extends FieldArrayType implements OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.nzTableComponent?.cdkVirtualScrollViewport?.scrolledIndexChange
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data: number) => {
-        console.log('scroll index to', data);
-      });
+    // this.nzTableComponent?.cdkVirtualScrollViewport?.scrolledIndexChange
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((data: number) => {
+    //     console.log('scroll index to', data);
+    //   });
 
     if (this.options && this.options.formState) {
       // this.options.formState[this.id]['caches'] = 
     }
+    console.log(this)
   }
 
   ngOnDestroy() {

@@ -10,6 +10,7 @@ import { DatePickerFieldModule } from './date-picker';
 import { DescriptionFieldModule } from './descriptions';
 import { InputFieldModule } from './input';
 import { InputNumberFieldModule } from './input-number';
+import { ListFieldModule } from './list';
 import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
 import { SelectFieldModule } from './select';
@@ -47,6 +48,7 @@ import { UploadFieldModule } from './upload';
     TableFieldModule,
     CollapseFieldModule,
     StatisticFieldModule,
+    ListFieldModule,
   ],
 })
 export class FieldTypeModule {}

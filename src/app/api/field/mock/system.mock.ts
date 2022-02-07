@@ -35,8 +35,8 @@ export const system = [
       },
     ],
     info: {
-      title: '分析页',
-      content: '分析页用于统计系统数据, 分析系统动态'
+      title: '用户管理',
+      content: '页面数据为 Mock 示例数据，非真实数据。'
     }
   },
   {
@@ -74,8 +74,8 @@ export const system = [
       },
     ],
     info: {
-      title: '分析页',
-      content: '分析页用于统计系统数据, 分析系统动态'
+      title: '菜单权限管理',
+      content: '页面数据为 Mock 示例数据，非真实数据。'
     }
   },
   {
@@ -113,12 +113,12 @@ export const system = [
       },
     ],
     info: {
-      title: '分析页',
-      content: '分析页用于统计系统数据, 分析系统动态'
+      title: '角色权限管理',
+      content: '页面数据为 Mock 示例数据，非真实数据。'
     }
   },
   {
-    id: 'menu',
+    id: 'form',
     fields: [
       {
         id: 'user',
@@ -152,8 +152,8 @@ export const system = [
       },
     ],
     info: {
-      title: '分析页',
-      content: '分析页用于统计系统数据, 分析系统动态'
+      title: '表单管理',
+      content: '表单设计和分析'
     }
   }
 ]
