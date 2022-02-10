@@ -13,6 +13,10 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTabsModule} from 'ng-zorro-antd/tabs';
 import { SearchCardField } from './search-card.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { PortalModule } from '@angular/cdk/portal';
+import { CardMetaField } from './card-meta.component';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     CardTabsField,
     CardSmallField,
     SearchCardField,
+    CardMetaField,
   ],
   imports: [
     CommonModule,
@@ -31,6 +36,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzToolTipModule,
     NzButtonModule,
     NzTabsModule,
+    NzAvatarModule,
+    PortalModule,
     FormlyModule.forChild({
       types: [
         {
@@ -40,6 +47,14 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
         {
           name: 'nz-card',
           component: CardField,
+        },
+        {
+          name: 'nz-card-meta',
+          component: CardMetaField,
+        },
+        {
+          name: 'card-meta',
+          component: CardMetaField,
         },
         {
           name: 'card-small',

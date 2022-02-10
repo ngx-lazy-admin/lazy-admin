@@ -1,8 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, ViewChild, TemplateRef, ElementRef, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FieldService } from 'src/app/api/field';
-
+import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { inNextTick } from 'ng-zorro-antd/core/util';
@@ -30,6 +30,12 @@ export interface errorResultType {
   }
 })
 export class FormComponent {
+
+  @ViewChild('templatePortalContent') templatePortalContent!: TemplateRef<unknown>;
+  @ViewChild('domPortalContent') domPortalContent!: ElementRef<HTMLElement>;
+
+  selectedPortal!: Portal<any>;
+  templatePortal!: TemplatePortal<any>;
 
   rooterChange?: Subscription;
 
@@ -65,6 +71,7 @@ export class FormComponent {
     public route: ActivatedRoute,
     private router: Router,
     private ngZone: NgZone,
+    private viewContainerRef: ViewContainerRef
   ) {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -119,6 +126,13 @@ export class FormComponent {
     console.log(form);
   }
 
+  domPortal!: any;
+  ngAfterViewInit() {
+
+    this.templatePortal = new TemplatePortal(this.templatePortalContent, this.viewContainerRef);
+    this.domPortal = new DomPortal(this.domPortalContent);
+  }
+
   resetForm(): void {
     setTimeout(() => {
       this.options.parentForm?.resetForm();
@@ -155,7 +169,7 @@ export class FormComponent {
 
   execEval = (code: string) => eval('(' + code + ')')
 
-  ngAfterViewInit () {}
+  // ngAfterViewInit () {}
 
   ngOnDestroy() {
     if (this.rooterChange) {

@@ -13,11 +13,16 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { ListActionsField } from './list-actions.component';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { WidthPipe } from './width.pipe';
 
 @NgModule({
   declarations: [
     ListField,
-    VirtualListField
+    VirtualListField,
+    ListActionsField,
+    WidthPipe,
   ],
   imports: [
     CommonModule,
@@ -31,6 +36,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     NzIconModule,
     NzPopconfirmModule,
     NzDropDownModule,
+    NzPaginationModule,
     NzCardModule,
     FormlyModule.forChild({
       types: [
@@ -41,6 +47,14 @@ import { NzCardModule } from 'ng-zorro-antd/card';
         {
           name: 'nz-list',
           component: ListField,
+        },
+        {
+          name: 'nz-list-actions',
+          component: ListActionsField,
+        },
+        {
+          name: 'list-actions',
+          component: ListActionsField,
         },
         {
           name: 'virtual-list',

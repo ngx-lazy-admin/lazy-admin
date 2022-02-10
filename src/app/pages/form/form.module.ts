@@ -7,6 +7,7 @@ import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { PortalModule } from '@angular/cdk/portal'
 
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
@@ -35,6 +36,7 @@ import { WatermarkPipe } from '../../pipes/watermark.pipe';
     FormlyModule.forRoot(),
     FieldTypeModule,
     FormFieldModule,
+    PortalModule,
   ]
 })
 export class FormModule { }

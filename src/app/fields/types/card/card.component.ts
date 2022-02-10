@@ -1,8 +1,30 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, ElementRef, ViewContainerRef, ChangeDetectorRef, Injectable } from '@angular/core';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { ShareFieldType } from '../share-field.type';
 
+type clickFn = (field: FormlyFieldConfig, that?: any) => boolean;
+type confirmFn = (field: FormlyFieldConfig, that?: any) => boolean;
+
+export interface ActionTypeInterface {
+  text?: string | number | null ;
+  value?: NzSafeAny | null;
+  icon?: string,
+  disabled?: boolean;
+  hide?: boolean;
+  popconfirmTitle?: string,
+  popconfirmPlacement?: string,
+  className?: string,
+  options?: [],
+  click?: clickFn;
+  confirm?: confirmFn,
+  cancel?: confirmFn
+}
+
+
+@Injectable({ providedIn: 'root' })
 @Component({
   selector: 'div[card-field]',
   template: `
@@ -11,7 +33,6 @@ import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk
     [nzTitle]="nzTitle" 
     [nzType]="nzType" 
     [nzExtra]="extraFields ? extraTemplate : ''"
-    [nzActions]="[actionEdit, actionEllipsis]"
     [nzBorderless]="nzBorderless">
     <i *ngIf="to.tooltip" 
       class="gray-500 text-dark position-absolute  top-0 end-0 me-3 mt-3"
@@ -25,7 +46,23 @@ import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk
     <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
       <formly-field [field]="item"></formly-field>
     </ng-container>
+
+
+
+    <ul class="ant-card-actions" *ngIf="nzActions.length">
+      <li *ngFor="let action of nzActions" [style.width.%]="100 / nzActions.length">
+        <span>
+          <button nz-button nzType="link" (click)="this.actionClick(action)"> 
+            <i *ngIf="action.icon" nz-icon [nzType]="action.icon"></i> {{ action.text }}
+          </button>
+        </span>
+      </li>
+    </ul>
   </nz-card>
+
+  <ng-template #hero let-text="text" let-type="type">
+
+  </ng-template>
 
   <ng-template #extraTemplate>
     <ng-container *ngIf="extraFields">
@@ -33,35 +70,6 @@ import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk
     </ng-container>
   </ng-template>
 
-  <ng-template #actionSetting>
-    <i nz-icon nzType="setting"></i>
-  </ng-template>
-
-  <ng-container *ngFor="let item of nzActions">
-
-    <!-- <span *ngIf="true">Value: {{ hero | json }}</span> -->
-  </ng-container>
-
-  <ng-template #hero>
-    <div>111</div>
-  </ng-template>
-
-  <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
-
-  <ng-template #templatePortalContent>Hello, this is a template portal</ng-template>
-
-  <input #ref2 type="text" />
-
-  <button (click)="log(hero)">11 {{ref2.value}}</button>
-
-  <ng-template #actionEdit>
-    <i nz-icon nzType="edit"></i>
-  </ng-template>
-  <ng-template #actionEllipsis>
-    <i nz-icon nzType="ellipsis"></i>
-  </ng-template>
-
-  {{ heros | json}}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -80,14 +88,19 @@ import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk
   ]
 })
 
-export class CardField extends FieldType  implements OnDestroy {
 
-  heros = [1,2,3]
-  isOdd = '112'
+export class CardField extends ShareFieldType  implements OnDestroy {
 
-  get nzActions(): Array<TemplateRef<void>> {
-		return this.to.nzActions || this.to.actions || [111,222,333];
-	}
+
+  @ViewChild('templatePortalContent') templatePortalContent!: TemplateRef<unknown>;
+  @ViewChild('domPortalContent') domPortalContent!: ElementRef<HTMLElement>;
+
+  selectedPortal!: Portal<any>;
+  templatePortal!: TemplatePortal<any>;
+
+  get nzActions(): Array<ActionTypeInterface> {
+    return this.to.actions || []
+  }
 
   get nzBodyStyle(): { [key: string]: string } {
 		return this.to.nzBodyStyle || this.to.bodyStyle || '';
@@ -141,12 +154,35 @@ export class CardField extends FieldType  implements OnDestroy {
     return this.to.extraFields ? this.to.extraFields(this.field) : null
   }
 
+
+  actionEdit:any
+
   log (tmp: any) {
     console.log(tmp)
   }
 
+  actionClick (data: any) {
+    if (data.click) {
+      data.click(this.field, this)
+    }
+  }
+
+  select () {
+    this.domPortalContent.nativeElement.innerHTML = `<a > ${Math.random()} <button nz-button>111</button> </a>`
+    this.domPortal = new DomPortal(this.domPortalContent);
+    this.selectedPortal = this.domPortal
+  }
+
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id
+  }
+
+  domPortal?: any;
+
+  ngAfterViewInit() {
+
+
+    this.cd.detectChanges();
   }
 
   ngOnDestroy() {}

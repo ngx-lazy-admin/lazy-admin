@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import {
   Component,
   OnDestroy,
@@ -8,13 +9,16 @@ import {
   ViewEncapsulation,
   ChangeDetectorRef,
   SimpleChanges,
+  ElementRef,
  } from '@angular/core';
 import { FieldArrayType, FormlyFieldConfig } from '@ngx-formly/core';
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { isNumber } from 'src/app/utils/utils';
 import { ButtonGroupOptionInterface } from '../button/button-group.component';
+
 
 export interface VirtualDataInterface {
   index: number;
@@ -28,7 +32,6 @@ export interface VirtualDataInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-
     <div class="table-toolbar mb-3 d-flex" *ngIf="toolbarOptions && toolbarOptions.length">
       <ng-container *ngFor="let item of toolbarOptions; let i = index">
         <a 
@@ -57,25 +60,42 @@ export interface VirtualDataInterface {
       </ng-container>
     </div> 
 
-    <nz-list >
-      <div [class]="field.className">
-      <ng-container  *ngFor="let data of formControl.value; trackBy: trackByFn; let index = index;">
-        <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
-
-              <nz-list-item [class]="field.fieldGroup[index].className">
+    <nz-list>
+      <div class="row" [style.width]="this.field.fieldArray?.fieldGroup | width" [class]="field.className">
+        <ng-container  *ngFor="let data of formControl.value; trackBy: trackByFn; let index = index;">
+          <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
+            <div [class]="field.fieldGroup[index].className">
+              <nz-list-item >
                 <ng-container  *ngFor="let td of field.fieldGroup[index].fieldGroup">
                   <formly-field [field]="td"></formly-field>
                 </ng-container>
               </nz-list-item>
-
+            </div>
+          </ng-container>
         </ng-container>
-      </ng-container>
       </div>
     </nz-list>
-  `
+
+    <nz-pagination [nzPageIndex]="1" [nzTotal]="50" class="mt-3 float-end"></nz-pagination>
+  `,
+  styles: [
+    `
+      .ant-list-item {
+        padding: unset !important;
+      }
+
+      .ant-list-items {
+        overflow-x: auto;
+      }
+    
+    `
+  ]
 })
 
 export class ListField extends FieldArrayType implements OnDestroy {
+
+  @ViewChild('domPortalContent') domPortalContent?: ElementRef<HTMLElement>;
+
 
   private destroy$ = new Subject();
 
@@ -99,9 +119,6 @@ export class ListField extends FieldArrayType implements OnDestroy {
     return this.to.title || this.to.nzTitle || ''
   }
 
-  get nzWidth(): string {
-    return '10%'
-  }
 
   get nzBordered(): boolean {
     return this.to.nzBordered || this.to.bordered || false
@@ -156,11 +173,30 @@ export class ListField extends FieldArrayType implements OnDestroy {
     return this.to.nzAddIcon || false;
   }
 
+  get NzWidth(): string {
+    console.log(this.field.fieldArray?.fieldGroup)
+    const number =  this.field.fieldArray?.fieldGroup?.filter(item => !item.hide).map(item =>  {
+      const col = item.className?.split(' ')
+        .find(item => item.includes('col-'))
+        ?.split('-').find(item => isNumber(item))
+
+      return col ? Number(col) : 0
+    })?.reduce((num, total) => num + total)
+
+    if (number && number > 12) {
+      return Number((number / 12).toFixed(2)) * 100 + '%'
+    } else {
+      return '100%'
+    }
+  }
+
   editCache: { [key: string]: boolean } = {};
 
   get toolbarOptions () : ButtonGroupOptionInterface[] {
     return this.to.toolbarOptions || []
   }
+
+  // 根据配置生成dom, 然后复制给portal, 再赋值给action
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -216,7 +252,10 @@ export class ListField extends FieldArrayType implements OnDestroy {
     if (this.options && this.options.formState) {
       // this.options.formState[this.id]['caches'] = 
     }
-    console.log(this)
+
+    
+
+
   }
 
   ngOnDestroy() {

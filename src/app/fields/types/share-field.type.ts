@@ -1,42 +1,70 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Directive, ChangeDetectorRef, NgZone } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
+
+export type clickFn = (field: FormlyFieldConfig, that?: any) => boolean;
+
+export interface ActionTypeInterface {
+  text?: string | number | null ;
+  value?: NzSafeAny | null;
+  icon?: string,
+  disabled?: boolean;
+  hide?: boolean;
+  popconfirmTitle?: string,
+  popconfirmPlacement?: string,
+  className?: string,
+  options?: [],
+  click?: clickFn;
+  close: clickFn;
+  confirm?: clickFn,
+  cancel?: clickFn
+}
+
+export const execEval = (code: string) => eval('(' + code + ')')
 
 @Directive()
 export abstract class ShareFieldType extends FieldType {
   constructor(
-    private cd: ChangeDetectorRef,
+    public cd: ChangeDetectorRef,
     private http: HttpClient,
     private readonly zone: NgZone,
     private message: NzMessageService
   ) {
     super();
   }
-
-  execEval = (code: string) => eval('(' + code + ')')
-
+  
   // 通用事件处理
-  click ($event: Event) {
+  click (action?: ActionTypeInterface) {
+    if (typeof action?.text === 'string') {
+      this.message.success(action?.text)
+    }
     this.zone.runOutsideAngular(() => {
-      if (this.to.click) {
+      if (action?.click) {
+        action.click(this.field, this)
+      } else if (this.to?.click) {
         this.to.click(this.field, this);
       }
     });
   }
 
-  close ($event: boolean) {
+  close (action?: ActionTypeInterface) {
     this.zone.runOutsideAngular(() => {
-      if (this.to.close) {
+      if (action?.close) {
+        action.close(this.field, this)
+      } else if (this.to?.close) {
         this.to.close(this.field, this);
       }
     });
   }
 
-  cancel () {
+  cancel (action?: ActionTypeInterface) {
     this.zone.runOutsideAngular(() => {
-      if (this.to.close) {
+      if (action?.cancel) {
+        action.cancel(this.field, this)
+      } else if (this.to?.cancel) {
         this.to.cancel(this.field, this);
       }
     });

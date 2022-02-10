@@ -19,7 +19,7 @@ import { ShareFieldType } from '../share-field.type';
       [nzPopconfirmPlacement]="nzPopconfirmPlacement"
       type="submit"
       [nzBlock]="nzBlock"
-      (click)="click($event)"
+      (click)="click()"
       (nzOnCancel)="cancel()"
     >
       <i *ngIf="icon" nz-icon [nzType]="icon"></i>

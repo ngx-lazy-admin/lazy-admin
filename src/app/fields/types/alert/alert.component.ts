@@ -14,7 +14,7 @@ import { FieldType } from '@ngx-formly/core';
       [nzCloseText]="nzCloseText"
       [nzShowIcon]="nzShowIcon"
       [nzMessage]="nzMessage"
-      (nzOnClose)="close($event)"
+      (nzOnClose)="close()"
     ></nz-alert>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

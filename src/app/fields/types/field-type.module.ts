@@ -11,6 +11,7 @@ import { DescriptionFieldModule } from './descriptions';
 import { InputFieldModule } from './input';
 import { InputNumberFieldModule } from './input-number';
 import { ListFieldModule } from './list';
+import { ProgressFieldModule } from './progress';
 import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
 import { SelectFieldModule } from './select';
@@ -49,6 +50,7 @@ import { UploadFieldModule } from './upload';
     CollapseFieldModule,
     StatisticFieldModule,
     ListFieldModule,
+    ProgressFieldModule
   ],
 })
 export class FieldTypeModule {}
