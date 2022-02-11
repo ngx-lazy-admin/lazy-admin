@@ -17,8 +17,7 @@ import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { isNumber } from 'src/app/utils/utils';
-import { ButtonGroupOptionInterface } from '../button/button-group.component';
-
+import { ActionTypeInterface } from '../share-field.type';
 
 export interface VirtualDataInterface {
   index: number;
@@ -192,7 +191,7 @@ export class ListField extends FieldArrayType implements OnDestroy {
 
   editCache: { [key: string]: boolean } = {};
 
-  get toolbarOptions () : ButtonGroupOptionInterface[] {
+  get toolbarOptions () : ActionTypeInterface[] {
     return this.to.toolbarOptions || []
   }
 

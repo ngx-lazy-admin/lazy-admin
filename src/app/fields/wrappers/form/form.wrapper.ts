@@ -1,13 +1,14 @@
-import { Component, ViewChild, ViewContainerRef, OnInit, TemplateRef, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  TemplateRef,
+  ViewEncapsulation,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { FieldWrapper, FormlyConfig } from '@ngx-formly/core';
 import { NzFormTooltipIcon, NzFormLayoutType } from 'ng-zorro-antd/form';
 import { isObservable, Observable, of } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
-import { field } from 'src/app/api/field/mock';
-
-const isObject = (x: any) => {
-  return x != null && typeof x === 'object';
-}
+import { isObject } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-form-field-wrapper',
@@ -22,6 +23,7 @@ const isObject = (x: any) => {
     <nz-form-item>
       <ng-container *ngIf="to.label && to.hideLabel !== true">
         <nz-form-label 
+          [nzSpan]="nzLayout == 'horizontal' ? 8 : null"
           [nzNoColon]="nzNoColon" 
           [nzRequired]="nzRequired" 
           [nzFor]="id" 
@@ -32,6 +34,7 @@ const isObject = (x: any) => {
       </ng-container>
       <nz-form-control 
         [nzValidateStatus]="errorState" 
+        [nzSpan]="nzLayout == 'horizontal' ? 16 : null"
         [nzErrorTip]="errorTpl"
         [nzExtra]="nzExtra"
         [nzHasFeedback]="nzHasFeedback">
@@ -97,7 +100,6 @@ export class FormWrapper extends FieldWrapper {
     return this.to.nzWarningTip
   }
 
-
   get nzErrorTip(): string | TemplateRef<void> {
     return this.to.nzErrorTip
   }
@@ -117,7 +119,7 @@ export class FormWrapper extends FieldWrapper {
   get errorMessage(): any {
     // debugger
     const fieldForm = this.field.formControl;
-    console.log(this)
+
     if (fieldForm) {
       for (const error in fieldForm.errors) {
         if (fieldForm.errors.hasOwnProperty(error)) {
@@ -162,26 +164,15 @@ export class FormWrapper extends FieldWrapper {
     super();
   }
 
-
   errorMessage$?: Observable<string>;
 
   ngOnInit () {
-    this.errorMessage$ = this.field.formControl?.statusChanges.pipe(
-      tap(() => {
-      }),
-      switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
-    );
+    // this.errorMessage$ = this.field.formControl?.statusChanges.pipe(
+    //   tap(() => {
+    //   }),
+    //   switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
+    // );
   }
 
-  ngOnChanges() {
-    // if (this.field.formControl) {
-    //   this.errorMessage$ = this.field.formControl.statusChanges.pipe(
-    //     startWith(null),
-    //     tap(() => {
-    //       console.log(this)
-    //     }),
-    //     switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
-    //   );
-    // }
-  }
+  ngOnChanges() {}
 }

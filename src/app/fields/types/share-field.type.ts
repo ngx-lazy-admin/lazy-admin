@@ -2,12 +2,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Directive, ChangeDetectorRef, NgZone } from '@angular/core';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
+import { NzButtonSize, NzButtonType } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
-export type clickFn = (field: FormlyFieldConfig, that?: any) => boolean;
+export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
 
 export interface ActionTypeInterface {
+  type: NzButtonType,
   text?: string | number | null ;
   value?: NzSafeAny | null;
   icon?: string,
@@ -17,11 +19,13 @@ export interface ActionTypeInterface {
   popconfirmPlacement?: string,
   className?: string,
   options?: [],
-  click?: clickFn;
-  close: clickFn;
-  confirm?: clickFn,
-  cancel?: clickFn
+  size?: NzButtonSize,
+  click?: FieldActionFn,
+  close: FieldActionFn,
+  confirm?: FieldActionFn,
+  cancel?: FieldActionFn
 }
+
 
 export const execEval = (code: string) => eval('(' + code + ')')
 

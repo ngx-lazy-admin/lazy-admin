@@ -16,6 +16,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { PortalModule } from '@angular/cdk/portal';
 import { CardMetaField } from './card-meta.component';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     NzButtonModule,
     NzTabsModule,
     NzAvatarModule,
+    NzFormModule,
     PortalModule,
     FormlyModule.forChild({
       types: [

@@ -4,31 +4,7 @@ import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { ShareFieldType } from '../share-field.type';
-
-type clickFn = (field: FormlyFieldConfig, that?: any) => boolean;
-type confirmFn = (field: FormlyFieldConfig, that?: any) => boolean;
-
-
-type ButtonClickType = (field: FormlyFieldConfig, that?: any) => boolean;
-
-
-export interface ButtonGroupOptionInterface {
-  text: string | number | null ;
-  value?: NzSafeAny | null;
-  icon?: string,
-  disabled?: boolean;
-  type?: NzButtonType,
-  hide?: boolean;
-  size?: NzButtonSize;
-  popconfirmTitle?: string,
-  popconfirmPlacement?: string,
-  className?: string,
-  options?: [],
-  click?: clickFn;
-  confirm?: confirmFn,
-  cancel: confirmFn
-}
+import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 
 @Component({
   selector: 'div[button-field]',
@@ -104,26 +80,26 @@ export class ButtonGroupField extends ShareFieldType implements OnInit {
 		return this.to.nzDanger || this.to.danger || false;
 	}
 
-  get nzOptions () : ButtonGroupOptionInterface[] {
+  get nzOptions(): ActionTypeInterface[] {
     return this.to.nzOptions || this.to.options || []
   }
 
 
   private _destroy$ = new Subject<void>();
 
-  onClick (item: ButtonGroupOptionInterface, $event: Event) {
+  onClick (item: ActionTypeInterface, $event: Event) {
     if (item.click) {
       item.click(this.field, this);
     }
   }
 
-  onConfirm (item: ButtonGroupOptionInterface) {
+  onConfirm (item: ActionTypeInterface) {
     if (item.confirm) {
       item.confirm(this.field, this);
     }
   }
 
-  onCancel (item: ButtonGroupOptionInterface) {
+  onCancel (item: ActionTypeInterface) {
     if (item.cancel) {
       item.cancel(this.field, this);
     }

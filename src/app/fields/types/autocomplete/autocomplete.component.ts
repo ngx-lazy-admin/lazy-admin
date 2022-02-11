@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType,  } from 'ng-zorro-antd/core/types';
-import { Observable } from 'rxjs';
 
 interface AutocompleteDataSourceItem {
   value: string;

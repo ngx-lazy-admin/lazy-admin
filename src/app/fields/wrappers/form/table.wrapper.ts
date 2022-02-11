@@ -3,10 +3,7 @@ import { FieldWrapper, FormlyConfig } from '@ngx-formly/core';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { isObservable, Observable, of } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
-
-const isObject = (x: any) => {
-  return x != null && typeof x === 'object';
-}
+import { isObject } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-table-wrapper',
@@ -158,13 +155,13 @@ export class TableWrapper extends FieldWrapper {
 
   ngOnChanges() {
     if (this.field.formControl) {
-      this.errorMessage$ = this.field.formControl.statusChanges.pipe(
-        startWith(null),
-        tap(() => {
-          console.log(this)
-        }),
-        switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
-      );
+      // this.errorMessage$ = this.field.formControl.statusChanges.pipe(
+      //   startWith(null),
+      //   tap(() => {
+      //     console.log(this)
+      //   }),
+      //   switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
+      // );
     }
   }
 

@@ -2,26 +2,7 @@ import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsu
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
-import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { ShareFieldType } from '../share-field.type';
-
-type clickFn = (field: FormlyFieldConfig, that?: any) => boolean;
-type confirmFn = (field: FormlyFieldConfig, that?: any) => boolean;
-
-export interface ActionTypeInterface {
-  text?: string | number | null ;
-  value?: NzSafeAny | null;
-  icon?: string,
-  disabled?: boolean;
-  hide?: boolean;
-  popconfirmTitle?: string,
-  popconfirmPlacement?: string,
-  className?: string,
-  options?: [],
-  click?: clickFn;
-  confirm?: confirmFn,
-  cancel?: confirmFn
-}
+import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 
 
 @Injectable({ providedIn: 'root' })
@@ -46,8 +27,6 @@ export interface ActionTypeInterface {
     <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
       <formly-field [field]="item"></formly-field>
     </ng-container>
-
-
 
     <ul class="ant-card-actions" *ngIf="nzActions.length">
       <li *ngFor="let action of nzActions" [style.width.%]="100 / nzActions.length">

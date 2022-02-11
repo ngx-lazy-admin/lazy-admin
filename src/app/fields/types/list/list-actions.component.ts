@@ -5,7 +5,6 @@ import {
   ViewEncapsulation,
  } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ButtonGroupOptionInterface } from '../button/button-group.component';
 import { ShareFieldType, ActionTypeInterface } from '../share-field.type';
 
 @Component({
@@ -27,7 +26,7 @@ import { ShareFieldType, ActionTypeInterface } from '../share-field.type';
           </a>
         </nz-list-item-action>
       </ng-container>
-      <nz-list-item-action>
+      <nz-list-item-action *ngIf="actionOptions && actionOptions.slice(maxTagCount).length">
         <a nz-dropdown [nzDropdownMenu]="menu">
           更多
           <i nz-icon nzType="down"></i>
@@ -67,10 +66,6 @@ export class ListActionsField extends ShareFieldType implements OnDestroy {
   get nzSelectedIndex(): number {
 		return this.to.nzSelectedIndex || 0;
 	}
-
-  get toolbarOptions () : ButtonGroupOptionInterface[] {
-    return this.to.toolbarOptions || []
-  }
 
   get actionOptions (): ActionTypeInterface[] {
     return this.to.actionOptions || []
