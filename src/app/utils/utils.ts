@@ -168,7 +168,7 @@ export function objAndSameType(obj1: any, obj2: any) {
     && !(Array.isArray(obj1) || Array.isArray(obj2));
 }
 
-export function isObject(x: any) {
+export const isObject = (x: any) => {
   return x != null && typeof x === 'object';
 }
 
@@ -297,3 +297,4 @@ export function fieldChange (field: FormlyFieldConfigCache, model: any) {
 export function isNumber(value: string | number): boolean {
   return ((value != null) && (value !== '') && !isNaN(Number(value.toString())));
 }
+

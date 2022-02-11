@@ -2,12 +2,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Directive, ChangeDetectorRef, NgZone } from '@angular/core';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
+import { NzButtonSize, NzButtonType } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
-export type clickFn = (field: FormlyFieldConfig, that?: any) => boolean;
+export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
 
 export interface ActionTypeInterface {
+  type: NzButtonType,
   text?: string | number | null ;
   value?: NzSafeAny | null;
   icon?: string,
@@ -17,11 +19,13 @@ export interface ActionTypeInterface {
   popconfirmPlacement?: string,
   className?: string,
   options?: [],
-  click?: clickFn;
-  close: clickFn;
-  confirm?: clickFn,
-  cancel?: clickFn
+  size?: NzButtonSize,
+  click?: FieldActionFn,
+  close: FieldActionFn,
+  confirm?: FieldActionFn,
+  cancel?: FieldActionFn
 }
+
 
 export const execEval = (code: string) => eval('(' + code + ')')
 
@@ -38,9 +42,7 @@ export abstract class ShareFieldType extends FieldType {
   
   // 通用事件处理
   click (action?: ActionTypeInterface) {
-    if (typeof action?.text === 'string') {
-      this.message.success(action?.text)
-    }
+    this.message.success('click')
     this.zone.runOutsideAngular(() => {
       if (action?.click) {
         action.click(this.field, this)
@@ -50,7 +52,19 @@ export abstract class ShareFieldType extends FieldType {
     });
   }
 
+  confirm (action?: ActionTypeInterface) {
+    this.message.success('confirm')
+    this.zone.runOutsideAngular(() => {
+      if (action?.confirm) {
+        action.confirm(this.field, this)
+      } else if (this.to?.confirm) {
+        this.to.confirm(this.field, this);
+      }
+    });
+  }
+
   close (action?: ActionTypeInterface) {
+    this.message.success('close')
     this.zone.runOutsideAngular(() => {
       if (action?.close) {
         action.close(this.field, this)
@@ -61,6 +75,7 @@ export abstract class ShareFieldType extends FieldType {
   }
 
   cancel (action?: ActionTypeInterface) {
+    this.message.success('cancel')
     this.zone.runOutsideAngular(() => {
       if (action?.cancel) {
         action.cancel(this.field, this)

@@ -1,9 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 import { ShareFieldType } from '../share-field.type';
-import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'div[alert-field]',

@@ -9,16 +9,22 @@
 			</nz-page-header-content>
 		</nz-page-header>
 		<form [formGroup]="form">
-			<formly-form [form]="form" class="row" [fields]="fields" [(model)]="model"  [options]="options"></formly-form>
+			<formly-form 
+				class="row" 
+				[form]="form" 
+				[fields]="fields" 
+				[(model)]="model"
+				[options]="options">
+			</formly-form>
 		</form>
 	</ng-container>
 
 	<ng-container *ngIf="status == 403">
 		<nz-result nzStatus="403" nzTitle="403" nzSubTitle="Sorry, you are not authorized to access this page.">
-      <div nz-result-extra>
-        <button nz-button nzType="primary">Back Home</button>
-      </div>
-    </nz-result>
+			<div nz-result-extra>
+				<button nz-button nzType="primary">Back Home</button>
+			</div>
+		</nz-result>
 	</ng-container>
 
 	<ng-container *ngIf="status == 404">
@@ -38,5 +44,3 @@
 	</ng-container>
 </ng-container>
 
-
-<pre *ngIf="model">{{ model | json }} </pre>

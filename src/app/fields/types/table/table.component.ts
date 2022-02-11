@@ -14,7 +14,7 @@ import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-an
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ButtonGroupOptionInterface } from '../button/button-group.component';
+import { ActionTypeInterface } from '../share-field.type';
 
 export interface VirtualDataInterface {
   index: number;
@@ -29,8 +29,8 @@ export interface VirtualDataInterface {
   encapsulation: ViewEncapsulation.None,
   template: `
 
-    <div class="table-toolbar mb-3 d-flex" *ngIf="toolbarOptions && toolbarOptions.length">
-      <ng-container *ngFor="let item of toolbarOptions; let i = index">
+    <div class="table-toolbar mb-3 d-flex" *ngIf="actinsOptions && actinsOptions.length">
+      <ng-container *ngFor="let item of actinsOptions; let i = index">
         <a 
           nz-button 
           [nzType]="item?.type || 'primary'" 
@@ -61,6 +61,7 @@ export interface VirtualDataInterface {
       #nzTable
       [nzData]="formControl.value"
       [nzBordered]="nzBordered"
+      [nzScroll]="to.nzScroll"
       [nzFrontPagination]="nzFrontPagination"
       [nzShowPagination]="nzShowPagination"
       (nzPageIndexChange)="pageIndexChange($event)"
@@ -70,7 +71,7 @@ export interface VirtualDataInterface {
       <thead>
         <tr>
           <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup;">
-            <th [nzWidth]="nzWidth">
+            <th [nzWidth]="nzWidth" [nzRight]="item?.templateOptions?.right">
               {{item?.templateOptions?.label}}
 
               <ng-container *ngIf="item?.templateOptions?.tooltipTitle">
@@ -88,7 +89,7 @@ export interface VirtualDataInterface {
       <tbody>
         <tr  *ngFor="let data of nzTable.data; trackBy: trackByFn; let index = index;">
           <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
-            <td  *ngFor="let td of field.fieldGroup[index].fieldGroup">
+            <td *ngFor="let td of field.fieldGroup[index].fieldGroup" [nzRight]="td?.templateOptions?.right">
               <ng-container *ngIf="td.id && editCache[td.id] && td.type != 'text' ">
                 <formly-field [field]="td"></formly-field>
 
@@ -194,11 +195,11 @@ export class TableField extends FieldArrayType implements OnDestroy {
     return this.to.nzAddIcon || false;
   }
 
-  editCache: { [key: string]: boolean } = {};
-
-  get toolbarOptions () : ButtonGroupOptionInterface[] {
-    return this.to.toolbarOptions || []
+  get actinsOptions () : ActionTypeInterface[] {
+    return this.to.actinsOptions || []
   }
+
+  editCache: { [key: string]: boolean } = {};
 
   constructor(
     private cd: ChangeDetectorRef,

@@ -3,10 +3,7 @@ import { FieldWrapper, FormlyConfig } from '@ngx-formly/core';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { isObservable, Observable, of } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
-
-const isObject = (x: any) => {
-  return x != null && typeof x === 'object';
-}
+import { isObject } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-form-field-wrapper',
