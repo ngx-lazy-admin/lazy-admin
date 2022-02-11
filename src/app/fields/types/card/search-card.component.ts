@@ -16,7 +16,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
         <formly-field [field]="item" [class.d-none]="i > 2 && !isCollapse"></formly-field>
       </ng-container>
       <div class="col-3">
-        <button class="me-2" nz-button [nzType]="'primary'">搜索</button>
+        <button class="me-2" nz-button [nzType]="'primary'" (submit)="submit()">搜索</button>
         <button class="me-2" nz-button (click)="resetForm()">重置</button>
         <a class="collapse" (click)="toggleCollapse()">
           {{ isCollapse ? '收起' : '展开' }}
@@ -123,7 +123,11 @@ export class SearchCardField extends FieldType  implements OnDestroy {
   }
 
   resetForm(): void {
-    this.form.reset();
+    this.formControl.reset();
+  }
+
+  submit (): void {
+    console.log('submit')
   }
 
   ngOnDestroy() {}

@@ -81,7 +81,7 @@ export const list = [
         fieldGroup: [
           {
             type: 'table',
-            key: 'data',
+            key: 'table',
             className: "col-12 d-block",
             templateOptions: {
               showPagination: true,
@@ -133,7 +133,7 @@ export const list = [
             defaultValue: [
               {
                 id: '1',
-                name: 'John Brown',
+                name: '🐛 [BUG]无法创建工程npm create umi',
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
@@ -441,7 +441,7 @@ export const list = [
         fieldGroup: [
           {
             type: 'list',
-            key: 'data',
+            key: 'basic',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -503,7 +503,7 @@ export const list = [
               },
               {
                 meta: {
-                  title: 'alipay',
+                  title: '🐛 [BUG]无法创建工程npm create umi',
                   description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
@@ -728,7 +728,7 @@ export const list = [
       },
       {
         type: 'list',
-        key: 'data',
+        key: 'card',
         templateOptions: {
           showPagination: true,
           pageSize: 20,

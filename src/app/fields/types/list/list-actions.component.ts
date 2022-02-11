@@ -16,7 +16,12 @@ import { ShareFieldType, ActionTypeInterface } from '../share-field.type';
     <ul nz-list-item-actions>
       <ng-container *ngFor="let action of actionOptions.slice(0, maxTagCount); let i = index; trackBy: trackByFn">
         <nz-list-item-action>
-          <a (click)="click(action)">
+          <a         
+            nz-popconfirm
+            [nzPopconfirmTitle]="action.popconfirmTitle"
+            (nzOnConfirm)="confirm()"
+            (nzOnCancel)="cancel()" 
+            (click)="click(action)">
             <i *ngIf="action.icon" nz-icon [nzType]="action.icon"></i> 
             {{ action.text }}
           </a>
@@ -33,7 +38,12 @@ import { ShareFieldType, ActionTypeInterface } from '../share-field.type';
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu nzSelectable>
       <ng-container *ngFor="let action of actionOptions.slice(maxTagCount); let i = index; trackBy: trackByFn">
-        <li nz-menu-item (click)="click(action)">
+        <li nz-menu-item
+          nz-popconfirm
+          [nzPopconfirmTitle]="action.popconfirmTitle"
+          (nzOnConfirm)="confirm(action)"
+          (nzOnCancel)="cancel(action)" 
+          (click)="click(action)">
           <i *ngIf="action.icon" nz-icon [nzType]="action.icon"></i> 
           {{ action.text }}
         </li>

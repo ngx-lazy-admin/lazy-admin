@@ -38,9 +38,7 @@ export abstract class ShareFieldType extends FieldType {
   
   // 通用事件处理
   click (action?: ActionTypeInterface) {
-    if (typeof action?.text === 'string') {
-      this.message.success(action?.text)
-    }
+    this.message.success('click')
     this.zone.runOutsideAngular(() => {
       if (action?.click) {
         action.click(this.field, this)
@@ -50,7 +48,19 @@ export abstract class ShareFieldType extends FieldType {
     });
   }
 
+  confirm (action?: ActionTypeInterface) {
+    this.message.success('confirm')
+    this.zone.runOutsideAngular(() => {
+      if (action?.confirm) {
+        action.confirm(this.field, this)
+      } else if (this.to?.confirm) {
+        this.to.confirm(this.field, this);
+      }
+    });
+  }
+
   close (action?: ActionTypeInterface) {
+    this.message.success('close')
     this.zone.runOutsideAngular(() => {
       if (action?.close) {
         action.close(this.field, this)
@@ -61,6 +71,7 @@ export abstract class ShareFieldType extends FieldType {
   }
 
   cancel (action?: ActionTypeInterface) {
+    this.message.success('cancel')
     this.zone.runOutsideAngular(() => {
       if (action?.cancel) {
         action.cancel(this.field, this)
