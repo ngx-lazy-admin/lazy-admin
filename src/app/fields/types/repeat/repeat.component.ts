@@ -3,7 +3,19 @@ import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
 
 @Component({
   selector: 'app-repeat-section',
-  templateUrl: './repeat.component.html'
+  template: `
+  <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
+    <div [style.display]="!field.hide ? 'block' : 'none'">
+      <formly-group
+        [model]="model"
+        [field]="field"
+        [options]="options"
+        [form]="formControl">
+      </formly-group>
+    </div>
+  </ng-container>
+
+  `
 })
 
 export class FormlyFieldRepeatComponent extends FieldArrayType  implements OnDestroy {
