@@ -79,7 +79,7 @@ export class DatePickerField extends FieldType {
   }
 
   get nzMode(): NzDateMode  {
-    return this.to.nzMode || 'date'
+    return this.to.nzMode || this.to.mode || 'date'
   }
 
   get nzPlaceHolder(): string {

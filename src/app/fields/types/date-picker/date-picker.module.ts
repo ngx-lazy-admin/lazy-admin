@@ -17,6 +17,10 @@ import { DatePickerField } from './date-picker.component';
     FormlyModule.forChild({
       types: [
         {
+          name: 'date-picker',
+          component: DatePickerField,
+        },
+        {
           name: 'nz-date-picker',
           component: DatePickerField,
         }

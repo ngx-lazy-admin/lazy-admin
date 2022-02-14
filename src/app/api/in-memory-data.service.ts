@@ -59,7 +59,7 @@ export class InMemoryDataService implements InMemoryDbService {
       components,
       profile,
       form,
-      list
+      list,
     };
 
     switch (returnType) {
