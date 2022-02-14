@@ -1,3 +1,4 @@
+import { Placeholder } from "@angular/compiler/src/i18n/i18n_ast";
 
 export const system = [
   {
@@ -441,17 +442,7 @@ export const system = [
         fieldGroup: [
           {
             key: 'search',
-            type: 'input',
-            className: 'col-12',
-            wrappers: ['inline'],
-            templateOptions: {
-              label: '',
-              placeholder: '输入菜单名称搜索'
-            }
-          },
-          {
-            key: 'search',
-            type: 'tree',
+            type: 'search-tree',
             className: 'col-12',
             wrappers: ['inline'],
             templateOptions: {
@@ -474,6 +465,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '类型',
+              fixedWidth: '120px'
             }
           },
           {
@@ -483,15 +475,19 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '标题',
+              fixedWidth: '120px'
+
             }
           },
           {
             key: 'subtitle',
             type: 'input',
             className: 'col-3',
-            wrappers: ['v'],
+            wrappers: ['form'],
             templateOptions: {
               label: '副标题',
+              fixedWidth: '120px'
+
             }
           },
           {
@@ -501,6 +497,8 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '路径',
+              fixedWidth: '120px'
+
             }
           },
           {
@@ -510,6 +508,8 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '打开方式',
+              fixedWidth: '120px',
+
               options: [
                 {
                   label: '当前窗口',
@@ -530,6 +530,8 @@ export const system = [
             templateOptions: {
               label: '分割线',
               right: '0',
+              fixedWidth: '120px',
+
               tooltipTitle: '目标的服务对象',
               tooltipIcon: 'question-circle',
               actionOptions: [
@@ -552,6 +554,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '图标',
+              fixedWidth: '120px'
             }
           },
           {
@@ -561,6 +564,10 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '菜单权限',
+              tooltipTitle: '详见文档: 权鉴',
+              tooltipIcon: 'question-circle',
+              fixedWidth: '120px',
+              Placeholder: '权限, 逗号分隔'
             }
           },
           {
@@ -568,12 +575,17 @@ export const system = [
             className: 'col-3',
             wrappers: ['form'],
             templateOptions: {
+              fixedWidth: '120px',
+              noColon: true,
               options: [
                 {
-                  text: '确定'
+                  text: '保存修改',
+                  size: 'default'
                 },
                 {
-                  text: '取消'
+                  text: '重置',
+                  size: 'default',
+                  type: 'default'
                 }
               ]
             }

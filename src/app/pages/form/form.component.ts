@@ -76,6 +76,7 @@ export class FormComponent {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (this.routeCache[this.router.url]) {
+          this.model = {}
           this.render(this.routeCache[this.router.url])
         } else {
           this.clearData()

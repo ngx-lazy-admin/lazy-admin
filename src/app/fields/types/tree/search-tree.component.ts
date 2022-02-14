@@ -9,21 +9,8 @@ import { NzTreeComponent } from 'ng-zorro-antd/tree';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     template: `
-    <!-- <nz-tree
-      #nzTreeComponent
-      [nzData]="nodes"
-      nzCheckable
-      [nzCheckedKeys]="defaultCheckedKeys"
-      [nzExpandedKeys]="defaultExpandedKeys"
-      [nzSelectedKeys]="defaultSelectedKeys"
-      (nzClick)="nzClick($event)"
-      (nzContextMenu)="nzClick($event)"
-      (nzCheckBoxChange)="nzCheck($event)"
-      (nzExpandChange)="nzCheck($event)"
-    ></nz-tree> -->
-
-    <nz-input-group [nzSuffix]="suffixIcon">
-      <input type="text" nz-input placeholder="Search"  />
+    <nz-input-group class="mb-3" [nzSuffix]="suffixIcon" >
+      <input type="text" nz-input placeholder="输入菜单名称搜索"  />
     </nz-input-group>
 
     <ng-template #suffixIcon>
@@ -47,7 +34,7 @@ import { NzTreeComponent } from 'ng-zorro-antd/tree';
       '[class.display-contents]': `true`,
     }
 })
-export class TreeField extends FieldType  {
+export class SearchTreeField extends FieldType  {
   show: Boolean = false;
   value = null;
 
@@ -59,6 +46,7 @@ export class TreeField extends FieldType  {
 		return this.to.nzId || false
 	}
 
+  
   get nzExpandedKeys(): string[] {
 		return this.to.nzExpandedKeys || []
 	}
@@ -66,6 +54,7 @@ export class TreeField extends FieldType  {
   get nzNodes():  Array<NzTreeNode | NzTreeNodeOptions> {
 		return this.to.nzNodes || this.nodes || []
 	}
+
 
   get nzSuffixIcon(): boolean {
 		return this.to.nzSuffixIcon || false
@@ -154,11 +143,7 @@ export class TreeField extends FieldType  {
         {
           title: '表单页面',
           key: '0-0-2',
-          children: [
-            { title: '基础表单', key: '0-0-1-0', isLeaf: true },
-            { title: '高级表单', key: '0-0-1-1', isLeaf: true },
-            { title: '分步表单', key: '0-0-1-2', isLeaf: true },
-          ]
+          isLeaf: true
         }
       ]
     },
@@ -172,7 +157,7 @@ export class TreeField extends FieldType  {
       ]
     },
     {
-      title: '日志',
+      title: '0-2',
       key: '0-2',
       isLeaf: true
     }

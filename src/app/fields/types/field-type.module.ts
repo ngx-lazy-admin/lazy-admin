@@ -8,6 +8,7 @@ import { CheckboxFieldModule } from './checkbox';
 import { CollapseFieldModule } from './collapse';
 import { DatePickerFieldModule } from './date-picker';
 import { DescriptionFieldModule } from './descriptions';
+import { GroupFieldModule } from './group';
 import { InputFieldModule } from './input';
 import { InputNumberFieldModule } from './input-number';
 import { ListFieldModule } from './list';
@@ -54,7 +55,8 @@ import { UploadFieldModule } from './upload';
     StatisticFieldModule,
     ListFieldModule,
     ProgressFieldModule,
-    TreeFieldModule
+    TreeFieldModule,
+    GroupFieldModule
   ],
 })
 export class FieldTypeModule {}

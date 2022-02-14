@@ -21,21 +21,22 @@ import { isObject } from 'src/app/utils/utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nz-form-item>
-      <ng-container *ngIf="to.label && to.hideLabel !== true">
-        <nz-form-label 
-          [nzSpan]="nzLayout == 'horizontal' ? 8 : null"
-          [nzNoColon]="nzNoColon" 
-          [nzRequired]="nzRequired" 
-          [nzFor]="id" 
-          [nzTooltipTitle]="nzTooltipTitle"
-          [nzTooltipIcon]="nzTooltipIcon">
-          <span [innerHTML]="to.label"></span>
-        </nz-form-label>
-      </ng-container>
+      <nz-form-label 
+        [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 8 : null"
+        [nzNoColon]="nzNoColon" 
+        [nzRequired]="nzRequired"
+        [ngStyle]="(fixedWidth | fixedWidth)?.label"
+        [nzFor]="id" 
+        [nzTooltipTitle]="nzTooltipTitle"
+        [nzTooltipIcon]="nzTooltipIcon">
+        <span *ngIf="to.label && to.hideLabel !== true" [innerHTML]="to.label"></span>
+      </nz-form-label>
+
       <nz-form-control 
         [nzValidateStatus]="errorState" 
-        [nzSpan]="nzLayout == 'horizontal' ? 16 : null"
+        [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 16 : null"
         [nzErrorTip]="errorTpl"
+        [ngStyle]="(fixedWidth | fixedWidth)?.control"
         [nzExtra]="nzExtra"
         [nzHasFeedback]="nzHasFeedback">
         <ng-container #fieldComponent></ng-container>
@@ -49,14 +50,33 @@ import { isObject } from 'src/app/utils/utils';
           + ', show: ' + !!field.validation?.show
       }}  -->
     </nz-form-item>
-  `
+  `,
 })
 
 export class FormWrapper extends FieldWrapper {
 
+  labelStyle: object | null = null;
+  controlStyle: object | null = null;
+
+
   get nzLayout(): NzFormLayoutType  {
     return this.to.layout || this.to.layout || 'horizontal'
   }
+
+  
+
+
+  // const baseStyle = { position: 'absolute', width: `${this.inputWidth}px` };
+  // this.datePickerService.arrowLeft =
+  //   this.datePickerService.activeInput === 'left'
+  //     ? 0
+  //     : this.inputWidth + this.separatorElement?.nativeElement.offsetWidth || 0;
+
+  // if (this.dir === 'rtl') {
+  //   this.activeBarStyle = { ...baseStyle, right: `${this.datePickerService.arrowLeft}px` };
+  // } else {
+  //   this.activeBarStyle = { ...baseStyle, left: `${this.datePickerService.arrowLeft}px` };
+  // }
 
   get errorState() {
     // return  this.field.formControl?.invalid && 
@@ -64,8 +84,12 @@ export class FormWrapper extends FieldWrapper {
     return this.showError ? 'error' : '';
   }
 
+  get fixedWidth (): string {
+    return this.to.fixedWidth || ''
+  }
+
   get nzNoColon(): boolean {
-    return this.to.nzNoColon || false
+    return this.to.nzNoColon || this.to.noColon || false
   }
 
   get nzRequired(): boolean {
@@ -167,11 +191,8 @@ export class FormWrapper extends FieldWrapper {
   errorMessage$?: Observable<string>;
 
   ngOnInit () {
-    // this.errorMessage$ = this.field.formControl?.statusChanges.pipe(
-    //   tap(() => {
-    //   }),
-    //   switchMap(() => (isObservable(this.errorMessage) ? this.errorMessage : of(this.errorMessage))),
-    // );
+
+
   }
 
   ngOnChanges() {}

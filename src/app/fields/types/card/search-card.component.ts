@@ -13,10 +13,10 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
     [nzBorderless]="nzBorderless">
     <div [class]="nzBodyClass" [style]="nzBodyStyle">
       <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
-        <formly-field [field]="item" [class.d-none]="i > 2 && !isCollapse"></formly-field>
+        <formly-field [field]="item" [class.d-none]="i > 3 && !isCollapse"></formly-field>
       </ng-container>
 
-      <div class="col-12 col-md-6 text-end">
+      <div class="col-12 text-end">
         <nz-form-item>
           <nz-form-control> 
             <button class="me-2" nz-button [nzType]="'primary'" (submit)="submit()">搜索</button>

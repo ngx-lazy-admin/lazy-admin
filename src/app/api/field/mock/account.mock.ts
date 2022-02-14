@@ -464,10 +464,6 @@ export const account = [
         }
       },
     ],
-    info: {
-      title: '菜单权限管理',
-      content: '页面数据为 Mock 示例数据，非真实数据。'
-    }
   },
   {
     id: 'role',

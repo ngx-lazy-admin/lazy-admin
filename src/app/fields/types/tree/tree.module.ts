@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { FormlyModule } from '@ngx-formly/core';
 import { TreeField } from './tree.component';
 import { NzTreeModule } from 'ng-zorro-antd/tree';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { SearchTreeField } from './search-tree.component';
 
 @NgModule({
   declarations: [
-    TreeField
+    TreeField,
+    SearchTreeField
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NzTreeSelectModule,
+    NzInputModule,
     NzTreeModule,
     FormlyModule.forChild({
       types: [
@@ -24,6 +26,14 @@ import { NzTreeModule } from 'ng-zorro-antd/tree';
         {
           name: 'nz-tree',
           component: TreeField,
+        },
+        {
+          name: 'search-tree',
+          component: SearchTreeField,
+        },
+        {
+          name: 'nz-search-tree',
+          component: SearchTreeField,
         },
       ],
     }),

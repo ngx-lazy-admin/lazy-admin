@@ -10,6 +10,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
 import { FieldValidatorFn } from '@ngx-formly/core/lib/services/formly.config';
 import { TableWrapper } from './table.wrapper';
+import { FixedWidthPipe } from './fixedwidth.pipe';
 
 export function minValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This value should be more than ${field.templateOptions?.min}`;
@@ -40,6 +41,7 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
     FormWrapper,
     InlineWrapper,
     TableWrapper,
+    FixedWidthPipe,
   ],
   imports: [
     CommonModule,
@@ -71,6 +73,9 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
         { name: 'max', message: maxValidationMessage },
       ],
     }), 
+  ],
+  exports: [
+    FixedWidthPipe
   ],
 })
 export class FormFieldModule {}
