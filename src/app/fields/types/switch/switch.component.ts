@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
-import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { NzSizeDSType, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({
 	selector: 'div[switch-field]',
@@ -11,10 +11,15 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 		'display': 'contents',
 	},
 	template: `
-		<nz-switch 
-			[ngModel]="true"
-			nzLoading>
-		</nz-switch>
+		<nz-switch
+			nz-input
+			[formControl]="control"
+			[formlyAttributes]="field"
+			[nzCheckedChildren]="nzCheckedChildren"
+			[nzUnCheckedChildren]="nzUnCheckedChildren"
+
+			[nzSize]="nzSize"
+		></nz-switch>
 	`
 })
 export class SwitchField extends FieldType {
@@ -24,29 +29,28 @@ export class SwitchField extends FieldType {
   }
 
 	get nzCheckedChildren(): string | TemplateRef<void> | null {
-		return this.to.nzBorderless || null
+		return this.to.nzCheckedChildren || this.to.checkedChildren || null
 	}
 
 	get nzUnCheckedChildren(): string | TemplateRef<void> | null  {
-		return this.to.nzBorderless || null
+		return this.to.nzUnCheckedChildren || this.to.unCheckedChildren || null
 	}
 
 	get nzDisabled(): boolean {
-		return this.to.nzBorderless || false
+		return this.to.nzDisabled || this.to.disabled || false
 	}
 
-	get nzSize(): 'small' | 'default' {
-		return this.to.nzBorderless || 'default'
+	get nzSize(): NzSizeDSType {
+		return this.to.nzSize || this.to.size || 'default'
 	}
 
 	get nzLoading(): boolean {
-		return this.to.nzBorderless || false
+		return this.to.nzLoading || this.to.loading || false
 	}
 
 	get nzControl(): boolean {
-		return this.to.nzBorderless || false
+		return this.to.nzControl || this.to.control || false
 	}
-
 
 	ngModelChange ($event: Event) {
 		if (this.to.change) {

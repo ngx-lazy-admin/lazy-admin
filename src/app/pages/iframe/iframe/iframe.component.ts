@@ -31,7 +31,7 @@ export class IframeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() { 
     this.loading = true;
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://wujie-angular12.pages.woa.com'; 
+    iframe.src = 'http://localhost:4200/iframe/iframe'; 
     iframe.className="w-100 h-100";
     iframe.frameBorder="0";
     iframe.onload = () => { 

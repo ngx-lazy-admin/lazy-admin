@@ -251,14 +251,14 @@ export const menu = [
         id: '0801',
         pid: '8',
         name: '个人中心',
-        link: '/setting/user',
+        link: '/account/center',
         badge: '',
       },
       {
         id: '0802',
         pid: '8',
         name: '个人设置',
-        link: '/setting/account',
+        link: '/account/settings',
         badge: '',
       },
     ]

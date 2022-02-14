@@ -18,11 +18,13 @@ import { SelectFieldModule } from './select';
 import { SliderFieldModule } from './slider';
 import { StatisticFieldModule } from './statistic';
 import { StepsFieldModule } from './steps';
+import { SwitchFieldModule } from './switch';
 import { TableFieldModule } from './table';
 import { TabsFieldModule } from './tabs';
 import { TagFieldModule } from './tag';
 import { TemplateFieldModule } from './template';
 import { TimePickerFieldModule } from './time-picker';
+import { TreeFieldModule } from './tree';
 import { UploadFieldModule } from './upload';
 
 @NgModule({
@@ -44,13 +46,15 @@ import { UploadFieldModule } from './upload';
     TemplateFieldModule,
     TabsFieldModule,
     StepsFieldModule,
+    SwitchFieldModule,
     SelectFieldModule,
     CardFieldModule,
     TableFieldModule,
     CollapseFieldModule,
     StatisticFieldModule,
     ListFieldModule,
-    ProgressFieldModule
+    ProgressFieldModule,
+    TreeFieldModule
   ],
 })
 export class FieldTypeModule {}

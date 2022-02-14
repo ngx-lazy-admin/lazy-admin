@@ -15,6 +15,10 @@ import { SwitchField } from './switch.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'switch',
+          component: SwitchField,
+        },
+        {
           name: 'nz-switch',
           component: SwitchField,
         }

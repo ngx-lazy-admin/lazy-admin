@@ -1,12 +1,12 @@
 
-export const system = [
+export const account = [
   {
-    id: 'user',
+    id: 'center',
     fields: [
       {
         key: 'search',
-        type: 'search-card',
-        className: "col-12  d-block",
+        type: 'card',
+        className: "col-4 d-block",
         templateOptions: {
           bodyClass: 'row',
           bodyStyle: {
@@ -138,7 +138,7 @@ export const system = [
       },
       {
         type: 'card',
-        className: "col-12 mt-3",
+        className: "col-8 d-block",
         templateOptions: {
         },
         fieldGroup: [
@@ -431,154 +431,37 @@ export const system = [
     }
   },
   {
-    id: 'menu',
+    id: 'settings',
     fields: [
       {
-        type: 'card',
-        className: "col-4",
+        id: 'user',
+        type: 'steps',
+        key: 'name',
+        className: "w-50 d-block",
+        wrappers: ['inline'],
         templateOptions: {
-        },
-        fieldGroup: [
-          {
-            key: 'search',
-            type: 'input',
-            className: 'col-12',
-            wrappers: ['inline'],
-            templateOptions: {
-              label: '',
-              placeholder: '输入菜单名称搜索'
-            }
-          },
-          {
-            key: 'search',
-            type: 'tree',
-            className: 'col-12',
-            wrappers: ['inline'],
-            templateOptions: {
-              label: '说明',
-            }
-          },          
-        ]
-      },
-      {
-        type: 'card',
-        className: "col-8",
-        templateOptions: {
-          title: '编辑菜单：带参路由缓存2'
-        },
-        fieldGroup: [
-          {
-            key: 'name',
-            type: 'input',
-            className: 'col-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '类型',
-            }
-          },
-          {
-            key: 'title',
-            type: 'input',
-            className: 'col-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '标题',
-            }
-          },
-          {
-            key: 'subtitle',
-            type: 'input',
-            className: 'col-3',
-            wrappers: ['v'],
-            templateOptions: {
-              label: '副标题',
-            }
-          },
-          {
-            key: 'path',
-            type: 'input',
-            className: 'col-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '路径',
-            }
-          },
-          {
-            key: 'open_type',
-            type: 'radio-group',
-            className: 'col-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '打开方式',
-              options: [
-                {
-                  label: '当前窗口',
-                  value: 'self'
-                },
-                {
-                  label: '当前窗口',
-                  value: 'blank'
-                },
-              ]
-            }
-          },
-          {
-            key: 'divider',
-            type: 'switch',
-            className: 'col-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '分割线',
-              right: '0',
-              tooltipTitle: '目标的服务对象',
-              tooltipIcon: 'question-circle',
-              actionOptions: [
-                {
-                  text: '菜单权限'
-                },
-                {
-                  text: '编辑'
-                },
-                {
-                  text: '删除'
-                }
-              ]
-            }
-          },
-          {
-            key: 'icon',
-            type: 'input',
-            className: 'col-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '图标',
-            }
-          },
-          {
-            key: 'menu_role',
-            type: 'input',
-            className: 'col-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '菜单权限',
-            }
-          },
-          {
-            type: 'button-group',
-            className: 'col-3',
-            wrappers: ['form'],
-            templateOptions: {
-              options: [
-                {
-                  text: '确定'
-                },
-                {
-                  text: '取消'
-                }
-              ]
-            }
-          },
-        ]
+          label: "姓名",
+          required: true,
+          placeholder: '姓名',
+          readonly: true,
+          nzShowArrow: false,
+          status: 'wait',
+          configOptions: [
+            {
+              label: 'Finished',
+              description: 'This is a description.',
+              subtitle: 'nzSubtitle'
+            },
+            {
+              label: 'In Progress',
+              description: 'This is a description.'
+            },
+            {
+              label: 'Waiting',
+              description: 'This is a description.'
+            },
+          ]
+        }
       },
     ],
     info: {

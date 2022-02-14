@@ -143,7 +143,7 @@ export class FormComponent {
 
   clearData () {
     this.fields = [];
-    this.model = null;
+    this.model = {};
     this.info = null;
     this.form.reset();
     this.cd.detectChanges();

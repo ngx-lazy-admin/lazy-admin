@@ -5,6 +5,7 @@ export { components } from './component.mock';
 export { profile } from './profile.mock';
 export { form } from './form.mock';
 export { list } from './list.mock';
+export { account } from './account.mock';
 
 
 
