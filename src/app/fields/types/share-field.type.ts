@@ -33,9 +33,9 @@ export const execEval = (code: string) => eval('(' + code + ')')
 export abstract class ShareFieldType extends FieldType {
   constructor(
     public cd: ChangeDetectorRef,
-    private http: HttpClient,
-    private readonly zone: NgZone,
-    private message: NzMessageService
+    public http: HttpClient,
+    public readonly zone: NgZone,
+    public message: NzMessageService
   ) {
     super();
   }

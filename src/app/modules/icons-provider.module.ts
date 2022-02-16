@@ -37,6 +37,13 @@ import {
   EyeInvisibleOutline,
   ColumnHeightOutline,
   PlusOutline,
+
+  CodeSandboxOutline,
+  ThunderboltOutline,
+  
+  CheckOutline,
+  SnippetsOutline,
+  CodeOutline,
 } from '@ant-design/icons-angular/icons'; 
 
 
@@ -47,7 +54,8 @@ const icons = [
   ProfileOutline, CheckCircleOutline, WarningOutline, RadiusSettingOutline, LockOutline,
   UserOutline, QuestionCircleOutline, HomeOutline, DeleteOutline, DownloadOutline,
   FileTwoTone, StepBackwardOutline, AntDesignOutline, EditOutline, ExclamationCircleOutline,
-  EyeOutline, EyeInvisibleOutline, ColumnHeightOutline, PlusOutline
+  EyeOutline, EyeInvisibleOutline, ColumnHeightOutline, PlusOutline, CodeSandboxOutline,
+  ThunderboltOutline, CheckOutline, SnippetsOutline, CodeOutline
 ];
 
 @NgModule({

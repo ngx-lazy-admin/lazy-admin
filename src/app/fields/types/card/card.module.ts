@@ -17,6 +17,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { CardMetaField } from './card-meta.component';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { CodeCardField } from './code-card.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     CardSmallField,
     SearchCardField,
     CardMetaField,
+    CodeCardField,
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,10 @@ import { NzFormModule } from 'ng-zorro-antd/form';
         {
           name: 'search-card',
           component: SearchCardField
+        },
+        {
+          name: 'code-card',
+          component: CodeCardField
         }
       ],
     }),

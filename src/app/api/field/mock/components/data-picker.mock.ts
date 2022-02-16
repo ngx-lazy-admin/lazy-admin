@@ -6,11 +6,11 @@ export const dataPickerFields = [
     },
     fieldGroup: [
       {
-        type: 'card',
+        type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '基本1',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '基本',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {
@@ -40,7 +40,7 @@ export const dataPickerFields = [
         ]
       },
       {
-        type: 'card',
+        type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '切换不同选择器',
@@ -58,7 +58,7 @@ export const dataPickerFields = [
         ]
       },
       {
-        type: 'card',
+        type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
@@ -84,7 +84,7 @@ export const dataPickerFields = [
         ]
       },
       {
-        type: 'card',
+        type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
@@ -120,7 +120,7 @@ export const dataPickerFields = [
     },
     fieldGroup: [
       {
-        type: 'card',
+        type: 'code-card',
         className: "d-block mb-3 col-12",
         fieldGroup: [
           {
@@ -150,7 +150,7 @@ export const dataPickerFields = [
         ]
       },
       {
-        type: 'card',
+        type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '切换不同选择器',
@@ -168,7 +168,7 @@ export const dataPickerFields = [
         ]
       },
       {
-        type: 'card',
+        type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
@@ -194,7 +194,7 @@ export const dataPickerFields = [
         ]
       },
       {
-        type: 'card',
+        type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
