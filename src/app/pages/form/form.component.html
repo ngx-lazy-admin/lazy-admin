@@ -2,7 +2,7 @@
 
 <ng-container *ngIf="!loading && form">
 	<ng-container  *ngIf="status == 200">
-		<nz-page-header class="bg-white mb-3">
+		<nz-page-header *ngIf="info" class="bg-white mb-3">
 			<nz-page-header-title>{{info?.title}}</nz-page-header-title>
 			<nz-page-header-content>
 				{{info?.content}}

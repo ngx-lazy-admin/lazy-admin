@@ -30,8 +30,8 @@ export const account = [
             className: 'col-12 col-md-3',
             wrappers: ['form'],
             templateOptions: {
-              label: '手机号',
-              layout : 'horizontal',
+              label: '标签',
+              layout : 'vertical',
               placeholder: '请输入手机号'
             }
           },
@@ -41,96 +41,9 @@ export const account = [
             className: 'col-12 col-md-3',
             wrappers: ['form'],
             templateOptions: {
-              label: '邮箱',
-              layout : 'horizontal',
+              label: '团队',
+              layout : 'vertical',
               placeholder: '请输入邮箱'
-            }
-          },
-          {
-            key: 'sex',
-            type: 'select',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '性别',
-              layout : 'horizontal',
-              placeholder: '请选择',
-              options: [
-                {
-                  label: '全部',
-                  value: '0'
-                },
-                {
-                  label: '男',
-                  value: '1'
-                },
-                {
-                  label: '女',
-                  value: '2'
-                }
-              ]
-            }
-          },
-          {
-            key: 'account',
-            type: 'input',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '登录账号',
-              layout : 'horizontal',
-              placeholder: '请输入登录账号',
-            }
-          },
-          {
-            key: 'user_id',
-            type: 'input',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '用户ID',
-              layout : 'horizontal',
-              placeholder: '请输入用户ID',
-            }
-          },
-          {
-            key: 'status',
-            type: 'select',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '状态',
-              layout : 'horizontal',
-              placeholder: '请输入用户ID',
-              options: [
-                {
-                  label: '全部',
-                  value: '0'
-                },
-                {
-                  label: '正常',
-                  value: '1'
-                },
-                {
-                  label: '冻结',
-                  value: '2'
-                },
-                {
-                  label: '关闭',
-                  value: '3'
-                }
-              ]
-            }
-          },
-          {
-            key: 'create_time',
-            type: 'input',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '创建时间',
-              layout : 'horizontal',
-              placeholder: '请选择创建时间',
             }
           },
         ]
@@ -142,7 +55,7 @@ export const account = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'tabs',
             key: 'table',
             className: "col-12 d-block",
             templateOptions: {
@@ -154,292 +67,379 @@ export const account = [
               bodyStyle: {
                 paddingBottom: 0
               },
-              toolbarOptions: [
-                {
-                  text: '新建',
-                  type: 'primary',
-                  className: 'me-auto',
-                  size: 'default',
-                  icon: 'plus',
-                },
-                {
-                  type: 'text',
-                  icon: 'redo',
-                  size: 'default',
-                  className: 'mx-1',
-                  options: [{
-                    label: '111',
-                    value: '222'
-                  }],
-                },
-                {
-                  type: 'text',
-                  icon: 'column-height',
-                  size: 'default',
-                  className: 'mx-1',
-                  options: [{
-                    label: '222',
-                    value: '222'
-                  }],
-                },
-                {
-                  type: 'text',
-                  icon: 'setting',
-                  size: 'default',
-                  className: 'mx-1'
-                },
-              ]
             },
-            defaultValue: [
+            fieldGroup: [
               {
-                id: '1',
-                name: '🐛 [BUG]无法创建工程npm create umi',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '2',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '3',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '4',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '5',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '6',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '7',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '8',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '9',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '10',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '11',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '12',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '13',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '14',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '15',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '16',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '17',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '18',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-            ],
-            fieldArray: {
-              fieldGroup: [
-                {
-                  key: 'name',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '用户名',
-                    tooltipTitle: '目标的服务对象',
-                    tooltipIcon: 'question-circle',
-                    layout : 'horizontal',
-                    placeholder: '给目标起个名字'
-                  }
+                key: 'basic',
+                type: 'list',
+                templateOptions: {
+                  showPagination: true,
+                  pageSize: 20,
+                  bodyClass: 'row',
+                  title: '文章',
+                  bordered: false,
+                  bodyStyle: {
+                    paddingBottom: 0
+                  },
                 },
-                {
-                  key: 'des',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '登录账号',
-                    layout : 'horizontal',
-                    placeholder: '请输入'
+                defaultValue: [
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 10,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: '🐛 [BUG]无法创建工程npm create umi',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 20,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 30,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 40,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 50,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 60,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 70,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 80,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 90,
+                      status: 'active'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    },
+                    progress: {
+                      percent: 100,
+                      status: 'active'
+                    }
                   }
-                },
-                {
-                  key: 'timer',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '手机号',
-
-                  }
-                },
-                {
-                  key: 'status',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '邮箱',
-                  }
-                },
-                {
-                  key: 'date',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '性别',
-                  }
-                },
-                {
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '创建时间',
-                  }
-                },
-                {
-                  type: 'list-actions',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '操作',
-                    layout : 'horizontal',
-                    right: '0',
-                    placeholder: '请输入',
-                    actionOptions: [
-                      {
-                        text: '编辑'
-                      },
-                      {
-                        text: '删除'
+                ],
+                fieldArray: {
+                  className: 'col-12 d-block border-bottom border-light p-3',
+                  fieldGroup: [
+                    {
+                      type: 'card-meta',
+                      key: 'meta',
+                      className: 'col-4 d-block',
+                      templateOptions: {
+                        title: '描述',
+                        size: 48,
+                        shape: 'square',
+                        description : '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套',
                       }
-                    ]
-                  }
+                    },
+                    {
+                      type: 'progress',
+                      key: 'progress',
+                      className: 'col-1 d-block',
+                    },
+                    {
+                      type: 'progress',
+                      key: 'progress',
+                      className: 'col-1 d-block',
+                    },
+                    {
+                      type: 'progress',
+                      key: 'progress',
+                      className: 'col-7  d-block',
+                    },
+                    {
+                      type: 'list-actions',
+                      className: 'col-1 px-3 text-end',
+                      templateOptions: {
+                        maxTagCount: 1,
+                        actionOptions: [
+                          {
+                            text: '编辑'
+                          }, {
+                            text: '编辑'
+                          }, {
+                            text: '删除'
+                          }
+                        ],
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                key: 'basic',
+                type: 'card',
+                className: 'd-block',
+                templateOptions: {
+                  title: '应用',
+                  borderless: true
                 },
-                
-              ]
-            }
+                fieldGroup: []
+              },
+              {
+                type: 'list',
+                key: 'card',
+                templateOptions: {
+                  showPagination: true,
+                  title: '项目',
+                  pageSize: 20,
+                  bodyClass: 'row',
+                  bordered: false,
+                  bodyStyle: {
+                    paddingBottom: 0
+                  },
+                },
+                defaultValue: [
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                  {
+                    meta: {
+                      title: 'alipay',
+                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+                    }
+                  },
+                ],
+                fieldArray: {
+                  className: 'col-3 d-block',
+                  fieldGroup: [
+                    {
+                      type: 'card',
+                      className: "col-12 mb-3",
+                      templateOptions: {
+                        nzBodyStyle: {
+                          padding: 0,
+                        },
+                        actions: [{
+                          icon: 'setting',
+                        }, {
+                          icon: 'edit',
+                        }]
+                      },
+                      fieldGroup: [
+                        {
+                          type: 'card-meta',
+                          key: 'meta',
+                          className: 'm-3 p-2 d-block',
+                          templateOptions: {
+                            title: '描述',
+                            size: 48,
+                            description : '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套',
+                          }
+                        }
+                      ]
+                    },
+                  ]
+                }
+              },        
+            ]
           }
         ]
       },
-    ],
-    info: {
-      title: '用户管理',
-      content: '页面数据为 Mock 示例数据，非真实数据。'
-    }
+    ]
   },
   {
     id: 'settings',
     fields: [
       {
-        key: 'username',
         type: 'card',
         className: 'd-block',
         fieldGroup: [
           {
             type: 'tabs',
-            key: 'name',
             className: "d-block",
             templateOptions: {
               nzTabPosition: 'left',
