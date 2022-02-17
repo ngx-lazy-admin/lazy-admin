@@ -7,11 +7,12 @@
   [nzTabBarGutter]="nzTabBarGutter"
   [nzHideAll]="nzHideAll"
   [nzType]="nzType"
+  class="bg-white"
   [nzCentered]="nzCentered">
 
   <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
     <nz-tab 
-      [nzTitle]="field?.templateOptions?.nzTitle"
+      [nzTitle]="field?.templateOptions?.nzTitle || field?.templateOptions?.title"
       [nzForceRender]="field?.templateOptions?.nzForceRender"
       [nzDisabled]="field?.templateOptions?.nzDisabled"
       (nzClick)="field?.templateOptions?.nzClick"

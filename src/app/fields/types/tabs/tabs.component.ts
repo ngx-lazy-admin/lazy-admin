@@ -2,6 +2,7 @@ import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, EventEmitte
 import { FieldArrayType } from '@ngx-formly/core';
 import { NzTabComponent, NzTabPosition, NzTabType } from 'ng-zorro-antd/tabs'; 
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { ShareFieldType } from '../share-field.type';
 
 @Component({
   selector: 'div[tabs-field]',
@@ -10,7 +11,7 @@ import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-an
   encapsulation: ViewEncapsulation.None,
 })
 
-export class TabsField extends FieldArrayType implements OnDestroy {
+export class TabsField extends ShareFieldType implements OnDestroy {
 
   get nzSelectedIndex(): number {
 		return this.to.nzSelectedIndex || 0;
@@ -33,7 +34,7 @@ export class TabsField extends FieldArrayType implements OnDestroy {
 	}
 
   get nzTabPosition(): NzTabPosition  {
-		return this.to.nzTabPosition || false;
+		return this.to.nzTabPosition || 'top';
 	}
 
   get nzType(): NzTabType  {
@@ -78,9 +79,9 @@ export class TabsField extends FieldArrayType implements OnDestroy {
 
   ngOnDestroy() {
     if (this.field && this.field.fieldGroup) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
-      });
+      // this.field.fieldGroup.map((item, index) => {
+      //   super.remove(index)
+      // });
     }
   }
 

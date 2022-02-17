@@ -12,12 +12,12 @@ export const SwitchMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '简单的 checkbox',
+          description: '最简单的用法。',
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'switch',
+            type: 'switch',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "Checkbox",

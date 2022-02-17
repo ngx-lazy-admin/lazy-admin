@@ -1,4 +1,3 @@
-
 export const account = [
   {
     id: 'center',
@@ -434,435 +433,139 @@ export const account = [
     id: 'settings',
     fields: [
       {
-        id: 'user',
-        type: 'steps',
-        key: 'name',
-        className: "w-50 d-block",
-        wrappers: ['inline'],
-        templateOptions: {
-          label: "姓名",
-          required: true,
-          placeholder: '姓名',
-          readonly: true,
-          nzShowArrow: false,
-          status: 'wait',
-          configOptions: [
-            {
-              label: 'Finished',
-              description: 'This is a description.',
-              subtitle: 'nzSubtitle'
-            },
-            {
-              label: 'In Progress',
-              description: 'This is a description.'
-            },
-            {
-              label: 'Waiting',
-              description: 'This is a description.'
-            },
-          ]
-        }
-      },
-    ],
-  },
-  {
-    id: 'role',
-    fields: [
-      {
-        key: 'search',
-        type: 'search-card',
-        className: "col-12  d-block",
-        templateOptions: {
-          bodyClass: 'row',
-          bodyStyle: {
-            paddingBottom: 0
-          }
-        },
-        fieldGroup: [
-          {
-            key: 'role',
-            type: 'input',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '角色名称',
-              layout : 'horizontal',
-              placeholder: '请输入角色名称'
-            }
-          },
-          {
-            key: 'explain',
-            type: 'input',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '说明',
-              layout : 'horizontal',
-              placeholder: '请输入说明'
-            }
-          },
-          {
-            key: 'create_time',
-            type: 'input',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '创建时间',
-              layout : 'horizontal',
-              placeholder: '请选择创建时间'
-            }
-          },
-          {
-            key: 'update_time',
-            type: 'select',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '更新时间',
-              layout : 'horizontal',
-              placeholder: '请选择更新时间'
-            }
-          },
-          {
-            key: 'default',
-            type: 'input',
-            className: 'col-12 col-md-3',
-            wrappers: ['form'],
-            templateOptions: {
-              label: '是否默认角色',
-              layout : 'horizontal',
-              placeholder: '请选择更新时间',
-            }
-          }
-        ]
-      },
-      {
+        key: 'username',
         type: 'card',
-        className: "col-12 mt-3",
-        templateOptions: {
-        },
+        className: 'd-block',
         fieldGroup: [
           {
-            type: 'table',
-            key: 'table',
-            className: "col-12 d-block",
+            type: 'tabs',
+            key: 'name',
+            className: "d-block",
             templateOptions: {
-              showPagination: true,
-              pageSize: 20,
-              bodyClass: 'row',
-              bordered: false,
-              nzScroll: { x: '1150px', y: '240px' },
-              bodyStyle: {
-                paddingBottom: 0
-              },
-              toolbarOptions: [
-                {
-                  text: '添加角色',
-                  type: 'primary',
-                  className: 'me-auto',
-                  size: 'default',
-                  icon: 'plus',
-                },
-                {
-                  type: 'text',
-                  icon: 'redo',
-                  size: 'default',
-                  className: 'mx-1',
-                  options: [{
-                    label: '111',
-                    value: '222'
-                  }],
-                },
-                {
-                  type: 'text',
-                  icon: 'full',
-                  size: 'default',
-                  className: 'mx-1',
-                  options: [{
-                    label: '111',
-                    value: '222'
-                  }],
-                },
-                {
-                  type: 'text',
-                  icon: 'column-height',
-                  size: 'default',
-                  className: 'mx-1',
-                  options: [{
-                    label: '222',
-                    value: '222'
-                  }],
-                },
-                {
-                  type: 'text',
-                  icon: 'setting',
-                  size: 'default',
-                  className: 'mx-1'
-                },
-              ]
+              nzTabPosition: 'left',
             },
-            defaultValue: [
+            fieldGroup: [
               {
-                id: '1',
-                name: '🐛 [BUG]无法创建工程npm create umi',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '2',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '3',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '4',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '5',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '6',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '7',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '8',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '9',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '10',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '11',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '12',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '13',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '14',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '15',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '16',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '17',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-              {
-                id: '18',
-                name: 'John Brown',
-                status: 'John Brown',
-                date: 'John Brown',
-                timer: '00001',
-                des: 'John Brown',
-              },
-            ],
-            fieldArray: {
-              fieldGroup: [
-                {
-                  key: 'name',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '角色名称',
-                  }
+                key: 'basic',
+                type: 'card',
+                className: 'd-block',
+                templateOptions: {
+                  title: '基本设置',
+                  borderless: true
                 },
-                {
-                  key: 'des',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '说明',
-                  }
-                },
-                {
-                  key: 'timer',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '创建时间',
-                  }
-                },
-                {
-                  key: 'status',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '更新时间',
-                  }
-                },
-                {
-                  key: 'date',
-                  type: 'text',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '是否默认角色',
-                  }
-                },
-                {
-                  type: 'list-actions',
-                  className: 'col-3',
-                  wrappers: ['table'],
-                  templateOptions: {
-                    label: '操作',
-                    right: '0',
-                    actionOptions: [
-                      {
-                        text: '菜单权限'
-                      },
-                      {
-                        text: '编辑'
-                      },
-                      {
-                        text: '删除'
-                      }
-                    ]
-                  }
-                },
-                
-              ]
-            }
-          }
+                fieldGroup: [
+                  {
+                    key: 'email',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '邮箱',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'nickname',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '昵称',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'intro',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '个人简介',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'country',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '地区/国家',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'address1',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '所在省市',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'address',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '街道地址',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'phone',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '联系电话',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    type: 'button',
+                    className: 'd-block col-4',
+                    templateOptions: {
+                      text: '确定',
+                      layout: 'vertical',
+                      type: 'primary'
+                    }
+                  },
+                ]
+              },
+              {
+                key: 'username',
+                type: 'card',
+                className: 'd-block',
+                templateOptions: {
+                  title: '安全设置',
+                  borderless: true
+                }
+              },
+              {
+                key: 'username',
+                type: 'card',
+                className: 'd-block',
+                templateOptions: {
+                  title: '账号绑定',
+                  borderless: true
+                }
+              },
+              {
+                key: 'username',
+                type: 'card',
+                className: 'd-block',
+                templateOptions: {
+                  title: '新消息通知',
+                  borderless: true
+                }
+              },
+            ]
+          },
         ]
       },
     ],
-    info: {
-      title: '角色权限管理',
-      content: '页面数据为 Mock 示例数据，非真实数据。'
-    }
   },
-  {
-    id: 'form',
-    fields: [
-      {
-        id: 'user',
-        type: 'steps',
-        key: 'name',
-        className: "w-50 d-block",
-        wrappers: ['inline'],
-        templateOptions: {
-          label: "姓名",
-          required: true,
-          placeholder: '姓名',
-          readonly: true,
-          nzShowArrow: false,
-          status: 'wait',
-          configOptions: [
-            {
-              label: 'Finished',
-              description: 'This is a description.',
-              subtitle: 'nzSubtitle'
-            },
-            {
-              label: 'In Progress',
-              description: 'This is a description.'
-            },
-            {
-              label: 'Waiting',
-              description: 'This is a description.'
-            },
-          ]
-        }
-      },
-    ],
-    info: {
-      title: '表单管理',
-      content: '表单设计和分析'
-    }
-  }
 ]

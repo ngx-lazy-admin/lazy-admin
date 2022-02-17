@@ -2,6 +2,7 @@ import { CheckboxMockFields } from './components/checkbox.mock';
 import { dataPickerFields } from './components/data-picker.mock';
 import { InputNumberMockFields } from './components/input-number.mock';
 import { InputMockFields } from './components/input.mock';
+import { SwitchMockFields } from './components/switch.mock';
 
 export const components = [
   {
@@ -128,6 +129,15 @@ export const components = [
     info: {
       title: 'DatePicker日期选择框',
       content: '输入或选择日期的控件'
+    }
+  },
+  {
+    id: 'switch',
+    fields: SwitchMockFields,
+    data: {},
+    info: {
+      title: 'Switch开关',
+      content: '开关选择器。'
     }
   },
 ]
