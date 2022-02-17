@@ -1,4 +1,5 @@
-@import "ng-zorro-antd/ng-zorro-antd..less";
+@import "ng-zorro-antd/ng-zorro-antd.less";
+
 @border-color-split: hsv(0, 0, 94%);
 @border-radius-base: 2px;
 @site-border-color-split: @border-color-split;
@@ -11,15 +12,10 @@
 @heading-color: fade(#000, 85%);
 @component-background: #fff;
 
-
-
-
-
 .code-box {
   position: relative;
   display: inline-block;
   width: 100%;
-  margin: 0 0 16px;
   border: 1px solid @site-border-color-split;
   border-radius: @border-radius-base;
   transition: all 0.2s;
@@ -108,10 +104,9 @@
 
   a.edit-button {
     position: absolute;
-    top: 7px;
+    top: 2px;
     right: -16px;
     padding-right: 6px;
-    font-size: 12px;
     text-decoration: none;
     background: inherit;
     transform: scale(0.9);
@@ -212,31 +207,16 @@
   }
 
   .highlight-wrapper {
-    display: none;
-    overflow: auto;
-    border-radius: 0 0 @border-radius-base @border-radius-base;
+    // display: none;
+    // overflow: auto;
+    // border-radius: 0 0 @border-radius-base @border-radius-base;
 
     &-expand {
       display: block;
     }
   }
 
-  .highlight {
-    position: relative;
 
-    .ant-tabs-nav-scroll {
-      text-align: center;
-    }
-
-    pre {
-      margin: 0;
-      padding: 0;
-      background: @component-background;
-    }
-    &:not(:first-child) {
-      border-top: 1px dashed @site-border-color-split;
-    }
-  }
 
   &-actions {
     padding-top: 12px;

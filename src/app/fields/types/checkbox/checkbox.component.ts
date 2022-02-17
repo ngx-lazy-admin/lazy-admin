@@ -13,7 +13,7 @@ import { FieldType } from '@ngx-formly/core';
       [nzIndeterminate]="nzIndeterminate"
       (ngModelChange)="ngModelChange($event)"
       ngDefaultControl>
-      {{text}}
+      {{text}} {{to.nzDisabled}}
     </label>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,7 +31,7 @@ export class CheckboxField extends FieldType {
 	}
 
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.to.nzDisabled || this.to.disabled || false;
 	}
 
 	get nzIndeterminate(): boolean {

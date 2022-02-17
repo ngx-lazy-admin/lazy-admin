@@ -117,7 +117,6 @@ export class DatePickerField extends FieldType {
   }
 
   onModelChange (date: Date) {
-    console.log(date);
     if (this.to.change) {
         this.to.change(this.field, date)
     }

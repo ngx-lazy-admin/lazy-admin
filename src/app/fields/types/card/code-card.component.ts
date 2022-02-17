@@ -17,6 +17,7 @@ import { ShareFieldType } from '../share-field.type';
 @Component({
   selector: 'div[code-card]',
   template: `
+  
     <section class="code-box" [ngClass]="{ expand: nzExpanded }" [attr.id]="nzId">
       <section class="code-box-demo">
         <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
@@ -113,15 +114,16 @@ import { ShareFieldType } from '../share-field.type';
                   />
               </ng-container>
             </ng-container>
-
+          
           </span>
         </div>
       </section>
-      <section class="highlight-wrapper" [ngClass]="{ 'highlight-wrapper-expand': nzExpanded }">
-        <div class="highlight p-3">
-          <pre >{{ model | json }}</pre>
+      <section *ngIf="nzExpanded">
+        <div class="p-3">
+          <pre>{{ model | json}}</pre>
         </div>
       </section>
+
     </section>
 
   `,
@@ -225,6 +227,8 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   onlineIDELoading = false;
   copyLoading = false;
 
+  code = `import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor`
+
   navigateToFragment(): void {
     console.log('navigateToFragment')
   }
@@ -292,10 +296,6 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     public message: NzMessageService
   ) {
     super(cd, http, zone, message);
-  }
-
-  ngOnInit(): void {
-
   }
 
   trackByFn(index: number, item: any) {

@@ -44,10 +44,25 @@ export abstract class ShareFieldType extends FieldType {
   click (action?: ActionTypeInterface) {
     this.message.success('click')
     this.zone.runOutsideAngular(() => {
-      if (action?.click) {
-        action.click(this.field, this)
-      } else if (this.to?.click) {
-        this.to.click(this.field, this);
+      try{
+        if (action?.click) {
+          if (typeof(action?.click)=='string') {
+            const func = execEval(action?.click)
+            func(this.field, this)
+          } else {
+            action.click(this.field, this)
+          }
+  
+        } else if (this.to.click ) {
+          if (typeof(this.to?.click)=='string') {
+            const func = execEval(this.to?.click)
+            func(this.field, this)
+          } else {
+            this.to.click(this.field, this);
+          }
+        }
+      } catch (err){
+        console.log(err)
       }
     });
   }

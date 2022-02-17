@@ -423,7 +423,7 @@ export const menu = [
         id: '1111',
         pid: '11',
         name: 'input-number',
-        link: '/components/input-numper',
+        link: '/components/input-number',
         badge: '',
       },
       {

@@ -1,4 +1,7 @@
+import { CheckboxMockFields } from './components/checkbox.mock';
 import { dataPickerFields } from './components/data-picker.mock';
+import { InputNumberMockFields } from './components/input-number.mock';
+import { InputMockFields } from './components/input.mock';
 
 export const components = [
   {
@@ -92,70 +95,8 @@ export const components = [
     }
   },
   {
-    id: 'checkbox',
-    fields: `[
-      {
-        key: 'checked2',
-        type: 'checkbox',
-        className: "d-inline-block mx-2",
-        templateOptions: {
-          text: "Checkbox",
-        }
-      },
-      {
-        key: 'checked1',
-        type: 'checkbox',
-        className: "d-inline-block mx-2",
-        templateOptions: {
-          text: "nzDisabled",
-          disabled: true
-        }
-      }
-    ]`,
-    data: {},
-    info: {
-      title: 'Checkbox 按钮',
-      content: '多选框。'
-    }
-  },
-  {
     id: 'input',
-    fields: [
-      {
-        type: 'input',
-        className: "d-block mb-2",
-        templateOptions: {
-          placeholder: 'Basic usage'
-        }
-      },
-      {
-        type: 'input',
-        className: "d-block mb-2",
-        templateOptions: {
-          placeholder: 'Basic usage',
-          disabled: true,
-        }
-      },
-      {
-        type: 'input',
-        className: "d-block mb-2",
-        templateOptions: {
-          label: "标签",
-          placeholder: 'Basic usage',
-          disabled: true
-        }
-      },
-      {
-        type: 'input',
-        className: "d-block mb-2",
-        templateOptions: {
-          label: "large size",
-          placeholder: 'large size',
-          size: 'large',
-          disabled: true
-        }
-      }
-    ],
+    fields: InputMockFields,
     data: {},
     info: {
       title: 'Input输入框',
@@ -163,8 +104,25 @@ export const components = [
     }
   },
   {
+    id: 'input-number',
+    fields: InputNumberMockFields,
+    data: {},
+    info: {
+      title: 'InputNumber数字输入框',
+      content: '通过鼠标或键盘，输入范围内的数值。'
+    }
+  },
+  {
+    id: 'checkbox',
+    fields: CheckboxMockFields,
+    data: {},
+    info: {
+      title: 'Checkbox多选框',
+      content: '多选框。'
+    }
+  },
+  {
     id: 'date-picker',
-    
     fields: dataPickerFields,
     data: {},
     info: {
