@@ -1,3 +1,4 @@
+import { ButtonMockFields } from './components/button.mock';
 import { CheckboxMockFields } from './components/checkbox.mock';
 import { dataPickerFields } from './components/data-picker.mock';
 import { InputNumberMockFields } from './components/input-number.mock';
@@ -7,39 +8,7 @@ import { SwitchMockFields } from './components/switch.mock';
 export const components = [
   {
     id: 'button',
-    fields: `[
-      {
-        key: 'name',
-        type: 'button',
-        className: "d-inline-block mx-2",
-        templateOptions: {
-          text: "Primary Button",
-          type: 'primary',
-          click: (field, _this) => {
-            console.log(field)
-            _this.message.success(field.templateOptions.text)
-          }
-        }
-      },
-      {
-        key: 'name',
-        type: 'button',
-        className: "d-inline-block mx-2",
-        templateOptions: {
-          text: "Default Button",
-          type: 'default',
-        }
-      },
-      {
-        key: 'name',
-        type: 'button',
-        className: "d-inline-block mx-2",
-        templateOptions: {
-          text: "Dashed Button",
-          type: 'dashed',
-        }
-      }
-    ]`,
+    fields: ButtonMockFields,
     info: {
       title: 'Button 按钮',
       content: '按钮用于开始一个即时操作。'

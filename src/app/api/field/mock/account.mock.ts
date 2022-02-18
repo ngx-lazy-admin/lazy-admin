@@ -459,6 +459,7 @@ export const account = [
                     type: 'input',
                     className: 'd-block col-4',
                     wrappers: ['form'],
+                    defaultValue: 'antdesign@alipay.com',
                     templateOptions: {
                       label: '邮箱',
                       layout: 'vertical'
@@ -469,6 +470,7 @@ export const account = [
                     type: 'input',
                     className: 'd-block col-4',
                     wrappers: ['form'],
+                    defaultValue: 'Serati Ma',
                     templateOptions: {
                       label: '昵称',
                       layout: 'vertical'
@@ -476,12 +478,13 @@ export const account = [
                   },
                   {
                     key: 'intro',
-                    type: 'input',
+                    type: 'textarea',
                     className: 'd-block col-4',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '个人简介',
-                      layout: 'vertical'
+                      layout: 'vertical',
+                      placeholder: '个人简介'
                     }
                   },
                   {
@@ -542,7 +545,55 @@ export const account = [
                 templateOptions: {
                   title: '安全设置',
                   borderless: true
-                }
+                },
+                fieldGroup: [
+                  {
+                    key: 'email',
+                    type: 'list-item',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    defaultValue: 'antdesign@alipay.com',
+                    templateOptions: {
+                      title: '账户密码',
+                      description: '当前密码强度：强',
+                      action: [{
+                        text: '修改',
+                      }]
+                    }
+                  },
+                  {
+                    key: 'nickname',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    defaultValue: 'Serati Ma',
+                    templateOptions: {
+                      label: '昵称',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'intro',
+                    type: 'textarea',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '个人简介',
+                      layout: 'vertical',
+                      placeholder: '个人简介'
+                    }
+                  },
+                  {
+                    key: 'country',
+                    type: 'input',
+                    className: 'd-block col-4',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '地区/国家',
+                      layout: 'vertical'
+                    }
+                  },
+                ]
               },
               {
                 key: 'username',

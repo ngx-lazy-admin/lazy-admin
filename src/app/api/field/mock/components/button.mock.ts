@@ -1,6 +1,6 @@
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 
-export const InputMockFields = [
+export const ButtonMockFields = [
   {
     type: 'group',
     className: "d-block mb-3 col-6",
@@ -16,8 +16,8 @@ export const InputMockFields = [
         },
         fieldGroup: [
           {
-            key: 'input1-1',
-            type: 'input',
+            key: 'button',
+            type: 'button',
             className: "d-block mb-2",
             defaultValue: 3,
             templateOptions: {
@@ -25,7 +25,7 @@ export const InputMockFields = [
             }
           },
           {
-            key: 'input1-2',
+            key: 'button',
             type: 'input',
             className: "d-block mb-2",
             templateOptions: {
@@ -33,6 +33,39 @@ export const InputMockFields = [
               disabled: true,
             }
           },
+          [
+            {
+              key: 'name',
+              type: 'button',
+              className: "d-inline-block mx-2",
+              templateOptions: {
+                text: "Primary Button",
+                type: 'primary',
+                // click: (field, _this) => {
+                //   console.log(field)
+                //   _this.message.success(field.templateOptions.text)
+                // }
+              }
+            },
+            {
+              key: 'name',
+              type: 'button',
+              className: "d-inline-block mx-2",
+              templateOptions: {
+                text: "Default Button",
+                type: 'default',
+              }
+            },
+            {
+              key: 'name',
+              type: 'button',
+              className: "d-inline-block mx-2",
+              templateOptions: {
+                text: "Dashed Button",
+                type: 'dashed',
+              }
+            }
+          ]
         ]
       },
       {
