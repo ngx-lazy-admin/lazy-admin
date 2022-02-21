@@ -103,6 +103,8 @@ export class FormComponent {
         this.model = result?.data;
         this.info = result?.info;
       } catch (error) {
+        this.fields = []
+        this.model = {}
         console.log(error);
       }
     } else {
@@ -113,6 +115,8 @@ export class FormComponent {
           this.info = result?.info;
         } catch (error) {
           console.log(error);
+          this.fields = []
+          this.model = {}
         }
       }
     }
