@@ -282,7 +282,7 @@ export const menu = [
         id: '1402',
         pid: '14',
         name: '乾坤',
-        link: '/iframe/qiankun',
+        link: '/zh',
         badge: '',
       }
     ]
@@ -580,7 +580,7 @@ export const menu = [
         pid: '12',
 
         name: 'Background',
-        link: '/bootstrap/two',
+        link: '/bootstrap/backgrounds',
         badge: '',
       },
       {
