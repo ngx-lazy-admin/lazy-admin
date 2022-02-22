@@ -74,396 +74,98 @@ export const BackgroundMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '无边框',
+          title: '渐变',
           subtitle: '无边框',
         },
         fieldGroup: [
           {
             type: 'template',
-            className: "border-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5',
-                border: '1px solid #dee2e6'
-              }
-            }
+            defaultValue: '.bg-primary.bg-gradient',
+            className: "d-block p-3 f16 mb-2 bg-primary bg-gradient text-white",
           },
           {
             type: 'template',
-            className: "border-top-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                border: '1px solid #dee2e6'
-              }
-            }
+            defaultValue: '.bg-secondary .bg-gradient',
+            className: "d-block p-3 f16 mb-2 bg-secondary bg-gradient text-white",
           },
           {
             type: 'template',
-            className: "border-end-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                border: '1px solid #dee2e6'
-
-              }
-            }
+            defaultValue: '.bg-success .bg-gradient',
+            className: "d-block p-3 f16 mb-2 bg-success bg-gradient text-white",
           },
           {
             type: 'template',
-            className: "border-bottom-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                border: '1px solid #dee2e6'
-
-              }
-            }
+            defaultValue: '.bg-danger .bg-gradient',
+            className: "d-block p-3 f16 mb-2 bg-danger bg-gradient text-white",
           },
           {
             type: 'template',
-            className: "border-start-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                border: '1px solid #dee2e6'
-
-              }
-            }
+            defaultValue: '.bg-warning .bg-gradient',
+            className: "d-block p-3 f16 mb-2 bg-warning bg-gradient text-white",
+          },
+          {
+            type: 'template',
+            defaultValue: '.bg-info .bg-gradient',
+            className: "d-block p-3 f16 mb-2 bg-info bg-gradient text-white",
+          },
+          {
+            type: 'template',
+            defaultValue: '.bg-light .bg-gradient',
+            className: "d-block p-3 f16 mb-2 bg-light bg-gradient text-black",
+          },
+          {
+            type: 'template',
+            defaultValue: '.bg-dark .bg-gradient',
+            className: "d-block p-3 f16 mb-2 bg-dark bg-gradient text-white",
           }
         ]
       },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '边框颜色',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-primary",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-secondary",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-success",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-danger",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-warning",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-info",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-light",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-dark",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-white",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '边界宽度',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-1",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-2",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-3",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-4",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border-5",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          }
-        ]
-      },
+
     ]
   },
   {
     type: 'group',
     className: "d-block mb-3 col-6",
-
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
-        fieldGroup: [
-          {
-            key: 'input-2-1',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'large size',
-              size: 'large',
-            }
-          },
-          {
-            key: 'input-2-2',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'default size',
-              size: 'default',
-            }
-          },
-          {
-            key: 'input-2-3',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'small size',
-              size: 'small',
-            }
-          },
-        ],
         templateOptions: {
-          title: '三种大小',
-          description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
-          注意： 在表单里面，我们只使用大尺寸的输入框。`,
-        },
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '透明',
+          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
+            type: 'template',
+            defaultValue: '.bg-primary',
+            className: "d-block p-3 f16 mb-2 bg-primary text-white",
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
+            type: 'template',
+            defaultValue: '.bg-primary bg-opacity-75',
+            className: "d-block p-3 f16 mb-2 bg-primary text-white bg-opacity-75",
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
+            type: 'template',
+            defaultValue: '.bg-primary bg-opacity-50 ',
+            className: "d-block p-3 f16 mb-2 bg-primary red text-white bg-opacity-50 width-25",
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-            }
-          }
+            type: 'template',
+            defaultValue: '.bg-primary bg-opacity-25',
+            className: "d-block p-3 f16 mb-2 bg-primary text-white bg-opacity-25",
+          },
+          {
+            type: 'template',
+            defaultValue: '.bg-primary bg-opacity-15',
+            className: "d-block p-3 f16 mb-2 bg-primary text-white bg-opacity-15",
+          },
+          {
+            type: 'template',
+            defaultValue: '.bg-primary bg-opacity-0',
+            className: "d-block p-3 f16 mb-2 bg-primary text-white bg-opacity-0",
+          },
+
         ]
       },
 

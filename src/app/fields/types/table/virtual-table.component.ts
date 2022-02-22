@@ -13,6 +13,7 @@ import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-an
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
+import { ShareFieldType } from '../share-field.type';
 
 export interface VirtualDataInterface {
   index: number;
@@ -38,9 +39,19 @@ export interface VirtualDataInterface {
     >
       <thead>
         <tr>
-          <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup; trackBy: trackByFn">
+          <!-- <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup; trackBy: trackByFn">
             <th>{{item?.templateOptions?.label}}</th>
-          </ng-container>
+          </ng-container> -->
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
+
         </tr>
       </thead>
       <tbody>
@@ -48,9 +59,20 @@ export interface VirtualDataInterface {
           <tr>
             <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
               <td *ngFor="let td of field.fieldGroup[index].fieldGroup">
-                <formly-field [field]="td"></formly-field>
+                <!-- <formly-field [field]="td"></formly-field> -->
+                1111
               </td>
             </ng-container>
+            <td>1 {{data | json}}</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+
           </tr>
         </ng-template>
       </tbody>
@@ -58,7 +80,7 @@ export interface VirtualDataInterface {
   `
 })
 
-export class VirtualTableField extends FieldArrayType implements OnDestroy {
+export class VirtualTableField extends ShareFieldType implements OnDestroy {
 
   @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
 
@@ -125,24 +147,20 @@ export class VirtualTableField extends FieldArrayType implements OnDestroy {
     return item.id ? item.id : index;
   }
 
-  constructor(
-    private cd: ChangeDetectorRef,
-  ) { 
-    super();
-  }
-
   ngAfterViewInit(): void {
+
     this.nzTableComponent?.cdkVirtualScrollViewport?.scrolledIndexChange
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: number) => {
         console.log('scroll index to', data);
+
       });
   }
 
   ngOnDestroy() {
     if (this.field && this.field.fieldGroup) {
       this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
+        // super.remove(index)
       });
     }
     this.destroy$.next();

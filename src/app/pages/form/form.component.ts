@@ -102,6 +102,7 @@ export class FormComponent {
         this.fields = this.execEval(result?.fields);
         this.model = result?.data;
         this.info = result?.info;
+        console.log(this.model)
       } catch (error) {
         this.fields = []
         this.model = {}
@@ -113,6 +114,7 @@ export class FormComponent {
           this.fields = result.fields;
           this.model = result?.data;
           this.info = result?.info;
+          console.log(this.model)
         } catch (error) {
           console.log(error);
           this.fields = []

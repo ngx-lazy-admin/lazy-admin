@@ -82,7 +82,7 @@ export const BorderMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: "d-block mb-3 col-12 ",
         templateOptions: {
           title: '无边框',
           subtitle: '无边框',

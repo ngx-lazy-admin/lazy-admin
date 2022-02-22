@@ -3,7 +3,7 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const TableMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: "d-block mb-3 col-12",
     templateOptions: {
     },
     fieldGroup: [
@@ -16,23 +16,54 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            key: 'input1-1',
-            type: 'input',
-            className: "d-block mb-2",
-            defaultValue: 3,
+            type: 'virtual-table',
+            key: 'list',
+            className: "col-12 d-block",
             templateOptions: {
-              placeholder: 'Basic usage'
+              showPagination: true,
+              pageSize: 20,
+              bodyClass: 'row',
+              bordered: false,
+              bodyStyle: {
+                paddingBottom: 0
+              },
+              toolbarOptions: [
+                {
+                  text: '新建',
+                  type: 'primary',
+                  className: 'me-auto',
+                  size: 'default',
+                  icon: 'plus',
+                },
+                {
+                  type: 'default',
+                  icon: 'redo',
+                  size: 'default',
+                  className: 'mx-1',
+                  options: [{
+                    label: '111',
+                    value: '222'
+                  }],
+                },
+                {
+                  type: 'default',
+                  icon: 'column-height',
+                  size: 'default',
+                  className: 'mx-1',
+                  options: [{
+                    label: '222',
+                    value: '222'
+                  }],
+                },
+                {
+                  type: 'default',
+                  icon: 'setting',
+                  size: 'default',
+                  className: 'mx-1'
+                },
+              ]
             }
-          },
-          {
-            key: 'input1-2',
-            type: 'input',
-            className: "d-block mb-2",
-            templateOptions: {
-              placeholder: 'Basic usage',
-              disabled: true,
-            }
-          },
+          }
         ]
       },
       {

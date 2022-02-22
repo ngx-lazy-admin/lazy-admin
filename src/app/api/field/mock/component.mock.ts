@@ -13,10 +13,23 @@ import { SelectMockFields } from './components/select.mock';
 import { SliderMockFields } from './components/slider.mock';
 import { StepsMockFields } from './components/steps.mock';
 import { SwitchMockFields } from './components/switch.mock';
+import { TableMockFields } from './components/table.mock';
 import { TimePickerMockFields } from './components/time-picker.mock';
 import { TransferMockFields } from './components/transfer.mock';
 import { TreeSelectMockFields } from './components/tree-select.mock';
 import { UploadMockFields } from './components/upload.mock';
+
+const list = [...Array(100000).keys()].map((item, index) => {
+  return {
+    id: index,
+    name: '🐛 [BUG ' + index + ']无法创建工程npm create umi',
+    status: 'John Brown',
+    date: 'John Brown',
+    timer: '00001',
+    des: 'John Brown',
+  }
+})
+
 
 export const components = [
   {
@@ -184,5 +197,17 @@ export const components = [
       title: 'Upload上传',
       content: '文件选择上传和拖拽上传控件。'
     }
-  }
+  },
+  {
+    id: 'table',
+    fields: TableMockFields,
+    data: {
+      list: list
+    },
+
+    info: {
+      title: 'Table表格',
+      content: '展示行列数据。'
+    }
+  } 
 ]

@@ -16,8 +16,8 @@ export const bootstrap = [
     fields: BackgroundMockFields,
     data: {},
     info: {
-      title: 'Borders',
-      content: 'Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.'
+      title: 'Background',
+      content: 'Convey meaning through background-color and add decoration with gradients.'
     }
     
   }
