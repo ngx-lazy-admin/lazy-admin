@@ -9,6 +9,7 @@ import { InputMockFields } from './components/input.mock';
 import { MentionMockFields } from './components/mention.mock';
 import { RadioMockFields } from './components/radio.mock';
 import { RateMockFields } from './components/rate.mock';
+import { RepeatMockFields } from './components/repeat.mock';
 import { SelectMockFields } from './components/select.mock';
 import { SliderMockFields } from './components/slider.mock';
 import { StepsMockFields } from './components/steps.mock';
@@ -19,7 +20,7 @@ import { TransferMockFields } from './components/transfer.mock';
 import { TreeSelectMockFields } from './components/tree-select.mock';
 import { UploadMockFields } from './components/upload.mock';
 
-const list = [...Array(100000).keys()].map((item, index) => {
+const list = [...Array(1000).keys()].map((item, index) => {
   return {
     id: index,
     name: '🐛 [BUG ' + index + ']无法创建工程npm create umi',
@@ -209,5 +210,19 @@ export const components = [
       title: 'Table表格',
       content: '展示行列数据。'
     }
-  } 
+  },
+  {
+    id: 'repeat',
+    fields: RepeatMockFields,
+    data: {
+      list: list
+    },
+
+    info: {
+      title: 'Table表格',
+      content: '展示行列数据。'
+    }
+  },
+
+  
 ]

@@ -558,6 +558,13 @@ export const menu = [
         name: 'upload',
         link: '/components/upload',
         badge: '',
+      },
+      {
+        id: '1131',
+        pid: '11',
+        name: 'repeat',
+        link: '/components/repeat',
+        badge: '',
       }
     ]
   },

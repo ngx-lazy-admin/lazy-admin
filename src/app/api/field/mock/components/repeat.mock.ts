@@ -1,6 +1,6 @@
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 
-export const TableMockFields = [
+export const RepeatMockFields = [
   {
     type: 'group',
     className: "d-block mb-3 col-12",
@@ -16,7 +16,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'virtual-table',
+            type: 'repeat',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -67,7 +67,7 @@ export const TableMockFields = [
               fieldGroup: [
                 {
                   key: 'name',
-                  type: 'text',
+                  type: 'template',
                   className: 'col-3',
                   wrappers: ['table'],
                   templateOptions: {
@@ -80,7 +80,7 @@ export const TableMockFields = [
                 },
                 {
                   key: 'des',
-                  type: 'text',
+                  type: 'template',
                   className: 'col-3',
                   wrappers: ['table'],
                   templateOptions: {
@@ -91,7 +91,7 @@ export const TableMockFields = [
                 },
                 {
                   key: 'timer',
-                  type: 'text',
+                  type: 'template',
                   className: 'col-3',
                   wrappers: ['table'],
                   templateOptions: {
@@ -101,7 +101,7 @@ export const TableMockFields = [
                 },
                 {
                   key: 'status',
-                  type: 'text',
+                  type: 'template',
                   className: 'col-3',
                   wrappers: ['table'],
                   templateOptions: {
@@ -112,7 +112,7 @@ export const TableMockFields = [
                 },
                 {
                   key: 'date',
-                  type: 'text',
+                  type: 'template',
                   className: 'col-3',
                   wrappers: ['table'],
                   templateOptions: {
@@ -122,7 +122,7 @@ export const TableMockFields = [
                   }
                 },
                 {
-                  type: 'text',
+                  type: 'template',
                   className: 'col-3',
                   wrappers: ['table'],
                   templateOptions: {
