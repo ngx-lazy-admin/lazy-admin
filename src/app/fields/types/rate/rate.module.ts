@@ -16,6 +16,10 @@ import { RateField } from './rate.component';
     FormlyModule.forChild({
       types: [
         {
+          name: 'rate',
+          component: RateField,
+        },
+        {
           name: 'nz-rate',
           component: RateField,
         }

@@ -12,15 +12,16 @@ export const RateMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '简单的 checkbox',
+          description: '最简单的用法。',
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'rate',
+            type: 'rate',
             className: "d-inline-block mx-2",
+
             templateOptions: {
-              text: "Checkbox",
+
             }
           }
         ]
@@ -29,48 +30,18 @@ export const RateMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '文案展现',
+          subtitle: '给评分组件加上文案展示。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'rate2',
+            type: 'rate',
             className: "d-inline-block w-100",
+            defaultValue: 3,
             templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
+              tooltips: ['terrible', 'bad', 'normal', 'good', 'wonderful'],
             },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
-            templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
-              `
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
-            }
           }
         ]
       },
@@ -78,26 +49,37 @@ export const RateMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '清楚',
+          subtitle: '支持允许或者禁用清除。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'rate3',
+            type: 'rate',
+            className: "d-inline-block w-100",
+            defaultValue: 3,
+            wrappers: ['form'],
             templateOptions: {
-              text: "Checkbox",
-            }
+              layout: 'inline',
+              label: 'allowClear: true',
+              tooltips: ['terrible', 'bad', 'normal', 'good', 'wonderful'],
+              allowClear: true,
+              allowHalf: true 
+            },
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'rate3',
+            type: 'rate',
+            className: "d-inline-block w-100",
+            defaultValue: 3,
+            wrappers: ['form'],
             templateOptions: {
-              text: "nzDisabled",
-              
-            }
+              label: 'allowClear: false',
+              layout: 'inline',
+              tooltips: ['terrible', 'bad', 'normal', 'good', 'wonderful'],
+              allowClear: false,
+              allowHalf: true
+            },
           }
         ]
       },
