@@ -1,5 +1,6 @@
 import { BackgroundMockFields } from "./bootstrap/background.mock";
 import { BorderMockFields } from "./bootstrap/border.mock";
+import { ColorsMockFields } from "./bootstrap/color.mock";
 
 export const bootstrap = [
   {
@@ -18,7 +19,17 @@ export const bootstrap = [
     info: {
       title: 'Background',
       content: 'Convey meaning through background-color and add decoration with gradients.'
-    }
-    
-  }
+    } 
+  },
+  {
+    id: 'colors',
+    fields: ColorsMockFields,
+    data: {},
+    info: {
+      title: 'Background',
+      content: 'Convey meaning through background-color and add decoration with gradients.'
+    } 
+  },
+
+  
 ]

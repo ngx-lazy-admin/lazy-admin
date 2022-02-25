@@ -11,131 +11,103 @@ export const ButtonMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '基本用法',
-          description: '数字输入框',
+          title: '按钮类型',
+          description: '按钮有五种类型：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。主按钮在同一个操作区域最多出现一次。',
         },
         fieldGroup: [
           {
-            key: 'button',
             type: 'button',
-            className: "d-block mb-2",
+            className: "d-inline-block mb-2",
             defaultValue: 3,
             templateOptions: {
-              placeholder: 'Basic usage'
+              text: 'Primary Button',
+              type: 'primary',
             }
           },
           {
-            key: 'button',
-            type: 'input',
-            className: "d-block mb-2",
+            type: 'button',
+            className: "d-inline-block mx-2",
             templateOptions: {
-              placeholder: 'Basic usage',
-              disabled: true,
+              text: "Default Button",
+              type: 'default',
             }
           },
-          [
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Primary Button",
-                type: 'primary',
-                // click: (field, _this) => {
-                //   console.log(field)
-                //   _this.message.success(field.templateOptions.text)
-                // }
-              }
-            },
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Default Button",
-                type: 'default',
-              }
-            },
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Dashed Button",
-                type: 'dashed',
-              }
+          {
+            type: 'button',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              text: "Dashed Button",
+              type: 'dashed',
             }
-          ]
+          },
+          {
+            type: 'button',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              text: "Text Button",
+              type: 'text',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              text: "Link Button",
+              type: 'link',
+            }
+          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '按钮尺寸',
+          description: `按钮有大、中、小三种尺寸。
+          通过设置 nzSize 为 largesmall 分别把按钮设为大、小尺寸。若不设置 nzSize，则尺寸为中。`,
         },
         fieldGroup: [
           {
-            key: 'input1-3',
-            type: 'input',
-            className: "d-block mb-2",
+            type: 'button-group',
+            className: "d-inline-block mb-2",
+            defaultValue: 3,
             templateOptions: {
-              label: "标签",
-              placeholder: 'Basic usage',
-              disabled: true
-            }
-          },
-          {
-            key: 'input1-4',
-            type: 'input',
-            className: "d-block mb-2",
-            templateOptions: {
-              label: "large size",
-              placeholder: 'large size',
-              size: 'large',
-              disabled: true
-            }
-          },
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
-            templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
-            },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
+              text: 'Large',
+              type: 'primary',
+              options: [
+                {
+                  text: 'Large',
+                  type: 'primary',
+                },
+                {
+                  text: 'Large',
+                  type: 'primary',
+                },
+                {
+                  text: 'Large',
+                  type: 'primary',
+                },
+              ]
             }
           },
           {
             type: 'button',
-            className: "d-inline-block mt-2 ",
+            className: "d-inline-block mb-2",
+            defaultValue: 3,
             templateOptions: {
-              text: "Disabled",
-              size: 'small',
+              text: 'default',
               type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
-              `
             }
           },
           {
             type: 'button',
-            className: "d-inline-block mx-2 ",
+            className: "d-inline-block mb-2",
+            defaultValue: 3,
             templateOptions: {
-              text: "Checked",
-              size: 'small',
+              text: 'Small',
               type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
             }
-          }
+          },
         ]
       },
       {

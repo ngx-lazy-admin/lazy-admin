@@ -59,7 +59,7 @@ export interface VirtualDataInterface {
 
     <nz-table
       #nzTable
-      [nzData]="formControl.value"
+      [nzData]="model"
       [nzBordered]="nzBordered"
       [nzScroll]="to.nzScroll"
       [nzFrontPagination]="nzFrontPagination"
@@ -71,7 +71,7 @@ export interface VirtualDataInterface {
       <thead>
         <tr>
           <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup;">
-            <th [nzWidth]="nzWidth" [nzRight]="item?.templateOptions?.right">
+            <th *ngIf="!item.hide" [nzWidth]="nzWidth" [nzRight]="item?.templateOptions?.right">
               {{item?.templateOptions?.label}}
 
               <ng-container *ngIf="item?.templateOptions?.tooltipTitle">
@@ -88,23 +88,12 @@ export interface VirtualDataInterface {
       </thead>
       <tbody>
         <tr  *ngFor="let data of nzTable.data; trackBy: trackByFn; let index = index;">
-          <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
-            <td *ngFor="let td of field.fieldGroup[index].fieldGroup" [nzRight]="td?.templateOptions?.right">
-              <ng-container *ngIf="td.id && editCache[td.id] && td.type != 'text' ">
+          <ng-container *ngIf="field.fieldGroup && field.fieldGroup[data.id]">
+            <ng-container *ngFor="let td of field.fieldGroup[data.id].fieldGroup">
+              <td  *ngIf="!td.hide" [nzRight]="td?.templateOptions?.right">
                 <formly-field [field]="td"></formly-field>
-
-                <ng-container *ngIf="editor">
-                  <i nz-icon nzType="check" nzTheme="outline" (click)="confirm(td)"></i>
-                  <i nz-icon nzType="close" nzTheme="outline" (click)="cancel(td)"></i>
-                </ng-container>
-              </ng-container>
-              <ng-container *ngIf="!(td.id && editCache[td.id] && td.type != 'text' )">
-                <!-- {{ td.formControl?.value }}  -->
-                <formly-field [field]="td"></formly-field>
-
-                <i *ngIf="editor" nz-icon nzType="edit" nzTheme="outline" (click)="edit(td)"></i>
-              </ng-container>
-            </td>
+              </td>
+            </ng-container>
           </ng-container>
         </tr>
       </tbody>
@@ -208,7 +197,7 @@ export class TableField extends FieldArrayType implements OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
+    // console.log(changes)
   }
 
   edit (field: FormlyFieldConfig) {
@@ -255,6 +244,7 @@ export class TableField extends FieldArrayType implements OnDestroy {
     if (this.options && this.options.formState) {
       // this.options.formState[this.id]['caches'] = 
     }
+    // console.log(this)
   }
 
   ngOnDestroy() {

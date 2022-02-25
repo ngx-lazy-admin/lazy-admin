@@ -1,4 +1,4 @@
-export const BorderMockFields = [
+export const ColorsMockFields = [
   {
     type: 'group',
     className: "d-block mb-3 col-6",
@@ -9,474 +9,195 @@ export const BorderMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '边框',
-          description: '边框',
+          title: 'Colors',
+          description: 'Convey meaning through color with a handful of color utility classes. Includes support for styling links with hover states, too.',
         },
         fieldGroup: [
           {
             type: 'template',
-            className: "border d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
+            className: "d-block mb-2 p-2 text-primary ",
+            defaultValue: 'text-primary',
+            templateOptions: {}
           },
           {
             type: 'template',
-            className: "border-top d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
+            className: "d-block mb-2 p-2 text-secondary ",
+            defaultValue: '.text-secondary',
+            templateOptions: {}
           },
           {
             type: 'template',
-            className: "border-end d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
+            className: "d-block mb-2 p-2 text-success ",
+            defaultValue: '.text-success',
+            templateOptions: {}
           },
           {
             type: 'template',
-            className: "border-bottom d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
+            className: "d-block mb-2 p-2 text-danger",
+            defaultValue: '.text-danger',
+            templateOptions: {}
           },
           {
             type: 'template',
-            className: "border-start d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          }
+            className: "d-block mb-2 p-2 text-warning bg-dark",
+            defaultValue: 'text-warning',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-info bg-dark",
+            defaultValue: '.text-info',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-light",
+            defaultValue: '.text-light',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-dark ",
+            defaultValue: '.text-dark',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-body",
+            defaultValue: '.text-body',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-muted ",
+            defaultValue: '.text-muted',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-white bg-dark",
+            defaultValue: '.text-white',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-black-50",
+            defaultValue: '.text-black-50',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-white-50 bg-dark",
+            defaultValue: '.text-black-50',
+            templateOptions: {}
+          },
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '无边框',
-          subtitle: '无边框',
+          title: 'Opacity',
+          subtitle: 'As of v5.1.0, text color utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.',
         },
         fieldGroup: [
           {
             type: 'template',
-            className: "border-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5',
-                border: '1px solid #dee2e6'
-              }
-            }
+            className: "d-block mb-2 p-2 text-primary ",
+            defaultValue: 'text-primary',
+            templateOptions: {}
           },
           {
             type: 'template',
-            className: "border-top-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                border: '1px solid #dee2e6'
-              }
-            }
+            className: "d-block mb-2 p-2 text-primary text-opacity-75",
+            defaultValue: 'text-primary',
+            templateOptions: {}
           },
           {
             type: 'template',
-            className: "border-end-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                border: '1px solid #dee2e6'
-
-              }
-            }
+            className: "d-block mb-2 p-2 text-primary text-opacity-50",
+            defaultValue: 'text-primary',
+            templateOptions: {}
           },
           {
             type: 'template',
-            className: "border-bottom-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                border: '1px solid #dee2e6'
-
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "border-start-0 d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                border: '1px solid #dee2e6'
-
-              }
-            }
+            className: "d-block mb-2 p-2 text-primary text-opacity-25",
+            defaultValue: 'text-primary',
+            templateOptions: {}
           }
         ]
       },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '边框颜色',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-primary",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-secondary",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-success",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-danger",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-warning",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-info",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-light",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-dark",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-white",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '边界宽度',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-1",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-2",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-3",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-4",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "d-inline-block mx-2 border border-5",
-            templateOptions: {
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          }
-        ]
-      },
+
     ]
   },
   {
     type: 'group',
     className: "d-block mb-3 col-6",
-
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
-        fieldGroup: [
-          {
-            key: 'input-2-1',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'large size',
-              size: 'large',
-            }
-          },
-          {
-            key: 'input-2-2',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'default size',
-              size: 'default',
-            }
-          },
-          {
-            key: 'input-2-3',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'small size',
-              size: 'small',
-            }
-          },
-        ],
         templateOptions: {
-          title: '三种大小',
-          description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
-          注意： 在表单里面，我们只使用大尺寸的输入框。`,
-        },
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: 'Grayscale colors',
+          subtitle: '',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
+            type: 'template',
+            className: "d-block mb-2 p-2 text-body-100 ",
+            defaultValue: 'text-gray-100',
+            templateOptions: {}
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
+            type: 'template',
+            className: "d-block mb-2 p-2 text-gray-200  ",
+            defaultValue: 'text-gray-200',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-gray-300  ",
+            defaultValue: 'text-gray-300',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-gray-400 ",
+            defaultValue: 'text-gray-400',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-gray-500   ",
+            defaultValue: 'text-gray-500',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-gray-600   ",
+            defaultValue: 'text-gray-600',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-gray-700 ",
+            defaultValue: 'text-gray-700',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-gray-800",
+            defaultValue: 'text-gray-800',
+            templateOptions: {}
+          },
+          {
+            type: 'template',
+            className: "d-block mb-2 p-2 text-gray-900 ",
+            defaultValue: 'text-gray-900',
+            templateOptions: {}
           }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-            }
-          }
-        ]
-      },
-
+      }
     ]
   },
 ]

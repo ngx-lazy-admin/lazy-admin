@@ -20,14 +20,13 @@ import { TransferMockFields } from './components/transfer.mock';
 import { TreeSelectMockFields } from './components/tree-select.mock';
 import { UploadMockFields } from './components/upload.mock';
 
-const list = [...Array(1000).keys()].map((item, index) => {
+const list100 = [...Array(200).keys()].map((item, index) => {
   return {
     id: index,
+    key: index,
     name: '🐛 [BUG ' + index + ']无法创建工程npm create umi',
-    status: 'John Brown',
-    date: 'John Brown',
-    timer: '00001',
-    des: 'John Brown',
+    age: index % 100,
+    address: 'JNew York No. 1 Lake Park',
   }
 })
 
@@ -203,7 +202,7 @@ export const components = [
     id: 'table',
     fields: TableMockFields,
     data: {
-      list: list
+      list: list100
     },
 
     info: {
@@ -215,7 +214,7 @@ export const components = [
     id: 'repeat',
     fields: RepeatMockFields,
     data: {
-      list: list
+      list: list100
     },
 
     info: {

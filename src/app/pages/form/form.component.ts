@@ -1,13 +1,26 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, ViewChild, TemplateRef, ElementRef, ViewContainerRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { FieldService } from 'src/app/api/field';
-import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  NgZone,
+} from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+
 import { inNextTick } from 'ng-zorro-antd/core/util';
+import { NzConfigService } from 'ng-zorro-antd/core/config';
+
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+
+import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { NzSafeAny } from 'ng-zorro-antd/core/types';
+
+import hotkeys from 'hotkeys-js';
+
+import { editor } from 'monaco-editor';
+
+import { FieldService } from 'src/app/api/field';
+import { execEval } from 'src/app/fields/types/share-field.type';
 
 export interface headerInfoType {
   title: string,
@@ -31,15 +44,11 @@ export interface errorResultType {
 })
 export class FormComponent {
 
-  @ViewChild('templatePortalContent') templatePortalContent!: TemplateRef<unknown>;
-  @ViewChild('domPortalContent') domPortalContent!: ElementRef<HTMLElement>;
-
-  selectedPortal!: Portal<any>;
-  templatePortal!: TemplatePortal<any>;
-
   rooterChange?: Subscription;
 
   info?: headerInfoType | null;
+
+  // form params
 
   form = new FormGroup({});
 
@@ -52,18 +61,23 @@ export class FormComponent {
       caches: '1'
     }
   };
+
   fields: FormlyFieldConfig[] = []
+
+  // lading
 
   loading: boolean = true;
   status = 200;
 
-  routeCache : any= {};
+  // cache
+
+  routeCache: any = {};
 
   private destroy$ = new Subject<void>();
 
-  errResult = {
-
-  }
+  isVisible = false;
+  editor?: editor.ICodeEditor;
+  code: string = ``;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -71,84 +85,86 @@ export class FormComponent {
     public route: ActivatedRoute,
     private router: Router,
     private ngZone: NgZone,
-    private viewContainerRef: ViewContainerRef
+    private nzConfigService: NzConfigService,
   ) {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (this.routeCache[this.router.url]) {
-          this.model = {}
           this.render(this.routeCache[this.router.url])
         } else {
-          this.clearData()
-          this.loading = true;
+          this.loading = true
+          this.fieldService.getField(this.router.url).subscribe(result => {
+            this.routeCache[this.router.url] = result;
+            this.render(this.routeCache[this.router.url])
+          }, err => {
+            this.loading = false;
+            this.status = err?.status
+            this.clearData();
+          })
         }
+      }
+    });
 
-        this.fieldService.getField(this.router.url).subscribe(result => {
-          this.routeCache[this.router.url] = result;
-          this.render(result)
-        }, err => {
-          this.errResult = err;
-          this.loading = false;
-          this.status = err?.status
-          this.clearData();
-        })
+    hotkeys('.', (event, handler) => {
+      this.isVisible = true;
+      this.cd.markForCheck();
+    });
+
+    hotkeys('Esc', (event, handler) => {
+      this.isVisible = false
+      this.cd.markForCheck();
+    });
+
+    const defaultEditorOption = this.nzConfigService.getConfigForComponent('codeEditor')?.defaultEditorOption || {};
+    this.nzConfigService.set('codeEditor', {
+      defaultEditorOption: {
+        ...defaultEditorOption,
+        theme: 'vs-dark',
+        minimap: {
+          enabled: false
+        },
+        language: "php",
+        autoIndent: true,
+        formatOnPaste: true,
+        formatOnType: true,
+        wordwrap: 'on',
       }
     });
   }
 
-  render (result: any) {
-    if (typeof result?.fields === 'string') {
+  render(result: any) {
+    this.loading = true;
+    // this.clearData();
+    setTimeout(() => {
       try {
-        this.fields = this.execEval(result?.fields);
+        this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
         this.model = result?.data;
+        this.code = JSON.stringify(result.fields)
         this.info = result?.info;
-        console.log(this.model)
       } catch (error) {
         this.fields = []
         this.model = {}
-        console.log(error);
+        this.info = null;
+      } finally {
+        this.status = 200;
+        this.loading = false;
+        this.cd.detectChanges();
       }
-    } else {
-      if (result.fields) {
-        try {
-          this.fields = result.fields;
-          this.model = result?.data;
-          this.info = result?.info;
-          console.log(this.model)
-        } catch (error) {
-          console.log(error);
-          this.fields = []
-          this.model = {}
-        }
-      }
-    }
-
-    this.status = 200;
-    this.loading = false;
-    this.cd.detectChanges();
+    }, 0);
   }
 
-  submit (form: FormGroup) {
+  submit(form: FormGroup) {
     form.markAsDirty();
-    console.log(form);
-  }
-
-  domPortal!: any;
-  ngAfterViewInit() {
-
-    this.templatePortal = new TemplatePortal(this.templatePortalContent, this.viewContainerRef);
-    this.domPortal = new DomPortal(this.domPortalContent);
   }
 
   resetForm(): void {
     setTimeout(() => {
       this.options.parentForm?.resetForm();
       this.form.markAsUntouched();
-      console.log('resetForm')
     }, 0);
   }
 
-  clearData () {
+  clearData() {
     this.fields = [];
     this.model = {};
     this.info = null;
@@ -156,6 +172,21 @@ export class FormComponent {
     this.cd.detectChanges();
   }
 
+  editorInitialized($event: any) {
+    console.log('editorInitialized')
+
+    this.editor = $event;
+    $event.onDidChangeModelContent(() => {
+      try {
+        let codes = $event.getValue()
+        this.fields = execEval(codes)
+        this.cd.markForCheck();
+      } catch (error) {
+        console.log(error)
+        this.cd.markForCheck();
+      }
+    })
+  }
 
   private setup(): void {
     // The `setup()` is invoked when the Monaco editor is loaded. This may happen asynchronously for the first
@@ -172,11 +203,10 @@ export class FormComponent {
     );
   }
 
-  execFunction = (name: string) => (new Function( 'return ' + name))();
 
-  execEval = (code: string) => eval('(' + code + ')')
-
-  // ngAfterViewInit () {}
+  change($event: any) {
+    console.log($event);
+  }
 
   ngOnDestroy() {
     if (this.rooterChange) {

@@ -27,11 +27,7 @@ export class ModalComponent implements OnInit {
     private elementRef: ElementRef,
     private renderer: Renderer2
   ) {
-    // hotkeys('f5', (event, handler) => {
-    //   // Prevent the default refresh event under WINDOWS system
-    //   event.preventDefault() 
-    //   alert('you pressed F5!') 
-    // });
+
   }
 
   model = {

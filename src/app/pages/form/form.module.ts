@@ -17,6 +17,10 @@ import { IconsProviderModule } from '../../modules/icons-provider.module';
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
 import { WatermarkPipe } from '../../pipes/watermark.pipe';
+import { NzAffixModule } from 'ng-zorro-antd/affix';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { WatermarkPipe } from '../../pipes/watermark.pipe';
     FormsModule,
     ReactiveFormsModule,
     IconsProviderModule,
+    NzAffixModule,
+    NzModalModule,
     NzResultModule,
+    NzDrawerModule,
+    NzCodeEditorModule,
     NzPageHeaderModule,
     NzButtonModule,
     NzSpinModule,
