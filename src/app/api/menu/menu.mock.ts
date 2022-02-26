@@ -282,7 +282,7 @@ export const menu = [
         id: '1402',
         pid: '14',
         name: '乾坤',
-        link: '/iframe/qiankun',
+        link: '/zh',
         badge: '',
       }
     ]
@@ -423,7 +423,7 @@ export const menu = [
         id: '1111',
         pid: '11',
         name: 'input-number',
-        link: '/components/input-numper',
+        link: '/components/input-number',
         badge: '',
       },
       {
@@ -558,6 +558,13 @@ export const menu = [
         name: 'upload',
         link: '/components/upload',
         badge: '',
+      },
+      {
+        id: '1131',
+        pid: '11',
+        name: 'repeat',
+        link: '/components/repeat',
+        badge: '',
       }
     ]
   },
@@ -580,7 +587,7 @@ export const menu = [
         pid: '12',
 
         name: 'Background',
-        link: '/bootstrap/two',
+        link: '/bootstrap/backgrounds',
         badge: '',
       },
       {

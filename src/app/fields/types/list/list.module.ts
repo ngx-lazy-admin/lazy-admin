@@ -16,12 +16,14 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { ListActionsField } from './list-actions.component';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { WidthPipe } from './width.pipe';
+import { ListItemField } from './list-item.component';
 
 @NgModule({
   declarations: [
     ListField,
     VirtualListField,
     ListActionsField,
+    ListItemField,
     WidthPipe,
   ],
   imports: [
@@ -47,6 +49,10 @@ import { WidthPipe } from './width.pipe';
         {
           name: 'nz-list',
           component: ListField,
+        },
+        {
+          name: 'list-item',
+          component: ListItemField
         },
         {
           name: 'nz-list-actions',

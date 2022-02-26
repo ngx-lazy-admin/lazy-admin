@@ -1,8 +1,9 @@
 <nz-spin *ngIf="loading" [nzSpinning]="loading" class="mt-5"></nz-spin>
 
+
 <ng-container *ngIf="!loading && form">
 	<ng-container  *ngIf="status == 200">
-		<nz-page-header class="bg-white mb-3">
+		<nz-page-header *ngIf="info" class="bg-white mb-3">
 			<nz-page-header-title>{{info?.title}}</nz-page-header-title>
 			<nz-page-header-content>
 				{{info?.content}}
@@ -44,3 +45,36 @@
 	</ng-container>
 </ng-container>
 
+<nz-drawer
+	[nzClosable]="false"
+	[nzVisible]="isVisible"
+	[nzPlacement]="'top'"
+	[nzHeight]="'100vh'"
+>
+<ng-container *nzDrawerContent>
+	<div class="row h-100">
+		<div class="col-6">
+			<nz-code-editor 
+				class="editor" 
+				style="height: 100%;"
+				[nzEditorMode]="'normal'"
+				(onChange)="change($event)"
+				[ngModel]="code"
+				[nzEditorOption]="{ 
+					language: 'javascript'
+				}" 
+				(nzEditorInitialized)="editorInitialized($event)">
+			</nz-code-editor>
+		</div>
+		<form [formGroup]="form" class="col-6 w-50">
+			<formly-form 
+				class="row " 
+				[form]="form" 
+				[fields]="fields" 
+				[(model)]="model"
+				[options]="options">
+			</formly-form>
+		</form>
+	</div>
+</ng-container>
+</nz-drawer>

@@ -1,14 +1,7 @@
 <p>code works! {{ model | json }}</p>
 
 <div class="d-flex flex-nowarp">
-    <nz-code-editor 
-        class="editor w-50" 
-        style="height: 500px;"
-        (onChange)="change($event)"
-        [ngModel]="code"
-        [nzEditorOption]="{ language: 'js' }" 
-        (nzEditorInitialized)="editorInitialized($event)">
-    </nz-code-editor>
+
     <div class="w-50">
         <!-- <div class="mGraph-wrapper">
             <div class="mGraph" id="main"></div>

@@ -1,4 +1,4 @@
-export const dataPickerFields = [
+export const TreeSelectMockFields = [
   {
     type: 'group',
     className: "d-block mb-3 col-6",

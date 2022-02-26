@@ -15,15 +15,15 @@ export class RateField extends FieldType {
 	}
 
 	get nzAllowClear (): boolean {
-		return this.to.nzAllowClear || true;
+		return this.to.nzAllowClear || this.to.allowClear || false;
 	}
 
 	get nzAllowHalf (): boolean {
-		return this.to.nzAllowHalf || false;
+		return this.to.nzAllowHalf || this.to.allowHalf || false;
 	}
 
 	get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
+		return this.to.nzAutoFocus || this.to.autoFocus || false;
 	}
 
 	get nzCharacter(): TemplateRef<void> {
@@ -39,7 +39,7 @@ export class RateField extends FieldType {
 	}
 
 	get nzTooltips(): string[] {
-		return this.to.nzTooltips || []
+		return this.to.nzTooltips || this.to.tooltips || []
 	}
 
 	get text (): string [] {

@@ -12,7 +12,7 @@ import { Subject } from 'rxjs';
 		<ng-container *ngIf="!formControl.value">
 			NA
 		</ng-container> -->
-		{{formControl.value}}
+		<span [style]="style">{{formControl.value}}</span>
 
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,6 +21,10 @@ import { Subject } from 'rxjs';
 export class TemplateField extends FieldType {
 
   private destroy$ = new Subject();
+
+	get style(): Object {
+		return this.to.style || {};
+	}
 
 	constructor(
     private cd: ChangeDetectorRef,

@@ -15,6 +15,7 @@ import { ListFieldModule } from './list';
 import { ProgressFieldModule } from './progress';
 import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
+import { RepeatFieldModule } from './repeat';
 import { SelectFieldModule } from './select';
 import { SliderFieldModule } from './slider';
 import { StatisticFieldModule } from './statistic';
@@ -56,7 +57,8 @@ import { UploadFieldModule } from './upload';
     ListFieldModule,
     ProgressFieldModule,
     TreeFieldModule,
-    GroupFieldModule
+    GroupFieldModule,
+    RepeatFieldModule
   ],
 })
 export class FieldTypeModule {}

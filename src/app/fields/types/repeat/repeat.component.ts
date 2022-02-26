@@ -1,36 +1,27 @@
-import { Component, OnDestroy } from '@angular/core';
-import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
+import { Component, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation, Injectable } from '@angular/core';
+import { FieldArrayType } from '@ngx-formly/core';
+import { ShareFieldType } from '../share-field.type';
 
+@Injectable({ providedIn: 'root' })
 @Component({
-  selector: 'app-repeat-section',
-  template: `
-  <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
-    <div [style.display]="!field.hide ? 'block' : 'none'">
-      <formly-group
-        [model]="model"
-        [field]="field"
-        [options]="options"
-        [form]="formControl">
-      </formly-group>
-    </div>
-  </ng-container>
-
-  `
+  selector: 'div[repeat-field]',
+  template: `1
+    <cdk-virtual-scroll-viewport itemSize="80" class="example-viewport container" style="height: 40vh;">
+      <div *cdkVirtualFor="let field of field.fieldGroup; let i = index;" class="row">
+        <formly-field class="col" [field]="field"></formly-field>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 
-export class FormlyFieldRepeatComponent extends FieldArrayType  implements OnDestroy {
-  constructor(builder: FormlyFormBuilder) {
-    super(builder);
-  }
+export class RepeatField extends FieldArrayType  implements OnDestroy {
 
-  trackByFn(index, item) {
+  trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id
   }
 
-  ngOnDestroy() {
-    // 组件销毁时, 删除循环的列表
-    this.field.fieldGroup.map((item, index) => {
-      super.remove(index);
-    });
-  }
+  ngOnDestroy() {}
+
 }

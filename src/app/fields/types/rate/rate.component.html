@@ -18,4 +18,6 @@
 	ngDefaultControl>	
 </nz-rate> 
 
-<span *ngIf="control.value" class="ant-rate-text">{{ control.value ? nzTooltips[control.value - 1] : '' }}</span>
+<span *ngIf="control.value && nzTooltips.length" class="ant-rate-text">
+	{{ control.value ? nzTooltips[control.value - 1] : '' }}
+</span>

@@ -69,8 +69,6 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 
 
 export class CardField extends ShareFieldType  implements OnDestroy {
-
-
   @ViewChild('templatePortalContent') templatePortalContent!: TemplateRef<unknown>;
   @ViewChild('domPortalContent') domPortalContent!: ElementRef<HTMLElement>;
 

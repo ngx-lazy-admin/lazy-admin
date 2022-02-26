@@ -72,7 +72,7 @@ export class ListActionsField extends ShareFieldType implements OnDestroy {
   }
 
   get maxTagCount (): number {
-    return this.to.maxTagCount || 2
+    return this.to.maxTagCount || 3
   }
 
   trackByFn(index: number, item: any) {

@@ -19,7 +19,6 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { CodeCardField } from './code-card.component';
 
-
 @NgModule({
   declarations: [
     CardField,

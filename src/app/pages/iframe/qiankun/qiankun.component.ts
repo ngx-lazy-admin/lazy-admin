@@ -20,16 +20,20 @@ export class QiankunComponent implements OnInit {
     private cd: ChangeDetectorRef,
   ) {}
 
-  qiankunStarted: boolean = false;
   
   ngOnInit(): void {
 
   }
 
   ngAfterViewInit(): void {
-    if (!this.qiankunStarted) {
-      this.qiankunStarted = true;
-      start();
-    }
+    this.loadMicroApp();
   }
+
+  loadMicroApp () {
+    loadMicroApp({
+      name: 'qiankun',
+      entry: '//strawbreey.github.io/qiankun-vue3',
+      container: '#qiankun',
+    });
+  } 
 }

@@ -15,6 +15,10 @@ import { TabsField } from './tabs.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'tabs',
+          component: TabsField,
+        },
+        {
           name: 'nz-tabs',
           component: TabsField,
         }
