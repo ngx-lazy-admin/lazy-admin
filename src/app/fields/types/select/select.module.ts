@@ -4,10 +4,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { SelectField } from './select.component';
+import { MultipleSelectField } from './multiple-select.component';
 
 @NgModule({
   declarations: [
     SelectField,
+    MultipleSelectField,
   ],
   imports: [
     CommonModule,

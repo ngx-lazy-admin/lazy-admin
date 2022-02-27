@@ -22,8 +22,63 @@ export interface NzSelectOptionInterface {
 
 
 @Component({
-  selector: 'div[select-field]',
-  templateUrl: './select.component.html',
+  selector: 'div[multiple-select-field]',
+  template: `
+  <nz-select 
+    [formControl]="control"
+    [formlyAttributes]="field"
+    [nzId]="nzId"
+    [compareWith]="compareWith"
+    [nzAutoClearSearchValue]="nzAutoClearSearchValue"
+    [nzAllowClear]="nzAllowClear"
+    [nzBackdrop]="nzBackdrop"
+    [nzBorderless]="nzBorderless"
+    [nzOpen]="nzOpen"
+    [nzAutoFocus]="nzAutoFocus"
+    [nzDisabled]="nzDisabled"
+    [nzDropdownClassName]="nzDropdownClassName"
+    [nzDropdownMatchSelectWidth]="nzDropdownMatchSelectWidth"
+    [nzDropdownStyle]="nzDropdownStyle"
+    [nzCustomTemplate]="nzCustomTemplate"
+    [nzServerSearch]="nzServerSearch"
+    [nzFilterOption]="nzFilterOption"
+    [nzMaxMultipleCount]="nzMaxMultipleCount"
+    [nzMode]="nzMode"
+    [nzNotFoundContent]="nzNotFoundContent"
+    [nzPlaceHolder]="nzPlaceHolder"
+    [nzShowArrow]="nzShowArrow"
+    [nzShowSearch]="nzShowSearch"
+    [nzSize]="nzSize"
+    [nzSuffixIcon]="nzSuffixIcon"
+    [nzRemoveIcon]="nzRemoveIcon"
+    [nzClearIcon]="nzClearIcon"
+    [nzMenuItemSelectedIcon]="nzMenuItemSelectedIcon"
+    [nzTokenSeparators]="nzTokenSeparators"
+    [nzLoading]="nzLoading"
+    [nzMaxTagCount]="nzMaxTagCount"
+    [nzMaxTagPlaceholder]="nzMaxTagPlaceholder"
+    [nzOptionHeightPx]="nzOptionHeightPx"
+    [nzOptionOverflowSize]="nzOptionOverflowSize"
+    (ngModelChange)="ngModelChange($event)"
+    (nzOpenChange)="nzOpenChange($event)"
+    (nzOnSearch)="nzOnSearch($event)"
+    (nzFocus)="nzFocus()"
+    (nzBlur)="nzBlur()"
+    >
+      
+    <ng-container *ngFor="let option of nzOptions; trackBy: trackByFn">
+      <nz-option
+        class="select-option"
+        [nzDisabled]="option?.disabled"
+        [nzLabel]="option.label"
+        [nzValue]="option.value"
+      >
+      </nz-option>
+    </ng-container>
+  </nz-select>
+
+
+  `,
   styleUrls: [
     './select.component.less'
   ],
@@ -31,7 +86,7 @@ export interface NzSelectOptionInterface {
 	encapsulation: ViewEncapsulation.None,
 })
 
-export class SelectField extends FieldType implements OnInit,  OnDestroy {
+export class MultipleSelectField extends FieldType implements OnInit,  OnDestroy {
 
   get control() : FormControl {
 		return this.formControl as FormControl;
@@ -96,9 +151,9 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
 
   get nzFilterOption (): NzFilterOptionType  {
     const compareFn = (o1: any, o2: any) => {
-      return  o2?.nzLabel.toLowerCase().trim().indexOf(o1.toLowerCase().trim()) > -1;
+      return o1 && o2 && o1.value && o2.value  ?  (o1?.value?.trim() === o2?.value?.trim()) : (o1 === o2);
     }
-    return this.to.nzFilterOption || this.to.filterOption || compareFn;
+    return this.to.nzFilterOption || compareFn;
   }
 
   get nzMaxMultipleCount (): number {
@@ -124,7 +179,7 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
   }
 
   get nzShowSearch (): boolean {
-    return this.to.nzShowSearch || this.to.showSearch || false;
+    return this.to.nzShowSearch || false;
   }
 
   get nzSize (): NzSelectSizeType  {
