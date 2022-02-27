@@ -22,6 +22,9 @@ import { editor } from 'monaco-editor';
 import { FieldService } from 'src/app/api/field';
 import { execEval } from 'src/app/fields/types/share-field.type';
 
+// const beautify = require('').js
+import * as beautify from 'js-beautify';
+
 export interface headerInfoType {
   title: string,
   content: string,
@@ -139,7 +142,11 @@ export class FormComponent {
       try {
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
         this.model = result?.data;
-        this.code = JSON.stringify(result.fields)
+        this.code = beautify(JSON.stringify(result.fields), { 
+          brace_style: "expand",
+          keep_array_indentation: true,
+        })
+
         this.info = result?.info;
       } catch (error) {
         this.fields = []
@@ -151,6 +158,11 @@ export class FormComponent {
         this.cd.detectChanges();
       }
     }, 0);
+  }
+
+  do_js_beautify(value: string) {
+
+
   }
 
   submit(form: FormGroup) {

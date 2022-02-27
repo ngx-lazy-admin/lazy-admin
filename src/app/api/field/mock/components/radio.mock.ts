@@ -12,15 +12,15 @@ export const RadioMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '简单的 checkbox',
+          description: '最简单的用法。',
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'radio1',
+            type: 'radio',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: 'Radio'
             }
           }
         ]
@@ -29,48 +29,111 @@ export const RadioMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '单选组合',
+          description: '一组互斥的 nz-radio 配合使用。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'radio2',
+            type: 'radio-group',
             className: "d-inline-block w-100",
             templateOptions: {
               text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
+              options: [
+                {
+                  label: 'A',
+                  value: 'A',
+                },
+                {
+                  label: 'B',
+                  value: 'B',
+                },
+                {
+                  label: 'C',
+                  value: 'C',
+                },
+                {
+                  label: 'D',
+                  value: 'D',
+                },
+              ]
             },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
-            }
-          },
+          }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: 'RadioGroup 组合 - 配置方式',
+          description: '通过配置 options 参数来渲染单选框。',
+        },
+        fieldGroup: [
           {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
+            key: 'radio3',
+            type: 'radio-group',
+            className: "d-inline-block col-4",
             templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
+              text: "checked-disabled",
+              options: [
+                {
+                  label: 'Apple',
+                  value: 'Apple',
+                },
+                {
+                  label: 'Pear',
+                  value: 'Pear',
+                },
+                {
+                  label: 'Orange',
+                  value: 'Orange',
                 }
-              `
-            }
+              ]
+            },
           },
           {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
+            key: 'radio3',
+            type: 'radio-group',
+            className: "d-inline-block col-4",
             templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
-            }
+              text: "checked-disabled",
+              options: [
+                {
+                  label: 'Apple',
+                  value: 'Apple',
+                },
+                {
+                  label: 'Pear',
+                  value: 'Pear',
+                },
+                {
+                  label: 'Orange',
+                  value: 'Orange',
+                }
+              ]
+            },
+          },
+          {
+            key: 'radio3',
+            type: 'radio-group',
+            className: "d-inline-block col-4",
+            templateOptions: {
+              text: "checked-disabled",
+              options: [
+                {
+                  label: 'Apple',
+                  value: 'Apple',
+                },
+                {
+                  label: 'Pear',
+                  value: 'Pear',
+                },
+                {
+                  label: 'Orange',
+                  value: 'Orange',
+                }
+              ]
+            },
           }
         ]
       },
@@ -78,56 +141,41 @@ export const RadioMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '填底的按钮样式',
+          description: '实色填底的单选按钮样式。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'radio2',
+            type: 'radio-group',
+            className: "d-inline-block w-100",
+            defaultValue: 'C',
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
+              text: "checked-disabled",
+              buttonStyle: 'solid',
+              radioButton: true,
+              options: [
+                {
+                  label: 'Hangzhou',
+                  value: 'A',
+                },
+                {
+                  label: 'Shanghai',
+                  value: 'B',
+                },
+                {
+                  label: 'Beijing',
+                  value: 'C',
+                },
+                {
+                  label: 'Chengdu',
+                  value: 'D',
+                },
+              ]
+            },
           }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
+      }
     ]
   },
   {

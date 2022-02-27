@@ -19,7 +19,7 @@ import { ShareFieldType } from '../share-field.type';
   template: `
   
     <section class="code-box" [ngClass]="{ expand: nzExpanded }" [attr.id]="nzId">
-      <section class="code-box-demo">
+      <section class="code-box-demo" [ngClass]="bodyClass">
         <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
           <formly-field [field]="item"></formly-field>
         </ng-container>
@@ -171,6 +171,12 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   get nzBodyStyle(): { [key: string]: string } {
 		return this.to.nzBodyStyle || this.to.bodyStyle || '';
 	}
+
+  get bodyClass(): { [key: string]: string } {
+		return this.to.bodyClass || '';
+	}
+
+  
 
   get nzIcon(): string | TemplateRef<void> {
     return this.to.nzIcon || this.to.icon || ''

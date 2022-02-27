@@ -34,19 +34,19 @@ export class InputNumberField extends FieldType {
 	}
 
 	get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
+		return this.to.nzAutoFocus || this.to.autoFocus || false;
 	}
 
 	get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.to.nzDisabled || this.to.disabled || false;
 	}
 
 	get nzMax(): number {
-		return this.to.nzMax || Infinity
+		return this.to.nzMax || this.to.max || Infinity
 	}
 
 	get nzMin(): number {
-		return this.to.nzMin || -Infinity
+		return this.to.nzMin || this.to.min || -Infinity
 	}
 
 	private _formatter: (value: number) => string | number = value => value;
@@ -58,27 +58,27 @@ export class InputNumberField extends FieldType {
 	private  _parser = (value: string) => value.trim().replace(/。/g, '.').replace(/[^\w\.-]+/g, '');
 
 	get nzParser(): (value: string) => string {
-		return this.to.nzParser || this._parser
+		return this.to.nzParser || this.to.parser || this._parser
 	}
 
 	get nzPrecision(): number {
-		return this.to.nzPrecision || null
+		return this.to.nzPrecision || this.to.precision || null
 	}
 
 	get nzPrecisionMode(): number {
-		return this.to.nzPrecisionMode || 'toFixed'
+		return this.to.nzPrecisionMode || this.to.precisionMode || 'toFixed'
 	}
 
 	get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || 'default'
+		return this.to.nzSize || this.to.size || 'default'
 	}
 
 	get nzStep(): number {
-		return this.to.nzStep || 1
+		return this.to.nzStep || this.to.step || 1
 	}
 
 	get nzPlaceHolder(): string {
-		return this.to.nzInputMode || ''
+		return this.to.nzPlaceHolder || this.to.placeHolder || ''
 	}
 
 	get nzId(): string {

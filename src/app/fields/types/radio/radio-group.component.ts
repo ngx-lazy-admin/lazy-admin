@@ -12,9 +12,18 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
       [formControl]="control"
       [formlyAttributes]="field"
       [nzDisabled]="nzDisabled"
+      [nzButtonStyle]="nzButtonStyle"
+      [nzSize]="nzSize"
       (ngModelChange)="ngModelChange($event)"
       ngDefaultControl>
-      <label nz-radio [nzValue]="o.value" *ngFor="let o of nzOptions">{{ o.label }}</label>1
+      <ng-container *ngIf="radioButton">
+        <label nz-radio-button [nzValue]="o.value" *ngFor="let o of nzOptions">{{ o.label }}</label>
+      </ng-container>
+
+      <ng-container *ngIf="!radioButton">
+        <label nz-radio [nzValue]="o.value" *ngFor="let o of nzOptions">{{ o.label }}</label>
+      </ng-container>
+
     </nz-radio-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,8 +36,24 @@ export class RadioGroupField extends FieldType {
 		return this.formControl as FormControl
   }
 
+  get nzName(): string {
+		return this.to.nzName || this.to.name || '';
+	}
+
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.to.nzDisabled || this.to.disabled || false;
+	}
+
+  get nzSize(): 'large' | 'small' | 'default' {
+		return this.to.nzSize || this.to.size || 'default';
+	}
+
+  get nzButtonStyle(): 'outline' | 'solid' {
+		return this.to.nzButtonStyle || this.to.buttonStyle || 'outline';
+	}
+
+  get radioButton(): boolean {
+		return this.to.radioButton || false;
 	}
 
   get nzOptions(): any[] {

@@ -74,61 +74,7 @@ export const InputNumberMockFields = [
             }
           }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
+      }
     ]
   },
   {
@@ -142,108 +88,62 @@ export const InputNumberMockFields = [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '三种大小',
+          description: '三种大小的数字输入框，当 nzSize 分别为 large 和 small 时，输入框高度为 40px 和 24px ，默认高度为 32px。',
+        },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'input-number',
+            type: 'input-number',
             className: "d-inline-block mx-2",
+            defaultValue: 3,
             templateOptions: {
-              text: "Checkbox",
+              size: 'large',
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'input-number',
+            type: 'input-number',
             className: "d-inline-block mx-2",
+            defaultValue: 3,
             templateOptions: {
-              text: "nzDisabled",
-              
+              size: 'default',
             }
-          }
+          },
+          {
+            key: 'input-number',
+            type: 'input-number',
+            className: "d-inline-block mx-2",
+            defaultValue: 3,
+            templateOptions: {
+              size: 'small',
+            }
+          },
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '小数',
+          description: '和原生的数字输入框一样，value 的精度由 nzStep 的小数位数决定。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'input-number1',
+            type: 'input-number',
             className: "d-inline-block mx-2",
+            defaultValue: 3,
             templateOptions: {
-              text: "Checkbox",
+              placeHolder: 'Digital',
+              min: 1,
+              max: 10,
+              step: .1
             }
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-
+      }
     ]
   },
 ]

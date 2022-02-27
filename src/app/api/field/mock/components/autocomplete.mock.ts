@@ -12,12 +12,12 @@ export const AutocompleteMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '数字输入框',
+          description: '基本使用。通过 nzDataSource 设置自动完成的数据源',
         },
         fieldGroup: [
           {
             key: 'button',
-            type: 'button',
+            type: 'autocomplete',
             className: "d-block mb-2",
             defaultValue: 3,
             templateOptions: {

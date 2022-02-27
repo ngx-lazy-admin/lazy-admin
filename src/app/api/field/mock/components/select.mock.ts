@@ -12,93 +12,165 @@ export const SelectMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '简单的 checkbox',
+          description: '简单的 select',
+          bodyClass: 'row'
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'select1',
+            type: 'select',
+            className: "d-inline-block  col-3",
+            defaultValue: 'lucy',
             templateOptions: {
               text: "Checkbox",
+              options: [{
+                label: 'Jack',
+                value: 'jack'
+              }, {
+                label: 'Lucy',
+                value: 'lucy'
+              }, {
+                label: 'Disabled',
+                value: 'disabled',
+                disabled: true
+              }]
             }
-          }
+          },
+          {
+            key: 'select2',
+            type: 'select',
+            className: "d-inline-block col-3",
+            defaultValue: 'lucy',
+            templateOptions: {
+              text: "Checkbox",
+              disabled: true,
+              options: [{
+                label: 'Jack',
+                value: 'jack'
+              }, {
+                label: 'Lucy',
+                value: 'lucy'
+              }, {
+                label: 'Disabled',
+                value: 'disabled',
+                disabled: true
+              }]
+            }
+          },
+          {
+            key: 'select3',
+            type: 'select',
+            className: "d-inline-block col-3",
+            defaultValue: 'lucy',
+            templateOptions: {
+              text: "Checkbox",
+              loading: true,
+              options: [{
+                label: 'Jack',
+                value: 'jack'
+              }, {
+                label: 'Lucy',
+                value: 'lucy'
+              }, {
+                label: 'Disabled',
+                value: 'disabled',
+                disabled: true
+              }]
+            }
+          },
+          {
+            key: 'select4',
+            type: 'select',
+            className: "d-inline-block col-3",
+            defaultValue: 'lucy',
+            templateOptions: {
+              text: "Checkbox",
+              allowClear: true,
+              placeholder: 'Choose',
+              options: [{
+                label: 'Jack',
+                value: 'jack'
+              }, {
+                label: 'Lucy',
+                value: 'lucy'
+              }, {
+                label: 'Disabled',
+                value: 'disabled',
+                disabled: true
+              }]
+            }
+          },
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '多选',
+          description: '多选，从已有条目中选择，例子中通过 nzMaxTagCount 限制最多显示3个选项。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
+            key: 'select1',
+            type: 'select',
+            className: "d-inline-block  col-3",
+            // defaultValue: ['lucy'],
             templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
-            },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
-            templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
+              maxTagCount: 3,
+              mode: 'multiple',
+              plaseholder: 'Please select',
+              options: [{
+                label: 'Jack',
+                value: 'jack'
+              }, {
+                label: 'Lucy',
+                value: 'lucy'
               },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
-              `
+              {
+                label: 'a10',
+                value: 'a10'
+              }, {
+                label: 'a11',
+                value: 'a11',
+              },
+              {
+                label: 'a12',
+                value: 'a12',
+              },]
             }
           },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
-            }
-          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '带搜索框',
+          description: '展开后可对选项进行搜索。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'select10',
+            type: 'select',
+            className: "d-inline-block col-3",
+            defaultValue: 'lucy',
             templateOptions: {
-              text: "Checkbox",
+              showSearch: true,
+              allowClear: true,
+              placeHolder: "Select a person",
+              options: [{
+                label: 'Jack',
+                value: 'jack'
+              }, {
+                label: 'Lucy',
+                value: 'lucy'
+              }, {
+                label: 'Disabled',
+                value: 'disabled',
+                disabled: true
+              }]
             }
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
       {
