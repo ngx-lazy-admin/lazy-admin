@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType,  } from 'ng-zorro-antd/core/types';
+import { execFunc } from '../share-field.type';
+import { field } from 'src/app/api/field/mock';
 
 interface AutocompleteDataSourceItem {
   value: string;
@@ -9,11 +11,34 @@ interface AutocompleteDataSourceItem {
   disabled?: boolean
 }
 
+interface Option {
+  label: string;
+  value: string;
+  age: number;
+}
+
 declare type AutocompleteDataSource = Array<AutocompleteDataSourceItem | string | number>;
 
 @Component({
   selector: 'div[autocomplete-field]',
-  templateUrl: './autocomplete.component.html',
+  template: `
+  <input nz-input
+    [formControl]="control"
+    [formlyAttributes]="field"
+    [nzSize]="nzSize"
+    [nzBorderless]="nzBorderless"
+    [type]="type"
+    [nzAutocomplete]="auto"
+    (ngModelChange)="change($event)">
+
+  <nz-autocomplete #auto
+    [nzBackfill]="nzBackfill"
+    [nzDefaultActiveFirstOption]="nzDefaultActiveFirstOption"
+    [nzWidth]="nzWidth"
+    [nzDataSource]="data">
+  </nz-autocomplete>
+  
+  `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -40,9 +65,9 @@ export class AutocompleteFields extends FieldType implements OnInit {
 		return this.to.nzBackfill || false
 	}
 
-  get nzDataSource(): AutocompleteDataSource {
-    return this.to.nzDataSource 
-  }
+  // get nzDataSource(): AutocompleteDataSource {
+  //   return this.to.nzDataSource 
+  // }
 
   get nzDefaultActiveFirstOption(): boolean {
     return this.to.nzDefaultActiveFirstOption || false
@@ -61,8 +86,17 @@ export class AutocompleteFields extends FieldType implements OnInit {
   }
 
   get compareWith(): any {
-    return this.to.compareWith
+    return this.to.compareWith 
   }
+
+  compareFun = (o1: Option | string, o2: Option): boolean => {
+    if (o1) {
+      return typeof o1 === 'string' ? o1 === o2.label : o1.value === o2.value;
+    } else {
+      return false;
+    }
+  };
+
   
   // set nzAutocompleteOptions(value) {
   //   this._options = value;
@@ -80,13 +114,20 @@ export class AutocompleteFields extends FieldType implements OnInit {
     }
   }
 
-  onInput($event: Event): void {
-    const value = ($event.target as HTMLInputElement).value;
-    this.data = value ? [value, value + value, value + value + value].map(item => {
-      return {
-        label: item,
-        value: item
+  change(value: any): void {
+    if (value) {
+      const changeFn = execFunc(this.to?.changeFn)
+      if (changeFn && changeFn instanceof Function) {
+        try {
+          this.data = changeFn(value, this.field) || []
+        } catch (error) {
+          this.data = []
+        } finally {
+          
+        }
       }
-    }) : [];  
+    } else {
+      this.data = []
+    }
   }
 }

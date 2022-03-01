@@ -11,6 +11,7 @@ import {
   NzSelectModeType
 } from 'ng-zorro-antd/select';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { execFunc, ShareFieldType } from '../share-field.type';
 
 export interface NzSelectOptionInterface {
   label: string | number | null ;
@@ -31,7 +32,7 @@ export interface NzSelectOptionInterface {
 	encapsulation: ViewEncapsulation.None,
 })
 
-export class SelectField extends FieldType implements OnInit,  OnDestroy {
+export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
 
   get control() : FormControl {
 		return this.formControl as FormControl;
@@ -180,6 +181,7 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
   }
 
   ngModelChange ($event: Event) {
+    // execFunc
     if (this.to.change) {
       this.to.change(this.field, $event)
     }
@@ -218,12 +220,6 @@ export class SelectField extends FieldType implements OnInit,  OnDestroy {
   }
 
   private _destroy$ = new Subject<void>();
-
-  constructor(
-    private cd: ChangeDetectorRef,
-  ) {
-    super();
-  }
 
   ngOnInit() { }
 

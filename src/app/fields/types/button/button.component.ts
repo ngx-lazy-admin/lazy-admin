@@ -14,6 +14,8 @@ import { ShareFieldType } from '../share-field.type';
       [nzShape]="nzShape"
       [nzSize]="nzSize"
       [nzType]="nzType"
+      [disabled]="disabled"
+      [nzDanger]="nzDanger"
       nz-popconfirm
       [nzPopconfirmTitle]="nzPopconfirmTitle"
       [nzPopconfirmPlacement]="nzPopconfirmPlacement"
@@ -58,7 +60,7 @@ export class ButtonField extends ShareFieldType {
   }
 
   get nzType() : NzButtonType {
-		return this.to.nzType || this.to.type || 'link';
+		return this.to.nzType || this.to.type || '';
   }
 
   get nzBlock() : boolean {

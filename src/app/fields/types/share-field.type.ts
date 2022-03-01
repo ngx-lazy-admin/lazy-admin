@@ -29,6 +29,8 @@ export interface ActionTypeInterface {
 
 export const execEval = (code: string) => eval('(' + code + ')')
 
+export const execFunc = (func: string | Function) => typeof(func) == 'string' ? execEval(func) : func
+
 @Directive()
 export abstract class ShareFieldType extends FieldType {
   constructor(
@@ -53,6 +55,22 @@ export abstract class ShareFieldType extends FieldType {
         console.log(err)
       } finally {
         console.log('click finally')
+      }
+    });
+  }
+
+  // 通用事件处理
+  change (action?: ActionTypeInterface) {
+    this.zone.runOutsideAngular(() => {
+      try{
+        if (this.to?.change) {
+          const func = typeof(this.to?.change) == 'string' ? execEval(this.to?.change) : this.to?.change;
+          func(this.field, this)
+        }
+      } catch (err){
+        console.log(err)
+      } finally {
+        console.log('change finally')
       }
     });
   }

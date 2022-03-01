@@ -6,7 +6,7 @@ import * as echarts from 'echarts';
 @Component({
   selector: 'div[echart-field]',
   template: `
-    <div class="mGraph" id="main"></div>
+    <div class="mGraph" id="echart"></div>
   `,
   styleUrls: [
     './echart.component.css',
@@ -29,7 +29,7 @@ export class EchartsField extends FieldType implements AfterViewInit {
   ngAfterViewInit() {
     
     // 绘制图表
-    this.myChart = echarts.init(this.elRef.nativeElement.querySelector('#main'));
+    this.myChart = echarts.init(this.elRef.nativeElement.querySelector('#echart'));
 
     if (this.formControl.value) {
       this.myChart.setOption(this.formControl.value);
