@@ -12,129 +12,40 @@ export const AutocompleteMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '基本使用。通过 nzDataSource 设置自动完成的数据源',
+          description: '通过 nzDataSource 设置自动完成的数据源',
         },
         fieldGroup: [
           {
-            key: 'button',
+            key: 'autocomplete1',
             type: 'autocomplete',
             className: "d-block mb-2",
             defaultValue: 3,
             templateOptions: {
-              placeholder: 'Basic usage'
+              placeholder: 'input here',
+              changeFn: `(value) => [value, value + value, value + value + value]`
             }
-          },
-          {
-            key: 'button',
-            type: 'input',
-            className: "d-block mb-2",
-            templateOptions: {
-              placeholder: 'Basic usage',
-              disabled: true,
-            }
-          },
-          [
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Primary Button",
-                type: 'primary',
-                // click: (field, _this) => {
-                //   console.log(field)
-                //   _this.message.success(field.templateOptions.text)
-                // }
-              }
-            },
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Default Button",
-                type: 'default',
-              }
-            },
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Dashed Button",
-                type: 'dashed',
-              }
-            }
-          ]
+          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '不区分大小写',
+          description: '不区分大小写的 AutoComplete',
         },
         fieldGroup: [
           {
-            key: 'input1-3',
-            type: 'input',
+            key: 'autocomplete2',
+            type: 'autocomplete',
             className: "d-block mb-2",
             templateOptions: {
-              label: "标签",
-              placeholder: 'Basic usage',
-              disabled: true
-            }
-          },
-          {
-            key: 'input1-4',
-            type: 'input',
-            className: "d-block mb-2",
-            templateOptions: {
-              label: "large size",
-              placeholder: 'large size',
-              size: 'large',
-              disabled: true
-            }
-          },
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
-            templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
-            },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
-            templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
+              options: ['Burns Bay Road', 'Downing Street', 'Wall Street'],
+              placeholder: 'try to type "b"',
+              changeFn: `(value, field) => field.templateOptions.options
+                .filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1)
               `
             }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
-            }
           }
         ]
       },
@@ -142,25 +53,20 @@ export const AutocompleteMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '查询模式 - 不确定类目',
+          description: '查询模式: 不确定类目 示例。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'autocomplete2',
+            type: 'autocomplete',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              options: ['Burns Bay Road', 'Downing Street', 'Wall Street'],
+              placeholder: 'input here',
+              changeFn: `(value, field) => field.templateOptions.options
+                .filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1)
+              `
             }
           }
         ]
@@ -170,7 +76,7 @@ export const AutocompleteMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {

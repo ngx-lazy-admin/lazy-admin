@@ -18,7 +18,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: "d-inline-block mb-2",
-            defaultValue: 3,
+            
             templateOptions: {
               text: 'Primary Button',
               type: 'primary',
@@ -70,7 +70,7 @@ export const ButtonMockFields = [
           {
             type: 'button-group',
             className: "d-inline-block mb-2",
-            defaultValue: 3,
+            
             templateOptions: {
               text: 'Large',
               type: 'primary',
@@ -93,7 +93,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: "d-inline-block mb-2",
-            defaultValue: 3,
+            
             templateOptions: {
               text: 'default',
               type: 'primary',
@@ -102,7 +102,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: "d-inline-block mb-2",
-            defaultValue: 3,
+            
             templateOptions: {
               text: 'Small',
               type: 'primary',
@@ -114,54 +114,126 @@ export const ButtonMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '加载中状态',
+          description: '添加 nzLoading 属性即可让按钮处于加载状态，最后两个按钮演示点击后进入加载状态。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            type: 'button',
+            className: "d-inline-block m-2",
+            
             templateOptions: {
-              text: "Checkbox",
+              icon: 'poweroff',
+              text: 'Loading',
+              type: 'primary',
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            type: 'button',
+            className: "d-inline-block m-2",
+            
             templateOptions: {
-              text: "nzDisabled",
-              
+              size: 'small',
+              text: 'Loading',
+              loading: true,
+              type: 'primary',
             }
-          }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            
+            templateOptions: {
+              size: 'small',
+              text: 'Loading',
+              loading: false,
+              type: 'primary',
+              click: `(_field, _this) => {
+                console.log(_field.templateOptions.loading)
+                _field.templateOptions.loading = !_field.templateOptions.loading
+                console.log(_field.templateOptions.loading)
+
+              }`
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            
+            templateOptions: {
+              loading: true,
+              shape: 'circle',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            
+            templateOptions: {
+              type: 'primary',
+              loading: true,
+              shape: 'circle',
+            }
+          },
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: 'Block 按钮',
+          description: 'nzBlock 属性将使按钮适合其父宽度。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            type: 'button',
+            className: "d-block mb-2",
+            
             templateOptions: {
-              text: "Checkbox",
+              block: true,
+              text: 'Primary',
+              type: 'primary',
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            type: 'button',
+            className: "d-block mb-2",
+            
             templateOptions: {
-              text: "nzDisabled",
-              
+              block: true,
+              text: 'Default',
+              type: 'default',
             }
-          }
+          },
+          {
+            type: 'button',
+            className: "d-block mb-2",
+            
+            templateOptions: {
+              block: true,
+              text: 'Dashed',
+              type: 'dashed',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-block mb-2",
+            
+            templateOptions: {
+              block: true,
+              text: 'text',
+              type: 'Text',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-block mb-2",
+            templateOptions: {
+              block: true,
+              text: 'link',
+              type: 'link',
+            }
+          },
         ]
       },
     ]
@@ -176,120 +248,248 @@ export const ButtonMockFields = [
         className: "d-block mb-3 col-12",
         fieldGroup: [
           {
-            key: 'input-2-1',
-            type: 'input',
+            type: 'button',
             className: "d-inline-block m-2",
             templateOptions: {
-              placeholder: 'large size',
-              size: 'large',
+              type: 'primary',
+              text: 'Primary',
             }
           },
           {
-            key: 'input-2-2',
-            type: 'input',
+            type: 'button',
             className: "d-inline-block m-2",
             templateOptions: {
-              placeholder: 'default size',
-              size: 'default',
+              type: 'primary',
+              text: 'Primary',
+              disabled: true
             }
           },
           {
-            key: 'input-2-3',
-            type: 'input',
+            type: 'button',
             className: "d-inline-block m-2",
             templateOptions: {
-              placeholder: 'small size',
-              size: 'small',
+              type: 'default',
+              text: 'default',
             }
           },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'default',
+              text: 'default',
+              disabled: true
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'dashed',
+              text: 'dashed',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'dashed',
+              text: 'dashed',
+              disabled: true
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'text',
+              text: 'text',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'text',
+              text: 'text',
+              disabled: true
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'link',
+              text: 'link',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'link',
+              text: 'link',
+              disabled: true
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'text',
+              danger: true,
+              text: 'danger text',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'text',
+              text: 'danger text',
+              danger: true,
+              disabled: true
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'link',
+              danger: true,
+              text: 'danger link',
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'link',
+              danger: true,
+              text: 'danger link',
+              disabled: true
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'primary',
+              danger: true,
+              text: 'danger Primary',
+              disabled: false
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              type: 'primary',
+              danger: true,
+              text: 'danger Primary',
+              disabled: true
+            }
+          },
+
         ],
         templateOptions: {
-          title: '三种大小',
-          description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
-          注意： 在表单里面，我们只使用大尺寸的输入框。`,
+          title: '不可用状态',
+          description: `添加 disabled 属性即可让按钮处于不可用状态，同时按钮样式也会改变。`,
         },
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '幽灵按钮',
+          description: '添加 nzGhost 属性后，幽灵按钮将其他按钮的内容反色，背景变为透明，常用在有色背景上。',
+          bodyClass: 'bg-secondary'
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            type: 'button',
+            className: "d-inline-block mb-2",
             templateOptions: {
-              text: "Checkbox",
+              text: 'Primary',
+              type: 'primary',
+              ghost: true
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
+            type: 'button',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: "Default",
+              type: 'default',
+              ghost: true
             }
-          }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              text: "Dashed",
+              type: 'dashed',
+              ghost: true
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              text: "Link",
+              type: 'link',
+              ghost: true
+            }
+          },
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '危险按钮',
+          description: '使用 nzDanger 将按钮标识为危险状态。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            type: 'button',
+            className: "d-inline-block mb-2",
             templateOptions: {
-              text: "Checkbox",
+              text: 'Primary',
+              type: 'primary',
+              danger: true
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
+            type: 'button',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
+              text: "Default",
+              type: 'default',
+              danger: true
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
+            type: 'button',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
+              text: "Dashed",
+              type: 'dashed',
+              danger: true
             }
-          }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              text: "Link",
+              type: 'link',
+              danger: true
+            }
+          },
         ]
-      },
-
+      }
     ]
   },
 ]
