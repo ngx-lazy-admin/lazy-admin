@@ -14,6 +14,10 @@ import { CascaderField } from './cascader.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'cascader',
+          component: CascaderField,
+        },
+        {
           name: 'nz-cascader',
           component: CascaderField,
         }

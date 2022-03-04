@@ -3,7 +3,7 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const SwitchMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: "d-block col-6",
     templateOptions: {
     },
     fieldGroup: [
@@ -16,7 +16,6 @@ export const SwitchMockFields = [
         },
         fieldGroup: [
           {
-            key: 'switch',
             type: 'switch',
             className: "d-inline-block mx-2",
             templateOptions: {
@@ -29,47 +28,24 @@ export const SwitchMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '文字和图标',
+          description: '带有文字和图标。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
+            type: 'switch',
+            className: "d-inline-block mx-2",
             templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
-            },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
+              checkedChildren: '开',
+              unCheckedChildren: '关'
             }
           },
           {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
+            type: 'switch',
+            className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
-              `
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
+              checkedChildren: '1',
+              unCheckedChildren: '0'
             }
           }
         ]
@@ -78,25 +54,52 @@ export const SwitchMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '加载中',
+          description: '标识开关操作仍在执行中。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'switchLoading',
+            type: 'switch',
             className: "d-inline-block mx-2",
+            defaultValue: false,
             templateOptions: {
               text: "Checkbox",
+              loading: true
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'switchLoading2',
+            type: 'switch',
+            className: "d-inline-block mx-2",
+            defaultValue: true,
+            templateOptions: {
+              text: "Checkbox",
+              loading: true
+              
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    type: 'group',
+    className: "d-block col-6",
+    fieldGroup: [
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '不可用',
+          description: 'Switch 失效状态。',
+        },
+        fieldGroup: [
+          {
+            type: 'switch',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
-              
+              disabled: true
             }
           }
         ]
@@ -105,144 +108,140 @@ export const SwitchMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '两种大小',
+          description: 'nzSize="small" 表示小号开关。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            type: 'switch',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              size: 'small'
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
+            type: 'switch',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
-              
             }
           }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '完整控制',
+          description: 'Switch 的状态完全由用户接管，不再自动根据点击事件改变数据。',
+        },
+        fieldGroup: [
+          {
+            type: 'switch',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              size: 'small',
+              control: true,
+              change: `(_field, _this) => {
+                _field.templateOptions.loading = true;
+                _this.cd.detectChanges();
+
+                setTimeout(() => {
+                  _field.templateOptions.loading = false;
+                  _field.formControl?.patchValue(!_field.formControl?.value)
+                  _this.cd.detectChanges();
+                }, 1000)
+              } `
+            }
+          },
         ]
       },
     ]
   },
   {
-    type: 'group',
-    className: "d-block mb-3 col-6",
+    key: 'api',
+    type: 'simple-table',
+    className: 'col-12',
+    defaultValue: [
+      {
+        key: '[ngModel]',
+        describe: '指定当前是否选中，可双向绑定',
+        type: 'boolean',
+        default: 'false',
+        config: ''
+      },
+      {
+        key: '[nzCheckedChildren]',
+        describe: '选中时的内容',
+        type: 'string | TemplateRef<void>',
+        default: 'false',
+        config: ''
+      },
+      {
+        key: '[nzUnCheckedChildren]',
+        describe: '非选中时的内容',
+        type: '	string | TemplateRef<void>',
+        default: '-',
+        config: ''
+      },
+      {
+        key: '[nzDisabled]',
+        describe: '	disable 状态',
+        type: 'boolean',
+        default: '-',
+        config: ''
+      },
+      {
+        key: '[nzSize]',
+        describe: '开关大小，可选值：defaultsmall',
+        type: '',
+        default: 'default',
+        config: '✅'
+      },
+      {
+        key: '[nzLoading]',
+        describe: '	加载中的开关',
+        type: 'boolean',
+        default: 'false	',
+        config: ''
+      },
+      {
+        key: '[nzControl]',
+        describe: '	是否完全由用户控制状态',
+        type: 'boolean',
+        default: 'false	',
+        config: ''
+      },
+      {
+        key: '(ngModelChange)',
+        describe: '	当前是否选中的回调',
+        type: 'EventEmitter<boolean>',
+        default: 'false	',
+        config: ''
+      }
+    ],
     templateOptions: {
-      title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-    },
-    fieldGroup: [
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+      columns: [
+        {
+          label: '参数',
+          value: 'key'
         },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+        {
+          label: '说明',
+          value: 'describe',
         },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+        {
+          label: '类型',
+          value: 'type'
         },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-
-    ]
-  },
+        {
+          label: '默认值',
+          value: 'default',
+        },
+        {
+          label: '全局配置',
+          value: 'config'
+        }
+      ]
+    }
+  }
 ]

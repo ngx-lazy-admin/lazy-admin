@@ -10,9 +10,11 @@ import {
   ChangeDetectorRef,
   NgZone
 } from '@angular/core';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
 import { ShareFieldType } from '../share-field.type';
+import * as beautify from 'js-beautify';
 
 @Component({
   selector: 'div[code-card]',
@@ -119,8 +121,15 @@ import { ShareFieldType } from '../share-field.type';
         </div>
       </section>
       <section *ngIf="nzExpanded">
-        <div class="p-3">
-          <pre>{{ model | json}}</pre>
+        <div class="f14 position-relative">
+          <textarea 
+            nz-input 
+            rows="20" 
+            class="w-100 p-3" 
+            [nzBorderless]="true" 
+            style="height: 400px"  
+            [ngModel]="fieldCode">
+          </textarea>
         </div>
       </section>
 
@@ -176,7 +185,13 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
 		return this.to.bodyClass || '';
 	}
 
-  
+  get fieldCode(): string {
+    // todo: Filter null values
+    return  beautify(JSON.stringify(this.field.fieldGroup), { 
+      brace_style: "expand",
+      keep_array_indentation: true,
+    })
+  }
 
   get nzIcon(): string | TemplateRef<void> {
     return this.to.nzIcon || this.to.icon || ''
@@ -240,10 +255,11 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   }
 
   copyCode(): void {
-    setTimeout(() => {
-      this.copyLoading = !this.codeLoaded;
-      this.check();
-    }, 120);
+    console.log(JSON.stringify(this.field.fieldGroup))
+    // setTimeout(() => {
+    //   this.copyLoading = !this.codeLoaded;
+    //   this.check();
+    // }, 120);
   }
 
   copyGenerateCommand(command: string): void {
@@ -257,6 +273,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   }
 
   copy(value: string): Promise<string> {
+    console.log(this)
     const promise = new Promise<string>((resolve): void => {
       // @ts-ignore
       let copyTextArea = null as HTMLTextAreaElement;

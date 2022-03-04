@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, Input, TemplateRef, ViewEncapsulati
 import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeDSType, NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { ShareFieldType } from '../share-field.type';
 
 @Component({
 	selector: 'div[switch-field]',
@@ -17,12 +18,15 @@ import { NzSizeDSType, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 			[formlyAttributes]="field"
 			[nzCheckedChildren]="nzCheckedChildren"
 			[nzUnCheckedChildren]="nzUnCheckedChildren"
-
+			[nzLoading]="nzLoading"
+			[nzDisabled]="nzDisabled"
+			[nzControl]="nzControl"
 			[nzSize]="nzSize"
+			(click)="change()"
 		></nz-switch>
 	`
 })
-export class SwitchField extends FieldType {
+export class SwitchField extends ShareFieldType {
 
 	get control() : FormControl {
 		return this.formControl as FormControl

@@ -22,7 +22,6 @@ import { editor } from 'monaco-editor';
 import { FieldService } from 'src/app/api/field';
 import { execEval } from 'src/app/fields/types/share-field.type';
 
-// const beautify = require('').js
 import * as beautify from 'js-beautify';
 
 export interface headerInfoType {
@@ -73,6 +72,8 @@ export class FormComponent {
   status = 200;
 
   // cache
+
+  codeType = 'javascript'
 
   routeCache: any = {};
 
@@ -138,6 +139,7 @@ export class FormComponent {
   render(result: any) {
     this.loading = true;
     // this.clearData();
+    console.log('111')
     setTimeout(() => {
       try {
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;

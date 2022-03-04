@@ -52,7 +52,23 @@
 	[nzHeight]="'100vh'"
 >
 <ng-container *nzDrawerContent>
-	<div class="row h-100">
+	<div class="row mb-3">
+		<div class="col-6">
+			<button nz-button class="me-2" nzType="primary">
+				<i nz-icon nzType="download"></i>
+			</button>
+			<button nz-button class="me-2" nzType="primary">
+				<i nz-icon nzType="download"></i>
+			</button>
+			<button nz-button class="me-2" nzType="primary">
+				<i nz-icon nzType="download"></i>
+			</button>
+			<button nz-button class="me-2" nzType="primary">
+				<i nz-icon nzType="download"></i>
+			</button>
+		</div>
+	</div> 
+	<div class="row" style="height: calc(100% - 48px);">
 		<div class="col-6">
 			<nz-code-editor 
 				class="editor" 
@@ -61,7 +77,7 @@
 				(onChange)="change($event)"
 				[ngModel]="code"
 				[nzEditorOption]="{ 
-					language: 'json'
+					language: codeType
 				}" 
 				(nzEditorInitialized)="editorInitialized($event)">
 			</nz-code-editor>

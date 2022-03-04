@@ -4,6 +4,7 @@ import { AlertFieldModule } from './alert';
 import { AutocompleteFieldModule } from './autocomplete';
 import { ButtonFieldModule } from './button';
 import { CardFieldModule } from './card';
+import { CascaderFieldModule } from './cascader';
 import { CheckboxFieldModule } from './checkbox';
 import { CollapseFieldModule } from './collapse';
 import { DatePickerFieldModule } from './date-picker';
@@ -34,6 +35,7 @@ import { UploadFieldModule } from './upload';
     AlertFieldModule,
     AutocompleteFieldModule,
     ButtonFieldModule,
+    CascaderFieldModule,
     CheckboxFieldModule,
     DatePickerFieldModule,
     InputFieldModule,

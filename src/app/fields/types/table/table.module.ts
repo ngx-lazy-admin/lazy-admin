@@ -12,12 +12,14 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { SimpleTableField } from './simple-table.component';
 
 
 @NgModule({
   declarations: [
     TableField,
-    VirtualTableField
+    VirtualTableField,
+    SimpleTableField
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,10 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
           name: 'virtual-table',
           component: VirtualTableField,
         },
+        {
+          name: 'simple-table',
+          component: SimpleTableField
+        }
       ],
     }),
   ],

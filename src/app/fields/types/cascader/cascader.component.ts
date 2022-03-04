@@ -10,7 +10,16 @@ import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'div[cascader-field]',
-  templateUrl: './cascader.component.html',
+  template: `
+  <nz-cascader
+    [formControl]="control"
+    [formlyAttributes]="field"
+    [nzOptions]="nzOptions"
+    [nzSize]="nzSize" 
+    (ngModelChange)="ngModelChange($event)">
+  </nz-cascader>
+
+  `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -34,7 +43,11 @@ export class CascaderField extends FieldType {
   }
 
   get nzOptions (): object[] {
-    return this.to['nzOptions'] || [];
+    return this.to['nzOptions'] || this.to.options || [];
+  }
+
+  get nzSize (): 'large'|'small'|'default' {
+    return this.to.nzSize || this.to['size'] || 'default'
   }
 
   ngModelChange ($event: Event) {
