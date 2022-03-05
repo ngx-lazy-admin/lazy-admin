@@ -4,17 +4,13 @@ import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'div[s2-field]',
+  selector: 'div[echart-field]',
   template: `
-    <s2-field-item
-      [formControl]="control"
-      [formlyAttributes]="field"
-      (ngModelChange)="ngModelChange($event)">
-    </s2-field-item>
+    x6
   `,
   encapsulation: ViewEncapsulation.None
 })
-export class S2Field extends FieldType {
+export class X6Field extends FieldType {
 
   constructor(
     private elementRef: ElementRef,

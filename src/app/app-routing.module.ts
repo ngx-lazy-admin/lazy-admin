@@ -30,7 +30,8 @@ const routes: Routes = [
     canActivateChild: [ActivateChildGuard],
     data: {},
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
+      { path: '', pathMatch: 'full', redirectTo: 'list' },
+      { path: 'list', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule) },
       { path: 'zh', loadChildren: () => import('./pages/iframe/iframe.module').then(m => m.IframeModule) },
       { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
       { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },

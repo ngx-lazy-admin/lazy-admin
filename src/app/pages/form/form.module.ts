@@ -21,6 +21,8 @@ import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
+import { CustomFieldModule } from 'src/app/fields/custom';
+
 
 @NgModule({
   declarations: [
@@ -41,10 +43,12 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
     NzPageHeaderModule,
     NzButtonModule,
     NzSpinModule,
+    PortalModule,
+
     FormlyModule.forRoot(),
     FieldTypeModule,
+    CustomFieldModule,
     FormFieldModule,
-    PortalModule,
   ]
 })
 export class FormModule { }

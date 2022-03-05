@@ -312,6 +312,23 @@ export const menu = [
     ]
   },
   {
+    id: '13',
+    pid: '0',
+    name: 'AntV',
+    icon: 'edit',
+    link: '',
+    badge: '',
+    children: [
+      {
+        id: '1301',
+        pid: '13',
+        name: 'g2-plot',
+        link: '/antv/g2-plot',
+        badge: '',
+      },
+    ]
+  },
+  {
     id: '10',
     pid: '0',
     name: '工具',

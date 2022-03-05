@@ -1,9 +1,10 @@
 ## 设计哲学
 
-
 > 保持一致性, 减少心智负担
 
 > 如无必要，勿增实体
+
+
 
 # GoAdminNg
 
@@ -33,23 +34,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-新建一个控制面板模块
+## new modules
+
+新建一个模块
 ng generate module chart --route chart --module app.module
-
-ng generate module list --route list --module app.module
-
-ng generate module modal --route modal --module app.module
-
-ng generate module form --route form --module app.module
-
-ng generate module exception --route exception --module app.module
-
-ng generate module pages/exception --route exception --module app.module
-
-ng generate module pages/system --route system --module app.module
-
-ng generate module pages/code --route code --module app.module
-
 
 新建一个过滤器
 ng generate pipe user
@@ -61,6 +49,7 @@ ng generate pipe service
 yarn add angular-in-memory-web-api --save
 
 新建一个菜单组件
+
 ng g component layout/basic/menus --skip-import --change-detection OnPush --view-encapsulation none
 
 ng g component layout/basic/footer-bar --skip-import --change-detection OnPush --view-encapsulation ""
@@ -78,10 +67,12 @@ ng g component layout/basic/search/search-item --skip-import --change-detection 
 ng g component pages/iframe/qiankun --skip-import --change-detection OnPush
 
 生成路由守卫
+
 ng g guard guards/routeGuard
 
 
 新建一个接口
+
 ng g interface menu
 
 --change-detection 在新组件中使用的变更检测策略。
