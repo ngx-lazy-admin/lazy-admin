@@ -325,6 +325,22 @@ export const menu = [
         name: 'g2-plot',
         link: '/antv/g2-plot',
         badge: '',
+        children: [
+          {
+            id: '1301',
+            pid: '13',
+            name: 'Line',
+            link: '/antv/g2-plot',
+            badge: '',
+          },
+          {
+            id: '1301',
+            pid: '13',
+            name: 'Line',
+            link: '/antv/g2-plot',
+            badge: '',
+          },
+        ]
       },
     ]
   },

@@ -1,20 +1,20 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
+import { LineOptions } from '@antv/g2plot';
 
 @Component({
-  selector: 'div[alert-field]',
+  selector: 'div[g2-plot-field]',
   template: `
-    <!-- <g2-plot-item
+    <g2-plot-item
       [formControl]="control"
       [formlyAttributes]="field"
-      (ngModelChange)="ngModelChange($event)">
-    </g2-plot-item> -->1
+      [config]="config"
+    >
+    </g2-plot-item>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-
-
 })
 export class G2PlotField extends FieldType {
 
@@ -26,10 +26,15 @@ export class G2PlotField extends FieldType {
 		return this.to.disabled || false;
 	}
 
-  ngModelChange ($event: any) {
-    console.log($event)
+  get config(): LineOptions {
+    return this.to.config
+  }
+
+  ngAfterViewInit() {
+
   }
 
   ngOnDestroy(): void {
+    
   }
 }

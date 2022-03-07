@@ -21,7 +21,7 @@ import { G2PlotItem } from './g2-plot-item.component';
       types: [
         {
           name: 'g2-plot',
-          component: G2PlotItem,
+          component: G2PlotField,
         },
       ],
     }),

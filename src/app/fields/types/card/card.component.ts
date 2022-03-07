@@ -14,6 +14,7 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
     [nzTitle]="nzTitle" 
     [nzType]="nzType" 
     [nzExtra]="extraFields ? extraTemplate : ''"
+    [nzHoverable]="nzHoverable"
     [nzBorderless]="nzBorderless">
     <i *ngIf="to.tooltip" 
       class="gray-500 text-dark position-absolute  top-0 end-0 me-3 mt-3"

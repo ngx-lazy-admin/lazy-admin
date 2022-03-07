@@ -139,7 +139,7 @@ export class FormComponent {
   render(result: any) {
     this.loading = true;
     // this.clearData();
-    console.log('111')
+
     setTimeout(() => {
       try {
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
@@ -148,6 +148,8 @@ export class FormComponent {
           brace_style: "expand",
           keep_array_indentation: true,
         })
+        // this.code = result.fields
+        console.log('code')
 
         this.info = result?.info;
       } catch (error) {
@@ -187,14 +189,16 @@ export class FormComponent {
   }
 
   editorInitialized($event: any) {
-    console.log('editorInitialized')
-
     this.editor = $event;
     $event.onDidChangeModelContent(() => {
+      console.log(1)
       try {
         let codes = $event.getValue()
         this.fields = execEval(codes)
-        this.cd.markForCheck();
+        setTimeout(() => {
+          this.cd.markForCheck();
+        }, 0);
+
       } catch (error) {
         console.log(error)
         this.cd.markForCheck();
@@ -217,10 +221,6 @@ export class FormComponent {
     );
   }
 
-
-  change($event: any) {
-    console.log($event);
-  }
 
   ngOnDestroy() {
     if (this.rooterChange) {

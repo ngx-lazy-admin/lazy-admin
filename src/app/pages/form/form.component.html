@@ -9,15 +9,15 @@
 				{{info?.content}}
 			</nz-page-header-content>
 		</nz-page-header>
-		<!-- <form [formGroup]="form">
+		<form [formGroup]="form">
 			<formly-form 
 				class="row" 
 				[form]="form" 
 				[fields]="fields" 
-				[(model)]="model"
+				[model]="model"
 				[options]="options">
 			</formly-form>
-		</form> -->
+		</form>
 	</ng-container>
 
 	<ng-container *ngIf="status == 403">
@@ -74,7 +74,6 @@
 				class="editor" 
 				style="height: 100%;"
 				[nzEditorMode]="'normal'"
-				(onChange)="change($event)"
 				[ngModel]="code"
 				[nzEditorOption]="{ 
 					language: codeType
@@ -82,15 +81,15 @@
 				(nzEditorInitialized)="editorInitialized($event)">
 			</nz-code-editor>
 		</div>
-		<!-- <form [formGroup]="form" class="col-6 w-50">
+		<form [formGroup]="form" class="col-6 w-50">
 			<formly-form 
 				class="row " 
 				[form]="form" 
 				[fields]="fields" 
-				[(model)]="model"
+				[model]="model"
 				[options]="options">
 			</formly-form>
-		</form> -->
+		</form>
 	</div>
 </ng-container>
 </nz-drawer>

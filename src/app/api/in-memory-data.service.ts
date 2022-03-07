@@ -6,7 +6,7 @@ import { menu } from './menu/menu.mock';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { field, system, dashboard, components, profile, form, list, account } from './field/mock';
+import { field, system, dashboard, components, profile, form, list, account, antv } from './field/mock';
 import { bootstrap } from './field/mock/bootstrap.mock';
 
 @Injectable({
@@ -62,6 +62,7 @@ export class InMemoryDataService implements InMemoryDbService {
       form,
       list,
       bootstrap,
+      antv,
     };
 
     switch (returnType) {
