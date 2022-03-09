@@ -384,7 +384,7 @@ const data2 = [
 },
 ];
 
-export const AntvG2PloatLineMock = [
+export const AntvAreaMock = [
 	{
 		type: 'group',
 		className: "d-inline-block mb-3 col-12",
@@ -397,13 +397,13 @@ export const AntvG2PloatLineMock = [
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
 				templateOptions: {
-					title: '基础折线图',
+					title: '基础面积图',
 					hoverable: true
 				},
 				fieldGroup: [
 					{
 						key: 'date',
-						type: 'g2-plot',
+						type: 'antv-area',
 						defaultValue: data,
 						templateOptions: {
 							config: {

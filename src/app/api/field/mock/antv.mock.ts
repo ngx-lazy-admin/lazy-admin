@@ -2,7 +2,7 @@
 // // @ts-nocheck
 // console.log('1111')
 
-import { AntvG2PloatLineMock } from "./antv/g2-plot/line.mock";
+import { AntvLineMock, AntvAreaMock } from "./antv";
 
 // const data = []
 console.log('111')
@@ -15,16 +15,7 @@ function resolveAfter2Seconds() {
 			resolve(data);
 		});
   });
-
-
 }
-
-
-
-// console.log(x); // 10
-
-console.log('333')
-
 
 const data = [
   {
@@ -373,13 +364,26 @@ const data = [
   }
 ]
 
-
 export const antv = [
 	{
-		id: 'g2-plot',
-		fields: AntvG2PloatLineMock,
+		id: 'line',
+		fields: AntvLineMock,
 		info: {
-			title: '查询表格',
+			title: '折线图',
 		}
-	}
+	},
+    {
+		id: 'area-map',
+		fields: AntvLineMock,
+		info: {
+			title: '折线图',
+		}
+	},
+    {
+		id: 'area',
+		fields: AntvAreaMock,
+		info: {
+			title: '折线图',
+		}
+	},
 ]

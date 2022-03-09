@@ -384,7 +384,7 @@ const data2 = [
 },
 ];
 
-export const AntvG2PloatLineMock = [
+export const AntvLineMock = [
 	{
 		type: 'group',
 		className: "d-inline-block mb-3 col-12",
@@ -392,10 +392,9 @@ export const AntvG2PloatLineMock = [
 			bodyClass: 'row'
 		},
 		fieldGroup: [
-			
 			{
 				type: 'card',
-				className: "d-inline-block mb-3 col-3",
+				className: "d-inline-block mb-3 px-2 col-3",
 				templateOptions: {
 					title: '基础折线图',
 					hoverable: true

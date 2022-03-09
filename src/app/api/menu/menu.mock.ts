@@ -298,15 +298,15 @@ export const menu = [
       {
         id: '0901',
         pid: '9',
-        name: '富文本编辑器',
+        name: 'quill 编辑器',
         link: '/editor/editor',
         badge: '',
       },
       {
         id: '0901',
         pid: '9',
-        name: 'Markdown编辑器',
-        link: '/editor/markdonw',
+        name: 'tui markdown 编辑器',
+        link: '/editor/markdown',
         badge: '',
       },
     ]
@@ -314,7 +314,7 @@ export const menu = [
   {
     id: '13',
     pid: '0',
-    name: 'AntV',
+    name: '可视化',
     icon: 'edit',
     link: '',
     badge: '',
@@ -322,15 +322,22 @@ export const menu = [
       {
         id: '1301',
         pid: '13',
-        name: 'g2-plot',
+        name: 'antV',
         link: '/antv/g2-plot',
         badge: '',
         children: [
           {
             id: '1301',
             pid: '13',
+            name: 'Flowchart',
+            link: '/antv/flow-chart',
+            badge: '',
+          },
+          {
+            id: '1301',
+            pid: '13',
             name: 'Line',
-            link: '/antv/g2-plot',
+            link: '/antv/line',
             badge: '',
           },
           {
@@ -364,8 +371,8 @@ export const menu = [
           {
             id: '1306',
             pid: '13',
-            name: 'Aera',
-            link: '/antv/aera',
+            name: 'Area',
+            link: '/antv/area',
             badge: '',
           },
           {
@@ -396,7 +403,84 @@ export const menu = [
             link: '/antv/dual-axes',
             badge: '',
           },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'Progress plots',
+            link: '/antv/progress-plots',
+            badge: '',
+          },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'Scater and Bubble',
+            link: '/antv/scater-and-bubble',
+            badge: '',
+          },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'Rose',
+            link: '/antv/rose',
+            badge: '',
+          },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'Relation Plots',
+            link: '/antv/relation-plots',
+            badge: '',
+          },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'Heatmap',
+            link: '/antv/Heatmap',
+            badge: '',
+          },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'Tiny Plots',
+            link: '/antv/tiny-plots',
+            badge: '',
+          },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'More Plots',
+            link: '/antv/more-plots',
+            badge: '',
+          },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'Realtion Graph',
+            link: '/antv/realtion-graph',
+            badge: '',
+          },
+          {
+            id: '1310',
+            pid: '13',
+            name: 'Dynamic Plots',
+            link: '/antv/dynamic-plots',
+            badge: '',
+          },
         ]
+      },
+      {
+        id: '1302',
+        pid: '10',
+        name: 'Echart',
+        link: '/echart/one',
+        badge: '',
+      },
+      {
+        id: '1302',
+        pid: '10',
+        name: 'hightchart',
+        link: '/hightchart/one',
+        badge: '',
       },
     ]
   },
