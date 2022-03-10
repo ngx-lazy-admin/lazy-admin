@@ -19,6 +19,10 @@ import { TuiEditFieldItem } from './tui-editor-item.component';
           name: 'tui',
           component: TuiEditorField,
         },
+        {
+          name: 'markdown',
+          component: TuiEditorField,
+        },
       ],
     }),
   ],

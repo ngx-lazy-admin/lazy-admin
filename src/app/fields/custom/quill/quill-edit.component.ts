@@ -1,9 +1,11 @@
-import { Component, ElementRef, ViewEncapsulation, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, forwardRef } from '@angular/core';
+import { Component, ElementRef, ViewEncapsulation, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, forwardRef, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FieldType,  } from '@ngx-formly/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 import Quill from 'quill';
+import { ShareFieldType } from '../../types/share-field.type';
+import { NzMessageService } from 'ng-zorro-antd/message';
 // import { CosService } from '../../../../services/cos.service';
 
 const font = Quill.import('formats/font');
@@ -28,67 +30,40 @@ Quill.register(font, true);
     }
   ]
 })
-export class QuillEditField extends FieldType implements AfterViewInit {
+export class QuillEditField extends ShareFieldType implements AfterViewInit {
 
   @Input() 
   placeholder: string = '';
 
-  constructor(
-    private elementRef: ElementRef,
-    private http: HttpClient,
-    private cd: ChangeDetectorRef,
-    // private cos: CosService
-  ) {
-    super();
-  }
-
-  // action = 'web/plupload/upload-big?object_type=1430';
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
 
-  // [{ 'header': 1 }],               // custom button values
-  // ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  // ['blockquote', 'code-block'],
-  // [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-  // [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  // [{ 'direction': 'rtl' }],                         // text direction
+  constructor(
+    public elementRef: ElementRef,
+    public cd: ChangeDetectorRef,
+    public http: HttpClient,
+    public readonly zone: NgZone,
+    public message: NzMessageService
+  ) {
+    super(cd, http, zone, message);
+  }
 
-  // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-  // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-  // [{ 'color': new Array<any>() }, { 'background': new Array<any>() }],          // dropdown with defaults from theme
-  // [{ 'font': new Array<any>() }],
-  // [{ 'align': new Array<any>() }],
-
-  // ['clean'],                                         // remove formatting button
-
-  // ['link', 'image', 'video']                         // link and image, video
-
-  // 基本数据
   quillEditor: any;
   editorElem: HTMLElement | string = '';
   content: any;
   defaultModules = {
     toolbar: [
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      // [{ 'font': new Array<any>() }],
+
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
 
       [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'align': new Array<any>() }],
-      // [{ 'header': 1 }, { 'header': 2}],               // custom button values
-      // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-      // [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-      // [{ 'direction': 'rtl' }],                         // text direction
-
-      // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-
 
       [{ 'color': new Array<any>() }, { 'background': new Array<any>() }],          // dropdown with defaults from theme
 
-      ['link', 'image', 'video'],                         // link and image, video
+      ['link', 'image', 'video'],  
+                             // link and image, video
       ['formula', 'blockquote', 'code-block', 'clean'],
-
     ]
   };
 

@@ -9,7 +9,7 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 @Component({
   selector: 'div[card-field]',
   template: `
-  {{extraActions | json}}
+
   <nz-card 
     [nzBodyStyle]="nzBodyStyle"
     [nzTitle]="nzTitle" 

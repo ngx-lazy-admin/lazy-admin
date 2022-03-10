@@ -1,11 +1,7 @@
 
-// // @ts-nocheck
-// console.log('1111')
+// @ts-nocheck
 
 import { AntvLineMock, AntvAreaMock } from "./antv";
-
-// const data = []
-console.log('111')
 
 function resolveAfter2Seconds() {
   return new Promise(resolve => {
