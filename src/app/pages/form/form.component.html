@@ -1,8 +1,15 @@
 <nz-spin *ngIf="loading" [nzSpinning]="loading" class="mt-5"></nz-spin>
 
-
 <ng-container *ngIf="!loading && form">
 	<ng-container  *ngIf="status == 200">
+
+		<nz-alert
+			nzType="info"
+			class="mb-3"
+			nzCloseable
+			nzDescription="键盘点击 . , 可以编辑当前页面配置"
+		></nz-alert>
+
 		<nz-page-header *ngIf="info" class="bg-white mb-3">
 			<nz-page-header-title>{{info?.title}}</nz-page-header-title>
 			<nz-page-header-content>
@@ -52,7 +59,7 @@
 	[nzHeight]="'100vh'"
 >
 <ng-container *nzDrawerContent>
-	<div class="row mb-3">
+	<!-- <div class="row mb-3">
 		<div class="col-6">
 			<button nz-button class="me-2" nzType="primary">
 				<i nz-icon nzType="download"></i>
@@ -67,8 +74,8 @@
 				<i nz-icon nzType="download"></i>
 			</button>
 		</div>
-	</div> 
-	<div class="row" style="height: calc(100% - 48px);">
+	</div>  -->
+	<div class="row" style="height: 100%;">
 		<div class="col-6">
 			<nz-code-editor 
 				class="editor" 

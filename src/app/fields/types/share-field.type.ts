@@ -37,8 +37,7 @@ export abstract class ShareFieldType extends FieldType {
     public cd: ChangeDetectorRef,
     public http: HttpClient,
     public readonly zone: NgZone,
-    public message: NzMessageService,
-    public router: route
+    public message: NzMessageService
   ) {
     super();
   }

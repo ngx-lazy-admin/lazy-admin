@@ -22,6 +22,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { CustomFieldModule } from 'src/app/fields/custom';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { CustomFieldModule } from 'src/app/fields/custom';
     NzButtonModule,
     NzSpinModule,
     PortalModule,
+    NzAlertModule,
 
     FormlyModule.forRoot(),
     FieldTypeModule,
