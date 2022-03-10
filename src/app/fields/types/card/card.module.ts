@@ -19,6 +19,8 @@ import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 import { SearchCardField } from './search-card.component';
 import { CardMetaField } from './card-meta.component';
 import { CodeCardField } from './code-card.component';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { CodeCardField } from './code-card.component';
     NzDescriptionsModule,
     IconsProviderModule,
     NzToolTipModule,
+    NzListModule,
+    NzPopconfirmModule,
     NzButtonModule,
     NzTabsModule,
     NzAvatarModule,

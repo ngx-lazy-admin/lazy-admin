@@ -11,27 +11,44 @@ export const CardMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '基本用法',
-          description: '数字输入框',
+          title: '典型卡片',
+          description: '包含标题、内容、操作区域。',
         },
         fieldGroup: [
           {
-            key: 'input1-1',
-            type: 'input',
-            className: "d-block mb-2",
-            defaultValue: 3,
+            type: 'card',
+            className: "d-block mb-3 col-4",
             templateOptions: {
-              placeholder: 'Basic usage'
-            }
-          },
-          {
-            key: 'input1-2',
-            type: 'input',
-            className: "d-block mb-2",
-            templateOptions: {
-              placeholder: 'Basic usage',
-              disabled: true,
-            }
+              title: 'Card title',
+              extraActions: [
+                {
+                  text: 'More',
+                  click: `() => {
+                    console.log('111')
+                  }`
+                }
+              ]
+            },
+            fieldGroup: [
+              {
+                key: 'template1',
+                type: 'template',
+                className: "d-block mb-2",
+                defaultValue: 'Card content',
+              },
+              {
+                key: 'template2',
+                type: 'template',
+                className: "d-block mb-2",
+                defaultValue: 'Card content',
+              },
+              {
+                key: 'template3',
+                type: 'template',
+                className: "d-block mb-2",
+                defaultValue: 'Card content',
+              },
+            ]
           },
         ]
       },

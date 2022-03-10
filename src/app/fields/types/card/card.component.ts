@@ -9,11 +9,12 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 @Component({
   selector: 'div[card-field]',
   template: `
+  {{extraActions | json}}
   <nz-card 
     [nzBodyStyle]="nzBodyStyle"
     [nzTitle]="nzTitle" 
     [nzType]="nzType" 
-    [nzExtra]="extraFields ? extraTemplate : ''"
+    [nzExtra]="extraActions ? extraTemplate : ''"
     [nzHoverable]="nzHoverable"
     [nzBorderless]="nzBorderless">
     <i *ngIf="to.tooltip" 
@@ -45,8 +46,15 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
   </ng-template>
 
   <ng-template #extraTemplate>
-    <ng-container *ngIf="extraFields">
-      <formly-form [fields]="extraFields"></formly-form>
+    <ng-container *ngFor="let action of extraActions; let i = index; trackBy: trackByFn">
+      <a nz-popconfirm
+        [nzPopconfirmTitle]="action.popconfirmTitle"
+        (nzOnConfirm)="confirm()"
+        (nzOnCancel)="cancel()" 
+        (click)="click(action)">
+        <i *ngIf="action.icon" nz-icon [nzType]="action.icon"></i> 
+        {{ action.text }}
+      </a>
     </ng-container>
   </ng-template>
 
@@ -95,6 +103,7 @@ export class CardField extends ShareFieldType  implements OnDestroy {
   get nzExtra(): string|TemplateRef<void> {
 		return this.to.nzExtra || this.to.extra || '';
 	}
+  
 
   get nzHoverable(): boolean {
 		return this.to.nzHoverable || this.to.hoverable || false;
@@ -132,6 +141,9 @@ export class CardField extends ShareFieldType  implements OnDestroy {
     return this.to.extraFields ? this.to.extraFields(this.field) : null
   }
 
+  get extraActions (): ActionTypeInterface[] {
+    return this.to.extraActions || []
+  }
 
   actionEdit:any
 
