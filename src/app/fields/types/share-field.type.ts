@@ -37,7 +37,8 @@ export abstract class ShareFieldType extends FieldType {
     public cd: ChangeDetectorRef,
     public http: HttpClient,
     public readonly zone: NgZone,
-    public message: NzMessageService
+    public message: NzMessageService,
+    public router: route
   ) {
     super();
   }
@@ -46,7 +47,6 @@ export abstract class ShareFieldType extends FieldType {
   click (action?: ActionTypeInterface) {
     this.zone.runOutsideAngular(() => {
       try{
-        console.log('111')
         const func = typeof(action?.click) == 'string' 
           ? execEval(action?.click) : 
           (typeof(this.to?.click)=='string' ? execEval(this.to?.click) : null);

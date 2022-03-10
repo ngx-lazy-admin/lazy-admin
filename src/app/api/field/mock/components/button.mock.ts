@@ -489,6 +489,25 @@ export const ButtonMockFields = [
             }
           },
         ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '路由跳转',
+          description: '使用 nzDanger 将按钮标识为危险状态。',
+        },
+        fieldGroup: [
+          {
+            type: 'button',
+            className: "d-inline-block mb-2",
+            templateOptions: {
+              text: 'Primary',
+              type: 'primary',
+              danger: true
+            }
+          },
+        ]
       }
     ]
   },
