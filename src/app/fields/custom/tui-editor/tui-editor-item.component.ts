@@ -5,7 +5,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 
 // @ts-ignore
-import Editor from '@toast-ui/editor';
+import Editor, { EditorOptions } from '@toast-ui/editor';
 
 @Component({
   selector: 'tui-editor-item',
@@ -30,6 +30,12 @@ export class TuiEditFieldItem extends FieldType implements AfterViewInit {
   @Input() 
   placeholder: string = '';
 
+  @Input() 
+  config = {
+    height: '500px',
+    initialValue: ''
+  }
+
   constructor(
     private elementRef: ElementRef,
     private http: HttpClient,
@@ -45,25 +51,20 @@ export class TuiEditFieldItem extends FieldType implements AfterViewInit {
 
   // 基本数据
   tuiEditor: any;
-  editorElem: HTMLElement | string = '';
+  editorElem!: HTMLElement;
   content: any;
 
   // 视图加载完成后执行初始化
   ngAfterViewInit() {
     this.editorElem = this.elementRef.nativeElement.children[0];
 
-    this.tuiEditor = new Editor({
-      el: this.editorElem!,
-      ...Object.assign({
-        previewStyle: 'tab',
-        height: '500px',
-        initialValue: ''
-      })
-    })
+    if (this.editorElem) {
+      this.tuiEditor = new Editor(
+        Object.assign({el: this.editorElem}, this.config)
+      )
+    }
 
     this.tuiEditor.on("change", (value: any) => {
-      console.log(this.tuiEditor)
-      console.log(value)
       this.onChange(this.tuiEditor.getMarkdown())
     })
   }

@@ -13,6 +13,7 @@ import { GroupFieldModule } from './group';
 import { InputFieldModule } from './input';
 import { InputNumberFieldModule } from './input-number';
 import { ListFieldModule } from './list';
+import { ModalFieldModule } from './modal';
 import { ProgressFieldModule } from './progress';
 import { RadioFieldModule } from './radio';
 import { RateFieldModule } from './rate';
@@ -60,7 +61,8 @@ import { UploadFieldModule } from './upload';
     ProgressFieldModule,
     TreeFieldModule,
     GroupFieldModule,
-    RepeatFieldModule
+    RepeatFieldModule,
+    ModalFieldModule
   ],
 })
 export class FieldTypeModule {}

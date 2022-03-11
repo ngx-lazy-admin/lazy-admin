@@ -164,11 +164,6 @@ export class FormComponent {
     }, 0);
   }
 
-  do_js_beautify(value: string) {
-
-
-  }
-
   submit(form: FormGroup) {
     form.markAsDirty();
   }

@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
     <tui-editor-item
       [formControl]="control"
       [formlyAttributes]="field"
+      [config]="config"
       (ngModelChange)="ngModelChange($event)">
     </tui-editor-item>
   `,
@@ -23,8 +24,12 @@ export class TuiEditorField extends FieldType {
     super();
   }
 
-  get control() : FormControl {
+  get control(): FormControl {
 		return this.formControl as FormControl
+  }
+
+  get config(): any {
+		return this.to.config
   }
 
   ngModelChange ($event: any) {

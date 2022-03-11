@@ -16,7 +16,9 @@ export const MarkdownMockFields = [
             {
               type: 'markdown',
               className: "d-inline-block mx-2",
-              templateOptions: {}
+              templateOptions: {
+                config: ''
+              }
             }
           ]
         }

@@ -19,6 +19,7 @@ import { TimePickerMockFields } from './components/time-picker.mock';
 import { TransferMockFields } from './components/transfer.mock';
 import { TreeSelectMockFields } from './components/tree-select.mock';
 import { UploadMockFields } from './components/upload.mock';
+import { ModalMockFields } from './components/modal.mock';
 
 const list100 = [...Array(200).keys()].map((item, index) => {
   return {
@@ -217,6 +218,17 @@ export const components = [
       list: list100
     },
 
+    info: {
+      title: 'Table表格',
+      content: '展示行列数据。'
+    }
+  },
+  {
+    id: 'modal',
+    fields: ModalMockFields,
+    data: {
+
+    },
     info: {
       title: 'Table表格',
       content: '展示行列数据。'
