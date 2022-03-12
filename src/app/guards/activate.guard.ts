@@ -18,7 +18,7 @@ export class ActivateGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log('canActivate')
+    // console.log('canActivate')
     return new Observable(observer => {
       forkJoin([
         this.menuservice.getMenu()

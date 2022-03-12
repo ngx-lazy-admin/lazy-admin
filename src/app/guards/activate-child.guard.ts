@@ -17,7 +17,7 @@ export class ActivateChildGuard implements CanActivateChild {
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log('ActivateChildGuard: canActivateChild')
+    // console.log('ActivateChildGuard: canActivateChild')
     return this.menuservice.canActive(state.url)
   }
 
@@ -27,7 +27,7 @@ export class ActivateChildGuard implements CanActivateChild {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log('ActivateChildGuard: canDeactivate')
+      // console.log('ActivateChildGuard: canDeactivate')
     return true;
   }
 }

@@ -23,6 +23,7 @@ import { FieldService } from 'src/app/api/field';
 import { execEval } from 'src/app/fields/types/share-field.type';
 
 import * as beautify from 'js-beautify';
+import { CacheService } from 'src/app/services/router/cache.service';
 
 export interface headerInfoType {
   title: string,
@@ -75,7 +76,7 @@ export class FormComponent {
 
   codeType = 'javascript'
 
-  routeCache: any = {};
+  // routeCache: any = {};
 
   private destroy$ = new Subject<void>();
 
@@ -90,21 +91,18 @@ export class FormComponent {
     private router: Router,
     private ngZone: NgZone,
     private nzConfigService: NzConfigService,
+    private routeCache: CacheService
   ) {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if (this.routeCache[this.router.url]) {
-          console.log(this.router.url)
-          console.log(this.routeCache[this.router.url])
-
-          this.render(this.routeCache[this.router.url])
+        if (this.routeCache.get(this.router.url)) {
+          this.render(this.routeCache.get(this.router.url))
+          this.routeCache.recoveryHistoryPosition(this.router.url)
         } else {
           this.loading = true
           this.fieldService.getField(this.router.url).subscribe(result => {
-            this.routeCache[this.router.url] = result;
-
-
-            this.render(this.routeCache[this.router.url])
+            this.routeCache.set(this.router.url, result)
+            this.render(this.routeCache.get(this.router.url))
           }, err => {
             this.loading = false;
             this.status = err?.status
@@ -164,7 +162,10 @@ export class FormComponent {
       } finally {
         this.status = 200;
         this.loading = false;
+
         this.cd.detectChanges();
+
+
       }
     }, 0);
   }

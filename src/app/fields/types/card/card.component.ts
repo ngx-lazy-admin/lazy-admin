@@ -12,9 +12,9 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 
   <nz-card 
     [nzBodyStyle]="nzBodyStyle"
-    [nzTitle]="nzTitle" 
+    [nzTitle]="nzTitle ? nzTitle : ''" 
     [nzType]="nzType" 
-    [nzExtra]="extraActions ? extraTemplate : ''"
+    [nzExtra]="extraActions && extraActions.length ? extraTemplate : ''"
     [nzHoverable]="nzHoverable"
     [nzBorderless]="nzBorderless">
     <i *ngIf="to.tooltip" 

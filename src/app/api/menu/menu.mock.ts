@@ -614,6 +614,13 @@ export const menu = [
         badge: '',
       },
       {
+        id: '1140',
+        pid: '11',
+        name: 'modal',
+        link: '/components/modal',
+        badge: '1',
+      },
+      {
         id: '1114',
         pid: '11',
         name: 'pagination',

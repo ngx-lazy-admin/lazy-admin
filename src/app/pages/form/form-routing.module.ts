@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ActivateChildGuard } from 'src/app/guards/activate-child.guard';
-import { FormCanDeactivateGuard } from 'src/app/guards/form-can-deactivate.guard';
-import { GlobalDeactivateGuard } from 'src/app/guards/global-deactivate.guard';
 import { FormComponent } from './form.component';
+import { DeactivateGuard } from './guards/deactivate.guard';
 
 const routes: Routes = [
   { 
-    canActivateChild: [FormCanDeactivateGuard],
-    canDeactivate: [GlobalDeactivateGuard],
+    canDeactivate: [DeactivateGuard],
     path: '', pathMatch: 'full', component: FormComponent, 
   }
 ];

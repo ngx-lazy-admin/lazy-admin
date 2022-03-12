@@ -230,8 +230,8 @@ export const components = [
 
     },
     info: {
-      title: 'Table表格',
-      content: '展示行列数据。'
+      title: 'Modal对话框',
+      content: '模态对话框。'
     }
   },
 
