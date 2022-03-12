@@ -94,11 +94,16 @@ export class FormComponent {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (this.routeCache[this.router.url]) {
+          console.log(this.router.url)
+          console.log(this.routeCache[this.router.url])
+
           this.render(this.routeCache[this.router.url])
         } else {
           this.loading = true
           this.fieldService.getField(this.router.url).subscribe(result => {
             this.routeCache[this.router.url] = result;
+
+
             this.render(this.routeCache[this.router.url])
           }, err => {
             this.loading = false;

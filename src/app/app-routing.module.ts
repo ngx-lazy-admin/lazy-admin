@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LayoutBasicComponent } from './layout/basic/basic.component';
 import { ActivateGuard } from './guards/activate.guard';
 import { ActivateChildGuard } from './guards/activate-child.guard';
+import { GlobalDeactivateGuard } from './guards/global-deactivate.guard';
 // import { loadMicroApp, registerMicroApps, start } from 'qiankun';
 
 // const loader = (loading: any) => render({ loading });
@@ -28,6 +29,7 @@ const routes: Routes = [
     component: LayoutBasicComponent,
     canActivate: [ActivateGuard],
     canActivateChild: [ActivateChildGuard],
+    canDeactivate: [GlobalDeactivateGuard],
     data: {},
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'list' },
