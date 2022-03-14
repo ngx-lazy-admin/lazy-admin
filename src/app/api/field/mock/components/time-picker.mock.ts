@@ -12,15 +12,14 @@ export const TimePickerMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '简单的 checkbox',
+          description: '点击 nz-time-picker，然后可以在浮层中选择或者输入某一时间。',
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'time1',
+            type: 'time-picker',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
             }
           }
         ]
@@ -29,103 +28,97 @@ export const TimePickerMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '三种大小',
+          description: '联动 checkbox。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
+            key: 'time2',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
             templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
+              size: "large",
             },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
+          },
+          {
+            key: 'timer2',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
+            templateOptions: {
+
             }
           },
           {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
+            key: 'timer3',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
             templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
-              `
+              size: 'small'
             }
           },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
-            }
-          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '选择时分',
+          description: 'nz-time-picker 浮层中的列会随着 nzFormat 变化，当略去 nzFormat 中的某部分时，浮层中对应的列也会消失。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'time3',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
             templateOptions: {
-              text: "Checkbox",
-            }
+              format: "HH:mm"
+            },
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '附加内容',
+          description: '在 nz-time-picker 选择框底部显示自定义的内容。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'time4',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
             templateOptions: {
-              text: "Checkbox",
-            }
+              format: "HH:mm"
+            },
+          },
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '12小时制',
+          description: '12小时制的时间选择器，默认format为 h:mm:ss a',
+        },
+        fieldGroup: [
+          {
+            key: 'time4',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              use12Hours: true,
+            },
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'time4',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
             templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
+              format: "h:mm a",
+              use12Hours: true
+            },
+          },
         ]
       },
     ]
@@ -135,114 +128,80 @@ export const TimePickerMockFields = [
     className: "d-block mb-3 col-6",
     templateOptions: {
       title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+      description: '最简单的用法，在浮层中可以选择或者输入日期。',
     },
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '禁用',
+          description: '禁用时间选择。',
+        },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'time6',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
             templateOptions: {
-              text: "Checkbox",
-            }
+              disabled: true
+            },
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '步长选项',
+          description: '可以使用 nzHourStepnzMinuteStepnzSecondStep 按步长展示可选的时分秒。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'time7',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
             templateOptions: {
-              text: "Checkbox",
-            }
+              format: "HH:mm",
+              minuteStep: 15,
+              secondStep: 10
+            },
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '禁用部分',
+          description: '禁用部分时间选择。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'time8',
+            type: 'time-picker',
+            className: "d-inline-block m-2",
             templateOptions: {
-              text: "Checkbox",
-            }
+              disabledHours: `(hour) => [1, 2, 3] `,
+              disabledMinutes: `(hour) => {
+                                if (hour === 4) {
+                                return [20, 21, 22, 23, 24, 25];
+                              } else {
+                                return [];
+                              }}
+                            `,
+              disabledSeconds: `(hour, minute) => {
+                                  if (hour === 5 && minute === 1) {
+                                    return [20, 21, 22, 23, 24, 25];
+                                  } else {
+                                    return [];
+                                  }
+                                }
+                              `,
+            },
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-
+      }
     ]
   },
 ]
