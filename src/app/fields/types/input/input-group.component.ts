@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy,
+import { 
+	Component, ChangeDetectionStrategy,
 	Input, Self, Optional, ViewEncapsulation } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
 import { NgControl } from '@angular/forms';

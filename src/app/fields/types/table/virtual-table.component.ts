@@ -7,21 +7,18 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectorRef,
+  Directive
  } from '@angular/core';
+import { FormArray } from '@angular/forms';
+
 import { FieldArrayType, FieldType, FormlyFieldConfig, FormlyExtension } from '@ngx-formly/core';
+
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
+
 import { ShareFieldType } from '../share-field.type';
-
-
-import { Directive } from '@angular/core';
-import { FormArray } from '@angular/forms';
-
-// import { clone, assignFieldValue, getFieldValue, hasKey } from '../utils';
-// import { FormlyFieldConfig, FormlyExtension } from '../models';
-// import {  } from '../extensions/field-form/utils';
 
 export interface VirtualDataInterface {
   index: number;

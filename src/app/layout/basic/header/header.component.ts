@@ -6,7 +6,8 @@ import {
   TemplateRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  ElementRef
+  ElementRef,
+  HostListener
 } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
@@ -15,6 +16,7 @@ import { Subject } from 'rxjs';
 import { LayoutService } from '../../layout.service';
 import { MenuService } from '../../../api/menu/menu.services';
 import hotkeys from 'hotkeys-js';
+import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 
 export interface AutocompleteOptionGroups {
   title: string;
@@ -51,6 +53,9 @@ export class LayoutHeaderComponent implements OnInit {
 
   private destroy$ = new Subject<void>();
 
+  status: boolean = false
+
+
   constructor(
     public overlay: Overlay, 
     public viewContainerRef: ViewContainerRef,
@@ -58,7 +63,8 @@ export class LayoutHeaderComponent implements OnInit {
     private layout: LayoutService,
     public menu: MenuService,
     private cd: ChangeDetectorRef,
-    private el: ElementRef
+    private el: ElementRef,
+    private fullScreenService: FullScreenService
   ) {
 
     this.layout.change$?.subscribe(item => {
@@ -101,9 +107,10 @@ export class LayoutHeaderComponent implements OnInit {
     this.isVisible = false;
   }
 
-  fullScreen(el: Event) {
-    console.log('fullScreen');
-    // this.el.nativeElement.requestFullscreen();
+  fullScreen() {
+    this.fullScreenService.toggle().subscribe(item => {
+      console.log('111')
+    })
   }
 
   ngAfterViewInit() {

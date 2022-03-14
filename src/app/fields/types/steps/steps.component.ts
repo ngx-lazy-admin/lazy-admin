@@ -4,7 +4,6 @@ import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { StepsOptionInterface } from './steps.type';
 
-
 @Component({
   selector: 'div[steps-field]',
   changeDetection: ChangeDetectionStrategy.OnPush,

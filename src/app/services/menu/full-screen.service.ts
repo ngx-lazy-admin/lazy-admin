@@ -1,0 +1,39 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FullScreenService {
+
+  isFullscreen: boolean = false;
+
+  // 打开全屏
+  request (element?: Element) {
+    return new Observable ((observed: any) => {
+      if (!this.isFullscreen)  {
+        if (element) {
+          element.requestFullscreen()
+        } else {
+          document.body.requestFullscreen()
+        }
+        this.isFullscreen = true
+      }
+    })
+  }
+
+  // 关闭全屏
+  exit () {
+    return new Observable ((observed: any) => {
+      if (this.isFullscreen) {
+        document.exitFullscreen()
+        this.isFullscreen = false
+      }
+    })
+  }
+
+  // 全屏反转
+  toggle(element?: Element) {
+    return this.isFullscreen ? this.exit() : this.request(element);
+  }
+}

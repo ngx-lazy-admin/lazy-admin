@@ -1,8 +1,12 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, ElementRef, ViewContainerRef, ChangeDetectorRef, Injectable } from '@angular/core';
+import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, ElementRef, ViewContainerRef, ChangeDetectorRef, Injectable, NgZone } from '@angular/core';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
+import { HttpClient } from '@angular/common/http';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { FullScreenService } from 'src/app/services/menu/full-screen.service';
+
 
 
 @Injectable({ providedIn: 'root' })
@@ -14,7 +18,7 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
     [nzBodyStyle]="nzBodyStyle"
     [nzTitle]="nzTitle ? nzTitle : ''" 
     [nzType]="nzType" 
-    [nzExtra]="extraActions && extraActions.length ? extraTemplate : ''"
+    [nzExtra]="extraTemplate"
     [nzHoverable]="nzHoverable"
     [nzBorderless]="nzBorderless">
     <i *ngIf="to.tooltip" 
@@ -56,6 +60,8 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
         {{ action.text }}
       </a>
     </ng-container>
+
+    <i nz-icon class="f16" nz-button nzType="expand" (click)="fullScreen()" nzTheme="outline"></i>
   </ng-template>
 
   `,
@@ -147,8 +153,26 @@ export class CardField extends ShareFieldType  implements OnDestroy {
 
   actionEdit:any
 
+  constructor(
+    public cd: ChangeDetectorRef,
+    public http: HttpClient,
+    public readonly zone: NgZone,
+    public message: NzMessageService,
+    private elRef: ElementRef,
+    private fullScreenService: FullScreenService
+  ) {
+    super(cd, http, zone, message);
+  }
+
   log (tmp: any) {
     console.log(tmp)
+  }
+
+  fullScreen() {
+    const element = this.elRef.nativeElement
+    this.fullScreenService.toggle(element).subscribe((item: any) => {
+      console.log(item)
+    })
   }
 
   actionClick (data: any) {

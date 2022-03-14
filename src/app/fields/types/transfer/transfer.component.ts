@@ -8,7 +8,7 @@ import { formatDate } from '@angular/common';
 	selector: 'div[time-picker-field]',
 	templateUrl: './transfer.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+	encapsulation: ViewEncapsulation.None,
 	host: {
 		'display': 'contents',
 		'[class.display-contents]': `true`,
@@ -16,111 +16,111 @@ import { formatDate } from '@angular/common';
 })
 export class TransferField extends FieldType {
 
-  get control() : FormControl {
+	get control() : FormControl {
 		return this.formControl as FormControl
-  }
+	}
 
-  get nzId(): boolean {
+	get nzId(): boolean {
 		return this.to.nzId || false
 	}
 
-  get nzAddOn(): boolean {
+	get nzAddOn(): boolean {
 		return this.to.nzAddOn || false
 	}
 
-  get nzAllowEmpty(): boolean {
+	get nzAllowEmpty(): boolean {
 		return this.to.nzAllowEmpty || false
 	}
 
-  get nzAutoFocus(): boolean {
+	get nzAutoFocus(): boolean {
 		return this.to.nzAutoFocus || false
 	}
 
-  get nzBackdrop(): boolean {
+	get nzBackdrop(): boolean {
 		return this.to.nzBackdrop || false
 	}
 
-  get nzClearText(): boolean {
+	get nzClearText(): boolean {
 		return this.to.nzClearText || false
 	}
 
-  get nzNowText(): boolean {
+	get nzNowText(): boolean {
 		return this.to.nzNowText || false
 	}
 
-  get nzOkText(): boolean {
+	get nzOkText(): boolean {
 		return this.to.nzOkText || false
 	}
 
-  get nzDefaultOpenValue(): Date {
+	get nzDefaultOpenValue(): Date {
 		return this.to.nzDefaultOpenValue || null
 	}
 
-  get nzDisabled(): boolean {
+	get nzDisabled(): boolean {
 		return this.to.nzDisabled || false
 	}
 
-  get nzDisabledHours(): boolean {
+	get nzDisabledHours(): boolean {
 		return this.to.nzDisabledHours || false
 	}
 
-  get nzDisabledMinutes(): boolean {
+	get nzDisabledMinutes(): boolean {
 		return this.to.nzDisabledMinutes || false
 	}
 
-  get nzDisabledSeconds(): boolean {
+	get nzDisabledSeconds(): boolean {
 		return this.to.nzDisabledSeconds || false
 	}
 
-  get nzFormat(): string {
+	get nzFormat(): string {
 		return this.to.nzFormat || ''
 	}
 
-  get nzHideDisabledOptions(): boolean {
+	get nzHideDisabledOptions(): boolean {
 		return this.to.nzHideDisabledOptions || false
 	}
 
-  get nzHourStep(): boolean {
+	get nzHourStep(): boolean {
 		return this.to.nzHourStep || false
 	}
 
-  get nzMinuteStep(): boolean {
+	get nzMinuteStep(): boolean {
 		return this.to.nzMinuteStep || false
 	}
 
-  get nzSecondStep(): boolean {
+	get nzSecondStep(): boolean {
 		return this.to.nzSecondStep || false
 	}
 
-  get nzOpen(): boolean {
+	get nzOpen(): boolean {
 		return this.to.nzOpen || false
 	}
 
-  get nzPlaceHolder(): boolean {
+	get nzPlaceHolder(): boolean {
 		return this.to.nzPlaceHolder || false
 	}
 
-  get nzPopupClassName(): boolean {
+	get nzPopupClassName(): boolean {
 		return this.to.nzPopupClassName || false
 	}
 
-  get nzUse12Hours(): boolean {
+	get nzUse12Hours(): boolean {
 		return this.to.nzUse12Hours || false
 	}
 
-  get nzSuffixIcon(): boolean {
+	get nzSuffixIcon(): boolean {
 		return this.to.nzSuffixIcon || false
 	}
-    
-	ngModelChange ($event: Date) {
-    if (this.to.change) {
-      this.to.change(this.field, $event)
-    }
-  }
 
-  nzOpenChange ($event: Event) {
-    if (this.to.nzOpenChange) {
-      this.to.nzOpenChange(this.field, $event)
-    }
+	ngModelChange ($event: Date) {
+		if (this.to.change) {
+			this.to.change(this.field, $event)
+		}
+	}
+
+	nzOpenChange ($event: Event) {
+		if (this.to.nzOpenChange) {
+			this.to.nzOpenChange(this.field, $event)
+		}
 	}
 }

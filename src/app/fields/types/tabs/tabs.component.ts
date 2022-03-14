@@ -1,7 +1,16 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { 
+  Component,
+  OnDestroy,
+  TemplateRef,
+  ChangeDetectionStrategy,
+  EventEmitter,
+  ViewEncapsulation
+} from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
+
 import { NzTabComponent, NzTabPosition, NzTabType } from 'ng-zorro-antd/tabs'; 
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
+
 import { ShareFieldType } from '../share-field.type';
 
 @Component({

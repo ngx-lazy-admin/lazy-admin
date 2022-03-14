@@ -12,7 +12,6 @@ export interface NzSelectOptionInterface {
   groupLabel?: string | number | null;
 }
 
-
 @Component({
   selector: 'div[statistic-field]',
   styles: [

@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { FormlyModule } from '@ngx-formly/core';
+
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { TableField } from './table.component';
-import { VirtualTableField } from './virtual-table.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
-import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { SimpleTableField } from './simple-table.component';
 
+import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
+
+import { SimpleTableField } from './simple-table.component';
+import { TableField } from './table.component';
+import { VirtualTableField } from './virtual-table.component';
 
 @NgModule({
   declarations: [

@@ -4,7 +4,6 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 
-
 @Injectable({ providedIn: 'root' })
 @Component({
   selector: 'div[modal-field]',
@@ -13,8 +12,6 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
   <button nz-button [nzType]="'primary'" (click)="showModal()">
     <span>{{to.text}}</span>
   </button>
-
- <pre> {{ model | json}} </pre>
 
   <nz-modal [(nzVisible)]="isVisible" [nzTitle]="nzTitle" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <ng-container *nzModalContent>
@@ -152,10 +149,6 @@ export class ModalField extends ShareFieldType  implements OnDestroy {
     this.isVisible = false;
   }
 
-  log (tmp: any) {
-    console.log(tmp)
-  }
-
   actionClick (data: any) {
     if (data.click) {
       data.click(this.field, this)
@@ -175,8 +168,6 @@ export class ModalField extends ShareFieldType  implements OnDestroy {
   domPortal?: any;
 
   ngAfterViewInit() {
-
-
     this.cd.detectChanges();
   }
 

@@ -6,14 +6,7 @@ import { Subject } from 'rxjs';
 @Component({
 	selector: 'div[template-field]',
 	template: `
-		<!-- <ng-container *ngIf="formControl.value">
-			<div [innerHTML]="formControl.value | nzSanitizer: 'html'"></div>
-		</ng-container>
-		<ng-container *ngIf="!formControl.value">
-			NA
-		</ng-container> -->
 		<span [style]="style">{{formControl.value}}</span>
-
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

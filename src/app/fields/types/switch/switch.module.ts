@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NzSwitchModule } from 'ng-zorro-antd/switch';
-import { SwitchField } from './switch.component'
 
+import { FormlyModule } from '@ngx-formly/core';
+
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+
+import { SwitchField } from './switch.component'
 
 @NgModule({
   declarations: [SwitchField],

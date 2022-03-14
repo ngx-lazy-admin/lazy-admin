@@ -56,7 +56,6 @@ export class VirtualListField extends FieldArrayType implements OnDestroy {
 		return this.to.nzTabBarStyle || false;
 	}
 
-
   get nzTabBarGutter():  number {
 		return this.to.nzTabBarGutter || false;
 	}

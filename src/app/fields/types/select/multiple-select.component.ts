@@ -1,8 +1,15 @@
-import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewEncapsulation
+} from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { map, debounceTime, switchMap, skip, takeUntil, distinctUntilChanged } from 'rxjs/operators';
+
 import { 
   NzOptionComponent,
   NzSelectItemInterface,
@@ -12,6 +19,9 @@ import {
 } from 'ng-zorro-antd/select';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
+import { BehaviorSubject, Subject } from 'rxjs';
+import { map, debounceTime, switchMap, skip, takeUntil, distinctUntilChanged } from 'rxjs/operators';
+
 export interface NzSelectOptionInterface {
   label: string | number | null ;
   value: NzSafeAny | null;
@@ -19,7 +29,6 @@ export interface NzSelectOptionInterface {
   hide?: boolean;
   groupLabel?: string | number | null;
 }
-
 
 @Component({
   selector: 'div[multiple-select-field]',

@@ -10,10 +10,7 @@ import { ShareFieldType } from '../share-field.type';
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  host: {
-    class: `bodyClass === true`,
-  }
+  encapsulation: ViewEncapsulation.None
 })
 
 export class GroupField extends ShareFieldType  implements OnDestroy {

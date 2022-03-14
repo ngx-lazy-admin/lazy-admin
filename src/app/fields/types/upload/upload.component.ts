@@ -13,7 +13,6 @@ import { MessageService } from '../../../services/message.service';
 // import { CosService } from '../../../services/cos.service';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 
-
 @Component({
   selector: 'div[upload-field]',
   templateUrl: './upload.component.html',

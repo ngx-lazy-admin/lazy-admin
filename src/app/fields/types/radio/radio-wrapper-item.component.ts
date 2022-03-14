@@ -56,7 +56,6 @@ export class NzRadioWrapperItemComponent implements ControlValueAccessor, OnInit
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
 
-  
   @Input() 
   @InputBoolean() 
   nzDisabled = false;
@@ -65,16 +64,6 @@ export class NzRadioWrapperItemComponent implements ControlValueAccessor, OnInit
   nzOptions: NzCheckBoxOptionInterface[] = []
 
   private _destroy$ = new Subject<void>();
-
-  trackByOption(_: number, option: NzCheckBoxOptionInterface): string {
-    return option.value;
-  }
-
-  onCheckedChange(option: NzCheckBoxOptionInterface, checked: boolean): void {
-    option.checked = checked;
-    let value = this.nzOptions.filter(item => item.checked).map(item => item.value)
-    this.onChange(value);
-  }
 
   constructor(
     private elementRef: ElementRef,
@@ -94,6 +83,16 @@ export class NzRadioWrapperItemComponent implements ControlValueAccessor, OnInit
           Promise.resolve().then(() => this.onTouched());
         }
       });
+  }
+
+  trackByOption(_: number, option: NzCheckBoxOptionInterface): string {
+    return option.value;
+  }
+
+  onCheckedChange(option: NzCheckBoxOptionInterface, checked: boolean): void {
+    option.checked = checked;
+    let value = this.nzOptions.filter(item => item.checked).map(item => item.value)
+    this.onChange(value);
   }
 
   ngOnDestroy(): void {

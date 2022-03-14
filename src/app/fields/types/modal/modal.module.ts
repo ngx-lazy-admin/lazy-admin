@@ -20,7 +20,6 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { ModalField } from './modal.component'
 import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 
-
 @NgModule({
   declarations: [
     ModalField

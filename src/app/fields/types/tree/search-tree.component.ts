@@ -1,38 +1,40 @@
 import { Component, ChangeDetectionStrategy, Input, EventEmitter, ViewEncapsulation, ViewChild } from '@angular/core';
-import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
+
+import { FieldType,  } from '@ngx-formly/core';
+
 import { NzFormatEmitEvent, NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/core/tree';
 import { NzTreeComponent } from 'ng-zorro-antd/tree';
 
 @Component({
-    selector: 'div[tree-field]',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    template: `
-    <nz-input-group class="mb-3" [nzSuffix]="suffixIcon" >
-      <input type="text" nz-input placeholder="输入菜单名称搜索"  />
-    </nz-input-group>
+  selector: 'div[tree-field]',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  template: `
+  <nz-input-group class="mb-3" [nzSuffix]="suffixIcon" >
+    <input type="text" nz-input placeholder="输入菜单名称搜索"  />
+  </nz-input-group>
 
-    <ng-template #suffixIcon>
-      <i nz-icon nzType="search"></i>
-    </ng-template>
+  <ng-template #suffixIcon>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
 
-    <nz-tree
-      [nzData]="nodes"
-      nzCheckable
-      nzMultiple
-      [nzCheckedKeys]="defaultCheckedKeys"
-      [nzExpandedKeys]="defaultExpandedKeys"
-      [nzSelectedKeys]="defaultSelectedKeys"
-      (nzClick)="nzEvent($event)"
-      (nzExpandChange)="nzEvent($event)"
-      (nzCheckBoxChange)="nzEvent($event)"
-    ></nz-tree>
-    `,
-    host: {
-      'display': 'contents',
-      '[class.display-contents]': `true`,
-    }
+  <nz-tree
+    [nzData]="nodes"
+    nzCheckable
+    nzMultiple
+    [nzCheckedKeys]="defaultCheckedKeys"
+    [nzExpandedKeys]="defaultExpandedKeys"
+    [nzSelectedKeys]="defaultSelectedKeys"
+    (nzClick)="nzEvent($event)"
+    (nzExpandChange)="nzEvent($event)"
+    (nzCheckBoxChange)="nzEvent($event)"
+  ></nz-tree>
+  `,
+  host: {
+    'display': 'contents',
+    '[class.display-contents]': `true`,
+  }
 })
 export class SearchTreeField extends FieldType  {
   show: Boolean = false;

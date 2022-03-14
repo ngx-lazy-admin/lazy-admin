@@ -58,7 +58,7 @@ export class SwitchField extends ShareFieldType {
 
 	ngModelChange ($event: Event) {
 		if (this.to.change) {
-				this.to.change(this.field, $event)
+			this.to.change(this.field, $event)
 		}
 	}
 }

@@ -14,9 +14,9 @@ import { GroupField } from './group.component'
         {
           name: 'group',
           component: GroupField,
-        },
-      ],
-    }),
-  ],
+        }
+      ]
+    })
+  ]
 })
 export class GroupFieldModule {}

@@ -2,9 +2,6 @@ import { Component, OnChanges, OnInit, ChangeDetectionStrategy, ViewEncapsulatio
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-
-
 @Component({
   selector: 'div[radio-field]',
   template: `

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { FormlyModule } from '@ngx-formly/core';
+
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+
 import { UploadField } from './upload.component'
 import { NzUploadItemComponent } from './upload-item.component';
-
 
 @NgModule({
   declarations: [
@@ -20,6 +22,10 @@ import { NzUploadItemComponent } from './upload-item.component';
     NzButtonModule,
     FormlyModule.forChild({
       types: [
+        {
+          name: 'upload',
+          component: UploadField,
+        },
         {
           name: 'nz-upload',
           component: UploadField,

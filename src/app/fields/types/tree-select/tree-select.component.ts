@@ -65,6 +65,9 @@ export class TreeSelectField extends FieldType  {
 		return this.to.nzId || false
 	}
 
+  get nzPlaceHolder(): string {
+    return this.to.nzPlaceHolder || this.to.placeholder
+  }
   
   get nzExpandedKeys(): string[] {
 		return this.to.nzExpandedKeys || []
@@ -74,12 +77,10 @@ export class TreeSelectField extends FieldType  {
 		return this.to.nzNodes || []
 	}
 
-
   get nzSuffixIcon(): boolean {
 		return this.to.nzSuffixIcon || false
 	}
   
-    
 	ngModelChange ($event: Date) {
     if (this.to.change) {
       this.to.change(this.field, $event)
@@ -95,7 +96,7 @@ export class TreeSelectField extends FieldType  {
   onChange($event: string): void {}
 
   ngOnInit(): void {
-      this.nodes = this.to['nzNodes'];
-      this.show = true;
+    this.nodes = this.to['nzNodes'];
+    this.show = true;
   }
 }

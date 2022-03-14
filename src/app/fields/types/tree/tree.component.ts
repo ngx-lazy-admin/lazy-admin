@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, Input, EventEmitter, ViewEncapsulation, ViewChild } from '@angular/core';
-import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
+
+import { FieldType,  } from '@ngx-formly/core';
+
 import { NzFormatEmitEvent, NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/core/tree';
 import { NzTreeComponent } from 'ng-zorro-antd/tree';
 
@@ -9,19 +11,6 @@ import { NzTreeComponent } from 'ng-zorro-antd/tree';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     template: `
-    <!-- <nz-tree
-      #nzTreeComponent
-      [nzData]="nodes"
-      nzCheckable
-      [nzCheckedKeys]="defaultCheckedKeys"
-      [nzExpandedKeys]="defaultExpandedKeys"
-      [nzSelectedKeys]="defaultSelectedKeys"
-      (nzClick)="nzClick($event)"
-      (nzContextMenu)="nzClick($event)"
-      (nzCheckBoxChange)="nzCheck($event)"
-      (nzExpandChange)="nzCheck($event)"
-    ></nz-tree> -->
-
     <nz-input-group [nzSuffix]="suffixIcon">
       <input type="text" nz-input placeholder="Search"  />
     </nz-input-group>

@@ -21,7 +21,6 @@ export interface NzSelectOptionInterface {
   groupLabel?: string | number | null;
 }
 
-
 @Component({
   selector: 'div[select-field]',
   templateUrl: './select.component.html',
@@ -131,12 +130,10 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
   get nzSize (): NzSelectSizeType  {
     return this.to.nzSize || 'default';
   }
-
   
   get nzSuffixIcon (): TemplateRef<any> | string {
     return this.to.nzSuffixIcon || null;
   }
-
   
   get nzRemoveIcon (): 	TemplateRef<any> {
     return this.to.nzRemoveIcon || null;
@@ -170,7 +167,6 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
   get nzOptionHeightPx (): number {
     return this.to.nzOptionHeightPx || 32;
   }
-
 
   get nzOptionOverflowSize (): number {
     return this.to.nzOptionOverflowSize || 8;
@@ -211,7 +207,6 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
       this.to.focus(this.field)
     }
   }
-
   
   nzBlur () {
     if (this.to.blur) {

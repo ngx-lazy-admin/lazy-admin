@@ -79,8 +79,7 @@ export class NzStepsItemComponent implements ControlValueAccessor, OnInit, OnDes
     private elementRef: ElementRef,
     private focusMonitor: FocusMonitor,
     private cd: ChangeDetectorRef,
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.focusMonitor
