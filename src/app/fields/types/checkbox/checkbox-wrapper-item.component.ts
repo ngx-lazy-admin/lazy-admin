@@ -105,14 +105,17 @@ export class NzCheckboxWrapperItemComponent implements ControlValueAccessor, OnI
   }
 
   writeValue(value: string[]): void {
-    this.nzOptions = this.nzOptions.map(item => {
-      const v = value.some((v: string) => v === item.value)
-      return {
-        ...item,
-        checked: v
-      }
-    });
-    this.cd.markForCheck();
+    if (value instanceof Array && value) {
+      this.nzOptions = this.nzOptions.map(item => {
+        const v = value.some((v: string) => v === item.value)
+        return {
+          ...item,
+          checked: v
+        }
+      });
+      this.cd.markForCheck();
+    }
+
   }
 
   registerOnChange(fn: OnChangeType): void {

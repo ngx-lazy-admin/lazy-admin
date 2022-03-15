@@ -52,11 +52,6 @@ export abstract class ShareFieldType extends FieldType {
           (typeof(this.to?.click)=='string' ? execEval(this.to?.click) : null);
 
         func ? func(this.field, this) : null
-
-        // if (this.to?.click) {
-        //   const func = typeof(this.to?.click) == 'string' ? execEval(this.to?.click) : this.to?.click;
-        //   func(this.field, this)
-        // }
         this.cd.markForCheck();
       } catch (err){
         console.log(err)
@@ -72,6 +67,7 @@ export abstract class ShareFieldType extends FieldType {
       try{
         if (this.to?.change) {
           const func = typeof(this.to?.change) == 'string' ? execEval(this.to?.change) : this.to?.change;
+          console.log('change')
           func(this.field, this)
         }
       } catch (err){

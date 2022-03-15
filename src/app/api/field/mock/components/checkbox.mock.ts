@@ -30,7 +30,7 @@ export const CheckboxMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          description: '联动 checkbox。',
         },
         fieldGroup: [
           {
@@ -78,54 +78,46 @@ export const CheckboxMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '全选',
+          description: '在实现全选效果时，你可能会用到 nzIndeterminate 属性。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
+            key: 'checkedAll',
             type: 'checkbox',
-            className: "d-inline-block mx-2",
+            className: "d-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: "Check All",
+              change: `(_field, _this) => {
+                console.log('99')
+                _field.form?.get('checkedAll2')?.patchValue(
+                  _field.formControl.value ? ['apple', 'Pear', 'Orange'] : []
+                )
+              }`
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'checkedAll2',
+            type: 'checkbox-wrapper',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
+              options: [
+                {
+                  label: 'Apple',
+                  value: 'apple'
+                },
+                {
+                  label: 'Pear',
+                  value: 'Pear'
+                },
+                {
+                  label: 'Orange',
+                  value: 'Orange'
+                }
+              ]
               
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
             }
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
     ]
@@ -134,29 +126,34 @@ export const CheckboxMockFields = [
     type: 'group',
     className: "d-block mb-3 col-6",
     templateOptions: {
-      title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
     },
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '不可用',
+          description: 'checkbox 不可用。',
+        },
         fieldGroup: [
           {
-            key: 'checked2',
+            key: 'checked1',
             type: 'checkbox',
             className: "d-inline-block mx-2",
+            defaultValue: false,
             templateOptions: {
               text: "Checkbox",
+              disabled: true
             }
           },
           {
             key: 'checked1',
             type: 'checkbox',
             className: "d-inline-block mx-2",
+            defaultValue: true,
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: "Checkbox",
+              disabled: true
             }
           }
         ]
@@ -165,8 +162,8 @@ export const CheckboxMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: 'Checkbox 组',
+          description: '方便的从数组生成 Checkbox 组。',
         },
         fieldGroup: [
           {
@@ -192,8 +189,8 @@ export const CheckboxMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '布局',
+          description: 'nz-checkbox-wrapper 内嵌 nz-checkbox 并与 Grid 组件一起使用，可以实现灵活的布局。',
         },
         fieldGroup: [
           {
@@ -214,35 +211,7 @@ export const CheckboxMockFields = [
             }
           }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-
+      }
     ]
-  },
+  }
 ]

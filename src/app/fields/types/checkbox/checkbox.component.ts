@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
+import { ShareFieldType } from '../share-field.type';
 
 @Component({
   selector: 'div[checkbox-field]',
@@ -11,7 +12,7 @@ import { FieldType } from '@ngx-formly/core';
       [formlyAttributes]="field"
       [nzDisabled]="nzDisabled"
       [nzIndeterminate]="nzIndeterminate"
-      (ngModelChange)="ngModelChange($event)"
+      (ngModelChange)="change($event)"
       ngDefaultControl>
       {{text}} {{to.nzDisabled}}
     </label>
@@ -20,7 +21,7 @@ import { FieldType } from '@ngx-formly/core';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class CheckboxField extends FieldType {
+export class CheckboxField extends ShareFieldType {
 
   get control() : FormControl {
 		return this.formControl as FormControl
