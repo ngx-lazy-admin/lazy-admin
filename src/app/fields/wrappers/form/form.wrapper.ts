@@ -34,9 +34,10 @@ import { isObject } from 'src/app/utils/utils';
       </nz-form-label>
 
    
-      <!-- [nzErrorTip]="errorState" -->
+
       <nz-form-control 
         [nzValidateStatus]="formControl" 
+        [nzErrorTip]="errorTpl"
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 16 : null"
         [ngStyle]="(fixedWidth | fixedWidth)?.control"
         [nzExtra]="nzExtra"
@@ -150,6 +151,7 @@ export class FormWrapper extends FieldWrapper {
       for (const error in fieldForm.errors) {
         if (fieldForm.errors.hasOwnProperty(error)) {
           let message = this.config.getValidatorMessage(error);
+          console.log('getValidatorMessage:' + message)
   
           if (isObject(fieldForm.errors[error])) {
             if (fieldForm.errors[error].errorPath) {
@@ -158,19 +160,27 @@ export class FormWrapper extends FieldWrapper {
   
             if (fieldForm.errors[error].message) {
               message = fieldForm.errors[error].message;
+              console.log('fieldForm.errors[error].message:' + message)
+
             }
           }
   
           if (this.field.validation?.messages?.[error]) {
             message = this.field.validation.messages[error];
+            console.log('this.field.validation.messages[error]:' + message)
+
           }
   
           if (this.field.validators?.[error]?.message) {
             message = this.field.validators[error].message;
+            console.log('this.field.validators[error].message:' + message)
+
           }
   
           if (this.field.asyncValidators?.[error]?.message) {
             message = this.field.asyncValidators[error].message;
+            console.log('this.field.asyncValidators[error].message;:' + message)
+
           }
   
           if (typeof message === 'function') {

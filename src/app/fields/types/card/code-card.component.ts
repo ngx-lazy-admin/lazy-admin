@@ -10,7 +10,7 @@ import {
   ChangeDetectorRef,
   NgZone
 } from '@angular/core';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
 import { execEval, ShareFieldType } from '../share-field.type';
@@ -354,9 +354,10 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     public cd: ChangeDetectorRef,
     public http: HttpClient,
     public readonly zone: NgZone,
-    public message: NzMessageService
+    public message: NzMessageService,
+    public config: FormlyConfig
   ) {
-    super(cd, http, zone, message);
+    super(cd, http, zone, message, config);
   }
 
   trackByFn(index: number, item: any) {

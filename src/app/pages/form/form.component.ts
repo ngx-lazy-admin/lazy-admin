@@ -166,9 +166,9 @@ export class FormComponent {
     }, 0);
   }
 
-  submit(form: FormGroup) {
-    form.markAsDirty();
-  }
+  // submit(form: FormGroup) {
+  //   form.markAsDirty();
+  // }
 
   resetForm(): void {
     setTimeout(() => {
@@ -216,6 +216,14 @@ export class FormComponent {
 
         })
     );
+  }
+
+  submit() {
+    console.log('6666')
+    // form.markAsDirty();
+    if (this.form.valid) {
+      alert(JSON.stringify(this.model));
+    }
   }
 
 

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, ElementRef, ViewContainerRef, ChangeDetectorRef, Injectable, NgZone } from '@angular/core';
-import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
+import { FieldType, FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
@@ -159,9 +159,10 @@ export class CardField extends ShareFieldType  implements OnDestroy {
     public readonly zone: NgZone,
     public message: NzMessageService,
     private elRef: ElementRef,
-    private fullScreenService: FullScreenService
+    private fullScreenService: FullScreenService,
+    public config: FormlyConfig
   ) {
-    super(cd, http, zone, message);
+    super(cd, http, zone, message, config);
   }
 
   log (tmp: any) {

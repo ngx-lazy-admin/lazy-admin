@@ -1,11 +1,13 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Directive, ChangeDetectorRef, NgZone, ElementRef } from '@angular/core';
-import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
+import { AbstractControl, FormGroup } from '@angular/forms';
+import { FieldType, FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzButtonSize, NzButtonType } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { FullScreenService } from 'src/app/services/menu/full-screen.service';
+import { isObject } from 'src/app/utils/utils';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
 
@@ -39,6 +41,7 @@ export abstract class ShareFieldType extends FieldType {
     public http: HttpClient,
     public readonly zone: NgZone,
     public message: NzMessageService,
+    public config: FormlyConfig
   ) {
     super();
   }
@@ -110,4 +113,60 @@ export abstract class ShareFieldType extends FieldType {
       }
     });
   }
+
+  
+  errorMessage(formControl: AbstractControl ): any {
+    // debugger
+    const fieldForm = formControl;
+    console.log(formControl)
+    console.log(this.field)
+
+    if (fieldForm) {
+      for (const error in fieldForm.errors) {
+        if (fieldForm.errors.hasOwnProperty(error)) {
+          let message = this.config.getValidatorMessage(error);
+
+          if (isObject(fieldForm.errors[error])) {
+            if (fieldForm.errors[error].errorPath) {
+              return;
+            }
+  
+            if (fieldForm.errors[error].message) {
+              message = fieldForm.errors[error].message;
+            }
+          }
+  
+          if (this.field.validation?.messages?.[error]) {
+            message = this.field.validation.messages[error];
+          }
+  
+          if (this.field.validators?.[error]?.message) {
+            message = this.field.validators[error].message;
+          }
+  
+          if (this.field.asyncValidators?.[error]?.message) {
+            message = this.field.asyncValidators[error].message;
+          }
+  
+          if (typeof message === 'function') {
+            return message(fieldForm.errors[error], this.field);
+          }
+  
+          return message;
+        }
+      }
+  
+    }
+  }
+  
+  submit (form: FormGroup) {
+    Object.values(form.controls).forEach(control => {
+      if (control.invalid) {
+        console.log(this.errorMessage(control))
+        this.message.error(this.errorMessage(control))
+        control.markAsDirty();
+        control.updateValueAndValidity({ onlySelf: true });
+      }
+    });
+  } 
 }

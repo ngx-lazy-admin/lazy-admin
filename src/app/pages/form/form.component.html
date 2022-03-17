@@ -16,7 +16,7 @@
 				{{info?.content}}
 			</nz-page-header-content>
 		</nz-page-header>
-		<form [formGroup]="form">
+		<form [formGroup]="form" (ngSubmit)="submit()">
 			<formly-form 
 				class="row" 
 				[form]="form" 

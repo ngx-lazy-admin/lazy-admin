@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewEncapsulation, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, forwardRef, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FieldType,  } from '@ngx-formly/core';
+import { FieldType, FormlyConfig,  } from '@ngx-formly/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 import Quill from 'quill';
@@ -43,9 +43,10 @@ export class QuillEditField extends ShareFieldType implements AfterViewInit {
     public cd: ChangeDetectorRef,
     public http: HttpClient,
     public readonly zone: NgZone,
-    public message: NzMessageService
+    public message: NzMessageService,
+    public config: FormlyConfig
   ) {
-    super(cd, http, zone, message);
+    super(cd, http, zone, message, config);
   }
 
   quillEditor: any;

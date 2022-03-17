@@ -34,7 +34,8 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '起止时间',
-              layout : 'vertical'
+              layout : 'vertical',
+              required: true,
             }
           },
           {
@@ -158,6 +159,7 @@ export const form = [
                   click: `(field, _this) => {
                     console.log(field.form.root.value);
                     console.log('111')
+                    _this.submit(field.form)
                   }`
                 },
                 {
