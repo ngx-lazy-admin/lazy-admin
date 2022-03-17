@@ -4,7 +4,7 @@
 export const form = [
   {
     id: 'basic-form',
-    fields: `[
+    fields: [
       {
         type: 'card',
         className: "col-12  d-block",
@@ -23,7 +23,8 @@ export const form = [
             templateOptions: {
               label: '标题',
               layout : 'vertical',
-              placeholder: '给目标起个名字'
+              placeholder: '给目标起个名字',
+              required: true,
             }
           },
           {
@@ -148,31 +149,31 @@ export const form = [
             type: 'button-group',
             className: 'col-12 ',
             templateOptions: {
-              layout : 'vertical',
-              groupOptions: [
+              // layout : 'vertical',
+              options: [
                 {
-                  label: '提交',
-                  value: '1',
+                  text: '提交',
                   size: 'default',
-                  click: (field, _this) => {
+                  type: 'primary',
+                  click: `(field, _this) => {
                     console.log(field.form.root.value);
-                  }
+                    console.log('111')
+                  }`
                 },
                 {
-                  label: '重置',
-                  value: '2',
+                  text: '重置',
                   size: 'default',
                   type: 'default',
-                  click: (field, _this) => {
+                  click: `(field, _this) => {
                     field.options.resetModel();
-                  }
+                  }`
                 }
               ]
             }
           }
         ]
       }
-    ]`,
+    ],
     info: {
       title: '基础表单',
       content: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'

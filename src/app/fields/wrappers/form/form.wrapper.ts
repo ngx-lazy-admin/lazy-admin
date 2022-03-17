@@ -22,6 +22,7 @@ import { isObject } from 'src/app/utils/utils';
   template: `
     <nz-form-item>
       <nz-form-label 
+        *ngIf="to.label && to.hideLabel !== true"
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 8 : null"
         [nzNoColon]="nzNoColon" 
         [nzRequired]="nzRequired"
@@ -29,13 +30,14 @@ import { isObject } from 'src/app/utils/utils';
         [nzFor]="id" 
         [nzTooltipTitle]="nzTooltipTitle"
         [nzTooltipIcon]="nzTooltipIcon">
-        <span *ngIf="to.label && to.hideLabel !== true" [innerHTML]="to.label"></span>
+        <span  [innerHTML]="to.label"></span>
       </nz-form-label>
 
+   
+      <!-- [nzErrorTip]="errorState" -->
       <nz-form-control 
-        [nzValidateStatus]="errorState" 
+        [nzValidateStatus]="formControl" 
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 16 : null"
-        [nzErrorTip]="errorTpl"
         [ngStyle]="(fixedWidth | fixedWidth)?.control"
         [nzExtra]="nzExtra"
         [nzHasFeedback]="nzHasFeedback">
@@ -44,11 +46,11 @@ import { isObject } from 'src/app/utils/utils';
           <span>{{ errorMessage }}</span>
         </ng-template>
       </nz-form-control>
-      <!-- {{ 'invalid：' + field.formControl?.invalid  
+      {{ 'invalid：' + field.formControl?.invalid  
           + ', touched: ' +  field.formControl?.touched 
           + ', submitted: ' + this.options?.parentForm?.submitted
           + ', show: ' + !!field.validation?.show
-      }}  -->
+      }} 
     </nz-form-item>
   `,
 })
@@ -78,10 +80,10 @@ export class FormWrapper extends FieldWrapper {
   //   this.activeBarStyle = { ...baseStyle, left: `${this.datePickerService.arrowLeft}px` };
   // }
 
-  get errorState() {
-    // return  this.field.formControl?.invalid && 
-    //   (this.field.formControl?.touched || this.options?.parentForm?.submitted || !!this.field.validation?.show)
-    return this.showError ? 'error' : '';
+  get errorState(): boolean {
+    return  !!(this.field.formControl?.invalid && 
+      (this.field.formControl?.touched || this.options?.parentForm?.submitted || !!this.field.validation?.show))
+    // return this.showError ? 'error' : '';
   }
 
   get fixedWidth (): string {

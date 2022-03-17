@@ -16,13 +16,11 @@ import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import hotkeys from 'hotkeys-js';
-
+import * as beautify from 'js-beautify';
 import { editor } from 'monaco-editor';
 
 import { FieldService } from 'src/app/api/field';
 import { execEval } from 'src/app/fields/types/share-field.type';
-
-import * as beautify from 'js-beautify';
 import { CacheService } from 'src/app/services/router/cache.service';
 
 export interface headerInfoType {
@@ -164,8 +162,6 @@ export class FormComponent {
         this.loading = false;
 
         this.cd.detectChanges();
-
-
       }
     }, 0);
   }

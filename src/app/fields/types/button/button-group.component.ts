@@ -23,9 +23,9 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
         [nzPopconfirmTitle]="item.popconfirmTitle"
         [nzPopconfirmPlacement]="item.popconfirmPlacement"
 
-        (click)="onClick(item, $event)"
-        (nzOnConfirm)="onConfirm(item)"
-        (nzOnCancel)="onCancel(item)"
+        (click)="click(item)"
+        (nzOnConfirm)="confirm(item)"
+        (nzOnCancel)="cancel(item)"
       >
         <i *ngIf="item?.icon" nz-icon nzType="item?.icon"></i>
         {{item.text}}

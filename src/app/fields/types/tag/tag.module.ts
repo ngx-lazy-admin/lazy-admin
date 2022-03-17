@@ -34,6 +34,10 @@ import { TagListField } from './tag-list.component';
           component: TagField,
         },
         {
+          name: 'tag-group',
+          component: TagGroupField,
+        },
+        {
           name: 'nz-tag-group',
           component: TagGroupField,
         },
@@ -44,7 +48,7 @@ import { TagListField } from './tag-list.component';
         {
           name: 'tag-list',
           component: TagListField
-        }
+        },
       ],
     }),
   ],

@@ -3,12 +3,14 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const InputMockFields = [
   {
     type: 'group',
+
     className: "d-block mb-3 col-6",
     templateOptions: {
     },
     fieldGroup: [
       {
         type: 'code-card',
+        key: 'code1',
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',

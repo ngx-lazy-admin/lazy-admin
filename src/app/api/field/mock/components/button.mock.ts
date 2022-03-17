@@ -68,31 +68,17 @@ export const ButtonMockFields = [
         },
         fieldGroup: [
           {
-            type: 'button-group',
-            className: "d-inline-block mb-2",
-            
+            type: 'button',
+            className: "d-inline-block mx-2 mb-2", 
             templateOptions: {
               text: 'Large',
+              size: 'large',
               type: 'primary',
-              options: [
-                {
-                  text: 'Large',
-                  type: 'primary',
-                },
-                {
-                  text: 'Large',
-                  type: 'primary',
-                },
-                {
-                  text: 'Large',
-                  type: 'primary',
-                },
-              ]
             }
           },
           {
             type: 'button',
-            className: "d-inline-block mb-2",
+            className: "d-inline-block mx-2 mb-2",
             
             templateOptions: {
               text: 'default',
@@ -101,11 +87,11 @@ export const ButtonMockFields = [
           },
           {
             type: 'button',
-            className: "d-inline-block mb-2",
-            
+            className: "d-inline-block mx-2 mb-2",
             templateOptions: {
               text: 'Small',
               type: 'primary',
+              size: 'small'
             }
           },
         ]

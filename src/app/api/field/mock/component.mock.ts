@@ -20,6 +20,7 @@ import { TransferMockFields } from './components/transfer.mock';
 import { TreeSelectMockFields } from './components/tree-select.mock';
 import { UploadMockFields } from './components/upload.mock';
 import { ModalMockFields } from './components/modal.mock';
+import { TagMockFields } from './components/tag.mock';
 
 const list100 = [...Array(200).keys()].map((item, index) => {
   return {
@@ -234,6 +235,18 @@ export const components = [
       content: '模态对话框。'
     }
   },
+  {
+    id: 'tag',
+    fields: TagMockFields,
+    data: {
 
+    },
+    info: {
+      title: 'Tag标签',
+      content: '进行标记和分类的小标签。'
+    }
+  },
+
+  
   
 ]

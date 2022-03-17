@@ -172,7 +172,7 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
     return this.to.nzOptionOverflowSize || 8;
   }
 
-  get nzOptions () : NzSelectOptionInterface[] {
+  get nzOptions () : NzSelectOptionInterface[] | any[] {
     return this.to.nzOptions || this.to.options || []
   }
 

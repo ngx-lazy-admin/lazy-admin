@@ -23,6 +23,7 @@
 				[fields]="fields" 
 				[(model)]="model"
 				[options]="options">
+				<button nz-button type="submit">提交</button>
 			</formly-form>
 		</form>
 	</ng-container>
@@ -76,17 +77,25 @@
 		</div>
 	</div>  -->
 	<div class="row" style="height: 100%;">
-		<div class="col-6">
-			<nz-code-editor 
-				class="editor" 
-				style="height: 100%;"
-				[nzEditorMode]="'normal'"
-				[ngModel]="code"
-				[nzEditorOption]="{ 
-					language: codeType
-				}" 
-				(nzEditorInitialized)="editorInitialized($event)">
-			</nz-code-editor>
+		<div class="col-6" style="height: 100%; position: relative;">
+
+			<nz-tabset  style="height: 100%; position: relative;">
+				<nz-tab nzTitle="Fields"  style="height: 100vh;  position: relative;">
+					<nz-code-editor 
+						class="editor" 
+						style="height: 100vh;"
+						[nzEditorMode]="'normal'"
+						[ngModel]="code"
+						[nzEditorOption]="{ 
+							language: codeType
+						}" 
+						(nzEditorInitialized)="editorInitialized($event)">
+					</nz-code-editor>
+				</nz-tab>
+				<nz-tab nzTitle="Model">
+				  <pre> {{ model | json}}</pre>
+				</nz-tab>
+			  </nz-tabset>
 		</div>
 		<form [formGroup]="form" class="col-6 w-50">
 			<formly-form 

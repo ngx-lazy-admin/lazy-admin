@@ -40,13 +40,27 @@
 	(nzBlur)="nzBlur()"
 	>
 		
-	<ng-container *ngFor="let option of nzOptions; trackBy: trackByFn">
-		<nz-option
-			class="select-option"
-			[nzDisabled]="option?.disabled"
-			[nzLabel]="option.label"
-			[nzValue]="option.value"
-		>
-		</nz-option>
-	</ng-container>
+
+		<ng-container *ngFor="let option of nzOptions; trackBy: trackByFn">
+			<ng-container *ngIf="option.value && option.label">
+				<nz-option
+					class="select-option"
+					[nzDisabled]="option?.disabled"
+					[nzLabel]="option?.label"
+					[nzValue]="option?.value"
+				>
+				</nz-option>
+			</ng-container>
+
+			<ng-container *ngIf="!(option.value && option.label)">
+				<nz-option
+					class="select-option"
+					[nzLabel]="option"
+					[nzValue]="option"
+				>
+				</nz-option>
+			</ng-container>
+
+		</ng-container>
+
 </nz-select>

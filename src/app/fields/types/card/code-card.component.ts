@@ -13,8 +13,9 @@ import {
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
-import { ShareFieldType } from '../share-field.type';
+import { execEval, ShareFieldType } from '../share-field.type';
 import * as beautify from 'js-beautify';
+import { FormlyFieldConfigCache } from '@ngx-formly/core/lib/components/formly.field.config';
 
 @Component({
   selector: 'div[code-card]',
@@ -121,15 +122,25 @@ import * as beautify from 'js-beautify';
         </div>
       </section>
       <section *ngIf="nzExpanded">
-        <div class="f14 position-relative">
-          <textarea 
-            nz-input 
-            rows="20" 
-            class="w-100 p-3" 
-            [nzBorderless]="true" 
-            style="height: 400px"  
-            [ngModel]="fieldCode">
-          </textarea>
+        <div class="f14 position-relative p-3">
+        <nz-tabset >
+          <nz-tab nzTitle="Fields">
+            <textarea 
+              nz-input 
+              rows="20" 
+              class="w-100 p-3" 
+              style="height: 400px"  
+              [ngModel]="fieldCode"
+              (ngModelChange)="codeChange($event)">
+            </textarea>
+            <!-- <pre> {{ fieldCode }}</pre> -->
+
+          </nz-tab>
+          <nz-tab nzTitle="Model">
+            <pre> {{ this.formControl.value | json}}</pre>
+          </nz-tab>
+        </nz-tabset>
+
         </div>
       </section>
 
@@ -253,6 +264,33 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   navigateToFragment(): void {
     console.log('navigateToFragment')
   }
+
+  codeChange (code: any) {
+    console.log(this.field)
+
+    try {
+      const fieldGroup = execEval(code);
+      fieldGroup.forEach((item: any) => {
+        item.options = this.options
+      })
+      this.field.fieldGroup = [...fieldGroup]
+      // this.cd.detectChanges();
+    } catch (error) {
+      console.log(error)
+    } finally {
+      // this.cd.detectChanges();
+    }
+  }
+
+  // private setField(field: FormlyFieldConfigCache) {
+  //   if (this.config.extras.immutable) {
+  //     this.field = { ...this.field, ...clone(field) };
+  //   } else {
+  //     Object.keys(field).forEach((p) => ((this.field as any)[p] = (field as any)[p]));
+  //   }
+  // }
+
+  // this.setField({ options });
 
   copyCode(): void {
     console.log(JSON.stringify(this.field.fieldGroup))

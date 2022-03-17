@@ -61,7 +61,7 @@ import { FullScreenService } from 'src/app/services/menu/full-screen.service';
       </a>
     </ng-container>
 
-    <i nz-icon class="f16" nz-button nzType="expand" (click)="fullScreen()" nzTheme="outline"></i>
+    <!-- <i nz-icon class="f16" nz-button nzType="expand" (click)="fullScreen()" nzTheme="outline"></i> -->
   </ng-template>
 
   `,

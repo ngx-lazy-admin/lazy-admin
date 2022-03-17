@@ -111,10 +111,9 @@ export const SelectMockFields = [
         },
         fieldGroup: [
           {
-            key: 'select1',
+            key: 'selectedMultiple',
             type: 'select',
             className: "d-inline-block  col-3",
-            // defaultValue: ['lucy'],
             templateOptions: {
               maxTagCount: 3,
               mode: 'multiple',
@@ -177,25 +176,28 @@ export const SelectMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '联动',
+          description: '省市联动是典型的例子。推荐使用 Cascader 组件。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'selectedProvince',
+            type: 'select',
+            className: "d-inline-block mx-2  col-3",
             templateOptions: {
               text: "Checkbox",
+              value: 'value',
+              options: ['Zhejiang', 'Jiangsu']
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'selectedCity',
+            type: 'select',
+            className: "d-inline-block mx-2  col-3",
             templateOptions: {
               text: "nzDisabled",
-              
+              value: 'value',
+              options: ['Zhejiang', 'Jiangsu']
             }
           }
         ]
@@ -205,113 +207,85 @@ export const SelectMockFields = [
   {
     type: 'group',
     className: "d-block mb-3 col-6",
-    templateOptions: {
-      title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-    },
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '带搜索框',
+          description: '展开后可对选项进行搜索。',
+        },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'selectedProvince',
+            type: 'select',
+            className: "d-inline-block mx-2  col-3",
             templateOptions: {
               text: "Checkbox",
+              value: 'value',
+              options: ['Zhejiang', 'Jiangsu']
             }
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '三种大小',
+          description: '三种大小的选择框，当 nzSize 分别为 large 和 small 时，输入框高度为 40px 和 24px ，默认高度为 32px。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'selectedProvince',
+            type: 'select',
+            className: "d-inline-block mx-2  col-3",
             templateOptions: {
               text: "Checkbox",
+              value: 'value',
+              options: ['Zhejiang', 'Jiangsu']
             }
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '分组',
+          description: '用 nz-option-group 进行选项分组。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'selectedProvince',
+            type: 'select',
+            className: "d-inline-block mx-2  col-3",
             templateOptions: {
               text: "Checkbox",
+              value: 'value',
+              options: ['Zhejiang', 'Jiangsu']
             }
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '搜索框',
+          description: '搜索和远程数据结合。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'selectedProvince',
+            type: 'select',
+            className: "d-inline-block mx-2 col-3",
             templateOptions: {
               text: "Checkbox",
+              value: 'value',
+              options: ['Zhejiang', 'Jiangsu']
             }
           },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
         ]
       },
 
