@@ -25,6 +25,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
+          
+      - name: 查看当前所在分支
+        run: |
+          git branch
+          git branch -D gh-pages
+          git checkout -b gh-pages
+          git branch
 
       # 
       # - name: Cache node modules
@@ -50,10 +57,10 @@ jobs:
       # 构建
       - name: Build
         run: |
-          npm run build -- --prod
+          ng build
 
-      
-      - uses: actions/checkout@v3
+      # 部署
+      - name: 部署
       - run: |
           git add .
           git commit -m "build"
