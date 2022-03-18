@@ -31,9 +31,14 @@ import { TimePickerFieldModule } from './time-picker';
 import { TreeFieldModule } from './tree';
 import { UploadFieldModule } from './upload';
 
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+
+
 @NgModule({
   imports: [
     AlertFieldModule,
+    NzNotificationModule,
+
     AutocompleteFieldModule,
     ButtonFieldModule,
     CascaderFieldModule,
@@ -63,6 +68,9 @@ import { UploadFieldModule } from './upload';
     GroupFieldModule,
     RepeatFieldModule,
     ModalFieldModule
+  ],
+  providers: [
+    
   ],
 })
 export class FieldTypeModule {}

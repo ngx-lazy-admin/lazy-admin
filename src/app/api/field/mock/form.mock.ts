@@ -159,7 +159,7 @@ export const form = [
                   click: `(field, _this) => {
                     console.log(field.form.root.value);
                     console.log('111')
-                    _this.submit(field.form)
+                    _this.verification(field.form)
                   }`
                 },
                 {

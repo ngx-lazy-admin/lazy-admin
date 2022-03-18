@@ -1,6 +1,6 @@
 
 import { HttpClient } from '@angular/common/http';
-import { Directive, ChangeDetectorRef, NgZone, ElementRef } from '@angular/core';
+import { Directive, ChangeDetectorRef, NgZone, ElementRef, Inject } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { FieldType, FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzButtonSize, NzButtonType } from 'ng-zorro-antd/button';
@@ -8,6 +8,8 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 import { isObject } from 'src/app/utils/utils';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { DOCUMENT } from '@angular/common';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
 
@@ -37,11 +39,16 @@ export const execFunc = (func: string | Function) => typeof(func) == 'string' ? 
 @Directive()
 export abstract class ShareFieldType extends FieldType {
   constructor(
+    // @Inject(DOCUMENT) public dom: any,
     public cd: ChangeDetectorRef,
     public http: HttpClient,
     public readonly zone: NgZone,
     public message: NzMessageService,
-    public config: FormlyConfig
+    public config: FormlyConfig,
+    private notification: NzNotificationService,
+    public fullScreenService: FullScreenService,
+    public elRef: ElementRef,
+    public elementRef: ElementRef,
   ) {
     super();
   }
@@ -118,8 +125,6 @@ export abstract class ShareFieldType extends FieldType {
   errorMessage(formControl: AbstractControl ): any {
     // debugger
     const fieldForm = formControl;
-    console.log(formControl)
-    console.log(this.field)
 
     if (fieldForm) {
       for (const error in fieldForm.errors) {
@@ -159,11 +164,19 @@ export abstract class ShareFieldType extends FieldType {
     }
   }
   
-  submit (form: FormGroup) {
+  // 校验 form, 校验存在异步行为, 所以应该用Observe
+  verification (form: FormGroup) {
     Object.values(form.controls).forEach(control => {
       if (control.invalid) {
-        console.log(this.errorMessage(control))
-        this.message.error(this.errorMessage(control))
+        // this.message.error(this.errorMessage(control))
+        const message = this.errorMessage(control)
+        if (message) {
+          this.notification.error(
+            'Notification Title',
+            message,
+          );
+        }
+
         control.markAsDirty();
         control.updateValueAndValidity({ onlySelf: true });
       }

@@ -38,17 +38,6 @@ export class QuillEditField extends ShareFieldType implements AfterViewInit {
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
 
-  constructor(
-    public elementRef: ElementRef,
-    public cd: ChangeDetectorRef,
-    public http: HttpClient,
-    public readonly zone: NgZone,
-    public message: NzMessageService,
-    public config: FormlyConfig
-  ) {
-    super(cd, http, zone, message, config);
-  }
-
   quillEditor: any;
   editorElem: HTMLElement | string = '';
   content: any;

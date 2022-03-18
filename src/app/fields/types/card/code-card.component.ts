@@ -316,14 +316,14 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
       // @ts-ignore
       let copyTextArea = null as HTMLTextAreaElement;
       try {
-        copyTextArea = this.dom.createElement('textarea');
-        copyTextArea.style.height = '0px';
-        copyTextArea.style.opacity = '0';
-        copyTextArea.style.width = '0px';
-        this.dom.body.appendChild(copyTextArea);
-        copyTextArea.value = value;
-        copyTextArea.select();
-        this.dom.execCommand('copy');
+        // copyTextArea = this.dom.createElement('textarea');
+        // copyTextArea.style.height = '0px';
+        // copyTextArea.style.opacity = '0';
+        // copyTextArea.style.width = '0px';
+        // this.dom.body.appendChild(copyTextArea);
+        // copyTextArea.value = value;
+        // copyTextArea.select();
+        // this.dom.execCommand('copy');
         resolve(value);
       } finally {
         if (copyTextArea && copyTextArea.parentNode) {
@@ -349,16 +349,6 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   }
 
   // tslint:disable-next-line:no-any
-  constructor(
-    @Inject(DOCUMENT) private dom: any,
-    public cd: ChangeDetectorRef,
-    public http: HttpClient,
-    public readonly zone: NgZone,
-    public message: NzMessageService,
-    public config: FormlyConfig
-  ) {
-    super(cd, http, zone, message, config);
-  }
 
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id

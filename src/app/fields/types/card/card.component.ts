@@ -153,17 +153,6 @@ export class CardField extends ShareFieldType  implements OnDestroy {
 
   actionEdit:any
 
-  constructor(
-    public cd: ChangeDetectorRef,
-    public http: HttpClient,
-    public readonly zone: NgZone,
-    public message: NzMessageService,
-    private elRef: ElementRef,
-    private fullScreenService: FullScreenService,
-    public config: FormlyConfig
-  ) {
-    super(cd, http, zone, message, config);
-  }
 
   log (tmp: any) {
     console.log(tmp)
