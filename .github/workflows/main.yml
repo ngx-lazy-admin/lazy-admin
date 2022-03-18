@@ -61,7 +61,7 @@ jobs:
 
       # 部署
       - name: 部署
-      - run: |
+        run: |
           git add .
           git commit -m "build"
           git push
