@@ -14,8 +14,6 @@ jobs:
     steps:
       #  查看当前分支
       - uses: actions/checkout@v2
-        run: |
-          git branch
 
       # 使用node
       - name: Use Node.js ${{ matrix.node-version }}
