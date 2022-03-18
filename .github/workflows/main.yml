@@ -9,19 +9,28 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 16.x]
+        node-version: [16.x]
 
     steps:
       #  查看当前分支
       - uses: actions/checkout@v2
-        run: |
-          git branch
 
       # 使用node
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+      
+      - name: Use Node.js 
+        uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16'
+          
+      - name: 查看当前所在分支
+        run: |
+          git branch
+          git checkout -b gh-pages
+          git branch
 
       # 
       # - name: Cache node modules
@@ -42,16 +51,16 @@ jobs:
       - name: Install Dependencies
         # if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: |
-          npm ci
+          yarn
 
       # 构建
       - name: Build
         run: |
-          npm run build -- --prod
+          ng build
 
-      
-      - uses: actions/checkout@v3
-      - run: |
+      # 部署
+      - name: 部署
+        run: |
           git add .
           git commit -m "build"
           git push
