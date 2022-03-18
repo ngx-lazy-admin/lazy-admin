@@ -56,7 +56,7 @@ jobs:
       # 构建
       - name: Build
         run: |
-          ng build
+          npm run docs
 
       # 部署
       - name: 部署
