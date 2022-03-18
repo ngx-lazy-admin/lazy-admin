@@ -148,7 +148,7 @@ import { FormlyFieldConfigCache } from '@ngx-formly/core/lib/components/formly.f
 
   `,
   styleUrls: [
-    './code-card.component.less'
+//     './code-card.component.less'
   ],
   styles: [
     `
