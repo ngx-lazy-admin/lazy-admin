@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build --stats-json",
     "watch": "ng build --watch --configuration development",
-    "docs":  "ng build --output-path docs",
+    "docs":  "ng build --output-path docs & cp docs/index.html docs/404.html",
     "bundle": "webpack-bundle-analyzer dist/go-admin-ng/stats.json",
     "test": "ng test"
   },
