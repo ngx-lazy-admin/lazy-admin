@@ -281,7 +281,7 @@ export const list = [
                 {
                   key: 'name',
                   type: 'input',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '规则名称',
@@ -294,7 +294,7 @@ export const list = [
                 {
                   key: 'des',
                   type: 'input',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '描述',
@@ -305,7 +305,7 @@ export const list = [
                 {
                   key: 'timer',
                   type: 'input',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '服务调用次数',
@@ -315,7 +315,7 @@ export const list = [
                 {
                   key: 'status',
                   type: 'input',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '状态',
@@ -326,7 +326,7 @@ export const list = [
                 {
                   key: 'date',
                   type: 'input',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '上次调度时间',
@@ -336,7 +336,7 @@ export const list = [
                 },
                 {
                   type: 'button-group',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '操作',

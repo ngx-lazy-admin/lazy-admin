@@ -15,7 +15,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
 import { execEval, ShareFieldType } from '../share-field.type';
 import * as beautify from 'js-beautify';
-import { FormlyFieldConfigCache } from '@ngx-formly/core/lib/components/formly.field.config';
 
 @Component({
   selector: 'div[code-card]',
@@ -349,11 +348,9 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   }
 
   // tslint:disable-next-line:no-any
-
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id
   }
-
 
   ngOnDestroy(): void {
     this.destroy$.next();
