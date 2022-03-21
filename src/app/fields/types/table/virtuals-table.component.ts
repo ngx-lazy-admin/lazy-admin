@@ -35,30 +35,39 @@ export interface ColumnsTypeInterface {
   encapsulation: ViewEncapsulation.None,
   template: `
     <nz-table
-      #nzTable
+      #virtualTable
+      [nzBordered]="true"
+      [nzVirtualItemSize]="54"
+      [nzVirtualForTrackBy]="trackByIndex"
+      [nzFrontPagination]="false"
+      [nzShowPagination]="false"
       [nzData]="group"
+      [nzScroll]="{ x: '1200px', y: '400px' }"
     >
       <thead>
         <tr>
-          <ng-container *ngFor="let field of field.fieldArray?.fieldGroup; trackBy: trackByFn;">
-            <th>{{field.templateOptions?.label}}</th>
+          <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup; trackBy: trackByFn">
+            <th>{{item?.templateOptions?.label}}</th>
           </ng-container>
         </tr>
       </thead>
+
       <tbody>
-        <tr *ngFor="let fileds of  nzTable.data; trackBy: trackByFn; let index = index;">
-          <ng-container *ngFor="let td of fileds.fieldGroup;  trackBy: trackByFn; let i = index;">
-            <td  *ngIf="!td.hide" [nzRight]="td?.templateOptions?.right">
-              <formly-field [field]="td"></formly-field>
-            </td>
-          </ng-container>
-        </tr>
+        <ng-template nz-virtual-scroll let-data let-index="index">
+          <tr >
+            <ng-container *ngFor="let td of data.fieldGroup;  trackBy: trackByFn; let i = index;">
+              <td  *ngIf="!td.hide" [nzRight]="td?.templateOptions?.right">
+                <formly-field [field]="td"></formly-field>
+              </td>
+            </ng-container>
+          </tr>
+        </ng-template>
       </tbody>
     </nz-table>
   `
 })
 
-export class SimpleTableField extends FieldArrayType implements OnDestroy {
+export class VirtualsTableField extends FieldArrayType implements OnDestroy {
 
   @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
 
@@ -211,9 +220,9 @@ export class SimpleTableField extends FieldArrayType implements OnDestroy {
 
   ngOnDestroy() {
     if (this.field && this.field.fieldGroup) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
-      });
+      // this.field.fieldGroup.map((item, index) => {
+      //   super.remove(index)
+      // });
     }
     this.destroy$.next();
     this.destroy$.complete();    

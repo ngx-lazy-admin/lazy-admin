@@ -16,7 +16,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -96,7 +96,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -173,7 +173,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -250,7 +250,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -327,7 +327,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -404,7 +404,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -481,7 +481,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -558,7 +558,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -635,7 +635,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {
@@ -712,7 +712,7 @@ export const TableMockFields = [
         },
         fieldGroup: [
           {
-            type: 'table',
+            type: 'simple-table',
             key: 'list',
             className: "col-12 d-block",
             templateOptions: {

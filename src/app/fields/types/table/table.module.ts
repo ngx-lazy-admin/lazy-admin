@@ -17,12 +17,14 @@ import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 import { SimpleTableField } from './simple-table.component';
 import { TableField } from './table.component';
 import { VirtualTableField } from './virtual-table.component';
+import { VirtualsTableField } from './virtuals-table.component';
 
 @NgModule({
   declarations: [
     TableField,
     VirtualTableField,
-    SimpleTableField
+    SimpleTableField,
+    VirtualsTableField
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,10 @@ import { VirtualTableField } from './virtual-table.component';
         {
           name: 'virtual-table',
           component: VirtualTableField,
+        },
+        {
+          name: 'virtuals-table',
+          component: VirtualsTableField,
         },
         {
           name: 'simple-table',

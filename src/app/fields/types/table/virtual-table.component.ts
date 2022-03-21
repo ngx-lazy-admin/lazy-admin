@@ -7,24 +7,26 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectorRef,
-  Directive
+  SimpleChanges,
  } from '@angular/core';
-import { FormArray } from '@angular/forms';
-
-import { FieldArrayType, FieldType, FormlyFieldConfig, FormlyExtension } from '@ngx-formly/core';
-
+import { FieldArrayType, FormlyFieldConfig } from '@ngx-formly/core';
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
-import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
-
-import { ShareFieldType } from '../share-field.type';
+import { takeUntil } from 'rxjs/operators';
+import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 
 export interface VirtualDataInterface {
   index: number;
   name: string;
   age: number;
   address: string;
+}
+
+export interface ColumnsTypeInterface {
+  label: string,
+  value: string,
+  key: string
 }
 
 @Component({
@@ -39,33 +41,25 @@ export interface VirtualDataInterface {
       [nzVirtualForTrackBy]="trackByIndex"
       [nzFrontPagination]="false"
       [nzShowPagination]="false"
-      [nzData]="formControl?.value"
+      [nzData]="group"
       [nzScroll]="{ x: '1200px', y: '400px' }"
     >
       <thead>
         <tr>
           <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup; trackBy: trackByFn">
             <th>{{item?.templateOptions?.label}}</th>
-            
           </ng-container>
         </tr>
       </thead>
+
       <tbody>
         <ng-template nz-virtual-scroll let-data let-index="index">
-          <tr>
-            <!-- <ng-container *ngIf="field.fieldArray">
-              <td *ngFor="let td of field.fieldArray?.fieldGroup"> -->
-                <!-- <formly-field [field]="td "></formly-field> -->
-                <!-- {{ data[td.key] | json}} -->
-              <!-- </td>
-            </ng-container> -->
-            <formly-form 
-              class="row" 
-              [fields]="field.fieldArray?.fieldGroup || []" 
-              [model]="data"
-              (modelChange)="modelChange($event)"
-              >
-            </formly-form>
+          <tr >
+            <ng-container *ngFor="let td of data.fieldGroup;  trackBy: trackByFn; let i = index;">
+              <td  *ngIf="!td.hide" [nzRight]="td?.templateOptions?.right">
+                <formly-field [field]="td"></formly-field>
+              </td>
+            </ng-container>
           </tr>
         </ng-template>
       </tbody>
@@ -73,21 +67,62 @@ export interface VirtualDataInterface {
   `
 })
 
-export class VirtualTableField extends ShareFieldType implements OnDestroy {
+export class VirtualTableField extends FieldArrayType implements OnDestroy {
 
   @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
 
   private destroy$ = new Subject();
 
+  get nzData (): any[] {
+    if (this.formControl.value instanceof Array) {
+      return this.formControl.value || []
+    } else {
+      return []
+    }
+  }
+
+  get group (): any[] {
+    if (this.field.fieldGroup instanceof Array) {
+      return this.field.fieldGroup
+    } else {
+      return []
+    }
+  }
+
   get nzSelectedIndex(): number {
 		return this.to.nzSelectedIndex || 0;
 	}
+
+  get nzShowPagination() : boolean {
+    return this.to.nzShowPagination || this.to.showPagination || false;
+  }
+
+  get nzFrontPagination() : boolean {
+    return this.to.nzFrontPagination || this.to.frontPagination || true;
+  }
 
   get nzAnimated(): boolean  {
 		return this.to.nzAnimated || false;
 	}
 
+  get nzTitle(): string | TemplateRef<void> {
+    return this.to.title || this.to.nzTitle || ''
+  }
+
+  get nzWidth(): string {
+    return '10%'
+  }
+
+  get nzBordered(): boolean {
+    return this.to.nzBordered || this.to.bordered || false
+  }
+
+  get editor(): boolean {
+    return this.to.editor || false
+  }
+
   get nzSize(): NzSizeLDSType {
+       console.log('get')
 		return this.to.nzSize || 'default';
 	}
 
@@ -98,7 +133,6 @@ export class VirtualTableField extends ShareFieldType implements OnDestroy {
   get nzTabBarStyle():  { [key: string]: string } | null {
 		return this.to.nzTabBarStyle || false;
 	}
-
 
   get nzTabBarGutter():  number {
 		return this.to.nzTabBarGutter || false;
@@ -132,33 +166,62 @@ export class VirtualTableField extends ShareFieldType implements OnDestroy {
     return this.to.nzAddIcon || false;
   }
 
-  get nzVirtualItemSize(): number {
-    return this.to.nzVirtualItemSize || 0
+  get actinsOptions () : ActionTypeInterface[] {
+    return this.to.actinsOptions || []
   }
 
-  modelChange ($event: any) {
-    console.log($event)
+  get columns () : ColumnsTypeInterface[] {
+    return this.to.columns || []
   }
+
+  editCache: { [key: string]: boolean } = {};
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // console.log(changes)
+  }
+
+  edit (field: FormlyFieldConfig) {
+    if (field.id) {
+      this.editCache[field.id] = true;
+    }
+  }
+
 
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index;
   }
 
-  ngAfterViewInit(): void {
+  pageIndexChange (index: number) {
+    console.log(index)
+  }
 
+  pageSizeChange (pageSize: number) {
+    console.log(pageSize)
+  }
+
+  currentPageDataChange (page: any) {
+    // console.log(page)
+  }
+
+  ngAfterViewInit(): void {
     this.nzTableComponent?.cdkVirtualScrollViewport?.scrolledIndexChange
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: number) => {
         console.log('scroll index to', data);
-
       });
+
+    if (this.options && this.options.formState) {
+      // this.options.formState[this.id]['caches'] = 
+    }
     console.log(this)
+    // this.field.formControl.value
   }
 
   ngOnDestroy() {
     if (this.field && this.field.fieldGroup) {
       this.field.fieldGroup.map((item, index) => {
-        // super.remove(index)
+        super.remove(index)
       });
     }
     this.destroy$.next();
@@ -189,59 +252,5 @@ export class VirtualTableField extends ShareFieldType implements OnDestroy {
 
   trackByIndex(_: number, data: VirtualDataInterface): number {
     return data.index;
-  }
-
-  onPopulate(field: FormlyFieldConfig) {
-    // if (!field.formControl && hasKey(field)) {
-    //   const control = findControl(field);
-    //   registerControl(field, control ? control : new FormArray([], { updateOn: field.modelOptions.updateOn }));
-    // }
-
-    // field.fieldGroup = field.fieldGroup || [];
-
-    // const length = field.model ? field.model.length : 0;
-    // if (field.fieldGroup.length > length) {
-    //   for (let i = field.fieldGroup.length - 1; i >= length; --i) {
-    //     unregisterControl(field.fieldGroup[i]);
-    //     field.fieldGroup.splice(i, 1);
-    //   }
-    // }
-
-    // for (let i = field.fieldGroup.length; i < length; i++) {
-    //   const f = {
-    //     ...clone(typeof field.fieldArray === 'function' ? field.fieldArray(field) : field.fieldArray),
-    //     key: `${i}`,
-    //   };
-    //   field.fieldGroup.push(f);
-    // }
-  }
-
-  add(i?: number, initialModel?: any, { markAsDirty } = { markAsDirty: true }) {
-    // i = i == null ? this.field.fieldGroup.length : i;
-    if (!this.model) {
-      // assignFieldValue(this.field, []);
-    }
-
-    // this.model.splice(i, 0, initialModel ? clone(initialModel) : undefined);
-    this._build();
-    markAsDirty && this.formControl.markAsDirty();
-  }
-
-  remove(i: number, { markAsDirty } = { markAsDirty: true }) {
-    this.model.splice(i, 1);
-    // unregisterControl(this.field.fieldGroup[i], true);
-    // this.field.fieldGroup.splice(i, 1);
-    // this.field.fieldGroup.forEach((f, key) => (f.key = `${key}`));
-    this._build();
-    markAsDirty && this.formControl.markAsDirty();
-  }
-
-  private _build() {
-    // this.options.build(this.field);
-    // this.options.fieldChanges.next({
-    //   field: this.field,
-    //   value: getFieldValue(this.field),
-    //   type: 'valueChanges',
-    // });
   }
 } 

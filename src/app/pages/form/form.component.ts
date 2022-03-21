@@ -93,6 +93,9 @@ export class FormComponent {
   ) {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        this.loading = true
+        console.log()
+        this.cd.markForCheck();
         if (this.routeCache.get(this.router.url)) {
           this.render(this.routeCache.get(this.router.url))
           this.routeCache.recoveryHistoryPosition(this.router.url)
@@ -103,6 +106,7 @@ export class FormComponent {
             this.render(this.routeCache.get(this.router.url))
           }, err => {
             this.loading = false;
+            this.cd.markForCheck();
             this.status = err?.status
             this.clearData();
           })
@@ -163,7 +167,7 @@ export class FormComponent {
 
         this.cd.detectChanges();
       }
-    }, 0);
+    }, 100);
   }
 
   // submit(form: FormGroup) {
@@ -183,6 +187,8 @@ export class FormComponent {
     this.info = null;
     this.form.reset();
     this.cd.detectChanges();
+    this.cd.markForCheck();
+
   }
 
   editorInitialized($event: any) {

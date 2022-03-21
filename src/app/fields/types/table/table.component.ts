@@ -107,6 +107,8 @@ export class TableField extends FieldArrayType implements OnDestroy {
 
   private destroy$ = new Subject();
 
+
+
   get nzSelectedIndex(): number {
 		return this.to.nzSelectedIndex || 0;
 	}
@@ -244,7 +246,7 @@ export class TableField extends FieldArrayType implements OnDestroy {
     if (this.options && this.options.formState) {
       // this.options.formState[this.id]['caches'] = 
     }
-    // console.log(this)
+    console.log(this)
   }
 
   ngOnDestroy() {

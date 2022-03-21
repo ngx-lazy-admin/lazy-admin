@@ -885,4 +885,28 @@ export const menu = [
       },
     ]
   },
+
+  {
+    id: '13',
+    name: 'Table 专题',
+    link: '',
+    badge: '',
+    children: [
+      {
+        id: '1301',
+        pid: '13',
+        name: '基本表格',
+        link: '/table/basic',
+        badge: '',
+      },
+      {
+
+        id: '1302',
+        pid: '13',
+        name: '虚拟滚动',
+        link: '/table/virtual-table',
+        badge: '',
+      }
+    ]
+  },
 ]

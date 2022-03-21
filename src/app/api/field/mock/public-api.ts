@@ -7,7 +7,8 @@ export { form } from './form.mock';
 export { list } from './list.mock';
 export { account } from './account.mock';
 export { antv } from './antv.mock';
-export { editor } from './editor.mock'; 
+export { editor } from './editor.mock';
+export { table } from './table.mock';
 
 
 
