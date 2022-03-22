@@ -47,11 +47,11 @@ import { isObject } from 'src/app/utils/utils';
           <span>{{ errorMessage }}</span>
         </ng-template>
       </nz-form-control>
-      {{ 'invalid：' + field.formControl?.invalid  
+      <!-- {{ 'invalid：' + field.formControl?.invalid  
           + ', touched: ' +  field.formControl?.touched 
           + ', submitted: ' + this.options?.parentForm?.submitted
           + ', show: ' + !!field.validation?.show
-      }} 
+      }}  -->
     </nz-form-item>
   `,
 })

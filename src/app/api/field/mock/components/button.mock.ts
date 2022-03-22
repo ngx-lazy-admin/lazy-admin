@@ -109,7 +109,7 @@ export const ButtonMockFields = [
             className: "d-inline-block m-2",
             
             templateOptions: {
-              icon: 'poweroff',
+              // icon: 'poweroff',
               text: 'Loading',
               type: 'primary',
             }

@@ -430,7 +430,7 @@ export const AntvLineMock = [
 					{
 						key: 'data2',
 						type: 'g2-plot',
-						className: 'col-3 p-3',
+						className: 'p-3',
 						defaultValue: data,
 						templateOptions: {
 							config: {
@@ -458,7 +458,7 @@ export const AntvLineMock = [
 					{
 						key: 'data3',
 						type: 'g2-plot',
-						className: 'col-3 p-3',
+						className: 'p-3',
 						defaultValue: data2,
 						templateOptions: {
 							config: {
@@ -507,7 +507,7 @@ export const AntvLineMock = [
 					{
 						key: 'data2',
 						type: 'g2-plot',
-						className: 'col-3 p-3',
+						className: 'p-3',
 						defaultValue: data,
 						templateOptions: {
 							config: {
@@ -537,7 +537,7 @@ export const AntvLineMock = [
 					{
 						key: 'data2',
 						type: 'g2-plot',
-						className: 'col-3 p-3',
+						className: 'p-3',
 						defaultValue: data,
 						templateOptions: {
 							config: {
@@ -564,7 +564,7 @@ export const AntvLineMock = [
 					{
 						key: 'data2',
 						type: 'g2-plot',
-						className: 'col-3 p-3',
+						className: 'p-3',
 						defaultValue: data,
 						templateOptions: {
 							config: {
@@ -614,7 +614,7 @@ export const AntvLineMock = [
 					{
 						key: 'data2',
 						type: 'g2-plot',
-						className: 'col-3 p-3',
+						className: 'p-3',
 						defaultValue: data,
 						templateOptions: {
 							config: {
