@@ -11,7 +11,7 @@ export const VirtualTableMockFields = [
     fieldGroup: [
       {
         key: 'data',
-        type: 'virtuals-table',
+        type: 'virtual-table',
         className: "d-block mb-2",
         templateOptions: {
         },

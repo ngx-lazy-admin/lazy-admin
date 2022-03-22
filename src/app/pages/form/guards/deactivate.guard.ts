@@ -20,7 +20,7 @@ export class DeactivateGuard implements CanDeactivate<unknown> {
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       this.routeCache.set(currentState.url, {
         ...this.routeCache.get(currentState.url),
-        model: component?.model,
+        model: component.model,
         options: component?.options
       })
 

@@ -94,7 +94,6 @@ export class FormComponent {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.loading = true
-        console.log()
         this.cd.markForCheck();
         if (this.routeCache.get(this.router.url)) {
           this.render(this.routeCache.get(this.router.url))
@@ -149,12 +148,11 @@ export class FormComponent {
       try {
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
         this.model = result?.data;
+
         this.code = beautify(JSON.stringify(result.fields), { 
           brace_style: "expand",
           keep_array_indentation: true,
         })
-        // this.code = result.fields
-        console.log('code')
 
         this.info = result?.info;
       } catch (error) {

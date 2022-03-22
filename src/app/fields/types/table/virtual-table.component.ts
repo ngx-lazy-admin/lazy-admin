@@ -42,7 +42,7 @@ export interface ColumnsTypeInterface {
       [nzFrontPagination]="false"
       [nzShowPagination]="false"
       [nzData]="group"
-      [nzScroll]="{ x: '1200px', y: '400px' }"
+      [nzScroll]="{ x: '1200px', y: '650px' }"
     >
       <thead>
         <tr>

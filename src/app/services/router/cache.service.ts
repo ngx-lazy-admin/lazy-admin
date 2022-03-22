@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { clone } from 'src/app/utils/utils';
 
 export interface formCacheType {
   model: any,
@@ -18,12 +19,12 @@ export class CacheService {
 
   // 获取缓存数据
   get (str: string) {
-    return this.cache[str]
+    return clone(this.cache[str])
   }
 
   // 记录路由缓存数据
   set (url: string, data: formCacheType) {
-    this.cache[url] = data
+    this.cache[url] = data;
     this.recordHistoryPosition(url)
   }
 
