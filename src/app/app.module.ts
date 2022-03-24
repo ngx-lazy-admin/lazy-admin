@@ -9,7 +9,7 @@ import zh from '@angular/common/locales/zh';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { LayoutModule } from './layout/layout.modeule'
+import { LayoutModule } from './layout/layout.modules'
 import { HttpsInterceptor } from './interceptors/https.interceptor'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { UserPipe } from './pipes/user.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 
 import { InMemoryDataService } from './api/in-memory-data.service';
+import { GlobalSearchModule } from './shared/global-search';
 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [
@@ -44,6 +45,7 @@ registerLocaleData(zh);
     HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
+    GlobalSearchModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

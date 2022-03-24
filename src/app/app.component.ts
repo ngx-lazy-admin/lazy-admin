@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy} from '@angular/core';
+import hotkeys from 'hotkeys-js';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,5 @@ export class AppComponent {
   closeModal () {
     console.log('closeModal')
   }
+
 }

@@ -1,0 +1,60 @@
+<nz-modal 
+	[nzVisible]="true" 
+	[nzKeyboard]="true" 
+	[nzMask]="true" 
+	nzWidth="700px"
+	[nzMaskClosable]="true" 
+	[nzBodyStyle]="{padding: '0'}"
+	[nzFooter]="null" 
+	[nzClosable]="false" 
+	(nzOnCancel)="handleCancel()">
+	<ng-container *nzModalContent>
+		<div style="height: 500px;" class="position-relative">
+			<div class="py-2 px-3 border-bottom">
+				<input
+					placeholder="Type a command or search"
+					nzBorderless="true"
+					class="f20 py-2"
+					nz-input
+					[(ngModel)]="searchValue"
+					(ngModelChange)="onChange($event)"
+				/>
+			</div>
+			<div class="list">
+				<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport w-100" style="height: 380px;">
+					<!-- <div *cdkVirtualFor="let item of items" class="p-3 px-4 border-bottom hover">
+						<div class="icon"></div>
+						<div class="content">
+							<div class="title f16">{{item}}</div>
+							<div class="info"></div>
+						</div>
+					</div> -->
+					<nz-list>
+						<nz-list-item *cdkVirtualFor="let item of items" class="py-1">
+							<nz-list-item-meta
+								*ngIf="item"
+								class="px-4"
+								nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+								[nzDescription]="item"
+							>
+								<nz-list-item-meta-title>
+									<a href="https://ng.ant.design">{{ item }}</a>
+								</nz-list-item-meta-title>
+							</nz-list-item-meta>
+						</nz-list-item>
+					</nz-list>
+				</cdk-virtual-scroll-viewport>
+			</div>
+			<footer class="d-flex f14 px-4 flex-nowrap position-absolute bottom-0 justify-content-between p-3 w-100  border-top">
+				<div class="result">180 result</div>
+				<div class="arrows">
+					<div id="omni-arrows">Use arrow keys <span class="omni-shortcut">↑</span><span class="omni-shortcut">↓</span> to navigate</div>
+				</div>
+			</footer>
+		</div>
+	</ng-container>
+</nz-modal>
+
+
+
+
