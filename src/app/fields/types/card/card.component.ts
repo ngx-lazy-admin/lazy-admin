@@ -16,9 +16,9 @@ import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 
   <nz-card 
     [nzBodyStyle]="nzBodyStyle"
-    [nzTitle]="nzTitle ? nzTitle : ''" 
+    [nzTitle]="nzTitle ? nzTitle : undefined" 
     [nzType]="nzType" 
-    [nzExtra]="extraTemplate"
+    [nzExtra]="extraActions && extraActions.length ? extraTemplate : undefined"
     [nzHoverable]="nzHoverable"
     [nzBorderless]="nzBorderless">
     <i *ngIf="to.tooltip" 
@@ -45,10 +45,6 @@ import { FullScreenService } from 'src/app/services/menu/full-screen.service';
     </ul>
   </nz-card>
 
-  <ng-template #hero let-text="text" let-type="type">
-
-  </ng-template>
-
   <ng-template #extraTemplate>
     <ng-container *ngFor="let action of extraActions; let i = index; trackBy: trackByFn">
       <a nz-popconfirm
@@ -60,8 +56,6 @@ import { FullScreenService } from 'src/app/services/menu/full-screen.service';
         {{ action.text }}
       </a>
     </ng-container>
-
-    <!-- <i nz-icon class="f16" nz-button nzType="expand" (click)="fullScreen()" nzTheme="outline"></i> -->
   </ng-template>
 
   `,
