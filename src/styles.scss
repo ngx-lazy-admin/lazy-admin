@@ -299,10 +299,11 @@ body {
 	filter: invert(80%);
 }
 
+// 样式穿透
 .cdk-overlay-container,
 .cdk-overlay-backdrop,
 .ant-modal-wrap  {
-    pointer-events: none !important;
+    // pointer-events: none !important;
 }
 
 .gray-100 {

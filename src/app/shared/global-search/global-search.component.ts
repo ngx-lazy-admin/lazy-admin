@@ -60,9 +60,7 @@ export class GlobalSearchComponent {
   ) {
 
     hotkeys('ctrl + k', (event, handler) => {
-      // Prevent the default refresh event under WINDOWS system
       event.preventDefault();
-      console.log('999999')
       this.isVisible = true;
       this.cd.markForCheck();
     });
@@ -70,7 +68,9 @@ export class GlobalSearchComponent {
 
   ds = [];
 
-  items = Array.from({length: 100000}).map((_, i) => `Item #${i}`);
+  items = Array.from({length: 100}).map((_, i) => `Item #${i}`);
+
+  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 
   showModal(): void {
     this.isVisible = true;
@@ -81,7 +81,9 @@ export class GlobalSearchComponent {
   }
 
   handleCancel (): void {
-    console.log('value')
+    console.log('handleCancel')
+    this.isVisible = false;
+    this.cd.markForCheck();
   }
 
 }

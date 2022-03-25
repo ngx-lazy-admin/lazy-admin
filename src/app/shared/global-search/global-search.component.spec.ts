@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GlobalSearchComponent } from './global-search.component';
 
-describe('HeaderComponent', () => {
+describe('GlobalSearchComponent', () => {
   let component: GlobalSearchComponent;
   let fixture: ComponentFixture<GlobalSearchComponent>;
 

@@ -1,14 +1,13 @@
 <nz-modal 
-	[nzVisible]="true" 
-	[nzKeyboard]="true" 
-	[nzMask]="true" 
+	[nzVisible]="isVisible" 
 	nzWidth="700px"
-	[nzMaskClosable]="true" 
+	nzClosable="false" 
 	[nzBodyStyle]="{padding: '0'}"
 	[nzFooter]="null" 
-	[nzClosable]="false" 
+	[nzContent]="modalContent"
 	(nzOnCancel)="handleCancel()">
-	<ng-container *nzModalContent>
+
+	<ng-template #modalContent>
 		<div style="height: 500px;" class="position-relative">
 			<div class="py-2 px-3 border-bottom">
 				<input
@@ -22,15 +21,8 @@
 			</div>
 			<div class="list">
 				<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport w-100" style="height: 380px;">
-					<!-- <div *cdkVirtualFor="let item of items" class="p-3 px-4 border-bottom hover">
-						<div class="icon"></div>
-						<div class="content">
-							<div class="title f16">{{item}}</div>
-							<div class="info"></div>
-						</div>
-					</div> -->
 					<nz-list>
-						<nz-list-item *cdkVirtualFor="let item of items" class="py-1">
+						<nz-list-item *cdkVirtualFor="let item of items" class="py-1 hover">
 							<nz-list-item-meta
 								*ngIf="item"
 								class="px-4"
@@ -44,15 +36,20 @@
 						</nz-list-item>
 					</nz-list>
 				</cdk-virtual-scroll-viewport>
+				<!-- <mat-selection-list #shoes [multiple]="false">
+					<mat-list-option *ngFor="let shoe of items" class="hover" [value]="shoe">
+						{{shoe}}
+					</mat-list-option>
+				</mat-selection-list> -->
 			</div>
 			<footer class="d-flex f14 px-4 flex-nowrap position-absolute bottom-0 justify-content-between p-3 w-100  border-top">
 				<div class="result">180 result</div>
 				<div class="arrows">
-					<div id="omni-arrows">Use arrow keys <span class="omni-shortcut">↑</span><span class="omni-shortcut">↓</span> to navigate</div>
+					<div id="omni-arrows">Use arrow keys <span class="omni-shortcut bg-light mx-2">↑</span><span class="omni-shortcut bg-light ">↓</span> to navigate</div>
 				</div>
 			</footer>
 		</div>
-	</ng-container>
+	</ng-template>
 </nz-modal>
 
 
