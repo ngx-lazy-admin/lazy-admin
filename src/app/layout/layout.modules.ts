@@ -17,8 +17,6 @@ import { LayoutUserComponent } from './basic/user/user.component';
 import { LayoutMenuComponent } from './basic/menu/menu.component';
 import { LayoutFooterBarComponent } from './basic/footer-bar/footer-bar.component';
 import { LayoutHeaderTabsetComponent } from './basic/header-tabset/header-tabset.component';
-import { SettingDrawerComponent } from './basic/setting/setting.component';
-import { SettingDrawerItemComponent } from './basic/setting/setting-item.component';
 import { SearchItemComponent } from './basic/search/search-item/search-item.component';
 import { TabsComponent } from './tabs/tabs.component';
  
@@ -35,9 +33,7 @@ import { TabsComponent } from './tabs/tabs.component';
     TabsComponent,
     LayoutFooterBarComponent,
     LayoutHeaderTabsetComponent,
-    SearchItemComponent,
-    SettingDrawerComponent,
-    SettingDrawerItemComponent
+    SearchItemComponent
   ],
   exports: [],
   imports: [

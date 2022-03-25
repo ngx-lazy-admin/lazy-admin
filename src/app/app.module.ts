@@ -18,6 +18,7 @@ import { HtmlPipe } from './pipes/html.pipe';
 
 import { InMemoryDataService } from './api/in-memory-data.service';
 import { GlobalSearchModule } from './shared/global-search';
+import { ThemeSettingModule } from './shared/theme-setting';
 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [
@@ -46,6 +47,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     LayoutModule,
     GlobalSearchModule,
+    ThemeSettingModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

@@ -10,8 +10,8 @@ import { takeUntil } from 'rxjs/operators';
 import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
-import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './setting.types';
-import { environment } from '../../../../environments/environment';
+import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './theme-setting.types';
+import { environment } from 'src/environments/environment';
 
 enum ThemeType {
   dark = 'dark',
@@ -19,16 +19,15 @@ enum ThemeType {
 }
 
 @Component({
-  selector: 'app-setting',
-  templateUrl: './setting.component.html',
-  styleUrls: ['./setting.component.less'],
+  selector: 'app-theme-setting',
+  templateUrl: './theme-setting.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.setting-drawer]': 'true',
     '[class.setting-drawer-rtl]': `dir === 'rtl'`
   },
 })
-export class SettingDrawerComponent implements OnInit, OnDestroy {
+export class ThemeSettingComponent implements OnInit, OnDestroy {
   @Input() autoApplyColor = true;
   @Input() compilingText = 'Compiling...';
   @Input() devTips = `When the color can't be switched, you need to run it once: npm run color-less`;

@@ -4,13 +4,13 @@ import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'setting-drawer-item',
-  templateUrl: './setting-item.component.html',
+  templateUrl: './theme-setting-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.setting-drawer__body-item]': 'true'
   }
 })
-export class SettingDrawerItemComponent {
+export class ThemeSettingItemComponent {
   i: NzSafeAny = {};
 
   @Input()

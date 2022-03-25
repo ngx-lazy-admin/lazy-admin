@@ -1,44 +1,9 @@
 import {
   Component,
-  OnInit,
-  ViewContainerRef,
-  ViewChild,
-  TemplateRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  ElementRef,
-  HostListener
 } from '@angular/core';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
-import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import hotkeys from 'hotkeys-js';
-import { FullScreenService } from 'src/app/services/menu/full-screen.service';
-
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { catchError, takeUntil } from 'rxjs/operators';
-
-import { NzMessageService } from 'ng-zorro-antd/message';
-
-export interface AutocompleteOptionGroups {
-  title: string;
-  count?: number;
-  children?: AutocompleteOptionGroups[];
-}
-
-interface ItemData {
-  gender: string;
-  name: Name;
-  email: string;
-}
-
-interface Name {
-  title: string;
-  first: string;
-  last: string;
-}
 
 @Component({
   selector: 'app-global-search',
