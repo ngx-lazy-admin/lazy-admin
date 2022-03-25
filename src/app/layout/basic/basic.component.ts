@@ -5,7 +5,6 @@ import { filter, takeUntil } from 'rxjs/operators';
 
 import { LayoutService } from '../layout.service';
 import { MessageService } from '../../services/message.service'
-import { ModalService } from 'src/app/modules/modal';
 import { BreakpointMap, NzBreakpointKey, NzBreakpointService, siderResponsiveMap } from 'ng-zorro-antd/core/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuService } from '../../api/menu/menu.services';
@@ -49,7 +48,6 @@ export class LayoutBasicComponent implements OnInit {
     private layout: LayoutService,
     private cd: ChangeDetectorRef,
     private message: MessageService,
-    private modal: ModalService,
     private menu: MenuService,
     private breakpointService: NzBreakpointService,
     private route: ActivatedRoute,
@@ -125,9 +123,5 @@ export class LayoutBasicComponent implements OnInit {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  hostClick ($event: Event) {
-    this.modal.hideAll()
   }
 }

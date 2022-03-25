@@ -3,8 +3,20 @@ import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-modals',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.less']
+  template: `
+    <ng-template #tplTitle >
+      <div 
+        cdkDrag
+        cdkDrop
+        cdkDragHandle
+        cdkDragBoundary=".ng-trigger-modalContainer" 
+        cdkDragRootElement=".dragModal"
+        style="cursor: move;">
+        Title Template
+      </div>
+    </ng-template>
+
+  `,
 })
 export class ModalComponent implements OnInit {
 

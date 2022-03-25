@@ -1,7 +1,7 @@
 
 import { Component, OnInit, Input, TemplateRef, ViewContainerRef, Renderer2, ElementRef } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { ModalService } from '../../modules/modal';
+import { ModalService } from 'src/app/shared/modal/modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -21,11 +21,10 @@ export class ModalComponent implements OnInit {
   currentIndex: number = 1001;
 
   constructor(
-    private modal: NzModalService,
     private viewContainerRef: ViewContainerRef,
-    private modals: ModalService,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private modalService: ModalService
   ) {
 
   }
@@ -51,7 +50,7 @@ export class ModalComponent implements OnInit {
     // this.modals.createComponentModal(this.fields, this.model)
     // console.log(title)
 
-   const modal = this.modals.ceateForm({
+   const modal = this.modalService.ceateForm({
       nzWidth: '900px',
       nzWrapClassName: 'dragModal',
       nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
@@ -96,13 +95,10 @@ export class ModalComponent implements OnInit {
   }
 
   close () {
-    this.modals.closeAll()
+    this.modalService.closeAll()
   }
 
   show ($event: any) {
-    this.modals.show($event)
-    // this.modals.openAll()
+    this.modalService.show($event)
   }
-
-  
 }
