@@ -7,7 +7,10 @@ import { FieldType } from '@ngx-formly/core';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	template: `
-		<nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
+		<pagination-item
+			[formControl]="control"
+			[formlyAttributes]="field"
+		></pagination-item>
 	`
 })
 export class PaginationField extends FieldType {
@@ -50,7 +53,7 @@ export class PaginationField extends FieldType {
 
 	ngModelChange ($event: Event) {
 		if (this.to.change) {
-			this.to.change(this.field, $event)
+			// this.to.change(this.field, $event)
 		}
 	}
 

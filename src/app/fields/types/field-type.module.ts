@@ -32,6 +32,7 @@ import { TreeFieldModule } from './tree';
 import { UploadFieldModule } from './upload';
 
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { PaginationFieldModule } from './pagination';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
     TreeFieldModule,
     GroupFieldModule,
     RepeatFieldModule,
-    ModalFieldModule
+    ModalFieldModule,
+    PaginationFieldModule
   ],
   providers: [
     

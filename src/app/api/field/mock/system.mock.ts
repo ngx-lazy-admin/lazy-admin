@@ -402,7 +402,6 @@ export const system = [
                 },
                 {
                   type: 'list-actions',
-                  className: 'col-3',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '操作',
@@ -461,7 +460,6 @@ export const system = [
           {
             key: 'name',
             type: 'input',
-            className: 'col-3',
             wrappers: ['form'],
             templateOptions: {
               label: '类型',
@@ -471,7 +469,6 @@ export const system = [
           {
             key: 'title',
             type: 'input',
-            className: 'col-3',
             wrappers: ['form'],
             templateOptions: {
               label: '标题',
@@ -482,7 +479,6 @@ export const system = [
           {
             key: 'subtitle',
             type: 'input',
-            className: 'col-3',
             wrappers: ['form'],
             templateOptions: {
               label: '副标题',
@@ -493,7 +489,6 @@ export const system = [
           {
             key: 'path',
             type: 'input',
-            className: 'col-3',
             wrappers: ['form'],
             templateOptions: {
               label: '路径',
@@ -504,7 +499,6 @@ export const system = [
           {
             key: 'open_type',
             type: 'radio-group',
-            className: 'col-3',
             wrappers: ['form'],
             templateOptions: {
               label: '打开方式',
@@ -525,7 +519,6 @@ export const system = [
           {
             key: 'divider',
             type: 'switch',
-            className: 'col-3',
             wrappers: ['form'],
             templateOptions: {
               label: '分割线',
@@ -550,7 +543,7 @@ export const system = [
           {
             key: 'icon',
             type: 'input',
-            className: 'col-3',
+
             wrappers: ['form'],
             templateOptions: {
               label: '图标',
@@ -560,7 +553,7 @@ export const system = [
           {
             key: 'menu_role',
             type: 'input',
-            className: 'col-3',
+
             wrappers: ['form'],
             templateOptions: {
               label: '菜单权限',
@@ -572,7 +565,7 @@ export const system = [
           },
           {
             type: 'button-group',
-            className: 'col-3',
+
             wrappers: ['form'],
             templateOptions: {
               fixedWidth: '120px',

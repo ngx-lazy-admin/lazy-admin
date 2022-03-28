@@ -21,6 +21,7 @@ import { TreeSelectMockFields } from './components/tree-select.mock';
 import { UploadMockFields } from './components/upload.mock';
 import { ModalMockFields } from './components/modal.mock';
 import { TagMockFields } from './components/tag.mock';
+import { PaginationMockFields } from './components/pagination.mock';
 
 const list100 = [...Array(200).keys()].map((item, index) => {
   return {
@@ -246,7 +247,14 @@ export const components = [
       content: '进行标记和分类的小标签。'
     }
   },
-
-  
-  
+  {
+    id: 'pagination',
+    fields: PaginationMockFields,
+    data: {
+    },
+    info: {
+      title: 'Pagination分页',
+      content: '采用分页的形式分隔长列表，每次只加载一个页面。'
+    }
+  },
 ]
