@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './form.component';
-import { DeactivateGuard } from './guards/deactivate.guard';
+
 
 const routes: Routes = [
   { 
-    canDeactivate: [DeactivateGuard],
+    canDeactivate: [],
     path: '', pathMatch: 'full', component: FormComponent, 
   }
 ];

@@ -1,4 +1,4 @@
-export const BorderMockFields = [
+export const VerticalAlignMockFields = [
   {
     type: 'group',
     className: "d-block mb-3 col-6",
