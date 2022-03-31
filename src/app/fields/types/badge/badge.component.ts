@@ -7,12 +7,10 @@ import { ShareFieldType } from '../share-field.type';
 @Component({
   selector: 'div[badge-field]',
   template: `
-    <nz-badge nzStandalone [nzCount]="25"></nz-badge>
+    <nz-badge [nzText]="formControl.value" [nzStatus]="nzStatus"></nz-badge>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-
-
 })
 export class BadgeField extends ShareFieldType {
 
@@ -20,14 +18,18 @@ export class BadgeField extends ShareFieldType {
 		return this.to.disabled || false;
 	}
 
-	get nzGhost(): boolean {
-		return this.to.nzGhost || this.to.ghost || false;
-	}
-
 	get control() : FormControl {
 		return this.formControl as FormControl;
   }
 
+  get nzColor() : string {
+		return this.to.nzColor || this.to.color;
+  }
+
+  get nzStatus () : string {
+    return this.to.nzStatus || this.to.status
+  }
+  
   get nzShape() : NzButtonShape {
 		return this.to.nzShape || this.to.shape || '';
   }

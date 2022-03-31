@@ -181,9 +181,11 @@ export const profile: configOptions[] = [
                 },
                 {
                   key: 'status',
-                  type: 'text',
+                  type: 'badge',
                   templateOptions: {
                     label: '状态',
+                    color: '#f50',
+                    status: 'success'
                   },
                 },
                 {
