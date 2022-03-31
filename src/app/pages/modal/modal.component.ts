@@ -50,11 +50,11 @@ export class ModalComponent implements OnInit {
     // this.modals.createComponentModal(this.fields, this.model)
     // console.log(title)
 
-   const modal = this.modalService.ceateForm({
+   const modal = this.modalService.create({
       nzWidth: '900px',
       nzWrapClassName: 'dragModal',
       nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
-      field: this.fields,
+      fields: this.fields,
       model: this.model,
       nzMask: false,
       nzFooter: [

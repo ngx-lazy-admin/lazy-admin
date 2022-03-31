@@ -21,7 +21,6 @@ export const profile: configOptions[] = [
             key: 'basic',
             className: "col-12 d-inline-block pb-4 mb-4 border-bottom border-light",
             templateOptions: {
-              label: "",
               title: '退款申请',
             },
             fieldGroup: [
@@ -47,7 +46,7 @@ export const profile: configOptions[] = [
                 },
               },
               {
-                key: 'suborder',
+                key: 'sub_order',
                 type: 'text',
                 templateOptions: {
                   title: '子订单',
@@ -57,7 +56,7 @@ export const profile: configOptions[] = [
           },
           {
             type: 'descriptions',
-            key: 'userInfo',
+            key: 'user_info',
             className: "col-12 d-inline-block pb-4 mb-4 border-bottom border-light",
             templateOptions: {
               label: "",
@@ -65,35 +64,35 @@ export const profile: configOptions[] = [
             },
             fieldGroup: [
               {
-                key: 'thing_code',
+                key: 'user',
                 type: 'text',
                 templateOptions: {
                   title: '用户姓名',
                 },
               },
               {
-                key: 'status',
+                key: 'phone',
                 type: 'text',
                 templateOptions: {
                   title: '联系电话',
                 },
               },
               {
-                key: 'sale_code',
+                key: 'express',
                 type: 'text',
                 templateOptions: {
                   title: '常用快递',
                 },
               },
               {
-                key: 'suborder',
+                key: 'address',
                 type: 'text',
                 templateOptions: {
                   title: '取货地址',
                 },
               },
               {
-                key: 'suborder',
+                key: 'remark',
                 type: 'text',
                 templateOptions: {
                   title: '备注',
@@ -103,52 +102,51 @@ export const profile: configOptions[] = [
           },
     
           {
+            key: 'goods',
             type: 'table',
-            key: 'table',
             className: "col-12 d-inline-block mb-4",
             templateOptions: {
-              label: "",
               title: '退货商品',
             },
             fieldArray: {
               fieldGroup: [
                 {
-                  key: 'thing_code',
+                  key: 'goods_number',
                   type: 'text',
                   templateOptions: {
                     label: '商品编号',
                   },
                 },
                 {
-                  key: 'status',
+                  key: 'goods_name',
                   type: 'text',
                   templateOptions: {
                     label: '商品名称',
                   },
                 },
                 {
-                  key: 'sale_code',
+                  key: 'goods_code',
                   type: 'text',
                   templateOptions: {
                     label: '商品条码',
                   },
                 },
                 {
-                  key: 'suborder',
+                  key: 'price',
                   type: 'text',
                   templateOptions: {
                     label: '单价',
                   },
                 },
                 {
-                  key: 'suborder',
+                  key: 'number',
                   type: 'text',
                   templateOptions: {
                     label: '数量（件）',
                   },
                 },
                 {
-                  key: 'suborder',
+                  key: 'total_price',
                   type: 'text',
                   templateOptions: {
                     label: '金额',
@@ -217,10 +215,51 @@ export const profile: configOptions[] = [
         thing_code: '1000000000',
         status: '已取货',
         sale_code: '1234123421',
+        sub_order: '1000000000'
       },
+      user_info: {
+        user: '付小小',
+        phone: '18100000000',
+        express: '菜鸟仓储',
+        address: '浙江省杭州市西湖区万塘路18号',
+        remark: '无'
+      },
+      goods: [
+        {
+          goods_number: '1234561',
+          goods_name: '矿泉水 550ml',
+          goods_code: '12421432143214321',
+          price: '2.00',
+          number: '1',
+          total_price: '2.00'
+        },
+        {
+          goods_number: '1234561',
+          goods_name: '	凉茶 300ml',
+          goods_code: '12421432143214321',
+          price: '2.00',
+          number: '1',
+          total_price: '2.00'
+        },
+        {
+          goods_number: '1234561',
+          goods_name: '好吃的薯片',
+          goods_code: '12421432143214321',
+          price: '2.00',
+          number: '1',
+          total_price: '2.00'
+        },
+        {
+          goods_number: '1234561',
+          goods_name: '	特别好吃的蛋卷',
+          goods_code: '12421432143214321',
+          price: '2.00',
+          number: '1',
+          total_price: '2.00'
+        }
+      ],
       progress: [
         {
-          id: '1',
           time: '2017-10-01 14:10',
           progress: '联系客户',
           status: '进行中',
@@ -228,9 +267,29 @@ export const profile: configOptions[] = [
           take_up_time: '5mins'
         },
         {
-          id: '2',
           time: '2017-10-01 14:10',
-          progress: '联系客户1',
+          progress: '	取货员出发',
+          status: '进行中2',
+          operation_id: '取货员 ID12343',
+          take_up_time: '5mins'
+        },
+        {
+          time: '2017-10-01 14:10',
+          progress: '取货员接单',
+          status: '进行中2',
+          operation_id: '取货员 ID12343',
+          take_up_time: '5mins'
+        },
+        {
+          time: '2017-10-01 14:10',
+          progress: '申请审批通过',
+          status: '进行中2',
+          operation_id: '取货员 ID12343',
+          take_up_time: '5mins'
+        },
+        {
+          time: '2017-10-01 14:10',
+          progress: '发起退货申请',
           status: '进行中2',
           operation_id: '取货员 ID12343',
           take_up_time: '5mins'

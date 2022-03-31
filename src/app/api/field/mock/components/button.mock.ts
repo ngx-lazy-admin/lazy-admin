@@ -494,7 +494,32 @@ export const ButtonMockFields = [
             }
           },
         ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: 'http 请求',
+          description: 'http 请求',
+        },
+        fieldGroup: [
+          {
+            type: 'button',
+            className: "d-inline-block mb-2",
+            templateOptions: {
+              text: 'Primary',
+              type: 'primary',
+              click: `(_field, _this) => {
+                _this.http.get('api/components/button').subscribe(result => {
+                  _this.message.success(result.info.content)
+                })
+              }`
+            }
+          },
+        ]
       }
+
+      
     ]
   },
 ]

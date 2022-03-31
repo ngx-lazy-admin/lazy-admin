@@ -10,7 +10,7 @@ export const TableBasicMockFields = [
     },
     fieldGroup: [
       {
-        key: 'data',
+        key: 'list',
         type: 'simple-table',
         className: "d-block mb-2",
         fieldArray: {

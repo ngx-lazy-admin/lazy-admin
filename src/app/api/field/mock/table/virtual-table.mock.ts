@@ -10,7 +10,7 @@ export const VirtualTableMockFields = [
     },
     fieldGroup: [
       {
-        key: 'data',
+        key: 'list',
         type: 'virtual-table',
         className: "d-block mb-2",
         templateOptions: {

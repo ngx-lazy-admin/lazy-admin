@@ -8,7 +8,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 import { isObject } from 'src/app/utils/utils';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
+// import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { DOCUMENT } from '@angular/common';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
@@ -45,7 +45,7 @@ export abstract class ShareFieldType extends FieldType {
     public readonly zone: NgZone,
     public message: NzMessageService,
     public config: FormlyConfig,
-    private notification: NzNotificationService,
+    // private notification: NzNotificationService,
     public fullScreenService: FullScreenService,
     public elRef: ElementRef,
     public elementRef: ElementRef,
@@ -171,10 +171,10 @@ export abstract class ShareFieldType extends FieldType {
         // this.message.error(this.errorMessage(control))
         const message = this.errorMessage(control)
         if (message) {
-          this.notification.error(
-            'Notification Title',
-            message,
-          );
+          // this.notification.error(
+          //   'Notification Title',
+          //   message,
+          // );
         }
 
         control.markAsDirty();

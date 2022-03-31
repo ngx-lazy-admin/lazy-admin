@@ -24,7 +24,7 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { CustomFieldModule } from 'src/app/fields/custom';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-
+import { ModalsModule } from 'src/app/shared/modal' 
 
 @NgModule({
   declarations: [
@@ -48,8 +48,9 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     PortalModule,
     NzAlertModule,
     NzTabsModule,
+    // ModalsModule
 
-    FormlyModule.forRoot(),
+    FormlyModule,
     FieldTypeModule,
     CustomFieldModule,
     FormFieldModule,

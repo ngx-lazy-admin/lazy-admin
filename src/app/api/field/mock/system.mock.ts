@@ -343,7 +343,7 @@ export const system = [
                 {
                   key: 'name',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '用户名',
@@ -356,7 +356,7 @@ export const system = [
                 {
                   key: 'des',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '登录账号',
@@ -367,7 +367,7 @@ export const system = [
                 {
                   key: 'timer',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '手机号',
@@ -377,7 +377,7 @@ export const system = [
                 {
                   key: 'status',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '邮箱',
@@ -386,7 +386,7 @@ export const system = [
                 {
                   key: 'date',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '性别',
@@ -394,7 +394,7 @@ export const system = [
                 },
                 {
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '创建时间',
@@ -425,6 +425,7 @@ export const system = [
         ]
       },
     ],
+    data: {},
     info: {
       title: '用户管理',
       content: '页面数据为 Mock 示例数据，非真实数据。'
@@ -878,7 +879,7 @@ export const system = [
                 {
                   key: 'name',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '角色名称',
@@ -887,7 +888,7 @@ export const system = [
                 {
                   key: 'des',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '说明',
@@ -896,7 +897,7 @@ export const system = [
                 {
                   key: 'timer',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '创建时间',
@@ -905,7 +906,7 @@ export const system = [
                 {
                   key: 'status',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '更新时间',
@@ -914,7 +915,7 @@ export const system = [
                 {
                   key: 'date',
                   type: 'text',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '是否默认角色',
@@ -922,7 +923,7 @@ export const system = [
                 },
                 {
                   type: 'list-actions',
-                  className: 'col-3',
+                  className: '',
                   wrappers: ['table'],
                   templateOptions: {
                     label: '操作',

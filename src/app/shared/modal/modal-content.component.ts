@@ -4,22 +4,22 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'nz-modal-custom-component',
+  selector: 'custom-modal-content',
   template: `
   <div class="modal-wrap">
     <div 
       class="ant-modal-header d-block ant-modal-title p-3"
       cdkDrag
       cdkDragHandle
-      cdkDragRootElement=".dragModal"
+      cdkDragRootElement=".ant-modal-content"
       style="cursor: move;">
       {{ nzTitle || "标题" }} 
     </div>
 
     <ng-container *ngIf="fields && fields.length">
-      <div class="modal-content p-3">
+      <div class="p-3">
         <form [formGroup]="form" >
-          <formly-form [form]="form" [fields]="fields" [(model)]="model"></formly-form>
+          <formly-form class="row" [form]="form" [fields]="fields" [(model)]="model"></formly-form>
         </form>
       </div>
     </ng-container>
@@ -33,7 +33,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
     `
   ]
 })
-export class NzModalCustomComponent {
+export class ModalContent {
 
   @Input() fields?: FormlyFieldConfig[];
   @Input() model?: any;

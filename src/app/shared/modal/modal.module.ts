@@ -1,37 +1,40 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+
+import { FormlyModule } from '@ngx-formly/core';
+
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FormlyModule } from '@ngx-formly/core';
-
-import { ModalComponent } from './modal.component';
 import { IconsProviderModule } from '../../modules/icons-provider.module';
-import { NzModalCustomComponent } from './modal-form.component';
+import { ModalContent } from './modal-content.component';
 import { FieldTypeModule } from 'src/app/fields/types';
+import { CustomFieldModule } from 'src/app/fields/custom';
+import { FormFieldModule } from 'src/app/fields/wrappers/form';
 
 @NgModule({
   declarations: [
-    ModalComponent,
-    NzModalCustomComponent,
+    ModalContent,
   ],
   imports: [
     CommonModule,
-    NzButtonModule,
-    NzModalModule,
-    CommonModule,
-    DragDropModule,
     FormsModule,
     ReactiveFormsModule,
+
+    NzButtonModule,
+    NzModalModule,
+    DragDropModule,
     IconsProviderModule,
-    FormlyModule.forRoot(),
+
+    FormlyModule,
     FieldTypeModule,
+    CustomFieldModule,
+    FormFieldModule,
   ],
   exports: [
-    ModalComponent,
+    ModalContent,
   ]
 })
 export class ModalsModule { }
