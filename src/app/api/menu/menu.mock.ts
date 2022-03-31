@@ -537,6 +537,13 @@ export const menu = [
         badge: '',
       },
       {
+        id: '1131',
+        pid: '11',
+        name: 'Badge',
+        link: '/components/badge',
+        badge: '',
+      },
+      {
         id: '1103',
         pid: '11',
         name: 'Card',

@@ -22,6 +22,7 @@ import { UploadMockFields } from './components/upload.mock';
 import { ModalMockFields } from './components/modal.mock';
 import { TagMockFields } from './components/tag.mock';
 import { PaginationMockFields } from './components/pagination.mock';
+import { BadgeMockFields } from './components/badge.mock';
 
 const list100 = [...Array(200).keys()].map((item, index) => {
   return {
@@ -49,6 +50,14 @@ export const components = [
     info: {
       title: 'Button 按钮',
       content: '按钮用于开始一个即时操作。'
+    }
+  },
+  {
+    id: 'badge',
+    fields: BadgeMockFields,
+    info: {
+      title: 'Badge徽标数',
+      content: '图标右上角的圆形徽标数字。'
     }
   },
   {
@@ -257,4 +266,6 @@ export const components = [
       content: '采用分页的形式分隔长列表，每次只加载一个页面。'
     }
   },
+
+
 ]
