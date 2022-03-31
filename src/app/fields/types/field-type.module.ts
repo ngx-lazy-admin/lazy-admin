@@ -30,17 +30,14 @@ import { TemplateFieldModule } from './template';
 import { TimePickerFieldModule } from './time-picker';
 import { TreeFieldModule } from './tree';
 import { UploadFieldModule } from './upload';
-
-import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { PaginationFieldModule } from './pagination';
-
+import { BadgeFieldModule } from './badge/badge.module';
 
 @NgModule({
   imports: [
     AlertFieldModule,
-    NzNotificationModule,
-
     AutocompleteFieldModule,
+    BadgeFieldModule,
     ButtonFieldModule,
     CascaderFieldModule,
     CheckboxFieldModule,
