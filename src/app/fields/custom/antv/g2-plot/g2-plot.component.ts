@@ -9,6 +9,8 @@ import { LineOptions } from '@antv/g2plot';
     <g2-plot-item
       [formControl]="control"
       [formlyAttributes]="field"
+
+      (ngModelChange)="modelChange($event)"
       [config]="config"
     >
     </g2-plot-item>
@@ -36,5 +38,10 @@ export class G2PlotField extends FieldType {
 
   ngOnDestroy(): void {
     
+  }
+
+
+  modelChange ($event: any) {
+    console.log('modelChange', $event)
   }
 }

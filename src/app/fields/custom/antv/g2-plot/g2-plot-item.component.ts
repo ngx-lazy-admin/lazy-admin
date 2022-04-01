@@ -41,6 +41,7 @@ export class G2PlotItem implements AfterViewInit {
     },
   }
 
+
   constructor(
     private elementRef: ElementRef,
     private http: HttpClient,
@@ -64,7 +65,8 @@ export class G2PlotItem implements AfterViewInit {
     this.line.render();    
   }
 
-  writeValue(value: any): void {
+  writeValue(value: any[]): void {
+    // console.log(value)
     if (this.line && value) {
       this.line.changeData(value)
       this.line.render();

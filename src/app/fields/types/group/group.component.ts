@@ -6,11 +6,14 @@ import { ShareFieldType } from '../share-field.type';
   selector: 'div[group-field]',
   template: `
     <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
-      <formly-field [field]="item"></formly-field>
+      <formly-field [field]="item" class="row"></formly-field>
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+	host: {
+    '[class.row]': `true`,
+	},
 })
 
 export class GroupField extends ShareFieldType  implements OnDestroy {

@@ -30,7 +30,7 @@ export class ModalService   {
   // 创建弹窗
   create (params: any, $event: any): NzModalRef {
     $event && $event.stopPropagation();
-    
+    const id = this.randomString(32)
     this._hideAllStatus = false;
     const modal = this.modal.create({
       nzContent: ModalContent,
@@ -43,8 +43,11 @@ export class ModalService   {
       nzComponentParams: {
         fields: params.fields,
         model: params.model,
-        title: params.title
+        title: params.title,
+        modal: this.modal,
+
       },
+      nzClosable: false,
       ...params
     });
 
@@ -74,10 +77,6 @@ export class ModalService   {
   // 关闭所有弹窗
   closeAll () {
     this.modal.closeAll()
-  }
-
-  openAll () {
-    console.log(this.modal.openModals)
   }
 
   // 隐藏所有弹窗
@@ -128,5 +127,14 @@ export class ModalService   {
       nzZIndex: 1000,
       nzWrapClassName: className?.join(' ')
     })
+  }
+
+  randomString(e: number) {    
+    e = e || 32;
+    var t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678",
+    a = t.length,
+    n = "";
+    for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a));
+    return n
   }
 }
