@@ -30,6 +30,10 @@ export class GroupField extends ShareFieldType  implements OnDestroy {
   ngAfterViewInit() {
     this.className = this.to.bodyClass;
     this.cd.detectChanges();
+
+    this.formControl.valueChanges.subscribe(item => {
+      console.log(item)
+    })
   }
 
   ngOnDestroy() {}
