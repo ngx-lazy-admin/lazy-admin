@@ -1,31 +1,8 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Inject,
-  Injectable,
-  Input,
-  OnInit,
-  Renderer2,
-  ViewChild,
-  ViewContainerRef,
-  TemplateRef,
-  Injector,
-  ApplicationRef,
-  ComponentFactoryResolver,
-  RendererFactory2
-} from '@angular/core';
+import { Inject, Injectable, Renderer2, ViewContainerRef, RendererFactory2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-// import { NgElement, WithProperties } from '@angular/elements';
-import { FormGroup, AbstractControl } from '@angular/forms';
-import { ComponentPortal, DomPortalOutlet, DomPortal, Portal, TemplatePortal,   } from '@angular/cdk/portal';
-
-import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 
-import hotkeys from 'hotkeys-js';
-import { ModalComponent } from './modal.component';
-import { NzModalCustomComponent } from './modal-form.component';
+import { ModalContent } from './modal-content.component';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +12,7 @@ export class ModalService   {
 
   userSettingsPortal: any
 
-  currentIndex: number = 1001
+  currentIndex: number = 500
 
   private renderer: Renderer2;
 
@@ -44,22 +21,19 @@ export class ModalService   {
 
   constructor(
     private modal: NzModalService,
-    private injector: Injector,
     private rendererFactory: RendererFactory2,
-    private applicationRef: ApplicationRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
     @Inject(DOCUMENT) private document: Document
   ) {
-    this.renderer = rendererFactory.createRenderer(null, null);
+    this.renderer = this.rendererFactory.createRenderer(null, null);
   }
 
   // 创建弹窗
-  ceateForm(params: any, $event: any): NzModalRef {
-    $event.stopPropagation();
-
+  create (params: any, $event: any): NzModalRef {
+    $event && $event.stopPropagation();
+    const id = this.randomString(32)
     this._hideAllStatus = false;
     const modal = this.modal.create({
-      nzContent: NzModalCustomComponent,
+      nzContent: ModalContent,
       nzViewContainerRef: this.viewContainerRef,
       nzZIndex: this.currentIndex,
       nzStyle: {
@@ -67,10 +41,13 @@ export class ModalService   {
         top: ((this._modals.length) * 20 + 100) + 'px',
       },
       nzComponentParams: {
-        fields: params.field,
+        fields: params.fields,
         model: params.model,
-        title: params.nzTitle
+        title: params.title,
+        modal: this.modal,
+
       },
+      nzClosable: false,
       ...params
     });
 
@@ -102,10 +79,6 @@ export class ModalService   {
     this.modal.closeAll()
   }
 
-  openAll () {
-    console.log(this.modal.openModals)
-  }
-
   // 隐藏所有弹窗
   hideAll () {
     if (!this._hideAllStatus) {
@@ -131,12 +104,11 @@ export class ModalService   {
   showModal (modal: NzModalRef) {
     const config = modal.getConfig()
     let className = config.nzWrapClassName?.split(" ")
-    console.log(className)
 
     if (className?.find(name => name === 'd-none')) {
       className = className?.filter(item => item !== 'd-none')
     }
-    console.log(className)
+
     modal.updateConfig({
       ...config,
       nzWrapClassName: className?.join(' ')
@@ -155,5 +127,14 @@ export class ModalService   {
       nzZIndex: 1000,
       nzWrapClassName: className?.join(' ')
     })
+  }
+
+  randomString(e: number) {    
+    e = e || 32;
+    var t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678",
+    a = t.length,
+    n = "";
+    for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a));
+    return n
   }
 }

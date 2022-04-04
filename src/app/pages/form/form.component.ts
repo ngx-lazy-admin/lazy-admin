@@ -22,6 +22,7 @@ import { editor } from 'monaco-editor';
 import { FieldService } from 'src/app/api/field';
 import { execEval } from 'src/app/fields/types/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
+import { ModalService } from 'src/app/shared/modal';
 
 export interface headerInfoType {
   title: string,
@@ -81,6 +82,7 @@ export class FormComponent {
   isVisible = false;
   editor?: editor.ICodeEditor;
   code: string = ``;
+  cacheFields: string = '';
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -89,7 +91,8 @@ export class FormComponent {
     private router: Router,
     private ngZone: NgZone,
     private nzConfigService: NzConfigService,
-    private routeCache: CacheService
+    private routeCache: CacheService,
+    private modalService: ModalService
   ) {
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -100,6 +103,7 @@ export class FormComponent {
           this.routeCache.recoveryHistoryPosition(this.router.url)
         } else {
           this.loading = true
+          // 组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。 它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
           this.fieldService.getField(this.router.url).subscribe(result => {
             this.routeCache.set(this.router.url, result)
             this.render(this.routeCache.get(this.router.url))
@@ -116,6 +120,54 @@ export class FormComponent {
     hotkeys('.', (event, handler) => {
       this.isVisible = true;
       this.cd.markForCheck();
+    });
+
+    hotkeys('m', (event, handler) => {
+      // 转弹窗
+      const fieldss = [
+        {
+          type: 'button'
+        }
+      ]
+
+      const fields = [
+        {
+          key: 'email',
+          type: 'nz-input',
+          className: 'w-25 mb-2 d-inline-block',
+          templateOptions: {
+            label: 'Email address',
+            placeholder: 'Enter email',
+            required: true,
+          }
+        }
+      ]
+
+      const modal = this.modalService.create({
+        nzWidth: '900px',
+        nzWrapClassName: 'dragModal',
+        nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+        fields: this.cacheFields,
+        model: this.model,
+        nzMask: false,
+        nzFooter: [
+          {
+            label: '取消1',
+            onClick: () => modal.destroy()
+          },
+          {
+            label: '确定',
+            type: 'primary',
+            onClick: ($event: any) => {
+              return new Promise(resolve => setTimeout(() => {
+                console.log($event)
+                // modal.containerInstance.config.nzZIndex = this.currentIndex++;
+                // modal.destroy()
+              }, 60));
+            }
+          }
+        ]
+      }, null)
     });
 
     hotkeys('Esc', (event, handler) => {
@@ -147,6 +199,7 @@ export class FormComponent {
     setTimeout(() => {
       try {
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
+        this.cacheFields = result?.fields
         this.model = result?.data;
 
         this.code = beautify(JSON.stringify(result.fields), { 
@@ -164,6 +217,7 @@ export class FormComponent {
         this.loading = false;
 
         this.cd.detectChanges();
+        // debugger
       }
     }, 100);
   }

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IframeComponent } from './iframe.component';
 
-describe('ModalComponent', () => {
+describe('IframeComponent', () => {
   let component: IframeComponent;
   let fixture: ComponentFixture<IframeComponent>;
 

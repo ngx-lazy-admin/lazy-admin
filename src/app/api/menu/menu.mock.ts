@@ -537,6 +537,13 @@ export const menu = [
         badge: '',
       },
       {
+        id: '1131',
+        pid: '11',
+        name: 'Badge',
+        link: '/components/badge',
+        badge: '',
+      },
+      {
         id: '1103',
         pid: '11',
         name: 'Card',
@@ -866,7 +873,7 @@ export const menu = [
         id: '1215',
         pid: '12',
         name: 'Text',
-        link: '/bootstrap/Text',
+        link: '/bootstrap/text',
         badge: '',
       },
       {
@@ -905,6 +912,66 @@ export const menu = [
         pid: '13',
         name: '虚拟滚动',
         link: '/table/virtual-table',
+        badge: '',
+      }
+    ]
+  },
+  {
+    id: '14',
+    name: '表单专题',
+    link: '',
+    badge: '',
+    children: [
+      {
+        id: '1401',
+        pid: '14',
+        name: '介绍',
+        link: '/fields/intro',
+        badge: '',
+      },
+      {
+
+        id: '1402',
+        pid: '14',
+        name: 'Field Options',
+        link: '/fields/fields-options',
+        badge: '',
+      },
+      {
+
+        id: '1403',
+        pid: '14',
+        name: 'Field Options',
+        link: '/fields/form-options',
+        badge: '',
+      },
+      {
+
+        id: '1404',
+        pid: '14',
+        name: 'Form 选项',
+        link: '/fields/virtual-table',
+        badge: '',
+      },
+      {
+        id: '1404',
+        pid: '14',
+        name: 'Validation 选项',
+        link: '/fields/Validation-options',
+        badge: '',
+      },
+      {
+        id: '1404',
+        pid: '14',
+        name: '高级方法',
+        link: '/fields/advanced',
+        badge: '',
+      },
+      {
+        id: '1404',
+        pid: '14',
+        name: '其他',
+        link: '/fields/other',
         badge: '',
       }
     ]

@@ -20,11 +20,7 @@ import { AntvLineItem } from './line-item.component';
     FormlyModule.forChild({
       types: [
         {
-          name: 'g2-plot',
-          component: AntvLineField,
-        },
-        {
-          name: 'ant-line',
+          name: 'antv-line',
           component: AntvLineField,
         },
       ],

@@ -1,14 +1,36 @@
+const data = [
+	{
+		"Date": "2010-01",
+		"scales": 1998
+	},
+	{
+		"Date": "2010-02",
+		"scales": 1850
+	},
+	{
+		"Date": "2010-03",
+		"scales": 1720
+	},
+	{
+		"Date": "2010-04",
+		"scales": 1818
+	}
+]
+
+
 
 export const dashboard = [
   {
     id: 'analysis',
     fields: [
       {
+
         type: 'group',
+        className: 'col-12',
         fieldGroup: [
           {
             type: 'card',
-            key: 'name',
+            key: 'name1',
             className: "col-md-3 col-sm-6 d-inline-block",
             templateOptions: {
               label: "总销售额1",
@@ -71,7 +93,7 @@ export const dashboard = [
           },
           {
             type: 'card',
-            key: 'name',
+            key: 'name2',
             className: "col-md-3 col-sm-6  d-inline-block",
             templateOptions: {
               label: "访问量",
@@ -133,7 +155,7 @@ export const dashboard = [
             ]
           },
           {
-            key: 'name',
+            key: 'name3',
             type: 'card',
             className: "col-md-3 col-sm-6 d-inline-block",
             templateOptions: {
@@ -197,7 +219,7 @@ export const dashboard = [
           },
           {
             type: 'card',
-            key: 'name',
+            key: 'name4',
             className: "col-md-3 col-sm-6 d-inline-block",
             templateOptions: {
               label: "运营效果",
@@ -262,17 +284,46 @@ export const dashboard = [
       },
       {
         type: 'group',
+        className: 'col-8 mt-3',
         fieldGroup: [ 
           {
-            type: 'tab-card',
-            key: 'name',
-            className: "col-md-3 col-sm-6 d-inline-block",
-            templateOptions: {
-              title: "总销售额1",
-              tooltip: '指标说明1',
-            },
+            type: 'card-tabs',
+            className: "col-12 mb-3",
             fieldGroup: [
-
+              {
+                key: 'data1',
+                type: 'g2-plot',
+                // defaultValue: data,
+                templateOptions: {
+                  title: '销售量',
+                  config: {
+                    padding: 'auto',
+                    xField: 'Date',
+                    yField: 'scales',
+                    xAxis: {
+                      type: 'timeCat',
+                      tickCount: 6,
+                    },
+                  }
+                }
+              },
+              {
+                key: 'data2',
+                type: 'g2-plot',
+                // defaultValue: data,
+                templateOptions: {
+                  title: '访问量',
+                  config: {
+                    padding: 'auto',
+                    xField: 'Date',
+                    yField: 'scales',
+                    xAxis: {
+                      type: 'timeCat',
+                      tickCount: 6,
+                    },
+                  }
+                }
+              },
             ]
           },
           
@@ -280,6 +331,10 @@ export const dashboard = [
       }
 
     ],
+    data: {
+      // data1: data,
+      // data2: data,
+    },
     info: {
       title: '分析页',
       content: '分析页用于统计系统数据, 分析系统动态'
@@ -288,7 +343,7 @@ export const dashboard = [
   {
     id: 'monitor',
     fields: [
-
+      
     ],
     info: {
       title: '监控页',

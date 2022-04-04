@@ -15,7 +15,7 @@ export const table = [
     id: 'basic',
     fields: TableBasicMockFields,
     data: {
-      data: list100
+      list: list100
     },
     info: {
       title: '基础表格( table basic)',
@@ -26,7 +26,7 @@ export const table = [
     id: 'virtual-table',
     fields: VirtualTableMockFields,
     data: {
-      data: list100
+      list: list100
     },
     info: {
       title: '虚拟滚动( virtual table)',

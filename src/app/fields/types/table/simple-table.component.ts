@@ -46,8 +46,8 @@ export interface ColumnsTypeInterface {
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let fileds of  nzTable.data; trackBy: trackByFn; let index = index;">
-          <ng-container *ngFor="let td of fileds.fieldGroup;  trackBy: trackByFn; let i = index;">
+        <tr *ngFor="let fields of nzTable.data; trackBy: trackByFn; let index = index;">
+          <ng-container *ngFor="let td of fields.fieldGroup;  trackBy: trackByFn; let i = index;">
             <td  *ngIf="!td.hide" [nzRight]="td?.templateOptions?.right">
               <formly-field [field]="td"></formly-field>
             </td>

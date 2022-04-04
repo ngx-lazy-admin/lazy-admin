@@ -43,26 +43,6 @@ export class FieldService {
     return this._tabset$.asObservable()
   }
 
-  // canActive(url: string): boolean {
-  //   this.breadcrumb = [];
-  //   if (this._menus && this._menus instanceof Array && this._menus.length) {
-  //     this._menus.some(item => {
-
-  //       let menu = item.children.find(item => item.link === url) 
-  //       console.log(url,item.children, menu )
-  //       if (menu) {
-  //         this.breadcrumb = [item.label, menu.label]
-  //         this.addTabset(menu)
-  //         return true
-  //       } else {
-  //         return true
-  //       }
-  //     })
-  //   }
-  //   return true;
-  // }
-  
-
 
   // getMenu(): Observable<Array<FieldType>> {
   //   return this.http.get<Array<FieldType>>(this._menuUrl).pipe(tap(menu => {

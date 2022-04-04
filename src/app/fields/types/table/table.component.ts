@@ -10,7 +10,7 @@ import {
   SimpleChanges,
  } from '@angular/core';
 import { FieldArrayType, FormlyFieldConfig } from '@ngx-formly/core';
-import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -29,7 +29,7 @@ export interface VirtualDataInterface {
   encapsulation: ViewEncapsulation.None,
   template: `
 
-    <div class="table-toolbar mb-3 d-flex" *ngIf="actinsOptions && actinsOptions.length">
+    <div class="table-toolbar table-operations mb-3 d-flex" *ngIf="actinsOptions && actinsOptions.length">
       <ng-container *ngFor="let item of actinsOptions; let i = index">
         <a 
           nz-button 
@@ -37,9 +37,11 @@ export interface VirtualDataInterface {
           [disabled]="item.disabled"
           [nzSize]="item?.size || 'small'"
           [class]="item?.className"
+
           nz-popconfirm
           [nzPopconfirmTitle]="item.popconfirmTitle"
           [nzPopconfirmPlacement]="item.popconfirmPlacement"
+
           nz-dropdown 
           [nzDropdownMenu]="item.options ? menu : null"
         >
@@ -59,7 +61,7 @@ export interface VirtualDataInterface {
 
     <nz-table
       #nzTable
-      [nzData]="model"
+      [nzData]="group"
       [nzBordered]="nzBordered"
       [nzScroll]="to.nzScroll"
       [nzFrontPagination]="nzFrontPagination"
@@ -87,13 +89,11 @@ export interface VirtualDataInterface {
         </tr>
       </thead>
       <tbody>
-        <tr  *ngFor="let data of nzTable.data; trackBy: trackByFn; let index = index;">
-          <ng-container *ngIf="field.fieldGroup && field.fieldGroup[data.id]">
-            <ng-container *ngFor="let td of field.fieldGroup[data.id].fieldGroup">
-              <td  *ngIf="!td.hide" [nzRight]="td?.templateOptions?.right">
-                <formly-field [field]="td"></formly-field>
-              </td>
-            </ng-container>
+        <tr *ngFor="let data of nzTable.data; trackBy: trackByFn; let index = index;">
+          <ng-container *ngFor="let td of data.fieldGroup;  trackBy: trackByFn; let i = index;">
+            <td  *ngIf="!td.hide" [nzRight]="td?.templateOptions?.right">
+              <formly-field [field]="td"></formly-field>
+            </td>
           </ng-container>
         </tr>
       </tbody>
@@ -107,7 +107,13 @@ export class TableField extends FieldArrayType implements OnDestroy {
 
   private destroy$ = new Subject();
 
-
+  get group (): any[] {
+    if (this.field.fieldGroup instanceof Array) {
+      return this.field.fieldGroup
+    } else {
+      return []
+    }
+  }
 
   get nzSelectedIndex(): number {
 		return this.to.nzSelectedIndex || 0;
@@ -142,7 +148,6 @@ export class TableField extends FieldArrayType implements OnDestroy {
   }
 
   get nzSize(): NzSizeLDSType {
-       console.log('get')
 		return this.to.nzSize || 'default';
 	}
 
@@ -246,14 +251,11 @@ export class TableField extends FieldArrayType implements OnDestroy {
     if (this.options && this.options.formState) {
       // this.options.formState[this.id]['caches'] = 
     }
-    console.log(this)
   }
 
   ngOnDestroy() {
     if (this.field && this.field.fieldGroup) {
-      // this.field.fieldGroup.map((item, index) => {
-      //   super.remove(index)
-      // });
+
     }
     this.destroy$.next();
     this.destroy$.complete();    
