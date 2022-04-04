@@ -16,7 +16,7 @@ import { UserService } from 'src/app/api/user';
   styleUrls: ['./basic.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '(click)': 'hostClick($event)'
+    // '(click)': 'hostClick($event)'
   }
 })
 export class LayoutBasicComponent implements OnInit {

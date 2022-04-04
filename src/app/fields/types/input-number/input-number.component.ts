@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { execFunc } from '../share-field.type';
 
 @Component({
 	selector: 'div[input-number-field]',
@@ -52,13 +53,14 @@ export class InputNumberField extends FieldType {
 	private _formatter: (value: number) => string | number = value => value;
 
 	get nzFormatter() {
-		return this.to.nzFormatter || this._formatter;
+		return execFunc(this.to.nzFormatter) || this._formatter;
 	}
 
 	private  _parser = (value: string) => value.trim().replace(/。/g, '.').replace(/[^\w\.-]+/g, '');
 
 	get nzParser(): (value: string) => string {
-		return this.to.nzParser || this.to.parser || this._parser
+		console.log(execFunc(this.to.parser))
+		return this.to.nzParser || execFunc(this.to.parser) || this._parser
 	}
 
 	get nzPrecision(): number {

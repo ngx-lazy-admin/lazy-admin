@@ -21,7 +21,6 @@ export const InputNumberMockFields = [
             className: "d-inline-block mx-2",
             defaultValue: 3,
             templateOptions: {
-              text: "Checkbox",
             }
           }
         ]
@@ -30,16 +29,16 @@ export const InputNumberMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '不可用',
+          description: '点击按钮切换可用状态。',
         },
         fieldGroup: [
           {
             key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
+            type: 'number',
+            className: "d-inline-block",
             templateOptions: {
-              text: "checked-disabled",
+              text: "Toggle Disabled",
               disabled: 'formState.checked2.disabled'
             },
             expressionProperties: {
@@ -48,9 +47,9 @@ export const InputNumberMockFields = [
           },
           {
             type: 'button',
-            className: "d-inline-block mt-2 ",
+            className: "d-inline-block mx-2 ",
             templateOptions: {
-              text: "Disabled",
+              text: "Toggle Disabled",
               size: 'small',
               type: 'primary',
               clicks: (_field: FormlyFieldConfig, _this: any) => {
@@ -62,17 +61,43 @@ export const InputNumberMockFields = [
                 }
               `
             }
+          }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '格式化展示',
+          description: '通过 nzFormatter 格式化数字，以展示具有具体含义的数据，往往需要配合 nzParser 一起使用。',
+        },
+        fieldGroup: [
+          {
+            key: 'demoValue',
+            type: 'number',
+            className: "d-inline-block",
+            templateOptions: {
+              min: 1,
+              max: 100,
+              step: 1,
+              formatter: "value => '$' + value",
+              parser: "value => value.replace(' %', '')"
+              
+            }
           },
           {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
+            key: 'demoValue',
+            type: 'number',
+            className: "d-inline-block",
             templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
+              min: 1,
+              max: 100,
+              step: 1,
+              formatter: "(value) => value + '%'",
+              parser: "value => value.replace('$ ', '')"
             }
-          }
+          },
+
         ]
       }
     ]
@@ -82,7 +107,7 @@ export const InputNumberMockFields = [
     className: "d-block mb-3 col-6",
     templateOptions: {
       title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+      description: '最简单的用法，在浮层中可以选择或者输入日期。',
     },
     fieldGroup: [
       {
@@ -143,7 +168,50 @@ export const InputNumberMockFields = [
             }
           },
         ]
-      }
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '精度',
+          description: '指定 value 的精度',
+        },
+        fieldGroup: [
+          {
+            key: 'toFixedValue',
+            type: 'input-number',
+            className: "d-inline-block mx-2",
+            defaultValue: 3,
+            templateOptions: {
+              precision: 2,
+              placeHolder: 'toFixed',
+            }
+          },
+          {
+            key: 'cutValue',
+            type: 'input-number',
+            className: "d-inline-block mx-2",
+            defaultValue: 3,
+            templateOptions: {
+              precision: 2,
+              placeHolder: 'cut off'
+
+            }
+          },
+          {
+            key: 'customFnValue',
+            type: 'input-number',
+            className: "d-inline-block mx-2",
+            defaultValue: 3,
+            templateOptions: {
+              precision: 2,
+              placeHolder: 'cut off'
+
+
+            }
+          },
+        ]
+      },
     ]
   },
 ]
