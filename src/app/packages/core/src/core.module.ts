@@ -1,19 +1,23 @@
 import { NgModule, ModuleWithProviders, ANALYZE_FOR_ENTRY_COMPONENTS, Inject, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { FormlyForm } from './components/formly.form';
-import { FormlyField } from "./components/FormlyField.1";
+import { FormlyField } from './components/formly.field';
 import { FormlyAttributes } from './components/formly.attributes';
+
 import { FormlyConfig, ConfigOption, FORMLY_CONFIG } from './services/formly.config';
 import { FormlyFormBuilder } from './services/formly.form.builder';
-import { FormlyGroup } from './templates/formly.group';
-import { FormlyValidationMessage } from './templates/formly.validation-message';
-import { FormlyTemplateType } from './templates/field-template.type';
 
+import { FormlyGroup } from './templates/formly.group';
+import { FormlyTemplateType } from './templates/field-template.type';
+import { FieldArrayType } from './templates/field-array.type';
+import { FormlyValidationMessage } from './templates/formly.validation-message';
+
+import { CoreExtension } from './extensions/core/core';
+import { FieldFormExtension } from './extensions/field-form/field-form';
 import { FieldExpressionExtension } from './extensions/field-expression/field-expression';
 import { FieldValidationExtension } from './extensions/field-validation/field-validation';
-import { FieldFormExtension } from './extensions/field-form/field-form';
-import { CoreExtension } from './extensions/core/core';
-import { FieldArrayType } from './templates/field-array.type';
+
 
 export function defaultFormlyConfig(formlyConfig: FormlyConfig): ConfigOption {
   return {
@@ -41,7 +45,13 @@ export function defaultFormlyConfig(formlyConfig: FormlyConfig): ConfigOption {
     FieldArrayType as any,
   ],
   entryComponents: [FormlyGroup, FormlyTemplateType],
-  exports: [FormlyForm, FormlyField, FormlyAttributes, FormlyGroup, FormlyValidationMessage],
+  exports: [
+    FormlyForm,
+    // FormlyField,
+    FormlyAttributes, 
+    FormlyGroup, 
+    FormlyValidationMessage
+  ],
   imports: [CommonModule],
 })
 export class FormlyModule {

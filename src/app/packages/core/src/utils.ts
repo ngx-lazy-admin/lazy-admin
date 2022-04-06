@@ -1,8 +1,10 @@
-import { FormlyFieldConfig } from './core';
-import { isObservable } from 'rxjs';
 import { AbstractControl } from '@angular/forms';
-import { FormlyFieldConfigCache } from './components/formly.field.config';
 import { TemplateRef } from '@angular/core';
+import { isObservable } from 'rxjs';
+
+import { FormlyFieldConfig } from './core';
+import { FormlyFieldConfigCache } from './components/formly.field.config';
+
 
 export function disableTreeValidityCall(form: any, callback: Function) {
   const _updateTreeValidity = form._updateTreeValidity.bind(form);
@@ -65,7 +67,9 @@ export function assignFieldValue(field: FormlyFieldConfigCache, value: any) {
   if (value === undefined && field.resetOnHide) {
     const k = paths.pop();
     const m = paths.reduce((model, path) => model[path] || {}, root.model);
-    delete m[k];
+    if (m && k) {
+      delete m[k];
+    }
     return;
   }
 
@@ -86,7 +90,7 @@ export function assignModelValue(model: any, paths: string[], value: any) {
 }
 
 export function getFieldValue(field: FormlyFieldConfig): any {
-  let model = field.parent.model;
+  let model = field.parent?.model;
   for (const path of getKeyPath(field)) {
     if (!model) {
       return model;
@@ -185,7 +189,7 @@ export function clone(value: any): any {
   // also Object.assign wont copy property descriptor exactly
   return Object.keys(value).reduce((newVal, prop) => {
     const propDesc = Object.getOwnPropertyDescriptor(value, prop);
-    if (propDesc.get) {
+    if (propDesc?.get) {
       Object.defineProperty(newVal, prop, propDesc);
     } else {
       newVal[prop] = clone(value[prop]);

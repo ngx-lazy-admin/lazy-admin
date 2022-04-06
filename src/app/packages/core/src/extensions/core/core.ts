@@ -1,6 +1,7 @@
+import { FormGroup } from '@angular/forms';
+
 import { FormlyExtension, FormlyConfig, TemplateManipulators } from '../../services/formly.config';
 import { FormlyFieldConfigCache, FormlyFieldConfig } from '../../components/formly.field.config';
-import { FormGroup } from '@angular/forms';
 import { getFieldId, isUndefined, getFieldValue, reverseDeepMerge, assignFieldValue } from '../../utils';
 
 /** @experimental */
@@ -14,7 +15,7 @@ export class CoreExtension implements FormlyExtension {
       return;
     }
 
-    const fieldTransforms = (field.options && field.options.fieldTransform) || this.formlyConfig.extras.fieldTransform;
+    const fieldTransforms = (field.options && field.options.fieldTransform) || this.formlyConfig.extras?.fieldTransform;
     (Array.isArray(fieldTransforms) ? fieldTransforms : [fieldTransforms]).forEach(fieldTransform => {
       if (fieldTransform) {
         console.warn(`NgxFormly: fieldTransform is deprecated since v5.0, use custom extension instead.`);
@@ -68,7 +69,7 @@ export class CoreExtension implements FormlyExtension {
       },
     });
 
-    if (this.formlyConfig.extras.resetFieldOnHide && field.resetOnHide !== false) {
+    if (this.formlyConfig.extras?.resetFieldOnHide && field.resetOnHide !== false) {
       field.resetOnHide = true;
     }
 

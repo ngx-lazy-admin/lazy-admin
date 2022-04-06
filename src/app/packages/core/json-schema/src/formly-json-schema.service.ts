@@ -3,7 +3,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema';
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 import {
-  ɵreverseDeepMerge as reverseDeepMerge,
+  ɵreverseDeepMerge as reverseDeepMerge,  
   ɵgetFieldValue as getFieldValue,
   ɵclone as clone,
 } from '@ngx-formly/core';

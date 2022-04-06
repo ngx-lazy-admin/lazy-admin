@@ -1,7 +1,19 @@
-import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, ElementRef, ViewContainerRef, ChangeDetectorRef, Injectable } from '@angular/core';
+import { 
+  Component, 
+  OnDestroy, 
+  TemplateRef, 
+  ChangeDetectionStrategy, 
+  ViewEncapsulation, 
+  ViewChild, 
+  ElementRef, 
+  ViewContainerRef, 
+  ChangeDetectorRef, 
+  Injectable 
+} from '@angular/core';
+import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
-import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
+
 import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
 
 @Injectable({ providedIn: 'root' })

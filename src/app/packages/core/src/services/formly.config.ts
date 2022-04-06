@@ -1,9 +1,12 @@
 import { Injectable, InjectionToken, ComponentRef } from '@angular/core';
 import { ValidationErrors, AbstractControl } from '@angular/forms';
+
+import { Observable } from 'rxjs';
+
 import { FieldType } from './../templates/field.type';
 import { reverseDeepMerge, defineHiddenProp } from './../utils';
 import { FormlyFieldConfig, FormlyFieldConfigCache } from '../components/formly.field.config';
-import { Observable } from 'rxjs';
+
 
 export const FORMLY_CONFIG = new InjectionToken<FormlyConfig>('FORMLY_CONFIG');
 
@@ -91,37 +94,39 @@ export class FormlyConfig {
   }
 
   getMergedField(field: FormlyFieldConfig = {}): any {
-    const type = this.getType(field.type);
-    if (type.defaultOptions) {
-      reverseDeepMerge(field, type.defaultOptions);
-    }
+    if (field.type) {
+      const type = this.getType(field.type);
+      if (type.defaultOptions) {
+        reverseDeepMerge(field, type.defaultOptions);
+      }
+  
+      const extendDefaults = type.extends && this.getType(type.extends).defaultOptions;
+      if (extendDefaults) {
+        reverseDeepMerge(field, extendDefaults);
+      }
 
-    const extendDefaults = type.extends && this.getType(type.extends).defaultOptions;
-    if (extendDefaults) {
-      reverseDeepMerge(field, extendDefaults);
-    }
-
-    if (field && field.optionsTypes) {
-      field.optionsTypes.forEach(option => {
-        const defaultOptions = this.getType(option).defaultOptions;
-        if (defaultOptions) {
-          reverseDeepMerge(field, defaultOptions);
-        }
-      });
-    }
-
-    const componentRef = this.resolveFieldTypeRef(field);
-    if (componentRef && componentRef.instance && componentRef.instance.defaultOptions) {
-      reverseDeepMerge(field, componentRef.instance.defaultOptions);
-    }
-
-    if (!field.wrappers && type.wrappers) {
-      field.wrappers = [...type.wrappers];
+      if (field && field.optionsTypes) {
+        field.optionsTypes.forEach(option => {
+          const defaultOptions = this.getType(option).defaultOptions;
+          if (defaultOptions) {
+            reverseDeepMerge(field, defaultOptions);
+          }
+        });
+      }
+  
+      const componentRef = this.resolveFieldTypeRef(field);
+      if (componentRef && componentRef.instance && componentRef.instance.defaultOptions) {
+        reverseDeepMerge(field, componentRef.instance.defaultOptions);
+      }
+  
+      if (!field.wrappers && type.wrappers) {
+        field.wrappers = [...type.wrappers];
+      }
     }
   }
 
   /** @internal */
-  resolveFieldTypeRef(field: FormlyFieldConfigCache = {}): ComponentRef<FieldType> {
+  resolveFieldTypeRef(field: FormlyFieldConfigCache = {}): ComponentRef<FieldType> | null {
     if (!field.type) {
       return null;
     }
@@ -131,7 +136,7 @@ export class FormlyConfig {
       return type['_componentRef'];
     }
 
-    const { _resolver, _injector } = field.parent.options;
+    const { _resolver, _injector } = field.parent?.options;
     const componentRef = _resolver
       .resolveComponentFactory<FieldType>(type.component)
       .create(_injector);

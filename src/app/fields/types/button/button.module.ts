@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { FormlyModule } from '@ngx-formly/core';
+
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { ButtonField } from './button.component';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { ButtonGroupField } from './button-group.component';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
+import { ButtonField } from './button.component';
+import { ButtonGroupField } from './button-group.component';
+
 
 @NgModule({
   declarations: [

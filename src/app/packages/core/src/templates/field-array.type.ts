@@ -1,12 +1,12 @@
-import { Inject, Optional } from '@angular/core';
+import { Inject, Optional, Directive } from '@angular/core';
 import { FormArray } from '@angular/forms';
+
 import { FieldType } from './field.type';
 import { clone, isNullOrUndefined, assignFieldValue } from '../utils';
-import { FormlyFormBuilder } from '../services/formly.form.builder';
 import { FormlyFieldConfig } from '../components/formly.field.config';
+import { FormlyFormBuilder } from '../services/formly.form.builder';
 import { FORMLY_CONFIG, FormlyExtension } from '../services/formly.config';
 import { registerControl, unregisterControl, findControl } from '../extensions/field-form/utils';
-import { Directive } from '@angular/core';
 
 export interface FieldArrayTypeConfig extends FormlyFieldConfig {
   formControl: FormArray;

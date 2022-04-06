@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, ChangeDetectionStrategy, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { formatDate } from '@angular/common';
+import { formatDate, registerLocaleData } from '@angular/common';
 import { FormControl } from '@angular/forms';
 
 import { FieldType } from '@ngx-formly/core';
@@ -11,7 +11,7 @@ import {
   NzI18nService
 } from 'ng-zorro-antd/i18n';
 
-import { registerLocaleData } from '@angular/common';
+
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
 

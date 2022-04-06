@@ -1,16 +1,18 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { AbstractControl, FormControl, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { FormWrapper } from './form.wrapper';
-import { InlineWrapper } from './inline.wrapper';
-import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
+
+import { FormlyModule, FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
 import { FieldValidatorFn } from '@ngx-formly/core/lib/services/formly.config';
+
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+
 import { TableWrapper } from './table.wrapper';
 import { FixedWidthPipe } from './fixedwidth.pipe';
+import { FormWrapper } from './form.wrapper';
+import { InlineWrapper } from './inline.wrapper';
 
 export function minValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This value should be more than ${field.templateOptions?.min}`;

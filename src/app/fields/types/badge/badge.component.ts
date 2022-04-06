@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { Subject } from 'rxjs';
+
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 import { ShareFieldType } from '../share-field.type';
 

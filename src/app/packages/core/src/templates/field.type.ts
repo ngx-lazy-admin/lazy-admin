@@ -1,5 +1,6 @@
-import { Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+
 import { FormlyFieldConfig } from '../components/formly.field.config';
 
 export interface FieldTypeConfig extends FormlyFieldConfig {
@@ -7,14 +8,16 @@ export interface FieldTypeConfig extends FormlyFieldConfig {
   templateOptions: NonNullable<FormlyFieldConfig['templateOptions']>;
   options: NonNullable<FormlyFieldConfig['options']>;
 }
+
 export interface FieldGroupTypeConfig extends FormlyFieldConfig {
   formControl: NonNullable<FormGroup>;
   templateOptions: NonNullable<FormlyFieldConfig['templateOptions']>;
   options: NonNullable<FormlyFieldConfig['options']>;
 }
 
+@Directive()
 export abstract class FieldType<F extends FormlyFieldConfig = FormlyFieldConfig> {
-  @Input() field: F;
+  @Input() field!: F;
   defaultOptions?: Partial<F>;
 
   @Input()
@@ -22,7 +25,7 @@ export abstract class FieldType<F extends FormlyFieldConfig = FormlyFieldConfig>
   set model(m: any) { console.warn(`NgxFormly: passing 'model' input to '${this.constructor.name}' component is not required anymore, you may remove it!`); }
 
   @Input()
-  get form() { return <FormGroup> this.field.parent.formControl; }
+  get form() { return <FormGroup> this.field.parent?.formControl; }
   set form(form) { console.warn(`NgxFormly: passing 'form' input to '${this.constructor.name}' component is not required anymore, you may remove it!`); }
 
   @Input()
@@ -35,11 +38,17 @@ export abstract class FieldType<F extends FormlyFieldConfig = FormlyFieldConfig>
 
   get to() { return this.field.templateOptions || {}; }
 
-  get showError(): boolean { return this.options.showError(this); }
+  get showError(): boolean { 
+    if (this.options?.showError) {
+      return this.options.showError(this);
+    } else {
+      return false
+    }
+  }
 
-  get id(): string { return this.field.id; }
+  get id(): string | undefined { return this.field.id; }
 
-  get formState() { return this.options.formState || {}; }
+  get formState() { return this.options?.formState || {}; }
 }
 
 /**

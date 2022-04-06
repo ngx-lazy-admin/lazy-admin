@@ -3,7 +3,6 @@ import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType,  } from 'ng-zorro-antd/core/types';
 import { execFunc } from '../share-field.type';
-import { field } from 'src/app/api/field/mock';
 
 interface AutocompleteDataSourceItem {
   value: string;

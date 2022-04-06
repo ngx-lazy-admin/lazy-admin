@@ -1,7 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormlyFieldConfig } from '@ngx-formly/core';
-import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { Subject } from 'rxjs';
+
+import { FormlyFieldConfig } from '@ngx-formly/core';
+
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { ActionTypeInterface, ShareFieldType } from '../share-field.type';

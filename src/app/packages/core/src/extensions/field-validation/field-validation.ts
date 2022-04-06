@@ -1,10 +1,12 @@
-import { FormlyExtension, FormlyConfig, ValidatorOption } from '../../services/formly.config';
-import { FormlyFieldConfigCache } from '../../components/formly.field.config';
 import { AbstractControl, Validators, ValidatorFn } from '@angular/forms';
-import { FORMLY_VALIDATORS, defineHiddenProp, isPromise, wrapProperty, clone, isObject } from '../../utils';
-import { updateValidity } from '../field-form/utils';
 import { isObservable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { FormlyExtension, FormlyConfig, ValidatorOption } from '../../services/formly.config';
+import { FormlyFieldConfigCache } from '../../components/formly.field.config';
+import { FORMLY_VALIDATORS, defineHiddenProp, isPromise, wrapProperty, clone, isObject } from '../../utils';
+import { updateValidity } from '../field-form/utils';
+
 
 /** @experimental */
 export class FieldValidationExtension implements FormlyExtension {
@@ -57,26 +59,29 @@ export class FieldValidationExtension implements FormlyExtension {
 
       return Validators.compose(VALIDATORS.map(opt => () => {
         const value = field.templateOptions[opt];
-        switch (opt) {
-          case 'required':
-            return Validators.required(control);
-          case 'pattern':
-            return Validators.pattern(value)(control);
-          case 'minLength':
-            return Validators.minLength(value)(control);
-          case 'maxLength':
-            return Validators.maxLength(value)(control);
-          case 'min':
-            return Validators.min(value)(control);
-          case 'max':
-            return Validators.max(value)(control);
+        if (opt) {
+          switch (opt) {
+            case 'required':
+              return Validators.required(control);
+            case 'pattern':
+              return Validators.pattern(value)(control);
+            case 'minLength':
+              return Validators.minLength(value)(control);
+            case 'maxLength':
+              return Validators.maxLength(value)(control);
+            case 'min':
+              return Validators.min(value)(control);
+            case 'max':
+              return Validators.max(value)(control);
+          }
         }
+
       }))(control);
     };
   }
 
   private wrapNgValidatorFn(field: FormlyFieldConfigCache, validator: any, validatorName?: string) {
-    let validatorOption: ValidatorOption = null;
+    let validatorOption!: ValidatorOption;
     if (typeof validator === 'string') {
       validatorOption = clone(this.formlyConfig.getValidator(validator));
     }
@@ -91,7 +96,7 @@ export class FieldValidationExtension implements FormlyExtension {
     if (typeof validator === 'object' && validator.expression) {
       const { expression, ...options } = validator;
       validatorOption = {
-        name: validatorName,
+        name: validatorName || '',
         validation: expression,
         options: Object.keys(options).length > 0 ? options : null,
       };
@@ -99,7 +104,7 @@ export class FieldValidationExtension implements FormlyExtension {
 
     if (typeof validator === 'function') {
       validatorOption = {
-        name: validatorName,
+        name: validatorName || '',
         validation: validator,
       };
     }
@@ -141,7 +146,7 @@ export class FieldValidationExtension implements FormlyExtension {
           ? errors[name].errorPath
           : (options || {}).errorPath;
 
-        const childCtrl = errorPath ? field.formControl.get(errorPath) : null;
+        const childCtrl = errorPath ? field.formControl?.get(errorPath) : null;
         if (childCtrl) {
           const { errorPath, ...opts } = errors[name];
           childCtrl.setErrors({ ...(childCtrl.errors || {}), [name]: opts });

@@ -1,7 +1,18 @@
-import { Directive, ElementRef, Input, OnChanges, SimpleChanges, Renderer2, DoCheck, Inject, OnDestroy } from '@angular/core';
+import { 
+  Directive, 
+  ElementRef, 
+  Input, 
+  OnChanges, 
+  SimpleChanges, 
+  Renderer2, 
+  DoCheck, 
+  Inject, 
+  OnDestroy 
+} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+
 import { FormlyFieldConfig, FormlyTemplateOptions } from './formly.field.config';
 import { wrapProperty, defineHiddenProp, FORMLY_VALIDATORS } from '../utils';
-import { DOCUMENT } from '@angular/common';
 
 @Directive({
   selector: '[formlyAttributes]',
@@ -10,8 +21,8 @@ import { DOCUMENT } from '@angular/common';
   },
 })
 export class FormlyAttributes implements OnChanges, DoCheck, OnDestroy {
-  @Input('formlyAttributes') field: FormlyFieldConfig;
-  @Input() id: string;
+  @Input('formlyAttributes') field!: FormlyFieldConfig;
+  @Input() id!: string;
 
   private document: Document;
   private uiAttributesCache: any = {};
@@ -41,7 +52,9 @@ export class FormlyAttributes implements OnChanges, DoCheck, OnDestroy {
 
   get to(): FormlyTemplateOptions { return this.field.templateOptions || {}; }
 
-  private get fieldAttrElements(): ElementRef[] { return (this.field && this.field['_elementRefs']) || []; }
+  private get fieldAttrElements(): ElementRef[] { 
+    return (this.field && this.field['_elementRefs']) || []; 
+  }
 
   constructor(
     private renderer: Renderer2,

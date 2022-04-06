@@ -1,9 +1,14 @@
 import { 
-	Component, ChangeDetectionStrategy,
-	Input, Self, Optional, ViewEncapsulation } from '@angular/core';
+	Component, 
+	ChangeDetectionStrategy,
+	Input, 
+	Self, 
+	Optional, 
+	ViewEncapsulation
+} from '@angular/core';
+import { NgControl, FormControl } from '@angular/forms';
 import { FieldType,  } from '@ngx-formly/core';
-import { NgControl } from '@angular/forms';
-import { FormControl } from '@angular/forms';
+
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { InputBoolean } from 'ng-zorro-antd/core/util';
 

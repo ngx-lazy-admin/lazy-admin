@@ -1,26 +1,40 @@
-import { FormlyFieldConfig, FormlyValueChangeEvent, FormlyFieldConfigCache } from '../../components/formly.field.config';
-import { isObject, isNullOrUndefined, isUndefined, isFunction, defineHiddenProp, wrapProperty, getFieldValue, assignFieldValue } from '../../utils';
-import { evalExpression, evalStringExpression } from './utils';
+import { FormArray } from '@angular/forms';
 import { isObservable, Observable, Subscription } from 'rxjs';
+
+import { FormlyFieldConfig, FormlyValueChangeEvent, FormlyFieldConfigCache } from '../../components/formly.field.config';
+import { 
+  isObject, 
+  isNullOrUndefined, 
+  isUndefined, 
+  isFunction, 
+  defineHiddenProp, 
+  wrapProperty, 
+  getFieldValue, 
+  assignFieldValue 
+} from '../../utils';
+import { evalExpression, evalStringExpression } from './utils';
+
 import { FormlyExtension } from '../../services/formly.config';
 import { unregisterControl, registerControl, updateValidity } from '../field-form/utils';
-import { FormArray } from '@angular/forms';
+
 
 /** @experimental */
 export class FieldExpressionExtension implements FormlyExtension {
   prePopulate(field: FormlyFieldConfigCache) {
-    if (field.parent || field.options._checkField) {
+    if (field.parent || field.options?._checkField) {
       return;
     }
 
     let checkLocked = false;
-    field.options._checkField = (f, ignoreCache) => {
-      if (!checkLocked) {
-        checkLocked = true;
-        this.checkField(f, ignoreCache);
-        checkLocked = false;
-      }
-    };
+    if (field.options) {
+      field.options._checkField = (f, ignoreCache) => {
+        if (!checkLocked) {
+          checkLocked = true;
+          this.checkField(f, ignoreCache);
+          checkLocked = false;
+        }
+      };
+    }
   }
 
   postPopulate(field: FormlyFieldConfigCache) {
@@ -41,13 +55,13 @@ export class FieldExpressionExtension implements FormlyExtension {
               key,
               expressionProperty,
               key === 'templateOptions.disabled' && field.parent.expressionProperties && field.parent.expressionProperties.hasOwnProperty('templateOptions.disabled')
-                ? () => field.parent.templateOptions.disabled
+                ? () => field.parent?.templateOptions?.disabled
                 : undefined,
             ),
           };
           if (key === 'templateOptions.disabled') {
             Object.defineProperty(field._expressionProperties[key], 'expressionValue', {
-              get: () => field.templateOptions.disabled,
+              get: () => field.templateOptions?.disabled,
               set: () => { },
               enumerable: true,
               configurable: true,
@@ -62,21 +76,24 @@ export class FieldExpressionExtension implements FormlyExtension {
               }
             });
 
-          let subscription: Subscription = subscribe();
-          const onInit = field.hooks.onInit;
-          field.hooks.onInit = () => {
-            if (subscription === null) {
-              subscription = subscribe();
-            }
-            return onInit && onInit(field);
-          };
+          let subscription: Subscription | null = subscribe();
+          const onInit = field.hooks?.onInit;
+          const onDestroy = field.hooks?.onDestroy;
 
-          const onDestroy = field.hooks.onDestroy;
-          field.hooks.onDestroy = () => {
-            onDestroy && onDestroy(field);
-            subscription.unsubscribe();
-            subscription = null;
-          };
+          if (field.hooks) {
+            field.hooks.onInit = () => {
+              if (subscription === null) {
+                subscription = subscribe();
+              }
+              return onInit && onInit(field);
+            };
+
+            field.hooks.onDestroy = () => {
+              onDestroy && onDestroy(field);
+              subscription?.unsubscribe();
+              subscription = null;
+            };
+          }
         }
       }
     }
@@ -90,11 +107,11 @@ export class FieldExpressionExtension implements FormlyExtension {
         field.hideExpression,
         () => {
           let root = field.parent;
-          while (root.parent && !root.hide) {
+          while (root?.parent && !root.hide) {
             root = root.parent;
           }
 
-          return root.hide;
+          return root?.hide;
         },
       );
     } else {
@@ -129,29 +146,31 @@ export class FieldExpressionExtension implements FormlyExtension {
   private checkField(field: FormlyFieldConfigCache, ignoreCache = false) {
     const fieldChanged = this._checkField(field, ignoreCache);
 
-    field.options._hiddenFieldsForCheck
-      .sort(f => f.hide ? -1 : 1)
-      .forEach(f => this.toggleFormControl(f, !!f.hide, !ignoreCache));
+    if (field.options) {
+      field.options._hiddenFieldsForCheck?.sort(f => f.hide ? -1 : 1)
+        .forEach(f => this.toggleFormControl(f, !!f.hide, !ignoreCache));
 
-    field.options._hiddenFieldsForCheck = [];
-    if (fieldChanged) {
-      this.checkField(field);
-      if (field.options && field.options._markForCheck) {
-        field.options._markForCheck(field);
+      field.options._hiddenFieldsForCheck = [];
+      if (fieldChanged) {
+        this.checkField(field);
+        if (field.options && field.options._markForCheck) {
+          field.options._markForCheck(field);
+        }
       }
     }
+
   }
 
   private _checkField(field: FormlyFieldConfigCache, ignoreCache = false) {
     let fieldChanged = false;
-    field.fieldGroup.forEach(f => {
+    field.fieldGroup?.forEach(f => {
       if (!f.options) {
         return;
       }
 
       this.checkFieldExpressionChange(f, ignoreCache) && (fieldChanged = true);
       if (this.checkFieldVisibilityChange(f, ignoreCache)) {
-        field.options._hiddenFieldsForCheck.push(f);
+        field.options?._hiddenFieldsForCheck?.push(f);
         fieldChanged = true;
       }
 
@@ -163,7 +182,7 @@ export class FieldExpressionExtension implements FormlyExtension {
     return fieldChanged;
   }
 
-  private checkFieldExpressionChange(field: FormlyFieldConfigCache, ignoreCache): boolean {
+  private checkFieldExpressionChange(field: FormlyFieldConfigCache, ignoreCache: any): boolean {
     if (!field || !field._expressionProperties) {
       return false;
     }
@@ -172,7 +191,7 @@ export class FieldExpressionExtension implements FormlyExtension {
     const expressionProperties = field._expressionProperties;
 
     for (const key in expressionProperties) {
-      let expressionValue = evalExpression(expressionProperties[key].expression, { field }, [field.model, field.options.formState, field, ignoreCache]);
+      let expressionValue = evalExpression(expressionProperties[key].expression, { field }, [field.model, field.options?.formState, field, ignoreCache]);
       if (key === 'templateOptions.disabled') {
         expressionValue = !!expressionValue;
       }
@@ -200,7 +219,7 @@ export class FieldExpressionExtension implements FormlyExtension {
     return markForCheck;
   }
 
-  private checkFieldVisibilityChange(field: FormlyFieldConfigCache, ignoreCache): boolean {
+  private checkFieldVisibilityChange(field: FormlyFieldConfigCache, ignoreCache: any): boolean {
     if (!field || isNullOrUndefined(field.hideExpression)) {
       return false;
     }
@@ -208,7 +227,7 @@ export class FieldExpressionExtension implements FormlyExtension {
     const hideExpressionResult: boolean = !!evalExpression(
       field.hideExpression,
       { field },
-      [field.model, field.options.formState, field, ignoreCache],
+      [field.model, field.options?.formState, field, ignoreCache],
     );
     let markForCheck = false;
     if (hideExpressionResult !== field.hide || ignoreCache) {
@@ -228,7 +247,7 @@ export class FieldExpressionExtension implements FormlyExtension {
         .forEach(f => this.setDisabledState(f, value));
     }
 
-    if (field.key && field.templateOptions.disabled !== value) {
+    if (field.key && field.templateOptions?.disabled !== value) {
       field.templateOptions.disabled = value;
     }
   }
@@ -270,7 +289,7 @@ export class FieldExpressionExtension implements FormlyExtension {
       }
     }
 
-    if (field.options.fieldChanges) {
+    if (field.options?.fieldChanges) {
       field.options.fieldChanges.next(<FormlyValueChangeEvent> { field, type: 'hidden', value: hide });
     }
   }
@@ -291,7 +310,7 @@ export class FieldExpressionExtension implements FormlyExtension {
       }
 
       target[paths[lastIndex]] = value;
-    } catch (error) {
+    } catch (error: any) {
       error.message = `[Formly Error] [Expression "${prop}"] ${error.message}`;
       throw error;
     }
@@ -317,7 +336,7 @@ export class FieldExpressionExtension implements FormlyExtension {
   }
 
   private emitExpressionChanges(field: FormlyFieldConfigCache, property: string, value: any) {
-    if (!field.options.fieldChanges) {
+    if (!field.options?.fieldChanges) {
       return;
     }
 

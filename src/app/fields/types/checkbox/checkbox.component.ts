@@ -1,6 +1,5 @@
 import { Component, OnChanges, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FieldType } from '@ngx-formly/core';
 import { ShareFieldType } from '../share-field.type';
 
 @Component({

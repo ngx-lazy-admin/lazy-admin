@@ -1,24 +1,43 @@
 import {
-  Component, EventEmitter, Input, Output,
-  ViewContainerRef, ViewChild, ComponentRef, SimpleChanges, Attribute, ComponentFactoryResolver,
-  OnInit, OnChanges, OnDestroy, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, Renderer2, ElementRef
+  Component,
+  EventEmitter, 
+  Input, 
+  Output,
+  ViewContainerRef, 
+  ViewChild, 
+  ComponentRef, 
+  SimpleChanges, 
+  Attribute, 
+  ComponentFactoryResolver,
+  OnInit, 
+  OnChanges, 
+  OnDestroy, 
+  DoCheck, 
+  AfterContentInit, 
+  AfterContentChecked, 
+  AfterViewInit, 
+  AfterViewChecked, 
+  Renderer2, 
+  ElementRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+
+import { isObservable } from 'rxjs';
+
 import { FormlyConfig } from '../services/formly.config';
 import { FormlyFieldConfig, FormlyFormOptions, FormlyFieldConfigCache } from './formly.field.config';
 import { defineHiddenProp, wrapProperty } from '../utils';
 import { FieldWrapper } from '../templates/field.wrapper';
 import { FieldType } from '../templates/field.type';
-import { isObservable } from 'rxjs';
-
-
 
 @Component({
   selector: 'formly-field',
   template: `<ng-template #container></ng-template>`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyField implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-  @Input() field: FormlyFieldConfig;
+  @Input() field: FormlyFieldConfig | undefined;
 
   warnDeprecation = false;
 
@@ -36,7 +55,7 @@ export class FormlyField implements OnInit, OnChanges, DoCheck, AfterContentInit
 
   @Output() modelChange: EventEmitter<any> = new EventEmitter();
   // TODO: remove `any`, once dropping angular `V7` support.
-  @ViewChild('container', <any>{ read: ViewContainerRef, static: true }) containerRef: ViewContainerRef;
+  @ViewChild('container', <any>{ read: ViewContainerRef, static: true }) containerRef: ViewContainerRef | undefined;
   private hostObservers: Function[] = [];
   private componentRefs: any[] = [];
   private hooksObservers: Function[] = [];
@@ -95,7 +114,7 @@ export class FormlyField implements OnInit, OnChanges, DoCheck, AfterContentInit
     if (this.containerRef === containerRef) {
       this.resetRefs(this.field);
       this.containerRef.clear();
-      wrappers = this.field ? this.field.wrappers : [];
+      wrappers = this.field?.wrappers ? this.field.wrappers : [];
     }
 
     if (wrappers && wrappers.length > 0) {
@@ -138,16 +157,16 @@ export class FormlyField implements OnInit, OnChanges, DoCheck, AfterContentInit
       }
     }
 
-    if (this.field && this.field.lifecycle && this.field.lifecycle[name]) {
-      this.field.lifecycle[name](
-        this.field.form,
-        this.field,
-        this.field.model,
-        this.field.options
-      );
-    }
+    // if (this.field && this.field.lifecycle && this.field.lifecycle[name]) {
+    //   this.field.lifecycle[name](
+    //     this.field.form,
+    //     this.field,
+    //     this.field.model,
+    //     this.field.options
+    //   );
+    // }
 
-    if (name === 'onChanges' && changes.field) {
+    if (name === 'onChanges' && changes?.field) {
       this.resetRefs(changes.field.previousValue);
       this.render();
     }
@@ -155,7 +174,7 @@ export class FormlyField implements OnInit, OnChanges, DoCheck, AfterContentInit
 
   private attachComponentRef<T extends FieldType>(ref: ComponentRef<T>, field: FormlyFieldConfigCache) {
     this.componentRefs.push(ref);
-    field._componentRefs.push(ref);
+    field._componentRefs?.push(ref);
     Object.assign(ref.instance, { field });
   }
 
@@ -175,20 +194,20 @@ export class FormlyField implements OnInit, OnChanges, DoCheck, AfterContentInit
     this.hostObservers.forEach(unsubscribe => unsubscribe());
     this.hostObservers = [
       wrapProperty(this.field, 'hide', ({ firstChange, currentValue }) => {
-        if (!this.formlyConfig.extras.lazyRender) {
+        if (!this.formlyConfig.extras?.lazyRender) {
           firstChange && this.renderField(this.containerRef, this.field);
           if (!firstChange || (firstChange && currentValue)) {
             this.renderer.setStyle(this.elementRef.nativeElement, 'display', currentValue ? 'none' : '');
           }
         } else {
           if (currentValue) {
-            this.containerRef.clear();
-            if (this.field.className) {
+            this.containerRef?.clear();
+            if (this.field?.className) {
               this.renderer.removeAttribute(this.elementRef.nativeElement, 'class');
             }
           } else {
             this.renderField(this.containerRef, this.field);
-            if (this.field.className) {
+            if (this.field?.className) {
               this.renderer.setAttribute(this.elementRef.nativeElement, 'class', this.field.className);
             }
           }
@@ -196,14 +215,14 @@ export class FormlyField implements OnInit, OnChanges, DoCheck, AfterContentInit
       }),
       wrapProperty(this.field, 'className', ({ firstChange, currentValue }) => {
         if ((!firstChange || (firstChange && currentValue))
-          && (!this.formlyConfig.extras.lazyRender || (this.field.hide !== true))) {
+          && (!this.formlyConfig.extras?.lazyRender || (this.field?.hide !== true))) {
           this.renderer.setAttribute(this.elementRef.nativeElement, 'class', currentValue);
         }
       }),
     ];
   }
 
-  private resetRefs(field: FormlyFieldConfigCache) {
+  private resetRefs(field: FormlyFieldConfigCache | undefined) {
     if (field) {
       if (field._componentRefs) {
         field._componentRefs = field._componentRefs.filter(ref => this.componentRefs.indexOf(ref) === -1);
@@ -215,3 +234,4 @@ export class FormlyField implements OnInit, OnChanges, DoCheck, AfterContentInit
     this.componentRefs = [];
   }
 }
+  

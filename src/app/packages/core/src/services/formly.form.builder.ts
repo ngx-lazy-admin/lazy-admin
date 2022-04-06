@@ -1,8 +1,17 @@
 import { Injectable, ComponentFactoryResolver, Injector, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormArray } from '@angular/forms';
-import { FormlyConfig } from './formly.config';
-import { FormlyFieldConfig, FormlyFormOptions, FormlyFieldConfigCache, FormlyValueChangeEvent, FormlyFormOptionsCache } from '../components/formly.field.config';
+
 import { Subject } from 'rxjs';
+
+import { FormlyConfig } from './formly.config';
+import { 
+  FormlyFieldConfig,
+  FormlyFormOptions,
+  FormlyFieldConfigCache,
+  FormlyValueChangeEvent,
+  FormlyFormOptionsCache
+} from '../components/formly.field.config';
+
 import { defineHiddenProp, disableTreeValidityCall } from '../utils';
 
 @Injectable({ providedIn: 'root' })
@@ -43,7 +52,7 @@ export class FormlyFormBuilder {
     options.formState = options.formState || {};
 
     if (!options.showError) {
-      options.showError = this.formlyConfig.extras.showError;
+      options.showError = this.formlyConfig.extras?.showError;
     }
 
     if (!options.fieldChanges) {

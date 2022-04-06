@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { FormlyModule } from '@ngx-formly/core';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { CollapseField } from './collapse.component';
 

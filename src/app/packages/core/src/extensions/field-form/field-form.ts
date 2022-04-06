@@ -1,9 +1,12 @@
+
+import { FormGroup, FormControl, AbstractControlOptions, Validators, ValidatorFn, AsyncValidatorFn } from '@angular/forms';
+import { of } from 'rxjs';
+
 import { FormlyExtension, FormlyConfig } from '../../services/formly.config';
 import { FormlyFieldConfigCache } from '../../components/formly.field.config';
-import { FormGroup, FormControl, AbstractControlOptions, Validators, ValidatorFn, AsyncValidatorFn } from '@angular/forms';
 import { getFieldValue, defineHiddenProp } from '../../utils';
 import { registerControl, findControl, updateValidity } from './utils';
-import { of } from 'rxjs';
+
 
 /** @experimental */
 export class FieldFormExtension implements FormlyExtension {
@@ -32,7 +35,7 @@ export class FieldFormExtension implements FormlyExtension {
   private addFormControl(field: FormlyFieldConfigCache) {
     let control = findControl(field);
     if (!control) {
-      const controlOptions: AbstractControlOptions = { updateOn: field.modelOptions.updateOn };
+      const controlOptions: AbstractControlOptions = { updateOn: field.modelOptions?.updateOn };
       const value = field.key ? getFieldValue(field) : field.defaultValue;
 
       const ref = this.config ? this.config.resolveFieldTypeRef(field) : null;

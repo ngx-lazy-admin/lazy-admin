@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
+
+import { FieldType } from '@ngx-formly/core';
+
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({

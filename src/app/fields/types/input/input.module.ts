@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { FormlyModule } from '@ngx-formly/core';
+
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 import { InputField } from './input.component';
 import { TextareaField } from './textarea.component';
 import { PasswordField } from './password.component';
-import { NzIconModule } from 'ng-zorro-antd/icon';
+
 
 @NgModule({
   declarations: [

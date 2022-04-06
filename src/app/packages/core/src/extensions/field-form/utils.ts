@@ -61,10 +61,10 @@ export function registerControl(field: FormlyFieldConfigCache, control?: any, em
     control.setValidators(null);
     control.setAsyncValidators(null);
 
-    field.templateOptions.disabled = !!field.templateOptions.disabled;
+    field.templateOptions.disabled = !!field.templateOptions?.disabled;
     wrapProperty(field.templateOptions, 'disabled', ({ firstChange, currentValue }) => {
       if (!firstChange) {
-        currentValue ? field.formControl.disable() : field.formControl.enable();
+        currentValue ? field.formControl?.disable() : field.formControl?.enable();
       }
     });
     if (control.registerOnDisabledChange) {
@@ -78,7 +78,7 @@ export function registerControl(field: FormlyFieldConfigCache, control?: any, em
     }
   }
 
-  let parent = field.parent.formControl as FormGroup;
+  let parent = field.parent?.formControl as FormGroup;
   if (!parent || !field.key) {
     return;
   }

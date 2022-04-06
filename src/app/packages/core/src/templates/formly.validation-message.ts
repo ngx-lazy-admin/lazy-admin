@@ -1,10 +1,11 @@
 import { Component, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+
+import { Observable, isObservable, of, merge } from 'rxjs';
+import { startWith, switchMap, filter } from 'rxjs/operators';
+
 import { FormlyConfig, ValidationMessageOption } from '../services/formly.config';
 import { FormlyFieldConfig } from '../components/formly.field.config';
 import { isObject } from '../utils';
-import { Observable, isObservable, of } from 'rxjs';
-import { merge } from 'rxjs';
-import { startWith, switchMap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'formly-validation-message',
