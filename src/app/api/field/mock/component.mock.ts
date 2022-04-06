@@ -34,7 +34,6 @@ const list100 = [...Array(200).keys()].map((item, index) => {
   }
 })
 
-
 export const components = [
   {
     id: 'autocomplete',

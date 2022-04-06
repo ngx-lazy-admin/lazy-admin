@@ -12,18 +12,14 @@ import {
   NgZone 
 } from '@angular/core';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
-
 import { FieldType, FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
-
 import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
-
 
 @Injectable({ providedIn: 'root' })
 @Component({
   selector: 'div[card-field]',
   template: `
-
   <nz-card 
     [nzBodyStyle]="nzBodyStyle"
     [nzTitle]="nzTitle ? nzTitle : undefined" 
@@ -67,7 +63,6 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
       </a>
     </ng-container>
   </ng-template>
-
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -85,7 +80,6 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
     `
   ]
 })
-
 
 export class CardField extends ShareFieldType  implements OnDestroy {
   @ViewChild('templatePortalContent') templatePortalContent!: TemplateRef<unknown>;
@@ -114,7 +108,6 @@ export class CardField extends ShareFieldType  implements OnDestroy {
 		return this.to.nzExtra || this.to.extra || '';
 	}
   
-
   get nzHoverable(): boolean {
 		return this.to.nzHoverable || this.to.hoverable || false;
 	}
@@ -157,7 +150,6 @@ export class CardField extends ShareFieldType  implements OnDestroy {
 
   actionEdit:any
 
-
   log (tmp: any) {
     console.log(tmp)
   }
@@ -188,8 +180,6 @@ export class CardField extends ShareFieldType  implements OnDestroy {
   domPortal?: any;
 
   ngAfterViewInit() {
-
-
     this.cd.detectChanges();
   }
 

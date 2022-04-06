@@ -198,6 +198,7 @@ export class FormComponent {
 
     setTimeout(() => {
       try {
+        // 复制后, 使子对象发送变更
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
         this.cacheFields = result?.fields
         this.model = result?.data;

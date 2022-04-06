@@ -201,20 +201,14 @@ export class SimpleTableField extends FieldArrayType implements OnDestroy {
       .subscribe((data: number) => {
         console.log('scroll index to', data);
       });
-
-    if (this.options && this.options.formState) {
-      // this.options.formState[this.id]['caches'] = 
-    }
-    console.log(this)
-    // this.field.formControl.value
   }
 
   ngOnDestroy() {
-    if (this.field && this.field.fieldGroup) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
-      });
-    }
+    // if (this.field && this.field.fieldGroup) {
+    //   this.field.fieldGroup.map((item, index) => {
+    //     super.remove(index)
+    //   });
+    // }
     this.destroy$.next();
     this.destroy$.complete();    
   }

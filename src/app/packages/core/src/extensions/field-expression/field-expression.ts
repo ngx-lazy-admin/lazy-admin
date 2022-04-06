@@ -306,7 +306,9 @@ export class FieldExpressionExtension implements FormlyExtension {
       ;
       const lastIndex = paths.length - 1;
       for (let i = 0; i < lastIndex; i++) {
-        target = target[paths[i]];
+        if (paths[i]) {
+          target = target[paths[i]];
+        }
       }
 
       target[paths[lastIndex]] = value;
@@ -321,7 +323,7 @@ export class FieldExpressionExtension implements FormlyExtension {
 
     if (prop.indexOf('model.') === 0) {
       const path = prop.replace(/^model\./, ''),
-        control = field.key && prop === path ? field.formControl : field.parent.formControl.get(path);
+        control = field.key && prop === path ? field.formControl : field.parent?.formControl?.get(path);
 
       if (
         control

@@ -124,7 +124,7 @@ export class CoreExtension implements FormlyExtension {
     const fieldTemplateManipulators: TemplateManipulators = {
       preWrapper: [],
       postWrapper: [],
-      ...(field.templateOptions.templateManipulators || {}),
+      ...(field.templateOptions?.templateManipulators || {}),
     };
 
     field.wrappers = [

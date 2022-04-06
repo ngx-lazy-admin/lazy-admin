@@ -254,9 +254,9 @@ export class TableField extends FieldArrayType implements OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.field && this.field.fieldGroup) {
+    // if (this.field && this.field.fieldGroup) {
 
-    }
+    // }
     this.destroy$.next();
     this.destroy$.complete();    
   }

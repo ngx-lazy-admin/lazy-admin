@@ -219,11 +219,11 @@ export class VirtualTableField extends FieldArrayType implements OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.field && this.field.fieldGroup) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index)
-      });
-    }
+    // if (this.field && this.field.fieldGroup) {
+    //   this.field.fieldGroup.map((item, index) => {
+    //     super.remove(index)
+    //   });
+    // }
     this.destroy$.next();
     this.destroy$.complete();    
   }
