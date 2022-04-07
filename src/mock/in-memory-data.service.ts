@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
-import { user } from './user/user.mock';
 import { menu } from './menu/menu.mock';
 
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { field, system, dashboard, components, profile, form, list, account, antv, editor, table } from './field/mock';
-import { bootstrap } from './field/mock/bootstrap.mock';
-
-
+import { system, dashboard, components, profile, form, list, account, antv, editor, table, bootstrap } from './field';
 
 @Injectable({
   providedIn: 'root',

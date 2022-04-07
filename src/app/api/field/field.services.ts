@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { field } from './mock';
-import { InMemoryDataService } from '../in-memory-data.service';
+import { field } from '../../../mock/field';
+import { InMemoryDataService } from '../../../mock/in-memory-data.service';
 
 export interface FieldType {
 	label: string,

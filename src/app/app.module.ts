@@ -9,14 +9,14 @@ import zh from '@angular/common/locales/zh';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { LayoutModule } from './layout/layout.modules'
+import { LayoutModule } from './layouts/layout.modules'
 import { HttpsInterceptor } from './interceptors/https.interceptor'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserPipe } from './pipes/user.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 
-import { InMemoryDataService } from './api/in-memory-data.service';
+import { InMemoryDataService } from '../mock/in-memory-data.service';
 import { GlobalSearchModule } from './shared/global-search';
 import { ThemeSettingModule } from './shared/theme-setting';
 

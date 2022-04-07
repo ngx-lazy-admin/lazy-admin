@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { field } from './dashboard.mock';
+import { field } from '../../mock/dashboard/dashboard.mock';
 
 export interface FieldType {
 	label: string,

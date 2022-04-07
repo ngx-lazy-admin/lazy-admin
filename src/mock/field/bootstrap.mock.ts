@@ -1,19 +1,21 @@
-import { BackgroundMockFields } from "./bootstrap/background.mock";
-import { BorderMockFields } from "./bootstrap/border.mock";
-import { ColorsMockFields } from "./bootstrap/color.mock";
-import { DisplayMockFields } from "./bootstrap/display.mock";
-import { FlexMockFields } from "./bootstrap/flex.mock";
-import { FloatMockFields } from "./bootstrap/float.mock";
-import { InteractionsMockFields } from "./bootstrap/interactions.mock";
-import { OpacityMockFields } from "./bootstrap/opacity.mock";
-import { OverflowMockFields } from "./bootstrap/overflow.mock";
-import { PositionMockFields } from "./bootstrap/position.mock";
-import { ShadowsMockFields } from "./bootstrap/shadow.mock";
-import { SizingMockFields } from "./bootstrap/size.mock";
-import { SpacingMockFields } from "./bootstrap/space.mock";
-import { TextMockFields } from "./bootstrap/text.mock";
-import { VerticalAlignMockFields } from "./bootstrap/vertical-align.mock";
-import { VisibilityMockFields } from "./bootstrap/visibility.mock";
+import {
+  BackgroundMockFields,
+  BorderMockFields,
+  ColorsMockFields,
+  DisplayMockFields,
+  FlexMockFields,
+  FloatMockFields,
+  InteractionsMockFields,
+  OpacityMockFields,
+  OverflowMockFields,
+  PositionMockFields,
+  ShadowsMockFields,
+  SizingMockFields,
+  SpacingMockFields,
+  TextMockFields,
+  VerticalAlignMockFields,
+  VisibilityMockFields
+} from './bootstrap'
 
 export const bootstrap = [
   {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutBasicComponent } from './layout/basic/basic.component';
+import { LayoutBasicComponent } from './layouts/basic/basic.component';
 import { ActivateGuard } from './guards/activate.guard';
 import { ActivateChildGuard } from './guards/activate-child.guard';
 import { GlobalDeactivateGuard } from './guards/global-deactivate.guard';

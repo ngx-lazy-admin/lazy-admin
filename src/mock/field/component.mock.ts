@@ -1,28 +1,30 @@
-import { AutocompleteMockFields } from './components/autocomplete.mock';
-import { ButtonMockFields } from './components/button.mock';
-import { CardMockFields } from './components/card.mock';
-import { CascaderMockFields } from './components/cascader.mock';
-import { CheckboxMockFields } from './components/checkbox.mock';
-import { DatePickerMockFields } from './components/date-picker.mock';
-import { InputNumberMockFields } from './components/input-number.mock';
-import { InputMockFields } from './components/input.mock';
-import { MentionMockFields } from './components/mention.mock';
-import { RadioMockFields } from './components/radio.mock';
-import { RateMockFields } from './components/rate.mock';
-import { RepeatMockFields } from './components/repeat.mock';
-import { SelectMockFields } from './components/select.mock';
-import { SliderMockFields } from './components/slider.mock';
-import { StepsMockFields } from './components/steps.mock';
-import { SwitchMockFields } from './components/switch.mock';
-import { TableMockFields } from './components/table.mock';
-import { TimePickerMockFields } from './components/time-picker.mock';
-import { TransferMockFields } from './components/transfer.mock';
-import { TreeSelectMockFields } from './components/tree-select.mock';
-import { UploadMockFields } from './components/upload.mock';
-import { ModalMockFields } from './components/modal.mock';
-import { TagMockFields } from './components/tag.mock';
-import { PaginationMockFields } from './components/pagination.mock';
-import { BadgeMockFields } from './components/badge.mock';
+import {
+  AutocompleteMockFields,
+  ButtonMockFields,
+  CardMockFields,
+  CascaderMockFields,
+  CheckboxMockFields,
+  DatePickerMockFields,
+  InputNumberMockFields,
+  InputMockFields,
+  MentionMockFields,
+  RadioMockFields,
+  RateMockFields,
+  RepeatMockFields,
+  SelectMockFields,
+  SliderMockFields,
+  StepsMockFields,
+  SwitchMockFields,
+  TableMockFields,
+  TimePickerMockFields,
+  TransferMockFields,
+  TreeSelectMockFields,
+  UploadMockFields,
+  ModalMockFields,
+  TagMockFields,
+  PaginationMockFields,
+  BadgeMockFields
+} from './components'
 
 const list100 = [...Array(200).keys()].map((item, index) => {
   return {

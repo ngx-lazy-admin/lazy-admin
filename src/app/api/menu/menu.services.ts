@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { menu } from './menu.mock';
+import { menu } from '../../../mock/menu/menu.mock';
 
 export interface MenuType {
   id: string,
