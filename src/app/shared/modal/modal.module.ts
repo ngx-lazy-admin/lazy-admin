@@ -10,9 +10,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import { IconsProviderModule } from '../../modules/icons-provider.module';
 import { ModalContent } from './modal-content.component';
-import { FieldTypeModule } from 'src/app/fields/types';
-import { CustomFieldModule } from 'src/app/fields/custom';
-import { FormFieldModule } from 'src/app/fields/wrappers/form';
+import { FieldTypeModule } from 'app/fields/types';
+import { CustomFieldModule } from 'app/fields/custom';
+import { FormFieldModule } from 'app/fields/wrappers/form';
 
 @NgModule({
   declarations: [

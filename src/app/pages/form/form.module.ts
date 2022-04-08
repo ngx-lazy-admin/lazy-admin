@@ -21,10 +21,10 @@ import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
-import { CustomFieldModule } from 'src/app/fields/custom';
+import { CustomFieldModule } from 'app/fields/custom';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { ModalsModule } from 'src/app/shared/modal' 
+import { ModalsModule } from 'app/shared/modal' 
 
 @NgModule({
   declarations: [

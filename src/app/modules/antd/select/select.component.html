@@ -1,0 +1,66 @@
+<nz-select 
+	[formControl]="control"
+	[formlyAttributes]="field"
+	[nzId]="nzId"
+	[compareWith]="compareWith"
+	[nzAutoClearSearchValue]="nzAutoClearSearchValue"
+	[nzAllowClear]="nzAllowClear"
+	[nzBackdrop]="nzBackdrop"
+	[nzBorderless]="nzBorderless"
+	[nzOpen]="nzOpen"
+	[nzAutoFocus]="nzAutoFocus"
+	[nzDisabled]="nzDisabled"
+	[nzDropdownClassName]="nzDropdownClassName"
+	[nzDropdownMatchSelectWidth]="nzDropdownMatchSelectWidth"
+	[nzDropdownStyle]="nzDropdownStyle"
+	[nzCustomTemplate]="nzCustomTemplate"
+	[nzServerSearch]="nzServerSearch"
+	[nzFilterOption]="nzFilterOption"
+	[nzMaxMultipleCount]="nzMaxMultipleCount"
+	[nzMode]="nzMode"
+	[nzNotFoundContent]="nzNotFoundContent"
+	[nzPlaceHolder]="nzPlaceHolder"
+	[nzShowArrow]="nzShowArrow"
+	[nzShowSearch]="nzShowSearch"
+	[nzSize]="nzSize"
+	[nzSuffixIcon]="nzSuffixIcon"
+	[nzRemoveIcon]="nzRemoveIcon"
+	[nzClearIcon]="nzClearIcon"
+	[nzMenuItemSelectedIcon]="nzMenuItemSelectedIcon"
+	[nzTokenSeparators]="nzTokenSeparators"
+	[nzLoading]="nzLoading"
+	[nzMaxTagCount]="nzMaxTagCount"
+	[nzMaxTagPlaceholder]="nzMaxTagPlaceholder"
+	[nzOptionHeightPx]="nzOptionHeightPx"
+	[nzOptionOverflowSize]="nzOptionOverflowSize"
+	(ngModelChange)="change($event)"
+	(nzOpenChange)="nzOpenChange($event)"
+	(nzOnSearch)="nzOnSearch($event)"
+	(nzFocus)="nzFocus()"
+	(nzBlur)="nzBlur()"
+	>
+		
+
+		<ng-container *ngFor="let option of nzOptions; trackBy: trackByFn">
+			<ng-container *ngIf="option.value && option.label">
+				<nz-option
+					class="select-option"
+					[nzDisabled]="option?.disabled"
+					[nzLabel]="option?.label"
+					[nzValue]="option?.value"
+				>
+				</nz-option>
+			</ng-container>
+
+			<ng-container *ngIf="!(option.value && option.label)">
+				<nz-option
+					class="select-option"
+					[nzLabel]="option"
+					[nzValue]="option"
+				>
+				</nz-option>
+			</ng-container>
+
+		</ng-container>
+
+</nz-select>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Subject } from 'rxjs';
-import { UserService } from 'src/app/api/user';
+import { UserService } from '@app/services/api/user';
 
 import { LayoutService } from '../../layout.service';
 

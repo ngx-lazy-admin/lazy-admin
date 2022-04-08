@@ -298,3 +298,6 @@ export function isNumber(value: string | number): boolean {
   return ((value != null) && (value !== '') && !isNaN(Number(value.toString())));
 }
 
+
+
+export const execFunction = (name: string) => (new Function( 'return ' + name))();

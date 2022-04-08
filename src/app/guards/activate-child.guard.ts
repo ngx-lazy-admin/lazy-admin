@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, forkJoin, observable } from 'rxjs';
 import { debounce, debounceTime } from 'rxjs/operators';
-import { MenuService } from '../api/menu/menu.services'
+import { MenuService } from '../services/api/menu/menu.services'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { MenuService } from '../api/menu/menu.services'
 export class ActivateChildGuard implements CanActivateChild {
 
   constructor(
-    private menuservice: MenuService
+    private menuService: MenuService
   ) {}
 
   canActivateChild(
@@ -18,7 +18,7 @@ export class ActivateChildGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // console.log('ActivateChildGuard: canActivateChild')
-    return this.menuservice.canActive(state.url)
+    return this.menuService.canActive(state.url)
   }
 
   // 处理未保存的更改

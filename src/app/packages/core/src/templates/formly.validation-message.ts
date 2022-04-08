@@ -13,7 +13,7 @@ import { isObject } from '../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyValidationMessage implements OnChanges {
-  @Input() field: FormlyFieldConfig;
+  @Input() field!: FormlyFieldConfig;
   errorMessage$: Observable<string>;
 
   constructor(private formlyConfig: FormlyConfig) {}

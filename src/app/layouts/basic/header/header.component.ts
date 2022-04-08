@@ -14,9 +14,9 @@ import { TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 import { Subject } from 'rxjs';
 import { LayoutService } from '../../layout.service';
-import { MenuService } from '../../../api/menu/menu.services';
+import { MenuService } from '../../../services/api/menu/menu.services';
 import hotkeys from 'hotkeys-js';
-import { FullScreenService } from 'src/app/services/menu/full-screen.service';
+import { FullScreenService } from '@app/services/menu/full-screen.service';
 
 export interface AutocompleteOptionGroups {
   title: string;

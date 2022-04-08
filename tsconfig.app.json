@@ -3,6 +3,12 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "baseUrl": "./src/",
+    "paths": {
+      "@mock/*": ["./mock/*"],
+      "@app/*": ["./app/*"]
+
+    },
     "types": []
   },
   "files": [

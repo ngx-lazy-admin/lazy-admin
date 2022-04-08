@@ -11,7 +11,7 @@ import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './theme-setting.types';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
 
 enum ThemeType {
   dark = 'dark',

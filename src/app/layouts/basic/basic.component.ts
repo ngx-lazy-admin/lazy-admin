@@ -7,8 +7,8 @@ import { LayoutService } from '../layout.service';
 import { MessageService } from '../../services/message.service'
 import { BreakpointMap, NzBreakpointKey, NzBreakpointService, siderResponsiveMap } from 'ng-zorro-antd/core/services';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MenuService } from '../../api/menu/menu.services';
-import { UserService } from 'src/app/api/user';
+import { MenuService } from '../../services/api/menu/menu.services';
+import { UserService } from '@app/services/api/user';
 
 @Component({
   selector: 'app-layout-basic',

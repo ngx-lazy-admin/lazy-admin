@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, forkJoin, observable } from 'rxjs';
 import { debounce, debounceTime } from 'rxjs/operators';
-import { MenuService } from '../api/menu/menu.services';
+import { MenuService } from '../services/api/menu/menu.services';
 
 @Injectable({
   providedIn: 'root'

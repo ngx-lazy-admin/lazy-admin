@@ -5,7 +5,7 @@ import { ModalComponent } from './modal.component';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
-import { ModalsModule } from 'src/app/shared/modal/modal.module'
+import { ModalsModule } from 'app/shared/modal/modal.module'
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({

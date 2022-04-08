@@ -1,7 +1,7 @@
 
 import { Component, OnInit, Input, TemplateRef, ViewContainerRef, Renderer2, ElementRef } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { ModalService } from 'src/app/shared/modal/modal.service';
+import { ModalService } from 'app/shared/modal/modal.service';
 
 @Component({
   selector: 'app-modal',

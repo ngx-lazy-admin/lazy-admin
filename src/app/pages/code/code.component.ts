@@ -118,7 +118,7 @@ export class CodeComponent implements OnInit {
     }
   }
 
-  execFunction = (name: string) => (new Function( 'return ' + name))();
+
 
   execEval = (code: string) => eval('(' + code + ')')
 
