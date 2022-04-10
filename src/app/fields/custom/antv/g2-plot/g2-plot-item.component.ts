@@ -41,7 +41,6 @@ export class G2PlotItem implements AfterViewInit {
     },
   }
 
-
   constructor(
     private elementRef: ElementRef,
     private http: HttpClient,
@@ -66,7 +65,7 @@ export class G2PlotItem implements AfterViewInit {
   }
 
   writeValue(value: any[]): void {
-    console.log('writeValue', value)
+    console.log('go-plot-item: writeValue')
     if (this.line && value) {
       this.line.changeData(JSON.parse(JSON.stringify(value)))
       this.line.render();

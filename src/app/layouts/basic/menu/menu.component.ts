@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { InputBoolean, InputNumber } from 'ng-zorro-antd/core/util';
 import { Subject } from 'rxjs';
-import { MenuService } from '@app/services/api/menu';
+import { MenuService } from 'src/app/services/api/menu';
 import { LayoutService } from '../../layout.service';
 
 @Component({

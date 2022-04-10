@@ -1,1 +1,1 @@
-export { FieldTypeModule } from './field-type.module';
+export { AntFieldTypeModule } from './field-type.module';

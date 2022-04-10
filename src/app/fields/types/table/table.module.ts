@@ -12,7 +12,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
-import { IconsProviderModule } from 'app/modules/icons-provider.module';
+import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 
 import { SimpleTableField } from './simple-table.component';
 import { TableField } from './table.component';

@@ -16,7 +16,7 @@ import { Subject } from 'rxjs';
 import { LayoutService } from '../../layout.service';
 import { MenuService } from '../../../services/api/menu/menu.services';
 import hotkeys from 'hotkeys-js';
-import { FullScreenService } from '@app/services/menu/full-screen.service';
+import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 
 export interface AutocompleteOptionGroups {
   title: string;

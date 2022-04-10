@@ -72,4 +72,4 @@ import { BadgeFieldModule } from './badge/badge.module';
     
   ],
 })
-export class FieldTypeModule {}
+export class AntFieldTypeModule {}

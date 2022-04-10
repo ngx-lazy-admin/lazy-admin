@@ -9,7 +9,7 @@ import { IconsProviderModule } from '../../modules/icons-provider.module';
 import { CodeRoutingModule } from './code-routing.module';
 import { CodeComponent } from './code.component';
 
-import { FieldTypeModule } from '../../fields/types';
+// import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
 
 
@@ -25,7 +25,7 @@ import { FormFieldModule } from '../../fields/wrappers/form';
     NzCodeEditorModule,
     IconsProviderModule,
     FormlyModule.forRoot(),
-    FieldTypeModule,
+    // FieldTypeModule,
     FormFieldModule,
   ]
 })

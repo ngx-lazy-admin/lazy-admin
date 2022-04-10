@@ -17,7 +17,7 @@ import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { isNumber } from '@app/utils/utils';
+import { isNumber } from 'src/app/utils/utils';
 import { ActionTypeInterface } from '../share-field.type';
 
 export interface VirtualDataInterface {

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AntvLineField } from './line.component';
+import { FormlyModule } from '@ngx-formly/core';
+
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { AntvLineItem } from './line-item.component';
+import { AntvLineField } from './line.component';
 
 @NgModule({
   declarations: [

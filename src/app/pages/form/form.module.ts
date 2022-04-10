@@ -1,30 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PortalModule } from '@angular/cdk/portal'
 import { FormlyModule } from '@ngx-formly/core';
 
 import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { PortalModule } from '@angular/cdk/portal'
+import { NzAffixModule } from 'ng-zorro-antd/affix';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 
 import { IconsProviderModule } from '../../modules/icons-provider.module';
+import { WatermarkPipe } from '../../pipes/watermark.pipe';
 
+import { CustomFieldModule } from 'src/app/fields/custom';
 import { FieldTypeModule } from '../../fields/types';
 import { FormFieldModule } from '../../fields/wrappers/form';
-import { WatermarkPipe } from '../../pipes/watermark.pipe';
-import { NzAffixModule } from 'ng-zorro-antd/affix';
-import { NzModalModule } from 'ng-zorro-antd/modal';
-import { NzDrawerModule } from 'ng-zorro-antd/drawer';
-import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
-import { CustomFieldModule } from 'app/fields/custom';
-import { NzAlertModule } from 'ng-zorro-antd/alert';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { ModalsModule } from 'app/shared/modal' 
+// import { AntFieldTypeModule } from 'src/app/modules/antd';
+
+import { ModalsModule } from 'src/app/shared/modal' 
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { ModalsModule } from 'app/shared/modal'
 
     FormlyModule,
     FieldTypeModule,
+    // AntFieldTypeModule,
     CustomFieldModule,
     FormFieldModule,
   ]

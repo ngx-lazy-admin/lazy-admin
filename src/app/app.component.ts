@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy} from '@angular/core';
-import hotkeys from 'hotkeys-js';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +6,4 @@ import hotkeys from 'hotkeys-js';
   styleUrls: ['./app.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  isCollapsed = false;
-  title = 'go-admin-ng'
-
-  closeModal () {
-    console.log('closeModal')
-  }
-
-}
+export class AppComponent {}

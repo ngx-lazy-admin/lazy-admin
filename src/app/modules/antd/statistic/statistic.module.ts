@@ -5,7 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { StatisticField } from './statistic.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { CountdownField } from './countdown.component';
-import { DynamicPipe } from 'app/pipes/dynamic.pipe';
+import { DynamicPipe } from 'src/app/pipes/dynamic.pipe';
 
 @NgModule({
   declarations: [
@@ -30,9 +30,9 @@ import { DynamicPipe } from 'app/pipes/dynamic.pipe';
       ],
     }),
   ],
-  exports: [
-    DynamicPipe
-  ],
+  // exports: [
+  //   DynamicPipe
+  // ],
   providers: [
     // list all pipes you would like to use
     PercentPipe,

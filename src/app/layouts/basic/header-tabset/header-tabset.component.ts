@@ -13,7 +13,7 @@ import { NzContextMenuService } from 'ng-zorro-antd/dropdown';
 
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
-import { MenuService, MenuType } from '@app/services/api/menu';
+import { MenuService, MenuType } from 'src/app/services/api/menu';
 
 
 export declare type menuOperationType = 'left' | 'right' | 'all' | 'reload' | 'other';

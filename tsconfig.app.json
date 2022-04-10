@@ -6,8 +6,7 @@
     "baseUrl": "./src/",
     "paths": {
       "@mock/*": ["./mock/*"],
-      "@app/*": ["./app/*"]
-
+      "src/app/*": ["./app/*"]
     },
     "types": []
   },

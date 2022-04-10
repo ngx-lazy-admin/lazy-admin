@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PortalModule } from '@angular/cdk/portal';
 
 import { FormlyModule } from '@ngx-formly/core';
 
@@ -10,14 +11,15 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTabsModule} from 'ng-zorro-antd/tabs';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { PortalModule } from '@angular/cdk/portal';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzFormModule } from 'ng-zorro-antd/form';
+
+import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 
 import { CardField } from './card.component'
 import { CardTabsField } from './card-tab.component';
 import { CardSmallField } from './card-small.component';
-import { IconsProviderModule } from 'app/modules/icons-provider.module';
+
 import { SearchCardField } from './search-card.component';
 import { CardMetaField } from './card-meta.component';
 import { CodeCardField } from './code-card.component';

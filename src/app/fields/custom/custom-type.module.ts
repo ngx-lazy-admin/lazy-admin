@@ -1,4 +1,3 @@
-   
 import { NgModule } from '@angular/core';
 import { AntvFieldModule } from './antv';
 import { EchartsFieldModule } from './echart';

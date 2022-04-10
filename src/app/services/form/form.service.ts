@@ -20,11 +20,11 @@ import hotkeys from 'hotkeys-js';
 
 import { editor } from 'monaco-editor';
 
-import { FieldService } from '@app/services/api/field';
+import { FieldService } from 'src/app/services/api/field';
 import { execEval } from 'app/fields/types/share-field.type';
 
 import * as beautify from 'js-beautify';
-import { CacheService } from '@app/services/router/cache.service';
+import { CacheService } from 'src/app/services/router/cache.service';
 
 export interface headerInfoType {
   title: string,
