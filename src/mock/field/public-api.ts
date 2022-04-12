@@ -10,6 +10,8 @@ export { antv } from './antv.mock';
 export { editor } from './editor.mock';
 export { table } from './table.mock';
 export { bootstrap } from './bootstrap.mock';
+export { forms } from './forms.mock';
+
 
 
 

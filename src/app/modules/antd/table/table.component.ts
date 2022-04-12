@@ -28,7 +28,6 @@ export interface VirtualDataInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-
     <div class="table-toolbar table-operations mb-3 d-flex" *ngIf="actinsOptions && actinsOptions.length">
       <ng-container *ngFor="let item of actinsOptions; let i = index">
         <a 
@@ -66,6 +65,7 @@ export interface VirtualDataInterface {
       [nzScroll]="to.nzScroll"
       [nzFrontPagination]="nzFrontPagination"
       [nzShowPagination]="nzShowPagination"
+      [nzShowSizeChanger]="nzShowSizeChanger"
       (nzPageIndexChange)="pageIndexChange($event)"
       (nzPageSizeChange)="pageSizeChange($event)"
       (nzCurrentPageDataChange)="currentPageDataChange($event)"
@@ -193,6 +193,10 @@ export class TableField extends FieldArrayType implements OnDestroy {
 
   get actinsOptions () : ActionTypeInterface[] {
     return this.to.actinsOptions || []
+  }
+
+  get nzShowSizeChanger (): boolean {
+    return this.to.nzShowSizeChanger || true
   }
 
   editCache: { [key: string]: boolean } = {};

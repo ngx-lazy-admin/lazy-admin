@@ -37,6 +37,8 @@ export interface ColumnsTypeInterface {
     <nz-table
       #nzTable
       [nzData]="group"
+      [nzShowSizeChanger]="nzShowSizeChanger"
+      nzFrontPagination="false"
     >
       <thead>
         <tr>
@@ -163,6 +165,10 @@ export class SimpleTableField extends FieldArrayType implements OnDestroy {
 
   get columns () : ColumnsTypeInterface[] {
     return this.to.columns || []
+  }
+
+  get nzShowSizeChanger (): boolean {
+    return this.to.nzShowSizeChanger || true
   }
 
   editCache: { [key: string]: boolean } = {};

@@ -132,19 +132,14 @@ import * as beautify from 'js-beautify';
               [ngModel]="fieldCode"
               (ngModelChange)="codeChange($event)">
             </textarea>
-            <!-- <pre> {{ fieldCode }}</pre> -->
-
           </nz-tab>
           <nz-tab nzTitle="Model">
             <pre> {{ this.formControl.value | json}}</pre>
           </nz-tab>
         </nz-tabset>
-
         </div>
       </section>
-
     </section>
-
   `,
   styleUrls: [
     './code-card.component.less'
@@ -353,6 +348,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    console.log('ngOnDestroy()')
     this.destroy$.next();
     this.destroy$.complete();
   }

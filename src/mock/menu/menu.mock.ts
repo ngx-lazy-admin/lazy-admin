@@ -892,7 +892,6 @@ export const menu = [
       },
     ]
   },
-
   {
     id: '13',
     name: 'Table 专题',
@@ -925,55 +924,17 @@ export const menu = [
       {
         id: '1401',
         pid: '14',
-        name: '介绍',
-        link: '/fields/intro',
+        name: 'introduction',
+        link: '/forms/introduction',
         badge: '',
       },
       {
-
         id: '1402',
         pid: '14',
-        name: 'Field Options',
-        link: '/fields/fields-options',
+        name: 'expression',
+        link: '/forms/expression',
         badge: '',
-      },
-      {
-
-        id: '1403',
-        pid: '14',
-        name: 'Field Options',
-        link: '/fields/form-options',
-        badge: '',
-      },
-      {
-
-        id: '1404',
-        pid: '14',
-        name: 'Form 选项',
-        link: '/fields/virtual-table',
-        badge: '',
-      },
-      {
-        id: '1404',
-        pid: '14',
-        name: 'Validation 选项',
-        link: '/fields/Validation-options',
-        badge: '',
-      },
-      {
-        id: '1404',
-        pid: '14',
-        name: '高级方法',
-        link: '/fields/advanced',
-        badge: '',
-      },
-      {
-        id: '1404',
-        pid: '14',
-        name: '其他',
-        link: '/fields/other',
-        badge: '',
-      }
+      }      
     ]
   },
 ]

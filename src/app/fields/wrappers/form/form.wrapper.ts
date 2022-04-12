@@ -22,18 +22,16 @@ import { isObject } from 'src/app/utils/utils';
   template: `
     <nz-form-item>
       <nz-form-label 
-        *ngIf="to.label && to.hideLabel !== true"
+        *ngIf="to.hideLabel !== true"
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 8 : null"
         [nzNoColon]="nzNoColon" 
-        [nzRequired]="nzRequired"
+        [nzRequired]="nzNoColon && nzRequired"
         [ngStyle]="(fixedWidth | fixedWidth)?.label"
         [nzFor]="id" 
         [nzTooltipTitle]="nzTooltipTitle"
         [nzTooltipIcon]="nzTooltipIcon">
         <span  [innerHTML]="to.label"></span>
       </nz-form-label>
-
-   
 
       <nz-form-control 
         [nzValidateStatus]="formControl" 
@@ -190,7 +188,6 @@ export class FormWrapper extends FieldWrapper {
           return message;
         }
       }
-  
     }
   }
 
@@ -202,10 +199,7 @@ export class FormWrapper extends FieldWrapper {
 
   errorMessage$?: Observable<string>;
 
-  ngOnInit () {
-
-
-  }
+  ngOnInit () {}
 
   ngOnChanges() {}
 }

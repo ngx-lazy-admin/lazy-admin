@@ -29,10 +29,6 @@ import { isObject } from 'src/app/utils/utils';
 })
 
 export class TableWrapper extends FieldWrapper {
-  // @ViewChild('fieldTpl', { read: ViewContainerRef })
-
-  // ant-form-horizontal ant-form-vertical ant-form-inline
-
   get nzLayout(): string {
     return this.to.nzLayout ? this.to.nzLayout : 'horizontal'
   }

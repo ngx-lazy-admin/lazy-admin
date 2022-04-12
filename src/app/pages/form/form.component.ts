@@ -94,6 +94,8 @@ export class FormComponent {
     private routeCache: CacheService,
     private modalService: ModalService
   ) {
+
+    // 监听路由变化
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.loading = true
@@ -109,12 +111,34 @@ export class FormComponent {
             this.render(this.routeCache.get(this.router.url))
           }, err => {
             this.loading = false;
-            this.cd.markForCheck();
             this.status = err?.status
             this.clearData();
+            this.cd.markForCheck();
           })
         }
       }
+    });
+
+    // 初始化编辑器
+    const defaultEditorOption = this.nzConfigService.getConfigForComponent('codeEditor')?.defaultEditorOption || {};
+    this.nzConfigService.set('codeEditor', {
+      defaultEditorOption: {
+        ...defaultEditorOption,
+        theme: 'vs-dark',
+        minimap: {
+          enabled: false
+        },
+        language: "php",
+        autoIndent: true,
+        formatOnPaste: true,
+        formatOnType: true,
+        wordwrap: 'on',
+      }
+    });
+
+    hotkeys('Esc', (event, handler) => {
+      this.isVisible = false
+      this.cd.markForCheck();
     });
 
     hotkeys('.', (event, handler) => {
@@ -124,25 +148,6 @@ export class FormComponent {
 
     hotkeys('m', (event, handler) => {
       // 转弹窗
-      const fieldss = [
-        {
-          type: 'button'
-        }
-      ]
-
-      const fields = [
-        {
-          key: 'email',
-          type: 'nz-input',
-          className: 'w-25 mb-2 d-inline-block',
-          templateOptions: {
-            label: 'Email address',
-            placeholder: 'Enter email',
-            required: true,
-          }
-        }
-      ]
-
       const modal = this.modalService.create({
         nzWidth: '900px',
         nzWrapClassName: 'dragModal',
@@ -161,34 +166,11 @@ export class FormComponent {
             onClick: ($event: any) => {
               return new Promise(resolve => setTimeout(() => {
                 console.log($event)
-                // modal.containerInstance.config.nzZIndex = this.currentIndex++;
-                // modal.destroy()
               }, 60));
             }
           }
         ]
       }, null)
-    });
-
-    hotkeys('Esc', (event, handler) => {
-      this.isVisible = false
-      this.cd.markForCheck();
-    });
-
-    const defaultEditorOption = this.nzConfigService.getConfigForComponent('codeEditor')?.defaultEditorOption || {};
-    this.nzConfigService.set('codeEditor', {
-      defaultEditorOption: {
-        ...defaultEditorOption,
-        theme: 'vs-dark',
-        minimap: {
-          enabled: false
-        },
-        language: "php",
-        autoIndent: true,
-        formatOnPaste: true,
-        formatOnType: true,
-        wordwrap: 'on',
-      }
     });
   }
 
@@ -198,7 +180,10 @@ export class FormComponent {
 
     setTimeout(() => {
       try {
-        // 复制后, 使子对象发送变更
+        // from 重置
+        this.form.reset({}, {onlySelf: false, emitEvent: false} );
+        this.form = new FormGroup({});
+
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
         this.cacheFields = result?.fields
         this.model = result?.data;
@@ -223,17 +208,6 @@ export class FormComponent {
     }, 100);
   }
 
-  // submit(form: FormGroup) {
-  //   form.markAsDirty();
-  // }
-
-  resetForm(): void {
-    setTimeout(() => {
-      this.options.parentForm?.resetForm();
-      this.form.markAsUntouched();
-    }, 0);
-  }
-
   clearData() {
     this.fields = [];
     this.model = {};
@@ -241,22 +215,18 @@ export class FormComponent {
     this.form.reset();
     this.cd.detectChanges();
     this.cd.markForCheck();
-
   }
 
   editorInitialized($event: any) {
     this.editor = $event;
     $event.onDidChangeModelContent(() => {
-      console.log(1)
       try {
         let codes = $event.getValue()
         this.fields = execEval(codes)
         setTimeout(() => {
           this.cd.markForCheck();
         }, 0);
-
       } catch (error) {
-        console.log(error)
         this.cd.markForCheck();
       }
     })
@@ -278,13 +248,10 @@ export class FormComponent {
   }
 
   submit() {
-    console.log('6666')
-    // form.markAsDirty();
     if (this.form.valid) {
       alert(JSON.stringify(this.model));
     }
   }
-
 
   ngOnDestroy() {
     if (this.rooterChange) {
