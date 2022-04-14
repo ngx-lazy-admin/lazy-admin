@@ -1,3 +1,9 @@
+## 生成管道
+
+生成全局管道
+
+ng g pipe pipes/marked
+
 1. URI decode/encode
 
 2. date Format / 日期 格式化
@@ -61,6 +67,7 @@ Transforms a number to a percentage string, formatted according to locale rules 
 11. SlicePipe 从一个 Array 或 String 中创建其元素一个新子集（slice）。
 
 12. TitleCasePipe 把文本转换成标题形式。 把每个单词的第一个字母转成大写形式，并把单词的其余部分转成小写形式。 单词之间用任意空白字符进行分隔，比如空格、Tab 或换行符。
+
 
 
 

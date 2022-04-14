@@ -19,7 +19,6 @@ import * as beautify from 'js-beautify';
 @Component({
   selector: 'div[code-card]',
   template: `
-  
     <section class="code-box" [ngClass]="{ expand: nzExpanded }" [attr.id]="nzId">
       <section class="code-box-demo" [ngClass]="bodyClass">
         <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
@@ -177,7 +176,7 @@ import * as beautify from 'js-beautify';
 })
 
 
-export class CodeCardField extends ShareFieldType  implements OnDestroy {
+export class CodeCardField extends ShareFieldType implements OnDestroy {
 
   get nzTitle(): string | TemplateRef<void> {
     return this.formControl.value?.title || this.to.title || this.to.nzTitle || ''

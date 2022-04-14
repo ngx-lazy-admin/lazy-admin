@@ -19,7 +19,6 @@ import * as beautify from 'js-beautify';
 @Component({
   selector: 'div[code-card]',
   template: `
-  
     <section class="code-box" [ngClass]="{ expand: nzExpanded }" [attr.id]="nzId">
       <section class="code-box-demo" [ngClass]="bodyClass">
         <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
@@ -35,9 +34,7 @@ import * as beautify from 'js-beautify';
             </a>
           </a>
         </div>
-        <div class="code-box-description">
-          {{ nzDescription }}
-        </div>
+        <div class="code-box-description" [innerHTML]="nzDescription | marked"></div>
         <div class="code-box-actions">
           <i
             nz-tooltip
@@ -134,7 +131,7 @@ import * as beautify from 'js-beautify';
             </textarea>
           </nz-tab>
           <nz-tab nzTitle="Model">
-            <pre> {{ this.formControl.value | json}}</pre>
+             {{ this.formControl.value | marked }}
           </nz-tab>
         </nz-tabset>
         </div>
@@ -178,7 +175,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     return this.formControl.value?.title || this.to.title || this.to.nzTitle || ''
   }
 
-  get nzDescription(): string | TemplateRef<void> {
+  get nzDescription(): string {
     return this.formControl.value?.description || this.to.description || this.to.nzDescription || ''
   }
 
@@ -340,6 +337,10 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
 
   check(): void {
 
+  }
+
+  ngAfterViewInit() {
+    // this.cd.detectChanges();
   }
 
   // tslint:disable-next-line:no-any

@@ -157,7 +157,7 @@ export class FormComponent {
         nzMask: false,
         nzFooter: [
           {
-            label: '取消1',
+            label: '取消',
             onClick: () => modal.destroy()
           },
           {
@@ -187,6 +187,7 @@ export class FormComponent {
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
         this.cacheFields = result?.fields
         this.model = result?.data;
+        this.options.formState.cacheFields = result.fields
 
         this.code = beautify(JSON.stringify(result.fields), { 
           brace_style: "expand",

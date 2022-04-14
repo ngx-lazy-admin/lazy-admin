@@ -24,6 +24,8 @@ import { CodeCardField } from './code-card.component';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
+import { MarkedPipe } from '../../../pipes/marked.pipe';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     SearchCardField,
     CardMetaField,
     CodeCardField,
+    MarkedPipe
   ],
   imports: [
     CommonModule,

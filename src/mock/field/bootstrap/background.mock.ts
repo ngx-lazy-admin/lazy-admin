@@ -10,7 +10,7 @@ export const BackgroundMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '边框',
-          description: '边框',
+          description: `# Marked in the browser\n\nRendered by **marked**.`,
         },
         fieldGroup: [
           {

@@ -110,7 +110,7 @@ export class FormWrapper extends FieldWrapper {
   }
 
   get nzHasFeedback(): boolean {
-    return this.to.nzHasFeedback || true
+    return this.to.nzHasFeedback || false
   }
 
   get nzExtra(): string | TemplateRef<void> {

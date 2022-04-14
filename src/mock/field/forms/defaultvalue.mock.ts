@@ -4,12 +4,10 @@ export const DefaultValueMockFields = [
     className: "d-block mb-3 col-12",
     templateOptions: {
       title: '基本',
-      description: `
-        There are two ways to initialize the form with default values.
-          1. Default the model (preferred)
-          2. Use the defaultValue option on the field
-        Both methods are demonstrated below.
-      `,
+      description: ` There are two ways to initialize the form with default values.
+  1. Default the model (preferred)
+  2. Use the defaultValue option on the field
+Both methods are demonstrated below.`,
     },
     fieldGroup: [
       {
@@ -50,7 +48,6 @@ export const DefaultValueMockFields = [
         wrappers: ['form'],
         templateOptions: {
           text: 'Agree? (not initialized at all)',
-          required: true,
           noColon: true
         },
       },

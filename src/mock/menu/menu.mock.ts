@@ -934,7 +934,21 @@ export const menu = [
         name: 'expression',
         link: '/forms/expression',
         badge: '',
-      }      
+      },
+      {
+        id: '1402',
+        pid: '14',
+        name: 'defaultValue',
+        link: '/forms/defaultValue',
+        badge: '',
+      },
+      {
+        id: '1402',
+        pid: '14',
+        name: 'hide fields',
+        link: '/forms/hide-fields',
+        badge: ''
+      }
     ]
   },
 ]

@@ -1,5 +1,6 @@
 import { DefaultValueMockFields } from "./forms/defaultvalue.mock"
 import { ExpressionMockFields } from "./forms/expression.mock"
+import { HideFieldsMockFields } from "./forms/hidefields.mock"
 import { IntroductionMockFields } from "./forms/introduction.mock"
 
 const list100 = [...Array(200).keys()].map((item, index) => {
@@ -25,4 +26,8 @@ export const forms = [
     id: 'defaultValue',
     fields: DefaultValueMockFields
   },
+  {
+    id: 'hide-fields',
+    fields: HideFieldsMockFields
+  }
 ]
