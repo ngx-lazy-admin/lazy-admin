@@ -20,7 +20,7 @@ import * as beautify from 'js-beautify';
 import { editor } from 'monaco-editor';
 
 import { FieldService } from 'src/app/services/api/field';
-import { execEval } from 'src/app/fields/types/share-field.type';
+import { execEval } from 'src/app/modules/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
 import { ModalService } from 'src/app/shared/modal';
 

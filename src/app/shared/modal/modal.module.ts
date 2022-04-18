@@ -10,12 +10,13 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import { IconsProviderModule } from '../../modules/icons-provider.module';
 import { ModalContent } from './modal-content.component';
-import { FieldTypeModule } from 'src/app/fields/types';
+import { FieldTypeModule } from 'src/app/modules/fields/antd';
 
 // import { AntFieldTypeModule } from 'src/app/modules/antd';
 
-import { CustomFieldModule } from 'src/app/fields/custom';
-import { FormFieldModule } from 'src/app/fields/wrappers/form';
+// import { CustomFieldModule } from 'src/app/modules/fields/custom';
+import { FormFieldModule } from 'src/app/modules/fields/wrappers/form';
+import { CustomFieldModule } from 'src/app/modules/fields/custom-type.module';
 
 @NgModule({
   declarations: [

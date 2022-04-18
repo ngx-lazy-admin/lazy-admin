@@ -1,1 +1,0 @@
-export { G2PlotFieldModule } from './g2-plot.module';

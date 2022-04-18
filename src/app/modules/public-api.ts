@@ -1,1 +1,1 @@
-export { CustomFieldModule } from './custom-type.module';
+export { CustomFieldModule } from './fields/custom-type.module';

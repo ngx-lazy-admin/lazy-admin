@@ -35,7 +35,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
       { path: 'zh', loadChildren: () => import('./pages/iframe/iframe.module').then(m => m.IframeModule) },
       { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
-      { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
+      // { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
 
       { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
     ]

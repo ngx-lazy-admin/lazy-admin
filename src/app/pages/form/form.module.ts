@@ -21,12 +21,16 @@ import { FormComponent } from './form.component';
 import { IconsProviderModule } from '../../modules/icons-provider.module';
 import { WatermarkPipe } from '../../pipes/watermark.pipe';
 
-import { CustomFieldModule } from 'src/app/fields/custom';
-import { FieldTypeModule } from '../../fields/types';
-import { FormFieldModule } from '../../fields/wrappers/form';
+
+// import { FieldTypeModule } from '../../fields/types';
+
 // import { AntFieldTypeModule } from 'src/app/modules/antd';
 
 import { ModalsModule } from 'src/app/shared/modal' 
+import { FieldTypeModule } from 'src/app/modules/fields/antd';
+// import { CustomFieldModule } from 'src/app/modules/fields/custom';
+import { FormFieldModule } from 'src/app/modules/fields/wrappers/form';
+import { CustomFieldModule } from 'src/app/modules/fields/custom-type.module';
 
 @NgModule({
   declarations: [

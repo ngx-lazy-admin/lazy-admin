@@ -8,9 +8,7 @@ import { IconsProviderModule } from '../../modules/icons-provider.module';
 
 import { CodeRoutingModule } from './code-routing.module';
 import { CodeComponent } from './code.component';
-
-// import { FieldTypeModule } from '../../fields/types';
-import { FormFieldModule } from '../../fields/wrappers/form';
+import { FormFieldModule } from 'src/app/modules/wrappers/form';
 
 
 @NgModule({

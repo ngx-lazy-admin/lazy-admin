@@ -1,1 +1,0 @@
-export { AntvAreaFieldModule } from './area.module';
