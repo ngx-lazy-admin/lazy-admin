@@ -47,7 +47,6 @@ import {
   MinusOutline,
 } from '@ant-design/icons-angular/icons'; 
 
-
 const icons = [
   MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline, ExpandOutline,
   GlobalOutline, BellOutline, RedoOutline, MenuOutline, RightOutline, LeftOutline,
@@ -60,8 +59,12 @@ const icons = [
 ];
 
 @NgModule({
-  imports: [NzIconModule],
-  exports: [NzIconModule],
+  imports: [
+    NzIconModule
+  ],
+  exports: [
+    NzIconModule
+  ],
   providers: [
     { provide: NZ_ICONS, useValue: icons }
   ]

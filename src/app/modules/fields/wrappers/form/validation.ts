@@ -17,7 +17,6 @@ export function maxlengthValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This value should be less than ${field.templateOptions?.maxLength} characters`;
 }
 
-
 export function IpValidator(control: FormControl): ValidationErrors {
   return {
     ip: !control.value || /(\d{1,3}\.){3}\d{1,3}/.test(control.value)

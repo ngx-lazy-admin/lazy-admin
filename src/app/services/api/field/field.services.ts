@@ -56,6 +56,7 @@ export class FieldService {
   getField(url: string): Observable<any> {
     // console.log(this.InMemoryData.db)
     // const url.split('/')
+    console.log(this._baseFieldUrl + url)
     return this.http.get<any>(this._baseFieldUrl + url).pipe(tap(field => {
       console.log(field)
     }))

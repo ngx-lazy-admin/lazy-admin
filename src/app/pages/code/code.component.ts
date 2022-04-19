@@ -17,8 +17,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 })
 export class CodeComponent implements OnInit {
-
-
   editor?: editor.ICodeEditor | editor.IEditor;
 
   code: string = `

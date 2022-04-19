@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Directive, ChangeDetectorRef, NgZone, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FieldType, FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyAttributeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
 import { NzButtonSize, NzButtonType } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -28,7 +29,6 @@ export interface ActionTypeInterface {
   cancel?: FieldActionFn
 }
 
-
 export const execEval = (code: string) => eval('(' + code + ')')
 
 export const execFunc = (func: string | Function) => typeof(func) == 'string' ? execEval(func) : func
@@ -46,26 +46,18 @@ export abstract class ShareFieldType extends FieldType {
     public fullScreenService: FullScreenService,
     public elRef: ElementRef,
     public elementRef: ElementRef,
-
   ) {
     super();
   }
   
-  // 通用事件处理
-  click (action?: ActionTypeInterface) {
+
+  clickAction (action: ActionTypeInterface, key: any) {
     this.zone.runOutsideAngular(() => {
       try{
-        const func = typeof(action?.click) == 'string' 
-          ? execEval(action?.click) : 
-          (typeof(this.to?.click)=='string' ? execEval(this.to?.click) : null);
-
-        func ? func(this.field, this) : null
-
-        // if (this.to?.click) {
-        //   const func = typeof(this.to?.click) == 'string' ? execEval(this.to?.click) : this.to?.click;
-        //   func(this.field, this)
-        // }
-        this.cd.markForCheck();
+        if (typeof(action[key as keyof ActionTypeInterface] ) == 'string' ) {
+          const func = execEval(action?.[key as keyof ActionTypeInterface ])
+          func ? func(this.field, this) : null
+        }
       } catch (err){
         console.log(err)
       } finally {
@@ -74,24 +66,68 @@ export abstract class ShareFieldType extends FieldType {
     });
   }
 
-  // 通用事件处理
-  change (action?: ActionTypeInterface) {
+  clickDefault (action: FormlyAttributeEvent, key: any) {
     this.zone.runOutsideAngular(() => {
       try{
-        if (this.to?.change) {
-          const func = typeof(this.to?.change) == 'string' ? execEval(this.to?.change) : this.to?.change;
-          func(this.field, this)
+        if (typeof(action[key as keyof FormlyAttributeEvent] ) == 'string' ) {
+          const func = execEval(action?.[key as keyof FormlyAttributeEvent ])
+          func ? func(this.field, this) : null
         }
       } catch (err){
         console.log(err)
       } finally {
-        console.log('change finally')
+        console.log('click finally')
       }
     });
   }
+  
+  // 通用事件处理
+  click (action?: ActionTypeInterface ) {
+    // this.zone.runOutsideAngular(() => {
+    //   try{
+    //     const func = typeof(action?.click) == 'string' 
+    //       ? execEval(action?.click) : 
+    //       (typeof(this.to?.click)=='string' ? execEval(this.to?.click) : null);
+
+    //     func ? func(this.field, this) : null
+
+    //     this.cd.markForCheck();
+    //   } catch (err){
+    //     console.log(err)
+    //   } finally {
+    //     console.log('click finally')
+    //   }
+    // });
+    if (action) {
+      this.clickAction(action, 'click')
+    } else if (this.to.click) {
+      this.clickDefault(this.to.click, 'click')
+    }
+  }
+
+  // 通用事件处理
+  change (action?: ActionTypeInterface) {
+    // this.zone.runOutsideAngular(() => {
+    //   try{
+    //     if (this.to?.change) {
+    //       const func = typeof(this.to?.change) == 'string' ? execEval(this.to?.change) : this.to?.change;
+    //       func(this.field, this)
+    //     }
+    //   } catch (err){
+    //     console.log(err)
+    //   } finally {
+    //     console.log('change finally')
+    //   }
+    // });
+
+    if (action) {
+      this.clickAction(action, 'change')
+    } else if (this.to.click) {
+      this.clickDefault(this.to.click, 'change')
+    }
+  }
 
   confirm (action?: ActionTypeInterface) {
-    this.message.success('confirm')
     this.zone.runOutsideAngular(() => {
       if (action?.confirm) {
         action.confirm(this.field, this)
@@ -99,6 +135,12 @@ export abstract class ShareFieldType extends FieldType {
         this.to.confirm(this.field, this);
       }
     });
+
+    if (action) {
+      this.clickAction(action, 'change')
+    } else if (this.to.click) {
+      this.clickDefault(this.to.click, 'change')
+    }
   }
 
   close (action?: ActionTypeInterface) {

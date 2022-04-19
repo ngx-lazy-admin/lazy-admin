@@ -22,6 +22,14 @@ export const ButtonMockFields = [
             templateOptions: {
               text: 'Primary Button',
               type: 'primary',
+              click: `(_field, _this) => {
+                // console.log(_this.me)
+                const id = _this.message.loading('正在获取数据中...').messageId
+                _this.http.get('api/components/button').subscribe(item => {
+                  _this.message.remove(id)
+                  console.log(item)
+                })
+              }`
             }
           },
           {
