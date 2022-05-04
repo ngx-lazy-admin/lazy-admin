@@ -16,7 +16,6 @@ export class ModalService   {
 
   private renderer: Renderer2;
 
-  private _modals: NzModalRef[] = [];
   private _hideAllStatus: boolean = false;
 
   constructor(
@@ -37,15 +36,22 @@ export class ModalService   {
       nzViewContainerRef: this.viewContainerRef,
       nzZIndex: this.currentIndex,
       nzStyle: {
-        left: ((this._modals.length) * 20) + 'px',
-        top: ((this._modals.length) * 20 + 100) + 'px',
+        left: ((this.modal.openModals.length) * 20) + 'px',
+        top: ((this.modal.openModals.length) * 20 + 100) + 'px',
       },
       nzComponentParams: {
+        id: id,
         fields: params.fields,
         model: params.model,
         title: params.title,
         modal: this.modal,
-
+        click: (type: string, id: string) => {
+          if (type == 'close') {
+            this.close(id)
+          } else if (type == 'min') {
+            this.hide(id)
+          }
+        }
       },
       nzClosable: false,
       ...params
@@ -69,9 +75,48 @@ export class ModalService   {
       modal.containerInstance.config.nzZIndex = ++this.currentIndex;
     })
 
-    this._modals.push(modal)
+    // 添加样式穿透
+    if (modal) {
+      const rootElment = modal.getElement().parentElement?.parentElement
+      rootElment?.classList.add('pointer-events-none')
+    }
 
     return modal
+  }
+
+  close (id: string) {
+    const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
+    if (modal) {
+      modal.destroy()
+    }
+  }
+
+  // 显示所有弹窗
+  hide (id: string) {
+    // $event.stopPropagation();
+    const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
+
+    if (modal) {
+      // modal.destroy()
+      // console.log(modal.getElement().parentElement?.parentElement.className = '')
+      const rootElment = modal.getElement().parentElement?.parentElement
+      rootElment?.classList.add('pointer-events-none')
+    }
+    // // console.log
+    // this._hideAllStatus = false;
+    // this.modal.openModals.map(modal => {
+    //   this.showModal(modal)
+    // })
+  }
+
+  // 显示所有弹窗
+  show ($event: any) {
+    $event.stopPropagation();
+    // console.log
+    this._hideAllStatus = false;
+    this.modal.openModals.map(modal => {
+      this.showModal(modal)
+    })
   }
 
   // 关闭所有弹窗
@@ -90,15 +135,7 @@ export class ModalService   {
     }
   }
 
-  // 显示所有弹窗
-  show ($event: any) {
-    $event.stopPropagation();
-    // console.log
-    this._hideAllStatus = false;
-    this.modal.openModals.map(modal => {
-      this.showModal(modal)
-    })
-  }
+
 
   // 显示弹窗
   showModal (modal: NzModalRef) {
@@ -113,6 +150,9 @@ export class ModalService   {
       ...config,
       nzWrapClassName: className?.join(' ')
     })
+
+    // 找到modal 的父级, 并赋值class
+
   }
 
   // 隐藏弹窗

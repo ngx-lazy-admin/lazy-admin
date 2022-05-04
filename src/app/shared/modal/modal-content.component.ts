@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -16,11 +16,11 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
         <div class="p-3">{{ nzTitle || "标题" }} </div>
         <div class="d-flex align-items-center" style="cursor: auto">
           <!-- 最小化页面 -->
-          <i class="p-3" nz-icon nzType="minus" nzTheme="outline" (click)="click($event)"></i>
+          <i class="p-3" nz-icon nzType="minus" nzTheme="outline" (click)="min(id)"></i>
           <!-- 转页面 -->
-          <i class="p-3" nz-icon nzType="fullscreen" nzTheme="outline" (click)="fullscreen($event)"></i>
+          <i class="p-3" nz-icon nzType="fullscreen" nzTheme="outline" (click)="max(id)"></i>
           <!-- 关闭 -->
-          <i class="p-3" nz-icon nzType="close" nzTheme="outline" (click)="close($event)"></i>
+          <i class="p-3" nz-icon nzType="close" nzTheme="outline" (click)="close(id)"></i>
         </div>
       </div>
     </div>
@@ -48,19 +48,31 @@ export class ModalContent {
   @Input() fields?: FormlyFieldConfig[];
   @Input() model?: any;
   @Input() nzTitle?: string | TemplateRef<{}>;
-  @Input() modal: any
+  @Input() modal: any;
+  @Input() id: string = '';
+  @Input() click?: (type: string, id: any) => void;
+
+  @Output() onMin = new EventEmitter<string>();
+  @Output() onMax = new EventEmitter<string>();
+  // @Output() click = new EventEmitter<string>();
 
   form = new FormGroup({});
 
-  click ($event: any) {
-    console.log(this.modal)
+  min (id: string) {
+    if (this.click) {
+      this.click('min', id)
+    }
   }
 
-  fullscreen ($event: any) {
-    console.log('fullscreen')
+  max (id: string) {
+    if (this.click) {
+      this.click('max', id)
+    }
   }
 
-  close ($event: any) {
-    console.log('close')
+  close (id: string) {
+    if (this.click) {
+      this.click('close', id)
+    }
   }
 }
