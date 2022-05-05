@@ -6,7 +6,6 @@ import { marked } from 'marked';
 })
 export class MarkedPipe implements PipeTransform {
   transform(value: string): string {
-    console.log(value, marked.parse(value))
     return value ? marked.parse(value) : value;
   }
 }

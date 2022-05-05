@@ -7,7 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class WatermarkPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): unknown {
-    console.log('watermark')
     const zIndex = 9;
     const gapX = 212;
     const gapY = 222;
@@ -64,8 +63,6 @@ export class WatermarkPipe implements PipeTransform {
       // eslint-disable-next-line no-console
       console.error('当前环境不支持Canvas');
     }
-
     return null;
   }
-
 }

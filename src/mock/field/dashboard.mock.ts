@@ -725,7 +725,89 @@ export const dashboard = [
   {
     id: 'monitor',
     fields: [
-      
+			{
+        type: 'group',
+        className: 'col-12',
+        fieldGroup: [
+          {
+            type: 'card',
+            key: 'name1',
+            className: "col-md-9 col-sm-6 d-inline-block",
+            templateOptions: {
+							title: '活动实时交易情况'
+            },
+            fieldGroup: [
+            ]
+          },
+          {
+            type: 'group',
+            className: "col-md-3 d-inline-block",
+            fieldGroup: [
+							{
+								type: 'card',
+								key: 'name2',
+								className: "col-md-12 mb-3 d-inline-block",
+								templateOptions: {
+									title: "活动情况预测",
+									tooltip: '指标说明',
+								},
+								fieldGroup: [
+		
+								]
+							},
+							{
+								type: 'card',
+								key: 'name2',
+								className: "col-md-12 d-inline-block",
+								templateOptions: {
+									title: "券核效率",
+									tooltip: '指标说明',
+								},
+								fieldGroup: [
+		
+								]
+							}
+            ]
+          }
+        ]
+      },
+      {
+        type: 'group',
+        className: 'col-12 mt-3',
+        fieldGroup: [ 
+          {
+            type: 'card',
+            className: "col-6 mb-3",
+            fieldGroup: [],
+						templateOptions: {
+							title: '各品类占比'
+						}
+          },
+					{
+						type: 'card',
+						className: "col-3 mb-3",
+						templateOptions: {
+							title: '热门搜索',
+							nzBodyStyle: {
+								padding: 0
+							}
+						},
+						fieldGroup: []
+					},
+					{
+						type: 'card',
+						className: "col-3 mb-3",
+						templateOptions: {
+							title: '资源剩余',
+
+							nzBodyStyle: {
+								padding: 0
+							}
+						},
+						fieldGroup: []
+					}
+        ]
+      }
     ],
     info: {
       title: '监控页',
@@ -735,7 +817,62 @@ export const dashboard = [
   {
     id: 'workplace',
     fields: [
-
+			{
+        type: 'group',
+        className: 'col-9',
+        fieldGroup: [
+          {
+            type: 'card',
+            key: 'name1',
+            className: "col-md-12 mb-3",
+            templateOptions: {
+							title: '进行中的项目'
+            },
+            fieldGroup: [
+            ]
+          },
+					{
+            type: 'card',
+            key: 'name1',
+            className: "col-md-12 mb-3",
+            templateOptions: {
+							title: '动态'
+            },
+            fieldGroup: [
+            ]
+          }
+        ]
+      },
+      {
+        type: 'group',
+        className: 'col-3',
+        fieldGroup: [ 
+          {
+            type: 'card',
+            className: "col-12 mb-3",
+            fieldGroup: [],
+						templateOptions: {
+							title: '快速开始 / 便捷导航'
+						}
+          },
+					{
+						type: 'card',
+						className: "col-12 mb-3",
+						templateOptions: {
+							title: 'XX 指数',
+						},
+						fieldGroup: []
+					},
+					{
+						type: 'card',
+						className: "col-12 mb-3",
+						templateOptions: {
+							title: '团队',
+						},
+						fieldGroup: []
+					}
+        ]
+      }
     ],
     info: {
       title: '工作台',

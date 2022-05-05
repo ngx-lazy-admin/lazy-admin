@@ -25,8 +25,8 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
           name: 'nz-alert',
           component: AlertField,
         }
-      ],
-    }),
-  ],
+      ]
+    })
+  ]
 })
 export class AlertFieldModule {}

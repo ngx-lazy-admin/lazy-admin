@@ -8,5 +8,4 @@ export class HtmlPipe implements PipeTransform {
   transform(value: unknown, ...args: unknown[]): unknown {
     return null;
   }
-
 }

@@ -912,6 +912,14 @@ export const menu = [
         name: '虚拟滚动',
         link: '/table/virtual-table',
         badge: '',
+      },
+      {
+
+        id: '1302',
+        pid: '13',
+        name: 'Antd table',
+        link: '/table/antd-table',
+        badge: '',
       }
     ]
   },

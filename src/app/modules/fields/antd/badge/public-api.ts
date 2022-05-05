@@ -1,2 +1,2 @@
-export { ButtonFieldModule } from './button.module';
-export { ButtonField } from './button.component';
+export { BadgeFieldModule } from './badge.module';
+export { BadgeField } from './badge.component';

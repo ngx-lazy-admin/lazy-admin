@@ -16,9 +16,7 @@ import { ShareFieldType } from '../share-field.type';
     ></nz-alert>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-
-
+  encapsulation: ViewEncapsulation.None
 })
 export class AlertField extends ShareFieldType {
 
