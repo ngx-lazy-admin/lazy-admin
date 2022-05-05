@@ -36,7 +36,15 @@ export const table = [
     id: 'antd-table',
     fields: AntdTableMockFields,
     data: {
-      list: list100
+      list1: list100,
+      list2: list100,
+      list3: list100,
+      list4: list100,
+      list5: list100,
+      list6: list100,
+      list7: list100,
+      list8: list100,
+      list9: list100,
     },
     info: {
       title: 'Antd Table( virtual table)',

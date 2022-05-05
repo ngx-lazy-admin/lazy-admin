@@ -47,9 +47,9 @@ const list100 = [...Array(4000).keys()].map((item, index) => {
   selector: 'div[simple-table-field]',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  template: `11
+  template: `
     <antd-table 
-      [dataSource]="dataSource" 
+      [dataSource]="formControl.value" 
       [columns]="to.columns">
     </antd-table>
   `
@@ -61,7 +61,7 @@ export class AntdTableField extends ShareFieldType implements OnDestroy {
 
   private destroy$ = new Subject();
 
-  dataSource: dataSourceType[] = list100
+  // dataSource: dataSourceType[] = 
 
   get nzData (): any[] {
     if (this.formControl.value instanceof Array) {
@@ -201,9 +201,8 @@ export class AntdTableField extends ShareFieldType implements OnDestroy {
         console.log('scroll index to', data);
       });
 
-    console.log(this.formControl.value)
-    console.log(this.to.columns)
-
+    // console.log(this.formControl.value)
+    // console.log(this.to.columns)
   }
 
   ngOnDestroy() {

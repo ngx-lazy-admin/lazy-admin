@@ -34,7 +34,7 @@ import * as beautify from 'js-beautify';
             </a>
           </a>
         </div>
-        <!-- <div class="code-box-description" [innerHTML]="nzDescription | marked"></div> -->
+        <div class="code-box-description" [innerHTML]="nzDescription"></div>
         <div class="code-box-actions">
           <i
             nz-tooltip
@@ -131,7 +131,7 @@ import * as beautify from 'js-beautify';
             </textarea>
           </nz-tab>
           <nz-tab nzTitle="Model">
-             <!-- {{ this.formControl.value | marked }} -->
+             {{ this.formControl.value }}
           </nz-tab>
         </nz-tabset>
         </div>

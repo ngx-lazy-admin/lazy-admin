@@ -17,8 +17,8 @@ import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
 import { SimpleTableField } from './simple-table.component';
 import { TableField } from './table.component';
 import { VirtualTableField } from './virtual-table.component';
-import { AntdTable } from './antd-table.component';
-import { AntdTableField } from './antd-table-field.component';
+import { AntdTable } from './ant-table.component';
+import { AntdTableField } from './ant-table-field.component';
 
 @NgModule({
   declarations: [
