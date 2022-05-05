@@ -11,7 +11,6 @@ export class UserPipe implements PipeTransform {
   ) {}
 
   transform(str: string, ...args: unknown[]): unknown {
-
     let s = str.split(';').filter(item => item).map(item => {
       const name = item.split('(');
       let url;

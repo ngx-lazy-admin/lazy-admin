@@ -1,6 +1,6 @@
-import { TableBasicMockFields, VirtualTableMockFields } from "./table";
+import { AntdTableMockFields, TableBasicMockFields, VirtualTableMockFields } from "./table";
 
-const list100 = [...Array(100).keys()].map((item, index) => {
+const list100 = [...Array(10).keys()].map((item, index) => {
   return {
     id: index,
     key: index,
@@ -30,6 +30,16 @@ export const table = [
     },
     info: {
       title: '虚拟滚动( virtual table)',
+    }
+  },
+  {
+    id: 'antd-table',
+    fields: AntdTableMockFields,
+    data: {
+      list: list100
+    },
+    info: {
+      title: 'Antd Table( virtual table)',
     }
   }
 ]

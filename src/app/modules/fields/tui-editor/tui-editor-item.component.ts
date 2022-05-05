@@ -70,23 +70,23 @@ export class TuiEditFieldItem extends FieldType implements AfterViewInit {
   }
 
   handlerImage () {
-    const Imageinput = document.createElement('input');
-    Imageinput.setAttribute('type', 'file');
-    Imageinput.setAttribute('name', 'file');
-    Imageinput.setAttribute('accept', 'image/png, image/gif, image/jpeg');
-    Imageinput.classList.add('ql-image');
-    Imageinput.addEventListener('change', () => {
-      if (Imageinput instanceof HTMLInputElement && Imageinput.files) {
-        const file = Imageinput.files[0];
+    const imageInput = document.createElement('input');
+    imageInput.setAttribute('type', 'file');
+    imageInput.setAttribute('name', 'file');
+    imageInput.setAttribute('accept', 'image/png, image/gif, image/jpeg');
+    imageInput.classList.add('ql-image');
+    imageInput.addEventListener('change', () => {
+      if (imageInput instanceof HTMLInputElement && imageInput.files) {
+        const file = imageInput.files[0];
         const formData = new FormData();
         formData.append('file', file);
-        if (Imageinput.files != null && Imageinput.files[0] != null) {
+        if (imageInput.files != null && imageInput.files[0] != null) {
           this.uploadFile(file)
         }
       }
 
     });
-    Imageinput.click();
+    imageInput.click();
   }
 
   /**

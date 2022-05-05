@@ -18,7 +18,7 @@ export class CosService {
 
   startTime = null;
   expiredTime = null;
-  nowTime = null;
+  nowTime: number = 0;
   credentials = null;
   upload$ = new Subject();
 
@@ -35,7 +35,7 @@ export class CosService {
   }
 
   // 必选参数
-  getAuthorization = (options, callback) => {
+  getAuthorization = (options: any, callback: any) => {
     // 服务端 JS 和 PHP 例子：https://github.com/tencentyun/cos-js-sdk-v5/blob/master/server/
     // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
     // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
@@ -46,7 +46,8 @@ export class CosService {
     // 每15分钟获取一次授权, 
     if (!this.startTime || (this.nowTime - this.startTime > 60 * 15)) {
       this.http.get('web/cos/sts').subscribe(res  => {
-        if (res['code'] === 0) {
+        const code = 'code'
+        if (res[code] ) {
           const data = res['data'];
           this.startTime = res['data']['startTime']
           this.expiredTime = res['data']['expiredTime']
@@ -57,8 +58,8 @@ export class CosService {
           }
   
           const authorization = COS.getAuthorization({
-              SecretId: this.credentials.tmpSecretId,
-              SecretKey: this.credentials.tmpSecretKey,
+              SecretId: this.credentials?.tmpSecretId,
+              SecretKey: this.credentials?.tmpSecretKey,
               Method: options.Method,
               Pathname: options.Pathname,
               Query: options.Query,
@@ -92,7 +93,7 @@ export class CosService {
     }
   }
 
-  uploadFile = (item) => {
+  uploadFile = (item: any) => {
     item.file.object_id =  this.getQueryUrl(item.action, 'id');
     item.file.object_type =  this.getQueryUrl(item.action, 'type');
 
@@ -157,7 +158,7 @@ export class CosService {
     });
   }
 
-  cancelTask(taskId) {
+  cancelTask(taskId: string) {
     this.cos.cancelTask(taskId);
   }
 
@@ -246,12 +247,12 @@ export class CosService {
     return isFILE;
   }
 
-  delFile (id) {
+  delFile (id: string) {
     return new Observable ((observed) => {
       this.http.post('web/cos/del-file', {
         file_id: id
       }).subscribe(result => {
-        if (result['code'] === 0) {
+        if (result?.code === 0) {
           observed.next();
         } else {
           observed.error();
@@ -261,6 +262,7 @@ export class CosService {
       });
     })
   }
-  
+
+
 }
 

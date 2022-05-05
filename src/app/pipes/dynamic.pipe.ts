@@ -51,7 +51,7 @@ export class DynamicPipe implements PipeTransform {
         return pipe.transform(value, pipeArgs);
       }
     } else {
-        return value;
+      return value;
     }
   }
 }

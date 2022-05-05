@@ -51,38 +51,28 @@ export class FormComponent {
   info?: headerInfoType | null;
 
   // form params
-
+  model: any = {}
   form = new FormGroup({});
-
-  model: any = {
-    name: 1,
-  }
-
+  fields: FormlyFieldConfig[] = []
   options: FormlyFormOptions = {
     formState: {
       caches: '1'
     }
   };
 
-  fields: FormlyFieldConfig[] = []
-
   // lading
-
   loading: boolean = true;
   status = 200;
 
   // cache
-
   codeType = 'javascript'
-
-  // routeCache: any = {};
-
-  private destroy$ = new Subject<void>();
 
   isVisible = false;
   editor?: editor.ICodeEditor;
   code: string = ``;
   cacheFields: string = '';
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -100,12 +90,15 @@ export class FormComponent {
       if (event instanceof NavigationEnd) {
         this.loading = true
         this.cd.markForCheck();
-        if (this.routeCache.get(this.router.url)) {
-          this.render(this.routeCache.get(this.router.url))
+        const resultCache = this.routeCache.get(this.router.url);
+        console.log(resultCache)
+        if (resultCache) {
+          this.render(resultCache)
           this.routeCache.recoveryHistoryPosition(this.router.url)
         } else {
           this.loading = true
-          // 组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。 它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
+          // 组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。 
+          // 它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
           this.fieldService.getField(this.router.url).subscribe(result => {
             this.routeCache.set(this.router.url, result)
             this.render(this.routeCache.get(this.router.url))
@@ -128,7 +121,7 @@ export class FormComponent {
         minimap: {
           enabled: false
         },
-        language: "php",
+        language: "javascript",
         autoIndent: true,
         formatOnPaste: true,
         formatOnType: true,
@@ -184,14 +177,27 @@ export class FormComponent {
         this.form.reset({}, {onlySelf: false, emitEvent: false} );
         this.form = new FormGroup({});
 
-        this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
+        // 缓存
         this.cacheFields = result?.fields
+
+        this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
+
         this.model = result?.data;
         this.options.formState.cacheFields = result.fields
 
         this.code = beautify(JSON.stringify(result.fields), { 
-          brace_style: "expand",
-          keep_array_indentation: true,
+          brace_style: "end-expand",
+          indent_size: 2,
+          indent_char: ' ',
+          indent_level: 0,
+          wrap_line_length: 2,
+          preserve_newlines: false,
+          space_in_empty_paren: false,
+          indent_with_tabs: true,
+          jslint_happy: true,
+          space_after_anon_function: true,
+          max_preserve_newlines: 2,
+          keep_array_indentation: false,
         })
 
         this.info = result?.info;
