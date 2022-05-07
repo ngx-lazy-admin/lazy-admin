@@ -23,6 +23,7 @@ import { FieldService } from 'src/app/services/api/field';
 import { execEval } from 'src/app/modules/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
 import { ModalService } from 'src/app/modules/modal';
+import { PreviewService } from 'src/app/modules/preview';
 
 export interface headerInfoType {
   title: string,
@@ -82,7 +83,8 @@ export class FormComponent {
     private ngZone: NgZone,
     private nzConfigService: NzConfigService,
     private routeCache: CacheService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private previewService: PreviewService
   ) {
 
     // 监听路由变化
@@ -258,6 +260,10 @@ export class FormComponent {
     if (this.form.valid) {
       alert(JSON.stringify(this.model));
     }
+  }
+
+  preview (url: string) {
+    this.previewService.open(url)
   }
 
   ngOnDestroy() {
