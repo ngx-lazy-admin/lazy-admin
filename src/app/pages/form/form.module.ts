@@ -26,7 +26,7 @@ import { WatermarkPipe } from '../../pipes/watermark.pipe';
 
 // import { AntFieldTypeModule } from 'src/app/modules/antd';
 
-import { ModalsModule } from 'src/app/shared/modal' 
+import { ModalsModule } from 'src/app/modules/modal' 
 import { FieldTypeModule } from 'src/app/modules/fields/antd';
 // import { CustomFieldModule } from 'src/app/modules/fields/custom';
 import { FormFieldModule } from 'src/app/modules/fields/wrappers/form';

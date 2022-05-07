@@ -8,7 +8,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
-import { IconsProviderModule } from '../../modules/icons-provider.module';
+import { IconsProviderModule } from '../icons-provider.module';
 import { ModalContent } from './modal-content.component';
 import { FieldTypeModule } from 'src/app/modules/fields/antd';
 

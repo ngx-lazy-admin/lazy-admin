@@ -19,7 +19,7 @@ import { HtmlPipe } from './pipes/html.pipe';
 
 import { InMemoryDataService } from '../mock/in-memory-data.service';
 import { GlobalSearchModule } from './shared/global-search';
-import { ThemeSettingModule } from './shared/theme-setting';
+import { ThemeSettingModule } from './modules/theme-setting';
 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [

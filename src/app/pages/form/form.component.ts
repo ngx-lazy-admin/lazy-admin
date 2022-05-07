@@ -22,7 +22,7 @@ import { editor } from 'monaco-editor';
 import { FieldService } from 'src/app/services/api/field';
 import { execEval } from 'src/app/modules/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
-import { ModalService } from 'src/app/shared/modal';
+import { ModalService } from 'src/app/modules/modal';
 
 export interface headerInfoType {
   title: string,

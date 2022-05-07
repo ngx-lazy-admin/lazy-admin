@@ -1,7 +1,6 @@
 import { Inject, Injectable, Renderer2, ViewContainerRef, RendererFactory2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-
 import { ModalContent } from './modal-content.component';
 
 @Injectable({
@@ -77,8 +76,8 @@ export class ModalService   {
 
     // 添加样式穿透
     if (modal) {
-      const rootElment = modal.getElement().parentElement?.parentElement
-      rootElment?.classList.add('pointer-events-none')
+      const element = modal.getElement().parentElement?.parentElement
+      element?.classList.add('pointer-events-none')
     }
 
     return modal
@@ -93,26 +92,17 @@ export class ModalService   {
 
   // 显示所有弹窗
   hide (id: string) {
-    // $event.stopPropagation();
     const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
 
     if (modal) {
-      // modal.destroy()
-      // console.log(modal.getElement().parentElement?.parentElement.className = '')
       const rootElment = modal.getElement().parentElement?.parentElement
       rootElment?.classList.add('pointer-events-none')
     }
-    // // console.log
-    // this._hideAllStatus = false;
-    // this.modal.openModals.map(modal => {
-    //   this.showModal(modal)
-    // })
   }
 
   // 显示所有弹窗
   show ($event: any) {
     $event.stopPropagation();
-    // console.log
     this._hideAllStatus = false;
     this.modal.openModals.map(modal => {
       this.showModal(modal)
@@ -135,8 +125,6 @@ export class ModalService   {
     }
   }
 
-
-
   // 显示弹窗
   showModal (modal: NzModalRef) {
     const config = modal.getConfig()
@@ -150,9 +138,6 @@ export class ModalService   {
       ...config,
       nzWrapClassName: className?.join(' ')
     })
-
-    // 找到modal 的父级, 并赋值class
-
   }
 
   // 隐藏弹窗
