@@ -10,7 +10,7 @@ import Editor, { EditorOptions } from '@toast-ui/editor';
 @Component({
   selector: 'tui-editor-item',
   styleUrls: [
-    './tui-editor.component.css',
+    './tui-editor-item.component.css',
   ],
   template: `
     <div class="#editor"></div>

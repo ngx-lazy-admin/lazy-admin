@@ -9,7 +9,7 @@ import * as COS from 'cos-js-sdk-v5';
   providedIn: 'root'
 })
 export class CosService {
-  cos = null;
+  cos: any = null;
   config = {
     Bucket: 'wbp-1258344700',
     Region: 'ap-guangzhou',
@@ -19,7 +19,7 @@ export class CosService {
   startTime = null;
   expiredTime = null;
   nowTime: number = 0;
-  credentials = null;
+  credentials:any = null;
   upload$ = new Subject();
 
   constructor(
@@ -45,9 +45,8 @@ export class CosService {
     this.nowTime = Math.floor(new Date().getTime() / 1000)
     // 每15分钟获取一次授权, 
     if (!this.startTime || (this.nowTime - this.startTime > 60 * 15)) {
-      this.http.get('web/cos/sts').subscribe(res  => {
-        const code = 'code'
-        if (res[code] ) {
+      this.http.get('web/cos/sts').subscribe((res: any)  => {
+        if (res && res?.code ) {
           const data = res['data'];
           this.startTime = res['data']['startTime']
           this.expiredTime = res['data']['expiredTime']
@@ -102,7 +101,7 @@ export class CosService {
 
     return new Observable ((observed) => {
       this.upload$.next(item);
-      this.http.get('web/cos/info').subscribe(res  => {
+      this.http.get('web/cos/info').subscribe((res: any)  => {
         this.cos.uploadFile({
           Bucket:     res['bucket'],
           Region:     res['region'],

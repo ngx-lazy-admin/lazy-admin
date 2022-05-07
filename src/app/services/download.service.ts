@@ -10,25 +10,6 @@ export class DownloadService {
     private http: HttpClient
   ) { }
 
-  // 下载图片, 避免浏览器直接打开
-  image (url: string, filename = '') {
-    this.http.get(url, {
-      responseType: "blob",
-    }).subscribe(resp => {
-      const ContentType = resp?.type
-      if (ContentType && !filename.substring(0, filename.lastIndexOf("."))) {
-        const type = ContentType.split('/')[1];
-        filename = filename + '.' + type
-      }
-
-      if (resp) {
-        var blob = new Blob([resp], {type: 'application/octet-stream'});
-        this.file(URL.createObjectURL(blob), filename)
-      }
-    })
-  }
-
-
   // 下载文件, 浏览器能直接预览的使用blob, 浏览器无法预览的直接下载
   downloadFileByBlob (url: string, filename: string = '') {
     this.http.get(url, {
@@ -47,6 +28,7 @@ export class DownloadService {
     })
   }
 
+  // 下载文件
   downloadFileByUrl (url: string, filename: string = '') {
     const eleLink = document.createElement('a');
     eleLink.download = filename;
@@ -60,6 +42,7 @@ export class DownloadService {
     }, 0);
   }
 
+  // 下载文件
   downloadFile (url: string, filename: string = '') {
     // 待补充
     const mediaTypeArr = [
