@@ -19,8 +19,8 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
         </div>
       </div>
     </div>
-    <!-- <iframe style="width: 100%; height: 200px" id="viewer" name="viewer" allow="fullscreen; xr-spatial-tracking;" src="https://arthub.oa.com/gas/modelViewer/?initfocus=1&id=121332849724&asset_hub=gas&isEditor=false" style="display: unset;"></iframe> -->
-    <iframe src="https://arthub.oa.com/gas/modelViewer/?initfocus=1&id=121332849724&asset_hub=gas&isEditor=false" allowfullscreen="allowfullscreen" class="mfb-model-iframe__iframe" style="opacity: 1;"></iframe>
+    <iframe style="width: 100%; height: 200px" id="viewer" name="viewer" allow="fullscreen; xr-spatial-tracking;" src="https://threejs.org/examples/webgl_animation_keyframes.html" style="display: unset;"></iframe>
+    <!-- <iframe src="https://arthub.oa.com/gas/modelViewer/?initfocus=1&id=121332849724&asset_hub=gas&isEditor=false" allowfullscreen="allowfullscreen" class="mfb-model-iframe__iframe" style="opacity: 1;"></iframe> -->
   </div>
   `,
   styles: [
@@ -33,14 +33,13 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
     .ant-modal-header {
       position: absolute;
       width: 100%;
-      background-color: rgba(0,0,0,0);
+      background-color: rgba(0,0,0,0.05);
       border: none;
     }
 
     iframe#viewer {
       display: block !important;;
-      width: 1200%;
-      height: 100%;
+      width: 1200px;
       height: 500px;
     }
 
