@@ -85,6 +85,15 @@ export class PreviewService   {
     return modal
   }
 
+  // 预览图片
+  img () {
+
+  }
+
+  // 预览视频
+
+  // 预览音频
+
   close (id: string) {
     const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
     if (modal) {
