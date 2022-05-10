@@ -88,9 +88,9 @@ export class LayoutHeaderComponent implements OnInit {
     });
   }
 
-  collapsChange (isCollapsed: boolean) {
+  collapseChange (isCollapsed: boolean) {
     this.isCollapsed = isCollapsed;
-    this.layout.collapsChange(this.isCollapsed);
+    this.layout.collapseChange(this.isCollapsed);
   }
 
   showModal(): void {

@@ -1,6 +1,16 @@
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject,
-  Input, isDevMode, NgZone, OnDestroy, OnInit, Optional } from '@angular/core';
+import { 
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  Input,
+  isDevMode,
+  NgZone,
+  OnDestroy,
+  OnInit,
+  Optional
+} from '@angular/core';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { DOCUMENT } from '@angular/common';
 
@@ -12,6 +22,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './theme-setting.types';
 import { environment } from 'environments/environment';
+
 
 enum ThemeType {
   dark = 'dark',
@@ -65,8 +76,6 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
       this.dir = direction;
     });
   }
-
-
 
   // 运行less
   runLess(): void {
@@ -217,13 +226,12 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
       data[key].value = value === `@primary-color` ? '' : value;
     });
     this.data = data;
-    this.runLess();
+    // this.runLess();
   }
 
   private get validKeys(): string[] {
     return Object.keys(this.data).filter(key => this.data[key].value !== this.data[key].default);
   }
-
 
   // 重置
   reset(): void {
@@ -235,7 +243,6 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
   changeColorWeek ($event: Event) {
     this.doc.body.classList[$event ? 'add' : 'remove']('color-weak');
   }
-
 
   // 复制剪贴板
   copyVar(): void {

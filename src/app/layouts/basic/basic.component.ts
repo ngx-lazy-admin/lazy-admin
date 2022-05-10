@@ -99,7 +99,7 @@ export class LayoutBasicComponent implements OnInit {
           this.nzWidthRange = [0, 256]
         }
 
-        this.layout.collapsChange(!this.index);
+        this.layout.collapseChange(!this.index);
         this.cd.markForCheck();
       });
   }
@@ -113,11 +113,11 @@ export class LayoutBasicComponent implements OnInit {
   }
 
   collapsedChange ($event: boolean) {
-    this.layout.collapsChange($event);
+    this.layout.collapseChange($event);
   }
 
   close () {
-    this.layout.collapsChange(!this.isCollapsed);
+    this.layout.collapseChange(!this.isCollapsed);
   }
 
   ngOnDestroy(): void {

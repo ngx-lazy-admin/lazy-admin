@@ -10,10 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class LayoutService {
 
   private _isCollapsed: boolean = false;
-
   private _isCollapsed$ = new BehaviorSubject<boolean>(false);
-
-  // isCollapsed$ = this._isCollapsed$.asObservable();
 
   get change$ () {
     return this._isCollapsed$.asObservable();
@@ -21,7 +18,7 @@ export class LayoutService {
 
   constructor() { }
 
-  collapsChange (collapsed: boolean) {
+  collapseChange (collapsed: boolean) {
     this._isCollapsed = collapsed;
     this._isCollapsed$.next(this._isCollapsed);
   }

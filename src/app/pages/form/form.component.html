@@ -1,6 +1,6 @@
 <!-- <nz-spin *ngIf="loading" [nzSpinning]="loading" class="p-5"></nz-spin> -->
 
-<button (click)="preview('111')">预览</button>
+<!-- <button (click)="preview('111')">预览</button> -->
 
 <ng-container *ngIf="!loading && form">
 	<ng-container  *ngIf="status == 200">
@@ -8,6 +8,7 @@
 		<nz-alert
 			nzType="info"
 			nzCloseable
+			class="mb-3"
 			nzDescription="键盘点击 . , 可以编辑当前页面配置"
 		></nz-alert>
 
