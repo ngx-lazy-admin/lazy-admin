@@ -261,6 +261,11 @@ export const components = [
     id: 'pagination',
     fields: PaginationMockFields,
     data: {
+      pagination: {
+        pageIndex: 3,
+        pageSize: 20,
+        total: 100
+      }
     },
     info: {
       title: 'Pagination分页',

@@ -10,6 +10,16 @@ import { FieldType } from '@ngx-formly/core';
 		<pagination-item
 			[formControl]="control"
 			[formlyAttributes]="field"
+
+			[nzDisabled]="disabled"
+			[nzShowQuickJumper]="showQuickJumper"
+			[nzShowSizeChanger]="showSizeChanger"
+			[nzSimple]="simple"
+			[nzSize]="size"
+			[nzResponsive]="responsive"
+			[nzPageSizeOptions]="pageSizeOptions"
+			[nzHideOnSinglePage]="hideOnSinglePage"
+			(pageChange)="pageChange($event)"
 		></pagination-item>
 	`
 })
@@ -19,65 +29,39 @@ export class PaginationField extends FieldType {
 		return this.formControl as FormControl
 	}
 
-	get nzAllowClear (): boolean {
-		return this.to.nzAllowClear || true;
-	}
-
-	get nzAllowHalf (): boolean {
-		return this.to.nzAllowHalf || false;
-	}
-
-	get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
-	}
-
-	get nzCharacter(): TemplateRef<void> {
-		return this.to.nzCharacter || null;
-	}
-
-	get nzCount (): number {
-		return this.to.nzCount || 5;
-	}
-
-	get nzDisabled(): boolean {
+	get disabled(): boolean {
 		return this.to.nzDisabled || false;
 	}
 
-	get nzTooltips(): string[] {
-		return this.to.nzTooltips || []
+	get showQuickJumper(): boolean {
+		return this.to.nzShowQuickJumper || false;
 	}
 
-	get text (): string [] {
-		return this.to.text || ''
+	get showSizeChanger(): boolean {
+		return this.to.nzShowSizeChanger || true;
 	}
 
-	ngModelChange ($event: Event) {
-		if (this.to.change) {
-			// this.to.change(this.field, $event)
-		}
+	get simple(): boolean {
+		return this.to.nzSimple || false;
 	}
 
-	nzOnBlur ($event: Event) {
-		if (this.to.blur) {
-			this.to.blur(this.field, $event)
-		}
+	get size(): 'default' | 'small' {
+		return this.to.nzSize ||  'default';
 	}
 
-	nzOnFocus ($event: Event) {
-		if (this.to.focus) {
-			this.to.focus(this.field, $event)
-		}
+	get responsive(): boolean {
+		return this.to.nzResponsive || false;
 	}
 
-	nzOnHoverChange ($event: number) {
-		if (this.to.onHoverChange) {
-			this.to.onHoverChange(this.field, $event)
-		}
+	get pageSizeOptions(): number[] {
+		return this.to.nzPageSizeOptions || [10, 20, 30, 40];
 	}
 
-	nzOnKeyDown ($event: Event) {
-		if (this.to.onKeyDown) {
-			this.to.onKeyDown(this.field, $event)
-		}
+	get hideOnSinglePage(): boolean {
+		return this.to.nzHideOnSinglePage || false;
+	}
+
+	pageChange ($event: any) {
+		console.log($event)
 	}
 }

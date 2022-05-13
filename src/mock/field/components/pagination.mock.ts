@@ -18,7 +18,6 @@ export const PaginationMockFields = [
           {
             key: 'pagination',
             type: 'pagination',
-            defaultValue: 10,
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "Checkbox",

@@ -8,7 +8,6 @@ export class FullScreenService {
 
   isFullscreen: boolean = false;
 
-  // 打开全屏
   request (element?: Element) {
     return new Observable ((observed: any) => {
       if (!this.isFullscreen)  {
@@ -22,7 +21,6 @@ export class FullScreenService {
     })
   }
 
-  // 关闭全屏
   exit () {
     return new Observable ((observed: any) => {
       if (this.isFullscreen) {
@@ -32,7 +30,6 @@ export class FullScreenService {
     })
   }
 
-  // 全屏反转
   toggle(element?: Element) {
     return this.isFullscreen ? this.exit() : this.request(element);
   }

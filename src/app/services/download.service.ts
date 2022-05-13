@@ -46,10 +46,13 @@ export class DownloadService {
   downloadFile (url: string, filename: string = '') {
     // 待补充
     const mediaTypeArr = [
+      // 图片
       '.png', '.bmp', 'gif', 'jpg', 'jpeg',
 
+      // 视频
       '.avi', '.mov', '.mpv', '.wmv',
 
+      // 音频
       '.txt', '.png', '.doc', '.xml'
     ]
 
