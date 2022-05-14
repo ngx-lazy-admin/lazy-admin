@@ -30,35 +30,35 @@ export class PaginationField extends FieldType {
 	}
 
 	get disabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.to.nzDisabled || this.to.disabled || false;
 	}
 
 	get showQuickJumper(): boolean {
-		return this.to.nzShowQuickJumper || false;
+		return this.to.nzShowQuickJumper ||  this.to.showQuickJumper || false;
 	}
 
 	get showSizeChanger(): boolean {
-		return this.to.nzShowSizeChanger || true;
+		return this.to.nzShowSizeChanger ||  this.to.showSizeChanger || false;
 	}
 
 	get simple(): boolean {
-		return this.to.nzSimple || false;
+		return this.to.nzSimple || this.to.simple || false;
 	}
 
 	get size(): 'default' | 'small' {
-		return this.to.nzSize ||  'default';
+		return this.to.nzSize || this.to.size ||  'default';
 	}
 
 	get responsive(): boolean {
-		return this.to.nzResponsive || false;
+		return this.to.nzResponsive || this.to.responsive || false;
 	}
 
 	get pageSizeOptions(): number[] {
-		return this.to.nzPageSizeOptions || [10, 20, 30, 40];
+		return this.to.nzPageSizeOptions || this.to.pageSizeOptions || [10, 20, 30, 40];
 	}
 
 	get hideOnSinglePage(): boolean {
-		return this.to.nzHideOnSinglePage || false;
+		return this.to.nzHideOnSinglePage || this.to.hideOnSinglePage  || false;
 	}
 
 	pageChange ($event: any) {

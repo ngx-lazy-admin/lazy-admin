@@ -131,7 +131,7 @@ import * as beautify from 'js-beautify';
             </textarea>
           </nz-tab>
           <nz-tab nzTitle="Model">
-             {{ this.formControl.value | json }}
+             <pre>{{ this.formControl.value | json }}</pre>
           </nz-tab>
         </nz-tabset>
         </div>

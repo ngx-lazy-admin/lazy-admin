@@ -265,6 +265,11 @@ export const components = [
         pageIndex: 3,
         pageSize: 20,
         total: 100
+      },
+      pagination1: {
+        pageIndex: 3,
+        pageSize: 20,
+        total: 500
       }
     },
     info: {
