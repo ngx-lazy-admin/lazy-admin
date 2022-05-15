@@ -18,6 +18,10 @@ import { MentionField } from './mention.component'
     FormlyModule.forChild({
       types: [
         {
+          name: 'mention',
+          component: MentionField,
+        },
+        {
           name: 'nz-mention',
           component: MentionField,
         }
