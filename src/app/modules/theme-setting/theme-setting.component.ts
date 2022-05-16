@@ -23,7 +23,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './theme-setting.types';
 import { environment } from 'environments/environment';
 
-
 enum ThemeType {
   dark = 'dark',
   default = '',
@@ -111,15 +110,22 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
     }
     return this.loadStyle('/assets/styles/custom.less', 'stylesheet/less')
       .then((res) => {
-        const lessConfigNode = this.doc.createElement('script');
-        lessConfigNode.innerHTML = `
+        const lessConfigNode = document.getElementById('script:less-config-node');
+        if (lessConfigNode) {
+          this.doc.body.removeChild(lessConfigNode);
+        }
+
+        const configNode = this.doc.createElement('script');
+        configNode.id = 'script:less-config-node'
+
+        configNode.innerHTML = `
           window.less = {
             async: true,
             env: 'production',
             javascriptEnabled: true
           };
         `;
-        this.doc.body.appendChild(lessConfigNode);
+        this.doc.body.appendChild(configNode);
       })
       .then(() => this.loadScript('https://gw.alipayobjects.com/os/lib/less.js/3.8.1/less.min.js'))
       .then(() => {
@@ -226,7 +232,7 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
       data[key].value = value === `@primary-color` ? '' : value;
     });
     this.data = data;
-    // this.runLess();
+    this.runLess();
   }
 
   private get validKeys(): string[] {
