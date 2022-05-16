@@ -20,12 +20,6 @@ import { FormComponent } from './form.component';
 
 import { IconsProviderModule } from '../../modules/icons-provider.module';
 import { WatermarkPipe } from '../../pipes/watermark.pipe';
-
-
-// import { FieldTypeModule } from '../../fields/types';
-
-// import { AntFieldTypeModule } from 'src/app/modules/antd';
-
 import { ModalsModule } from 'src/app/modules/modal' 
 import { FieldTypeModule } from 'src/app/modules/fields/antd';
 // import { CustomFieldModule } from 'src/app/modules/fields/custom';

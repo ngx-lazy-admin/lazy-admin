@@ -41,68 +41,35 @@ export const InputMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '带移除图标',
+          subtitle: '带移除图标的输入框，点击图标删除所有内容。',
         },
         fieldGroup: [
           {
-            key: 'input1-3',
-            type: 'input',
+            key: 'input3-1',
+            type: 'textarea',
             className: "d-block mb-2",
             templateOptions: {
-              label: "标签",
-              placeholder: 'Basic usage',
-              disabled: true
+              placeholder: 'Autosize height based on content lines',
+              autosize: true
             }
           },
           {
-            key: 'input1-4',
-            type: 'input',
+            key: 'input3-2',
+            type: 'textarea',
             className: "d-block mb-2",
             templateOptions: {
-              label: "large size",
-              placeholder: 'large size',
-              size: 'large',
-              disabled: true
+              placeholder: 'Autosize height with minimum and maximum number of lines',
+              autosize: { minRows: 2, maxRows: 4 }
             }
           },
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
+            key: 'input3-3',
+            type: 'textarea',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
-            },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
-            templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
-              `
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
+              placeholder: 'Controlled autosize',
+              autosize: { minRows: 4, maxRows: 6 }
             }
           }
         ]
@@ -111,56 +78,21 @@ export const InputMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '带数字提示的文本域',
+          subtitle: '展示数字提示。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'input4-1',
+            type: 'textarea',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              placeholder: 'Autosize height based on content lines',
+              maxCharacterCount: 100
             }
           }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
+      }
     ]
   },
   {
@@ -202,33 +134,23 @@ export const InputMockFields = [
         ],
         templateOptions: {
           title: '三种大小',
-          description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
-          注意： 在表单里面，我们只使用大尺寸的输入框。`,
+          description: `我们为 nz-input 输入框定义了三种尺寸(大、默认、小)高度分别为 40px、32px 和 24px。
+          注意: 在表单里面, 我们只使用大尺寸的输入框。`,
         },
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '文本域',
+          subtitle: '用于多行输入。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'input-2-1-1',
+            type: 'textarea',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
             }
           }
         ]
@@ -237,25 +159,53 @@ export const InputMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '适应文本高度的文本域',
+          subtitle: 'nzAutosize 属性适用于 textarea 节点，并且只有高度会自动变化。另外 nzAutosize 可以设定为一个对象，指定最小行数和最大行数。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'input-2-2-1',
+            type: 'textarea',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "Checkbox",
+              placeholder: 'Autosize height based on content lines',
+              autosize: true
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'input-2-2-2',
+            type: 'textarea',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "nzDisabled",
-              
+              placeholder: 'Autosize height with minimum and maximum number of lines',
+              autosize: { minRows: 2, maxRows: 4 }
+            }
+          },
+          {
+            key: 'input-2-2-3',
+            type: 'textarea',
+            className: "d-block mb-2",
+            templateOptions: {
+              placeholder: 'Controlled autosize',
+              autosize: { minRows: 4, maxRows: 6 }
+            }
+          },
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '密码框',
+          subtitle: '密码框。',
+        },
+        fieldGroup: [
+          {
+            key: 'input-2-3-1',
+            type: 'input',
+            className: "d-block mb-2",
+            templateOptions: {
+              type: 'password'
             }
           }
         ]
@@ -264,29 +214,20 @@ export const InputMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '无边框',
+          subtitle: '没有边框。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'input-2-4-1',
+            type: 'input',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
+              borderless: true
             }
           }
         ]
       },
-
     ]
   },
 ]

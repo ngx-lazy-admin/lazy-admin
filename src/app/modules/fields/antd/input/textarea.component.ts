@@ -24,7 +24,9 @@ export interface AutoSizeType {
 			[nzSize]="nzSize"
 			[nzBorderless]="nzBorderless"
 			[nzAutosize]="nzAutosize"
+			[placeholder]="placeholder"
 		></textarea>
+
 	`
 })
 export class TextareaField extends FieldType {
@@ -35,6 +37,10 @@ export class TextareaField extends FieldType {
 
 	get nzSize(): NzSizeLDSType {
 		return this.to.nzSize || 'default'
+	}
+
+	get placeholder(): string {
+		return this.to.placeholder || ''
 	}
 
 	get control() : FormControl {
@@ -50,10 +56,10 @@ export class TextareaField extends FieldType {
 	}
 
 	get nzAutosize(): boolean | AutoSizeType {
-		return this.to.nzAutosize || false
+		return this.to.nzAutosize || this.to.autosize || false
 	}
 
 	get nzMaxCharacterCount(): number {
-		return this.to.nzMaxCharacterCount || null;
+		return this.to.nzMaxCharacterCount || this.to.maxCharacterCount || 100;
 	}
 }

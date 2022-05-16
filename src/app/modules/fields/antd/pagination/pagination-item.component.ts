@@ -11,14 +11,18 @@ import {
   Optional,
   ViewEncapsulation,
   ChangeDetectionStrategy,
-  EventEmitter
+  EventEmitter,
+  Output,
+  TemplateRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
-import { InputBoolean } from 'ng-zorro-antd/core/util';
+import { InputBoolean, InputNumber } from 'ng-zorro-antd/core/util';
+import { WithConfig } from 'ng-zorro-antd/core/config';
+import { PaginationItemRenderContext } from 'ng-zorro-antd/pagination';
 
 export interface NzpaginationInterface {
   label: string;
@@ -41,9 +45,17 @@ export interface paginationInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
 		<nz-pagination
-      [(nzPageIndex)]="pagination.pageIndex"
-      [(nzPageSize)]="pagination.pageSize"
+      [nzPageIndex]="pagination.pageIndex"
+      [nzPageSize]="pagination.pageSize"
       [nzTotal]="pagination.total"
+      [nzDisabled]="nzDisabled"
+			[nzShowQuickJumper]="nzShowQuickJumper"
+			[nzShowSizeChanger]="nzShowSizeChanger"
+			[nzSimple]="nzSimple"
+			[nzSize]="nzSize"
+			[nzResponsive]="nzResponsive"
+			[nzPageSizeOptions]="nzPageSizeOptions"
+			[nzHideOnSinglePage]="nzHideOnSinglePage"
       [nzDisabled]="nzDisabled"
       (nzPageIndexChange)="pageIndexChange($event)"
       (nzPageSizeChange)="pageSizeChange($event)"
@@ -64,39 +76,28 @@ export class paginationFieldItem implements ControlValueAccessor, OnInit, OnDest
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
 
-  @Input() 
-  @InputBoolean() 
-  nzDisabled = false;
+  @Output() readonly pageChange: EventEmitter<paginationInterface> = new EventEmitter();
 
-  @Input() 
-  @InputBoolean() 
-  nzShowQuickJumper = false;
-
-  @Input() 
-  @InputBoolean() 
-  nzShowSizeChanger = false;
-
-  @Input() 
-  @InputBoolean() 
-  nzSimple = false;
-
-  @Input() 
-  @InputBoolean() 
-  nzSize = false;
-
-  @Input() 
-  @InputBoolean() 
-  nzResponsive = false;
-
-  @Input() 
-  nzPageSizeOptions = [10, 20, 30, 40];
+  @Input() nzShowTotal: TemplateRef<{ $implicit: number; range: [number, number] }> | null = null;
+  @Input() nzItemRender: TemplateRef<PaginationItemRenderContext> | null = null;
+  @Input() nzSize: 'default' | 'small' = 'default';
+  @Input() nzPageSizeOptions: number[] = [10, 20, 30, 40];
+  @Input() @InputBoolean() nzShowSizeChanger = false;
+  @Input() @InputBoolean() nzShowQuickJumper = false;
+  @Input() @InputBoolean() nzSimple = false;
+  @Input() @InputBoolean() nzDisabled = false;
+  @Input() @InputBoolean() nzResponsive = false;
+  @Input() @InputBoolean() nzHideOnSinglePage = false;
+  @Input() @InputNumber() nzTotal = 0;
+  @Input() @InputNumber() nzPageIndex = 1;
+  @Input() @InputNumber() nzPageSize = 10;
 
   private _destroy$ = new Subject<void>();
 
   pagination: paginationInterface = {
     pageIndex: 1,
     pageSize: 10,
-    total:  50 
+    total: 50 
   }
 
   constructor(
@@ -120,15 +121,19 @@ export class paginationFieldItem implements ControlValueAccessor, OnInit, OnDest
   }
 
   pageSizeChange (pageSize: number) {
-    console.log(pageSize)
-    // this.pagination.pageSize = pageSize
-    // this.onChange(this.pagination)
+    if (!this.nzDisabled) {
+      this.pagination.pageSize = pageSize
+      this.onChange(this.pagination)
+      this.pageChange.emit(this.pagination);
+    }
   }
 
   pageIndexChange (pageIndex: number) {
-    console.log(pageIndex)
-    // this.pagination.pageIndex = pageIndex
-    // this.onChange(this.pagination)
+    if (!this.nzDisabled) {
+      this.pagination.pageIndex = pageIndex
+      this.onChange(this.pagination)
+      this.pageChange.emit(this.pagination);
+    }
   }
 
   ngOnDestroy(): void {
@@ -138,12 +143,11 @@ export class paginationFieldItem implements ControlValueAccessor, OnInit, OnDest
   }
 
   writeValue(value: paginationInterface): void {
-    console.log(value)
-    // if (value) {
-    //   this.pagination.pageIndex = value?.pageIndex
-    //   this.pagination.pageSize = value?.pageSize
-    //   this.pagination.total = value?.total
-    // }
+    if (value) {
+      this.pagination.pageIndex = value?.pageIndex
+      this.pagination.pageSize = value?.pageSize
+      this.pagination.total = value?.total
+    }
   }
 
   registerOnChange(fn: OnChangeType): void {
@@ -153,6 +157,4 @@ export class paginationFieldItem implements ControlValueAccessor, OnInit, OnDest
   registerOnTouched(fn: OnTouchedType): void {
     this.onTouched = fn;
   }
-
 }
-
