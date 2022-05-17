@@ -92,12 +92,12 @@ export abstract class ShareFieldType extends FieldType {
     this.runChange(this.field, this, 'cancel')
   }
 
-  runChange (field: FormlyFieldConfig, _this: this, key: string) {
+  runChange (field: FormlyFieldConfig, _this: this, key: string, $event: Event | null = null) {
     this.zone.runOutsideAngular(() => {
       try{
         if (key && _this.to?.[key]) {
           const func = typeof(_this.to?.[key]) == 'string' ? execEval(_this.to?.[key]) : _this.to?.[key];
-          func(field, _this)
+          func(field, _this, $event)
         }
       } catch (err){
         console.log(key + ': error', err)

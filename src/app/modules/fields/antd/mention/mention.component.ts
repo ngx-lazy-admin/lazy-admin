@@ -11,6 +11,7 @@ import { execEval, ShareFieldType } from '../share-field.type';
 		[nzSuggestions]="nzSuggestions"
 		[nzPlacement]="nzPlacement"
 		[nzLoading]="nzLoading"
+		[nzPrefix]="nzPrefix"
 		(nzOnSelect)="onSelect($event)"
 		(nzOnSearchChange)="nzOnSearchChange($event)">
 		<input
@@ -53,7 +54,7 @@ export class MentionField extends ShareFieldType {
 	}
 
 	get nzPrefix(): string | string[] {
-		return this.to?.nzPrefix || false
+		return this.to?.nzPrefix || this.to?.prefix || '@'
 	}
 
 	get nzSuggestions(): any[] {
@@ -88,7 +89,7 @@ export class MentionField extends ShareFieldType {
     //   }
     // });
 
-		this.runChange(this.field, this, 'onSearchChange')
+		this.runChange(this.field, this, 'onSearchChange', $event)
 	}
 
 	onChange ($event: any) {
