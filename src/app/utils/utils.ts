@@ -146,34 +146,10 @@ export function reverseDeepMerge(dest: any, ...args: any[]) {
   return dest;
 }
 
-export function isNullOrUndefined(value: any) {
-  return value === undefined || value === null;
-}
-
-export function isUndefined(value: any) {
-  return value === undefined;
-}
-
-export function isBlankString(value: any) {
-  return value === '';
-}
-
-export function isFunction(value: any) {
-  return typeof(value) === 'function';
-}
-
 export function objAndSameType(obj1: any, obj2: any) {
   return isObject(obj1) && isObject(obj2)
     && Object.getPrototypeOf(obj1) === Object.getPrototypeOf(obj2)
     && !(Array.isArray(obj1) || Array.isArray(obj2));
-}
-
-export const isObject = (x: any) => {
-  return x != null && typeof x === 'object';
-}
-
-export function isPromise(obj: any): obj is Promise<any> {
-  return !!obj && typeof obj.then === 'function';
 }
 
 export function clone(value: any): any {
@@ -289,15 +265,46 @@ export function fieldChange (field: FormlyFieldConfigCache, model: any) {
   (field.options as any)._buildForm();
 }
 
-// export function  flatten (arr: Array<any>, func) {
-//   let arr 
-  
-// }
+// 判断类型
 
 export function isNumber(value: string | number): boolean {
   return ((value != null) && (value !== '') && !isNaN(Number(value.toString())));
 }
 
+export function isNullOrUndefined(value: any) {
+  return value === undefined || value === null;
+}
 
+export function isUndefined(value: any) {
+  return value === undefined;
+}
+
+export function isBlankString(value: any) {
+  return value === '';
+}
+
+export function isFunction(value: any) {
+  return typeof(value) === 'function';
+}
+
+export const isObject = (x: any) => {
+  return x != null && typeof x === 'object';
+}
+
+export function isPromise(obj: any): obj is Promise<any> {
+  return !!obj && typeof obj.then === 'function';
+}
 
 export const execFunction = (name: string) => (new Function( 'return ' + name))();
+
+// 随机字符串
+export const randomString = (e: number) => {    
+  e = e || 32;
+  var t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678",
+  a = t.length,
+  n = "";
+  for (let i = 0; i < e; i++) {
+    n += t.charAt(Math.floor(Math.random() * a));
+  }
+  return n
+}
