@@ -32,6 +32,7 @@ import { TreeFieldModule } from './tree';
 import { UploadFieldModule } from './upload';
 import { PaginationFieldModule } from './pagination';
 import { BadgeFieldModule } from './badge/badge.module';
+import { MentionFieldModule } from './mention';
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { BadgeFieldModule } from './badge/badge.module';
     GroupFieldModule,
     RepeatFieldModule,
     ModalFieldModule,
-    PaginationFieldModule
+    PaginationFieldModule,
+    MentionFieldModule
   ],
   providers: [
     

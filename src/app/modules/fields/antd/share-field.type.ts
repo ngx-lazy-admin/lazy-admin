@@ -58,73 +58,53 @@ export abstract class ShareFieldType extends FieldType {
   
   // 通用事件处理
   click (action?: ActionTypeInterface) {
-    this.zone.runOutsideAngular(() => {
-      try{
-        const func = typeof(action?.click) == 'string' 
-          ? execEval(action?.click) : 
-          (typeof(this.to?.click)=='string' ? execEval(this.to?.click) : null);
+    // this.zone.runOutsideAngular(() => {
+    //   try{
+    //     const func = typeof(action?.click) == 'string' 
+    //       ? execEval(action?.click) : 
+    //       (typeof(this.to?.click)=='string' ? execEval(this.to?.click) : null);
 
-        func ? func(this.field, this) : null
-        this.cd.markForCheck();
-      } catch (err){
-        console.log(err)
-      } finally {
-        console.log('click finally')
-      }
-    });
+    //     func ? func(this.field, this) : null
+    //     this.cd.markForCheck();
+    //   } catch (err){
+    //     console.log(err)
+    //   } finally {
+    //     console.log('click finally')
+    //   }
+    // });
+    this.runChange(this.field, this, 'click')
   }
 
   // 通用事件处理
   change (action?: ActionTypeInterface) {
-    this.zone.runOutsideAngular(() => {
-      try{
-        if (this.to?.change) {
-          const func = typeof(this.to?.change) == 'string' ? execEval(this.to?.change) : this.to?.change;
-          console.log('change')
-          func(this.field, this)
-        }
-      } catch (err){
-        console.log(err)
-      } finally {
-        console.log('change finally')
-      }
-    });
+    this.runChange(this.field, this, 'change')
   }
 
   confirm (action?: ActionTypeInterface) {
-    this.message.success('confirm')
-    this.zone.runOutsideAngular(() => {
-      if (action?.confirm) {
-        action.confirm(this.field, this)
-      } else if (this.to?.confirm) {
-        this.to.confirm(this.field, this);
-      }
-    });
+    this.runChange(this.field, this, 'confirm')
   }
 
   close (action?: ActionTypeInterface) {
-    this.message.success('close')
-    this.zone.runOutsideAngular(() => {
-      if (action?.close) {
-        action.close(this.field, this)
-      } else if (this.to?.close) {
-        this.to.close(this.field, this);
-      }
-    });
+    this.runChange(this.field, this, 'close')
   }
 
   cancel (action?: ActionTypeInterface) {
-    this.message.success('cancel')
+    this.runChange(this.field, this, 'cancel')
+  }
+
+  runChange (field: FormlyFieldConfig, _this: this, key: string) {
     this.zone.runOutsideAngular(() => {
-      if (action?.cancel) {
-        action.cancel(this.field, this)
-      } else if (this.to?.cancel) {
-        this.to.cancel(this.field, this);
+      try{
+        if (key && _this.to?.[key]) {
+          const func = typeof(_this.to?.[key]) == 'string' ? execEval(_this.to?.[key]) : _this.to?.[key];
+          func(field, _this)
+        }
+      } catch (err){
+        console.log(key + ': error', err)
       }
     });
   }
 
-  
   errorMessage(formControl: AbstractControl ): any {
     // debugger
     const fieldForm = formControl;

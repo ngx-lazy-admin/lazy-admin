@@ -12,15 +12,16 @@ export const MentionMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '简单的 checkbox',
+          description: '基本使用',
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'mention-1-1-1',
+            type: 'mention',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "Checkbox",
+              suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
           }
         ]
@@ -29,47 +30,26 @@ export const MentionMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '异步加载',
+          subtitle: '匹配内容列表为异步返回时。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'mention-1-2-1',
+            type: 'mention',
             className: "d-inline-block w-100",
             templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
-            },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
-            templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
-              `
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
+              suggestions: [],
+              onSearchChange: `(field, _this) => {
+                field.templateOptions.loading = true;
+                field.templateOptions.suggestions = [];
+                _this.cd.detectChanges();
+                setTimeout(() => {
+                  field.templateOptions.suggestions = ['afc163', 'beiCui', 'yiMingHe', 'RaoHai', '中文', 'にほんご'];
+                  field.templateOptions.loading = false;
+                  _this.cd.detectChanges();
+                }, 500); 
+              }`
             }
           }
         ]
