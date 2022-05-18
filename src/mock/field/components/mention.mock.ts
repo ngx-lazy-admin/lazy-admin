@@ -20,7 +20,7 @@ export const MentionMockFields = [
             type: 'mention',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              
               suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
           }
@@ -67,13 +67,12 @@ export const MentionMockFields = [
             type: 'mention',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              
               suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご'],
               prefix: ['#', '@'],
               onSearchChange: `(field, _this, {value, prefix}) => {
                 const users = ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご'];
                 const tags = ['1.0', '2.0', '3.0'];
-                console.log(prefix)
                 field.templateOptions.suggestions = prefix === '@' ? users : tags;
                 _this.cd.detectChanges();
               }`
@@ -94,7 +93,7 @@ export const MentionMockFields = [
             type: 'checkbox',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              
             }
           },
           {
@@ -113,30 +112,22 @@ export const MentionMockFields = [
   {
     type: 'group',
     className: "d-block mb-3 col-6",
-    templateOptions: {
-      title: '基本',
-      description: '最简单的用法，在浮层中可以选择或者输入日期。',
-    },
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '向上展开',
+          description: '向上展开建议。',
+        },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'mention-2-1-1',
+            type: 'mention',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              placement: 'top',
+              suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
           }
         ]
@@ -145,25 +136,17 @@ export const MentionMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '自定义建议',
+          description: '注意, nzSuggestions 不为 string[] 时，需要提供 nzValueWith。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'mention-2-2-1',
+            type: 'mention',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              placement: 'top',
+              suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
           }
         ]
@@ -172,57 +155,32 @@ export const MentionMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '无效或只读',
+          description: '通过 disabled 属性设置是否生效。通过 readOnly 属性设置是否只读。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'mention-2-3-1',
+            type: 'mention',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              placement: 'top',
+              disabled: true,
+              suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'mention-2-3-2',
+            type: 'mention',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
-              
+              placement: 'top',
+              readOnly: true,
+              suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
           }
         ]
       },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-
     ]
   },
 ]

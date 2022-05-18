@@ -1,29 +1,32 @@
 import { Component, ChangeDetectionStrategy, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
-import { FieldType } from '@ngx-formly/core';
-import { execEval, ShareFieldType } from '../share-field.type';
+import { MentionPlacement } from 'ng-zorro-antd/mention';
+import { ShareFieldType } from '../share-field.type';
 
 @Component({
 	selector: 'div[mention-field]',
-	template: `{{nzLoading}}
-	<nz-mention 
-		[nzSuggestions]="nzSuggestions"
-		[nzPlacement]="nzPlacement"
-		[nzLoading]="nzLoading"
-		[nzPrefix]="nzPrefix"
-		(nzOnSelect)="onSelect($event)"
-		(nzOnSearchChange)="nzOnSearchChange($event)">
-		<input
-			placeholder="input here"
-			nzMentionTrigger
-			nz-input
-			[formControl]="control"
-			[formlyAttributes]="field"
-			(ngModelChange)="change($event)"
-		/>
-	</nz-mention>
-	
+	template: `
+		<nz-mention 
+			[nzSuggestions]="nzSuggestions"
+			[nzPlacement]="nzPlacement"
+			[nzLoading]="nzLoading"
+			[nzPrefix]="nzPrefix"
+			[nzValueWith]="nzValueWith"
+			(nzOnSelect)="nzOnSelect($event)"
+			(nzOnSearchChange)="nzOnSearchChange($event)">
+			<input
+				nz-input
+				nzMentionTrigger
+			
+				[formControl]="control"
+				[formlyAttributes]="field"
+			
+				[placeholder]="placeholder"	
+				[readOnly]="readOnly"
+
+				(ngModelChange)="ngModelChange($event)"
+			/>
+		</nz-mention>
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
@@ -38,7 +41,7 @@ export class MentionField extends ShareFieldType {
 	}
 
 	get nzMentionSuggestion(): TemplateRef<any> | null {
-		return this.to?.nzMentionSuggestion || null
+		return this.to?.nzMentionSuggestion || this.to?.mentionSuggestion || null
 	}
 
 	get nzLoading(): boolean {
@@ -46,11 +49,11 @@ export class MentionField extends ShareFieldType {
 	}
 
 	get nzNotFoundContent(): string {
-		return this.to?.nzNotFoundContent || false
+		return this.to?.nzNotFoundContent || this.to?.notFoundContent || false
 	}
 
-	get nzPlacement(): 'bottom' | 'top' {
-		return this.to?.nzPlacement || 'bottom'
+	get nzPlacement(): MentionPlacement {
+		return this.to?.nzPlacement || this.to?.placement || 'bottom'
 	}
 
 	get nzPrefix(): string | string[] {
@@ -61,38 +64,31 @@ export class MentionField extends ShareFieldType {
 		return this.to?.nzSuggestions || this.to?.suggestions || []
 	}
 
-	get nzValueWith(): boolean {
-		return this.to?.nzValueWith || false
-	}
-
-	onSelect ($event: Event) {
-		if (this.to.onSelect) {
-			this.to.onSelect(this.field, $event)
+	get nzValueWith(): (value: any) => string { 
+		if (this.to?.nzValueWith || this.to?.valueWith) {
+			return this.to?.nzValueWith || this.to?.valueWith
+		} else {
+			return value => value
 		}
 	}
 
-	nzOnSearchChange ($event: any) {
-		// console.log($event)
-		// if (this.to.onSearchChange) {
-		// 	this.to.onSearchChange(this.field, $event)
-		// }
-		// this.zone.runOutsideAngular(() => {
-    //   try{
-    //     if (this.to?.onSearchChange) {
-    //       const func = typeof(this.to?.onSearchChange) == 'string' ? execEval(this.to?.onSearchChange) : this.to?.onSearchChange;
-    //       func(this.field, this)
-    //     }
-    //   } catch (err){
-    //     console.log(err)
-    //   } finally {
-    //     console.log('change finally')
-    //   }
-    // });
+	get readOnly (): boolean {
+		return this.to.readOnly || false
+	}
 
+	get placeholder(): string {
+		return this.to.placeholder || 'input here'
+	}
+
+	nzOnSelect ($event: Event) {
+		this.runChange(this.field, this, 'nzOnSelect', $event)
+	}
+
+	nzOnSearchChange ($event: any) {
 		this.runChange(this.field, this, 'onSearchChange', $event)
 	}
 
-	onChange ($event: any) {
-		console.log($event)
+	ngModelChange ($event: any) {
+		this.runChange(this.field, this, 'modelChange', $event)
 	}
 }
