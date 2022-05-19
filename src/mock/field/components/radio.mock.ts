@@ -16,7 +16,7 @@ export const RadioMockFields = [
         },
         fieldGroup: [
           {
-            key: 'radio1',
+            key: 'radio-1-1-1',
             type: 'radio',
             className: "d-inline-block mx-2",
             templateOptions: {
@@ -34,7 +34,7 @@ export const RadioMockFields = [
         },
         fieldGroup: [
           {
-            key: 'radio2',
+            key: 'radio-1-2-1',
             type: 'radio-group',
             className: "d-inline-block w-100",
             templateOptions: {
@@ -70,7 +70,7 @@ export const RadioMockFields = [
         },
         fieldGroup: [
           {
-            key: 'radio3',
+            key: 'radio-1-3-1',
             type: 'radio-group',
             className: "d-inline-block col-4",
             templateOptions: {
@@ -92,7 +92,7 @@ export const RadioMockFields = [
             },
           },
           {
-            key: 'radio3',
+            key: 'radio-1-3-2',
             type: 'radio-group',
             className: "d-inline-block col-4",
             templateOptions: {
@@ -114,7 +114,7 @@ export const RadioMockFields = [
             },
           },
           {
-            key: 'radio3',
+            key: 'radio-1-3-3',
             type: 'radio-group',
             className: "d-inline-block col-4",
             templateOptions: {
@@ -146,7 +146,7 @@ export const RadioMockFields = [
         },
         fieldGroup: [
           {
-            key: 'radio2',
+            key: 'radio-1-4-1',
             type: 'radio-group',
             className: "d-inline-block w-100",
             defaultValue: 'C',
@@ -181,30 +181,38 @@ export const RadioMockFields = [
   {
     type: 'group',
     className: "d-block mb-3 col-6",
-    templateOptions: {
-      title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-    },
+
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '不可用',
+          description: 'nz-radio 不可用。',
+        },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'radio-2-1-1',
+            type: 'radio',
+            className: "d-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: "disabled",
             }
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'radio-2-1-2',
+            type: 'radio',
+            className: "d-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: "disabled",
+            }
+          },
+          {
+            type: 'button',
+            className: "d-block m-2",
+            templateOptions: {
+              text: "Toggle disabled",
+              type: 'primary'
             }
           }
         ]
@@ -213,26 +221,35 @@ export const RadioMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: 'RadioGroup 垂直',
+          description: '垂直的 nz-radio-group，配合更多输入框选项。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'radio-1-2-1',
+            type: 'radio-group',
+            className: "d-inline-block w-100",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
+              text: "checked-disabled",
+              options: [
+                {
+                  label: 'A',
+                  value: 'A',
+                },
+                {
+                  label: 'B',
+                  value: 'B',
+                },
+                {
+                  label: 'C',
+                  value: 'C',
+                },
+                {
+                  label: 'D',
+                  value: 'D',
+                },
+              ]
+            },
           }
         ]
       },
@@ -240,26 +257,98 @@ export const RadioMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '按钮样式',
+          description: '按钮样式的单选组合。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'radio-2-3-1',
+            type: 'radio-group',
+            className: "d-inline-block w-100 mb-2",
+            defaultValue: 'C',
             templateOptions: {
-              text: "Checkbox",
-            }
+              text: "checked-disabled",
+              buttonStyle: 'solid',
+              radioButton: true,
+              options: [
+                {
+                  label: 'Hangzhou',
+                  value: 'A',
+                },
+                {
+                  label: 'Shanghai',
+                  value: 'B',
+                },
+                {
+                  label: 'Beijing',
+                  value: 'C',
+                },
+                {
+                  label: 'Chengdu',
+                  value: 'D',
+                },
+              ]
+            },
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'radio-2-3-2',
+            type: 'radio-group',
+            className: "d-inline-block w-100 mb-2",
+            defaultValue: 'C',
             templateOptions: {
-              text: "nzDisabled",
-              
-            }
+              text: "checked-disabled",
+              buttonStyle: 'solid',
+              radioButton: true,
+              options: [
+                {
+                  label: 'Hangzhou',
+                  value: 'A',
+                },
+                {
+                  label: 'Shanghai',
+                  value: 'B',
+                  disabled: true
+                },
+                {
+                  label: 'Beijing',
+                  value: 'C',
+                },
+                {
+                  label: 'Chengdu',
+                  value: 'D',
+                },
+              ]
+            },
+          },
+          {
+            key: 'radio-2-3-3',
+            type: 'radio-group',
+            className: "d-inline-block w-100",
+            defaultValue: 'C',
+            templateOptions: {
+              text: "checked-disabled",
+              buttonStyle: 'solid',
+              radioButton: true,
+              disabled: true,
+              options: [
+                {
+                  label: 'Hangzhou',
+                  value: 'A',
+                },
+                {
+                  label: 'Shanghai',
+                  value: 'B',
+                },
+                {
+                  label: 'Beijing',
+                  value: 'C',
+                },
+                {
+                  label: 'Chengdu',
+                  value: 'D',
+                },
+              ]
+            },
           }
         ]
       },
@@ -267,30 +356,101 @@ export const RadioMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '大小',
+          description: '大中小三种组合，可以和表单输入框进行对应配合。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'radio-1-4-1',
+            type: 'radio-group',
+            className: "d-inline-block w-100 mb-2",
+            defaultValue: 'C',
             templateOptions: {
-              text: "Checkbox",
-            }
+              text: "checked-disabled",
+              buttonStyle: 'solid',
+              radioButton: true,
+              size: 'large',
+              options: [
+                {
+                  label: 'Hangzhou',
+                  value: 'A',
+                },
+                {
+                  label: 'Shanghai',
+                  value: 'B',
+                },
+                {
+                  label: 'Beijing',
+                  value: 'C',
+                },
+                {
+                  label: 'Chengdu',
+                  value: 'D',
+                },
+              ]
+            },
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'radio-1-4-1',
+            type: 'radio-group',
+            className: "d-inline-block w-100 mb-2",
+            defaultValue: 'C',
             templateOptions: {
-              text: "nzDisabled",
-              
-            }
+              text: "checked-disabled",
+              buttonStyle: 'solid',
+              radioButton: true,
+              options: [
+                {
+                  label: 'Hangzhou',
+                  value: 'A',
+                },
+                {
+                  label: 'Shanghai',
+                  value: 'B',
+                },
+                {
+                  label: 'Beijing',
+                  value: 'C',
+                },
+                {
+                  label: 'Chengdu',
+                  value: 'D',
+                },
+              ]
+            },
+          },
+          {
+            key: 'radio-1-4-1',
+            type: 'radio-group',
+            className: "d-inline-block w-100 mb-2",
+            defaultValue: 'C',
+            templateOptions: {
+              text: "checked-disabled",
+              buttonStyle: 'solid',
+              radioButton: true,
+              size: 'small',
+              options: [
+                {
+                  label: 'Hangzhou',
+                  value: 'A',
+                },
+                {
+                  label: 'Shanghai',
+                  value: 'B',
+                },
+                {
+                  label: 'Beijing',
+                  value: 'C',
+                },
+                {
+                  label: 'Chengdu',
+                  value: 'D',
+                },
+              ]
+            },
           }
         ]
-      },
-
+      }
     ]
   },
 ]

@@ -14,11 +14,11 @@ import { FieldType } from '@ngx-formly/core';
       (ngModelChange)="ngModelChange($event)"
       ngDefaultControl>
       <ng-container *ngIf="radioButton">
-        <label nz-radio-button [nzValue]="o.value" *ngFor="let o of nzOptions">{{ o.label }}</label>
+        <label nz-radio-button [nzValue]="o.value" [nzDisabled]="o.disabled" *ngFor="let o of nzOptions">{{ o.label }} {{o.disabled}}</label>
       </ng-container>
 
       <ng-container *ngIf="!radioButton">
-        <label nz-radio [nzValue]="o.value" *ngFor="let o of nzOptions">{{ o.label }}</label>
+        <label nz-radio [nzValue]="o.value" [nzDisabled]="o.disabled" *ngFor="let o of nzOptions">{{ o.label }}</label>
       </ng-container>
 
     </nz-radio-group>
