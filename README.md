@@ -5,7 +5,7 @@ English | [简体中文](README-zh_CN.md)
 
 ## Quickstart
 
-- [Getting Started](https://ng-alain.com/docs/getting-started)
+- [Getting Started](https://lazy-admin-pro.com)
 
 ## Features
 

@@ -4,7 +4,7 @@
 
 ## 快速入门
 
-- [如何开始使用？](https://ng-alain.com/docs/getting-started)
+- [如何开始使用？](https://lazy-admin-pro.com/)
 
 ## 特性
 
