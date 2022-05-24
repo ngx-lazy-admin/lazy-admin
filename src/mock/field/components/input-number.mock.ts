@@ -75,7 +75,7 @@ export const InputNumberMockFields = [
           {
             key: 'demoValue',
             type: 'number',
-            className: "d-inline-block",
+            className: "d-inline-block mx-2",
             templateOptions: {
               min: 1,
               max: 100,
@@ -88,7 +88,7 @@ export const InputNumberMockFields = [
           {
             key: 'demoValue',
             type: 'number',
-            className: "d-inline-block",
+            className: "d-inline-block mx-2",
             templateOptions: {
               min: 1,
               max: 100,

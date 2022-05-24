@@ -1,12 +1,14 @@
 import { Component, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation, Injectable } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
-import { ShareFieldType } from '../share-field.type';
+// import { ShareFieldType } from '../share-field.type';
+// import { FieldArrayType } from './field-array.type';
+
 
 @Injectable({ providedIn: 'root' })
 @Component({
   selector: 'div[repeat-field]',
   template: `1
-    <cdk-virtual-scroll-viewport itemSize="80" class="example-viewport container" style="height: 40vh;">
+    <cdk-virtual-scroll-viewport itemSize="80" class="example-viewport container" style="height: 60vh;">
       <div *cdkVirtualFor="let field of field.fieldGroup; let i = index;" class="row">
         <formly-field class="col" [field]="field"></formly-field>
       </div>
