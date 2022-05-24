@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+
 import { Subject } from 'rxjs';
 import { execEval, ShareFieldType } from '../share-field.type';
 import * as beautify from 'js-beautify';
@@ -121,14 +122,8 @@ import * as beautify from 'js-beautify';
         <div class="f14 position-relative p-3">
         <nz-tabset >
           <nz-tab nzTitle="Fields">
-            <textarea 
-              nz-input 
-              rows="20" 
-              class="w-100 p-3" 
-              style="height: 400px"  
-              [ngModel]="fieldCode"
-              (ngModelChange)="codeChange($event)">
-            </textarea>
+            <!-- <textarea  nz-input rows="20" class="w-100 p-3" style="height: 400px" [ngModel]="fieldCode" (ngModelChange)="codeChange($event)"></textarea> -->
+            <nz-code-editor class="editor" [ngModel]="fieldCode"></nz-code-editor>
           </nz-tab>
           <nz-tab nzTitle="Model">
              <pre>{{ this.formControl.value | json }}</pre>
@@ -187,13 +182,30 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
 		return this.to.bodyClass || '';
 	}
 
-  get fieldCode(): string {
-    // todo: Filter null values
-    return  beautify(JSON.stringify(this.field.fieldGroup), { 
-      brace_style: "expand",
-      keep_array_indentation: true,
-    })
-  }
+  fieldCode = ''
+
+  // get fieldCode(): string {
+  //   // todo: Filter null values
+  //   // return  beautify(JSON.stringify(this.field.fieldGroup), { 
+  //   //   brace_style: "expand",
+  //   //   keep_array_indentation: true,
+  //   // })
+  //   console.log(this.field.fieldGroup)
+  //   return beautify(JSON.stringify(this.field.fieldGroup), { 
+  //     brace_style: "end-expand",
+  //     indent_size: 2,
+  //     indent_char: ' ',
+  //     indent_level: 0,
+  //     wrap_line_length: 2,
+  //     preserve_newlines: false,
+  //     space_in_empty_paren: false,
+  //     indent_with_tabs: true,
+  //     jslint_happy: true,
+  //     space_after_anon_function: true,
+  //     max_preserve_newlines: 2,
+  //     keep_array_indentation: false,
+  //   })
+  // }
 
   get nzIcon(): string | TemplateRef<void> {
     return this.to.nzIcon || this.to.icon || ''
@@ -285,10 +297,8 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
 
   copyCode(): void {
     console.log(JSON.stringify(this.field.fieldGroup))
-    // setTimeout(() => {
-    //   this.copyLoading = !this.codeLoaded;
-    //   this.check();
-    // }, 120);
+
+    this.copy(this.fieldCode)
   }
 
   copyGenerateCommand(command: string): void {
@@ -302,19 +312,18 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   }
 
   copy(value: string): Promise<string> {
-    console.log(this)
     const promise = new Promise<string>((resolve): void => {
       // @ts-ignore
       let copyTextArea = null as HTMLTextAreaElement;
       try {
-        // copyTextArea = this.dom.createElement('textarea');
-        // copyTextArea.style.height = '0px';
-        // copyTextArea.style.opacity = '0';
-        // copyTextArea.style.width = '0px';
-        // this.dom.body.appendChild(copyTextArea);
-        // copyTextArea.value = value;
-        // copyTextArea.select();
-        // this.dom.execCommand('copy');
+        copyTextArea = document.createElement('textarea');
+        copyTextArea.style.height = '0px';
+        copyTextArea.style.opacity = '0';
+        copyTextArea.style.width = '0px';
+        document.body.appendChild(copyTextArea);
+        copyTextArea.value = value;
+        copyTextArea.select();
+        document.execCommand('copy');
         resolve(value);
       } finally {
         if (copyTextArea && copyTextArea.parentNode) {
@@ -329,11 +338,70 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   expandCode(expanded: boolean): void {
     console.log('expandCode')
     this.nzExpanded = !this.nzExpanded;
+    let code = JSON.parse(JSON.stringify(this.field.fieldGroup))
+    this.delNullProperty(code)
+    console.log(code)
+    this.fieldCode = beautify(JSON.stringify(code), { 
+      brace_style: "end-expand",
+      indent_size: 2,
+      indent_char: ' ',
+      indent_level: 0,
+      wrap_line_length: 2,
+      preserve_newlines: false,
+      space_in_empty_paren: false,
+      indent_with_tabs: true,
+      jslint_happy: true,
+      space_after_anon_function: true,
+      max_preserve_newlines: 2,
+      keep_array_indentation: false,
+    })
   }
 
   openOnlineIDE(ide: 'StackBlitz' | 'CodeSandbox' = 'StackBlitz'): void {
     console.log('openOnlineIDE')
   }
+
+  //遍历删除对象中的空值属性
+  delNullProperty (obj: any): any {
+    // 遍历对象中的属性
+    for( let i in obj ){
+        // 首先除去常规空数据，用delete关键字
+        // console.log(i)
+        console.log(JSON.stringify(obj[i]))
+        if (i === '_keyPath' || obj[i] === undefined || obj[i] === null || obj[i] === "" || JSON.stringify(obj[i]) === '{}' || JSON.stringify(obj[i]) === '[]') {
+            delete obj[i]
+        } else if(obj[i].constructor === Object) { // 如果发现该属性的值还是一个对象，再判空后进行迭代调用
+            if(Object.keys(obj[i]).length === 0) delete obj[i] // 判断对象上是否存在属性，如果为空对象则删除
+            this.delNullProperty(obj[i])
+        }else if(obj[i].constructor === Array){ //对象值如果是数组，判断是否为空数组后进入数据遍历判空逻辑
+            if( obj[i].length === 0 ){ //如果数组为空则删除
+                delete obj[i]
+            }else{
+                for( let index = 0 ; index < obj[i].length ; index++){//遍历数组
+                    if(obj[i][index] === undefined || obj[i][index] === null || obj[i][index] === "" || JSON.stringify(obj[i][index]) === "{}" ){
+                        obj[i].splice(index,1)//如果数组值为以上空值则修改数组长度，移除空值下标后续值依次提前
+                        index--//由于数组当前下标内容已经被替换成下一个值，所以计数器需要自减以抵消之后的自增
+                    }
+                    if(obj[i].constructor === Object){//如果发现数组值中有对象，则再次进入迭代
+                        this.delNullProperty(obj[i])
+                    }
+                }
+            }
+        }
+    }
+  }
+
+  remove_empty(obj: any) {
+    for (let k in obj) {
+      const v = obj[k];
+      if (v === '' || v === undefined || v === null) {
+        delete obj[k];
+      } else if (v.constructor == Object) {
+        this.remove_empty(v)
+      }
+    }
+  }
+  
 
   check(): void {
 
