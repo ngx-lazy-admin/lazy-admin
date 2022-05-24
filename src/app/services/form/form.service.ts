@@ -21,9 +21,8 @@ import hotkeys from 'hotkeys-js';
 import { editor } from 'monaco-editor';
 
 import { FieldService } from 'src/app/services/api/field';
-import { execEval } from 'app/fields/types/share-field.type';
+import { execEval } from 'src/app/fields/types/share-field.type';
 
-import * as beautify from 'js-beautify';
 import { CacheService } from 'src/app/services/router/cache.service';
 
 export interface headerInfoType {
@@ -142,10 +141,12 @@ export class FormService {
       try {
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
         this.model = result?.data;
-        this.code = beautify(JSON.stringify(result.fields), { 
-          brace_style: "expand",
-          keep_array_indentation: true,
-        })
+
+        this.code = prettier.format(JSON.stringify(result.fields), {
+          parser: "json",
+          plugins: [parserBabel],
+        });
+
         // this.code = result.fields
         console.log('code')
 

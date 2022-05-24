@@ -16,7 +16,6 @@ import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import hotkeys from 'hotkeys-js';
-import * as beautify from 'js-beautify';
 import { editor } from 'monaco-editor';
 
 import { FieldService } from 'src/app/services/api/field';
@@ -24,6 +23,11 @@ import { execEval } from 'src/app/modules/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
 import { ModalService } from 'src/app/modules/modal';
 import { PreviewService } from 'src/app/modules/preview';
+
+import * as prettier from "prettier/standalone";
+import * as parserBabel from "prettier/parser-babel";
+
+// import * as prettier from 'prettier';
 
 export interface headerInfoType {
   title: string,
@@ -66,7 +70,7 @@ export class FormComponent {
   status = 200;
 
   // cache
-  codeType = 'javascript'
+  codeType = 'json'
 
   isVisible = false;
   editor?: editor.ICodeEditor;
@@ -187,26 +191,19 @@ export class FormComponent {
         this.model = result?.data;
         this.options.formState.cacheFields = result.fields
 
-        this.code = beautify(JSON.stringify(result.fields), { 
-          brace_style: "end-expand",
-          indent_size: 2,
-          indent_char: ' ',
-          indent_level: 0,
-          wrap_line_length: 2,
-          preserve_newlines: false,
-          space_in_empty_paren: false,
-          indent_with_tabs: true,
-          jslint_happy: true,
-          space_after_anon_function: true,
-          max_preserve_newlines: 2,
-          keep_array_indentation: false,
-        })
+        this.code = prettier.format(JSON.stringify(result.fields), {
+          parser: "json",
+          plugins: [parserBabel],
+        });
+
+        // console.log('codes', codes)
 
         this.info = result?.info;
       } catch (error) {
         this.fields = []
         this.model = {}
         this.info = null;
+        console.log(error)
       } finally {
         this.status = 200;
         this.loading = false;

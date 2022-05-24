@@ -16,7 +16,6 @@ import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import hotkeys from 'hotkeys-js';
-import * as beautify from 'js-beautify';
 import { editor } from 'monaco-editor';
 
 import { FieldService } from 'src/app/services/api/field';

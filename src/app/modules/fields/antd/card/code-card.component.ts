@@ -15,7 +15,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { Subject } from 'rxjs';
 import { execEval, ShareFieldType } from '../share-field.type';
-import * as beautify from 'js-beautify';
+
+import * as prettier from "prettier/standalone";
+import * as parserBabel from "prettier/parser-babel";
 
 @Component({
   selector: 'div[code-card]',
@@ -123,7 +125,13 @@ import * as beautify from 'js-beautify';
         <nz-tabset >
           <nz-tab nzTitle="Fields">
             <!-- <textarea  nz-input rows="20" class="w-100 p-3" style="height: 400px" [ngModel]="fieldCode" (ngModelChange)="codeChange($event)"></textarea> -->
-            <nz-code-editor class="editor" [ngModel]="fieldCode"></nz-code-editor>
+            <nz-code-editor 
+              [nzEditorOption]="{ 
+                language: 'json'
+              }" 
+              class="editor"
+              [ngModel]="fieldCode">
+            </nz-code-editor>
           </nz-tab>
           <nz-tab nzTitle="Model">
              <pre>{{ this.formControl.value | json }}</pre>
@@ -183,29 +191,6 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
 	}
 
   fieldCode = ''
-
-  // get fieldCode(): string {
-  //   // todo: Filter null values
-  //   // return  beautify(JSON.stringify(this.field.fieldGroup), { 
-  //   //   brace_style: "expand",
-  //   //   keep_array_indentation: true,
-  //   // })
-  //   console.log(this.field.fieldGroup)
-  //   return beautify(JSON.stringify(this.field.fieldGroup), { 
-  //     brace_style: "end-expand",
-  //     indent_size: 2,
-  //     indent_char: ' ',
-  //     indent_level: 0,
-  //     wrap_line_length: 2,
-  //     preserve_newlines: false,
-  //     space_in_empty_paren: false,
-  //     indent_with_tabs: true,
-  //     jslint_happy: true,
-  //     space_after_anon_function: true,
-  //     max_preserve_newlines: 2,
-  //     keep_array_indentation: false,
-  //   })
-  // }
 
   get nzIcon(): string | TemplateRef<void> {
     return this.to.nzIcon || this.to.icon || ''
@@ -340,21 +325,10 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     this.nzExpanded = !this.nzExpanded;
     let code = JSON.parse(JSON.stringify(this.field.fieldGroup))
     this.delNullProperty(code)
-    console.log(code)
-    this.fieldCode = beautify(JSON.stringify(code), { 
-      brace_style: "end-expand",
-      indent_size: 2,
-      indent_char: ' ',
-      indent_level: 0,
-      wrap_line_length: 2,
-      preserve_newlines: false,
-      space_in_empty_paren: false,
-      indent_with_tabs: true,
-      jslint_happy: true,
-      space_after_anon_function: true,
-      max_preserve_newlines: 2,
-      keep_array_indentation: false,
-    })
+    this.fieldCode = prettier.format(JSON.stringify(code), {
+      parser: "json",
+      plugins: [parserBabel],
+    });
   }
 
   openOnlineIDE(ide: 'StackBlitz' | 'CodeSandbox' = 'StackBlitz'): void {
