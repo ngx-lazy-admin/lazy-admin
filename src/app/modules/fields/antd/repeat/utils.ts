@@ -197,7 +197,7 @@ export function clone(value: any): any {
   // also Object.assign wont copy property descriptor exactly
   return Object.keys(value).reduce((newVal, prop) => {
     const propDesc = Object.getOwnPropertyDescriptor(value, prop);
-    if (propDesc.get) {
+    if (propDesc?.get) {
       Object.defineProperty(newVal, prop, propDesc);
     } else {
       newVal[prop] = clone(value[prop]);
