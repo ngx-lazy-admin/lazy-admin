@@ -1,19 +1,16 @@
 import { Inject, Injectable, Renderer2, ViewContainerRef, RendererFactory2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { ModalContent } from './modal-content.component';
+import { CodeEditorContent } from './code-editor-content.component';
 import { FieldService } from 'src/app/services/api/field';
 import { CacheService } from 'src/app/services/router/cache.service';
 import { randomString } from 'src/app/utils';
-import { CodeEditorService } from '../code-editor';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ModalService   {
+export class CodeEditorService   {
   viewContainerRef!: ViewContainerRef
-
-  userSettingsPortal: any
 
   currentIndex: number = 500
 
@@ -36,11 +33,10 @@ export class ModalService   {
     // 阻止事件冒泡
     $event && $event.stopPropagation();
 
-
     const id = randomString(32)
     this._hideAllStatus = false;
     const modal = this.modal.create({
-      nzContent: ModalContent,
+      nzContent: CodeEditorContent,
       nzViewContainerRef: this.viewContainerRef,
       nzZIndex: this.currentIndex,
       nzStyle: {
@@ -114,6 +110,7 @@ export class ModalService   {
     }
   }
 
+  // 关闭弹窗
   close (id: string) {
     const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
     if (modal) {
@@ -121,7 +118,7 @@ export class ModalService   {
     }
   }
 
-  // 显示所有弹窗
+  // 显示弹窗
   hide (id: string) {
     const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
 
@@ -131,7 +128,7 @@ export class ModalService   {
     }
   }
 
-  // 显示所有弹窗
+  // 显示弹窗
   show ($event: any) {
     $event.stopPropagation();
     this._hideAllStatus = false;

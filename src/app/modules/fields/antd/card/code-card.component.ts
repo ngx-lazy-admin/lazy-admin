@@ -1,18 +1,10 @@
-import { DOCUMENT } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { 
   Component, 
   OnDestroy,
   ChangeDetectionStrategy,
   ViewEncapsulation,
-  TemplateRef,
-  Inject,
-  ChangeDetectorRef,
-  NgZone
+  TemplateRef
 } from '@angular/core';
-import { FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
-import { NzMessageService } from 'ng-zorro-antd/message';
-
 import { Subject } from 'rxjs';
 import { execEval, ShareFieldType } from '../share-field.type';
 
@@ -130,7 +122,8 @@ import * as parserBabel from "prettier/parser-babel";
                 language: 'json'
               }" 
               class="editor"
-              [ngModel]="fieldCode">
+              [(ngModel)]="code"
+              (nzEditorInitialized)="editorInitialized($event)">
             </nz-code-editor>
           </nz-tab>
           <nz-tab nzTitle="Model">
@@ -190,8 +183,6 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
 		return this.to.bodyClass || '';
 	}
 
-  fieldCode = ''
-
   get nzIcon(): string | TemplateRef<void> {
     return this.to.nzIcon || this.to.icon || ''
   }
@@ -234,11 +225,9 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   nzSelector = '';
   nzGenerateCommand = '';
 
-
   highlightCode?: string;
   copied = false;
   commandCopied = false;
-
 
   language = 'zh';
   theme = 'default';
@@ -247,45 +236,43 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   onlineIDELoading = false;
   copyLoading = false;
 
-  code = `import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor`
+  code: string = ''
 
   navigateToFragment(): void {
     console.log('navigateToFragment')
   }
 
-  codeChange (code: any) {
-    console.log(this.field)
+  // 编辑器初始化
+  editorInitialized($event: any) {
+    $event.onDidChangeModelContent(() => {
+      let codes = $event.getValue()
+      this.codeChange(codes)
+    })
+  }
 
+  // 代码变更
+  codeChange (code: string) {
     try {
       const fieldGroup = execEval(code);
       fieldGroup.forEach((item: any) => {
         item.options = this.options
       })
       this.field.fieldGroup = [...fieldGroup]
-      // this.cd.detectChanges();
+      this.cd.detectChanges();
     } catch (error) {
       console.log(error)
-    } finally {
-      // this.cd.detectChanges();
     }
   }
 
-  // private setField(field: FormlyFieldConfigCache) {
-  //   if (this.config.extras.immutable) {
-  //     this.field = { ...this.field, ...clone(field) };
-  //   } else {
-  //     Object.keys(field).forEach((p) => ((this.field as any)[p] = (field as any)[p]));
-  //   }
-  // }
-
-  // this.setField({ options });
-
+  // 复制代码
   copyCode(): void {
-    console.log(JSON.stringify(this.field.fieldGroup))
-
-    this.copy(this.fieldCode)
+    if (!this.code) {
+      this.initCode();
+    }
+    this.copy(this.code)
   }
 
+  // 复制命令
   copyGenerateCommand(command: string): void {
     this.copy(command).then(() => {
       this.commandCopied = true;
@@ -296,6 +283,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     });
   }
 
+  // 复制
   copy(value: string): Promise<string> {
     const promise = new Promise<string>((resolve): void => {
       // @ts-ignore
@@ -320,17 +308,24 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     return promise;
   }
 
+  // 展开
   expandCode(expanded: boolean): void {
     console.log('expandCode')
     this.nzExpanded = !this.nzExpanded;
+    this.initCode();
+  }
+
+  // 初始化code
+  initCode () {
     let code = JSON.parse(JSON.stringify(this.field.fieldGroup))
     this.delNullProperty(code)
-    this.fieldCode = prettier.format(JSON.stringify(code), {
+    this.code = prettier.format(JSON.stringify(code), {
       parser: "json",
       plugins: [parserBabel],
     });
   }
 
+  // 打开IDE
   openOnlineIDE(ide: 'StackBlitz' | 'CodeSandbox' = 'StackBlitz'): void {
     console.log('openOnlineIDE')
   }
@@ -339,43 +334,31 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   delNullProperty (obj: any): any {
     // 遍历对象中的属性
     for( let i in obj ){
-        // 首先除去常规空数据，用delete关键字
-        // console.log(i)
-        console.log(JSON.stringify(obj[i]))
-        if (i === '_keyPath' || obj[i] === undefined || obj[i] === null || obj[i] === "" || JSON.stringify(obj[i]) === '{}' || JSON.stringify(obj[i]) === '[]') {
-            delete obj[i]
-        } else if(obj[i].constructor === Object) { // 如果发现该属性的值还是一个对象，再判空后进行迭代调用
-            if(Object.keys(obj[i]).length === 0) delete obj[i] // 判断对象上是否存在属性，如果为空对象则删除
-            this.delNullProperty(obj[i])
-        }else if(obj[i].constructor === Array){ //对象值如果是数组，判断是否为空数组后进入数据遍历判空逻辑
-            if( obj[i].length === 0 ){ //如果数组为空则删除
-                delete obj[i]
-            }else{
-                for( let index = 0 ; index < obj[i].length ; index++){//遍历数组
-                    if(obj[i][index] === undefined || obj[i][index] === null || obj[i][index] === "" || JSON.stringify(obj[i][index]) === "{}" ){
-                        obj[i].splice(index,1)//如果数组值为以上空值则修改数组长度，移除空值下标后续值依次提前
-                        index--//由于数组当前下标内容已经被替换成下一个值，所以计数器需要自减以抵消之后的自增
-                    }
-                    if(obj[i].constructor === Object){//如果发现数组值中有对象，则再次进入迭代
-                        this.delNullProperty(obj[i])
-                    }
-                }
+      // 首先除去常规空数据，用delete关键字
+      // console.log(i)
+      if (i === '_keyPath' || obj[i] === undefined || obj[i] === null || obj[i] === "" || JSON.stringify(obj[i]) === '{}' || JSON.stringify(obj[i]) === '[]') {
+        delete obj[i]
+      } else if(obj[i].constructor === Object) { // 如果发现该属性的值还是一个对象，再判空后进行迭代调用
+        if(Object.keys(obj[i]).length === 0) delete obj[i] // 判断对象上是否存在属性，如果为空对象则删除
+        this.delNullProperty(obj[i])
+      }else if(obj[i].constructor === Array){ //对象值如果是数组，判断是否为空数组后进入数据遍历判空逻辑
+        if( obj[i].length === 0 ){ //如果数组为空则删除
+          delete obj[i]
+        }else{
+          for( let index = 0 ; index < obj[i].length ; index++){//遍历数组
+            if(obj[i][index] === undefined || obj[i][index] === null || obj[i][index] === "" || JSON.stringify(obj[i][index]) === "{}" ){
+              obj[i].splice(index,1)//如果数组值为以上空值则修改数组长度，移除空值下标后续值依次提前
+              index--//由于数组当前下标内容已经被替换成下一个值，所以计数器需要自减以抵消之后的自增
             }
+            if(obj[i].constructor === Object){//如果发现数组值中有对象，则再次进入迭代
+              this.delNullProperty(obj[i])
+            }
+          }
         }
-    }
-  }
-
-  remove_empty(obj: any) {
-    for (let k in obj) {
-      const v = obj[k];
-      if (v === '' || v === undefined || v === null) {
-        delete obj[k];
-      } else if (v.constructor == Object) {
-        this.remove_empty(v)
       }
     }
   }
-  
+
 
   check(): void {
 
@@ -385,13 +368,12 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     // this.cd.detectChanges();
   }
 
-  // tslint:disable-next-line:no-any
+  // tslint:disable-next-line: no-any
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy()')
     this.destroy$.next();
     this.destroy$.complete();
   }

@@ -26,6 +26,7 @@ import { PreviewService } from 'src/app/modules/preview';
 
 import * as prettier from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
+import { CodeEditorService } from 'src/app/modules/code-editor';
 
 // import * as prettier from 'prettier';
 
@@ -88,7 +89,8 @@ export class FormComponent {
     private nzConfigService: NzConfigService,
     private routeCache: CacheService,
     private modalService: ModalService,
-    private previewService: PreviewService
+    private previewService: PreviewService,
+    private codeEditorService: CodeEditorService,
   ) {
 
     // 监听路由变化
@@ -141,8 +143,29 @@ export class FormComponent {
     });
 
     hotkeys('.', (event, handler) => {
-      this.isVisible = true;
-      this.cd.markForCheck();
+      const codeEditor = this.codeEditorService.create({
+        nzWidth: '900px',
+        nzWrapClassName: 'dragModal',
+        nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+        fields: this.cacheFields,
+        model: this.model,
+        nzMask: false,
+        nzFooter: [
+          {
+            label: '取消',
+            onClick: () => codeEditor.destroy()
+          },
+          {
+            label: '确定',
+            type: 'primary',
+            onClick: ($event: any) => {
+              return new Promise(resolve => setTimeout(() => {
+                console.log($event)
+              }, 60));
+            }
+          }
+        ]
+      })
     });
 
     hotkeys('m', (event, handler) => {
@@ -169,7 +192,7 @@ export class FormComponent {
             }
           }
         ]
-      }, null)
+      })
     });
   }
 
@@ -226,6 +249,7 @@ export class FormComponent {
   editorInitialized($event: any) {
     this.editor = $event;
     $event.onDidChangeModelContent(() => {
+      console.log(111)
       try {
         let codes = $event.getValue()
         this.fields = execEval(codes)
