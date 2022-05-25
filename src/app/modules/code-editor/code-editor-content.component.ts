@@ -32,12 +32,12 @@ import { execEval } from '../fields/share-field.type';
 			</nz-tabset>
 		</div>
 
-    <ng-container *ngIf="fields && fields.length">
+    <ng-container *ngIf="field && field.length">
       <form [formGroup]="form" class="col-6 w-50">
         <formly-form 
           class="row " 
           [form]="form" 
-          [fields]="fields" 
+          [fields]="field" 
           [model]="model">
         </formly-form>
       </form>
@@ -55,7 +55,6 @@ import { execEval } from '../fields/share-field.type';
 })
 export class CodeEditorContent {
 
-  // @Input() fields?: FormlyFieldConfig[];
   @Input() model?: any;
   @Input() nzTitle?: string | TemplateRef<{}>;
   @Input() modal: any;
@@ -64,9 +63,6 @@ export class CodeEditorContent {
 
   @Output() onMin = new EventEmitter<string>();
   @Output() onMax = new EventEmitter<string>();
-  // @Output() click = new EventEmitter<string>();
-
-  form = new FormGroup({});
 
   min (id: string) {
     if (this.click) {
@@ -86,31 +82,39 @@ export class CodeEditorContent {
     }
   }
 
-  // code: string = ''
-
+  // 接收的值
   private _fields: FormlyFieldConfig[] = [];
+  code: string = '';
+  form = new FormGroup({});
+  field: FormlyFieldConfig[] = []
 
   @Input() set fields(value: FormlyFieldConfig[]) {
     this._fields = value;
+    this.setCode(value);
   }
 
   get fields(): FormlyFieldConfig[] {
     return this._fields;
   }
 
-  get code (): string {
-    return prettier.format(JSON.stringify(this._fields), {
+  setCode (value: FormlyFieldConfig[]) {
+    this.code = prettier.format(JSON.stringify(value), {
       parser: "json",
       plugins: [parserBabel],
     });
+    this.field = JSON.parse(JSON.stringify(value))
   }
 
+  constructor(
+    private cd: ChangeDetectorRef,
+  ) {}
+
+  // 编辑器初始化 input => code => field
   editorInitialized($event: any) {
     $event.onDidChangeModelContent(() => {
-      console.log(111)
       try {
         let codes = $event.getValue()
-        this.fields = execEval(codes)
+        this.field = execEval(codes)
         setTimeout(() => {
           this.cd.markForCheck();
         }, 0);
@@ -118,15 +122,5 @@ export class CodeEditorContent {
         this.cd.markForCheck();
       }
     })
-  }
-
-  constructor(
-    private cd: ChangeDetectorRef,
-  ) {
-    // this.code = prettier.format(JSON.stringify(this.fields), {
-    //   parser: "json",
-    //   plugins: [parserBabel],
-    // });
-  
   }
 }

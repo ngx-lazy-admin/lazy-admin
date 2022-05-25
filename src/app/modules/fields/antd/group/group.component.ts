@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation, Injectable, HostBinding } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation, Injectable, HostBinding, OnInit } from '@angular/core';
 import { ShareFieldType } from '../share-field.type';
 
 @Injectable({ providedIn: 'root' })
@@ -16,26 +16,16 @@ import { ShareFieldType } from '../share-field.type';
 	},
 })
 
-export class GroupField extends ShareFieldType  implements OnDestroy {
+export class GroupField extends ShareFieldType implements OnDestroy, OnInit {
   @HostBinding('class') className = ''
 
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id
   }
 
-  bodyClass (): string {
-    return this.to.bodyClass
-  }
-
-  ngAfterViewInit() {
+  ngOnInit() {
     this.className = this.to.bodyClass;
-    this.cd.detectChanges();
-
-    // this.formControl.valueChanges.subscribe(item => {
-    //   console.log(this.id)
-    // })
   }
 
   ngOnDestroy() {}
-
 }

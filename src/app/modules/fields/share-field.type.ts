@@ -50,7 +50,6 @@ export abstract class ShareFieldType extends FieldType {
     super();
   }
   
-
   clickAction (action: ActionTypeInterface, key: any) {
     this.zone.runOutsideAngular(() => {
       try{
@@ -83,21 +82,6 @@ export abstract class ShareFieldType extends FieldType {
   
   // 通用事件处理
   click (action?: ActionTypeInterface ) {
-    // this.zone.runOutsideAngular(() => {
-    //   try{
-    //     const func = typeof(action?.click) == 'string' 
-    //       ? execEval(action?.click) : 
-    //       (typeof(this.to?.click)=='string' ? execEval(this.to?.click) : null);
-
-    //     func ? func(this.field, this) : null
-
-    //     this.cd.markForCheck();
-    //   } catch (err){
-    //     console.log(err)
-    //   } finally {
-    //     console.log('click finally')
-    //   }
-    // });
     if (action) {
       this.clickAction(action, 'click')
     } else if (this.to.click) {
@@ -107,19 +91,6 @@ export abstract class ShareFieldType extends FieldType {
 
   // 通用事件处理
   change (action?: ActionTypeInterface) {
-    // this.zone.runOutsideAngular(() => {
-    //   try{
-    //     if (this.to?.change) {
-    //       const func = typeof(this.to?.change) == 'string' ? execEval(this.to?.change) : this.to?.change;
-    //       func(this.field, this)
-    //     }
-    //   } catch (err){
-    //     console.log(err)
-    //   } finally {
-    //     console.log('change finally')
-    //   }
-    // });
-
     if (action) {
       this.clickAction(action, 'change')
     } else if (this.to.click) {

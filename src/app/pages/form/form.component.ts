@@ -144,27 +144,13 @@ export class FormComponent {
 
     hotkeys('.', (event, handler) => {
       const codeEditor = this.codeEditorService.create({
-        nzWidth: '900px',
+        nzHeight: '100vh',
+        nzPlacement: 'bottom',
         nzWrapClassName: 'dragModal',
         nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
         fields: this.cacheFields,
         model: this.model,
-        nzMask: false,
-        nzFooter: [
-          {
-            label: '取消',
-            onClick: () => codeEditor.destroy()
-          },
-          {
-            label: '确定',
-            type: 'primary',
-            onClick: ($event: any) => {
-              return new Promise(resolve => setTimeout(() => {
-                console.log($event)
-              }, 60));
-            }
-          }
-        ]
+        nzMask: false
       })
     });
 
