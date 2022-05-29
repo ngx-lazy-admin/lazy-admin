@@ -28,161 +28,83 @@ export const BadgeMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '封顶数字',
-          description: `超过 nzOverflowCount 的会显示为 nzOverflowCount+，默认的 nzOverflowCount 为 99`,
-        },
-        fieldGroup: [
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 mb-2", 
-            templateOptions: {
-              text: 'Large',
-              size: 'large',
-              type: 'primary',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 mb-2",
-            
-            templateOptions: {
-              text: 'default',
-              type: 'primary',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 mb-2",
-            templateOptions: {
-              text: 'Small',
-              type: 'primary',
-              size: 'small'
-            }
-          },
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '可点击',
-          description: '用 a 标签进行包裹即可。',
-        },
-        fieldGroup: [
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            
-            templateOptions: {
-              // icon: 'poweroff',
-              text: 'Loading',
-              type: 'primary',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            
-            templateOptions: {
-              size: 'small',
-              text: 'Loading',
-              loading: true,
-              type: 'primary',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            
-            templateOptions: {
-              size: 'small',
-              text: 'Loading',
-              loading: false,
-              type: 'primary',
-              click: `(_field, _this) => {
-                console.log(_field.templateOptions.loading)
-                _field.templateOptions.loading = !_field.templateOptions.loading
-                console.log(_field.templateOptions.loading)
-
-              }`
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            
-            templateOptions: {
-              loading: true,
-              shape: 'circle',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            
-            templateOptions: {
-              type: 'primary',
-              loading: true,
-              shape: 'circle',
-            }
-          },
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
           title: '状态点',
           description: '用于表示状态的小圆点。',
         },
         fieldGroup: [
           {
-            type: 'button',
-            className: "d-block mb-2",
-            
+            type: 'badge',
+            className: "d-inline-block mb-2",
             templateOptions: {
-              block: true,
-              text: 'Primary',
-              type: 'primary',
+              status: 'success'
             }
           },
           {
-            type: 'button',
-            className: "d-block mb-2",
-            
+            type: 'badge',
+            className: "d-inline-block mb-2",
             templateOptions: {
-              block: true,
-              text: 'Default',
-              type: 'default',
+              status: 'error'
             }
           },
           {
-            type: 'button',
-            className: "d-block mb-2",
-            
+            type: 'badge',
+            className: "d-inline-block mb-2",
             templateOptions: {
-              block: true,
-              text: 'Dashed',
-              type: 'dashed',
+              status: 'default'
             }
           },
           {
-            type: 'button',
-            className: "d-block mb-2",
-            
+            type: 'badge',
+            className: "d-inline-block mb-2",
             templateOptions: {
-              block: true,
-              text: 'text',
-              type: 'Text',
+              status: 'processing'
             }
           },
           {
-            type: 'button',
+            type: 'badge',
+            className: "d-inline-block mb-2",
+            templateOptions: {
+              status: 'warning'
+            }
+          },
+          {
+            type: 'badge',
             className: "d-block mb-2",
             templateOptions: {
-              block: true,
-              text: 'link',
-              type: 'link',
+              status: 'success',
+              text: 'success'
+            }
+          },
+          {
+            type: 'badge',
+            className: "d-block mb-2",
+            templateOptions: {
+              status: 'error',
+              text: 'error'
+            }
+          },
+          {
+            type: 'badge',
+            className: "d-block mb-2",
+            templateOptions: {
+              status: 'default',
+              text: 'default'
+            }
+          },
+          {
+            type: 'badge',
+            className: "d-block mb-2",
+            templateOptions: {
+              status: 'processing',
+              text: 'processing'
+            }
+          },
+          {
+            type: 'badge',
+            className: "d-block mb-2",
+            templateOptions: {
+              status: 'warning',
+              text: 'warning'
             }
           },
         ]
@@ -197,294 +119,58 @@ export const BadgeMockFields = [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '独立使用',
+          description: `不包裹任何元素，增加 nzStandalone标签后，即是独立使用，可自定样式展现。在右上角的 badge 则限定为红色。`,
+        },
         fieldGroup: [
           {
-            type: 'button',
+            type: 'badge',
             className: "d-inline-block m-2",
             templateOptions: {
-              type: 'primary',
-              text: 'Primary',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'primary',
-              text: 'Primary',
-              disabled: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'default',
-              text: 'default',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'default',
-              text: 'default',
-              disabled: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'dashed',
-              text: 'dashed',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'dashed',
-              text: 'dashed',
-              disabled: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'text',
-              text: 'text',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'text',
-              text: 'text',
-              disabled: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'link',
-              text: 'link',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'link',
-              text: 'link',
-              disabled: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'text',
-              danger: true,
-              text: 'danger text',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'text',
-              text: 'danger text',
-              danger: true,
-              disabled: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'link',
-              danger: true,
-              text: 'danger link',
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'link',
-              danger: true,
-              text: 'danger link',
-              disabled: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'primary',
-              danger: true,
-              text: 'danger Primary',
-              disabled: false
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              type: 'primary',
-              danger: true,
-              text: 'danger Primary',
-              disabled: true
-            }
-          },
+              standalone: true, 
+              count: 25,
 
+            }
+          },
+          {
+            type: 'badge',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              standalone: true, 
+              count: 4,
+              style: { backgroundColor: '#fff', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset' }
+            }
+          },
+          {
+            type: 'badge',
+            className: "d-inline-block m-2",
+            templateOptions: {
+              standalone: true, 
+              count: 109,
+              style: { backgroundColor: '#52c41a' }
+            }
+          }
         ],
-        templateOptions: {
-          title: '不可用状态',
-          description: `添加 disabled 属性即可让按钮处于不可用状态，同时按钮样式也会改变。`,
-        },
       },
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '幽灵按钮',
-          description: '添加 nzGhost 属性后，幽灵按钮将其他按钮的内容反色，背景变为透明，常用在有色背景上。',
-          bodyClass: 'bg-secondary'
+          title: '多彩徽标',
+          description: '我们添加了多种预设色彩的徽标样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。',
         },
         fieldGroup: [
           {
-            type: 'button',
+            type: 'badge',
             className: "d-inline-block mb-2",
             templateOptions: {
-              text: 'Primary',
-              type: 'primary',
-              ghost: true
+              color: '#f50',
+              text: "#f50",
             }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Default",
-              type: 'default',
-              ghost: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Dashed",
-              type: 'dashed',
-              ghost: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Link",
-              type: 'link',
-              ghost: true
-            }
-          },
+          }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '危险按钮',
-          description: '使用 nzDanger 将按钮标识为危险状态。',
-        },
-        fieldGroup: [
-          {
-            type: 'button',
-            className: "d-inline-block mb-2",
-            templateOptions: {
-              text: 'Primary',
-              type: 'primary',
-              danger: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Default",
-              type: 'default',
-              danger: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Dashed",
-              type: 'dashed',
-              danger: true
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Link",
-              type: 'link',
-              danger: true
-            }
-          },
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '路由跳转',
-          description: '使用 nzDanger 将按钮标识为危险状态。',
-        },
-        fieldGroup: [
-          {
-            type: 'button',
-            className: "d-inline-block mb-2",
-            templateOptions: {
-              text: 'Primary',
-              type: 'primary',
-              danger: true
-            }
-          },
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: 'http 请求',
-          description: 'http 请求',
-        },
-        fieldGroup: [
-          {
-            type: 'button',
-            className: "d-inline-block mb-2",
-            templateOptions: {
-              text: 'Primary',
-              type: 'primary',
-              click: `(_field, _this) => {
-                _this.http.get('api/components/button').subscribe(result => {
-                  _this.message.success(result.info.content)
-                })
-              }`
-            }
-          },
-        ]
-      }
-
-      
+      } 
     ]
   },
 ]

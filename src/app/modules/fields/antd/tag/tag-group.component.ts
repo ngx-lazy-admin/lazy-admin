@@ -10,7 +10,6 @@ import { FieldType } from '@ngx-formly/core';
       [formlyAttributes]="field"
       (ngModelChange)="ngModelChange($event)"
       ngDefaultControl>
-      {{ text }}
     </tag-checkbox-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,13 +26,9 @@ export class TagGroupField extends FieldType {
 		return this.to.nzDisabled || false;
 	}
 
-  get text(): string {
-    return this.to.text || ''
-  }
-
   ngModelChange ($event: Event) {
     if (this.to.change) {
-        this.to.change(this.field, $event)
+      this.to.change(this.field, $event)
     }
   }
 }

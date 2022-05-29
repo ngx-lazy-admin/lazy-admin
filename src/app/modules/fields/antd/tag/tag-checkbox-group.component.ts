@@ -29,6 +29,8 @@ export interface NzCheckBoxOptionInterface {
   value: string;
   checked?: boolean;
   disabled?: boolean;
+  color: string;
+  mode?: 'closeable' | 'default' | 'checkable'
 }
 
 @Component({
@@ -40,9 +42,11 @@ export interface NzCheckBoxOptionInterface {
   template: `
     <ng-container *ngFor="let item of options">
       <nz-tag 
-        nzMode="checkable" 
+        [nzMode]="item.mode || 'checkable'" 
         [attr.id]="item.value"
         [nzChecked]="item.checked"
+        [nzColor]="item.color"
+        
         (nzCheckedChange)="checkChange($event, item)"
       >
         {{ item['label'] }}
@@ -58,7 +62,14 @@ export interface NzCheckBoxOptionInterface {
   ],
   host: {
     '(click)': 'hostClick($event)'
-  }
+  },
+  styles: [
+    `
+      .ant-tag {
+        margin-bottom: 8px;
+      }
+    `
+  ]
 })
 
 export class NzTagCheckboxGroupComponent implements OnInit, ControlValueAccessor, OnDestroy {
@@ -89,6 +100,7 @@ export class NzTagCheckboxGroupComponent implements OnInit, ControlValueAccessor
 
   writeValue(value: NzCheckBoxOptionInterface[]): void {
     this.options = value;
+    console.log(value)
     this.cd.markForCheck();
   }
 

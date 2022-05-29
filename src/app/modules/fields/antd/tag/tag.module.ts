@@ -34,11 +34,11 @@ import { TagListField } from './tag-list.component';
           component: TagField,
         },
         {
-          name: 'tag-group',
+          name: 'tag-check-group',
           component: TagGroupField,
         },
         {
-          name: 'nz-tag-group',
+          name: 'nz-tag-check-group',
           component: TagGroupField,
         },
         {

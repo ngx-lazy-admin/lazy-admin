@@ -16,39 +16,60 @@ export const TagMockFields = [
         },
         fieldGroup: [
           {
-            key: 'tag-1',
+            key: 'tag-1-1-1',
+            type: 'tag-check-group',
+            className: "d-block mb-2",
+            defaultValue: [
+              { label: 'Tag1', value: 'Tag1', checked: true },
+              { label: 'Link', value: 'Link', checked: false },
+              { label: 'Tag 2', value: 'Tag 2', mode: 'closeable'}
+            ],
+            templateOptions: {
+              text: 'Tag 1',
+              label: 'Categories'
+            }
+          }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: 'Switch开关',
+          description: '简单的 tag-check ',
+        },
+        fieldGroup: [
+          {
+            key: 'tag-1-2-1',
             type: 'tag',
             className: "d-block mb-2",
             defaultValue: 3,
             templateOptions: {
               text: 'Tag 1'
             }
-          },
+          }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '多选',
+          description: '简单的 tag-check-group',
+        },
+        fieldGroup: [
           {
-            key: 'tag-1',
-            type: 'tag',
+            key: 'tag-1-3-1',
+            type: 'tag-check-group',
             className: "d-block mb-2",
-            defaultValue: 3,
+            defaultValue: [
+              { label: 'Apple', value: 'Apple', checked: true },
+              { label: 'Pear', value: 'Pear', checked: false },
+              { label: 'Orange', value: 'Orange', checked: false }
+            ],
             templateOptions: {
-              text: 'Link'
-            }
-          },
-          {
-            key: 'tag-1',
-            type: 'tag',
-            className: "d-block mb-2",
-            defaultValue: 3,
-            templateOptions: {
-              text: 'Tag 2'
-            }
-          },
-          {
-            key: 'tag-1',
-            type: 'tag',
-            className: "d-block mb-2",
-            defaultValue: 3,
-            templateOptions: {
-              text: 'Prevent Default'
+              text: 'Tag 1',
+              label: 'Categories'
             }
           }
         ]
@@ -61,207 +82,96 @@ export const TagMockFields = [
           description: '用数组生成一组标签，可以动态添加和删除。',
         },
         fieldGroup: [
-          {
-            key: 'tag-group',
-            type: 'tag-group',
-            className: "d-block mb-2",
-            templateOptions: {
-              label: "标签",
-              placeholder: 'Basic usage',
-              disabled: true,
-              options: [
-                {
-                  text: 'unremovable',
-                  onlyread: true
-                },
-                {
-                  text: 'Tag 3',
-                }
-              ]
-            }
-          }
+          // {
+          //   key: 'tag-group',
+          //   type: 'tag-check-group',
+          //   className: "d-block mb-2",
+          //   templateOptions: {
+          //     label: "标签",
+          //     placeholder: 'Basic usage',
+          //     disabled: true,
+          //     options: [
+          //       {
+          //         text: 'unremovable',
+          //         onlyread: true
+          //       },
+          //       {
+          //         text: 'Tag 3',
+          //       }
+          //     ]
+          //   }
+          // }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
+      }
     ]
   },
   {
     type: 'group',
     className: "d-block mb-3 col-6",
-
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
-        fieldGroup: [
-          {
-            key: 'input-2-1',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'large size',
-              size: 'large',
-            }
-          },
-          {
-            key: 'input-2-2',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'default size',
-              size: 'default',
-            }
-          },
-          {
-            key: 'input-2-3',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'small size',
-              size: 'small',
-            }
-          },
-        ],
         templateOptions: {
-          title: '三种大小',
-          description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
-          注意： 在表单里面，我们只使用大尺寸的输入框。`,
-        },
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '多彩标签',
+          description: '我们添加了多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-            }
-          }
-        ]
-      },
+            key: 'tag-2-3-1',
+            type: 'tag-check-group',
+            className: "d-block mb-2",
+            defaultValue: [
+              { label: 'magenta', mode: 'default', color: 'magenta' },
+              { label: 'red', mode: 'default', color: 'red' },
+              { label: 'volcano', mode: 'default', color: 'volcano' },
+              { label: 'orange', mode: 'default', color: 'orange' },
+              { label: 'gold', mode: 'default', color: 'gold' },
+              { label: 'lime', mode: 'default', color: 'lime' },
+              { label: 'cyan', mode: 'default', color: 'cyan' },
+              { label: 'blue', mode: 'default', color: 'blue' },
+              { label: 'geekblue', mode: 'default', color: 'geekblue' },
+              { label: 'purple', mode: 'default', color: 'purple' },
 
+              { label: '#f50', mode: 'default', color: '#f50' },
+              { label: '#2db7f5', mode: 'default', color: '#2db7f5' },
+              { label: '#87d068', mode: 'default', color: '#87d068' },
+              { label: '#108ee9', mode: 'default', color: '#108ee9' },
+
+            ],
+            templateOptions: {
+              text: 'Tag 1',
+              label: 'Categories'
+            }
+          }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '可选择',
+          description: '简单的 tag-check-group',
+        },
+        fieldGroup: [
+          {
+            key: 'tag-2-3-2',
+            type: 'tag-check-group',
+            className: "d-block mb-2",
+            wrappers: ['form'],
+            defaultValue: [
+              { label: 'Tag 1', value: 'Tag 1', checked: true },
+              { label: 'Tag 2', value: 'Tag 2', checked: false },
+              { label: 'Tag 3', value: 'Tag 3', checked: false }
+            ],
+            templateOptions: {
+              text: 'Tag 1',
+              layout: 'inline',
+              label: 'Categories'
+            }
+          }
+        ]
+      },
     ]
   },
 ]

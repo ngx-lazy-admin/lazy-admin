@@ -16,36 +16,32 @@ export class DropdownField extends FieldType {
 		return this.formControl as FormControl
 	}
 
-	get nzAllowClear (): boolean {
-		return this.to.nzAllowClear || true;
+	get nzDisabled (): boolean {
+		return this.to.disabled || true;
 	}
 
-	get nzAllowHalf (): boolean {
-		return this.to.nzAllowHalf || false;
+	get nzPlacement (): boolean {
+		return this.to.placement || false;
 	}
 
-	get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
+	get nzTrigger(): boolean {
+		return this.to.trigger || false;
 	}
 
-	get nzCharacter(): TemplateRef<void> {
-		return this.to.nzCharacter || null;
+	get nzClickHide(): TemplateRef<void> {
+		return this.to.clickHide || null;
 	}
 
-	get nzCount (): number {
-		return this.to.nzCount || 5;
+	get nzVisible (): number {
+		return this.to.visible || 5;
 	}
 
-	get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+	get nzOverlayClassName(): string[] {
+		return this.to.overlayClassName || []
 	}
 
-	get nzTooltips(): string[] {
-		return this.to.nzTooltips || []
-	}
-
-	get text (): string [] {
-		return this.to.text || ''
+	get nzOverlayStyle (): string [] {
+		return this.to.overlayStyle || ''
 	}
 
 	ngModelChange ($event: Event) {

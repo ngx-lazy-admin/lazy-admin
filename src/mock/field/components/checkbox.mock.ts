@@ -16,7 +16,7 @@ export const CheckboxMockFields = [
         },
         fieldGroup: [
           {
-            key: 'checked1',
+            key: 'checkbox-1-1-1',
             type: 'checkbox',
             className: "d-inline-block mx-2",
             templateOptions: {
@@ -34,7 +34,7 @@ export const CheckboxMockFields = [
         },
         fieldGroup: [
           {
-            key: 'checked2',
+            key: 'checkbox-1-2-1',
             type: 'checkbox',
             className: "d-inline-block w-100",
             templateOptions: {
@@ -69,7 +69,7 @@ export const CheckboxMockFields = [
               text: "Checked",
               size: 'small',
               type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
+              click: `(F, T) => F.form?.get('checkbox-1-2-1')?.patchValue(!F.form?.get('checkbox-1-2-1')?.value)`
             }
           }
         ]
@@ -83,21 +83,16 @@ export const CheckboxMockFields = [
         },
         fieldGroup: [
           {
-            key: 'checkedAll',
+            key: 'checkbox-1-3-1',
             type: 'checkbox',
             className: "d-block mx-2",
             templateOptions: {
               text: "Check All",
-              change: `(_field, _this) => {
-                console.log('99')
-                _field.form?.get('checkedAll2')?.patchValue(
-                  _field.formControl.value ? ['apple', 'Pear', 'Orange'] : []
-                )
-              }`
+              // change: `(F, T) => F.form?.get('checkbox-1-3-2')?.patchValue(F.formControl.value ? ['apple', 'Pear', 'Orange'] : [])`
             }
           },
           {
-            key: 'checkedAll2',
+            key: 'checkbox-1-3-2',
             type: 'checkbox-wrapper',
             className: "d-inline-block mx-2",
             templateOptions: {
@@ -114,8 +109,11 @@ export const CheckboxMockFields = [
                   label: 'Orange',
                   value: 'Orange'
                 }
-              ]
-              
+              ],
+              change: `(F, T) => {
+                console.log(F.formControl.value)
+                F.form?.get('checkbox-1-3-1')?.patchValue(F.formControl.value.length ? true : false)
+              } `
             }
           },
         ]
@@ -137,7 +135,7 @@ export const CheckboxMockFields = [
         },
         fieldGroup: [
           {
-            key: 'checked1',
+            key: 'checkbox-2-1-1',
             type: 'checkbox',
             className: "d-inline-block mx-2",
             defaultValue: false,
@@ -147,7 +145,7 @@ export const CheckboxMockFields = [
             }
           },
           {
-            key: 'checked1',
+            key: 'checkbox-2-1-2',
             type: 'checkbox',
             className: "d-inline-block mx-2",
             defaultValue: true,
@@ -167,21 +165,34 @@ export const CheckboxMockFields = [
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
+            key: 'checkbox-2-2-1',
+            type: 'checkbox-group',
+            className: "d-block mx-2",
+            defaultValue: [
+              { label: 'Apple', value: 'Apple', checked: true },
+              { label: 'Pear', value: 'Pear' },
+              { label: 'Orange', value: 'Orange' }
+            ]
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
+            key: 'checkbox-2-2-2',
+            type: 'checkbox-group',
+            className: "d-block mx-2",
+            defaultValue: [
+              { label: 'Apple', value: 'Apple', disabled: true, checked: true },
+              { label: 'Pear', value: 'Pear', disabled: true, },
+              { label: 'Orange', value: 'Orange' }
+            ]
+          },
+          {
+            key: 'checkbox-2-2-3',
+            type: 'checkbox-group',
+            className: "d-block mx-2",
+            defaultValue: [
+              { label: 'Apple', value: 'Apple',  },
+              { label: 'Pear', value: 'Pear', checked: true },
+              { label: 'Orange', value: 'Orange' }
+            ]
           }
         ]
       },
@@ -194,7 +205,7 @@ export const CheckboxMockFields = [
         },
         fieldGroup: [
           {
-            key: 'checked2',
+            key: 'checkbox-2-3-1',
             type: 'checkbox',
             className: "d-inline-block mx-2",
             templateOptions: {
@@ -202,7 +213,7 @@ export const CheckboxMockFields = [
             }
           },
           {
-            key: 'checked1',
+            key: 'checkbox-2-3-2',
             type: 'checkbox',
             className: "d-inline-block mx-2",
             templateOptions: {
