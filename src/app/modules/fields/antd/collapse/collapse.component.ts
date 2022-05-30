@@ -30,11 +30,10 @@ import { FieldArrayType } from '@ngx-formly/core';
       [nzGhost]="nzGhost"
       [nzExpandIconPosition]="nzExpandIconPosition"
     >
-      
       <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
         <nz-collapse-panel
           [nzDisabled]="field?.templateOptions?.disabled || false"
-          [nzHeader]="field?.templateOptions?.label || ''"
+          [nzHeader]="field?.templateOptions?.header || ''"
           [nzExpandedIcon]="field?.templateOptions?.expandedIcon"
           [nzExtra]="field?.templateOptions?.extra"
           [nzShowArrow]="field?.templateOptions?.showArrow || true"
