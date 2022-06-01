@@ -21,6 +21,20 @@ export const CollapseMockFields = [
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "Checkbox",
+            },
+            fieldArray: {
+              fieldGroup: [
+                {
+                  key: 'article',
+                  type: 'text',
+                  className: "d-inline-block mx-2",
+                  defaultValue: false,
+                  templateOptions: {
+                    text: "Checkbox",
+                    disabled: true
+                  }
+                },
+              ]
             }
           }
         ]

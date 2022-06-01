@@ -287,6 +287,10 @@ export const components = [
           active: true,
           header: 'This is panel header 1',
           disabled: false,
+          children: [{
+            article: `A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
+            guest in many households across the world.`
+          }]
         },
         {
           active: false,

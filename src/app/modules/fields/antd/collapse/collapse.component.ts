@@ -65,6 +65,12 @@ export class CollapseField extends FieldArrayType implements OnDestroy {
 		return this.to.nzExpandIconPosition || 'right';
   }
 
+  ngOnInit(): void {
+    // console.log('chart')
+    console.log(this)
+    // console.log(this.route)
+  }
+
   activeChange ($event: boolean, fn: any) {
     if (fn) {
       fn($event)

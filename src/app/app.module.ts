@@ -8,7 +8,7 @@ import zh from '@angular/common/locales/zh';
 
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientInMemoryWebApiModule, InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
 
 import { LayoutModule } from './layouts/layout.modules'
 import { HttpsInterceptor } from './interceptors/https.interceptor'
@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 import { UserPipe } from './pipes/user.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 
-import { InMemoryDataService } from '../mock/in-memory-data.service';
+import { MockService } from '../mock/mock.service';
 import { GlobalSearchModule } from './shared/global-search';
 import { ThemeSettingModule } from './modules/theme-setting';
 
@@ -52,7 +52,11 @@ registerLocaleData(zh);
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 50}),
+    HttpClientInMemoryWebApiModule.forRoot(
+      MockService, 
+      // InMemoryBackendConfigArgs
+      { delay: 50, passThruUnknownUrl: true, dataEncapsulation: false}
+    )
   ],
   providers: [
     httpInterceptorProviders,
