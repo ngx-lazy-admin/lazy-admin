@@ -25,7 +25,7 @@ export const CollapseMockFields = [
             fieldArray: {
               fieldGroup: [
                 {
-                  key: 'article',
+                  key: 'header',
                   type: 'text',
                   className: "d-inline-block mx-2",
                   defaultValue: false,
@@ -33,6 +33,13 @@ export const CollapseMockFields = [
                     text: "Checkbox",
                     disabled: true
                   }
+                },
+
+                {
+                  key: 'children',
+                  fieldGroup: [
+
+                  ]
                 },
               ]
             }

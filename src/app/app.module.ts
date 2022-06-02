@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { PercentPipe, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,6 +52,8 @@ registerLocaleData(zh);
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
+
+    // 正式环境, 测试环境, Mock 环境  
     HttpClientInMemoryWebApiModule.forRoot(
       MockService, 
       // InMemoryBackendConfigArgs
