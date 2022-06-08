@@ -1,8 +1,11 @@
-## 生成管道
+# 管道
+
 
 生成全局管道
 
 ng g pipe pipes/marked
+
+## angular pipe 
 
 1. URI decode/encode
 
@@ -25,20 +28,20 @@ ng g pipe pipes/marked
 10. len 字符串长度 / 数组长度
 
 
-ant pipe 
+## antd pipe
 
 1. 单位换算
 
 2. 字符串截取
 
-3. 数组的 sum/ min/max/average
+3. 数组的 sum/min/max/average
 
 4. 默认控制  转换 Null 和 Undefined 为指定字符串
 
 5. 去除字符串左右空字符串
 
 
-### 官方
+## custom pipe
 
 1. AsyncPipe 从一个异步回执中解出一个值。
 

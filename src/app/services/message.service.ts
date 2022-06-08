@@ -1,11 +1,8 @@
 
 
-import { Injectable, ChangeDetectorRef } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { NzMessageService } from 'ng-zorro-antd/message';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { NzMessageDataOptions, NzMessageService } from 'ng-zorro-antd/message';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +30,9 @@ export class MessageService {
     this.message.warning(str);
   }
 
-  loading (msg: string, duration: number = 0) {
+  loading (msg: string, duration: NzMessageDataOptions = { nzDuration: 0}) {
     this._loading$.next(true);
-    return this.message.loading(msg, { nzDuration: duration }).messageId;
+    return this.message.loading(msg, duration).messageId;
   }
 
   remove (messageId: string) {
