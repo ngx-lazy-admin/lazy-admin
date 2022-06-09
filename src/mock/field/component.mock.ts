@@ -23,9 +23,10 @@ import {
   ModalMockFields,
   TagMockFields,
   PaginationMockFields,
-  BadgeMockFields
+  BadgeMockFields,
+  CollapseMockFields,
+  DescriptionMockFields
 } from './components'
-import { CollapseMockFields } from './components/collapse.mock'
 
 const list100 = [...Array(200).keys()].map((item, index) => {
   return {
@@ -309,4 +310,21 @@ export const components = [
       content: '可以折叠/展开的内容区域。'
     }
   },
+  {
+    id: 'descriptions',
+    fields: DescriptionMockFields,
+    data: {
+      'descriptions-1-1-1': {
+        username: 'Zhou Maomao',
+        telephone: '18100000000',
+        live: 'Hangzhou, Zhejiang',
+        remark: 'Empty',
+        address: 'No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China',
+      }
+    },
+    info: {
+      title: 'Descriptions描述列表',
+      content: '成组显示多个只读字段。'
+    }
+  },  
 ]

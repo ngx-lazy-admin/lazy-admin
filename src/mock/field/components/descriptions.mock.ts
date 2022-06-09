@@ -3,246 +3,287 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const DescriptionMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: "d-block mb-3 col-24",
     templateOptions: {
     },
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: "d-block mb-3 col-24",
         templateOptions: {
-          title: '基本用法',
-          description: '简单的 checkbox',
+          title: '基本',
+          description: '简单的展示。',
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'descriptions-1-1-1',
+            type: 'descriptions',
+            className: "d-block mx-2",
             templateOptions: {
               text: "Checkbox",
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
-            templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
             },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
-            templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
+            fieldGroup: [
+              {
+                key: 'username',
+                type: 'text',
+                templateOptions: {
+                  label: 'username'
                 }
-              `
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
-            }
+              },
+              {
+                key: 'telephone',
+                type: 'text',
+                templateOptions: {
+                  label: 'telephone'
+                }
+              },
+              {
+                key: 'live',
+                type: 'text',
+                templateOptions: {
+                  label: 'Live'
+                }
+              },
+              {
+                key: 'remark',
+                type: 'text',
+                templateOptions: {
+                  label: 'Remark'
+                }
+              },
+              {
+                key: 'address',
+                type: 'text',
+                templateOptions: {
+                  label: 'Address'
+                }
+              }
+            ]
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: "d-block mb-3 col-24",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '带边框的',
+          description: '带边框和背景颜色列表。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'descriptions-1-1-1',
+            type: 'descriptions',
+            className: "d-block mx-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
+              bordered: true
+            },
+            fieldGroup: [
+              {
+                key: 'username',
+                type: 'text',
+                templateOptions: {
+                  label: 'username'
+                }
+              },
+              {
+                key: 'telephone',
+                type: 'text',
+                templateOptions: {
+                  label: 'telephone'
+                }
+              },
+              {
+                key: 'live',
+                type: 'text',
+                templateOptions: {
+                  label: 'Live'
+                }
+              },
+              {
+                key: 'remark',
+                type: 'text',
+                templateOptions: {
+                  label: 'Remark'
+                }
+              },
+              {
+                key: 'address',
+                type: 'text',
+                templateOptions: {
+                  label: 'Address'
+                }
+              }
+            ]
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: "d-block mb-3 col-24",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '响应式',
+          description: '通过响应式的配置可以实现在小屏幕设备上的完美呈现。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'descriptions-1-1-1',
+            type: 'descriptions',
+            className: "d-block mx-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
+              bordered: true,
+              column: { xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }
+            },
+            fieldGroup: [
+              {
+                key: 'username',
+                type: 'text',
+                templateOptions: {
+                  label: 'username'
+                }
+              },
+              {
+                key: 'telephone',
+                type: 'text',
+                templateOptions: {
+                  label: 'telephone'
+                }
+              },
+              {
+                key: 'live',
+                type: 'text',
+                templateOptions: {
+                  label: 'Live'
+                }
+              },
+              {
+                key: 'remark',
+                type: 'text',
+                templateOptions: {
+                  label: 'Remark'
+                }
+              },
+              {
+                key: 'address',
+                type: 'text',
+                templateOptions: {
+                  label: 'Address'
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-24",
+        templateOptions: {
+          title: '垂直',
+          description: '垂直的列表。',
+        },
+        fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'descriptions-1-1-1',
+            type: 'descriptions',
+            className: "d-block mx-2",
             templateOptions: {
-              text: "nzDisabled",
-              
-            }
+              bordered: true,
+              layout: "vertical"
+            },
+            fieldGroup: [
+              {
+                key: 'username',
+                type: 'text',
+                templateOptions: {
+                  label: 'username'
+                }
+              },
+              {
+                key: 'telephone',
+                type: 'text',
+                templateOptions: {
+                  label: 'telephone'
+                }
+              },
+              {
+                key: 'live',
+                type: 'text',
+                templateOptions: {
+                  label: 'Live'
+                }
+              },
+              {
+                key: 'remark',
+                type: 'text',
+                templateOptions: {
+                  label: 'Remark'
+                }
+              },
+              {
+                key: 'address',
+                type: 'text',
+                templateOptions: {
+                  label: 'Address'
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-24",
+        templateOptions: {
+          title: '列表表单',
+          description: '列表表单',
+        },
+        fieldGroup: [
+          {
+            key: 'descriptions-1-1-1',
+            type: 'descriptions',
+            className: "d-block mx-2",
+            templateOptions: {
+              bordered: true,
+            },
+            fieldGroup: [
+              {
+                key: 'username',
+                type: 'input',
+                templateOptions: {
+                  label: 'username'
+                }
+              },
+              {
+                key: 'telephone',
+                type: 'input',
+                templateOptions: {
+                  label: 'telephone'
+                }
+              },
+              {
+                key: 'live',
+                type: 'input',
+                templateOptions: {
+                  label: 'Live'
+                }
+              },
+              {
+                key: 'remark',
+                type: 'input',
+                templateOptions: {
+                  label: 'Remark'
+                }
+              },
+              {
+                key: 'address',
+                type: 'input',
+                templateOptions: {
+                  label: 'Address'
+                }
+              }
+            ]
           }
         ]
       },
     ]
-  },
-  {
-    type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-      title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-    },
-    fieldGroup: [
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-
-    ]
-  },
+  }
 ]

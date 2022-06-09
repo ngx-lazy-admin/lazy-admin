@@ -1,6 +1,6 @@
 import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldArrayType, FieldType } from '@ngx-formly/core';
-import { NzDescriptionsSize  } from 'ng-zorro-antd/descriptions';
+import { NzDescriptionsLayout, NzDescriptionsSize  } from 'ng-zorro-antd/descriptions';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 
 @Component({
@@ -34,19 +34,23 @@ export class DescriptionsField extends FieldType implements OnDestroy {
   }
 
   get nzBordered() : boolean {
-		return this.to.nzBordered || false;
+		return this.to.nzBordered || this.to.bordered || false;
   }
 
   get nzColumn() : number | { [key in NzBreakpointEnum]: number } {
-		return this.to.nzColumn || null;
+		return this.to.nzColumn || this.to.column || null;
   }
 
   get nzSize() : NzDescriptionsSize  {
-		return this.to.nzSize || 'deafult';
+		return this.to.nzSize || this.to.size || 'deafult';
+  }
+
+  get nzLayout(): NzDescriptionsLayout {
+    return this.to.nzLayout || this.to.layout || 'horizontal'
   }
 
   get nzColon() : boolean {
-		return this.to.nzColon || false;
+		return this.to.nzColon || this.to.colon || false;
   }
 
   trackByFn(index: number, item: any) {
