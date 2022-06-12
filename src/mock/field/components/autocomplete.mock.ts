@@ -16,7 +16,7 @@ export const AutocompleteMockFields = [
         },
         fieldGroup: [
           {
-            key: 'autocomplete1',
+            key: 'autocomplete-1-1-1',
             type: 'autocomplete',
             className: "d-block mb-2",
             defaultValue: 3,
@@ -36,7 +36,7 @@ export const AutocompleteMockFields = [
         },
         fieldGroup: [
           {
-            key: 'autocomplete2',
+            key: 'autocomplete-1-2-1',
             type: 'autocomplete',
             className: "d-block mb-2",
             templateOptions: {
@@ -58,7 +58,7 @@ export const AutocompleteMockFields = [
         },
         fieldGroup: [
           {
-            key: 'autocomplete2',
+            key: 'autocomplete-1-3-1',
             type: 'autocomplete',
             className: "d-block mb-2",
             templateOptions: {
@@ -87,7 +87,7 @@ export const AutocompleteMockFields = [
         },
         fieldGroup: [
           {
-            key: 'autocomplete1',
+            key: 'autocomplete-2-1-1',
             type: 'autocomplete',
             className: "d-block mb-2",
             defaultValue: 3,

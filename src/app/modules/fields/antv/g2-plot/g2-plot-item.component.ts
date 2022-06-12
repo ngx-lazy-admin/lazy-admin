@@ -66,7 +66,6 @@ export class G2PlotItem implements AfterViewInit {
   }
 
   writeValue(value: any[]): void {
-    console.log('writeValue', value)
     if (this.line && value) {
       this.line.changeData(JSON.parse(JSON.stringify(value)))
       this.line.render();
