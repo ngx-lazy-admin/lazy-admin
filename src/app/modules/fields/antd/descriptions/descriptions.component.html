@@ -1,6 +1,7 @@
 <nz-descriptions
   [nzTitle]="nzTitle"  
-  [nzBordered]="nzBordered" 
+  [nzBordered]="nzBordered"
+  [nzLayout]="nzLayout" 
   [nzSize]="nzSize"
   [nzColon]="nzColon"
   class="bg-white"
@@ -14,7 +15,7 @@
     </nz-descriptions-item>
     <ng-template #nzDesTitle>
       <td class="ant-descriptions-item-label" [class.ant-form-item-required]="item?.templateOptions?.required"> 
-        {{ item?.templateOptions?.title }}
+        {{ item?.templateOptions?.label }}
       </td>
     </ng-template>
   </ng-container>

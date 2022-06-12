@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { InMemoryDataService } from './in-memory-data.service';
+import { MockService } from './mock.service';
 
-describe('InMemoryDataService', () => {
-  let service: InMemoryDataService;
+describe('MockService', () => {
+  let service: MockService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(InMemoryDataService);
+    service = TestBed.inject(MockService);
   });
 
   it('should be created', () => {

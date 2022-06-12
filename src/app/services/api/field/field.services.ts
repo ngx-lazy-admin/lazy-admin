@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
+import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
 import { field } from '../../../../mock/field';
-import { InMemoryDataService } from '../../../../mock/in-memory-data.service';
 
 export interface FieldType {
 	label: string,
@@ -32,8 +32,7 @@ export class FieldService {
   public breadcrumb: Array<any> = [];
 
   constructor(
-    private http: HttpClient,
-    private InMemoryData: InMemoryDataService
+    private http: HttpClient
   ) {}
 
   get change$() {

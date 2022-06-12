@@ -30,12 +30,12 @@ import { FieldArrayType } from '@ngx-formly/core';
       [nzGhost]="nzGhost"
       [nzExpandIconPosition]="nzExpandIconPosition"
     >
-      
       <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
+        <!-- <pre>{{field | json}}</pre> -->
         <nz-collapse-panel
-          [nzDisabled]="field?.templateOptions?.disabled || false"
-          [nzHeader]="field?.templateOptions?.label || ''"
-          [nzExpandedIcon]="field?.templateOptions?.expandedIcon"
+          [nzDisabled]="field.formControl?.value?.disabled || false"
+          [nzHeader]="field.formControl?.value?.header || ''"
+          [nzExpandedIcon]="field.formControl?.value?.expandedIcon"
           [nzExtra]="field?.templateOptions?.extra"
           [nzShowArrow]="field?.templateOptions?.showArrow || true"
           [nzActive]="field?.templateOptions?.active"
@@ -64,6 +64,12 @@ export class CollapseField extends FieldArrayType implements OnDestroy {
 
   get nzExpandIconPosition() : 'left' | 'right' {
 		return this.to.nzExpandIconPosition || 'right';
+  }
+
+  ngOnInit(): void {
+    // console.log('chart')
+    console.log(this.field.fieldGroup)
+    // console.log(this.route)
   }
 
   activeChange ($event: boolean, fn: any) {

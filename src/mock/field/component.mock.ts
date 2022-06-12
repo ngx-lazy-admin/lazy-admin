@@ -23,7 +23,9 @@ import {
   ModalMockFields,
   TagMockFields,
   PaginationMockFields,
-  BadgeMockFields
+  BadgeMockFields,
+  CollapseMockFields,
+  DescriptionMockFields
 } from './components'
 
 const list100 = [...Array(200).keys()].map((item, index) => {
@@ -277,6 +279,52 @@ export const components = [
       content: '采用分页的形式分隔长列表，每次只加载一个页面。'
     }
   },
-
-
+  {
+    id: 'collapse',
+    fields: CollapseMockFields,
+    data: {
+      'collapse-1-1-1': [
+        {
+          active: true,
+          header: 'This is panel header 1',
+          disabled: false,
+          children: [{
+            article: `A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
+            guest in many households across the world.`
+          }]
+        },
+        {
+          active: false,
+          disabled: false,
+          header: 'This is panel header 2'
+        },
+        {
+          active: false,
+          disabled: true,
+          header: 'This is panel header 3'
+        }
+      ],
+    },
+    info: {
+      title: 'Collapse 折叠面板',
+      content: '可以折叠/展开的内容区域。'
+    }
+  },
+  {
+    id: 'descriptions',
+    fields: DescriptionMockFields,
+    data: {
+      'descriptions-1-1-1': {
+        username: 'Zhou Maomao',
+        telephone: '18100000000',
+        live: 'Hangzhou, Zhejiang',
+        remark: 'Empty',
+        address: 'No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China',
+      }
+    },
+    info: {
+      title: 'Descriptions描述列表',
+      content: '成组显示多个只读字段。'
+    }
+  },  
 ]

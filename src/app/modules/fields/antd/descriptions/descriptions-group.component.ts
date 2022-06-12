@@ -15,6 +15,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
     class="bg-white"
     [nzColumn]="nzColumn || { xxl: 3, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }">
     <ng-container *ngFor="let item of field.formControl?.value; let i = index; trackBy: trackByFn">
+
       <nz-descriptions-item 
         [nzTitle]="nzDesTitle" 
         [nzSpan]="item?.span || 1"

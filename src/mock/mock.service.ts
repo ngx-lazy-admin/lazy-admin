@@ -10,7 +10,7 @@ import { system, dashboard, components, profile, form, list, account, antv, edit
 @Injectable({
   providedIn: 'root',
 })
-export class InMemoryDataService implements InMemoryDbService {
+export class MockService implements InMemoryDbService {
 
   createDb(reqInfo?: RequestInfo) {
 
@@ -47,6 +47,7 @@ export class InMemoryDataService implements InMemoryDbService {
       // 'returnType` can be 'object' | 'observable' | 'promise'
       returnType = body.returnType || 'observable';
     }
+
     const db = { 
       heroes, 
       nobodies, 

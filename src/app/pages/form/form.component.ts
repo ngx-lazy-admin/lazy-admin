@@ -27,6 +27,7 @@ import { PreviewService } from 'src/app/modules/preview';
 import * as prettier from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
 import { CodeEditorService } from 'src/app/modules/code-editor';
+import { HttpClient } from '@angular/common/http';
 
 // import * as prettier from 'prettier';
 
@@ -91,6 +92,7 @@ export class FormComponent {
     private modalService: ModalService,
     private previewService: PreviewService,
     private codeEditorService: CodeEditorService,
+    private http: HttpClient
   ) {
 
     // 监听路由变化
@@ -271,6 +273,12 @@ export class FormComponent {
 
   preview (url: string) {
     this.previewService.open(url)
+  }
+
+  backHome () {
+    this.http.get('web/file/1111').subscribe(item => {
+      console.log('111')
+    })
   }
 
   ngOnDestroy() {
