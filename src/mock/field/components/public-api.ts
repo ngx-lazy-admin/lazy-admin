@@ -23,6 +23,6 @@ export { ModalMockFields } from './modal.mock';
 export { TagMockFields } from './tag.mock';
 export { PaginationMockFields } from './pagination.mock';
 export { BadgeMockFields } from './badge.mock';
-export { DescriptionMockFields } from './descriptions.mock'
-export { CollapseMockFields } from './collapse.mock'
-
+export { DescriptionMockFields } from './descriptions.mock';
+export { CollapseMockFields } from './collapse.mock';
+export { ListMockFields } from './list.mock';

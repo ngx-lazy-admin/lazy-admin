@@ -25,10 +25,12 @@ import {
   PaginationMockFields,
   BadgeMockFields,
   CollapseMockFields,
-  DescriptionMockFields
+  DescriptionMockFields,
+  ListMockFields
 } from './components'
 
-const list100 = [...Array(200).keys()].map((item, index) => {
+
+const list10 = [...Array(10).keys()].map((item, index) => {
   return {
     id: index,
     key: index,
@@ -217,7 +219,7 @@ export const components = [
     id: 'table',
     fields: TableMockFields,
     data: {
-      list: list100
+      list: list10
     },
 
     info: {
@@ -229,7 +231,7 @@ export const components = [
     id: 'repeat',
     fields: RepeatMockFields,
     data: {
-      list: list100
+      list: list10
     },
 
     info: {
@@ -326,5 +328,16 @@ export const components = [
       title: 'Descriptions描述列表',
       content: '成组显示多个只读字段。'
     }
-  },  
+  }, 
+  {
+    id: 'list',
+    fields: ListMockFields,
+    data: {
+      'list-1-1-1': list10
+    },
+    info: {
+      title: 'List列表',
+      content: '通用列表。'
+    }
+  }
 ]

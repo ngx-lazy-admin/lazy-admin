@@ -3,7 +3,7 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const ListMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: "d-block mb-3 col-12",
     templateOptions: {
     },
     fieldGroup: [
@@ -11,16 +11,39 @@ export const ListMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '基本用法',
-          description: '简单的 checkbox',
+          title: '简单列表',
+          description: `列表拥有大、中、小三种尺寸。
+
+          通过设置 size 为 largesmall 分别把按钮设为大、小尺寸。若不设置 size，则尺寸为中。
+          
+          可通过设置 nzHeader 和 nzFooter，来自定义列表头部和尾部。`,
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'list-1-1-1',
+            type: 'list',
+            className: "d-block",
             templateOptions: {
               text: "Checkbox",
+            },
+            fieldArray: {
+              className: 'd-block m-3',
+              fieldGroup: [
+                {
+                  key: 'name',
+                  type: 'text',
+                  className: "",
+                  templateOptions: {
+                  }
+                },
+                {
+                  key: 'address',
+                  type: 'text',
+                  className: "",
+                  templateOptions: {
+                  }
+                },
+              ]
             }
           }
         ]
@@ -129,120 +152,5 @@ export const ListMockFields = [
         ]
       },
     ]
-  },
-  {
-    type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-      title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-    },
-    fieldGroup: [
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-
-    ]
-  },
+  }
 ]

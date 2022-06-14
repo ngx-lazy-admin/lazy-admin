@@ -61,7 +61,7 @@ export interface VirtualDataInterface {
     </div> 
 
     <nz-list>
-      <div class="row" [style.width]="this.field.fieldArray?.fieldGroup | width" [class]="field.className">
+      <div [style.width]="this.field.fieldArray?.fieldGroup | width" [class]="field.className">
         <ng-container  *ngFor="let data of formControl.value; trackBy: trackByFn; let index = index;">
           <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
             <div [class]="field.fieldGroup[index].className">

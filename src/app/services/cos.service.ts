@@ -110,10 +110,10 @@ export class CosService {
           SliceSize: 1024 * 1024 * 5,
           AsyncLimit: 5,
           Body: item.file, // 上传文件对象
-          onTaskReady: function(taskId) {
+          onTaskReady: function(taskId: string) {
             item['file']['taskId'] = taskId;
           },
-          onProgress: function(progressData) {
+          onProgress: function(progressData: any) {
             const percent = {
               ...progressData,
               percent: progressData.percent * 100
@@ -122,7 +122,7 @@ export class CosService {
             item.onProgress(item.percent);
             this.upload$.next(item);
           },
-        }, (err, data) => {
+        }, (err: any, data: any) => {
           if (data) {
             this.http.get('web/cos/upload', {
               params: {
@@ -133,7 +133,7 @@ export class CosService {
                 object_id: item.file.object_id,
                 object_type: item.file.object_type,
               }
-            }).subscribe(res => {
+            }).subscribe((res: any) => {
               if (res['code'] === 0) {
                 item['file']['file_id'] = res['data']['file_id'];
                 observed.next(item);
@@ -250,7 +250,7 @@ export class CosService {
     return new Observable ((observed) => {
       this.http.post('web/cos/del-file', {
         file_id: id
-      }).subscribe(result => {
+      }).subscribe((result: any) => {
         if (result?.code === 0) {
           observed.next();
         } else {
@@ -261,7 +261,4 @@ export class CosService {
       });
     })
   }
-
-
 }
-
