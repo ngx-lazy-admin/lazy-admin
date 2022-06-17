@@ -36,7 +36,6 @@ export class ModalService   {
     // 阻止事件冒泡
     $event && $event.stopPropagation();
 
-
     const id = randomString(32)
     this._hideAllStatus = false;
     const modal = this.modal.create({

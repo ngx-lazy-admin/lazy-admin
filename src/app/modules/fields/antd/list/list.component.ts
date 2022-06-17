@@ -32,7 +32,7 @@ export interface VirtualDataInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-    <div class="table-toolbar mb-3 d-flex" *ngIf="toolbarOptions && toolbarOptions.length">
+    <!-- <div class="table-toolbar mb-3 d-flex" *ngIf="toolbarOptions && toolbarOptions.length">
       <ng-container *ngFor="let item of toolbarOptions; let i = index">
         <a 
           nz-button 
@@ -58,14 +58,14 @@ export interface VirtualDataInterface {
           </ul>
         </nz-dropdown-menu>
       </ng-container>
-    </div> 
+    </div>  -->
 
     <nz-list>
-      <div [style.width]="this.field.fieldArray?.fieldGroup | width" [class]="field.className">
+      <div [class]="field.className">
         <ng-container  *ngFor="let data of formControl.value; trackBy: trackByFn; let index = index;">
           <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
             <div [class]="field.fieldGroup[index].className">
-              <nz-list-item >
+              <nz-list-item>
                 <ng-container  *ngFor="let td of field.fieldGroup[index].fieldGroup">
                   <formly-field [field]="td"></formly-field>
                 </ng-container>
@@ -83,11 +83,6 @@ export interface VirtualDataInterface {
       .ant-list-item {
         padding: unset !important;
       }
-
-      .ant-list-items {
-        overflow-x: auto;
-      }
-    
     `
   ]
 })
@@ -95,7 +90,6 @@ export interface VirtualDataInterface {
 export class ListField extends FieldArrayType implements OnDestroy {
 
   @ViewChild('domPortalContent') domPortalContent?: ElementRef<HTMLElement>;
-
 
   private destroy$ = new Subject();
 
@@ -118,8 +112,6 @@ export class ListField extends FieldArrayType implements OnDestroy {
   get nzTitle(): string | TemplateRef<void> {
     return this.to.title || this.to.nzTitle || ''
   }
-
-
   get nzBordered(): boolean {
     return this.to.nzBordered || this.to.bordered || false
   }
@@ -252,10 +244,6 @@ export class ListField extends FieldArrayType implements OnDestroy {
     if (this.options && this.options.formState) {
       // this.options.formState[this.id]['caches'] = 
     }
-
-    
-
-
   }
 
   ngOnDestroy() {

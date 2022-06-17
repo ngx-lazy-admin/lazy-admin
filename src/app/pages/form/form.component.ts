@@ -267,7 +267,7 @@ export class FormComponent {
 
   submit() {
     if (this.form.valid) {
-      alert(JSON.stringify(this.model));
+      // alert(JSON.stringify(this.model));
     }
   }
 

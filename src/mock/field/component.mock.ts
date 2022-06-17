@@ -28,6 +28,7 @@ import {
   DescriptionMockFields,
   ListMockFields
 } from './components'
+import { StatisticMockFields } from './components/statistic.mock'
 
 
 const list10 = [...Array(10).keys()].map((item, index) => {
@@ -338,6 +339,17 @@ export const components = [
     info: {
       title: 'List列表',
       content: '通用列表。'
+    }
+  },
+  {
+    id: 'statistic',
+    fields: StatisticMockFields,
+    data: {
+      'list-1-1-1': list10
+    },
+    info: {
+      title: 'Statistic统计',
+      content: '展示统计数字。'
     }
   }
 ]

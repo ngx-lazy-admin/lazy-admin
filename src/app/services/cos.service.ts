@@ -39,8 +39,6 @@ export class CosService {
     // 服务端 JS 和 PHP 例子：https://github.com/tencentyun/cos-js-sdk-v5/blob/master/server/
     // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
     // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
-    // console.log('2333');
-
 
     this.nowTime = Math.floor(new Date().getTime() / 1000)
     // 每15分钟获取一次授权, 
@@ -177,7 +175,7 @@ export class CosService {
     return '';
   }
 
-  customReqs = (item: any) => {
+  customReq = (item: any) => {
     return this.uploadFile(item).subscribe(
       (event) => {
 
@@ -187,78 +185,5 @@ export class CosService {
         item.onError(err, item.file);
       }
     );
-  }
-
-  beforeUploadImg = (file: File) => {
-    const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/gif');
-
-    const isLt2M = file.size / 1024 / 1024 < 24;
-
-    return isJPG && isLt2M;
-  }
-
-  // 大文件上传校验
-  beforeUploadFile = (file: File) => {
-
-    // 检验图片类型和像素大小
-    const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');
-    const  isLt2M = file.size  < 1024 * 1024 * 24;
-
-
-    // 要求上传格式
-    const fileTypes = ['jpg', 'gif', 'png', 'psd', 'ai', 'jpeg',
-        'bmp', 'doc', 'docx', 'xls', 'xlsx', 'ppt',
-        'pptx', 'pdf', 'zip', '7z', 'tga', 'rar', 'mp3',
-        'mp4', 'mov', 'wmv', 'avi', 'swf', 'fla', 'wav',
-        'ogg', 'aif', 'aiff', 'flac', 'caf', 'mpg', 'mpeg', 'wma', 'eml', 'txt', 'msg'];
-    const fileNames = file.name.split('.');
-    const isFILE = fileTypes.some(type => fileNames[fileNames.length - 1] == type);
-
-    const isLt4G = file.size < 4294967296;
-
-    return isFILE && isLt4G;
-  }
-
-  // 文件上传校验
-  beforeUpload = (file: File) => {
-    // object_type: this.getQueryUrl(item.action, 'type'),
-    const fileTypes = ['jpg', 'gif', 'png', 'psd', 'ai', 'jpeg',
-        'bmp', 'doc', 'docx', 'xls', 'xlsx', 'ppt',
-        'pptx', 'pdf', 'zip', '7z', 'tga', 'rar', 'mp3',
-        'mp4', 'mov', 'wmv', 'avi', 'swf', 'fla', 'wav',
-        'ogg', 'aif', 'aiff', 'flac', 'caf', 'mpg', 'mpeg', 'wma', 'eml', 'txt', 'msg'];
-    const fileNames = file.name.split('.');
-    const isFILE = fileTypes.some(type => fileNames[fileNames.length - 1] == type);
-
-    const isLt4G = file.size < 4294967296;
-
-    return isFILE && isLt4G;
-  }
-
-  // 文件上传校验
-  beforeUploadExcel = (file: File) => {
-    const fileTypes = ['xlsx', 'csv'];
-    const fileNames = file.name.split('.');
-    const isFILE = fileTypes.some(type => fileNames[fileNames.length - 1] == type);
-    if (!isFILE) {
-      this.message.error(file.name + `格式不对，格式要求：csv, xlsx`);
-    }
-    return isFILE;
-  }
-
-  delFile (id: string) {
-    return new Observable ((observed) => {
-      this.http.post('web/cos/del-file', {
-        file_id: id
-      }).subscribe((result: any) => {
-        if (result?.code === 0) {
-          observed.next();
-        } else {
-          observed.error();
-        }
-      }, (err) => {
-        observed.error();
-      });
-    })
   }
 }

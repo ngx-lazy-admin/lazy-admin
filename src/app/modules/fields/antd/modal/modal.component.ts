@@ -13,8 +13,9 @@ import {
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
-
 import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
+
+// 使用component做隔离?
 
 @Injectable({ providedIn: 'root' })
 @Component({
@@ -73,8 +74,6 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
     `
   ]
 })
-
-
 export class ModalField extends ShareFieldType  implements OnDestroy {
   @ViewChild('templatePortalContent') templatePortalContent!: TemplateRef<unknown>;
   @ViewChild('domPortalContent') domPortalContent!: ElementRef<HTMLElement>;

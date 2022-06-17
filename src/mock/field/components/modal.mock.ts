@@ -19,15 +19,7 @@ export const ModalMockFields = [
             type: 'modal',
             className: "d-block mb-3 col-4",
             templateOptions: {
-              title: 'Card title',
-              extraActions: [
-                {
-                  text: 'More',
-                  click: `() => {
-                    console.log('111')
-                  }`
-                }
-              ]
+              text: 'showModal'
             },
             fieldGroup: [
               {

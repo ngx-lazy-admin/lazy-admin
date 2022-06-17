@@ -3,7 +3,7 @@ import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { pipeTokenType } from 'app/pipes/dynamic.pipe'
+import { pipeTokenType } from 'src/app/pipes/dynamic.pipe';
 
 export interface NzSelectOptionInterface {
   label: string | number | null ;
@@ -22,14 +22,15 @@ export interface NzSelectOptionInterface {
   ],
   template: `
     <nz-statistic 
-      [nzPrefix]="nzPrefix"
+      [nzPrefix]="prefixTpl"
       [nzSuffix]="nzSuffix"
       [nzValueStyle]="nzValueStyle"
       [nzValueTemplate]="nzValueTemplate"
       [nzValue]="(nzValue | dynamic: nzValuePipe: pipeArgs)!" 
       [nzTitle]="nzTitle">
     </nz-statistic>
-  `,
+    <ng-template #prefixTpl><span [innerHtml]="nzPrefix"></span></ng-template>
+      `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 })
@@ -49,7 +50,7 @@ export class StatisticField extends FieldType implements OnInit, OnDestroy {
   }
 
   get nzSuffix () : string | TemplateRef<void> {
-    return this.to.nzSuffix || this.to.prefix || '';
+    return this.to.nzSuffix || this.to.suffix || '';
   }
 
   get nzTitle () : string | TemplateRef<void>	 {
@@ -73,7 +74,7 @@ export class StatisticField extends FieldType implements OnInit, OnDestroy {
   }
 
   get pipeArgs (): Array<any>{
-    return this.to.pipeArgs || this.to.pipeArgs || ''
+    return this.to.valuePipeArgs || ''
   }
 
   ngModelChange ($event: Event) {
