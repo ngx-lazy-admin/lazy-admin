@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DecimalPipe, PercentPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PortalModule } from '@angular/cdk/portal';
+
 import { FormlyModule } from '@ngx-formly/core';
-import { StatisticField } from './statistic.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
-import { CountdownField } from './countdown.component';
+
 import { DynamicPipe } from 'src/app/pipes/dynamic.pipe';
+import { CountdownField } from './countdown.component';
+import { StatisticField } from './statistic.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,7 @@ import { DynamicPipe } from 'src/app/pipes/dynamic.pipe';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    PortalModule,
     NzStatisticModule, 
     FormlyModule.forChild({
       types: [
@@ -26,6 +30,10 @@ import { DynamicPipe } from 'src/app/pipes/dynamic.pipe';
         {
           name: 'nz-statistic',
           component: StatisticField,
+        },
+        {
+          name: 'countdown',
+          component: CountdownField,
         },
       ],
     }),

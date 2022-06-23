@@ -44,7 +44,6 @@ export class DownloadService {
 
   // 下载文件
   downloadFile (url: string, filename: string = '') {
-    // 待补充
     const mediaTypeArr = [
       // 图片
       '.png', '.bmp', 'gif', 'jpg', 'jpeg',

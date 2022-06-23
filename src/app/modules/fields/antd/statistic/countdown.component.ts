@@ -14,15 +14,13 @@ export interface NzSelectOptionInterface {
 
 @Component({
   selector: 'div[statistic-field]',
-  styles: [
-    `nz-select  {
-      display: block;
-    }`
-  ],
   template: `
     <nz-countdown 
       [nzValue]="nzValue" 
       [nzTitle]="nzTitle"
+      [nzFormat]="nzFormat"
+      [nzSuffix]="nzSuffix"
+      [nzPrefix]="nzPrefix"
       >
     </nz-countdown>
   `,
@@ -68,6 +66,16 @@ export class CountdownField extends FieldType implements OnInit,  OnDestroy {
     return this.to.nzValueTemplate || this.to.valueTemplate || null
   }
 
+  private _destroy$ = new Subject<void>();
+
+  constructor(
+    private cd: ChangeDetectorRef,
+  ) {
+    super();
+  }
+
+  ngOnInit() { }
+
   ngModelChange ($event: Event) {
     if (this.to.change) {
       this.to.change(this.field, $event)
@@ -99,22 +107,11 @@ export class CountdownField extends FieldType implements OnInit,  OnDestroy {
     }
   }
 
-  
   nzBlur () {
     if (this.to.blur) {
       this.to.blur(this.field)
     }
   }
-
-  private _destroy$ = new Subject<void>();
-
-  constructor(
-    private cd: ChangeDetectorRef,
-  ) {
-    super();
-  }
-
-  ngOnInit() { }
 
   trackByFn(index: any, item: any) {
     return item.id ? item.id : index; // or item.id

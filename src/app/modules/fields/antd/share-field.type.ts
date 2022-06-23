@@ -12,6 +12,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 import { isObject } from 'src/app/utils/utils';
+import { TemplateService } from '../../template';
 // import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
@@ -34,7 +35,6 @@ export interface ActionTypeInterface {
   cancel?: FieldActionFn
 }
 
-
 export const execEval = (code: string) => eval('(' + code + ')')
 
 export const execFunc = (func: string | Function) => typeof(func) == 'string' ? execEval(func) : func
@@ -42,36 +42,21 @@ export const execFunc = (func: string | Function) => typeof(func) == 'string' ? 
 @Directive()
 export abstract class ShareFieldType extends FieldType {
   constructor(
-    // @Inject(DOCUMENT) public dom: any,
     public cd: ChangeDetectorRef,
     public http: HttpClient,
     public readonly zone: NgZone,
     public message: NzMessageService,
     public config: FormlyConfig,
-    // private notification: NzNotificationService,
     public fullScreenService: FullScreenService,
     public elRef: ElementRef,
     public elementRef: ElementRef,
+    public template: TemplateService
   ) {
     super();
   }
   
   // 通用事件处理
   click (action?: ActionTypeInterface) {
-    // this.zone.runOutsideAngular(() => {
-    //   try{
-    //     const func = typeof(action?.click) == 'string' 
-    //       ? execEval(action?.click) : 
-    //       (typeof(this.to?.click)=='string' ? execEval(this.to?.click) : null);
-
-    //     func ? func(this.field, this) : null
-    //     this.cd.markForCheck();
-    //   } catch (err){
-    //     console.log(err)
-    //   } finally {
-    //     console.log('click finally')
-    //   }
-    // });
     this.runChange(this.field, this, 'click')
   }
 

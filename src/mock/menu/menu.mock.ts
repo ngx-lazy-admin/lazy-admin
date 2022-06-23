@@ -1,4 +1,4 @@
-export const menu = [
+export const MenuMock = [
   {
     id: '1',
     name: 'Dashboard',
@@ -752,7 +752,14 @@ export const menu = [
         name: 'repeat',
         link: '/components/repeat',
         badge: '',
-      }
+      },
+      {
+        id: '1132',
+        pid: '11',
+        name: 'statistic',
+        link: '/components/statistic',
+        badge: '',
+      },
     ]
   },
   {

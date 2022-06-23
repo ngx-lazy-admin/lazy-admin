@@ -1,4 +1,19 @@
-import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit, TemplateRef, ViewEncapsulation, Injector } from '@angular/core';
+import { 
+  Component,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewEncapsulation,
+  Injector
+} from '@angular/core';
+import {
+  ComponentPortal,
+  DomPortal,
+  Portal,
+  TemplatePortal,
+} from '@angular/cdk/portal';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -15,22 +30,17 @@ export interface NzSelectOptionInterface {
 
 @Component({
   selector: 'div[statistic-field]',
-  styles: [
-    `nz-select  {
-      display: block;
-    }`
-  ],
   template: `
     <nz-statistic 
-      [nzPrefix]="prefixTpl"
       [nzSuffix]="nzSuffix"
+      [nzPrefix]="nzPrefixTpl"
       [nzValueStyle]="nzValueStyle"
       [nzValueTemplate]="nzValueTemplate"
-      [nzValue]="(nzValue | dynamic: nzValuePipe: pipeArgs)!" 
+      [nzValue]="(nzValue | dynamic: valuePipe: valuePipeArgs)!" 
       [nzTitle]="nzTitle">
     </nz-statistic>
-    <ng-template #prefixTpl><span [innerHtml]="nzPrefix"></span></ng-template>
-      `,
+    <ng-template #nzPrefixTpl [cdkPortalOutlet]="nzPrefix"></ng-template>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 })
@@ -45,8 +55,12 @@ export class StatisticField extends FieldType implements OnInit, OnDestroy {
     return this.to.nzId || '';
   }
 
-  get nzPrefix () : string | TemplateRef<void> {
-    return this.to.nzPrefix || this.to.prefix || '';
+  get nzPrefix () : DomPortal<ChildNode | null> | null {
+    if (this.to.prefix) {
+      return new DomPortal(this.createNode(this.to.prefix))
+    } else {
+      return null
+    }
   }
 
   get nzSuffix () : string | TemplateRef<void> {
@@ -69,12 +83,21 @@ export class StatisticField extends FieldType implements OnInit, OnDestroy {
     return this.formControl.value || '';
   }
 
-  get nzValuePipe (): pipeTokenType {
-    return this.to.nzValuePipe || this.to.valuePipe || ''
+  get valuePipe (): pipeTokenType {
+    return this.to.valuePipe || ''
   }
 
-  get pipeArgs (): Array<any>{
+  get valuePipeArgs (): Array<any>{
     return this.to.valuePipeArgs || ''
+  }
+
+  private _destroy$ = new Subject<void>();
+
+  constructor(
+    private cd: ChangeDetectorRef,
+    private injector: Injector
+  ) {
+    super();
   }
 
   ngModelChange ($event: Event) {
@@ -114,14 +137,12 @@ export class StatisticField extends FieldType implements OnInit, OnDestroy {
     }
   }
 
-  private _destroy$ = new Subject<void>();
-
-  constructor(
-    private cd: ChangeDetectorRef,
-    private injector: Injector
-  ) {
-    super();
+  createNode(htmlStr: any) {
+    var div = document.createElement('div');
+    div.innerHTML = htmlStr
+    return div.firstChild;
   }
+
 
   ngOnInit() { }
 

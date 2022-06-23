@@ -10,12 +10,7 @@ import * as COS from 'cos-js-sdk-v5';
 })
 export class CosService {
   cos: any = null;
-  config = {
-    Bucket: 'wbp-1258344700',
-    Region: 'ap-guangzhou',
-    Prefix: 'upload'
-  };
-
+  config = {};
   startTime = null;
   expiredTime = null;
   nowTime: number = 0;
@@ -43,7 +38,7 @@ export class CosService {
     this.nowTime = Math.floor(new Date().getTime() / 1000)
     // 每15分钟获取一次授权, 
     if (!this.startTime || (this.nowTime - this.startTime > 60 * 15)) {
-      this.http.get('web/cos/sts').subscribe((res: any)  => {
+      this.http.get('/cos/sts').subscribe((res: any)  => {
         if (res && res?.code ) {
           const data = res['data'];
           this.startTime = res['data']['startTime']
@@ -68,8 +63,6 @@ export class CosService {
             Authorization: authorization,
             XCosSecurityToken: this.credentials.sessionToken,
           });
-        } else {
-          this.message.error('您电脑时间可能差异过大导致无法上传，请校对电脑时间后重新上传');
         }
       }); 
     } else {
@@ -94,63 +87,32 @@ export class CosService {
     item.file.object_id =  this.getQueryUrl(item.action, 'id');
     item.file.object_type =  this.getQueryUrl(item.action, 'type');
 
-    const pattern=/[`~!@#$^&*()=|{}':;',\\\[\]<>\/?~！@#￥……&*（）——|{}【】'；：""'。，、？\s]/g;
-    const filename = item.file.name.replace(pattern,"");
-
     return new Observable ((observed) => {
       this.upload$.next(item);
-      this.http.get('web/cos/info').subscribe((res: any)  => {
-        this.cos.uploadFile({
-          Bucket:     res['bucket'],
-          Region:     res['region'],
-          Key:        res['prefix'] + filename,
-          StorageClass: 'STANDARD',
-          SliceSize: 1024 * 1024 * 5,
-          AsyncLimit: 5,
-          Body: item.file, // 上传文件对象
-          onTaskReady: function(taskId: string) {
-            item['file']['taskId'] = taskId;
-          },
-          onProgress: function(progressData: any) {
-            const percent = {
-              ...progressData,
-              percent: progressData.percent * 100
-            };
-            item.percent = percent;
-            item.onProgress(item.percent);
-            this.upload$.next(item);
-          },
-        }, (err: any, data: any) => {
-          if (data) {
-            this.http.get('web/cos/upload', {
-              params: {
-                file_size: item.file.size + '',
-                file_name: item.file.name + '',
-                file_path: data['Location'],
-                file_type: item.file.type,
-                object_id: item.file.object_id,
-                object_type: item.file.object_type,
-              }
-            }).subscribe((res: any) => {
-              if (res['code'] === 0) {
-                item['file']['file_id'] = res['data']['file_id'];
-                observed.next(item);
-                this.upload$.next(item);
-              } else {
-                observed.error(res);
-                this.message.error(res['msg'] || '文件上传失败, 请稍后再试!');
-              }
-            }, error => {
-              observed.error(error);
-              this.message.error('文件上传失败, 请稍后再试!');
-            });
-          } else if (err) {
-            observed.error(err);
-            this.message.error('您电脑时间可能差异过大导致无法上传，请校对电脑时间后重新上传');
-          }
-        });
-      }, err => {
-        observed.error(err);
+      this.cos.uploadFile({
+        Bucket:     this.config['bucket'],
+        Region:     res['region'],
+        Key:        res['prefix'] + item.file.name,
+        StorageClass: 'STANDARD',
+        SliceSize: 1024 * 1024 * 5,
+        AsyncLimit: 5,
+        Body: item.file, // 上传文件对象
+        onTaskReady: function(taskId: string) {
+          item['file']['taskId'] = taskId;
+        },
+        onProgress: function(progressData: any) {
+          const percent = {
+            ...progressData,
+            percent: progressData.percent * 100
+          };
+          item.percent = percent;
+          item.onProgress(item.percent);
+          this.upload$.next(item);
+        },
+      }, (err: any, data: any) => {
+        if (data) {
+          console.log(data)
+        }
       });
     });
   }
@@ -178,10 +140,8 @@ export class CosService {
   customReq = (item: any) => {
     return this.uploadFile(item).subscribe(
       (event) => {
-
         item.onSuccess(event, item.file, event);
       }, err => {
-
         item.onError(err, item.file);
       }
     );

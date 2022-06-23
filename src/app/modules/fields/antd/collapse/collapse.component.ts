@@ -2,9 +2,12 @@ import {
   Component, 
   OnDestroy,
   ChangeDetectionStrategy,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ChangeDetectorRef
 } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
+import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
+import { TemplateService } from 'src/app/modules/template';
 
 @Component({
   selector: 'div[collapse-field]',
@@ -34,7 +37,7 @@ import { FieldArrayType } from '@ngx-formly/core';
         <!-- <pre>{{field | json}}</pre> -->
         <nz-collapse-panel
           [nzDisabled]="field.formControl?.value?.disabled || false"
-          [nzHeader]="field.formControl?.value?.header || ''"
+          [nzHeader]="headerTemplateRef"
           [nzExpandedIcon]="field.formControl?.value?.expandedIcon"
           [nzExtra]="field?.templateOptions?.extra"
           [nzShowArrow]="field?.templateOptions?.showArrow || true"
@@ -45,6 +48,10 @@ import { FieldArrayType } from '@ngx-formly/core';
         </nz-collapse-panel>
       </ng-container>
     </nz-collapse>
+
+    <ng-template #headerTemplateRef>
+      <ng-template [cdkPortalOutlet]="headerTemplate"></ng-template>
+    </ng-template>
   `
 })
 
@@ -66,10 +73,19 @@ export class CollapseField extends FieldArrayType implements OnDestroy {
 		return this.to.nzExpandIconPosition || 'right';
   }
 
+  get headerTemplate(): any {
+    return this.templateService.get(this.to.header)
+  }
+
+  constructor(
+    private cd: ChangeDetectorRef,
+    private templateService: TemplateService
+  ) {
+    super();
+  }
+
   ngOnInit(): void {
-    // console.log('chart')
-    console.log(this.field.fieldGroup)
-    // console.log(this.route)
+
   }
 
   activeChange ($event: boolean, fn: any) {
