@@ -1,4 +1,13 @@
-import { Component, ElementRef, ViewEncapsulation, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, forwardRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewEncapsulation,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Input,
+  forwardRef
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FieldType,  } from '@ngx-formly/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -10,7 +19,7 @@ import Editor, { EditorOptions } from '@toast-ui/editor';
 @Component({
   selector: 'tui-editor-item',
   styleUrls: [
-    './tui-editor-item.component.less',
+    './tui-editor-item.component.css',
   ],
   template: `
     <div class="#editor"></div>
@@ -81,7 +90,7 @@ export class TuiEditFieldItem extends FieldType implements AfterViewInit {
         const formData = new FormData();
         formData.append('file', file);
         if (imageInput.files != null && imageInput.files[0] != null) {
-          this.uploadFile(file)
+          // this.uploadFile(file)
         }
       }
 
@@ -116,7 +125,7 @@ export class TuiEditFieldItem extends FieldType implements AfterViewInit {
       if (item && item.kind === 'file' && item.type.match(/^image\//i)) {
         e.preventDefault();
         const file = item.getAsFile();
-        this.uploadFile(file)
+        // this.uploadFile(file)
       }
     }
   }
@@ -128,23 +137,7 @@ export class TuiEditFieldItem extends FieldType implements AfterViewInit {
   dropHandle($event: any) {
     $event.preventDefault();
     const file = $event.dataTransfer.files[0]; // 获取到第一个上传的文件对象
-    this.uploadFile(file)
-  }
-
-  uploadFile (file: File) {
-    // this.cos.uploadFile({
-    //   file: file,
-    //   action: '/web/cos/upload?type=1430'
-    // }).subscribe(item => {
-    //   if (item['statusCode'] === 200) {
-    //     console.log(item)
-    //     // const src =  'web/file/' + item['file']['file_id'];
-    //     const src = location.protocol + '//'+ item['Location']
-    //     const range = this.quillEditor.getSelection(true);
-    //     const index = range.index + range.length;
-    //     this.quillEditor.insertEmbed(range.index, 'image', src);
-    //   }
-    // })
+    // this.uploadFile(file)
   }
 
   writeValue(value: any): void {
