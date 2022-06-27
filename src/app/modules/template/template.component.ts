@@ -27,3 +27,11 @@ export class FooterComponentPortal {}
 })
 export class DefaultComponentPortal {}
 
+@Component({
+  selector: 'div[icon-portal]',
+  template: '<i nz-icon [nzType]="nzType" [nzTheme]="nzTheme"></i>',
+})
+export class IconComponentPortal {
+  nzType: string = 'step-backward';
+  nzTheme: ThemeType = 'outline'
+}

@@ -6,7 +6,8 @@ import {
   OnInit,
   TemplateRef,
   ViewEncapsulation,
-  Injector
+  Injector,
+  ComponentRef
 } from '@angular/core';
 import {
   ComponentPortal,
@@ -19,6 +20,7 @@ import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { pipeTokenType } from 'src/app/pipes/dynamic.pipe';
+import { ShareFieldType } from '../share-field.type';
 
 export interface NzSelectOptionInterface {
   label: string | number | null ;
@@ -32,20 +34,30 @@ export interface NzSelectOptionInterface {
   selector: 'div[statistic-field]',
   template: `
     <nz-statistic 
-      [nzSuffix]="nzSuffix"
-      [nzPrefix]="nzPrefixTpl"
+      [nzSuffix]="suffixTemplateRef"
+      [nzPrefix]="prefixTemplateRef"
       [nzValueStyle]="nzValueStyle"
       [nzValueTemplate]="nzValueTemplate"
       [nzValue]="(nzValue | dynamic: valuePipe: valuePipeArgs)!" 
       [nzTitle]="nzTitle">
     </nz-statistic>
-    <ng-template #nzPrefixTpl [cdkPortalOutlet]="nzPrefix"></ng-template>
+    <br>
+
+    <ng-template #prefixTemplateRef>
+      <ng-template (attached)="onComponentRendering($event)" [cdkPortalOutlet]="nzPrefix"></ng-template>
+    </ng-template>
+
+    <ng-template #suffixTemplateRef>
+      <ng-template (attached)="onComponentRendering($event)" [cdkPortalOutlet]="nzSuffix"></ng-template>
+    </ng-template>
+
+
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 })
 
-export class StatisticField extends FieldType implements OnInit, OnDestroy {
+export class StatisticField extends ShareFieldType implements OnInit, OnDestroy {
 
   get control() : FormControl {
 		return this.formControl as FormControl;
@@ -55,16 +67,21 @@ export class StatisticField extends FieldType implements OnInit, OnDestroy {
     return this.to.nzId || '';
   }
 
-  get nzPrefix () : DomPortal<ChildNode | null> | null {
+  get nzPrefix () : any {
     if (this.to.prefix) {
-      return new DomPortal(this.createNode(this.to.prefix))
+      console.log(this.to.prefix)
+      return this.template.get(this.to.prefix)
     } else {
       return null
     }
   }
 
-  get nzSuffix () : string | TemplateRef<void> {
-    return this.to.nzSuffix || this.to.suffix || '';
+  get nzSuffix () : "" | Portal<any> | null | undefined {
+    if (this.to.suffix) {
+      return this.template.get(this.to.suffix)
+    } else {
+      return null
+    }
   }
 
   get nzTitle () : string | TemplateRef<void>	 {
@@ -93,12 +110,12 @@ export class StatisticField extends FieldType implements OnInit, OnDestroy {
 
   private _destroy$ = new Subject<void>();
 
-  constructor(
-    private cd: ChangeDetectorRef,
-    private injector: Injector
-  ) {
-    super();
-  }
+  // constructor(
+  //   private cd: ChangeDetectorRef,
+  //   private injector: Injector
+  // ) {
+  //   super();
+  // }
 
   ngModelChange ($event: Event) {
     if (this.to.change) {
@@ -141,6 +158,12 @@ export class StatisticField extends FieldType implements OnInit, OnDestroy {
     var div = document.createElement('div');
     div.innerHTML = htmlStr
     return div.firstChild;
+  }
+
+  onComponentRendering(ref: any): void {
+    ref = ref as ComponentRef<any>;
+    console.log(ref)
+    ref.instance['nzType'] = 'step-forward';
   }
 
 

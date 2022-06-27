@@ -5,10 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
-import { TypographyField } from './typography.component'
-
+import { TypographyField } from './typography.component';
+import { MarkedPipe } from '../../../../pipes/marked.pipe';
 @NgModule({
-  declarations: [TypographyField],
+  declarations: [
+    TypographyField, 
+    MarkedPipe
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -33,6 +33,7 @@ import { UploadFieldModule } from './upload';
 import { PaginationFieldModule } from './pagination';
 import { BadgeFieldModule } from './badge/badge.module';
 import { MentionFieldModule } from './mention';
+import { TypographyFieldModule } from './typography';
 
 @NgModule({
   imports: [
@@ -64,6 +65,7 @@ import { MentionFieldModule } from './mention';
     ListFieldModule,
     ProgressFieldModule,
     TreeFieldModule,
+    TypographyFieldModule,
     GroupFieldModule,
     RepeatFieldModule,
     ModalFieldModule,

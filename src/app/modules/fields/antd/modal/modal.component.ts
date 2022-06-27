@@ -103,7 +103,6 @@ export class ModalField extends ShareFieldType  implements OnDestroy {
 		return this.to.nzExtra || this.to.extra || '';
 	}
   
-
   get nzHoverable(): boolean {
 		return this.to.nzHoverable || this.to.hoverable || false;
 	}

@@ -29,6 +29,7 @@ import {
   ListMockFields
 } from './components'
 import { StatisticMockFields } from './components/statistic.mock'
+import { TypographyMockFields } from './components/typography.mock'
 
 
 const list10 = [...Array(10).keys()].map((item, index) => {
@@ -350,6 +351,17 @@ export const components = [
     info: {
       title: 'Statistic统计',
       content: '展示统计数字。'
+    }
+  },
+  {
+    id: 'typography',
+    fields: TypographyMockFields,
+    data: {
+
+    },
+    info: {
+      title: 'Typography排版',
+      content: '文本的基本格式。'
     }
   }
 ]

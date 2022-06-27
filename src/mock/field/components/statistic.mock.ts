@@ -26,6 +26,8 @@ export const StatisticMockFields = [
             templateOptions: {
               title: "Active Users",
               valuePipe: 'number',
+              prefix: 'icon',
+              suffix: 'button'
             }
           },
           {
@@ -101,7 +103,7 @@ export const StatisticMockFields = [
             templateOptions: {
               title: "Feedback",
               valuePipe: 'number',
-              // prefix: '<i class="bi bi-hand-thumbs-up"></i>'
+              prefix: 'button'
             }
           },
           {
