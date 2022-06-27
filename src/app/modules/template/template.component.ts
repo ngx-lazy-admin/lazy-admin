@@ -33,5 +33,5 @@ export class DefaultComponentPortal {}
 })
 export class IconComponentPortal {
   nzType: string = 'step-backward';
-  nzTheme: ThemeType = 'outline'
+  nzTheme: 'fill' | 'outline' | 'twotone' = 'outline';
 }
