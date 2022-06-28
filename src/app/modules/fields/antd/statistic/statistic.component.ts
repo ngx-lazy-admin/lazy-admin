@@ -162,7 +162,6 @@ export class StatisticField extends ShareFieldType implements OnInit, OnDestroy 
 
   onComponentRendering(ref: any): void {
     ref = ref as ComponentRef<any>;
-    console.log(ref)
     ref.instance['nzType'] = 'step-forward';
   }
 

@@ -20,6 +20,7 @@ export class TemplateService {
   }
 
   get (type: string = 'header'): ComponentPortal<any> | null {
-    return new ComponentPortal(this.templateMap.get(type) || this.templateMap.get('default'))
+    const componentPortal = new ComponentPortal(this.templateMap.get(type) || this.templateMap.get('default'))
+    return componentPortal
   }
 }

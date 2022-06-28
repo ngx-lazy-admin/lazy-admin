@@ -760,6 +760,13 @@ export const MenuMock = [
         link: '/components/statistic',
         badge: '',
       },
+      {
+        id: '1133',
+        pid: '11',
+        name: 'segmented',
+        link: '/components/segmented',
+        badge: '',
+      },
     ]
   },
   {

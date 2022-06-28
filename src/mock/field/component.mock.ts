@@ -28,6 +28,7 @@ import {
   DescriptionMockFields,
   ListMockFields
 } from './components'
+import { SegmentedMockFields } from './components/segmented.mock'
 import { StatisticMockFields } from './components/statistic.mock'
 import { TypographyMockFields } from './components/typography.mock'
 
@@ -363,5 +364,22 @@ export const components = [
       title: 'Typography排版',
       content: '文本的基本格式。'
     }
+  },
+  {
+    id: 'segmented',
+    fields: SegmentedMockFields,
+    data: {
+
+    },
+    info: {
+      title: 'Segmented分段控制器',
+      content: `### 何时使用
+用于展示多个选项并允许用户选择其中单个选项；
+当切换选中选项时，关联区域的内容会发生变化。
+      
+      `
+    }
   }
+
+  
 ]

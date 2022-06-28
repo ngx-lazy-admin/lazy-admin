@@ -34,6 +34,7 @@ import { PaginationFieldModule } from './pagination';
 import { BadgeFieldModule } from './badge/badge.module';
 import { MentionFieldModule } from './mention';
 import { TypographyFieldModule } from './typography';
+import { SegmentedFieldModule } from './segmented';
 
 @NgModule({
   imports: [
@@ -62,6 +63,7 @@ import { TypographyFieldModule } from './typography';
     TableFieldModule,
     CollapseFieldModule,
     StatisticFieldModule,
+    SegmentedFieldModule,
     ListFieldModule,
     ProgressFieldModule,
     TreeFieldModule,
