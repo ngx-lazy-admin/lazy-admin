@@ -8,14 +8,14 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { IconsProviderModule } from '../icons-provider.module';
-import { DefaultComponentPortal, FooterComponentPortal, HeaderComponentPortal, IconComponentPortal } from './template.component';
+import { DefaultComponentPortal, FooterComponentPortal, HeaderComponentPortal, IconPortal } from './template.component';
 
 @NgModule({
   declarations: [
     HeaderComponentPortal,
     FooterComponentPortal,
     DefaultComponentPortal,
-    IconComponentPortal
+    IconPortal
   ],
   imports: [
     CommonModule,
@@ -30,7 +30,7 @@ import { DefaultComponentPortal, FooterComponentPortal, HeaderComponentPortal, I
   exports: [
     HeaderComponentPortal,
     FooterComponentPortal,
-    IconComponentPortal
+    IconPortal
   ]
 })
 export class TemplateModule { }

@@ -27,11 +27,21 @@ export class FooterComponentPortal {}
 })
 export class DefaultComponentPortal {}
 
+interface iconType {
+  type: string,
+  theme: 'fill' | 'outline' | 'twotone',
+  [key: string]: any;
+}
+
 @Component({
   selector: 'div[icon-portal]',
-  template: '<i nz-icon [nzType]="nzType" [nzTheme]="nzTheme"></i>',
+  template: '<i nz-icon [nzType]="params.type" [nzTheme]="params.theme"></i>',
 })
-export class IconComponentPortal {
-  nzType: string = 'step-backward';
-  nzTheme: 'fill' | 'outline' | 'twotone' = 'outline';
+export class IconPortal {
+  params: iconType = {
+    type: '',
+    theme: 'outline'
+  }
 }
+
+

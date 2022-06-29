@@ -34,8 +34,8 @@ export interface NzSelectOptionInterface {
   selector: 'div[statistic-field]',
   template: `
     <nz-statistic 
-      [nzSuffix]="suffixTemplateRef"
-      [nzPrefix]="prefixTemplateRef"
+      [nzSuffix]="nzSuffix || suffixTemplateRef"
+      [nzPrefix]="nzPrefix || prefixTemplateRef"
       [nzValueStyle]="nzValueStyle"
       [nzValueTemplate]="nzValueTemplate"
       [nzValue]="(nzValue | dynamic: valuePipe: valuePipeArgs)!" 
@@ -44,11 +44,11 @@ export interface NzSelectOptionInterface {
     <br>
 
     <ng-template #prefixTemplateRef>
-      <ng-template (attached)="onComponentRendering($event)" [cdkPortalOutlet]="nzPrefix"></ng-template>
+      <ng-template (attached)="prefixRefRendering($event)" [cdkPortalOutlet]="nzPrefixRef"></ng-template>
     </ng-template>
 
     <ng-template #suffixTemplateRef>
-      <ng-template (attached)="onComponentRendering($event)" [cdkPortalOutlet]="nzSuffix"></ng-template>
+      <ng-template (attached)="suffixRefRendering($event)" [cdkPortalOutlet]="nzSuffixRef"></ng-template>
     </ng-template>
 
 
@@ -68,20 +68,19 @@ export class StatisticField extends ShareFieldType implements OnInit, OnDestroy 
   }
 
   get nzPrefix () : any {
-    if (this.to.prefix) {
-      console.log(this.to.prefix)
-      return this.template.get(this.to.prefix)
-    } else {
-      return null
-    }
+    return this.to.nzPrefix || this.to.prefix || null
   }
 
-  get nzSuffix () : "" | Portal<any> | null | undefined {
-    if (this.to.suffix) {
-      return this.template.get(this.to.suffix)
-    } else {
-      return null
-    }
+  get nzPrefixRef () : any {
+    return this.template.get(this.to.prefixRef)
+  }
+
+  get nzSuffix () : any {
+    return this.to.nzSuffix || this.to.suffix || null
+  }
+
+  get nzSuffixRef () : any {
+    return this.template.get(this.to.suffixRef)
   }
 
   get nzTitle () : string | TemplateRef<void>	 {
@@ -160,11 +159,21 @@ export class StatisticField extends ShareFieldType implements OnInit, OnDestroy 
     return div.firstChild;
   }
 
-  onComponentRendering(ref: any): void {
+  prefixRefRendering(ref: any): void {
     ref = ref as ComponentRef<any>;
-    ref.instance['nzType'] = 'step-forward';
+    ref.instance['params'] = {
+      ...ref.instance['params'],
+      ...this.to.prefixRef.params
+    } 
   }
 
+  suffixRefRendering(ref: any): void {
+    ref = ref as ComponentRef<any>;
+    ref.instance['params'] = {
+      ...ref.instance['params'],
+      ...this.to.suffixRef.params
+    } 
+  }
 
   ngOnInit() { }
 
