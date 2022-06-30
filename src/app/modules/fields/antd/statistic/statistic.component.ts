@@ -19,8 +19,8 @@ import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { pipeTokenType } from 'src/app/pipes/dynamic.pipe';
 import { ShareFieldType } from '../share-field.type';
+import { pipeTokenType } from 'src/app/pipes';
 
 export interface NzSelectOptionInterface {
   label: string | number | null ;

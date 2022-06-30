@@ -5,7 +5,7 @@ import { marked } from 'marked';
   name: 'marked'
 })
 export class MarkedPipe implements PipeTransform {
-  transform(value: string): string {
-    return value ? marked.parse(value) : value;
+  transform(value: string | null | undefined): string | null {
+    return value ? marked.parse(value) : null;
   }
 }

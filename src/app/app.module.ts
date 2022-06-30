@@ -14,8 +14,6 @@ import { LayoutModule } from './layouts/layout.modules'
 import { HttpsInterceptor } from './interceptors/https.interceptor'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserPipe } from './pipes/user.pipe';
-import { HtmlPipe } from './pipes/html.pipe';
 
 import { MockService } from '../mock/mock.service';
 import { GlobalSearchModule } from './shared/global-search';
@@ -35,9 +33,7 @@ registerLocaleData(zh);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UserPipe,
-    HtmlPipe,
+    AppComponent
   ],
   imports: [
     BrowserModule,
