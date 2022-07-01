@@ -11,129 +11,22 @@ export const SliderMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '基本用法',
-          description: '数字输入框',
+          title: '基本',
+          description: '基本滑动条。当 nzRange 为 true 时，渲染为双滑块。当 nzDisabled 为 true 时，滑块处于不可用状态。',
         },
         fieldGroup: [
           {
-            key: 'button',
-            type: 'button',
+            key: 'slider-1-1-1',
+            type: 'slider',
             className: "d-block mb-2",
             defaultValue: 3,
-            templateOptions: {
-              placeholder: 'Basic usage'
-            }
           },
           {
-            key: 'button',
-            type: 'input',
+            key: 'slider-1-1-2',
+            type: 'slider-range',
             className: "d-block mb-2",
+            defaultValue: [10, 50],
             templateOptions: {
-              placeholder: 'Basic usage',
-              disabled: true,
-            }
-          },
-          [
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Primary Button",
-                type: 'primary',
-                // click: (field, _this) => {
-                //   console.log(field)
-                //   _this.message.success(field.templateOptions.text)
-                // }
-              }
-            },
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Default Button",
-                type: 'default',
-              }
-            },
-            {
-              key: 'name',
-              type: 'button',
-              className: "d-inline-block mx-2",
-              templateOptions: {
-                text: "Dashed Button",
-                type: 'dashed',
-              }
-            }
-          ]
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
-        },
-        fieldGroup: [
-          {
-            key: 'input1-3',
-            type: 'input',
-            className: "d-block mb-2",
-            templateOptions: {
-              label: "标签",
-              placeholder: 'Basic usage',
-              disabled: true
-            }
-          },
-          {
-            key: 'input1-4',
-            type: 'input',
-            className: "d-block mb-2",
-            templateOptions: {
-              label: "large size",
-              placeholder: 'large size',
-              size: 'large',
-              disabled: true
-            }
-          },
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block w-100",
-            templateOptions: {
-              text: "checked-disabled",
-              disabled: 'formState.checked2.disabled'
-            },
-            expressionProperties: {
-              'templateOptions.disabled': 'formState?.checked2?.disabled'
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mt-2 ",
-            templateOptions: {
-              text: "Disabled",
-              size: 'small',
-              type: 'primary',
-              clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
-              },
-              click: `(_field, _this) => _field.options.formState.checked2 = {
-                  ..._field.options.formState.checked2,
-                  disabled: !_field.options.formState?.checked2?.disabled
-                }
-              `
-            }
-          },
-          {
-            type: 'button',
-            className: "d-inline-block mx-2 ",
-            templateOptions: {
-              text: "Checked",
-              size: 'small',
-              type: 'primary',
-              click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
             }
           }
         ]
@@ -142,25 +35,17 @@ export const SliderMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '带 icon 的滑块',
+          description: '滑块左右可以设置图标来表达业务含义。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'slider-1-2-1',
+            type: 'slider',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              min: 0,
+              max: 20,
             }
           }
         ]
@@ -169,29 +54,45 @@ export const SliderMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '垂直',
+          description: '垂直方向的 Slider。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'slider-1-3-1',
+            type: 'slider',
+            className: "d-block mb-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              vertical: true, 
+              min: 0,
+              max: 20,
+              style: {
+                float: 'left',
+                height: '300px',
+                marginLeft: '70px'
+              }
             }
           }
         ]
       },
+      {
+        type: 'code-card',
+        className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '反向',
+          description: '设置 nzReverse 可以将滑动条置反。',
+        },
+        fieldGroup: [
+          {
+            key: 'slider-1-4-1',
+            type: 'slider',
+            className: "d-block mb-2",
+            templateOptions: {
+              reverse: true
+            }
+          }
+        ]
+      }
     ]
   },
   {
@@ -202,122 +103,26 @@ export const SliderMockFields = [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
-        fieldGroup: [
-          {
-            key: 'input-2-1',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'large size',
-              size: 'large',
-            }
-          },
-          {
-            key: 'input-2-2',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'default size',
-              size: 'default',
-            }
-          },
-          {
-            key: 'input-2-3',
-            type: 'input',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              placeholder: 'small size',
-              size: 'small',
-            }
-          },
-        ],
         templateOptions: {
-          title: '三种大小',
-          description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
-          注意： 在表单里面，我们只使用大尺寸的输入框。`,
-        },
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '带输入框的滑块',
+          description: '和 数字输入框 组件保持同步。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
+            key: 'slider-2-1-1',
+            type: 'slider',
+            className: "d-inline-block mb-2 col-9 align-top",
+            defaultValue: 3,
           },
           {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
+            key: 'slider-2-1-1',
+            type: 'input-number',
+            className: "d-inline-block mb-2 col-3",
             templateOptions: {
-              text: "nzDisabled",
-              
             }
           }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-            }
-          }
-        ]
-      },
-
+      }
     ]
-  },
+  }
 ]

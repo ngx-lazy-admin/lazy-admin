@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { SegmentedField } from './segmented.component';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @NgModule({
   declarations: [ 
@@ -15,6 +16,7 @@ import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
     ReactiveFormsModule,
     FormsModule,
     NzSegmentedModule,
+    NzAvatarModule,
     FormlyModule.forChild({
       types: [
         {

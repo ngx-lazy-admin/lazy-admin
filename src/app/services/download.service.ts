@@ -10,7 +10,6 @@ export class DownloadService {
     private http: HttpClient
   ) { }
 
-  // 下载文件, 浏览器能直接预览的使用blob, 浏览器无法预览的直接下载
   downloadFileByBlob (url: string, filename: string = '') {
     this.http.get(url, {
       responseType: "blob",
@@ -28,7 +27,6 @@ export class DownloadService {
     })
   }
 
-  // 下载文件
   downloadFileByUrl (url: string, filename: string = '') {
     const eleLink = document.createElement('a');
     eleLink.download = filename;

@@ -28,6 +28,7 @@ import { InputBoolean } from 'ng-zorro-antd/core/util';
     <nz-slider 
       [(ngModel)]="model" 
       [nzDisabled]="nzDisabled"
+      [nzVertical]="nzVertical"
       (ngModelChange)="onModelChange($event)"
     >
     </nz-slider>
@@ -48,6 +49,7 @@ export class NzSliderRangeComponent implements ControlValueAccessor, OnInit, OnD
 
   @Input() @InputBoolean() nzDisabled: boolean = false;
   @Input() @InputBoolean() nzReverse: boolean = false;
+  @Input() @InputBoolean() nzVertical: boolean = false;
 
   private _destroy$ = new Subject<void>();
 

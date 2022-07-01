@@ -5,14 +5,16 @@ import { FormControl } from '@angular/forms';
 @Component({
 	selector: 'div[slider-field]',
 	template: `
-		<nz-slider-item
-			nzRange 
+		<nz-slider 
 			[formControl]="control"
 			[formlyAttributes]="field"
-			[nzDisabled]="nzDisabled"
-			(ngModelChange)="ngModelChange($event)"
-		>
-		</nz-slider-item>
+      [nzDisabled]="nzDisabled"
+      [nzVertical]="nzVertical"
+			[nzReverse]="nzReverse"
+			[ngStyle]="style"
+      (ngModelChange)="ngModelChange($event)"
+    >
+    </nz-slider>
 	`,
 	host: {
 		'display': 'contents',
@@ -26,75 +28,59 @@ export class SliderField extends FieldType {
 		return this.formControl as FormControl
   }
 
-	get nzCheckedChildren(): string | TemplateRef<void> | null {
-		return this.to.nzBorderless || null
-	}
-
-	get nzUnCheckedChildren(): string | TemplateRef<void> | null  {
-		return this.to.nzBorderless || null
-	}
-
 	get nzDisabled(): boolean {
 		return this.to.nzDisabled || false
 	}
 
-	get nzSize(): 'small' | 'default' {
-		return this.to.nzSize || 'default'
-	}
-
-	get nzLoading(): boolean {
-		return this.to.nzLoading || false
-	}
-
-	get nzControl(): boolean {
-		return this.to.nzControl || false
-	}
-
-  get nzDots(): boolean {
-		return this.to.nzDots || false
+	get nzDots(): boolean {
+		return this.to.nzDots || this.to.dots || false
 	}
 
   get nzIncluded(): boolean {
-		return this.to.nzIncluded || false
+		return this.to.nzIncluded || this.to.included || false
 	}
 
   get nzMarks(): boolean {
-		return this.to.nzMarks || false
+		return this.to.nzMarks || this.to.marks || false
 	}
 
   get nzMax(): boolean {
-		return this.to.nzMax || false
+		return this.to.nzMax || this.to.max || false
 	}
 
   get nzMin(): boolean {
-		return this.to.nzMin || false
+		return this.to.nzMin || this.to.min || false
 	}
 
   get nzRange(): boolean {
-		return this.to.nzRange || false
+		return this.to.nzRange || this.to.range || false
 	}
 
   get nzStep(): boolean {
-		return this.to.nzStep || false
+		return this.to.nzStep || this.to.step || false
 	}
 
   get nzTipFormatter(): boolean {
-		return this.to.nzTipFormatter || false
+		return this.to.nzTipFormatter || this.to.tipFormatter  || false
 	}
 
   get nzVertical(): boolean {
-		return this.to.nzVertical || false
+		return this.to.nzVertical || this.to.vertical || false
 	}
 
   get nzReverse(): boolean {
-		return this.to.nzReverse || false
+		return this.to.nzReverse || this.to.reverse || false
 	}
   get nzTooltipVisible(): boolean {
-		return this.to.nzTooltipVisible || false
+		return this.to.nzTooltipVisible || this.to.tooltipVisible || false
 	}
 
   get nzTooltipPlacement(): boolean {
-		return this.to.nzTooltipPlacement || false
+		return this.to.nzTooltipPlacement || this.to.tooltipPlacement || false
+	}
+
+	get style(): Object {
+		return this.to.style || {}
 	}
 
 	nzOnAfterChange ($event: Event) {

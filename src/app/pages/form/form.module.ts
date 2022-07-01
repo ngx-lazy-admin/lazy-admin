@@ -19,23 +19,25 @@ import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 
 import { IconsProviderModule } from '../../modules/icons-provider.module';
-import { WatermarkPipe } from '../../pipes/watermark.pipe';
 import { ModalsModule } from 'src/app/modules/modal' 
 import { FieldTypeModule } from 'src/app/modules/fields/antd';
 // import { CustomFieldModule } from 'src/app/modules/fields/custom';
 import { FormFieldModule } from 'src/app/modules/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/modules/fields/custom-type.module';
+import { PipesModule } from 'src/app/pipes';
 
 @NgModule({
   declarations: [
     FormComponent,
-    WatermarkPipe
   ],
   imports: [
     CommonModule,
     FormRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+
+    PipesModule,
+
     IconsProviderModule,
     NzAffixModule,
     NzModalModule,

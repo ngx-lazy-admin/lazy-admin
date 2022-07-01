@@ -1,6 +1,7 @@
-import { Component, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
+import { NzSegmentedOption } from 'ng-zorro-antd/segmented';
 
 @Component({
   selector: 'div[segmented-field]',
@@ -27,13 +28,35 @@ import { FormControl } from '@angular/forms';
       [nzDisabled]="nzDisabled"
       [nzOptions]="nzOptions"
       [nzSize]="nzSize"
-
+      [nzLabelTemplate]="temp"
       (nzValueChange)="valueChange($event)">
     </nz-segmented>
+
+    <ng-template #temp let-index="index" let-data="$implicit">
+      <ng-container [ngSwitch]="index">
+        <ng-container *ngSwitchCase="0">
+          <nz-avatar nzSrc="https://joeschmoe.io/api/v1/random"></nz-avatar>
+          <div>{{data.label}}</div>
+        </ng-container>
+        <ng-container *ngSwitchCase="1">
+          <nz-avatar nzText="K"></nz-avatar>
+          <div>User 2</div>
+        </ng-container>
+        <ng-container *ngSwitchCase="2">
+          <nz-avatar nzIcon="user"></nz-avatar>
+          <div>User 3</div>
+        </ng-container>
+      </ng-container>
+    </ng-template>
   `
 })
 
 export class SegmentedField extends FieldType {
+
+  // @ViewChild('temp', { static: true, read: TemplateRef }) templateRef!: TemplateRef<{
+  //   $implicit: NzSegmentedOption;
+  //   index: number;
+  // }>;
 
   get control() : FormControl {
 		return this.formControl as FormControl;
@@ -48,7 +71,7 @@ export class SegmentedField extends FieldType {
   }
 
   get nzSize() : 'small' | 'default' | 'large' {
-		return this.to.nzSize || 'default';
+		return this.to.nzSize || this.to.size || 'default';
   }
 
   get nzOptions () : string[] | number[] | Array<{ label: string; value: string | number; icon: string; disabled?: boolean; useTemplate?: boolean }> {

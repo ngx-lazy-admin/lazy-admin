@@ -11,7 +11,7 @@
 		<nz-page-header *ngIf="info" class="bg-white mb-3">
 			<nz-page-header-title>{{info?.title}}</nz-page-header-title>
 			<nz-page-header-content>
-				{{info?.content}}
+			 <div [innerHtml]="info?.content | marked"></div>
 			</nz-page-header-content>
 		</nz-page-header>
 		

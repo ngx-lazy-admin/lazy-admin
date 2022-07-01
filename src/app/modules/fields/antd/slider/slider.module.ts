@@ -24,8 +24,16 @@ import { NzSliderRangeComponent } from './slider-item.component';
     FormlyModule.forChild({
       types: [
         {
+          name: 'slider',
+          component: SliderField,
+        },
+        {
           name: 'nz-slider',
           component: SliderField,
+        },
+        {
+          name: 'slider-range',
+          component: SliderRangeField,
         },
         {
           name: 'nz-slider-range',

@@ -31,7 +31,7 @@ export const RateMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '文案展现',
-          subtitle: '给评分组件加上文案展示。',
+          description: '给评分组件加上文案展示。',
         },
         fieldGroup: [
           {
@@ -50,7 +50,7 @@ export const RateMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '清楚',
-          subtitle: '支持允许或者禁用清除。',
+          description: '支持允许或者禁用清除。',
         },
         fieldGroup: [
           {
@@ -82,63 +82,27 @@ export const RateMockFields = [
             },
           }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
+      }
     ]
   },
   {
     type: 'group',
     className: "d-block mb-3 col-6",
-    templateOptions: {
-      title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-    },
     fieldGroup: [
       {
         type: 'code-card',
         className: "d-block mb-3 col-12",
+        templateOptions: {
+          title: '基本',
+          description: '支持选中半星。',
+        },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'rate-2-1-1',
+            type: 'rate',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              allowHalf: true,
             }
           }
         ]
@@ -147,25 +111,16 @@ export const RateMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '只读',
+          description: '只读，无法进行鼠标交互。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'rate-2-2-1',
+            type: 'rate',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              disabled: true,
             }
           }
         ]
@@ -174,57 +129,21 @@ export const RateMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          title: '其他字符',
+          description: '可以将星星替换为其他字符，比如字母，数字，字体图标甚至中文。',
         },
         fieldGroup: [
           {
-            key: 'checked2',
-            type: 'checkbox',
+            key: 'rate-2-3-1',
+            type: 'rate',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
+              character: '好'
             }
           }
         ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
-        },
-        fieldGroup: [
-          {
-            key: 'checked2',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "Checkbox",
-            }
-          },
-          {
-            key: 'checked1',
-            type: 'checkbox',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-              text: "nzDisabled",
-              
-            }
-          }
-        ]
-      },
-
+      }
     ]
-  },
+  }
 ]
