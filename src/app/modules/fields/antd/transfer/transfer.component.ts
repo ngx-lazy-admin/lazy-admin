@@ -6,7 +6,17 @@ import { formatDate } from '@angular/common';
 
 @Component({
 	selector: 'div[time-picker-field]',
-	templateUrl: './transfer.component.html',
+	// templateUrl: './transfer.component.html',
+	template: `
+	<nz-transfer
+		[nzDataSource]="list"
+		[nzDisabled]="nzDisabled"
+		[nzTitles]="['Source', 'Target']"
+		(nzSelectChange)="selectChange($event)"
+		[nzSelectedKeys]="['0', '2']"
+		(nzChange)="change($event)">
+	</nz-transfer>
+	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	host: {
@@ -110,6 +120,15 @@ export class TransferField extends FieldType {
 
 	get nzSuffixIcon(): boolean {
 		return this.to.nzSuffixIcon || false
+	}
+
+	selectChange ($event: any) {
+		console.log($event)
+		console.log('selectChange')
+	}
+
+	change ($event: any) {
+		console.log($event)
 	}
 
 	ngModelChange ($event: Date) {

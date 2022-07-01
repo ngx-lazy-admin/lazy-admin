@@ -14,6 +14,10 @@ import { TransferField } from './transfer.component';
     FormlyModule.forChild({
       types: [
         {
+          name: 'transfer',
+          component: TransferField,
+        },
+        {
           name: 'nz-transfer',
           component: TransferField,
         },
