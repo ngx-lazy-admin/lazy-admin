@@ -6,16 +6,17 @@ import { FormlyModule } from '@ngx-formly/core';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { TypographyField } from './typography.component';
-import { MarkedPipe } from '../../../../pipes/marked.pipe';
+import { PipesModule } from 'src/app/pipes/pipes.module';
+
 @NgModule({
   declarations: [
-    TypographyField, 
-    MarkedPipe
+    TypographyField,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     NzTypographyModule,
+    PipesModule,
     FormlyModule.forChild({
       types: [
         {

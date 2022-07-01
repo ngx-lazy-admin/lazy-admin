@@ -5,22 +5,21 @@ import { PortalModule } from '@angular/cdk/portal';
 
 import { FormlyModule } from '@ngx-formly/core';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
-
-import { DynamicPipe } from 'src/app/pipes/dynamic.pipe';
 import { CountdownField } from './countdown.component';
 import { StatisticField } from './statistic.component';
+import { PipesModule } from 'src/app/pipes';
 
 @NgModule({
   declarations: [
     StatisticField,
     CountdownField,
-    DynamicPipe,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     PortalModule,
     NzStatisticModule, 
+    PipesModule,
     FormlyModule.forChild({
       types: [
         {

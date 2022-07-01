@@ -23,10 +23,7 @@ import { CardMetaField } from './card-meta.component';
 import { CodeCardField } from './code-card.component';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
-
 import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
-
-// import { MarkedPipe } from '../../../pipes/marked.pipe';
 
 
 @NgModule({
@@ -37,7 +34,6 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
     SearchCardField,
     CardMetaField,
     CodeCardField,
-    // MarkedPipe
   ],
   imports: [
     CommonModule,

@@ -19,19 +19,17 @@ export const StatisticMockFields = [
         },
         fieldGroup: [
           {
-            key: 'select1',
+            key: 'statistic-2-1-1',
             type: 'statistic',
             className: "d-inline-block  col-6",
             defaultValue: 112893,
             templateOptions: {
               title: "Active Users",
-              valuePipe: 'number',
-              prefix: 'icon',
-              suffix: 'button'
+              valuePipe: 'number'
             }
           },
           {
-            key: 'select1',
+            key: 'statistic-2-1-2',
             type: 'statistic',
             className: "d-inline-block  col-6",
             defaultValue: 112893,
@@ -53,29 +51,40 @@ export const StatisticMockFields = [
         },
         fieldGroup: [
           {
-            key: 'select-1-2-1',
+            key: 'statistic-2-2-1',
             type: 'statistic',
-            className: "d-inline-block  col-6",
+            className: "d-inline-block col-6",
             defaultValue: 11.28,
             templateOptions: {
               title: "Active",
               valuePipe: 'number',
               valuePipeArgs: '1.0-2',
               suffix: '%',
-              prefix: '<i nz-icon nzType="arrow-down"></i>',
+              prefixRef: {
+                type: 'icon',
+                params: {
+                  type: 'arrow-up'
+                }
+              },
               valueStyle: { color: '#3F8600' }
             }
           },
           {
-            key: 'select1-2-2',
+            key: 'statistic-2-2-3',
             type: 'statistic',
-            className: "d-inline-block  col-6",
+            className: "d-inline-block col-6",
             defaultValue: 9.3,
             templateOptions: {
               title: "Idle",
               valuePipe: 'number',
               valuePipeArgs: '1.0-2',
               suffix: '%',
+              prefixRef: {
+                type: 'icon',
+                params: {
+                  type: 'arrow-down'
+                }
+              },
               valueStyle: { color: '#CF1322' }
             }
           },
@@ -96,18 +105,23 @@ export const StatisticMockFields = [
         },
         fieldGroup: [
           {
-            key: 'select21',
+            key: 'statistic-2-1-1',
             type: 'statistic',
             className: "d-inline-block  col-6",
             defaultValue: 1128,
             templateOptions: {
               title: "Feedback",
               valuePipe: 'number',
-              prefix: 'button'
+              prefixRef: {
+                type: 'icon',
+                params: {
+                  type: 'like'
+                }
+              }
             }
           },
           {
-            key: 'select111',
+            key: 'statistic-2-1-2',
             type: 'statistic',
             className: "d-inline-block  col-6",
             defaultValue: 91,
@@ -116,7 +130,6 @@ export const StatisticMockFields = [
               valuePipe: 'number',
               valuePipeArgs: '1.0-2',
               suffix: '/ 100',
-
             }
           },
         ]
