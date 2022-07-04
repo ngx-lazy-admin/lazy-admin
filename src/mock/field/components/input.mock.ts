@@ -42,7 +42,7 @@ export const InputMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '带移除图标',
-          subtitle: '带移除图标的输入框，点击图标删除所有内容。',
+          description: '带移除图标的输入框，点击图标删除所有内容。',
         },
         fieldGroup: [
           {
@@ -79,7 +79,7 @@ export const InputMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '带数字提示的文本域',
-          subtitle: '展示数字提示。',
+          description: '展示数字提示。',
         },
         fieldGroup: [
           {
@@ -143,7 +143,7 @@ export const InputMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '文本域',
-          subtitle: '用于多行输入。',
+          description: '用于多行输入。',
         },
         fieldGroup: [
           {
@@ -160,7 +160,7 @@ export const InputMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '适应文本高度的文本域',
-          subtitle: 'nzAutosize 属性适用于 textarea 节点，并且只有高度会自动变化。另外 nzAutosize 可以设定为一个对象，指定最小行数和最大行数。',
+          description: 'nzAutosize 属性适用于 textarea 节点，并且只有高度会自动变化。另外 nzAutosize 可以设定为一个对象，指定最小行数和最大行数。',
         },
         fieldGroup: [
           {
@@ -197,7 +197,7 @@ export const InputMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '密码框',
-          subtitle: '密码框。',
+          description: '密码框。',
         },
         fieldGroup: [
           {
@@ -215,7 +215,7 @@ export const InputMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '无边框',
-          subtitle: '没有边框。',
+          description: '没有边框。',
         },
         fieldGroup: [
           {

@@ -1,5 +1,17 @@
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 
+const list: any[] = []
+
+for (let i = 0; i < 20; i++) {
+  list.push({
+    key: i.toString(),
+    title: `content${i + 1}`,
+    disabled: i % 3 < 1
+  });
+}
+
+[2, 3].forEach(idx => (list[idx].direction = 'right'));
+
 export const TransferMockFields = [
   {
     type: 'group',
@@ -12,15 +24,15 @@ export const TransferMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '基本用法',
-          description: '简单的 checkbox',
+          description: '最基本的用法，展示了 nzDataSource 每行的渲染函数 nzRender 以及回调函数 nzChange、nzSelectChange 的用法。',
         },
         fieldGroup: [
           {
-            key: 'checked1',
-            type: 'checkbox',
+            key: 'transfer-1-1-1',
+            type: 'transfer',
             className: "d-inline-block mx-2",
+            defaultValue: list,
             templateOptions: {
-              text: "Checkbox",
             }
           }
         ]
@@ -29,13 +41,13 @@ export const TransferMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          title: '受控的 transfer',
+          description: '联动 transfer。',
         },
         fieldGroup: [
           {
             key: 'checked2',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block w-100",
             templateOptions: {
               text: "checked-disabled",
@@ -79,20 +91,20 @@ export const TransferMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {
             key: 'checked2',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: "transfer",
             }
           },
           {
             key: 'checked1',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "nzDisabled",
@@ -106,20 +118,20 @@ export const TransferMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {
             key: 'checked2',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: "transfer",
             }
           },
           {
             key: 'checked1',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "nzDisabled",
@@ -135,7 +147,7 @@ export const TransferMockFields = [
     className: "d-block mb-3 col-6",
     templateOptions: {
       title: '基本',
-      subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+      description: '最简单的用法，在浮层中可以选择或者输入日期。',
     },
     fieldGroup: [
       {
@@ -144,15 +156,15 @@ export const TransferMockFields = [
         fieldGroup: [
           {
             key: 'checked2',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: "transfer",
             }
           },
           {
             key: 'checked1',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "nzDisabled",
@@ -166,20 +178,20 @@ export const TransferMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '切换不同选择器',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {
             key: 'checked2',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: "transfer",
             }
           },
           {
             key: 'checked1',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "nzDisabled",
@@ -193,20 +205,20 @@ export const TransferMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {
             key: 'checked2',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: "transfer",
             }
           },
           {
             key: 'checked1',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "nzDisabled",
@@ -220,20 +232,20 @@ export const TransferMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {
             key: 'checked2',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
-              text: "Checkbox",
+              text: "transfer",
             }
           },
           {
             key: 'checked1',
-            type: 'checkbox',
+            type: 'transfer',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "nzDisabled",

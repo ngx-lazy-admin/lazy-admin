@@ -3,6 +3,7 @@ import { FieldType,  } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { formatDate } from '@angular/common';
+import { TransferItem } from 'ng-zorro-antd/transfer';
 
 @Component({
 	selector: 'div[time-picker-field]',
@@ -34,93 +35,27 @@ export class TransferField extends FieldType {
 		return this.to.nzId || false
 	}
 
-	get nzAddOn(): boolean {
-		return this.to.nzAddOn || false
-	}
-
-	get nzAllowEmpty(): boolean {
-		return this.to.nzAllowEmpty || false
-	}
-
-	get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false
-	}
-
-	get nzBackdrop(): boolean {
-		return this.to.nzBackdrop || false
-	}
-
-	get nzClearText(): boolean {
-		return this.to.nzClearText || false
-	}
-
-	get nzNowText(): boolean {
-		return this.to.nzNowText || false
-	}
-
-	get nzOkText(): boolean {
-		return this.to.nzOkText || false
-	}
-
-	get nzDefaultOpenValue(): Date {
-		return this.to.nzDefaultOpenValue || null
-	}
-
 	get nzDisabled(): boolean {
-		return this.to.nzDisabled || false
-	}
+    return this.to.nzDisabled || this.to.disabled || false
+  }
 
-	get nzDisabledHours(): boolean {
-		return this.to.nzDisabledHours || false
-	}
+	get nzTitles(): 	string[] {
+    return this.to.nzTitles || this.to.nzTitles || ['', '']
+  }
 
-	get nzDisabledMinutes(): boolean {
-		return this.to.nzDisabledMinutes || false
-	}
+	list: TransferItem[] = [];
 
-	get nzDisabledSeconds(): boolean {
-		return this.to.nzDisabledSeconds || false
-	}
+	ngOnInit(): void {
+    for (let i = 0; i < 20; i++) {
+      this.list.push({
+        key: i.toString(),
+        title: `content${i + 1}`,
+        disabled: i % 3 < 1
+      });
+    }
 
-	get nzFormat(): string {
-		return this.to.nzFormat || ''
-	}
-
-	get nzHideDisabledOptions(): boolean {
-		return this.to.nzHideDisabledOptions || false
-	}
-
-	get nzHourStep(): boolean {
-		return this.to.nzHourStep || false
-	}
-
-	get nzMinuteStep(): boolean {
-		return this.to.nzMinuteStep || false
-	}
-
-	get nzSecondStep(): boolean {
-		return this.to.nzSecondStep || false
-	}
-
-	get nzOpen(): boolean {
-		return this.to.nzOpen || false
-	}
-
-	get nzPlaceHolder(): boolean {
-		return this.to.nzPlaceHolder || false
-	}
-
-	get nzPopupClassName(): boolean {
-		return this.to.nzPopupClassName || false
-	}
-
-	get nzUse12Hours(): boolean {
-		return this.to.nzUse12Hours || false
-	}
-
-	get nzSuffixIcon(): boolean {
-		return this.to.nzSuffixIcon || false
-	}
+    [2, 3].forEach(idx => (this.list[idx].direction = 'right'));
+  }
 
 	selectChange ($event: any) {
 		console.log($event)

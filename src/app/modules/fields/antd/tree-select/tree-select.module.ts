@@ -14,6 +14,10 @@ import { TreeSelectField } from './tree-select.component';
     FormlyModule.forChild({
       types: [
         {
+          name: 'tree-select',
+          component: TreeSelectField,
+        },
+        {
           name: 'nz-tree-select',
           component: TreeSelectField,
         },

@@ -27,10 +27,7 @@
       [nzWidth]="nzWidthRange[index]"
       [nzTrigger]="null"
       (nzCollapsedChange)="collapsedChange($event)">
-      <app-layout-menu 
-        [isCollapsed]="!index"
-        class="menu-sidebar">
-      </app-layout-menu>
+      <app-layout-menu class="menu-sidebar" [isCollapsed]="!index"></app-layout-menu>
     </nz-sider>
   </ng-container>
 
@@ -39,14 +36,12 @@
       [nzClosable]="false"
       [nzVisible]="!!index"
       nzPlacement="left"
+      nzWidth="75%"
       [nzBodyStyle]="{padding: 0, 'backgroundColor': '#001529'}"
       (nzOnClose)="close()"
       >
       <ng-container *nzDrawerContent>
-        <app-layout-menu 
-          [isCollapsed]="false"
-          class="menu-sidebar">
-        </app-layout-menu>
+        <app-layout-menu class="menu-sidebar" [isCollapsed]="false"></app-layout-menu>
       </ng-container>
     </nz-drawer>
   </ng-container>

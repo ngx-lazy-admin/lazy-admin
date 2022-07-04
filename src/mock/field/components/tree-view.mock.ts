@@ -40,7 +40,7 @@ export const TreeViewMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '受控的 Checkbox',
-          subtitle: '联动 checkbox。',
+          description: '联动 checkbox。',
         },
         fieldGroup: [
           {
@@ -110,7 +110,7 @@ export const TreeViewMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {
@@ -137,7 +137,7 @@ export const TreeViewMockFields = [
         className: "d-block mb-3 col-12",
         templateOptions: {
           title: '日期格式',
-          subtitle: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。',
         },
         fieldGroup: [
           {

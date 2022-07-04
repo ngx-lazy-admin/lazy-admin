@@ -35,6 +35,8 @@ import { BadgeFieldModule } from './badge/badge.module';
 import { MentionFieldModule } from './mention';
 import { TypographyFieldModule } from './typography';
 import { SegmentedFieldModule } from './segmented';
+import { TreeSelectFieldModule } from './tree-select';
+import { TransferFieldModule } from './transfer';
 
 @NgModule({
   imports: [
@@ -72,7 +74,9 @@ import { SegmentedFieldModule } from './segmented';
     RepeatFieldModule,
     ModalFieldModule,
     PaginationFieldModule,
-    MentionFieldModule
+    MentionFieldModule,
+    TreeSelectFieldModule,
+    TransferFieldModule
   ],
   providers: [
     
