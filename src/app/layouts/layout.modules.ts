@@ -23,7 +23,6 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import { IconsProviderModule } from '../modules/icons-provider.module';
-// import { NgZorroAntdModule } from './ng-zorro-antd.modules'
 
 import { LayoutBasicComponent } from './basic/basic.component';
 import { LayoutBlankComponent } from './blank/blank.component';

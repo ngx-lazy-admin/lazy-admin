@@ -102,6 +102,7 @@ export class FormComponent {
         this.cd.markForCheck();
         const resultCache = this.routeCache.get(this.router.url);
         console.log(resultCache)
+        console.log(new Date().getTime())
         if (resultCache) {
           this.render(resultCache)
           this.routeCache.recoveryHistoryPosition(this.router.url)
@@ -187,42 +188,71 @@ export class FormComponent {
   render(result: any) {
     this.loading = true;
     // this.clearData();
+    this.info = result?.info;
 
-    setTimeout(() => {
-      try {
-        // from 重置
-        this.form.reset({}, {onlySelf: false, emitEvent: false} );
-        this.form = new FormGroup({});
+    try {
+      // from 重置
+      this.form.reset({}, {onlySelf: false, emitEvent: false} );
+      this.form = new FormGroup({});
 
-        // 缓存
-        this.cacheFields = result?.fields
+      this.cacheFields = result?.fields
+      this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
 
-        this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
+      this.model = result?.data;
+      this.options.formState.cacheFields = result.fields
 
-        this.model = result?.data;
-        this.options.formState.cacheFields = result.fields
+      this.code = prettier.format(JSON.stringify(result.fields), {
+        parser: "json",
+        plugins: [parserBabel],
+      });
+    } catch (error) {
+      this.fields = []
+      this.model = {}
+      this.info = null;
+      console.log(error)
+    } finally {
+      this.status = 200;
+      this.loading = false;
 
-        this.code = prettier.format(JSON.stringify(result.fields), {
-          parser: "json",
-          plugins: [parserBabel],
-        });
+      this.cd.detectChanges();
+    }
 
-        // console.log('codes', codes)
+    // setTimeout(() => {
+    //   try {
+    //     // from 重置
+    //     this.form.reset({}, {onlySelf: false, emitEvent: false} );
+    //     this.form = new FormGroup({});
 
-        this.info = result?.info;
-      } catch (error) {
-        this.fields = []
-        this.model = {}
-        this.info = null;
-        console.log(error)
-      } finally {
-        this.status = 200;
-        this.loading = false;
+    //     // 缓存
+    //     this.cacheFields = result?.fields
 
-        this.cd.detectChanges();
-        // debugger
-      }
-    }, 100);
+    //     this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
+
+    //     this.model = result?.data;
+    //     this.options.formState.cacheFields = result.fields
+
+    //     this.code = prettier.format(JSON.stringify(result.fields), {
+    //       parser: "json",
+    //       plugins: [parserBabel],
+    //     });
+
+    //     // console.log('codes', codes)
+
+    //     this.info = result?.info;
+    //   } catch (error) {
+    //     this.fields = []
+    //     this.model = {}
+    //     this.info = null;
+    //     console.log(error)
+    //   } finally {
+    //     this.status = 200;
+    //     this.loading = false;
+
+    //     this.cd.detectChanges();
+    //     // debugger
+    //   }
+    //   console.log(new Date().getTime())
+    // }, 0);
   }
 
   clearData() {

@@ -62,7 +62,7 @@ export const StatisticMockFields = [
               suffix: '%',
               prefixRef: {
                 type: 'icon',
-                params: {
+                componentParams: {
                   type: 'arrow-up'
                 }
               },
@@ -81,7 +81,7 @@ export const StatisticMockFields = [
               suffix: '%',
               prefixRef: {
                 type: 'icon',
-                params: {
+                componentParams: {
                   type: 'arrow-down'
                 }
               },
@@ -114,8 +114,14 @@ export const StatisticMockFields = [
               valuePipe: 'number',
               prefixRef: {
                 type: 'icon',
-                params: {
-                  type: 'like'
+                componentParams: {
+                  type: 'like',
+                  style: {
+                    color: 'red',
+                  },
+                  click: `(field, $event) => {
+                    field.formControl.setValue(field.formControl.value + 1)
+                  }`
                 }
               }
             }

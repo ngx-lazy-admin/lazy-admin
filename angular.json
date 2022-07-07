@@ -46,7 +46,12 @@
               }
             ],
             "allowedCommonJsDependencies": [
-              "lodash"
+              "lodash",
+              "@antv/g2plot",
+              "qiankun",
+              "@babel/runtime/regenerator",
+              "size-sensor",
+              "pdfast"
             ],
             "styles": [
               "src/styles.scss",

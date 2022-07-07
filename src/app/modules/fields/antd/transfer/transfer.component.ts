@@ -6,17 +6,18 @@ import { formatDate } from '@angular/common';
 import { TransferItem } from 'ng-zorro-antd/transfer';
 
 @Component({
-	selector: 'div[time-picker-field]',
+	selector: 'div[transfer-field]',
 	// templateUrl: './transfer.component.html',
 	template: `
-	<nz-transfer
-		[nzDataSource]="list"
+	<transfer-item
+		[formControl]="control"
+    [formlyAttributes]="field"
 		[nzDisabled]="nzDisabled"
 		[nzTitles]="['Source', 'Target']"
 		(nzSelectChange)="selectChange($event)"
 		[nzSelectedKeys]="['0', '2']"
 		(nzChange)="change($event)">
-	</nz-transfer>
+	</transfer-item>
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,

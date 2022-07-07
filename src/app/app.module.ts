@@ -53,7 +53,7 @@ registerLocaleData(zh);
     HttpClientInMemoryWebApiModule.forRoot(
       MockService, 
       // InMemoryBackendConfigArgs
-      { delay: 50, passThruUnknownUrl: true, dataEncapsulation: false}
+      { delay: 0, passThruUnknownUrl: true, dataEncapsulation: false}
     )
   ],
   providers: [

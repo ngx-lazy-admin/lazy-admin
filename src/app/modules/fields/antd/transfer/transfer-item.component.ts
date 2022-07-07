@@ -10,15 +10,16 @@ import {
   OnInit,
   Optional,
   ViewEncapsulation,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  TemplateRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
+import { BooleanInput, NgStyleInterface, NzSafeAny, NzStatus, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 import { InputBoolean } from 'ng-zorro-antd/core/util';
-import { TransferItem } from 'ng-zorro-antd/transfer';
+import { TransferCanMove, TransferItem } from 'ng-zorro-antd/transfer';
 
 export interface NzCheckBoxOptionInterface {
   label: string;
@@ -28,8 +29,8 @@ export interface NzCheckBoxOptionInterface {
 }
 
 @Component({
-  selector: 'nz-checkbox-wrapper-item',
-  exportAs: 'nzCheckboxGroup',
+  selector: 'transfer-item',
+  exportAs: 'transferItem',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,7 +39,10 @@ export interface NzCheckBoxOptionInterface {
       [nzDataSource]="nzDataSource"
       [nzDisabled]="nzDisabled"
       [nzTitles]="['Source', 'Target']"
-      [nzSelectedKeys]="['0', '2']">
+      [nzSelectedKeys]="['0', '2']"
+      (nzChange)="nzChange($event)"
+      (nzSelectChange)="nzSelectChange($event)"
+      (nzSearchChange)="nzSearchChange($event)">
     </nz-transfer>
   `,
   providers: [
@@ -55,16 +59,30 @@ export class NzTransferItemComponent implements ControlValueAccessor, OnInit, On
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
 
-  
-  @Input() 
-  @InputBoolean() 
-  nzDisabled = false;
+  nzDataSource: TransferItem[] = [];
+
+  @Input() @InputBoolean() nzDisabled = false;
+
+  @Input() nzTitles: string[] = ['', ''];
+  @Input() nzOperations: string[] = [];
+  @Input() nzListStyle: NgStyleInterface = {};
+  @Input() @InputBoolean() nzShowSelectAll = true;
+  @Input() nzItemUnit?: string;
+  @Input() nzItemsUnit?: string;
+  @Input() nzCanMove: (arg: TransferCanMove) => Observable<TransferItem[]> = (arg: TransferCanMove) => of(arg.list);
+  @Input() nzRenderList: Array<TemplateRef<NzSafeAny> | null> | null = null;
+  @Input() nzRender: TemplateRef<NzSafeAny> | null = null;
+  @Input() nzFooter: TemplateRef<NzSafeAny> | null = null;
+  @Input() @InputBoolean() nzShowSearch = false;
+  @Input() nzFilterOption?: (inputValue: string, item: TransferItem) => boolean;
+  @Input() nzSearchPlaceholder?: string;
+  @Input() nzNotFoundContent?: string;
+  @Input() nzTargetKeys: string[] = [];
+  @Input() nzSelectedKeys: string[] = [];
+  @Input() nzStatus: NzStatus = '';
 
   @Input() 
   nzOptions: NzCheckBoxOptionInterface[] = []
-
-	nzDataSource: TransferItem[] = [];
-
 
   private _destroy$ = new Subject<void>();
 
@@ -72,11 +90,20 @@ export class NzTransferItemComponent implements ControlValueAccessor, OnInit, On
     return option.value;
   }
 
-  onCheckedChange(option: NzCheckBoxOptionInterface, checked: boolean): void {
-    option.checked = checked;
-    let value = this.nzOptions.filter(item => item.checked).map(item => item.value)
-    this.onChange(value);
+  nzChange($event: any): void {
+    console.log($event)
+    console.log(this.nzDataSource)
   }
+
+  nzSelectChange($event: any): void {
+    console.log($event)
+    console.log(this.nzDataSource)
+  }
+
+  nzSearchChange($event: any): void {
+    console.log($event)
+    console.log(this.nzDataSource)
+  } 
 
   constructor(
     private elementRef: ElementRef,
@@ -84,7 +111,7 @@ export class NzTransferItemComponent implements ControlValueAccessor, OnInit, On
     private cd: ChangeDetectorRef,
   ) {
     // TODO: move to host after View Engine deprecation
-    this.elementRef.nativeElement.classList.add('ant-checkbox-wrapper-list');
+    this.elementRef.nativeElement.classList.add('transfer-item');
   }
 
   ngOnInit(): void {

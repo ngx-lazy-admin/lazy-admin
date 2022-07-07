@@ -297,6 +297,19 @@ export function isPromise(obj: any): obj is Promise<any> {
 
 export const execFunction = (name: string) => (new Function( 'return ' + name))();
 
+  // export declare type FormlyAttributeEvent = (field: FormlyFieldConfig, event?: any) => void;
+
+export const runFunction = (name: string, field?: FormlyFieldConfig, $event?: Event) => {
+  try{
+    if (name) {
+      const func = execFunction(name)
+      func(field, $event)
+    }
+  } catch (err) {
+    console.log(name + ': error', err)
+  }
+}
+
 // 随机字符串
 export const randomString = (e: number) => {    
   e = e || 32;

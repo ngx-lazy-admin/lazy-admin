@@ -55,7 +55,6 @@ export class LayoutBasicComponent implements OnInit {
 
     @Optional() private directionality: Directionality,
   ) {
-    // 布局状态
     this.layout.change$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
       if (item) {
         this.index = 0
@@ -69,11 +68,10 @@ export class LayoutBasicComponent implements OnInit {
       this.cd.markForCheck();
     })
 
-    // 进度条的加载状态
-    this.message.loadingChange$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
-      this.progress = item
-      this.percent = this.progress ? 100 : 0;
-    });
+    // this.message.loadingChange$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
+    //   this.progress = item
+    //   this.percent = this.progress ? 100 : 0;
+    // });
 
     this.dir = this.directionality.value;
     this.directionality.change?.pipe(takeUntil(this.destroy$)).subscribe((direction: Direction) => {

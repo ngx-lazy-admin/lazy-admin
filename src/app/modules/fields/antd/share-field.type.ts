@@ -13,7 +13,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 import { isObject } from 'src/app/utils/utils';
 import { TemplateService } from '../../template';
-// import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
 
@@ -77,6 +76,8 @@ export abstract class ShareFieldType extends FieldType {
     this.runChange(this.field, this, 'cancel')
   }
 
+  // export declare type FormlyAttributeEvent = (field: FormlyFieldConfig, event?: any) => void;
+
   runChange (field: FormlyFieldConfig, _this: this, key: string, $event: Event | null = null) {
     this.zone.runOutsideAngular(() => {
       try{
@@ -136,15 +137,8 @@ export abstract class ShareFieldType extends FieldType {
   verification (form: FormGroup) {
     Object.values(form.controls).forEach(control => {
       if (control.invalid) {
-        // this.message.error(this.errorMessage(control))
         const message = this.errorMessage(control)
-        if (message) {
-          // this.notification.error(
-          //   'Notification Title',
-          //   message,
-          // );
-        }
-
+        console.log(message);
         control.markAsDirty();
         control.updateValueAndValidity({ onlySelf: true });
       }
