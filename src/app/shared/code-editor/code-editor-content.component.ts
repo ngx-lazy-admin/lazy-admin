@@ -7,6 +7,8 @@ import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
 
 import { execEval } from '../fields/share-field.type';
+import { BehaviorSubject } from 'rxjs';
+import { debounceTime, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'custom-modal-content',
@@ -105,22 +107,34 @@ export class CodeEditorContent {
     this.field = JSON.parse(JSON.stringify(value))
   }
 
+  searchChange$ = new BehaviorSubject('');
+
+
   constructor(
     private cd: ChangeDetectorRef,
-  ) {}
+  ) {
+    this.searchChange$
+    .asObservable()
+    .pipe(debounceTime(300))
+    .pipe(filter(x => !!x))
+    .subscribe(code => {
+      console.log('search:' + code)
+      try {
+        this.field = execEval(code)
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.cd.detectChanges();
+      }
+    })
+  }
 
   // 编辑器初始化 input => code => field
   editorInitialized($event: any) {
     $event.onDidChangeModelContent(() => {
-      try {
-        let codes = $event.getValue()
-        this.field = execEval(codes)
-        setTimeout(() => {
-          this.cd.markForCheck();
-        }, 0);
-      } catch (error) {
-        this.cd.markForCheck();
-      }
+      let code = $event.getValue()
+      console.log('editor:' + code)
+      this.searchChange$.next(code)
     })
   }
 }

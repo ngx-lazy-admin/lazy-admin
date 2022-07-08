@@ -6,7 +6,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, throttle, throttleTime, filter } from 'rxjs/operators';
 import { execEval, ShareFieldType } from '../share-field.type';
 
 import { format } from "prettier/standalone";
@@ -249,15 +249,16 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   editorInitialized($event: any) {
     $event.onDidChangeModelContent(() => {
       let codes = $event.getValue()
-      // this.codeChange(codes)
       this.searchChange$.next(codes)
     })
   }
 
   // 代码变更
   codeChange (code: string) {
+    console.log(code)
+    const fieldGroup = execEval(code);
+
     try {
-      const fieldGroup = execEval(code);
       fieldGroup.forEach((item: any) => {
         item.options = this.options
       })
@@ -297,7 +298,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   // 初始化code
   initCode () {
     let code = JSON.parse(JSON.stringify(this.field.fieldGroup))
-    this.delNullProperty(code)
+    // this.delNullProperty(code)
     this.code = format(JSON.stringify(code), {
       parser: "json",
       plugins: [parserBabel],
@@ -347,6 +348,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     this.searchChange$
       .asObservable()
       .pipe(debounceTime(300))
+      .pipe(filter(x => !!x))
       .subscribe(code => {
         this.codeChange(code)
     })

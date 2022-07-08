@@ -13,6 +13,7 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 			[formControl]="control"
 			[formlyAttributes]="field"
 			[type]="nzType"
+			[disabled]="disabled"
 			[placeholder]="nzPlaceholder"
 			[nzSize]="nzSize"
 			[nzBorderless]="nzBorderless"
@@ -31,6 +32,10 @@ export class InputField extends FieldType {
 
 	get nzType(): string {
 		return this.to.nzType || this.to.type || 'text'
+	}
+
+	get disabled(): boolean {
+		return this.to.disabled || false
 	}
 
 	get nzPlaceholder(): string {
