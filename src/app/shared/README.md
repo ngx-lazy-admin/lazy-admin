@@ -1,8 +1,18 @@
 共享组件, 可以全局使用
 
-1. global-search  全局搜索
-2. theme-setting 主题设置
-3. clear-cache 清除缓存
-4. full-screen 全屏
-5. i18 切换
-6. 消息通知
+shared                  // 共享模块, 组件, 管道
+├── modules             // 共享模块
+     ├── modal          // 弹窗模块
+     ├── search         // 搜索模块
+     ├── theme          // 主题模块
+     ├── preview        // 预览模块
+
+├── pipes               // 共享管道
+├── fields              // 共享Fields
+├── template            // 共享模板
+
+
+
+         
+
+

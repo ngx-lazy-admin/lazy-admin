@@ -295,6 +295,10 @@ export function isPromise(obj: any): obj is Promise<any> {
   return !!obj && typeof obj.then === 'function';
 }
 
+export const execEval = (code: string) => eval('(' + code + ')')
+
+export const execFunc = (func: string | Function) => typeof(func) == 'string' ? execEval(func) : func
+
 export const execFunction = (name: string) => (new Function( 'return ' + name))();
 
   // export declare type FormlyAttributeEvent = (field: FormlyFieldConfig, event?: any) => void;

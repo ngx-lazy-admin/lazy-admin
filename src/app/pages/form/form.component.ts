@@ -24,12 +24,10 @@ import { CacheService } from 'src/app/services/router/cache.service';
 import { ModalService } from 'src/app/modules/modal';
 import { PreviewService } from 'src/app/modules/preview';
 
-import * as prettier from "prettier/standalone";
+import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
 import { CodeEditorService } from 'src/app/modules/code-editor';
 import { HttpClient } from '@angular/common/http';
-
-// import * as prettier from 'prettier';
 
 export interface headerInfoType {
   title: string,
@@ -95,9 +93,14 @@ export class FormComponent {
     private http: HttpClient
   ) {
 
+
+    // this.formService.
+
     // 监听路由变化
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        // 获取当前页面的配置
+
         this.loading = true
         this.cd.markForCheck();
         const resultCache = this.routeCache.get(this.router.url);
@@ -201,7 +204,7 @@ export class FormComponent {
       this.model = result?.data;
       this.options.formState.cacheFields = result.fields
 
-      this.code = prettier.format(JSON.stringify(result.fields), {
+      this.code = format(JSON.stringify(result.fields), {
         parser: "json",
         plugins: [parserBabel],
       });
@@ -216,43 +219,6 @@ export class FormComponent {
 
       this.cd.detectChanges();
     }
-
-    // setTimeout(() => {
-    //   try {
-    //     // from 重置
-    //     this.form.reset({}, {onlySelf: false, emitEvent: false} );
-    //     this.form = new FormGroup({});
-
-    //     // 缓存
-    //     this.cacheFields = result?.fields
-
-    //     this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
-
-    //     this.model = result?.data;
-    //     this.options.formState.cacheFields = result.fields
-
-    //     this.code = prettier.format(JSON.stringify(result.fields), {
-    //       parser: "json",
-    //       plugins: [parserBabel],
-    //     });
-
-    //     // console.log('codes', codes)
-
-    //     this.info = result?.info;
-    //   } catch (error) {
-    //     this.fields = []
-    //     this.model = {}
-    //     this.info = null;
-    //     console.log(error)
-    //   } finally {
-    //     this.status = 200;
-    //     this.loading = false;
-
-    //     this.cd.detectChanges();
-    //     // debugger
-    //   }
-    //   console.log(new Date().getTime())
-    // }, 0);
   }
 
   clearData() {
@@ -262,22 +228,6 @@ export class FormComponent {
     this.form.reset();
     this.cd.detectChanges();
     this.cd.markForCheck();
-  }
-
-  editorInitialized($event: any) {
-    this.editor = $event;
-    $event.onDidChangeModelContent(() => {
-      console.log(111)
-      try {
-        let codes = $event.getValue()
-        this.fields = execEval(codes)
-        setTimeout(() => {
-          this.cd.markForCheck();
-        }, 0);
-      } catch (error) {
-        this.cd.markForCheck();
-      }
-    })
   }
 
   private setup(): void {

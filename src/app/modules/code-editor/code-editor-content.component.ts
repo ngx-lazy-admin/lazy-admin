@@ -3,7 +3,7 @@ import { Component, OnInit, Input, TemplateRef, Output, EventEmitter, ChangeDete
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
-import * as prettier from "prettier/standalone";
+import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
 
 import { execEval } from '../fields/share-field.type';
@@ -98,7 +98,7 @@ export class CodeEditorContent {
   }
 
   setCode (value: FormlyFieldConfig[]) {
-    this.code = prettier.format(JSON.stringify(value), {
+    this.code = format(JSON.stringify(value), {
       parser: "json",
       plugins: [parserBabel],
     });

@@ -21,9 +21,13 @@ import hotkeys from 'hotkeys-js';
 import { editor } from 'monaco-editor';
 
 import { FieldService } from 'src/app/services/api/field';
-import { execEval } from 'src/app/fields/types/share-field.type';
+// import { execEval } from 'src/app/fields/types/share-field.type';
 
 import { CacheService } from 'src/app/services/router/cache.service';
+
+import { format } from "prettier/standalone";
+import * as parserBabel from "prettier/parser-babel";
+import { execEval } from 'src/app/utils/utils';
 
 export interface headerInfoType {
   title: string,
@@ -142,7 +146,7 @@ export class FormService {
         this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
         this.model = result?.data;
 
-        this.code = prettier.format(JSON.stringify(result.fields), {
+        this.code = format(JSON.stringify(result.fields), {
           parser: "json",
           plugins: [parserBabel],
         });
@@ -212,7 +216,5 @@ export class FormService {
         })
     );
   }
-
-
 }
   

@@ -8,7 +8,7 @@ import {
 import { Subject } from 'rxjs';
 import { execEval, ShareFieldType } from '../share-field.type';
 
-import * as prettier from "prettier/standalone";
+import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
 
 @Component({
@@ -319,7 +319,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   initCode () {
     let code = JSON.parse(JSON.stringify(this.field.fieldGroup))
     this.delNullProperty(code)
-    this.code = prettier.format(JSON.stringify(code), {
+    this.code = format(JSON.stringify(code), {
       parser: "json",
       plugins: [parserBabel],
     });

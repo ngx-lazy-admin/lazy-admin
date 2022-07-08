@@ -49,6 +49,7 @@
               "lodash",
               "@antv/g2plot",
               "qiankun",
+              "prettier",
               "@babel/runtime/regenerator",
               "size-sensor",
               "pdfast"

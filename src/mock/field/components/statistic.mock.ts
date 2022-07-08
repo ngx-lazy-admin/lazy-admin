@@ -116,9 +116,6 @@ export const StatisticMockFields = [
                 type: 'icon',
                 componentParams: {
                   type: 'like',
-                  style: {
-                    color: 'red',
-                  },
                   click: `(field, $event) => {
                     field.formControl.setValue(field.formControl.value + 1)
                   }`
@@ -136,7 +133,16 @@ export const StatisticMockFields = [
               valuePipe: 'number',
               valuePipeArgs: '1.0-2',
               suffix: '/ 100',
-            }
+              prefixRef: {
+                type: 'icon',
+                componentParams: {
+                  type: 'like',
+                  click: `(field, $event) => {
+                    field.formControl.setValue(field.formControl.value + 1)
+                  }`
+                }
+              }
+            },
           },
         ]
       },

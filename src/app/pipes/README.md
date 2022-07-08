@@ -1,3 +1,10 @@
+pipes                  // 全局的管道组件
+├── dynamic            // 动态管道
+├── html               // html
+├── marked             // marked => html
+├── watermark          // 水印
+
+   
 # 管道
 
 
