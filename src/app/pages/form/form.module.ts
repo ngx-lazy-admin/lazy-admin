@@ -18,12 +18,12 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 
-import { IconsProviderModule } from '../../modules/icons-provider.module';
-import { ModalsModule } from 'src/app/modules/modal' 
-import { FieldTypeModule } from 'src/app/modules/fields/antd';
-// import { CustomFieldModule } from 'src/app/modules/fields/custom';
-import { FormFieldModule } from 'src/app/modules/fields/wrappers/form';
-import { CustomFieldModule } from 'src/app/modules/fields/custom-type.module';
+import { IconsProviderModule } from '../../shared/icons-provider.module';
+import { ModalsModule } from 'src/app/shared/modal' 
+import { FieldTypeModule } from 'src/app/shared/fields/antd';
+// import { CustomFieldModule } from 'src/app/shared/fields/custom';
+import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
+import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 import { PipesModule } from 'src/app/pipes';
 
 @NgModule({

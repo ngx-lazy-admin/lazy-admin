@@ -88,7 +88,7 @@ export class StatisticField extends ShareFieldType implements OnInit, OnDestroy 
   }
 
   get nzValue () : string | number {
-    return this.formControl.value || '';
+    return this.formControl?.value || '';
   }
 
   get valuePipe (): pipeTokenType {

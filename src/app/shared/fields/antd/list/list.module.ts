@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ListField } from './list.component';
 import { VirtualListField } from './virtual-list.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
-import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
+import { IconsProviderModule } from 'src/app/shared/icons-provider.module';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzButtonModule } from 'ng-zorro-antd/button';

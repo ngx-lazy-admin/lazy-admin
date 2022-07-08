@@ -7,29 +7,30 @@ import { FormlyModule } from '@ngx-formly/core';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor'
 
 import { IconsProviderModule } from '../icons-provider.module';
-import { ModalContent } from './modal-content.component';
-import { FieldTypeModule } from 'src/app/modules/fields/antd';
+import { CodeEditorContent } from './code-editor-content.component';
 
-// import { AntFieldTypeModule } from 'src/app/modules/antd';
-
-// import { CustomFieldModule } from 'src/app/modules/fields/custom';
-import { FormFieldModule } from 'src/app/modules/fields/wrappers/form';
-import { CustomFieldModule } from 'src/app/modules/fields/custom-type.module';
+import { FieldTypeModule } from 'src/app/shared/fields/antd';
+import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
+import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 
 @NgModule({
   declarations: [
-    ModalContent,
+    CodeEditorContent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
 
     NzButtonModule,
     NzModalModule,
-    DragDropModule,
+    NzTabsModule,
+    NzCodeEditorModule,
     IconsProviderModule,
 
     FormlyModule,
@@ -39,7 +40,7 @@ import { CustomFieldModule } from 'src/app/modules/fields/custom-type.module';
     FormFieldModule,
   ],
   exports: [
-    ModalContent,
+    CodeEditorContent,
   ]
 })
-export class ModalsModule { }
+export class CodeEditorModule { }

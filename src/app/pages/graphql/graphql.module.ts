@@ -17,12 +17,12 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { GraphqlRoutingModule } from './graphql-routing.module';
 import { GraphqlComponent } from './graphql.component';
 
-import { IconsProviderModule } from '../../modules/icons-provider.module';
+import { IconsProviderModule } from '../../shared/icons-provider.module';
 
-// import { ModalsModule } from 'src/app/modules/modal' 
-// import { FieldTypeModule } from 'src/app/modules/fields/antd';
-// import { FormFieldModule } from 'src/app/modules/fields/wrappers/form';
-// import { CustomFieldModule } from 'src/app/modules/fields/custom-type.module';
+// import { ModalsModule } from 'src/app/shared/modal' 
+// import { FieldTypeModule } from 'src/app/shared/fields/antd';
+// import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
+// import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 
 @NgModule({
   declarations: [

@@ -19,10 +19,10 @@ import hotkeys from 'hotkeys-js';
 import { editor } from 'monaco-editor';
 
 import { FieldService } from 'src/app/services/api/field';
-import { execEval } from 'src/app/modules/fields/antd/share-field.type';
+import { execEval } from 'src/app/shared/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
-import { ModalService } from 'src/app/modules/modal';
-import { PreviewService } from 'src/app/modules/preview';
+import { ModalService } from 'src/app/shared/modal';
+import { PreviewService } from 'src/app/shared/preview';
 
 import {
   graphql,
@@ -30,7 +30,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
-import { ThemeSettingService } from 'src/app/modules/theme-setting/theme-setting.service';
+import { ThemeSettingService } from 'src/app/shared/theme-setting/theme-setting.service';
 
 var schema = new GraphQLSchema({
   query: new GraphQLObjectType({

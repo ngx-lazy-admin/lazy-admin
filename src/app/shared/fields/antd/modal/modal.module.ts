@@ -18,7 +18,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import { ModalField } from './modal.component'
-import { IconsProviderModule } from 'src/app/modules/icons-provider.module';
+import { IconsProviderModule } from 'src/app/shared/icons-provider.module';
 
 @NgModule({
   declarations: [

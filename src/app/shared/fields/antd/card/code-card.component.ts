@@ -5,11 +5,13 @@ import {
   ViewEncapsulation,
   TemplateRef
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { execEval, ShareFieldType } from '../share-field.type';
 
 import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
+import { copy } from 'src/app/utils/utils';
 
 @Component({
   selector: 'div[code-card]',
@@ -116,7 +118,6 @@ import * as parserBabel from "prettier/parser-babel";
         <div class="f14 position-relative p-3">
         <nz-tabset >
           <nz-tab nzTitle="Fields">
-            <!-- <textarea  nz-input rows="20" class="w-100 p-3" style="height: 400px" [ngModel]="fieldCode" (ngModelChange)="codeChange($event)"></textarea> -->
             <nz-code-editor 
               [nzEditorOption]="{ 
                 language: 'json'
@@ -238,6 +239,8 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
 
   code: string = ''
 
+  searchChange$ = new BehaviorSubject('');
+
   navigateToFragment(): void {
     console.log('navigateToFragment')
   }
@@ -246,7 +249,8 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   editorInitialized($event: any) {
     $event.onDidChangeModelContent(() => {
       let codes = $event.getValue()
-      this.codeChange(codes)
+      // this.codeChange(codes)
+      this.searchChange$.next(codes)
     })
   }
 
@@ -269,43 +273,18 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
     if (!this.code) {
       this.initCode();
     }
-    this.copy(this.code)
+    copy(this.code)
   }
 
   // 复制命令
   copyGenerateCommand(command: string): void {
-    this.copy(command).then(() => {
+    copy(command).then(() => {
       this.commandCopied = true;
       setTimeout(() => {
         this.commandCopied = false;
         this.check();
       }, 1000);
     });
-  }
-
-  // 复制
-  copy(value: string): Promise<string> {
-    const promise = new Promise<string>((resolve): void => {
-      // @ts-ignore
-      let copyTextArea = null as HTMLTextAreaElement;
-      try {
-        copyTextArea = document.createElement('textarea');
-        copyTextArea.style.height = '0px';
-        copyTextArea.style.opacity = '0';
-        copyTextArea.style.width = '0px';
-        document.body.appendChild(copyTextArea);
-        copyTextArea.value = value;
-        copyTextArea.select();
-        document.execCommand('copy');
-        resolve(value);
-      } finally {
-        if (copyTextArea && copyTextArea.parentNode) {
-          copyTextArea.parentNode.removeChild(copyTextArea);
-        }
-      }
-    });
-
-    return promise;
   }
 
   // 展开
@@ -365,7 +344,12 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   }
 
   ngAfterViewInit() {
-    // this.cd.detectChanges();
+    this.searchChange$
+      .asObservable()
+      .pipe(debounceTime(300))
+      .subscribe(code => {
+        this.codeChange(code)
+    })
   }
 
   // tslint:disable-next-line: no-any

@@ -19,14 +19,14 @@ import hotkeys from 'hotkeys-js';
 import { editor } from 'monaco-editor';
 
 import { FieldService } from 'src/app/services/api/field';
-import { execEval } from 'src/app/modules/fields/antd/share-field.type';
+import { execEval } from 'src/app/shared/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
-import { ModalService } from 'src/app/modules/modal';
-import { PreviewService } from 'src/app/modules/preview';
+import { ModalService } from 'src/app/shared/modal';
+import { PreviewService } from 'src/app/shared/preview';
 
 import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
-import { CodeEditorService } from 'src/app/modules/code-editor';
+import { CodeEditorService } from 'src/app/shared/code-editor';
 import { HttpClient } from '@angular/common/http';
 
 export interface headerInfoType {

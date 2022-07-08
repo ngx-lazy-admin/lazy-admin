@@ -22,7 +22,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 
-import { IconsProviderModule } from '../modules/icons-provider.module';
+import { IconsProviderModule } from '../shared/icons-provider.module';
 
 import { LayoutBasicComponent } from './basic/basic.component';
 import { LayoutBlankComponent } from './blank/blank.component';

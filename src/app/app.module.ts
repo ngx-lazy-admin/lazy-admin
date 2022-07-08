@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 
 import { MockService } from '../mock/mock.service';
 import { GlobalSearchModule } from './shared/global-search';
-import { ThemeSettingModule } from './modules/theme-setting';
+import { ThemeSettingModule } from './shared/theme-setting';
 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [

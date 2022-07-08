@@ -20,7 +20,7 @@ import { ShareFieldType } from '../share-field.type';
 			
 				[formControl]="control"
 				[formlyAttributes]="field"
-			
+				[nzBorderless]="true"
 				[placeholder]="placeholder"	
 				[readOnly]="readOnly"
 

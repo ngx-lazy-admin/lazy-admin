@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
-import { TemplateService } from 'src/app/modules/template';
+import { TemplateService } from 'src/app/shared/template';
 
 @Component({
   selector: 'div[collapse-field]',
