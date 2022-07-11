@@ -5,7 +5,7 @@ export const account = [
       {
         key: 'search',
         type: 'card',
-        className: "col-4 d-block",
+        className: "col-md-4 col-12 mb-3 d-block",
         templateOptions: {
           bodyClass: 'row',
           bodyStyle: {
@@ -16,18 +16,18 @@ export const account = [
           {
             key: 'username',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12',
             wrappers: ['form'],
             templateOptions: {
               label: '用户名',
-              layout : 'horizontal',
+              layout : 'vertical',
               placeholder: '请输入用户名'
             }
           },
           {
             key: 'phone',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12',
             wrappers: ['form'],
             templateOptions: {
               label: '标签',
@@ -38,7 +38,7 @@ export const account = [
           {
             key: 'email',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12',
             wrappers: ['form'],
             templateOptions: {
               label: '团队',
@@ -50,7 +50,7 @@ export const account = [
       },
       {
         type: 'card',
-        className: "col-8 d-block",
+        className: "col-md-8 col-12 mb-3 d-block",
         templateOptions: {
         },
         fieldGroup: [
@@ -457,7 +457,7 @@ export const account = [
                   {
                     key: 'email',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     defaultValue: 'antdesign@alipay.com',
                     templateOptions: {
@@ -468,7 +468,7 @@ export const account = [
                   {
                     key: 'nickname',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     defaultValue: 'Serati Ma',
                     templateOptions: {
@@ -479,7 +479,7 @@ export const account = [
                   {
                     key: 'intro',
                     type: 'textarea',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '个人简介',
@@ -490,7 +490,7 @@ export const account = [
                   {
                     key: 'country',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '地区/国家',
@@ -500,7 +500,7 @@ export const account = [
                   {
                     key: 'address1',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '所在省市',
@@ -510,7 +510,7 @@ export const account = [
                   {
                     key: 'address',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '街道地址',
@@ -520,7 +520,7 @@ export const account = [
                   {
                     key: 'phone',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '联系电话',
@@ -529,7 +529,7 @@ export const account = [
                   },
                   {
                     type: 'button',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     templateOptions: {
                       text: '确定',
                       layout: 'vertical',
@@ -549,8 +549,8 @@ export const account = [
                 fieldGroup: [
                   {
                     key: 'email',
-                    type: 'list-item',
-                    className: 'd-block col-4',
+                    type: 'input',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     defaultValue: 'antdesign@alipay.com',
                     templateOptions: {
@@ -564,7 +564,7 @@ export const account = [
                   {
                     key: 'nickname',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     defaultValue: 'Serati Ma',
                     templateOptions: {
@@ -575,7 +575,7 @@ export const account = [
                   {
                     key: 'intro',
                     type: 'textarea',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '个人简介',
@@ -586,7 +586,7 @@ export const account = [
                   {
                     key: 'country',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '地区/国家',
@@ -611,7 +611,92 @@ export const account = [
                 templateOptions: {
                   title: '新消息通知',
                   borderless: true
-                }
+                },
+                fieldGroup: [
+                  {
+                    key: 'account-password',
+                    type: 'switch',
+                    className: 'd-block col-12 col-md-6',
+                    wrappers: ['form'],
+                    defaultValue: 'antdesign@alipay.com',
+                    templateOptions: {
+                      label: '账户密码',
+                      de: '账户密码',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'nickname',
+                    type: 'input',
+                    className: 'd-block col-12 col-md-6',
+                    wrappers: ['form'],
+                    defaultValue: 'Serati Ma',
+                    templateOptions: {
+                      label: '昵称',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'intro',
+                    type: 'textarea',
+                    className: 'd-block col-12 col-md-6',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '个人简介',
+                      layout: 'vertical',
+                      placeholder: '个人简介'
+                    }
+                  },
+                  {
+                    key: 'country',
+                    type: 'input',
+                    className: 'd-block col-12 col-md-6',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '地区/国家',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'address1',
+                    type: 'input',
+                    className: 'd-block col-12 col-md-6',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '所在省市',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'address',
+                    type: 'input',
+                    className: 'd-block col-12 col-md-6',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '街道地址',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    key: 'phone',
+                    type: 'input',
+                    className: 'd-block col-12 col-md-6',
+                    wrappers: ['form'],
+                    templateOptions: {
+                      label: '联系电话',
+                      layout: 'vertical'
+                    }
+                  },
+                  {
+                    type: 'button',
+                    className: 'd-block col-12 col-md-6',
+                    templateOptions: {
+                      text: '确定',
+                      layout: 'vertical',
+                      type: 'primary'
+                    }
+                  },
+                ]
               },
             ]
           },

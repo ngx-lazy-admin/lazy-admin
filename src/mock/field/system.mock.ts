@@ -18,7 +18,7 @@ export const system = [
           {
             key: 'username',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12 col-md-6',
             wrappers: ['form'],
             templateOptions: {
               label: '用户名',
@@ -29,7 +29,7 @@ export const system = [
           {
             key: 'phone',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12 col-md-6',
             wrappers: ['form'],
             templateOptions: {
               label: '手机号',
@@ -40,7 +40,7 @@ export const system = [
           {
             key: 'email',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12 col-md-6',
             wrappers: ['form'],
             templateOptions: {
               label: '邮箱',
@@ -51,7 +51,7 @@ export const system = [
           {
             key: 'sex',
             type: 'select',
-            className: 'col-12 col-md-3',
+            className: 'col-12 col-md-6',
             wrappers: ['form'],
             templateOptions: {
               label: '性别',
@@ -76,7 +76,7 @@ export const system = [
           {
             key: 'account',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12 col-md-6',
             wrappers: ['form'],
             templateOptions: {
               label: '登录账号',
@@ -87,7 +87,7 @@ export const system = [
           {
             key: 'user_id',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12 col-md-6',
             wrappers: ['form'],
             templateOptions: {
               label: '用户ID',
@@ -98,7 +98,7 @@ export const system = [
           {
             key: 'status',
             type: 'select',
-            className: 'col-12 col-md-3',
+            className: 'col-12 col-md-6',
             wrappers: ['form'],
             templateOptions: {
               label: '状态',
@@ -127,7 +127,7 @@ export const system = [
           {
             key: 'create_time',
             type: 'input',
-            className: 'col-12 col-md-3',
+            className: 'col-12 col-md-6',
             wrappers: ['form'],
             templateOptions: {
               label: '创建时间',
