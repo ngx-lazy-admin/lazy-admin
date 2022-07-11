@@ -457,7 +457,7 @@ export const account = [
                   {
                     key: 'email',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12',
                     wrappers: ['form'],
                     defaultValue: 'antdesign@alipay.com',
                     templateOptions: {
@@ -468,7 +468,7 @@ export const account = [
                   {
                     key: 'nickname',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12',
                     wrappers: ['form'],
                     defaultValue: 'Serati Ma',
                     templateOptions: {
@@ -479,7 +479,7 @@ export const account = [
                   {
                     key: 'intro',
                     type: 'textarea',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '个人简介',
@@ -490,7 +490,7 @@ export const account = [
                   {
                     key: 'country',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '地区/国家',
@@ -500,7 +500,7 @@ export const account = [
                   {
                     key: 'address1',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '所在省市',
@@ -510,7 +510,7 @@ export const account = [
                   {
                     key: 'address',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '街道地址',
@@ -520,7 +520,7 @@ export const account = [
                   {
                     key: 'phone',
                     type: 'input',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12',
                     wrappers: ['form'],
                     templateOptions: {
                       label: '联系电话',
@@ -529,7 +529,7 @@ export const account = [
                   },
                   {
                     type: 'button',
-                    className: 'd-block col-4',
+                    className: 'd-block col-12',
                     templateOptions: {
                       text: '确定',
                       layout: 'vertical',
@@ -549,50 +549,66 @@ export const account = [
                 fieldGroup: [
                   {
                     key: 'email',
-                    type: 'list-item',
-                    className: 'd-block col-4',
-                    wrappers: ['form'],
+                    type: 'button',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
                     defaultValue: 'antdesign@alipay.com',
                     templateOptions: {
                       title: '账户密码',
                       description: '当前密码强度：强',
-                      action: [{
-                        text: '修改',
-                      }]
+                      text: '修改',
+                      type: 'link'
                     }
                   },
                   {
                     key: 'nickname',
-                    type: 'input',
-                    className: 'd-block col-4',
-                    wrappers: ['form'],
+                    type: 'button',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
                     defaultValue: 'Serati Ma',
                     templateOptions: {
-                      label: '昵称',
-                      layout: 'vertical'
+                      title: '密保手机',
+                      description: '已绑定手机：138****8293',
+                      text: '修改',
+                      type: 'link'
                     }
                   },
                   {
-                    key: 'intro',
-                    type: 'textarea',
-                    className: 'd-block col-4',
-                    wrappers: ['form'],
+                    key: 'secret-protection',
+                    type: 'button',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
                     templateOptions: {
-                      label: '个人简介',
-                      layout: 'vertical',
-                      placeholder: '个人简介'
+                      title: '密保问题',
+                      description: '未设置密保问题，密保问题可有效保护账户安全',
+                      text: '设置',
+                      type: 'link'
                     }
                   },
                   {
-                    key: 'country',
-                    type: 'input',
-                    className: 'd-block col-4',
-                    wrappers: ['form'],
+                    key: 'secret-protection',
+                    type: 'button',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
                     templateOptions: {
-                      label: '地区/国家',
-                      layout: 'vertical'
+                      title: '备用邮箱',
+                      description: '已绑定邮箱：ant***sign.com',
+                      text: '修改',
+                      type: 'link'
                     }
                   },
+                  {
+                    key: 'secret-protection',
+                    type: 'button',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
+                    templateOptions: {
+                      title: 'MFA 设备',
+                      description: '未绑定 MFA 设备，绑定后，可以进行二次确认',
+                      text: '绑定',
+                      type: 'link'
+                    }
+                  }
                 ]
               },
               {
@@ -602,7 +618,48 @@ export const account = [
                 templateOptions: {
                   title: '账号绑定',
                   borderless: true
-                }
+                },
+                fieldGroup: [
+                  {
+                    key: 'email',
+                    type: 'button',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
+                    defaultValue: 'antdesign@alipay.com',
+                    templateOptions: {
+                      avatar: '',
+                      title: '绑定淘宝',
+                      description: '当前未绑定淘宝账号',
+                      text: '绑定',
+                      type: 'link'
+                    }
+                  },
+                  {
+                    key: 'nickname',
+                    type: 'button',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
+                    defaultValue: 'Serati Ma',
+                    templateOptions: {
+                      title: '绑定支付宝',
+                      description: '当前未绑定支付宝账号',
+                      text: '绑定',
+                      type: 'link'
+                    }
+                  },
+                  {
+                    key: 'secret-protection',
+                    type: 'button',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
+                    templateOptions: {
+                      title: '绑定钉钉',
+                      description: '当前未绑定钉钉账号',
+                      text: '绑定',
+                      type: 'link'
+                    }
+                  }
+                ]
               },
               {
                 key: 'username',
@@ -611,7 +668,48 @@ export const account = [
                 templateOptions: {
                   title: '新消息通知',
                   borderless: true
-                }
+                },
+                fieldGroup: [
+                  {
+                    key: 'account-message',
+                    type: 'switch',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
+                    defaultValue: 'antdesign@alipay.com',
+                    templateOptions: {
+                      avatar: '',
+                      title: '账户密码',
+                      description: '其他用户的消息将以站内信的形式通知',
+                      text: '绑定',
+                      type: 'link'
+                    }
+                  },
+                  {
+                    key: 'system-message',
+                    type: 'switch',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
+                    defaultValue: 'Serati Ma',
+                    templateOptions: {
+                      title: '系统消息',
+                      description: '系统消息将以站内信的形式通知',
+                      text: '绑定',
+                      type: 'link'
+                    }
+                  },
+                  {
+                    key: 'todo',
+                    type: 'switch',
+                    className: 'd-block col-12',
+                    wrappers: ['list-item'],
+                    templateOptions: {
+                      title: '待办任务',
+                      description: '待办任务将以站内信的形式通知',
+                      text: '绑定',
+                      type: 'link'
+                    }
+                  }
+                ]
               },
             ]
           },

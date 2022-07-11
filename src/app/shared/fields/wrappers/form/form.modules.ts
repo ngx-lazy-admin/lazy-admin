@@ -8,11 +8,14 @@ import { FieldValidatorFn } from '@ngx-formly/core/lib/services/formly.config';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzListModule } from 'ng-zorro-antd/list';
 
 import { TableWrapper } from './table.wrapper';
 import { FixedWidthPipe } from './fixedwidth.pipe';
 import { FormWrapper } from './form.wrapper';
 import { InlineWrapper } from './inline.wrapper';
+import { ListItemWrapper } from './list-item.wrapper';
+
 
 export function minValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This value should be more than ${field.templateOptions?.min}`;
@@ -44,12 +47,14 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
     InlineWrapper,
     TableWrapper,
     FixedWidthPipe,
+    ListItemWrapper,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     NzFormModule,
     NzToolTipModule,
+    NzListModule,
     FormlyModule.forChild({
       wrappers: [
         {
@@ -63,6 +68,10 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
         {
           name: 'table',
           component: TableWrapper
+        },
+        {
+          name: 'list-item',
+          component: ListItemWrapper
         }
       ],
       validators: [
@@ -77,7 +86,8 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
     }), 
   ],
   exports: [
-    FixedWidthPipe
+    FixedWidthPipe,
+    NzListModule
   ],
 })
 export class FormFieldModule {}
