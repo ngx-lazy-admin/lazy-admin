@@ -9,7 +9,31 @@ import { ShareFieldType } from '../share-field.type';
 @Component({
   selector: 'div[button-field]',
   template: `
-    <button 
+    <ng-container *ngIf="nzType !== 'link'">
+      <button 
+        nz-button
+        [nzGhost]="nzGhost"
+        [nzLoading]="nzLoading"
+        [nzShape]="nzShape"
+        [nzSize]="nzSize"
+        [nzType]="nzType"
+        [disabled]="disabled"
+        [nzDanger]="nzDanger"
+        nz-popconfirm
+        [nzPopconfirmTitle]="nzPopconfirmTitle"
+        [nzPopconfirmPlacement]="nzPopconfirmPlacement"
+        type="submit"
+        [nzBlock]="nzBlock"
+        (click)="click()"
+        (nzOnCancel)="cancel()"
+      >
+        <i *ngIf="icon" nz-icon [nzType]="icon"></i>
+        <ng-container *ngIf="text">{{ text }}</ng-container>
+      </button>
+  </ng-container>
+
+  <ng-container *ngIf="nzType === 'link'">
+    <a 
       nz-button
       [nzGhost]="nzGhost"
       [nzLoading]="nzLoading"
@@ -28,7 +52,8 @@ import { ShareFieldType } from '../share-field.type';
     >
       <i *ngIf="icon" nz-icon [nzType]="icon"></i>
       <ng-container *ngIf="text">{{ text }}</ng-container>
-    </button>
+    </a>
+  </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
