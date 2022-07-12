@@ -1,4 +1,4 @@
-import { AntdTableMockFields, TableBasicMockFields, VirtualTableMockFields } from "./table";
+import { AntdTableMockFields, ProTableMockFields, TableBasicMockFields, VirtualTableMockFields } from "./table";
 
 const list100 = [...Array(10).keys()].map((item, index) => {
   return {
@@ -48,6 +48,24 @@ export const table = [
     },
     info: {
       title: 'Antd Table( virtual table)',
+    }
+  },
+  {
+    id: 'pro-table',
+    fields: ProTableMockFields,
+    data: {
+      list1: list100,
+      list2: list100,
+      list3: list100,
+      list4: list100,
+      list5: list100,
+      list6: list100,
+      list7: list100,
+      list8: list100,
+      list9: list100,
+    },
+    info: {
+      title: 'Pro Table( virtual table)',
     }
   }
 ]

@@ -64,7 +64,7 @@ export class MockService implements InMemoryDbService {
       antv,
       editor,
       table,
-      forms
+      forms,
     };
 
     switch (returnType) {

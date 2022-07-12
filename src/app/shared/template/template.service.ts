@@ -1,6 +1,6 @@
 import { Injectable, InjectionToken, Injector } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { FooterComponentPortal, HeaderComponentPortal, DefaultComponentPortal, IconPortal } from './template.component'
+import { FooterComponentPortal, HeaderComponentPortal, DefaultComponentPortal, IconPortal, InputPortal } from './template.component'
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 interface paramsType {
@@ -21,6 +21,7 @@ export class TemplateService {
 
   templateMap:  Map<string, any> = new Map([
     ['icon', IconPortal],
+    // ['input', InputPortal],
   ])
 
   get (templateRef: paramsType, field?: FormlyFieldConfig): ComponentPortal<any> | null {

@@ -40,6 +40,28 @@ export class FooterComponentPortal {}
 })
 export class DefaultComponentPortal {}
 
+@Component({
+  selector: 'div[input-portal]',
+  template: '  <input nz-input placeholder="Basic usage" [(ngModel)]="model" />',
+})
+export class InputPortal {
+  @Input() model: string = '';
+
+  constructor(
+    @Inject(CONTAINER_DATA) public data: WeakMap<object, any> | null = null
+  ) {
+    if (data?.get(CONTAINER_DATA)) {
+      this.model = data?.get(CONTAINER_DATA).value || data?.get(CONTAINER_DATA).nzType || ''
+    }
+  }
+
+  click ($event: any) {
+    if (this.data?.get(CONTAINER_DATA).click) {
+      runFunction(this.data?.get(CONTAINER_DATA).click, this.data?.get(CONTAINER_DATA).field, $event)
+    }
+  }
+}
+
 interface iconType {
   type: string,
   theme: 'fill' | 'outline' | 'twotone',

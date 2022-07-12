@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PortalModule } from '@angular/cdk/portal';
 
 import { FormlyModule } from '@ngx-formly/core';
 
@@ -19,6 +20,7 @@ import { TableField } from './table.component';
 import { VirtualTableField } from './virtual-table.component';
 import { AntdTable } from './ant-table.component';
 import { AntdTableField } from './ant-table-field.component';
+import { ProTableField } from './pro-table.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { AntdTableField } from './ant-table-field.component';
     VirtualTableField,
     SimpleTableField,
     AntdTableField,
+    ProTableField,
     AntdTable
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    PortalModule,
     IconsProviderModule,
     NzToolTipModule,
     NzTableModule,
@@ -40,6 +44,7 @@ import { AntdTableField } from './ant-table-field.component';
     NzIconModule,
     NzPopconfirmModule,
     NzDropDownModule,
+
     FormlyModule.forChild({
       types: [
         {
@@ -61,6 +66,10 @@ import { AntdTableField } from './ant-table-field.component';
         {
           name: 'antd-table',
           component: AntdTableField
+        },
+        {
+          name: 'pro-table',
+          component: ProTableField
         }
       ],
     }),

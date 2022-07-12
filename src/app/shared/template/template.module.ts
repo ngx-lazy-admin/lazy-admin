@@ -6,15 +6,17 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 import { IconsProviderModule } from '../icons-provider.module';
-import { DefaultComponentPortal, FooterComponentPortal, HeaderComponentPortal, IconPortal } from './template.component';
+import { DefaultComponentPortal, FooterComponentPortal, HeaderComponentPortal, IconPortal, InputPortal } from './template.component';
 
 @NgModule({
   declarations: [
     HeaderComponentPortal,
     FooterComponentPortal,
     DefaultComponentPortal,
+    InputPortal,
     IconPortal
   ],
   imports: [
@@ -26,10 +28,12 @@ import { DefaultComponentPortal, FooterComponentPortal, HeaderComponentPortal, I
     NzModalModule,
     DragDropModule,
     NzIconModule,
+    NzInputModule
   ],
   exports: [
     HeaderComponentPortal,
     FooterComponentPortal,
+    InputPortal,
     IconPortal
   ]
 })

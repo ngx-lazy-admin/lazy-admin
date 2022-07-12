@@ -5,7 +5,6 @@ import { PortalModule } from '@angular/cdk/portal';
 import { FormlyModule } from '@ngx-formly/core';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { CollapseField } from './collapse.component';
-import { TemplateModule } from 'src/app/shared/template';
 
 @NgModule({
   declarations: [ CollapseField ],
@@ -15,7 +14,6 @@ import { TemplateModule } from 'src/app/shared/template';
     FormsModule,
     PortalModule,
     NzCollapseModule,
-    TemplateModule,
     FormlyModule.forChild({
       types: [
         {
