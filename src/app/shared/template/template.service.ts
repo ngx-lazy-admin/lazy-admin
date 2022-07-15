@@ -1,30 +1,27 @@
 import { Injectable, InjectionToken, Injector } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { FooterComponentPortal, HeaderComponentPortal, DefaultComponentPortal, IconPortal, InputPortal } from './template.component'
+import { FooterComponentPortal, HeaderComponentPortal, DefaultComponentPortal } from './template.component'
 import { FormlyFieldConfig } from '@ngx-formly/core';
-
-interface paramsType {
-  type: string,
-  [key: string]: any;
-}
-
-export const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');
+import { CONTAINER_DATA, paramsType } from './type';
+import { IconPortal } from './icon/icon.template';
+import { InputPortal } from './input/input.template';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TemplateService {
 
+  templateMap = new Map();
+
   constructor(
     private injector: Injector,
-  ) {}
+  ) {
+    this.templateMap.set('input', InputPortal);
+    this.templateMap.set('icon', IconPortal);
+  }
 
-  templateMap:  Map<string, any> = new Map([
-    ['icon', IconPortal],
-    // ['input', InputPortal],
-  ])
+  get (templateRef: paramsType, data?: any, field?: FormlyFieldConfig): ComponentPortal<any> | null {
 
-  get (templateRef: paramsType, field?: FormlyFieldConfig): ComponentPortal<any> | null {
     const componentToPortal = templateRef?.type ? this.templateMap.get(templateRef.type) : null
 
     if (!componentToPortal) {
@@ -32,7 +29,7 @@ export class TemplateService {
     }
     let containerPortal = new ComponentPortal(componentToPortal, null, this.createInjector({
       field: field,
-      ...templateRef.componentParams
+      value: data[templateRef.key]
     }));
 
     return containerPortal

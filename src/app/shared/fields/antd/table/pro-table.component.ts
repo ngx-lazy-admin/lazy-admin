@@ -14,7 +14,9 @@ import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-an
 import { NzTableComponent } from 'ng-zorro-antd/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { TemplateService } from 'src/app/shared/template';
 import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
+// import { TemplateService } from '../template.service';
 
 export interface VirtualDataInterface {
   index: number;
@@ -53,28 +55,45 @@ export interface ColumnsTypeInterface {
         <tr *ngFor="let data of proTable.data; trackBy: trackByFn; let index = index;">
           <ng-container *ngFor="let column of columns; trackBy: trackByFn;">
             <td>
-              <ng-template [cdkPortalOutlet]="getTemplateRef(column.templateRef)"></ng-template>
-              {{data[column.dataIndex]}}
+              <!-- {{data[column.dataIndex]}} -->
+              <!-- <ng-template [cdkPortalOutlet]="suffixTemplateRef"></ng-template> -->
+              
+              <ng-template [cdkPortalOutlet]="[column, data] | template"></ng-template> {{data[column.key]}}
             </td>
           </ng-container>
         </tr>
       </tbody>
     </nz-table>
+
+    <ng-template #contentTemplateOutlet>
+      222222222
+    </ng-template>
+
+    <ng-template #templatePortalContent>
+      Hello, this is a template portal
+    </ng-template>
+
+
   `
 })
 
-export class ProTableField extends ShareFieldType implements OnDestroy {
+export class ProTableField extends FieldType implements OnDestroy {
 
   @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
 
   private destroy$ = new Subject();
 
   get nzData (): any[] {
+    console.log('111')
     if (this.formControl.value instanceof Array) {
       return this.formControl.value || []
     } else {
       return []
     }
+  }
+
+  get nzPrefixRef () : any {
+    return this.template.get(this.to.prefixRef, this.field)
   }
 
   get group (): any[] {
@@ -167,13 +186,14 @@ export class ProTableField extends ShareFieldType implements OnDestroy {
   }
 
   get columns () : ColumnsTypeInterface[] {
+    console.log('columns')
     return this.to.columns || [
       {
         title: '姓名',
         dataIndex: 'name',
         key: 'name',
         templateRef: {
-          type: 'icon',
+          type: 'input',
           componentParams: {
             type: 'like',
             click: `(field, $event) => {
@@ -195,11 +215,18 @@ export class ProTableField extends ShareFieldType implements OnDestroy {
     ];  
   }
 
-  getTemplateRef (TemplateRef: any) {
-    return this.template.get(TemplateRef, this.field)
-  }
+
 
   editCache: { [key: string]: boolean } = {};
+
+  constructor(
+    private template: TemplateService
+  ) {
+    super()
+    // if (data?.get(CONTAINER_DATA)) {
+    //   console.log(data?.get(CONTAINER_DATA))
+    // }
+  }
 
 
   ngOnChanges(changes: SimpleChanges): void {

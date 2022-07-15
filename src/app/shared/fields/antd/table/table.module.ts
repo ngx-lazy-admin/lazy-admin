@@ -21,6 +21,7 @@ import { VirtualTableField } from './virtual-table.component';
 import { AntdTable } from './ant-table.component';
 import { AntdTableField } from './ant-table-field.component';
 import { ProTableField } from './pro-table.component';
+import { TemplatePipe } from './template.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProTableField } from './pro-table.component';
     SimpleTableField,
     AntdTableField,
     ProTableField,
-    AntdTable
+    AntdTable,
+    TemplatePipe
   ],
   imports: [
     CommonModule,
@@ -74,5 +76,8 @@ import { ProTableField } from './pro-table.component';
       ],
     }),
   ],
+  exports: [
+    TemplatePipe
+  ]
 })
 export class TableFieldModule {}

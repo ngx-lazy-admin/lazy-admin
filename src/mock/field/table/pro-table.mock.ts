@@ -19,15 +19,7 @@ export const ProTableMockFields = [
               title: 'Name',
               dataIndex: 'name',
               key: 'name',
-              templateRef: {
-                type: 'input',
-                componentParams: {
-                  type: 'like',
-                  click: `(field, $event) => {
-                    // field.formControl.setValue(field.formControl.value + 1)
-                  }`
-                }
-              }
+              type: 'input',
             },
             {
               title: 'Age',
