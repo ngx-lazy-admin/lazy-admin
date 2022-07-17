@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { FormlyModule } from '@ngx-formly/core';
+import { PortalModule } from '@angular/cdk/portal';
 
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
@@ -14,6 +15,7 @@ import { TabsField } from './tabs.component'
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    PortalModule,
     NzTabsModule,
     FormlyModule.forChild({
       types: [

@@ -10,6 +10,7 @@ import { FieldArrayType } from '@ngx-formly/core';
 
 import { NzTabComponent, NzTabPosition, NzTabType } from 'ng-zorro-antd/tabs'; 
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
+import { ComponentPortal } from '@angular/cdk/portal';
 
 import { ShareFieldType } from '../share-field.type';
 
@@ -71,7 +72,7 @@ export class TabsField extends ShareFieldType implements OnDestroy {
   }
 
   get nzCentered() : boolean {
-		return this.to.nzCentered || false;
+		return this.to.nzCentered || this.to.center || false;
   }
 
   get nzHideAdd(): boolean {
@@ -80,6 +81,10 @@ export class TabsField extends ShareFieldType implements OnDestroy {
 
   get nzAddIcon(): string | TemplateRef<void> {
     return this.to.nzAddIcon || false;
+  }
+
+  getTemplate(ref: any): ComponentPortal<any> | null {
+    return this.template.get(ref);
   }
 
   trackByFn(index: number, item: any) {

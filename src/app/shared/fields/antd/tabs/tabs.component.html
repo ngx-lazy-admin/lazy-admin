@@ -12,9 +12,9 @@
 
   <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
     <nz-tab 
-      [nzTitle]="field?.templateOptions?.nzTitle || field?.templateOptions?.title"
+      [nzTitle]="field?.templateOptions?.nzTitle || field?.templateOptions?.title || titleRef"
       [nzForceRender]="field?.templateOptions?.nzForceRender"
-      [nzDisabled]="field?.templateOptions?.nzDisabled"
+      [nzDisabled]="field?.templateOptions?.nzDisabled || field?.templateOptions?.disabled"
       (nzClick)="field?.templateOptions?.nzClick"
       (nzContextmenu)="field?.templateOptions?.nzContextmenu"
       (nzSelect)="field?.templateOptions?.nzSelect"
@@ -22,5 +22,10 @@
     >
       <formly-field [field]="field"></formly-field>
     </nz-tab>
+
+    <ng-template #titleRef>
+      <ng-template [cdkPortalOutlet]="getTemplate(field?.templateOptions?.titleRef)"></ng-template>
+    </ng-template>
   </ng-container>
 </nz-tabset>
+

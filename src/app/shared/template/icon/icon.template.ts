@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { ThemeType } from '@ant-design/icons-angular';
-import { CONTAINER_DATA } from '../type';
+import { CONTAINER_DATA } from '../template.service';
 import { execFunction, runFunction } from 'src/app/utils/utils';
 
 interface iconType {
@@ -22,7 +22,7 @@ interface iconType {
 
 @Component({
   selector: 'div[icon-portal]',
-  template: '<i nz-icon [nzType]="nzType" [nzTheme]="nzTheme" [ngStyle]="style" (click)="click($event)"></i>',
+  template: '<i nz-icon [nzType]="nzType" [nzTheme]="nzTheme" [ngStyle]="style" (click)="click($event)"></i>{{text}}',
 })
 export class IconPortal {
 
@@ -31,16 +31,21 @@ export class IconPortal {
   @Input() nzSpin: boolean = false;
   @Input() nzTwotoneColor: string  = '';
   @Input() style: Object = {}
+  @Input() text: string = ''
+
 
   constructor(
-    @Inject(CONTAINER_DATA) public data: WeakMap<object, any> | null = null
+    @Inject(CONTAINER_DATA) public data: any | null = null
   ) {
     if (data?.get(CONTAINER_DATA)) {
-      this.nzType = data?.get(CONTAINER_DATA).type || data?.get(CONTAINER_DATA).nzType || ''
-      this.nzTheme = data?.get(CONTAINER_DATA).theme || data?.get(CONTAINER_DATA).nzTheme || 'outline'
-      this.nzSpin = data?.get(CONTAINER_DATA).spin || data?.get(CONTAINER_DATA).nzSpin || false
-      this.nzTwotoneColor = data?.get(CONTAINER_DATA).twotoneColor || data?.get(CONTAINER_DATA).nzTwotoneColor || false
-      this.style = data?.get(CONTAINER_DATA).style || {}
+      const option  = data.get(CONTAINER_DATA).value.options
+      console.log(option)
+      this.nzType = option.icon || ''
+      this.text = option.text || ''
+      this.nzTheme = option.theme || 'outline'
+      this.nzSpin = option.spin || false
+      this.nzTwotoneColor = option.twotoneColor || false
+      this.style = option.style || {}
     }
   }
 

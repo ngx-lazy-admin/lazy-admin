@@ -30,6 +30,7 @@ import {
 } from './components'
 import { SegmentedMockFields } from './components/segmented.mock'
 import { StatisticMockFields } from './components/statistic.mock'
+import { TabsMockFields } from './components/tabs.mock'
 import { TypographyMockFields } from './components/typography.mock'
 
 
@@ -376,6 +377,26 @@ export const components = [
       content: `#### 何时使用
 - 用于展示多个选项并允许用户选择其中单个选项；
 - 当切换选中选项时，关联区域的内容会发生变化。
+      `
+    }
+  },
+  {
+    id: 'tabs',
+    fields: TabsMockFields,
+    data: [
+
+    ],
+    info: {
+      title: 'Tabs标签页',
+      content: `选项卡切换组件。
+#### 何时使用
+提供平级的区域将大块内容进行收纳和展现，保持界面整洁。
+
+Ant Design 依次提供了三级选项卡，分别用于不同的场景。
+
+- 卡片式的页签，提供可关闭的样式，常用于容器顶部。
+- 标准线条式页签，用于容器内部的主功能切换，这是最常用的 Tabs。
+- RadioButton 可作为更次级的页签来使用。
       `
     }
   }

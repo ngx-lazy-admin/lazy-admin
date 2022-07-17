@@ -39,6 +39,8 @@ import { TreeSelectFieldModule } from './tree-select';
 import { TransferFieldModule } from './transfer';
 
 @NgModule({
+  declarations: [
+  ],
   imports: [
     AlertFieldModule,
     AutocompleteFieldModule,
@@ -77,6 +79,8 @@ import { TransferFieldModule } from './transfer';
     MentionFieldModule,
     TreeSelectFieldModule,
     TransferFieldModule
+  ],
+  exports: [
   ],
   providers: [
     
