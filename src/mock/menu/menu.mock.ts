@@ -928,11 +928,17 @@ export const MenuMock = [
         badge: '',
       },
       {
-
-        id: '1302',
+        id: '1303',
         pid: '13',
         name: 'Antd table',
         link: '/table/antd-table',
+        badge: '',
+      },
+      {
+        id: '1304',
+        pid: '13',
+        name: 'Pro table',
+        link: '/table/pro-table',
         badge: '',
       }
     ]

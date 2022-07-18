@@ -9,6 +9,7 @@ import {
   ChangeDetectorRef,
   SimpleChanges,
  } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { FieldArrayType, FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { NzTableComponent } from 'ng-zorro-antd/table';
@@ -40,40 +41,13 @@ export interface ColumnsTypeInterface {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-    <nz-table
-      #proTable
-      [nzData]="this.formControl.value"
+    <pro-table-item
+      [formControl]="control"
+      [formlyAttributes]="field"
+      [columns]="columns"
+      (ngModelChange)="change($event)"
     >
-      <thead>
-        <tr>
-          <ng-container *ngFor="let column of columns; trackBy: trackByFn;">
-            <th>{{column?.title}}</th>
-          </ng-container>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let data of proTable.data; trackBy: trackByFn; let index = index;">
-          <ng-container *ngFor="let column of columns; trackBy: trackByFn;">
-            <td>
-              <!-- {{data[column.dataIndex]}} -->
-              <!-- <ng-template [cdkPortalOutlet]="suffixTemplateRef"></ng-template> -->
-              
-              <ng-template [cdkPortalOutlet]="[column, data] | template"></ng-template> {{data[column.key]}}
-            </td>
-          </ng-container>
-        </tr>
-      </tbody>
-    </nz-table>
-
-    <ng-template #contentTemplateOutlet>
-      222222222
-    </ng-template>
-
-    <ng-template #templatePortalContent>
-      Hello, this is a template portal
-    </ng-template>
-
-
+    </pro-table-item>
   `
 })
 
@@ -83,8 +57,11 @@ export class ProTableField extends FieldType implements OnDestroy {
 
   private destroy$ = new Subject();
 
+  get control() : FormControl {
+		return this.formControl as FormControl
+  }
+
   get nzData (): any[] {
-    console.log('111')
     if (this.formControl.value instanceof Array) {
       return this.formControl.value || []
     } else {
@@ -137,7 +114,6 @@ export class ProTableField extends FieldType implements OnDestroy {
   }
 
   get nzSize(): NzSizeLDSType {
-       console.log('get')
 		return this.to.nzSize || 'default';
 	}
 
@@ -186,36 +162,12 @@ export class ProTableField extends FieldType implements OnDestroy {
   }
 
   get columns () : ColumnsTypeInterface[] {
-    console.log('columns')
-    return this.to.columns || [
-      {
-        title: '姓名',
-        dataIndex: 'name',
-        key: 'name',
-        templateRef: {
-          type: 'input',
-          componentParams: {
-            type: 'like',
-            click: `(field, $event) => {
-              field.formControl.setValue(field.formControl.value + 1)
-            }`
-          }
-        }
-      },
-      {
-        title: '年龄',
-        dataIndex: 'age',
-        key: 'age',
-      },
-      {
-        title: '住址',
-        dataIndex: 'address',
-        key: 'address',
-      },
-    ];  
+    return this.to.columns || [];  
   }
 
-
+  getTemplate (column: any, data: any) {
+    return null
+  }
 
   editCache: { [key: string]: boolean } = {};
 
@@ -223,14 +175,14 @@ export class ProTableField extends FieldType implements OnDestroy {
     private template: TemplateService
   ) {
     super()
-    // if (data?.get(CONTAINER_DATA)) {
-    //   console.log(data?.get(CONTAINER_DATA))
-    // }
   }
-
 
   ngOnChanges(changes: SimpleChanges): void {
     // console.log(changes)
+  }
+
+  change ($event: any) {
+    // console.log($event)
   }
 
   edit (field: FormlyFieldConfig) {
@@ -238,7 +190,6 @@ export class ProTableField extends FieldType implements OnDestroy {
       this.editCache[field.id] = true;
     }
   }
-
 
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index;
@@ -262,6 +213,10 @@ export class ProTableField extends FieldType implements OnDestroy {
       .subscribe((data: number) => {
         console.log('scroll index to', data);
       });
+
+    this.formControl?.valueChanges.subscribe(item => {
+      console.log(item)
+    })
   }
 
   ngOnDestroy() {

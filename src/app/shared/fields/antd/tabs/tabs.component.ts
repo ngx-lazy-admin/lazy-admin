@@ -84,7 +84,7 @@ export class TabsField extends ShareFieldType implements OnDestroy {
   }
 
   getTemplate(ref: any): ComponentPortal<any> | null {
-    return this.template.get(ref);
+    return this.template.get(ref, this.field);
   }
 
   trackByFn(index: number, item: any) {

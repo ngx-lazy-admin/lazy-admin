@@ -1,6 +1,6 @@
 import { AntdTableMockFields, ProTableMockFields, TableBasicMockFields, VirtualTableMockFields } from "./table";
 
-const list100 = [...Array(100).keys()].map((item, index) => {
+const list100 = [...Array(2000).keys()].map((item, index) => {
   return {
     id: index,
     key: index,

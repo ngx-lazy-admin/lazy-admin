@@ -1,20 +1,22 @@
 <nz-tabset
-  [nzSelectedIndex]="nzSelectedIndex"
+  class="bg-white"
   [nzAnimated]="nzAnimated"
+  [nzCentered]="nzCentered"
+  [nzHideAll]="nzHideAll"
   [nzSize]="nzSize"
+  [nzSelectedIndex]="nzSelectedIndex"
   [nzTabPosition]="nzTabPosition"
   [nzType]="nzType"
   [nzTabBarGutter]="nzTabBarGutter"
-  [nzHideAll]="nzHideAll"
   [nzType]="nzType"
-  class="bg-white"
-  [nzCentered]="nzCentered">
+  [nzTabBarExtraContent]="extraRef">
 
   <ng-container *ngFor="let field of field.fieldGroup; let i = index; trackBy: trackByFn">
     <nz-tab 
       [nzTitle]="field?.templateOptions?.nzTitle || field?.templateOptions?.title || titleRef"
       [nzForceRender]="field?.templateOptions?.nzForceRender"
       [nzDisabled]="field?.templateOptions?.nzDisabled || field?.templateOptions?.disabled"
+
       (nzClick)="field?.templateOptions?.nzClick"
       (nzContextmenu)="field?.templateOptions?.nzContextmenu"
       (nzSelect)="field?.templateOptions?.nzSelect"
@@ -28,4 +30,10 @@
     </ng-template>
   </ng-container>
 </nz-tabset>
+
+<ng-template #extraRef>
+  <ng-template [cdkPortalOutlet]="getTemplate(field?.templateOptions?.extraRef)"></ng-template>
+</ng-template>
+
+
 

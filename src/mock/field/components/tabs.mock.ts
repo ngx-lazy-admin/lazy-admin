@@ -162,7 +162,7 @@ export const TabsMockFields = [
     },
     fieldGroup: [
       {
-        key: 'input1-1',
+        key: 'tabs-1-1',
         type: 'tabs',
         className: "d-block mb-2",
         defaultValue: 3,
@@ -179,28 +179,24 @@ export const TabsMockFields = [
             templateOptions: {
               titleRef: {
                 type: 'icon',
-                icon: 'apple'
+                icon: 'apple',
+                text: 'Tab 1'
               }  
             }
           },
           {
-            key: 'inner-text-2',
-            type: 'text',
-            className: "d-block mb-2",
-            defaultValue: 'Content of Tab Pane2',
-            templateOptions: {
-              title: 'Tab2',
-              disabled: true
-            }
-          },              {
             key: 'inner-text-3',
             type: 'text',
             className: "d-block mb-2",
             defaultValue: 'Content of Tab Pane3',
             templateOptions: {
-              title: 'Tab3',
+              titleRef: {
+                type: 'icon',
+                icon: 'android',
+                text: 'Tab 2'
+              }  
             }
-          },
+          }
         ]
       }
 
@@ -210,26 +206,54 @@ export const TabsMockFields = [
     type: 'code-card',
     className: "d-block mb-3 col-12",
     templateOptions: {
-      title: '日期格式',
-      description: '最简单的用法，在浮层中可以选择或者输入日期。',
+      title: '附加内容',
+      description: '可以在页签右边添加附加操作。',
     },
     fieldGroup: [
       {
-        key: 'checked2',
-        type: 'checkbox',
-        className: "d-inline-block mx-2",
+        key: 'tabs-1-1',
+        type: 'tabs',
+        className: "d-block mb-2",
+        defaultValue: 3,
         templateOptions: {
-          text: "Checkbox",
-        }
-      },
-      {
-        key: 'checked1',
-        type: 'checkbox',
-        className: "d-inline-block mx-2",
-        templateOptions: {
-          text: "nzDisabled",
-          
-        }
+          extraRef: {
+            type: 'button',
+            text: 'Extra Action',
+            click: `(field, $event) => {
+              console.log(field)
+              console.log($event)
+            }`
+          }
+        },
+        fieldGroup: [
+          {
+            key: 'inner-text-1',
+            type: 'text',
+            className: "d-block mb-2",
+            defaultValue: 'Content of tab 1',
+            templateOptions: {
+              title: 'Tab 1'
+            }
+          },
+          {
+            key: 'inner-text-3',
+            type: 'text',
+            className: "d-block mb-2",
+            defaultValue: 'Content of tab 2',
+            templateOptions: {
+              title: 'Tab 2'
+            }
+          },
+          {
+            key: 'inner-text-3',
+            type: 'text',
+            className: "d-block mb-2",
+            defaultValue: 'Content of tab 3',
+            templateOptions: {
+              title: 'Tab 3'
+            }
+          }
+        ]
       }
     ]
   },

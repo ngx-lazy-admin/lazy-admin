@@ -39,7 +39,6 @@ export class IconPortal {
   ) {
     if (data?.get(CONTAINER_DATA)) {
       const option  = data.get(CONTAINER_DATA).value.options
-      console.log(option)
       this.nzType = option.icon || ''
       this.text = option.text || ''
       this.nzTheme = option.theme || 'outline'

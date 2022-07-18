@@ -12,6 +12,7 @@ import { IconsProviderModule } from '../icons-provider.module';
 import { DefaultComponentPortal, FooterComponentPortal, HeaderComponentPortal } from './template.component';
 import { IconPortal } from './icon/icon.template';
 import { InputPortal } from './input/input.template';
+import { buttonPortal } from './button/button.template';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { InputPortal } from './input/input.template';
     FooterComponentPortal,
     DefaultComponentPortal,
     InputPortal,
-    IconPortal
+    IconPortal,
+    buttonPortal
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import { InputPortal } from './input/input.template';
     ReactiveFormsModule,
     IconsProviderModule,
     NzButtonModule,
+    NzInputModule,
     NzModalModule,
     DragDropModule,
     NzIconModule,
@@ -36,7 +39,8 @@ import { InputPortal } from './input/input.template';
     HeaderComponentPortal,
     FooterComponentPortal,
     InputPortal,
-    IconPortal
+    IconPortal,
+    buttonPortal
   ]
 })
 export class TemplateModule { }

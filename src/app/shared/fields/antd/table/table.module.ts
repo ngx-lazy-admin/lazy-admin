@@ -22,6 +22,7 @@ import { AntdTable } from './ant-table.component';
 import { AntdTableField } from './ant-table-field.component';
 import { ProTableField } from './pro-table.component';
 import { TemplatePipe } from './template.pipe';
+import { ProTableItemComponent } from './pro-table-item.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TemplatePipe } from './template.pipe';
     AntdTableField,
     ProTableField,
     AntdTable,
-    TemplatePipe
+    TemplatePipe,
+    ProTableItemComponent
   ],
   imports: [
     CommonModule,

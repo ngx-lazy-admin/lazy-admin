@@ -9,11 +9,9 @@ import { TemplateService } from 'src/app/shared/template';
 export class TemplatePipe implements PipeTransform {
   constructor(
     private template: TemplateService
-  ) {
-  }
+  ) {}
   
   transform([column, data]: any[]): ComponentPortal<any> | null{
-    // return value ? marked.parse(value) : null;
     return this.template.get(column, data)
   }
 }
