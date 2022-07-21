@@ -12,7 +12,7 @@ import {
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { ThemeType } from '@ant-design/icons-angular';
 import { CONTAINER_DATA } from '../template.service';
-import { execFunction, runFunction } from 'src/app/utils/utils';
+import { execFunction, runFunction } from 'src/app/utils';
 
 interface iconType {
   type: string,

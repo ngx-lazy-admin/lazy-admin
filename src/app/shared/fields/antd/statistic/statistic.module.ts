@@ -8,6 +8,7 @@ import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { CountdownField } from './countdown.component';
 import { StatisticField } from './statistic.component';
 import { PipesModule } from 'src/app/pipes';
+import { FieldPipesModule } from '../../pipe/pipes.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PipesModule } from 'src/app/pipes';
     PortalModule,
     NzStatisticModule, 
     PipesModule,
+    FieldPipesModule,
     FormlyModule.forChild({
       types: [
         {
@@ -33,9 +35,9 @@ import { PipesModule } from 'src/app/pipes';
         {
           name: 'countdown',
           component: CountdownField,
-        },
-      ],
-    }),
+        }
+      ]
+    })
   ],
   providers: [
     // list all pipes you would like to use

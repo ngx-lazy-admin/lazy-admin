@@ -275,9 +275,34 @@ export const MenuMock = [
         id: '1401',
         pid: '14',
         name: 'iframe',
-        link: '/iframe/iframe',
+        link: '',
         badge: '',
+        children: [
+          {
+            id: '1401',
+            pid: '14',
+            name: '空白页',
+            link: '/blank/dashboard/analysis',
+            badge: '',
+          },
+          {
+            id: '1401',
+            pid: '14',
+            name: '使用iframe嵌套空白页',
+            link: '/micro/iframe/blank/dashboard/analysis',
+            badge: '',
+          },
+          {
+            id: '1401',
+            pid: '14',
+            name: '使用iframe嵌套antd',
+            link: '/micro/iframe/blank/components/autocomplete',
+            badge: '',
+          },
+        ]
       },
+
+      // { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
       {
         id: '1402',
         pid: '14',

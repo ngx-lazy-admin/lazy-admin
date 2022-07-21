@@ -2,10 +2,11 @@ import { Inject, Injectable, Renderer2, ViewContainerRef, RendererFactory2 } fro
 import { DOCUMENT } from '@angular/common';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { CodeEditorContent } from './code-editor-content.component';
-import { randomString } from 'src/app/utils';
+// import { randomString } from 'src/app/utils';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzDragService } from 'ng-zorro-antd/core/services';
 import { NzDrawerRef, NzDrawerService } from 'ng-zorro-antd/drawer';
+import { randomString } from 'src/app/utils';
 
 @Injectable({
   providedIn: 'root'

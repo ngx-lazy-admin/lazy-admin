@@ -8,7 +8,7 @@ import {
   import { NzFormTooltipIcon, NzFormLayoutType } from 'ng-zorro-antd/form';
   import { isObservable, Observable, of } from 'rxjs';
   import { startWith, switchMap, tap } from 'rxjs/operators';
-  import { isObject } from 'src/app/utils/utils';
+  import { isObject } from 'src/app/utils';
   
   @Component({
     selector: 'div[list-wrapper]',

@@ -2,6 +2,7 @@ import { FormlyFieldConfig, FormlyFormOptions, FieldType } from '@ngx-formly/cor
 import { isObservable } from 'rxjs';
 import { TemplateRef, ComponentFactoryResolver, ComponentRef, Injector } from '@angular/core';
 import { AbstractControl,  AsyncValidatorFn, ValidatorFn } from '@angular/forms';
+import { isBlankString, isFunction, isNullOrUndefined, isObject } from './type';
 
 export interface ExpressionPropertyCache {
   expression: (model: any, formState: any, field: FormlyFieldConfigCache) => boolean;
@@ -267,52 +268,6 @@ export function fieldChange (field: FormlyFieldConfigCache, model: any) {
 
 // 判断类型
 
-export function isNumber(value: string | number): boolean {
-  return ((value != null) && (value !== '') && !isNaN(Number(value.toString())));
-}
-
-export function isNullOrUndefined(value: any) {
-  return value === undefined || value === null;
-}
-
-export function isUndefined(value: any) {
-  return value === undefined;
-}
-
-export function isBlankString(value: any) {
-  return value === '';
-}
-
-export function isFunction(value: any) {
-  return typeof(value) === 'function';
-}
-
-export const isObject = (x: any) => {
-  return x != null && typeof x === 'object';
-}
-
-export function isPromise(obj: any): obj is Promise<any> {
-  return !!obj && typeof obj.then === 'function';
-}
-
-export const execEval = (code: string) => eval('(' + code + ')')
-
-export const execFunc = (func: string | Function) => typeof(func) == 'string' ? execEval(func) : func
-
-export const execFunction = (name: string) => (new Function( 'return ' + name))();
-
-  // export declare type FormlyAttributeEvent = (field: FormlyFieldConfig, event?: any) => void;
-
-export const runFunction = (name: string, field?: FormlyFieldConfig, $event?: Event) => {
-  try{
-    if (name) {
-      const func = execFunction(name)
-      func(field, $event)
-    }
-  } catch (err) {
-    console.log(name + ': error', err)
-  }
-}
 
 // 随机字符串
 export const randomString = (e: number) => {    
@@ -325,27 +280,3 @@ export const randomString = (e: number) => {
   }
   return n
 }
-
-
-export const copy = (value: string): Promise<string> => {
-  const promise = new Promise<string>((resolve): void => {
-    // @ts-ignore
-    let copyTextArea = null as HTMLTextAreaElement;
-    try {
-      copyTextArea = document.createElement('textarea');
-      copyTextArea.style.height = '0px';
-      copyTextArea.style.opacity = '0';
-      copyTextArea.style.width = '0px';
-      document.body.appendChild(copyTextArea);
-      copyTextArea.value = value;
-      copyTextArea.select();
-      document.execCommand('copy');
-      resolve(value);
-    } finally {
-      if (copyTextArea && copyTextArea.parentNode) {
-        copyTextArea.parentNode.removeChild(copyTextArea);
-      }
-    }
-  });
-  return promise;
-} 

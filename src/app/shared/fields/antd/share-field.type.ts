@@ -11,7 +11,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { FullScreenService } from 'src/app/services/menu/full-screen.service';
-import { isObject } from 'src/app/utils/utils';
+import { isObject } from 'src/app/utils';
 import { TemplateService } from '../../template';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;

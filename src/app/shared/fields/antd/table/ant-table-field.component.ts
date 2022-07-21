@@ -33,16 +33,6 @@ export interface dataSourceType {
   [key: string]: number | string | any[]
 }
 
-const list100 = [...Array(4000).keys()].map((item, index) => {
-  return {
-    id: index,
-    key: index,
-    name: '🐛 [BUG ' + index + ']无法创建工程npm create umi',
-    age: index % 100,
-    address: 'JNew York No. 1 Lake Park',
-  }
-})
-
 @Component({
   selector: 'div[simple-table-field]',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,7 +40,8 @@ const list100 = [...Array(4000).keys()].map((item, index) => {
   template: `
     <antd-table 
       [dataSource]="formControl.value" 
-      [columns]="to.columns">
+      [columns]="to.columns"
+    >
     </antd-table>
   `
 })
@@ -177,7 +168,6 @@ export class AntdTableField extends ShareFieldType implements OnDestroy {
     }
   }
 
-
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index;
   }
@@ -200,19 +190,6 @@ export class AntdTableField extends ShareFieldType implements OnDestroy {
       .subscribe((data: number) => {
         console.log('scroll index to', data);
       });
-
-    // console.log(this.formControl.value)
-    // console.log(this.to.columns)
-  }
-
-  ngOnDestroy() {
-    // if (this.field && this.field.fieldGroup) {
-    //   this.field.fieldGroup.map((item, index) => {
-    //     super.remove(index)
-    //   });
-    // }
-    this.destroy$.next();
-    this.destroy$.complete();    
   }
 
   isString (str: any) {
@@ -240,4 +217,10 @@ export class AntdTableField extends ShareFieldType implements OnDestroy {
   trackByIndex(_: number, data: VirtualDataInterface): number {
     return data.index;
   }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();    
+  }
 } 
+

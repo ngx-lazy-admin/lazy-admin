@@ -34,38 +34,10 @@ export class TemplateService {
 
     let containerPortal = new ComponentPortal(componentToPortal, null, this.createInjector({
       options: options,
-      field: field,
-      model: model
+      model: model,
+      field: field
     }));
     return containerPortal
-  }
-
-  gets (options: paramsType, model?: any, field?: FormlyFieldConfig, ): ComponentPortal<any> | null {
-    const componentToPortal = options?.type ? this.templateMap.get(options.type) : null
-    if (!componentToPortal) {
-      return null
-    }
-
-    // let containerPortal = new ComponentPortal(componentToPortal, null, this.createInjector({
-    //   options: options,
-    //   field: field,
-    //   model: model
-    // }));
-    // return containerPortal
-
-    // const portal = new ComponentPortal(componentToPortal);
-    // const portalHost = new DomPortalOutlet (
-    //       this.elementRef.nativeElement,
-    //       this.componentFactoryResolver,
-    //       this.appRef,
-    //       this.injector
-    //     );
-
-    // const componentRef = portalHost.attach(portal);
-    // componentRef.instance.myInput = data;
-    // componentRef.instance.myOutput.subscribe(...);
-    // componentRef.changeDetectorRef.detectChanges();
-    return null
   }
 
   createInjector(data: any): Injector {

@@ -165,17 +165,17 @@ export class ProTableField extends FieldType implements OnDestroy {
     return this.to.columns || [];  
   }
 
-  getTemplate (column: any, data: any) {
-    return null
-  }
-
-  editCache: { [key: string]: boolean } = {};
-
   constructor(
     private template: TemplateService
   ) {
     super()
   }
+
+  getTemplate (column: any, data: any) {
+    return null
+  }
+
+  editCache: { [key: string]: boolean } = {};
 
   ngOnChanges(changes: SimpleChanges): void {
     // console.log(changes)

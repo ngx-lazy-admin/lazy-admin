@@ -4,6 +4,7 @@ import { LayoutBasicComponent } from './layouts/basic/basic.component';
 import { ActivateGuard } from './guards/activate.guard';
 import { ActivateChildGuard } from './guards/activate-child.guard';
 import { GlobalDeactivateGuard } from './guards/global-deactivate.guard';
+import { LayoutBlankComponent } from './layouts/blank/blank.component';
 // import { loadMicroApp, registerMicroApps, start } from 'qiankun';
 
 // const loader = (loading: any) => render({ loading });
@@ -25,6 +26,16 @@ import { GlobalDeactivateGuard } from './guards/global-deactivate.guard';
 
 const routes: Routes = [
   {
+    path: 'blank',
+    canActivate: [ActivateGuard],
+    canActivateChild: [ActivateChildGuard],
+    canDeactivate: [GlobalDeactivateGuard],
+    data: {},
+    children: [
+      { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+    ]
+  },
+  {
     path: '',
     component: LayoutBasicComponent,
     canActivate: [ActivateGuard],
@@ -32,13 +43,10 @@ const routes: Routes = [
     canDeactivate: [GlobalDeactivateGuard],
     data: {},
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
-      { path: 'zh', loadChildren: () => import('./pages/iframe/iframe.module').then(m => m.IframeModule) },
+      { path: 'micro', loadChildren: () => import('./pages/micro/micro.module').then(m => m.MicroModule) },
       { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
       { path: 'graphql', loadChildren: () => import('./pages/graphql/graphql.module').then(m => m.GraphqlModule) },
-
-      // { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
-
+      { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
       { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
     ]
   }

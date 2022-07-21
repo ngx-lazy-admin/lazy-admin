@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { isNumber } from 'src/app/utils/utils';
+import { isNumber } from 'src/app/utils';
 
 @Pipe({
   name: 'width',

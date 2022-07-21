@@ -11,7 +11,7 @@ import { execEval, ShareFieldType } from '../share-field.type';
 
 import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
-import { copy } from 'src/app/utils/utils';
+import { copy } from 'src/app/utils';
 
 @Component({
   selector: 'div[code-card]',

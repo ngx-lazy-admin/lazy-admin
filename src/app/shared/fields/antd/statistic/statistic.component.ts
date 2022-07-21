@@ -9,8 +9,9 @@ import {
   Injector,
   ComponentRef
 } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
+import { CdkPortalOutletAttachedRef } from '@angular/cdk/portal';
+import { FieldType } from '@ngx-formly/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { ShareFieldType } from '../share-field.type';
@@ -38,7 +39,10 @@ export interface NzSelectOptionInterface {
     <br>
 
     <ng-template #prefixTemplateRef>
-      <ng-template [cdkPortalOutlet]="nzPrefixRef"></ng-template>
+      <ng-template 
+        [cdkPortalOutlet]="[nzPrefixRef, field] | template"
+        (attached)="attached($event)"
+      ></ng-template>
     </ng-template>
 
     <ng-template #suffixTemplateRef>
@@ -64,7 +68,7 @@ export class StatisticField extends ShareFieldType implements OnInit, OnDestroy 
   }
 
   get nzPrefixRef () : any {
-    return this.template.get(this.to.prefixRef, this.field)
+    return this.to.prefixRef || null
   }
 
   get nzSuffix () : any {
@@ -136,6 +140,13 @@ export class StatisticField extends ShareFieldType implements OnInit, OnDestroy 
     if (this.to.blur) {
       this.to.blur(this.field)
     }
+  }
+
+  attached(ref: CdkPortalOutletAttachedRef) {
+    ref = ref as ComponentRef<any>;
+    ref.instance.change$.subscribe((value: any) => {
+      // this.onChange(this.data);
+    })
   }
 
   ngOnInit() { }

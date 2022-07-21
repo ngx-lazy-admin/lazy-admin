@@ -20,10 +20,7 @@ export class QiankunComponent implements OnInit {
     private cd: ChangeDetectorRef,
   ) {}
 
-  
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.loadMicroApp();

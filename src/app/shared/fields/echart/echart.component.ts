@@ -16,9 +16,7 @@ import * as echarts from 'echarts';
 export class EchartsField extends FieldType implements AfterViewInit {
 
   constructor(
-    private elementRef: ElementRef,
-    private http: HttpClient,
-    private elRef: ElementRef,
+    private elRef: ElementRef
   ) {
     super();
   }

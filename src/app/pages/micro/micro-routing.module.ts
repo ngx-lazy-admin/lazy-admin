@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LayoutBlankComponent } from 'src/app/layouts/blank/blank.component';
 import { IframeComponent } from './iframe/iframe.component';
 import { QiankunComponent } from './qiankun/qiankun.component';
 
 const routes: Routes = [
-  { path: 'iframe', component: IframeComponent },
-  // { path: 'qiankun', component: QiankunComponent },
+  { 
+    path: 'iframe', 
+    component: LayoutBlankComponent,
+    children: [
+      {
+        path: '**',
+        component: IframeComponent,
+      }
+    ]
+  },
   { path: '**', component: QiankunComponent },
 ];
 
@@ -13,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ModalRoutingModule { }
+export class RoutingModule { }

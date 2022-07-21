@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { ThemeType } from '@ant-design/icons-angular';
-import { execFunction, runFunction } from 'src/app/utils/utils';
+import { execFunction, runFunction } from 'src/app/utils';
 import { CONTAINER_DATA } from './type';
 
 // const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');

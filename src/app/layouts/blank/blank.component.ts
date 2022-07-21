@@ -13,6 +13,7 @@ export class LayoutBlankComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('LayoutBlankComponent')
   }
 
 }

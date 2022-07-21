@@ -53,6 +53,8 @@ export class FieldService {
   // }
 
   getField(url: string): Observable<any> {
+    url = url.replace('/blank', '')
+    console.log(url)
     return this.http.get<any>(this._baseFieldUrl + url).pipe(tap(field => {
       console.log(field)
     }))

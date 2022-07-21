@@ -27,7 +27,7 @@ import { CacheService } from 'src/app/services/router/cache.service';
 
 import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
-import { execEval } from 'src/app/utils/utils';
+import { execEval } from 'src/app/utils';
 
 export interface headerInfoType {
   title: string,

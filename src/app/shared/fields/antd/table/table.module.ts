@@ -21,8 +21,10 @@ import { VirtualTableField } from './virtual-table.component';
 import { AntdTable } from './ant-table.component';
 import { AntdTableField } from './ant-table-field.component';
 import { ProTableField } from './pro-table.component';
-import { TemplatePipe } from './template.pipe';
+// import { TemplatePipe } from './template.pipe';
 import { ProTableItemComponent } from './pro-table-item.component';
+import { FieldPipesModule } from '../../pipe/pipes.module';
+// import { TemplatePipe } from '../template.pipe';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,7 @@ import { ProTableItemComponent } from './pro-table-item.component';
     AntdTableField,
     ProTableField,
     AntdTable,
-    TemplatePipe,
-    ProTableItemComponent
+    ProTableItemComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +49,7 @@ import { ProTableItemComponent } from './pro-table-item.component';
     NzIconModule,
     NzPopconfirmModule,
     NzDropDownModule,
-
+    FieldPipesModule,
     FormlyModule.forChild({
       types: [
         {
@@ -77,9 +78,6 @@ import { ProTableItemComponent } from './pro-table-item.component';
         }
       ],
     }),
-  ],
-  exports: [
-    TemplatePipe
   ]
 })
 export class TableFieldModule {}
