@@ -54,7 +54,7 @@ export class IframeComponent implements AfterViewInit {
     if (!this.iframeObj[window.location.href]) {
       const iframe = document.createElement('iframe');
       iframe.src = window.location.href.replace(window.location.origin + '/micro/iframe', window.location.origin)
-      iframe.className="w-100 h-100 border-none";
+      iframe.className="w-100 h-100 border-none d-block";
       this.iframeObj[window.location.href] = iframe
     }
 

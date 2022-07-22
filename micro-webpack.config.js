@@ -1,4 +1,6 @@
-const appName = require('./package.json').name;
+
+let app = require('./package.json').name;
+
 module.exports = {
   devServer: {
     headers: {
@@ -6,8 +8,9 @@ module.exports = {
     },
   },
   output: {
-    library: `${appName}-[name]`,
+    library: `${app}-[name]`,
     libraryTarget: 'umd',
-    jsonpFunction: `webpackJsonp_${appName}`,
+    jsonpFunction: `webpackJsonp_${app}`,
   },
 };
+
