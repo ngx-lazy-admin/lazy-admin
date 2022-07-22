@@ -1,4 +1,4 @@
-export const MenuMock = [
+export const menu = [
   {
     id: '1',
     name: 'Dashboard',

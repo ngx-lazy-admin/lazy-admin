@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { MenuMock } from '../../../../mock/menu';
+// import { menu } from 'src/mock/menu';
 
 export interface MenuType {
   id: string,
@@ -122,7 +122,7 @@ export class MenuService {
   }
 
   getMenuByOf(): Observable<Array<MenuType>> {
-    return of(MenuMock)
+    return of()
   }
 
 
@@ -139,9 +139,9 @@ export class MenuService {
     if (this._tabset.length === 1) {
       return;
     }
-    let seletcted = this._tabset[index].selected;
+    let selected = this._tabset[index].selected;
     this._tabset.splice(index, 1);
-    if (seletcted) {
+    if (selected) {
       this.activeTabset(this._tabset[index])
     }
   }

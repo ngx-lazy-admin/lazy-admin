@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
-import { MenuMock } from './menu/menu.mock';
+import { menu } from './menu';
 
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -52,7 +52,7 @@ export class MockService implements InMemoryDbService {
       heroes, 
       nobodies, 
       stringers, 
-      menu: MenuMock,
+      menu,
       account,
       dashboard,
       system,

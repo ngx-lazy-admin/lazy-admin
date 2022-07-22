@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-
-import { field } from '../../../mock/dashboard/dashboard.mock';
+import { field } from 'src/mock/field';
 
 export interface FieldType {
 	label: string,
@@ -42,96 +41,47 @@ export class FieldService {
     return this._tabset$.asObservable()
   }
 
-  // canActive(url: string): boolean {
-  //   this.breadcrumb = [];
-  //   if (this._menus && this._menus instanceof Array && this._menus.length) {
-  //     this._menus.some(item => {
-
-  //       let menu = item.children.find(item => item.link === url) 
-  //       console.log(url,item.children, menu )
-  //       if (menu) {
-  //         this.breadcrumb = [item.label, menu.label]
-  //         this.addTabset(menu)
-  //         return true
-  //       } else {
-  //         return true
-  //       }
-  //     })
-  //   }
-  //   return true;
-  // }
-  
-
-
-  // getMenu(): Observable<Array<FieldType>> {
-  //   return this.http.get<Array<FieldType>>(this._menuUrl).pipe(tap(menu => {
-  //     // this._menus = menu;
-  //     console.log(menu)
-  //     this._menu$.next(this._menus)
-  //   }))
-  // }
-
   getField(url: string): Observable<any> {
     return this.http.get<any>(this._baseFieldUrl + url).pipe(tap(field => {
       // console.log(field)
     }))
   }
 
-  // 获取 Field 数据
-  // - of
-  // - http get {}
-  //  fields model formState
-  // 
   getFieldByOf(): Observable<Array<FormlyFieldConfig>> {
     return of(field)
   }
 
-  // getField(): Observable<string> {
-
-  //   console.log(this.fieldMock.field)
-  //   return of(this.fieldMock.field.toString())
+  // addTabset (menu: any) {
+  //   if (!this._tabset.some(item => item.link === menu.link)) {
+  //     this._tabset = [...this._tabset, menu]
+  //     this._tabset$.next(this._tabset);
+  //   } else {
+  //     this.activeTabset(menu)
+  //   }
   // }
 
-  // save (model: any) {
-  //   console.log(model)
-  //   return this.http.post<Array<FieldType>>(this._menuUrl, model).pipe(tap(menu => {
-  //     this._menus = menu;
-  //     console.log(menu)
-  //     this._menu$.next(this._menus)
-  //   }))
+  // closeTabSet (index: number) {
+  //   if (this._tabset.length === 1) {
+  //     return;
+  //   }
+  //   let selected = this._tabset[index].selected;
+  //   this._tabset.splice(index, 1);
+  //   if (selected) {
+  //     this.activeTabset(this._tabset[index])
+  //   }
   // }
 
-  addTabset (menu: any) {
-    if (!this._tabset.some(item => item.link === menu.link)) {
-      this._tabset = [...this._tabset, menu]
-      this._tabset$.next(this._tabset);
-    } else {
-      this.activeTabset(menu)
-    }
-  }
-
-  closeTabSet (index: number) {
-    if (this._tabset.length === 1) {
-      return;
-    }
-    let seletcted = this._tabset[index].selected;
-    this._tabset.splice(index, 1);
-    if (seletcted) {
-      this.activeTabset(this._tabset[index])
-    }
-  }
-
-  activeTabset (menu: FieldType) {
-    this._tabset.forEach(item => {
-      item.selected = false
-      if (item.link === menu.link) {
-        item.selected = true
-      }
-    })
-    this._tabset = [...this._tabset]
+  // activeTabset (menu: FieldType) {
+  //   this._tabset.forEach(item => {
+  //     item.selected = false
+  //     if (item.link === menu.link) {
+  //       item.selected = true
+  //     }
+  //   })
+  //   this._tabset = [...this._tabset]
     
-    this._tabset$.next(this._tabset);
-  }
+  //   this._tabset$.next(this._tabset);
+  // }
 
   ngOnDestroy() {
     this._destroy$.next();

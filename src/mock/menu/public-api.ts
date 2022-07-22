@@ -1,4 +1,4 @@
-export { MenuMock } from './menu.mock';
+export { menu } from './menu.mock';
 
 
 

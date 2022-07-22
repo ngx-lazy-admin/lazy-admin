@@ -11,6 +11,9 @@ import {
   ChangeDetectorRef
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-iframe',
@@ -20,53 +23,60 @@ import { NavigationEnd, Router } from '@angular/router';
 export class IframeComponent implements AfterViewInit {
 
   loading = false;
-  lastElement: any
+  iframeObj: any = {}
+  currentIframe: any
+  private destroy$ = new Subject();
 
   constructor(
     private elRef: ElementRef,
     private router: Router,
     private cd: ChangeDetectorRef,
+    private message: NzMessageService
   ) {}
-
-  iframe: any = {}
 
   ngAfterViewInit(): void { 
     this.initIframe()
-    this.router.events.subscribe((event) => {
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
       if (event instanceof NavigationEnd) { 
         this.initIframe()
       }
     })
-    // this.addEventListenMessage()
   }
 
   initIframe () {
     if (this.loading) {
       return
     }
+    this.loading = true
 
-    if (this.iframe[window.location.href]) {
-      this.elRef.nativeElement.querySelector('#iframe').appendChild(this.iframe[window.location.href]);
-    } else {
-      this.loading = true;
+    const messageId = this.message.loading('页面加载中...').messageId
+
+    if (!this.iframeObj[window.location.href]) {
       const iframe = document.createElement('iframe');
-      const url = window.location.href.replace(window.location.origin + '/micro/iframe', window.location.origin);
-
-      iframe.src = url;
+      iframe.src = window.location.href.replace(window.location.origin + '/micro/iframe', window.location.origin)
       iframe.className="w-100 h-100 border-none";
-      iframe.onload = () => { 
-        this.loading = false;
-      };
-      this.elRef.nativeElement.querySelector('#iframe').appendChild(iframe);
-      this.iframe[window.location.href] = iframe
-      this.lastElement = iframe
+      this.iframeObj[window.location.href] = iframe
     }
 
+    this.currentIframe = this.iframeObj[window.location.href]
+    this.currentIframe.onload = () => { 
+      this.loading = false;
+      this.message.remove(messageId);
+      this.cd.markForCheck();
+    };
+
+    this.elRef.nativeElement.querySelector('#iframe').innerHTML= ''
+    this.elRef.nativeElement.querySelector('#iframe').appendChild(this.currentIframe);
   }
 
   addEventListenMessage () {
     window.addEventListener('message', (e) => {
       console.log(e)
     })
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();    
   }
 }

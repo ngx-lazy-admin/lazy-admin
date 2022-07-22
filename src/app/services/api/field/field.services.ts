@@ -84,37 +84,37 @@ export class FieldService {
   //   }))
   // }
 
-  addTabset (menu: any) {
-    if (!this._tabset.some(item => item.link === menu.link)) {
-      this._tabset = [...this._tabset, menu]
-      this._tabset$.next(this._tabset);
-    } else {
-      this.activeTabset(menu)
-    }
-  }
+  // addTabset (menu: any) {
+  //   if (!this._tabset.some(item => item.link === menu.link)) {
+  //     this._tabset = [...this._tabset, menu]
+  //     this._tabset$.next(this._tabset);
+  //   } else {
+  //     this.activeTabset(menu)
+  //   }
+  // }
 
-  closeTabSet (index: number) {
-    if (this._tabset.length === 1) {
-      return;
-    }
-    let seletcted = this._tabset[index].selected;
-    this._tabset.splice(index, 1);
-    if (seletcted) {
-      this.activeTabset(this._tabset[index])
-    }
-  }
+  // closeTabSet (index: number) {
+  //   if (this._tabset.length === 1) {
+  //     return;
+  //   }
+  //   let selected = this._tabset[index].selected;
+  //   this._tabset.splice(index, 1);
+  //   if (selected) {
+  //     this.activeTabset(this._tabset[index])
+  //   }
+  // }
 
-  activeTabset (menu: FieldType) {
-    this._tabset.forEach(item => {
-      item.selected = false
-      if (item.link === menu.link) {
-        item.selected = true
-      }
-    })
-    this._tabset = [...this._tabset]
+  // activeTabset (menu: FieldType) {
+  //   this._tabset.forEach(item => {
+  //     item.selected = false
+  //     if (item.link === menu.link) {
+  //       item.selected = true
+  //     }
+  //   })
+  //   this._tabset = [...this._tabset]
     
-    this._tabset$.next(this._tabset);
-  }
+  //   this._tabset$.next(this._tabset);
+  // }
 
   ngOnDestroy() {
     this._destroy$.next();
