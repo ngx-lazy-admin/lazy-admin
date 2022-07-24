@@ -16,12 +16,16 @@ import { ShareFieldType, ActionTypeInterface } from '../share-field.type';
       <ng-container *ngFor="let action of actionOptions.slice(0, maxTagCount); let i = index; trackBy: trackByFn">
         <nz-list-item-action>
           <a         
+            nz-button
+            [nzType]="action.type || 'link'" 
+            [nzDanger]="action.danger"
+            
             nz-popconfirm
             [nzPopconfirmTitle]="action.popconfirmTitle"
             (nzOnConfirm)="confirm()"
             (nzOnCancel)="cancel()" 
             (click)="click(action)">
-            <i *ngIf="action.icon" nz-icon [nzType]="action.icon"></i> 
+            <i *ngIf="action.icon" nz-icon [nzType]="action.icon"></i>
             {{ action.text }}
           </a>
         </nz-list-item-action>

@@ -9,6 +9,7 @@ export const system = [
         type: 'search-card',
         className: "col-12  d-block",
         templateOptions: {
+          matchRouter: true,
           bodyClass: 'row',
           bodyStyle: {
             paddingBottom: 0
@@ -18,7 +19,7 @@ export const system = [
           {
             key: 'username',
             type: 'input',
-            className: 'col-12 col-md-6',
+            className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
             templateOptions: {
               label: '用户名',
@@ -29,7 +30,7 @@ export const system = [
           {
             key: 'phone',
             type: 'input',
-            className: 'col-12 col-md-6',
+            className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
             templateOptions: {
               label: '手机号',
@@ -40,7 +41,7 @@ export const system = [
           {
             key: 'email',
             type: 'input',
-            className: 'col-12 col-md-6',
+            className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
             templateOptions: {
               label: '邮箱',
@@ -51,7 +52,7 @@ export const system = [
           {
             key: 'sex',
             type: 'select',
-            className: 'col-12 col-md-6',
+            className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
             templateOptions: {
               label: '性别',
@@ -76,7 +77,7 @@ export const system = [
           {
             key: 'account',
             type: 'input',
-            className: 'col-12 col-md-6',
+            className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
             templateOptions: {
               label: '登录账号',
@@ -87,7 +88,7 @@ export const system = [
           {
             key: 'user_id',
             type: 'input',
-            className: 'col-12 col-md-6',
+            className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
             templateOptions: {
               label: '用户ID',
@@ -98,7 +99,7 @@ export const system = [
           {
             key: 'status',
             type: 'select',
-            className: 'col-12 col-md-6',
+            className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
             templateOptions: {
               label: '状态',
@@ -127,7 +128,7 @@ export const system = [
           {
             key: 'create_time',
             type: 'input',
-            className: 'col-12 col-md-6',
+            className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
             templateOptions: {
               label: '创建时间',
@@ -413,7 +414,8 @@ export const system = [
                         text: '编辑'
                       },
                       {
-                        text: '删除'
+                        text: '删除',
+                        danger: true
                       }
                     ]
                   }

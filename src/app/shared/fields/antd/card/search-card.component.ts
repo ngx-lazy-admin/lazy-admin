@@ -1,6 +1,8 @@
 import { Component, OnDestroy, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
+import { delNullProperty } from 'src/app/utils';
+import { ShareFieldType } from '../share-field.type';
 
 @Component({
   selector: 'div[card-field]',
@@ -19,9 +21,9 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
       <div class="col-12 text-end">
         <nz-form-item>
           <nz-form-control> 
-            <button class="me-2" nz-button [nzType]="'primary'" (submit)="submit()">搜索</button>
+            <button class="me-2" nz-button [nzType]="'primary'" (click)="submit()">搜索</button>
             <button class="me-2" nz-button (click)="resetForm()">重置</button>
-            <a class="collapse" (click)="toggleCollapse()">
+            <a (click)="toggleCollapse()">
               {{ isCollapse ? '收起' : '展开' }}
               <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
             </a>
@@ -55,7 +57,7 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
   ]
 })
 
-export class SearchCardField extends FieldType  implements OnDestroy {
+export class SearchCardField extends ShareFieldType  implements OnDestroy {
 
   get nzActions(): Array<TemplateRef<void>> {
 		return this.to.nzActions || this.to.actions || '';
@@ -117,6 +119,10 @@ export class SearchCardField extends FieldType  implements OnDestroy {
     return this.to.extraFields ? this.to.extraFields(this.field) : null
   }
 
+  get matchRouter(): boolean {
+    return this.to.matchRouter || false;
+  }
+
   trackByFn(index: number, item: any) {
     return item.id ? item.id : index; // or item.id
   }
@@ -129,11 +135,16 @@ export class SearchCardField extends FieldType  implements OnDestroy {
   }
 
   resetForm(): void {
+    console.log('reset')
     this.formControl.reset();
   }
 
   submit (): void {
-    console.log('submit')
+    if (this.matchRouter) {
+      const params = JSON.parse(JSON.stringify(this.formControl.value))
+      delNullProperty(params)
+      this.router.navigate([window.location.pathname], { queryParams: params });
+    }
   }
 
   ngOnDestroy() {}

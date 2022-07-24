@@ -12,8 +12,8 @@ import { NzConfigService } from 'ng-zorro-antd/core/config';
 
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
-import { Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { of, Subject, Subscription } from 'rxjs';
+import { takeUntil, switchMap } from 'rxjs/operators';
 
 import hotkeys from 'hotkeys-js';
 import { editor } from 'monaco-editor';
@@ -99,13 +99,14 @@ export class FormComponent {
     // 监听路由变化
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        console.log(event)
         // 获取当前页面的配置
-
         this.loading = true
         this.cd.markForCheck();
         const resultCache = this.routeCache.get(this.router.url);
         console.log(resultCache)
         console.log(new Date().getTime())
+        console.log(this.route.snapshot.paramMap)
         if (resultCache) {
           this.render(resultCache)
           this.routeCache.recoveryHistoryPosition(this.router.url)
@@ -125,6 +126,11 @@ export class FormComponent {
         }
       }
     });
+
+    // 
+    this.route.paramMap.subscribe(item => {
+      console.log(item)
+    })
 
     // 初始化编辑器
     const defaultEditorOption = this.nzConfigService.getConfigForComponent('codeEditor')?.defaultEditorOption || {};

@@ -18,8 +18,7 @@
 				[nzDisabled]="menu.disabled">
 				<i nz-icon [nzType]="menu.icon" class="me-2" *ngIf="menu.icon"></i>
 				<a (click)="menuService.setTabsMenu(menu)">{{menu.name}}</a>
-				<span class="badge bg-secondary">{{menu.count}}</span>
-				<!-- <nz-badge nzSize="small" *ngIf="menu.count && menu.count != 0" class="mx-2 float-end" [nzDot]="isCollapsed" nzStandalone [nzCount]="menu.count"></nz-badge> -->
+				<span class="badge bg-secondary rounded-pill bg-danger mx-2">{{menu.count}}</span>
 			</li>
 			<li *ngIf="menu.children && !menu.isTabs"
 				nz-submenu
@@ -31,7 +30,7 @@
 					<span class="d-flex justify-content-start align-items-center w-100">
 						<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
 						<span class="d-inline-block">{{menu.name}}</span>
-						<nz-badge class="mx-2" nzStandalone [nzCount]="menu.count"></nz-badge>
+						<span class="badge bg-secondary rounded-pill bg-danger mx-2">{{menu.count}}</span>
 					</span>
 				</ng-template>
 				<ul>

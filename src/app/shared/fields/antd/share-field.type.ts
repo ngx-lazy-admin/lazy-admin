@@ -13,6 +13,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 import { isObject } from 'src/app/utils';
 import { TemplateService } from '../../template';
+import { Router } from '@angular/router';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
 
@@ -22,6 +23,7 @@ export interface ActionTypeInterface {
   value?: NzSafeAny | null;
   icon?: string,
   disabled?: boolean;
+  danger?: boolean; 
   hide?: boolean;
   popconfirmTitle?: string,
   popconfirmPlacement?: string,
@@ -49,7 +51,8 @@ export abstract class ShareFieldType extends FieldType {
     public fullScreenService: FullScreenService,
     public elRef: ElementRef,
     public elementRef: ElementRef,
-    public template: TemplateService
+    public template: TemplateService,
+    public router: Router
   ) {
     super();
   }

@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ng-zorro
 import { TabsComponent } from './tabs/tabs.component';
-import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
@@ -57,7 +56,6 @@ import { SearchItemComponent } from './basic/search/search-item/search-item.comp
     FormsModule,
     ReactiveFormsModule,
 
-    NzBadgeModule,
     NzLayoutModule,
     NzFormModule,
     NzAffixModule,
