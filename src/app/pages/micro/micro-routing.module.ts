@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutBlankComponent } from 'src/app/layouts/blank/blank.component';
 import { IframeComponent } from './iframe/iframe.component';
 import { QiankunComponent } from './qiankun/qiankun.component';
+import { WuJieComponent } from './wujie/wujie.component';
 
 const routes: Routes = [
   { 
@@ -12,6 +13,16 @@ const routes: Routes = [
       {
         path: '**',
         component: IframeComponent,
+      }
+    ]
+  },
+  { 
+    path: 'wujie', 
+    component: LayoutBlankComponent,
+    children: [
+      {
+        path: '**',
+        component: WuJieComponent,
       }
     ]
   },
