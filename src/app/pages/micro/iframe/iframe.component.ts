@@ -35,12 +35,14 @@ export class IframeComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void { 
-    this.initIframe()
-    this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
-      if (event instanceof NavigationEnd) { 
-        this.initIframe()
-      }
-    })
+
+
+    // this.initIframe()
+    // this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
+    //   if (event instanceof NavigationEnd) { 
+    //     this.initIframe()
+    //   }
+    // })
   }
 
   initIframe () {
@@ -55,7 +57,8 @@ export class IframeComponent implements AfterViewInit {
       const iframe = document.createElement('iframe');
       iframe.src = window.location.href.replace(window.location.origin + '/micro/iframe', window.location.origin)
       iframe.className="w-100 h-100 border-none d-block";
-      this.iframeObj[window.location.href] = iframe
+      // iframe.sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
+      this.iframeObj[window.location.href] = iframe;
     }
 
     this.currentIframe = this.iframeObj[window.location.href]
