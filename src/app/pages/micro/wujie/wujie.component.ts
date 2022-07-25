@@ -29,8 +29,7 @@ export class WuJieComponent implements AfterViewInit {
 
     startApp({
       name: 'wujie',
-      url: '//localhost:4200',
-      // attrs: { src: '//localhost:4200/components/button' },
+      url: url,
       sync: true,
       el:  this.elRef.nativeElement.querySelector('#wujie'),
       fetch: this.fetch,
