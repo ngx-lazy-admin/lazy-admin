@@ -37,12 +37,12 @@ export class IframeComponent implements AfterViewInit {
   ngAfterViewInit(): void { 
 
 
-    // this.initIframe()
-    // this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
-    //   if (event instanceof NavigationEnd) { 
-    //     this.initIframe()
-    //   }
-    // })
+    this.initIframe()
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
+      if (event instanceof NavigationEnd) { 
+        this.initIframe()
+      }
+    })
   }
 
   initIframe () {

@@ -301,10 +301,33 @@ export const menu = [
           },
         ]
       },
+      {
+        id: '1402',
+        pid: '14',
+        name: 'wujie',
+        link: '',
+        badge: '',
+        children: [
+          {
+            id: '1401',
+            pid: '14',
+            name: '使用wujie嵌套空白页',
+            link: '/micro/wujie/blank/dashboard/analysis',
+            badge: '',
+          },
+          {
+            id: '1401',
+            pid: '14',
+            name: '使用wujie嵌套antd',
+            link: '/micro/wujie/blank/components/autocomplete',
+            badge: '',
+          },
+        ]
+      },
 
       // { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
       {
-        id: '1402',
+        id: '1403',
         pid: '14',
         name: '乾坤',
         link: '/zh',
