@@ -22,15 +22,11 @@ export class WuJieComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void { 
-
-    const url = window.location.href.replace(window.location.origin + '/micro/wujie', window.location.origin)
-
-    console.log(url)
-
     startApp({
       name: 'wujie',
-      url: url,
+      url: window.location.origin,
       sync: true,
+      alive: false,
       el:  this.elRef.nativeElement.querySelector('#wujie'),
       fetch: this.fetch,
       props: {}
@@ -38,7 +34,7 @@ export class WuJieComponent implements AfterViewInit {
   }
 
   fetch = (url: RequestInfo, options: RequestInit | undefined) => {
-    console.log(url)
+    console.log('fetch:' + url)
     return window.fetch(url, { ...options, credentials: "include" })
   }
 

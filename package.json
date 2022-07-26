@@ -8,7 +8,7 @@
     "s": "ng serve",
     "build": "ng build --stats-json",
     "watch": "ng build --watch --configuration development",
-    "docs": "ng build --output-path docs & cp docs/index.html docs/404.html & echo lazy-admin-pro.com > docs/CNAME",
+    "docs": "ng build --output-path docs --base-href / & cp docs/index.html docs/404.html & echo lazy-admin-pro.com > docs/CNAME",
     "bundle": "webpack-bundle-analyzer dist/go-admin-ng/stats.json",
     "analyze": "ng build --stats-json && webpack-bundle-analyzer ./dist/greeting-app/stats-es2015.json",
     "source": "ng build --source-map",
