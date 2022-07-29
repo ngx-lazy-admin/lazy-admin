@@ -26,6 +26,15 @@ import { LayoutBlankComponent } from './layouts/blank/blank.component';
 
 const routes: Routes = [
   {
+    path: 'swagger',
+    component: LayoutBlankComponent,
+    data: {},
+    // children: [
+    //   { path: '**', loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule) },
+    // ]
+    loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule)
+  },
+  {
     path: 'blank',
     canActivate: [ActivateGuard],
     canActivateChild: [ActivateChildGuard],

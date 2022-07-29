@@ -7,6 +7,7 @@ import * as echarts from 'echarts';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { StoreService } from 'src/app/services/api/swagger';
 
 
 @Component({
@@ -14,7 +15,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './code.component.html',
   styleUrls: ['./code.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class CodeComponent implements OnInit {
   editor?: editor.ICodeEditor | editor.IEditor;
@@ -45,7 +45,8 @@ export class CodeComponent implements OnInit {
     private nzConfigService: NzConfigService,
     private elRef:ElementRef,
     private cd: ChangeDetectorRef,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private store: StoreService
 
   ) {
     const defaultEditorOption = this.nzConfigService.getConfigForComponent('codeEditor')?.defaultEditorOption || {};
@@ -68,7 +69,11 @@ export class CodeComponent implements OnInit {
     // this.myChart.setOption();
 
     console.log(this.code)
+    this.store.getOrderById(111).subscribe(item => {
+      console.log(item)
+    })
     const options = this.execEval(this.code)
+    // this.
     console.log(options)
     this.fields = options
   }

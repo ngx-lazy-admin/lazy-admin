@@ -1,8 +1,8 @@
 import { Component, ChangeDetectorRef,  ChangeDetectionStrategy, OnDestroy, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { map, debounceTime, switchMap, skip, takeUntil, distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { map, debounceTime, switchMap, skip, takeUntil, distinctUntilChanged, catchError } from 'rxjs/operators';
 import { 
   NzOptionComponent,
   NzSelectItemInterface,
@@ -198,6 +198,9 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
   nzOnSearch (value: string) {
     if (this.to.nzOnSearch) {
       this.to.nzOnSearch(this.field, value)
+    } else {
+      this.isLoading = true;
+      this.searchChange$.next(value);
     }
     this.cd.markForCheck();
   }
@@ -216,7 +219,33 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
 
   private _destroy$ = new Subject<void>();
 
-  ngOnInit() { }
+  randomUserUrl = 'https://api.randomuser.me/?results=5';
+  searchChange$ = new BehaviorSubject('');
+  optionList: string[] = [];
+  selectedUser?: string;
+  isLoading = false;
+
+  ngOnInit() { 
+
+    const getRandomNameList = (name: string): Observable<any> =>
+    this.http.get(`${this.randomUserUrl}`)
+        .pipe(
+          catchError(() => of({ results: [] })),
+          map((res: any) => res.results)
+        )
+        .pipe(map((list: any) => list.map((item: any) => `${item.name.first} ${name}`)));
+    
+    // 
+    const optionList$: Observable<string[]> = this.searchChange$
+      .asObservable()
+      .pipe(debounceTime(60))
+      .pipe(switchMap(getRandomNameList));
+    
+    optionList$.subscribe(data => {
+      this.optionList = data;
+      this.isLoading = false;
+    });
+  }
 
   trackByFn(index: any, item: any) {
     return item.id ? item.id : index; // or item.id

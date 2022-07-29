@@ -3,16 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { User } from './user.type';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
-export interface UserType {
-	id: number;
-	name: string;
-	sex: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +16,7 @@ export class UserService {
 
   // 声明
   private destroy$ = new Subject();
-  private _userChanges = new BehaviorSubject<UserType|null>(null);
+  private _userChanges = new BehaviorSubject<User|null>(null);
 
   // 构造器初始化
   constructor(
@@ -42,15 +37,15 @@ export class UserService {
   }
 
   // action
-  getUser(): Observable<UserType> {
-    return this.http.get<UserType>(this.heroesUrl).pipe(tap(user => {
+  getUser(): Observable<User> {
+    return this.http.get<User>(this.heroesUrl).pipe(tap(user => {
       this._userChanges.next(user)
     }))
   }
 
   /** POST: add a new hero to the server */
-  add(): Observable<UserType> {
-    return this.http.get<UserType>(this.heroesUrl).pipe(tap(user => {
+  add(): Observable<User> {
+    return this.http.get<User>(this.heroesUrl).pipe(tap(user => {
       // this.user = {
       //   ...this.user,
       //   id: this.user.id + 1

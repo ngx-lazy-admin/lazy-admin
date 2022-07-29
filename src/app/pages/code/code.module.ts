@@ -9,6 +9,7 @@ import { IconsProviderModule } from '../../shared/icons-provider.module';
 import { CodeRoutingModule } from './code-routing.module';
 import { CodeComponent } from './code.component';
 import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
+import { ApisModule } from 'src/app/services/api/apis.modules';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
   imports: [
     CommonModule,
     FormsModule,
+    ApisModule,
     ReactiveFormsModule,
     CodeRoutingModule,
     NzCodeEditorModule,

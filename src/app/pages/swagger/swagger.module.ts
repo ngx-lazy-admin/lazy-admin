@@ -1,0 +1,15 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SwaggerComponent } from './swagger.component';
+import { SwaggerRoutingModule } from './swagger-routing.module';
+
+@NgModule({
+  declarations: [
+    SwaggerComponent
+  ],
+  imports: [
+    CommonModule,
+    SwaggerRoutingModule
+  ]
+})
+export class SwaggerModule { }

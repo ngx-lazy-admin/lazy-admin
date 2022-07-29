@@ -9,15 +9,14 @@ export const FlexMockFields = [
         type: 'code-card',
         className: "d-block mb-3 col-12",
         templateOptions: {
-          title: '边框',
-          description: '边框',
+          title: 'Display',
+          description: `Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.`,
         },
         fieldGroup: [
           {
             type: 'template',
-            className: "border d-inline-block mx-2",
+            className: "border d-inline mx-2",
             templateOptions: {
-              
               style: {
                 display: 'block',
                 width: '5rem',
@@ -28,46 +27,7 @@ export const FlexMockFields = [
           },
           {
             type: 'template',
-            className: "border-top d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "border-end d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "border-bottom d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "border-start d-inline-block mx-2",
+            className: "border-top d-inline mx-2",
             templateOptions: {
               
               style: {

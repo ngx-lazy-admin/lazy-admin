@@ -281,14 +281,7 @@ export const menu = [
           {
             id: '1401',
             pid: '14',
-            name: '空白页',
-            link: '/blank/dashboard/analysis',
-            badge: '',
-          },
-          {
-            id: '1401',
-            pid: '14',
-            name: '使用iframe嵌套空白页',
+            name: '使用iframe嵌套首页',
             link: '/micro/iframe/blank/dashboard/analysis',
             badge: '',
           },
@@ -304,7 +297,7 @@ export const menu = [
       {
         id: '1402',
         pid: '14',
-        name: 'wujie',
+        name: '无界(wujie)',
         link: '',
         badge: '',
         children: [
@@ -329,9 +322,25 @@ export const menu = [
       {
         id: '1403',
         pid: '14',
-        name: '乾坤',
-        link: '/zh',
+        name: '乾坤(qiankun)',
+        link: '',
         badge: '',
+        children: [
+          {
+            id: '140101',
+            pid: '14',
+            name: 'qiankun 1',
+            link: '/micro/qiankun/1',
+            badge: '',
+          },
+          {
+            id: '140102',
+            pid: '14',
+            name: 'qiankun 2',
+            link: '/micro/qiankun/2',
+            badge: '',
+          },
+        ]
       }
     ]
   },
@@ -528,37 +537,6 @@ export const menu = [
         pid: '10',
         name: 'hightchart',
         link: '/hightchart/one',
-        badge: '',
-      },
-    ]
-  },
-  {
-    id: '10',
-    pid: '0',
-    name: '工具',
-    icon: 'warning',
-    link: '',
-    badge: '',
-    children: [
-      {
-        id: '1001',
-        pid: '10',
-        name: '内嵌页面',
-        link: '/tabs/one',
-        badge: '',
-      },
-      {
-        id: '1002',
-        pid: '10',
-        name: 'two',
-        link: '/tabs/two',
-        badge: '',
-      },
-      {
-        id: '1003',
-        pid: '10',
-        name: 'three',
-        link: '/tabs/three',
         badge: '',
       },
     ]

@@ -20,17 +20,32 @@ export class QiankunComponent implements OnInit {
     private cd: ChangeDetectorRef,
   ) {}
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    this.loadMicroApp();
+  ngOnInit(): void {
+    loadMicroApp({
+      name: '',
+      entry: '//localhost:7400',
+      container: '#qiankun',
+    }, {
+      sandbox: {
+        strictStyleIsolation: true,
+        experimentalStyleIsolation: true
+      }  
+    });
+    // const getActiveRule = (hash: any) => (location: any) => location.pathname.startsWith(hash);
+    // console.log(location.pathname.startsWith('/micro/qiankun/'))
+    // console.log(getActiveRule('/micro/qiankun/'))
+    // registerMicroApps([
+    //   {
+    //     name: 'app',
+    //     entry: '//localhost:7400',
+    //     container: '#qiankun',
+    //     // activeRule: '/micro/qiankun/app',
+    //     activeRule: getActiveRule('/micro/qiankun/'),
+    //   },
+    // ]);
   }
 
-  loadMicroApp () {
-    loadMicroApp({
-      name: 'qiankun',
-      entry: '//strawbreey.github.io/qiankun-vue3',
-      container: '#qiankun',
-    });
-  } 
+  ngAfterViewInit(): void {
+
+  }
 }

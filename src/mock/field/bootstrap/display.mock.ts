@@ -15,69 +15,15 @@ export const DisplayMockFields = [
         fieldGroup: [
           {
             type: 'template',
-            className: "border d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
+            className: "d-inline p-2 text-bg-primary",
+            defaultValue: 'd-inline',
           },
           {
             type: 'template',
-            className: "border-top d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
+            className: "d-inline p-2 text-bg-dark",
+            defaultValue: 'd-inline',
           },
-          {
-            type: 'template',
-            className: "border-end d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "border-bottom d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          },
-          {
-            type: 'template',
-            className: "border-start d-inline-block mx-2",
-            templateOptions: {
-              
-              style: {
-                display: 'block',
-                width: '5rem',
-                height: '5rem',
-                'background-color': '#f5f5f5'
-              }
-            }
-          }
+
         ]
       },
       {
