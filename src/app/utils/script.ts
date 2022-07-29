@@ -41,6 +41,7 @@ export const loadStyle = (path: string, innerContent?: string): Observable<any> 
       path,
       status: 'ok'
     };
+
     if (removedThemeStyle) {
       observed.next(successResult)
       return

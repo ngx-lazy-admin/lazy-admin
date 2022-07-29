@@ -1,7 +1,7 @@
 
 import { AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core';
 import { combineLatest  } from 'rxjs';
-import { loadScript, loadStyle } from 'src/app/utils/loadscript';
+import { loadScript, loadStyle } from 'src/app/utils/script';
 
 @Component({
   selector: 'app-swagger',

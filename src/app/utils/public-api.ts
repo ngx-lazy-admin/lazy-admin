@@ -5,3 +5,4 @@ export * from './number';
 export * from './type';
 export * from './watermark';
 export * from './utils';
+export * from './script';
