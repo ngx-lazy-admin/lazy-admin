@@ -26,15 +26,6 @@ import { LayoutBlankComponent } from './layouts/blank/blank.component';
 
 const routes: Routes = [
   {
-    path: 'swagger',
-    component: LayoutBlankComponent,
-    data: {},
-    // children: [
-    //   { path: '**', loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule) },
-    // ]
-    loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule)
-  },
-  {
     path: 'blank',
     canActivate: [ActivateGuard],
     canActivateChild: [ActivateChildGuard],
@@ -52,6 +43,7 @@ const routes: Routes = [
     canDeactivate: [GlobalDeactivateGuard],
     data: {},
     children: [
+      { path: 'swagger', loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule) },
       { path: 'micro', loadChildren: () => import('./pages/micro/micro.module').then(m => m.MicroModule) },
       { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
       { path: 'graphql', loadChildren: () => import('./pages/graphql/graphql.module').then(m => m.GraphqlModule) },

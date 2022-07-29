@@ -1005,4 +1005,10 @@ export const menu = [
       }
     ]
   },
+  {
+    id: '15',
+    name: 'swagger',
+    badge: '',
+    link: '/swagger'
+  },
 ]

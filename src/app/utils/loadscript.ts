@@ -1,11 +1,25 @@
 import { Observable } from "rxjs";
-import { SafeAny } from "../services/api/apis.type";
+import { base64Encode } from "./base64";
 
 // 加载JavaScript
-export const loadScript = (path?: string, innerContent?: string):  Observable<any> => {
+export const loadScript = (path: string, innerContent?: string):  Observable<any> => {
   return new Observable ((observed) => {
+
+    const id = base64Encode(path).slice(32)
+    const removedThemeStyle = document.getElementById(id);
+    const successResult = {
+      path,
+      status: 'ok'
+    };
+
+    if (removedThemeStyle) {
+      observed.next(successResult)
+      return
+    }
+    
     const node = window.document.createElement('script') as HTMLScriptElement;
     node.type = 'text/javascript';
+    node.id = id;
     if (path) {
       node.src = path || '';
     }
@@ -13,31 +27,34 @@ export const loadScript = (path?: string, innerContent?: string):  Observable<an
       node.innerHTML = innerContent;
     }
 
-    window.document.getElementsByTagName('body')[0].appendChild(node);
-    console.log(innerContent)
-    const item = {
-      path,
-      status: 'ok'
-    };
-    observed.next(item)
+    window.document.body.appendChild(node);
+    observed.next(successResult)
   });
 }
 
 // 加载JavaScript
-export const loadStyle = (path: string, rel: string = 'stylesheet', innerContent?: string): Observable<any> => {
+export const loadStyle = (path: string, innerContent?: string): Observable<any> => {
   return new Observable ((observed) => {
+    const id = base64Encode(path).slice(32);
+    const removedThemeStyle = document.getElementById(id);
+    const successResult = {
+      path,
+      status: 'ok'
+    };
+    if (removedThemeStyle) {
+      observed.next(successResult)
+      return
+    }
+
     const node = window.document.createElement('link') as HTMLLinkElement;
-    node.rel = rel;
+    node.rel = 'stylesheet';
+    node.id = id
     node.type = 'text/css';
     node.href = path;
     if (innerContent) {
       node.innerHTML = innerContent;
     }
-    window.document.getElementsByTagName('head')[0].appendChild(node);
-    const item = {
-      path,
-      status: 'ok'
-    };
-    observed.next(item)
+    window.document.head.appendChild(node);
+    observed.next(successResult)
   });
 }

@@ -21,12 +21,19 @@ export class SwaggerComponent implements AfterViewInit {
       loadStyle(styleUrl)
     ]).subscribe(val => {
       loadScript('', `
-        window.onload = () => {
+        if (window.ui) {
           window.ui = SwaggerUIBundle({
             url: '${JSONUrl}',
             dom_id: '#swagger-ui',
           });
-        };
+        } else {
+          window.onload = () => {
+            window.ui = SwaggerUIBundle({
+              url: '${JSONUrl}',
+              dom_id: '#swagger-ui',
+            });
+          };
+        }
       `).subscribe(item => {})
     });
   }
