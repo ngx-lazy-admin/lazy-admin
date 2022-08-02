@@ -1,11 +1,11 @@
 import { Inject, Injectable, Renderer2, ViewContainerRef, RendererFactory2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { ModalContent } from './modal-content.component';
 import { FieldService } from 'src/app/services/api/field';
 import { CacheService } from 'src/app/services/router/cache.service';
 import { randomString } from 'src/app/utils';
-import { CodeEditorService } from '../code-editor';
+import { FormModal } from './form-modal/form-modal.component';
+// import { SearchModal } from './search-modal/search-modal.component';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +39,7 @@ export class ModalService   {
     const id = randomString(32)
     this._hideAllStatus = false;
     const modal = this.modal.create({
-      nzContent: ModalContent,
+      nzContent: FormModal,
       nzViewContainerRef: this.viewContainerRef,
       nzZIndex: this.currentIndex,
       nzStyle: {

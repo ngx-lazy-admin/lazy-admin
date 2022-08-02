@@ -44,6 +44,7 @@ const routes: Routes = [
     data: {},
     children: [
       { path: 'swagger', loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule) },
+      { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
       { path: 'micro', loadChildren: () => import('./pages/micro/micro.module').then(m => m.MicroModule) },
       { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
       { path: 'graphql', loadChildren: () => import('./pages/graphql/graphql.module').then(m => m.GraphqlModule) },

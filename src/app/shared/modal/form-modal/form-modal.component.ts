@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'custom-modal-content',
+  selector: 'app-form-modal',
   template: `
   <div class="modal-wrap">
     <div class="ant-modal-header p-0 d-block "
@@ -43,7 +43,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
     `
   ]
 })
-export class ModalContent {
+export class FormModal {
 
   @Input() fields?: FormlyFieldConfig[];
   @Input() model?: any;

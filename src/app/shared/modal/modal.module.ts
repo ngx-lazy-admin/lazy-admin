@@ -2,30 +2,47 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatListModule } from '@angular/material/list';
 
 import { FormlyModule } from '@ngx-formly/core';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 
 import { IconsProviderModule } from '../icons-provider.module';
-import { ModalContent } from './modal-content.component';
 import { FieldTypeModule } from 'src/app/shared/fields/antd';
-
-// import { AntFieldTypeModule } from 'src/app/shared/antd';
-
-// import { CustomFieldModule } from 'src/app/shared/fields/custom';
 import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 
+import { FormModal } from './form-modal/form-modal.component';
+import { SearchModal } from './search-modal/search-modal.component';
+
 @NgModule({
   declarations: [
-    ModalContent,
+    FormModal,
+    SearchModal
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+
+    ScrollingModule,
+    NzAutocompleteModule,
+
+    MatListModule,
+
+    NzAlertModule,
+    NzIconModule,
+    NzModalModule,
+    NzListModule,
+    NzInputModule,
 
     NzButtonModule,
     NzModalModule,
@@ -39,7 +56,8 @@ import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
     FormFieldModule,
   ],
   exports: [
-    ModalContent,
+    FormModal,
+    SearchModal
   ]
 })
 export class ModalsModule { }

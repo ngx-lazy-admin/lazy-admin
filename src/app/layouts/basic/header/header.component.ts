@@ -79,32 +79,11 @@ export class LayoutHeaderComponent implements OnInit {
     this.menu.tabsetChange$.subscribe(item => {
       this.cd.markForCheck();
     })
-
-    hotkeys('ctrl + k', (event, handler) => {
-      // Prevent the default refresh event under WINDOWS system
-      event.preventDefault();
-      this.isVisible = true;
-      this.cd.markForCheck();
-    });
   }
 
   collapseChange (isCollapsed: boolean) {
     this.isCollapsed = isCollapsed;
     this.layout.collapseChange(this.isCollapsed);
-  }
-
-  showModal(): void {
-    this.isVisible = true;
-  }
-
-  handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
-  }
-
-  handleCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisible = false;
   }
 
   fullScreen() {

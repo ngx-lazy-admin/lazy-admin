@@ -16,8 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MockService } from '../mock/mock.service';
-import { GlobalSearchModule } from './shared/global-search';
-import { ThemeSettingModule } from './shared/theme-setting';
+import { ModalsModule } from './shared/modal';
 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [
@@ -27,7 +26,6 @@ const httpInterceptorProviders = [
       multi: true
     },
 ];
-
 
 registerLocaleData(zh);
 
@@ -43,8 +41,7 @@ registerLocaleData(zh);
     HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
-    GlobalSearchModule,
-    ThemeSettingModule,
+    ModalsModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
