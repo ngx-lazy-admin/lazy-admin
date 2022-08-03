@@ -92,10 +92,6 @@ export class FormComponent {
     private codeEditorService: CodeEditorService,
     private http: HttpClient
   ) {
-
-
-    // this.formService.
-
     // 监听路由变化
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -104,9 +100,6 @@ export class FormComponent {
         this.loading = true
         this.cd.markForCheck();
         const resultCache = this.routeCache.get(this.router.url);
-        console.log(resultCache)
-        console.log(new Date().getTime())
-        console.log(this.route.snapshot.paramMap)
         if (resultCache) {
           this.render(resultCache)
           this.routeCache.recoveryHistoryPosition(this.router.url)
@@ -168,29 +161,29 @@ export class FormComponent {
 
     hotkeys('m', (event, handler) => {
       // 转弹窗
-      const modal = this.modalService.create({
-        nzWidth: '900px',
-        nzWrapClassName: 'dragModal',
-        nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
-        fields: this.cacheFields,
-        model: this.model,
-        nzMask: false,
-        nzFooter: [
-          {
-            label: '取消',
-            onClick: () => modal.destroy()
-          },
-          {
-            label: '确定',
-            type: 'primary',
-            onClick: ($event: any) => {
-              return new Promise(resolve => setTimeout(() => {
-                console.log($event)
-              }, 60));
-            }
-          }
-        ]
-      })
+      // const modal = this.modalService.open('form', {
+      //   nzWidth: '900px',
+      //   nzWrapClassName: 'dragModal',
+      //   nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+      //   fields: this.cacheFields,
+      //   model: this.model,
+      //   nzMask: false,
+      //   nzFooter: [
+      //     {
+      //       label: '取消',
+      //       onClick: () => modal.destroy()
+      //     },
+      //     {
+      //       label: '确定',
+      //       type: 'primary',
+      //       onClick: ($event: any) => {
+      //         return new Promise(resolve => setTimeout(() => {
+      //           console.log($event)
+      //         }, 60));
+      //       }
+      //     }
+      //   ]
+      // })
     });
   }
 

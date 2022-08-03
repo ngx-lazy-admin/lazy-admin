@@ -303,7 +303,7 @@ body {
 .cdk-overlay-container,
 .cdk-overlay-backdrop,
 .ant-modal-wrap  {
-    // pointer-events: none !important;
+    pointer-events: none !important;
 }
 
 .pointer-events-none {

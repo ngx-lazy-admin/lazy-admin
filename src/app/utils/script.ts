@@ -1,7 +1,6 @@
 import { Observable } from "rxjs";
 import { base64Encode } from "./base64";
 
-// 加载JavaScript
 export const loadScript = (path: string, innerContent?: string):  Observable<any> => {
   return new Observable ((observed) => {
 
@@ -32,7 +31,6 @@ export const loadScript = (path: string, innerContent?: string):  Observable<any
   });
 }
 
-// 加载JavaScript
 export const loadStyle = (path: string, innerContent?: string): Observable<any> => {
   return new Observable ((observed) => {
     const id = base64Encode(path).slice(32);

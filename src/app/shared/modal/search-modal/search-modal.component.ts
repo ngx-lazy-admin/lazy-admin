@@ -2,12 +2,24 @@ import {
   Component,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+	Injector,
 } from '@angular/core';
 import hotkeys from 'hotkeys-js';
+import { DispatchService } from '../dispatch.service';
 
 @Component({
   selector: 'app-search-modal',
   template: `
+	    <div class="ant-modal-header p-0 d-block "
+      cdkDrag
+      cdkDragHandle
+      cdkDragRootElement=".ant-modal-content"
+      style="cursor: move;">
+      <div class="d-flex justify-content-between">
+							11111
+      </div>
+    </div>
+			<button nz-button (click)="form($event)"> 全局搜索 </button>
   		<div style="height: 500px;" class="position-relative">
 			<div class="py-2 px-3 border-bottom">
 				<input
@@ -63,6 +75,7 @@ export class SearchModal {
   searchValue = ''
   constructor(
     private cd: ChangeDetectorRef,
+		private dispatch: DispatchService
   ) {
 
     hotkeys('ctrl + k', (event, handler) => {
@@ -92,4 +105,14 @@ export class SearchModal {
     this.cd.markForCheck();
   }
 
+	form ($event: any) {
+    this.dispatch.open('search', {
+			afterOpen: (modal: any) => {
+				console.log(modal)
+			},
+			afterClose: (modal: any) => {
+				console.log(modal)
+			}
+		}, {})
+  }
 }

@@ -22,8 +22,14 @@ import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 
 import { FormModal } from './form-modal/form-modal.component';
 import { SearchModal } from './search-modal/search-modal.component';
+import { DispatchService } from './dispatch.service';
+import { ModalService } from './modal.service';
 
 @NgModule({
+  providers: [
+    DispatchService,
+    ModalService
+  ],
   declarations: [
     FormModal,
     SearchModal

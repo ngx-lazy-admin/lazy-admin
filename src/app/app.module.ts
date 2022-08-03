@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MockService } from '../mock/mock.service';
+
 import { ModalsModule } from './shared/modal';
 
 /** Http interceptor providers in outside-in order */

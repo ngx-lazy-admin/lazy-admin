@@ -2,6 +2,7 @@
 import { Component, OnInit, Input, TemplateRef, ViewContainerRef, Renderer2, ElementRef } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { ModalService } from 'src/app/shared/modal';
+import { DispatchService } from 'src/app/shared/modal/dispatch.service';
 
 @Component({
   selector: 'app-modal',
@@ -14,7 +15,8 @@ export class ModalComponent implements OnInit {
 
   constructor(
     private renderer: Renderer2,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private dispatch: DispatchService
   ) {
 
   }
@@ -37,30 +39,30 @@ export class ModalComponent implements OnInit {
   ]
 
   create($event: any) {
-   const modal = this.modalService.create({
-      nzWidth: '900px',
-      nzWrapClassName: 'dragModal',
-      nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
-      fields: this.fields,
-      model: this.model,
-      nzMask: false,
-      nzFooter: [
-        {
-          label: '取消1',
-          onClick: () => modal.destroy()
-        },
-        {
-          label: '确定',
-          type: 'primary',
-          onClick: ($event: any) => {
-            return new Promise(resolve => setTimeout(() => {
-              console.log($event)
-              modal.destroy()
-            }, 2000));
-          }
-        }
-      ]
-    }, $event)
+  //  const modal = this.modalService.create({
+  //     nzWidth: '900px',
+  //     nzWrapClassName: 'dragModal',
+  //     nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+  //     fields: this.fields,
+  //     model: this.model,
+  //     nzMask: false,
+  //     nzFooter: [
+  //       {
+  //         label: '取消1',
+  //         onClick: () => modal.destroy()
+  //       },
+  //       {
+  //         label: '确定',
+  //         type: 'primary',
+  //         onClick: ($event: any) => {
+  //           return new Promise(resolve => setTimeout(() => {
+  //             console.log($event)
+  //             modal.destroy()
+  //           }, 2000));
+  //         }
+  //       }
+  //     ]
+  //   }, $event)
   }
 
   close ($event: any) {
@@ -69,5 +71,32 @@ export class ModalComponent implements OnInit {
 
   open ($event: any) {
     this.modalService.show($event)
+  }
+
+  search ($event: any) {
+    this.modalService.open('search')
+  }
+
+  form ($event: any) {
+    const params = {
+      fields: this.fields,
+      model: this.model,
+    }
+    this.modalService.open('form', params)
+  }
+
+  dispatchSearch ($event: any) {
+    // 需求一个回调, 时间
+    let params = {
+      afterClose: () => {
+        console.log('弹窗关闭了')
+      }
+    }
+    let componentParams = null 
+    this.dispatch.open('search', params, componentParams)
+  }
+
+  dispatchForm ($event: any) {
+    this.dispatch.open('form')
   }
 }
