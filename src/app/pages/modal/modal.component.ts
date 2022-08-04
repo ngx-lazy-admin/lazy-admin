@@ -99,4 +99,41 @@ export class ModalComponent implements OnInit {
   dispatchForm ($event: any) {
     this.dispatch.open('form')
   }
+
+  blank ($event: any) {
+    this.dispatch.open('blank')
+  }
+
+  modalId: string = ''
+
+  openBlank ($event: any) {
+    let params = {
+      afterOpen: (modal: any) => {
+        console.log('弹窗打开了')
+        console.log(modal)
+        this.modalId = modal.componentInstance.id
+      }
+    }
+    this.dispatch.open('blank', params)
+  }
+
+  closeBlank ($event: any) {
+    this.dispatch.close(this.modalId)
+  }
+
+  hideBlank ($event: any) {
+    this.dispatch.hide(this.modalId)
+  }
+
+  showBlank ($event: any) {
+    this.dispatch.open('blank')
+  }
+
+  hideAllBlank ($event: any) {
+    this.dispatch.hideAll()
+  }
+
+  showAllBlank ($event: any) {
+    this.dispatch.showAll()
+  }
 }

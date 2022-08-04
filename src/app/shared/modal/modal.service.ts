@@ -7,18 +7,20 @@ import { FormModal } from './form-modal/form-modal.component';
 import { Observable } from 'rxjs';
 import { SearchModal } from './search-modal/search-modal.component';
 import { DispatchService } from './dispatch.service';
+import { BlankModal } from './blank-modal/blank-modal.component';
 
-type modalType = 'search' | 'form'
+type modalType = 'search' | 'form' | 'blank'
 
 const modals = {
   'search': SearchModal,
-  'form': FormModal
+  'form': FormModal,
+  'blank': BlankModal
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class ModalService   {
+export class ModalService {
   viewContainerRef!: ViewContainerRef
 
   userSettingsPortal: any
@@ -32,22 +34,42 @@ export class ModalService   {
   constructor(
     private modal: NzModalService,
     private rendererFactory: RendererFactory2,
-    private fieldService: FieldService,
-    private cache: CacheService,
     private dispatch: DispatchService,
   ) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
 
     // 监听调度器
     this.dispatch.modal$.subscribe(item => {
-      this.open(item.type, item.params, item.componentParams).subscribe()
+      
+      const modal = this.find(item?.id)
+      if (item.operation === 'open') {
+        this.open(item.type, item.params, item.componentParams).subscribe()
+      } else if (modal){
+        if (item.operation === 'close') {
+          this.close(modal as NzModalRef<any>)
+        }
+        
+        if (item.operation === 'hide') {
+          this.hide(modal as NzModalRef<any>)
+        } 
+      } else {
+        if (item.operation === 'hideAll') {
+          this.hideAll()
+        }
+
+        if (item.operation === 'showAll') {
+          this.showAll()
+        }
+      }
     })
   }
 
   open (type: modalType, params?: any, componentParams?: any) {
     return new Observable ((observed) => {
       this._hideAllStatus = false;
+      const id = randomString(32)
       const modal = this.modal.create({
+        id: id,
         nzContent: modals[type],
         nzViewContainerRef: this.viewContainerRef,
         nzZIndex: this.currentIndex,
@@ -57,6 +79,7 @@ export class ModalService   {
           top: ((this.modal.openModals.length) * 20 + 100) + 'px',
         },
         nzComponentParams: {
+          id: id,
           ...componentParams
         },
         nzClosable: false,
@@ -96,69 +119,61 @@ export class ModalService   {
     })
   }
 
-  // 
-  close (id: string) {
-    const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
+  close (modal: NzModalRef) {
     modal?.destroy()
   }
 
+  show (modal: NzModalRef) {
+    const config = modal.getConfig()
+    const className = config.nzWrapClassName
+      ?.split(' ')
+      ?.filter(item => item !== 'd-none')
+      ?.join(' ')
 
-  hide (id: string) {
-    const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
-    modal?.getElement().parentElement?.parentElement?.classList.add('pointer-events-none')
-  }
+    if (className === config.nzWrapClassName) {
+      return
+    }
 
-  // 显示所有弹窗
-  show ($event: any) {
-    $event.stopPropagation();
-    this._hideAllStatus = false;
-    this.modal.openModals.map(modal => {
-      this.showModal(modal)
+    modal.updateConfig({
+      ...config,
+      nzWrapClassName: className
     })
   }
 
-  // 关闭所有弹窗
+  hide (modal: NzModalRef) {
+    const config = modal.getConfig()
+    const className = config.nzWrapClassName
+      ?.split(' ')
+      ?.filter(item => item === 'd-none')
+      ?.join(' ')
+    console.log(className)
+    modal.updateConfig({
+      ...config,
+      nzZIndex: 1,
+      nzClassName: 'className',
+      nzWrapClassName: className + ' d-none'
+    })
+  }
+
+  showAll () {
+    console.log('showAll')
+    this.modal.openModals?.map(modal => {
+      this.show(modal)
+    })
+  }
+
   closeAll () {
     this.modal.closeAll()
   }
 
-  // 隐藏所有弹窗
   hideAll () {
-    if (!this._hideAllStatus) {
-      this._hideAllStatus = true
-      this.modal.openModals.map(modal => {
-        this.hideModal(modal)
-      })
-      this.currentIndex = 1001
-    }
-  }
-
-  // 显示弹窗
-  showModal (modal: NzModalRef) {
-    const config = modal.getConfig()
-    let className = config.nzWrapClassName?.split(" ")
-
-    if (className?.find(name => name === 'd-none')) {
-      className = className?.filter(item => item !== 'd-none')
-    }
-
-    modal.updateConfig({
-      ...config,
-      nzWrapClassName: className?.join(' ')
+    console.log('modalService: hideAll')
+    this.modal.openModals?.map(modal => {
+      this.hide(modal)
     })
   }
 
-  // 隐藏弹窗
-  hideModal (modal: NzModalRef) {
-    const config = modal.getConfig()
-    let className = config.nzWrapClassName?.split(" ")
-    if (!className?.find(name => name === 'd-none')) {
-      className?.push('d-none')
-    }
-    modal.updateConfig({
-      ...config,
-      nzZIndex: 1000,
-      nzWrapClassName: className?.join(' ')
-    })
+  find (id: string) {
+    return id && this.modal.openModals.find(item => item.componentInstance?.id === id)
   }
 }

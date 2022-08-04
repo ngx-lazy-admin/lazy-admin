@@ -6,6 +6,17 @@
 <button nz-button (click)="form($event)"> 全局搜索 </button>
 <button nz-button (click)="dispatchSearch($event)"> dispatchSearch </button>
 <button nz-button (click)="dispatchForm($event)"> dispatchForm </button>
+<button nz-button (click)="blank($event)"> 打开空白弹窗 </button>
+
 
 
 dispatchForm
+
+<br><br>
+
+<button nz-button (click)="openBlank($event)"> 打开弹窗 </button>
+<button nz-button (click)="closeBlank($event)"> 关闭弹窗 </button>
+<button nz-button (click)="hideBlank($event)"> 隐藏弹窗 </button>
+<button nz-button (click)="showBlank($event)"> 显示弹窗 </button>
+<button nz-button (click)="hideAllBlank($event)"> 隐藏全部 </button>
+<button nz-button (click)="showAllBlank($event)"> 显示全部 </button>

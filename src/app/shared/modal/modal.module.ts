@@ -24,6 +24,7 @@ import { FormModal } from './form-modal/form-modal.component';
 import { SearchModal } from './search-modal/search-modal.component';
 import { DispatchService } from './dispatch.service';
 import { ModalService } from './modal.service';
+import { BlankModal } from './blank-modal/blank-modal.component';
 
 @NgModule({
   providers: [
@@ -32,7 +33,8 @@ import { ModalService } from './modal.service';
   ],
   declarations: [
     FormModal,
-    SearchModal
+    SearchModal,
+    BlankModal
   ],
   imports: [
     CommonModule,
@@ -63,7 +65,8 @@ import { ModalService } from './modal.service';
   ],
   exports: [
     FormModal,
-    SearchModal
+    SearchModal,
+    BlankModal
   ]
 })
 export class ModalsModule { }
