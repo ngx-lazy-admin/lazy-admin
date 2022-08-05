@@ -527,14 +527,14 @@ export const menu = [
       },
       {
         id: '1302',
-        pid: '10',
+        pid: '13',
         name: 'Echart',
-        link: '/echart/one',
+        link: '/antv/echart',
         badge: '',
       },
       {
         id: '1302',
-        pid: '10',
+        pid: '13',
         name: 'hightchart',
         link: '/hightchart/one',
         badge: '',

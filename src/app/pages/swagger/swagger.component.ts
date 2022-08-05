@@ -3,6 +3,13 @@ import { AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core'
 import { combineLatest  } from 'rxjs';
 import { loadScript, loadStyle } from 'src/app/utils/script';
 
+declare global {
+  interface Window {
+    SwaggerUIBundle: any,
+    ui: any
+  }
+}
+
 @Component({
   selector: 'app-swagger',
   templateUrl: './swagger.component.html',
@@ -20,21 +27,10 @@ export class SwaggerComponent implements AfterViewInit {
       loadScript(scriptUrl),
       loadStyle(styleUrl)
     ]).subscribe(val => {
-      loadScript('', `
-        if (window.ui) {
-          window.ui = SwaggerUIBundle({
-            url: '${JSONUrl}',
-            dom_id: '#swagger-ui',
-          });
-        } else {
-          window.onload = () => {
-            window.ui = SwaggerUIBundle({
-              url: '${JSONUrl}',
-              dom_id: '#swagger-ui',
-            });
-          };
-        }
-      `).subscribe(item => {})
+      window.ui = window.SwaggerUIBundle({
+        url: JSONUrl,
+        dom_id: '#swagger-ui',
+      });
     });
   }
 }

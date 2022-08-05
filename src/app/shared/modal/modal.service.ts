@@ -29,8 +29,6 @@ export class ModalService {
 
   private renderer: Renderer2;
 
-  private _hideAllStatus: boolean = false;
-
   constructor(
     private modal: NzModalService,
     private rendererFactory: RendererFactory2,
@@ -66,14 +64,17 @@ export class ModalService {
 
   open (type: modalType, params?: any, componentParams?: any) {
     return new Observable ((observed) => {
-      this._hideAllStatus = false;
       const id = randomString(32)
       const modal = this.modal.create({
         id: id,
         nzContent: modals[type],
+        nzFooter: null,
         nzViewContainerRef: this.viewContainerRef,
         nzZIndex: this.currentIndex,
         nzMask: false,
+        nzBodyStyle: {
+          padding: 0
+        },
         nzStyle: {
           left: ((this.modal.openModals.length) * 20) + 'px',
           top: ((this.modal.openModals.length) * 20 + 100) + 'px',
@@ -146,7 +147,7 @@ export class ModalService {
       ?.split(' ')
       ?.filter(item => item === 'd-none')
       ?.join(' ')
-    console.log(className)
+
     modal.updateConfig({
       ...config,
       nzZIndex: 1,

@@ -11,7 +11,7 @@ export const loadScript = (path: string, innerContent?: string):  Observable<any
       status: 'ok'
     };
 
-    if (removedThemeStyle) {
+    if (path && removedThemeStyle) {
       observed.next(successResult)
       return
     }
@@ -27,7 +27,14 @@ export const loadScript = (path: string, innerContent?: string):  Observable<any
     }
 
     window.document.body.appendChild(node);
-    observed.next(successResult)
+
+    node.onload = () => {
+      observed.next(successResult)
+    };
+
+    node.onerror = (error: any) => {
+      observed.next(successResult)
+    };
   });
 }
 
@@ -40,7 +47,7 @@ export const loadStyle = (path: string, innerContent?: string): Observable<any> 
       status: 'ok'
     };
 
-    if (removedThemeStyle) {
+    if (path && removedThemeStyle) {
       observed.next(successResult)
       return
     }

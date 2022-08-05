@@ -26,6 +26,8 @@ import { DispatchService } from './dispatch.service';
 import { ModalService } from './modal.service';
 import { BlankModal } from './blank-modal/blank-modal.component';
 
+import { NzResizableModule } from 'ng-zorro-antd/resizable';
+
 @NgModule({
   providers: [
     DispatchService,
@@ -42,19 +44,18 @@ import { BlankModal } from './blank-modal/blank-modal.component';
     ReactiveFormsModule,
 
     ScrollingModule,
-    NzAutocompleteModule,
-
+    DragDropModule,
     MatListModule,
 
     NzAlertModule,
+    NzButtonModule,
     NzIconModule,
     NzModalModule,
     NzListModule,
     NzInputModule,
+    NzResizableModule,
+    NzAutocompleteModule,
 
-    NzButtonModule,
-    NzModalModule,
-    DragDropModule,
     IconsProviderModule,
 
     FormlyModule,

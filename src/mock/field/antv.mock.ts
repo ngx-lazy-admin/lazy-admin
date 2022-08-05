@@ -1,7 +1,7 @@
 
 // @ts-nocheck
 
-import { AntvLineMock, AntvAreaMock } from "./antv";
+import { AntvLineMock, AntvAreaMock, EchartMock } from "./antv";
 
 function resolveAfter2Seconds() {
   return new Promise(resolve => {
@@ -361,6 +361,13 @@ const data = [
 ]
 
 export const antv = [
+    {
+		id: 'echart',
+		fields: EchartMock,
+		info: {
+			title: '折线图',
+		}
+	},
 	{
 		id: 'line',
 		fields: AntvLineMock,
