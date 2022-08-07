@@ -10,7 +10,7 @@ import { bus, preloadApp, startApp, destroyApp } from "wujie";
 
 @Component({
   selector: 'app-wujie',
-  templateUrl: './wujie.component.html',
+  template: `<div id="wujie"></div>`,
   styleUrls: ['./wujie.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -24,7 +24,7 @@ export class WuJieComponent implements AfterViewInit {
   ngAfterViewInit(): void { 
     startApp({
       name: 'wujie',
-      url: window.location.origin,
+      url: '//localhost:7400',
       sync: true,
       alive: false,
       el:  this.elRef.nativeElement.querySelector('#wujie'),
@@ -33,9 +33,15 @@ export class WuJieComponent implements AfterViewInit {
     })
   }
 
-  fetch = (url: RequestInfo, options: RequestInit | undefined) => {
-    console.log('fetch:' + url)
-    return window.fetch(url, { ...options, credentials: "include" })
+  // fetch = (url: RequestInfo, options: RequestInit | undefined) => {
+  //   console.log('fetch:' + url)
+  //   return window.fetch(url, { ...options, credentials: "include" })
+  // }
+
+  // woa环境携带登录态必须添加credential
+ fetch = (url: RequestInfo | string, options: RequestInit | undefined) => {
+    const includeFlag = false;
+    return window.fetch(url, { ...options, credentials: includeFlag ? "include" : "omit" });
   }
 
 }
