@@ -404,7 +404,6 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						defaultValue: data,
 						templateOptions: {
 							config: {
 								xAxis: {

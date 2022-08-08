@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewEncapsulation, AfterViewInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, ElementRef, ViewEncapsulation, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType,  } from '@ngx-formly/core';
+import { BehaviorSubject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { loadScript } from 'src/app/utils';
 
 declare global {
@@ -12,12 +13,13 @@ declare global {
 @Component({
   selector: 'div[echart-field]',
   template: `
-    <div id="main" style="height:400px; width: 300px"></div>
+    <div id="echart" style="height:400px; width: 100%"></div>
   `,
   styleUrls: [
     './echart.component.css',
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EchartsField extends FieldType implements AfterViewInit {
 
@@ -27,38 +29,35 @@ export class EchartsField extends FieldType implements AfterViewInit {
     super();
   }
 
-  myChart: any = null;
+  echart: any = null;
+  resizeChange$ = new BehaviorSubject<ResizeObserverEntry[]>([]);
 
-  // 视图加载完成后执行初始化
   ngAfterViewInit() {
     loadScript('https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.js').subscribe(item => {
-      var myChart = window.echarts.init(this.elRef.nativeElement.querySelector('#main'));
-
-      // 指定图表的配置项和数据
-      var option = {
-        title: {
-          text: 'ECharts 入门示例'
-        },
-        tooltip: {},
-        legend: {
-          data: ['销量']
-        },
-        xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-        },
-        yAxis: {},
-        series: [
-          {
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-          }
-        ]
-      };
-  
-      // 使用刚指定的配置项和数据显示图表。
-      myChart.setOption(option);
+      this.echart = window.echarts.init(this.elRef.nativeElement.querySelector('#echart'));
+      this.echart.setOption(this.formControl.value || this.to.config);
     })
+
+    this.formControl.valueChanges.subscribe(option => {
+      this.echart?.setOption(option || this.to.config);
+    })
+
+    this.resizeChange$
+      .asObservable()
+      .pipe(debounceTime(30))
+      .subscribe(() => {
+        this.echart?.resize();
+      });
+    
+    const resizeObserver = new ResizeObserver(entries => {
+      this.resizeChange$.next(entries)
+    });
+
+    resizeObserver.observe(this.elRef.nativeElement.querySelector('#echart'));
+  }
+
+  ngOnDestroy(): void {
+    this.resizeChange$?.unsubscribe();
   }
 }
 
