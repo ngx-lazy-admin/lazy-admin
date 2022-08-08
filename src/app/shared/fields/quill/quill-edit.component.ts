@@ -4,10 +4,8 @@ import { FieldType, FormlyConfig,  } from '@ngx-formly/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 import Quill from 'quill';
-// import { ShareFieldType } from '../../types/share-field.type';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ShareFieldType } from '../share-field.type';
-// import { CosService } from '../../../../services/cos.service';
 
 const font = Quill.import('formats/font');
 font.whitelist = ['mirza', 'roboto', 'aref', 'serif', 'sansserif', 'monospace'];

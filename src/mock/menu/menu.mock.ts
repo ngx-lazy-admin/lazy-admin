@@ -1011,4 +1011,10 @@ export const menu = [
     badge: '',
     link: '/swagger'
   },
+  {
+    id: '16',
+    name: '弹窗系统',
+    badge: '',
+    link: '/modal'
+  },
 ]
