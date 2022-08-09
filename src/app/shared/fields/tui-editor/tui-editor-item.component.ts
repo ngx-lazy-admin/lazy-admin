@@ -12,9 +12,13 @@ import { HttpClient } from '@angular/common/http';
 import { FieldType,  } from '@ngx-formly/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
+import { loadScript, loadStyle } from 'src/app/utils';
 
-// @ts-ignore
-import Editor, { EditorOptions } from '@toast-ui/editor';
+declare global {
+  interface Window {
+    toastui: any
+  }
+}
 
 @Component({
   selector: 'tui-editor-item',
@@ -22,7 +26,7 @@ import Editor, { EditorOptions } from '@toast-ui/editor';
     './tui-editor-item.component.css',
   ],
   template: `
-    <div class="#editor"></div>
+    <div class="editor"></div>
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,7 +38,7 @@ import Editor, { EditorOptions } from '@toast-ui/editor';
     }
   ]
 })
-export class TuiEditFieldItem extends FieldType implements AfterViewInit {
+export class TuiEditFieldItem implements AfterViewInit {
 
   @Input() 
   placeholder: string = '';
@@ -46,13 +50,11 @@ export class TuiEditFieldItem extends FieldType implements AfterViewInit {
   }
 
   constructor(
-    private elementRef: ElementRef,
+    private elRef: ElementRef,
     private http: HttpClient,
     private cd: ChangeDetectorRef,
     // private cos: CosService
-  ) {
-    super();
-  }
+  ) {}
 
   // action = 'web/plupload/upload-big?object_type=1430';
   onChange: OnChangeType = () => {};
@@ -65,15 +67,21 @@ export class TuiEditFieldItem extends FieldType implements AfterViewInit {
 
   // 视图加载完成后执行初始化
   ngAfterViewInit() {
-    this.editorElem = this.elementRef.nativeElement.children[0];
+    this.editorElem = this.elRef.nativeElement.children[0];
+    loadStyle('https://uicdn.toast.com/editor/latest/toastui-editor.min.css').subscribe(item => {})
+    loadScript('https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js').subscribe(item => {
+      const Editor = window.toastui.Editor;
+      this.tuiEditor = new Editor({
+        el: this.elRef.nativeElement.querySelector('.editor'),
+        height: '500px',
+        initialEditType: 'markdown',
+        previewStyle: 'vertical'
+      });
 
-    if (this.editorElem) {
-      this.tuiEditor = new Editor(
-        Object.assign({el: this.editorElem}, this.config)
-      )
-    }
+      this.tuiEditor.getMarkdown();
+    })
 
-    this.tuiEditor.on("change", (value: any) => {
+    this.tuiEditor?.on("change", (value: any) => {
       this.onChange(this.tuiEditor.getMarkdown())
     })
   }

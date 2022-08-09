@@ -12,10 +12,12 @@ export const EditorMockFields = [
             title: 'quill 富文本编辑器',
             description: '',
           },
+
           fieldGroup: [
             {
 							key: 'editor',
               type: 'quill',
+              defaultValue: '111',
               className: "d-inline-block mx-2",
               templateOptions: {}
             }

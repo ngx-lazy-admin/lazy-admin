@@ -4,14 +4,14 @@ import { base64Encode } from "./base64";
 export const loadScript = (path: string, innerContent?: string):  Observable<any> => {
   return new Observable ((observed) => {
 
-    const id = base64Encode(path).slice(32)
-    const removedThemeStyle = document.getElementById(id);
+    const id = base64Encode(path).slice(16)
+    const removedScript = document.getElementById(id);
     const successResult = {
       path,
       status: 'ok'
     };
 
-    if (path && removedThemeStyle) {
+    if (path && removedScript && removedScript.dataset.onload === 'true') {
       observed.next(successResult)
       return
     }
@@ -19,6 +19,7 @@ export const loadScript = (path: string, innerContent?: string):  Observable<any
     const node = window.document.createElement('script') as HTMLScriptElement;
     node.type = 'text/javascript';
     node.id = id;
+    node.dataset.onload = 'false'
     if (path) {
       node.src = path || '';
     }
@@ -26,13 +27,19 @@ export const loadScript = (path: string, innerContent?: string):  Observable<any
       node.innerHTML = innerContent;
     }
 
+    if (removedScript) {
+      window.document.body.removeChild(removedScript);
+    }
+
     window.document.body.appendChild(node);
 
     node.onload = () => {
+      node.dataset.onload = 'true'
       observed.next(successResult)
     };
 
     node.onerror = (error: any) => {
+      node.dataset.onload = 'false'
       observed.next(successResult)
     };
   });

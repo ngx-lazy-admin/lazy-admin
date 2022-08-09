@@ -428,6 +428,77 @@ export const EchartMock = [
 					}
 				]
 			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '基础折线图',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								xAxis: {
+									type: 'category',
+									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+								},
+								yAxis: {
+									type: 'value'
+								},
+								series: [
+									{
+										data: [120, 100, 150, 50, 70, 110, 130],
+										type: 'bar',
+										showBackground: true,
+										backgroundStyle: {
+											color: 'rgba(180, 180, 180, 0.2)'
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '基础折线图',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								xAxis: {
+									type: 'category',
+									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+								},
+								yAxis: {
+									type: 'value'
+								},
+								series: [
+									{
+										data: [120, 50, 150, 50, 70, 160, 130],
+										type: 'bar',
+										showBackground: true,
+										backgroundStyle: {
+											color: 'rgba(180, 180, 180, 0.2)'
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+
 
 			{
 				type: 'card',

@@ -3,13 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { FieldType, FormlyConfig,  } from '@ngx-formly/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BooleanInput, OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
-import Quill from 'quill';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ShareFieldType } from '../share-field.type';
+import { loadScript, loadStyle } from 'src/app/utils';
 
-const font = Quill.import('formats/font');
-font.whitelist = ['mirza', 'roboto', 'aref', 'serif', 'sansserif', 'monospace'];
-Quill.register(font, true);
+declare global {
+  interface Window {
+    Quill: any
+  }
+}
+
 
 @Component({
   selector: 'quill-edit-field',
@@ -29,7 +32,7 @@ Quill.register(font, true);
     }
   ]
 })
-export class QuillEditField extends ShareFieldType implements AfterViewInit {
+export class QuillEditField implements AfterViewInit {
 
   @Input() 
   placeholder: string = '';
@@ -56,63 +59,84 @@ export class QuillEditField extends ShareFieldType implements AfterViewInit {
     ]
   };
 
+  constructor(
+    private elRef: ElementRef,
+    private http: HttpClient,
+    private cd: ChangeDetectorRef,
+    // private cos: CosService
+  ) {
+    // super();
+  }
+
   // 视图加载完成后执行初始化
   ngAfterViewInit() {
-    this.editorElem = this.elementRef.nativeElement.children[0];
-    this.quillEditor = new Quill(this.editorElem, Object.assign({
-      modules: this.defaultModules,
-      placeholder: this.placeholder || '请输入',
-      readOnly: false,
-      theme: 'snow',
-      boundary: document.body
-    }));
+    this.editorElem = this.elRef.nativeElement.children[0];
+    loadStyle('https://cdn.quilljs.com/1.3.6/quill.snow.css').subscribe(item => {})
+    loadScript('https://cdn.quilljs.com/1.3.6/quill.js').subscribe(item => {
+      // this.echart = window.echarts.init(this.elRef.nativeElement.querySelector('#echart'));
+      // this.echart.setOption(this.formControl.value || this.to.config);
+      const Quill = window.Quill
 
-    // 写入内容
-    this.quillEditor.on('selection-change', (range: any) => {
-      if (!range) {
-        // this.onModelTouched();
-        // this.blur.emit(this.quillEditor);
-      } else {
-        // this.focus.emit(this.quillEditor);
-      }
-    });
+      const font = Quill.import('formats/font');
+      font.whitelist = ['mirza', 'roboto', 'aref', 'serif', 'sansserif', 'monospace'];
+      Quill.register(font, true);
 
-    // text change
-    this.quillEditor.on('text-change', (delta: any, oldDelta: any, source: any) => {
-      if (this.editorElem instanceof HTMLElement) {
-        let value = this.editorElem.children[0].innerHTML;
-        if (value === '<p><br></p>') {
-          value = '';
+      console.log(window)
+      this.quillEditor = new Quill(this.editorElem, Object.assign({
+        modules: this.defaultModules,
+        placeholder: this.placeholder || '请输入',
+        readOnly: false,
+        theme: 'snow',
+        boundary: document.body
+      }));
+  
+      // 写入内容
+      this.quillEditor?.on('selection-change', (range: any) => {
+        if (!range) {
+          // this.onModelTouched();
+          // this.blur.emit(this.quillEditor);
+        } else {
+          // this.focus.emit(this.quillEditor);
         }
-        this.onChange(value);
-      }
-    });
-
-    // 上传图片
-    this.quillEditor.getModule('toolbar').addHandler('image', this.handlerImage.bind(this));
-
-    // 监听拖拽
-    this.quillEditor.root.addEventListener('drop', this.dropHandle.bind(this), false);
+      });
+  
+      // text change
+      this.quillEditor.on('text-change', (delta: any, oldDelta: any, source: any) => {
+        if (this.editorElem instanceof HTMLElement) {
+          let value = this.editorElem.children[0].innerHTML;
+          if (value === '<p><br></p>') {
+            value = '';
+          }
+          this.onChange(value);
+        }
+      });
+  
+      // 上传图片
+      this.quillEditor.getModule('toolbar').addHandler('image', this.handlerImage.bind(this));
+  
+      // 监听拖拽
+      this.quillEditor.root.addEventListener('drop', this.dropHandle.bind(this), false);
+    })
   }
 
   handlerImage () {
-    const Imageinput = document.createElement('input');
-    Imageinput.setAttribute('type', 'file');
-    Imageinput.setAttribute('name', 'file');
-    Imageinput.setAttribute('accept', 'image/png, image/gif, image/jpeg');
-    Imageinput.classList.add('ql-image');
-    Imageinput.addEventListener('change', () => {
-      if (Imageinput instanceof HTMLInputElement && Imageinput.files) {
-        const file = Imageinput.files[0];
+    const imageInput = document.createElement('input');
+    imageInput.setAttribute('type', 'file');
+    imageInput.setAttribute('name', 'file');
+    imageInput.setAttribute('accept', 'image/png, image/gif, image/jpeg');
+    imageInput.classList.add('ql-image');
+    imageInput.addEventListener('change', () => {
+      if (imageInput instanceof HTMLInputElement && imageInput.files) {
+        const file = imageInput.files[0];
         const formData = new FormData();
         formData.append('file', file);
-        if (Imageinput.files != null && Imageinput.files[0] != null) {
+        if (imageInput.files != null && imageInput.files[0] != null) {
           this.uploadFile(file)
         }
       }
 
     });
-    Imageinput.click();
+    imageInput.click();
   }
 
   /**
@@ -174,13 +198,14 @@ export class QuillEditField extends ShareFieldType implements AfterViewInit {
   }
 
   writeValue(value: any): void {
+    console.log(value)
     if (this.quillEditor) {
       this.quillEditor.deleteText(0, this.quillEditor.getLength())
       this.quillEditor.clipboard.dangerouslyPasteHTML(0, value);
     } else {
       setTimeout(() => {
-        this.quillEditor.deleteText(0, this.quillEditor.getLength())
-        this.quillEditor.clipboard.dangerouslyPasteHTML(0, value);
+        this.quillEditor?.deleteText(0, this.quillEditor.getLength())
+        this.quillEditor?.clipboard.dangerouslyPasteHTML(0, value);
       }, 0);
     }
   }

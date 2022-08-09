@@ -24,7 +24,7 @@ declare global {
 export class EchartsField extends FieldType implements AfterViewInit {
 
   constructor(
-    private elRef: ElementRef
+    private elRef: ElementRef,
   ) {
     super();
   }
