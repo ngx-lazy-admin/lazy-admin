@@ -4,7 +4,9 @@ import { base64Encode } from "./base64";
 export const loadScript = (path: string, innerContent?: string):  Observable<any> => {
   return new Observable ((observed) => {
 
-    const id = base64Encode(path).slice(16)
+    console.log(path)
+    const id = base64Encode(path).slice(0, 64)
+    console.log(id)
     const removedScript = document.getElementById(id);
     const successResult = {
       path,
@@ -20,9 +22,11 @@ export const loadScript = (path: string, innerContent?: string):  Observable<any
     node.type = 'text/javascript';
     node.id = id;
     node.dataset.onload = 'false'
+
     if (path) {
       node.src = path || '';
     }
+
     if (innerContent) {
       node.innerHTML = innerContent;
     }

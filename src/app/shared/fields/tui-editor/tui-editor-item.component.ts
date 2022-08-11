@@ -52,8 +52,7 @@ export class TuiEditFieldItem implements AfterViewInit {
   constructor(
     private elRef: ElementRef,
     private http: HttpClient,
-    private cd: ChangeDetectorRef,
-    // private cos: CosService
+    private cd: ChangeDetectorRef
   ) {}
 
   // action = 'web/plupload/upload-big?object_type=1430';
@@ -150,10 +149,10 @@ export class TuiEditFieldItem implements AfterViewInit {
 
   writeValue(value: any): void {
     if (this.tuiEditor) {
-      this.tuiEditor.setMarkdown(value)
+      this.tuiEditor?.setMarkdown(value)
     } else {
       setTimeout(() => {
-        this.tuiEditor.setMarkdown(value)
+        this.tuiEditor?.setMarkdown(value)
       }, 0);
     }
   }
