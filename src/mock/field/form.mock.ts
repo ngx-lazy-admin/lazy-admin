@@ -1173,6 +1173,27 @@ export const form = [
           }
         ]
       },
+      {
+        type: 'footer-bar',
+        className: 'd-flex d-inline-block',
+        fieldGroup: [
+          {
+            type: 'button',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              text: "重置",
+            }
+          },
+          {
+            type: 'button',
+            className: "d-inline-block mx-2",
+            templateOptions: {
+              text: "提交",
+              type: 'primary'
+            }
+          }
+        ]
+      }
     ],
     info: {
       title: '高级表单',
@@ -1180,3 +1201,4 @@ export const form = [
     }
   }
 ]
+

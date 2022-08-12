@@ -32,9 +32,6 @@ export class CodeEditorService   {
     // 生成唯一的id
     const id = randomString(32)
 
-    // 创建弹窗
-    console.log('create')
-
     const drawerRef = this.drawerService.create<CodeEditorContent, { value: string }, string>({
       nzContent: CodeEditorContent,
       nzViewContainerRef: this.viewContainerRef,

@@ -1,42 +1,49 @@
-<div class="sidebar-logo">
-	<a href="/" target="_blank">
-		<img src="/assets/img/logo.svg" alt="logo">
-		<h1>Lazy admin Pro</h1>
-	</a>
-</div>
+<div class="d-flex flex-column h-100">
 
-<ul nz-menu nzMode="inline"  nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
-	<ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
-	<ng-template #menuTpl let-menus>
-		<ng-container *ngFor="let menu of menus">
-			<li *ngIf="!(menu.children && !menu.isTabs)"
-				nz-menu-item
-				[nzMatchRouter]="true"
-				[routerLink]="menu.link"
-				class="d-flex align-items-center"
-				[nzPaddingLeft]="menu.level * 24"
-				[nzDisabled]="menu.disabled">
-				<i nz-icon [nzType]="menu.icon" class="me-2" *ngIf="menu.icon"></i>
-				<a (click)="menuService.setTabsMenu(menu)">{{menu.name}}</a>
-				<span class="badge bg-secondary rounded-pill bg-danger mx-2">{{menu.count}}</span>
-			</li>
-			<li *ngIf="menu.children && !menu.isTabs"
-				nz-submenu
-				[nzOpen]="menu.isOpen"
-				[nzTitle]="titleTpl"
-				[nzPaddingLeft]="menu.level * 24"
-				[nzDisabled]="menu.disabled">
-				<ng-template #titleTpl>
-					<span class="d-flex justify-content-start align-items-center w-100">
-						<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
-						<span class="d-inline-block">{{menu.name}}</span>
-						<span class="badge bg-secondary rounded-pill bg-danger mx-2">{{menu.count}}</span>
-					</span>
-				</ng-template>
-				<ul>
-					<ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
-				</ul>
-			</li>
-		</ng-container>
-	</ng-template>
-</ul>
+	<div class="sidebar-logo">
+		<a href="/" target="_blank">
+			<img src="/assets/img/logo.svg" alt="logo">
+			<h1>Lazy admin Pro</h1>
+		</a>
+	</div>
+
+	<ul nz-menu nzMode="inline"  style="flex: 1 1 0%; overflow: hidden auto;"  nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
+		<ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+		<ng-template #menuTpl let-menus>
+			<ng-container *ngFor="let menu of menus">
+				<li *ngIf="!(menu.children && !menu.isTabs)"
+					nz-menu-item
+					[nzMatchRouter]="true"
+					[routerLink]="menu.link"
+					class="d-flex align-items-center"
+					[nzPaddingLeft]="menu.level * 24"
+					[nzDisabled]="menu.disabled">
+					<i nz-icon [nzType]="menu.icon" class="me-2" *ngIf="menu.icon"></i>
+					<a (click)="menuService.setTabsMenu(menu)">{{menu.name}}</a>
+					<span class="badge bg-secondary rounded-pill bg-danger mx-2">{{menu.count}}</span>
+				</li>
+				<li *ngIf="menu.children && !menu.isTabs"
+					nz-submenu
+					[nzOpen]="menu.isOpen"
+					[nzTitle]="titleTpl"
+					[nzPaddingLeft]="menu.level * 24"
+					[nzDisabled]="menu.disabled">
+					<ng-template #titleTpl>
+						<span class="d-flex justify-content-start align-items-center w-100">
+							<i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+							<span class="d-inline-block">{{menu.name}}</span>
+							<span class="badge bg-secondary rounded-pill bg-danger mx-2">{{menu.count}}</span>
+						</span>
+					</ng-template>
+					<ul>
+						<ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
+					</ul>
+				</li>
+			</ng-container>
+		</ng-template>
+	</ul>
+
+	<div style="height: 50px;" class="d-flex align-items-center px-3 mx-2 border-top  border-top-primary">
+		<i nz-icon  nz-button	 class="f16 text-white" [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="collapseChange(!isCollapsed)"></i>
+	</div>
+</div>

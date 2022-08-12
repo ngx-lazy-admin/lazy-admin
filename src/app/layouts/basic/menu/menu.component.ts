@@ -31,6 +31,11 @@ export class LayoutMenuComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  collapseChange (isCollapsed: boolean) {
+    this.isCollapsed = isCollapsed;
+    this.layout.collapseChange(this.isCollapsed);
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

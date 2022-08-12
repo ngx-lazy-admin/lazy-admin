@@ -86,11 +86,11 @@ export class LayoutBasicComponent implements OnInit {
         if (map['lg'] || map['xl'] || map['xxl']) {
           this.index = 1;
           this.isVisible = false;
-          this.nzWidthRange = [80, 256]
+          this.nzWidthRange = [64, 256]
         } else if (map['sm'] || map['md']) {
           this.index = 0;
           this.isVisible = false;
-          this.nzWidthRange = [80, 256]
+          this.nzWidthRange = [64, 256]
         } else if (map['xs']) {
           this.isVisible = false;
           this.index = 0;

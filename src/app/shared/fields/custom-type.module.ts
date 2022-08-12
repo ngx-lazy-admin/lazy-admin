@@ -1,6 +1,7 @@
    
 import { NgModule } from '@angular/core';
 import { AntvFieldModule } from './antv';
+import { CustomModule } from './custom/custom.module';
 import { EchartsFieldModule } from './echart';
 import { QuillFieldModule } from './quill';
 import { TuiEditorFieldModule } from './tui-editor';
@@ -10,7 +11,8 @@ import { TuiEditorFieldModule } from './tui-editor';
     AntvFieldModule,
     QuillFieldModule,
     EchartsFieldModule,
-    TuiEditorFieldModule
+    TuiEditorFieldModule,
+    CustomModule
   ],
 })
 export class CustomFieldModule {}
