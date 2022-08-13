@@ -1,11 +1,7 @@
 <div class="app-header">
 	<ul nz-menu nzTheme="light" nzMode="horizontal" class="d-flex w-100 " nzSelectable="false">
-		<li nz-menu-item (click)="collapseChange(!isCollapsed)">
-			<i nz-icon 
-				nz-button	
-				class="f16"
-				[nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'">
-			</i>
+		<li nz-menu-item (click)="collapseChange(!layout.isCollapsed)">
+			<i nz-icon nz-button class="f16" [nzType]="layout.isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
 		</li>
 		<li class="me-auto">
 			<nz-breadcrumb style="width: 400px;" class="d-inline-flex d-none d-xl-inline-block d-xxl-inline-block">

@@ -219,7 +219,7 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
 
   private _destroy$ = new Subject<void>();
 
-  randomUserUrl = 'https://api.randomuser.me/?results=5';
+  randomUserUrl = '';
   searchChange$ = new BehaviorSubject('');
   optionList: string[] = [];
   selectedUser?: string;

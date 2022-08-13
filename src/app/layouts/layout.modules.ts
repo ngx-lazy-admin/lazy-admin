@@ -33,6 +33,7 @@ import { LayoutMenuComponent } from './basic/menu/menu.component';
 import { LayoutFooterBarComponent } from './basic/footer-bar/footer-bar.component';
 import { LayoutHeaderTabsetComponent } from './basic/header-tabset/header-tabset.component';
 import { SearchItemComponent } from './basic/search/search-item/search-item.component';
+import { LayoutService } from './layout.service';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { SearchItemComponent } from './basic/search/search-item/search-item.comp
     NzMessageModule,
     IconsProviderModule,
     // NgZorroAntdModule
-  ]
+  ],
+  providers: [LayoutService]
 })
 export class LayoutModule {}

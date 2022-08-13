@@ -1,23 +1,4 @@
-.menu-sidebar {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  // box-shadow: 2px 0 6px rgba(0,21,41,.35);
-}
 
-.ant-menu {
-  flex: 1 1 0%;
-}
-
-::ng-deep .ant-layout-sider .ant-menu {
-  overflow: hidden scroll;
-  height: 100%;
-  height: calc(100% -  64px);
-}
-
-::ng-deep .ant-layout-sider .ant-menu::-webkit-scrollbar {
-  display: none;
-}
 
 .sidebar-logo {
   position: relative;
@@ -43,6 +24,18 @@
   font-size: 14px;
   font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
   vertical-align: middle;
+}
+
+// 样式覆盖
+
+::ng-deep .ant-layout-sider .ant-menu {
+  overflow: hidden scroll;
+  height: 100%;
+  height: calc(100% -  64px);
+}
+
+::ng-deep .ant-layout-sider .ant-menu::-webkit-scrollbar {
+  display: none;
 }
 
 // 记录动画

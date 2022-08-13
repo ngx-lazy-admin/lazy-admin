@@ -1,26 +1,39 @@
-:host ::ng-deep .ant-tabs-top > .ant-tabs-nav {
-  margin-bottom: 0;
-  padding: 4px;
-}
+:host {
+  display: block;
+  border-bottom: 1px solid #ccc;
+  background-color: red;
+  ::ng-deep {
+    .ant-tabs-card {
+      border-top: 1px solid #f0f2f5;
+      box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+      background-color: #fff;
 
-:host ::ng-deep .ant-tabs-card {
-  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
-  background-color: #fff;
-}
+      &.ant-tabs-top {
+        .ant-tabs-nav {
+          margin-bottom: 0;
+          padding: 4px;
+          .ant-tabs-tab {
+            padding: 0;
+            .ant-tabs-tab-remove {
+              padding-right: 16px;
+            }
+          }
+        }
 
-:host ::ng-deep .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active {
-  border-color: #f0f0f0;
-}
+        > .ant-tabs-nav::before {
+          border: unset;
+        }
 
-:host ::ng-deep .ant-tabs-top > .ant-tabs-nav::before {
-  border: unset;
-}
+        > .ant-tabs-nav .ant-tabs-tab-active {
+          border-color: #f0f0f0;
+        }
 
-:host ::ng-deep .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab, 
-:host ::ng-deep .ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab {
-  padding: 0;
-}
+        > .ant-tabs-nav::before {
+          border: unset;
+        }
+      }
+    }
+      
 
-:host ::ng-deep .ant-tabs-tab-remove {
-  padding-right: 16px;
+  }
 }

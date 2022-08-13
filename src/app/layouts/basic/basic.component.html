@@ -1,37 +1,43 @@
-<nz-layout class="app-layout" style="width: 100%;">
-  <ng-container *ngIf="nzWidthRange[0]">
+<nz-layout>
+  <ng-container *ngIf="layout.isDrawerVisible">
     <nz-sider  
       nzCollapsible
-      [nzCollapsedWidth]="nzWidthRange[index]"
-      [nzCollapsed]="!!index"
-      [nzWidth]="nzWidthRange[index]"
+      [nzCollapsedWidth]="layout.collapsedWidth"
+      [nzCollapsed]="layout.isCollapsed"
+      [nzWidth]="layout.width"
       [nzTrigger]="null"
     >
     </nz-sider>
     <nz-sider  
       nzCollapsible
-      style="z-index: 1000; position: fixed; top: 0"
-      class="h-100"
-      [nzCollapsedWidth]="nzWidthRange[index]"
-      [nzCollapsed]="!!index"
-      [nzWidth]="nzWidthRange[index]"
-      [nzTrigger]="null"
+      class="h-100 position-fixed top-0"
+      style="z-index: 3;"
+      [nzCollapsedWidth]="layout.collapsedWidth"
+      [nzCollapsed]="layout.isCollapsed"
+      [nzWidth]="layout.width"
+      [nzTrigger]="nzTrigger"
       (nzCollapsedChange)="collapsedChange($event)">
-      <app-layout-menu class="menu-sidebar" [isCollapsed]="!index"></app-layout-menu>
+      <app-layout-menu class="menu-sidebar" [isCollapsed]="layout.isCollapsed"></app-layout-menu>
     </nz-sider>
+
+    <ng-template #nzTrigger> 
+      <div  style="height: 50px;" class="d-flex align-items-center px-3 mx-2">	
+        <i nz-icon  nz-button	 class="f16 text-white" [nzType]="layout.isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+      </div> 
+     </ng-template> 
   </ng-container>
 
-  <ng-container *ngIf="!nzWidthRange[0]">
+  <ng-container *ngIf="!layout.isDrawerVisible">
     <nz-drawer
       [nzClosable]="false"
-      [nzVisible]="!!index"
+      [nzVisible]="!layout.isCollapsed"
       nzPlacement="left"
       nzWidth="75%"
-      [nzBodyStyle]="{padding: 0, 'backgroundColor': '#001529'}"
-      (nzOnClose)="close()"
+      [nzBodyStyle]="{ padding: 0, backgroundColor: '#001529'}"
+      (nzOnClose)="closeDrawer()"
       >
       <ng-container *nzDrawerContent>
-        <app-layout-menu class="menu-sidebar" [isCollapsed]="false"></app-layout-menu>
+        <app-layout-menu class="menu-sidebar"></app-layout-menu>
       </ng-container>
     </nz-drawer>
   </ng-container>
@@ -48,9 +54,9 @@
     <nz-content class="position-relative">
       <router-outlet></router-outlet>
     </nz-content>
-    
   </nz-layout>
 </nz-layout>
+
 
 <nz-back-top></nz-back-top>
   
