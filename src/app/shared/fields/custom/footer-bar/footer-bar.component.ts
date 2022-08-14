@@ -11,7 +11,7 @@ declare global {
 @Component({
   selector: 'div[footer-bar-field]',
   template: `
-    <div class="position-fixed bottom-0 bg-white w-100 border-top d-flex align-items-center justify-content-end right-0 left-0" style="height: 50px; z-index: 2; right: 0;">
+    <div [ngClass]="to.bodyClass" [ngStyle]="to.bodyStyle">
       <ng-container *ngFor="let item of field.fieldGroup; let i = index; trackBy: trackByFn">
         <formly-field [field]="item"></formly-field>
       </ng-container>

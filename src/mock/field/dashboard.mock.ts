@@ -352,6 +352,9 @@ export const dashboard = [
       {
         type: 'group',
         className: 'col-12',
+		templateOptions: {
+			bodyClass: 'row'
+		},
         fieldGroup: [
           {
             type: 'card',
@@ -610,6 +613,9 @@ export const dashboard = [
       {
         type: 'group',
         className: 'col-12 mt-3',
+		templateOptions: {
+			bodyClass: 'row'
+		},
         fieldGroup: [ 
           {
             type: 'card-tabs',

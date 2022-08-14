@@ -443,7 +443,7 @@ export const form = [
     fields: [
       {
         type: 'card',
-        key: 'name',
+        key: 'cangku',
         className: "col-12",
 
         templateOptions: {
@@ -578,7 +578,7 @@ export const form = [
       },
       {
         type: 'card',
-        key: 'name',
+        key: 'task',
         className: "col-12 mt-3",
 
         templateOptions: {
@@ -713,6 +713,7 @@ export const form = [
       },
       {
         type: 'card',
+        key: 'people-man',
         className: "col-12 mt-3",
         templateOptions: {
           title: "成员管理",
@@ -1174,14 +1175,39 @@ export const form = [
         ]
       },
       {
-        type: 'footer-bar',
+        type: 'group',
         className: 'd-flex d-inline-block',
+        templateOptions: {
+          bodyClass: 'position-fixed bottom-0 bg-white w-100 border-top d-flex align-items-center justify-content-end right-0 left-0',
+          bodyStyle: {
+            height: '50px',
+            zIndex: 2,
+            right: 0,
+            paddingLeft: 'var(--sider-width)',
+            transition: 'all 0.3s'
+          }
+        },
         fieldGroup: [
+          {
+            type: 'checkbox',
+            className: "d-inline-block mx-3 me-auto",
+            templateOptions: {
+              text: "全选",
+            }
+          },
           {
             type: 'button',
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "重置",
+              click: `(field) => {
+                console.log(field.formControl.root.value)
+                console.log(field.parent.formControl.value)
+                console.log(field.parent.parent.formControl.value)
+                field.formControl.root.reset();
+                
+
+              }`
             }
           },
           {
@@ -1189,7 +1215,10 @@ export const form = [
             className: "d-inline-block mx-2",
             templateOptions: {
               text: "提交",
-              type: 'primary'
+              type: 'primary',
+              click: `() => {
+                alert('提交数据')
+              }`
             }
           }
         ]

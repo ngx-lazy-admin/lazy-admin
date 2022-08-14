@@ -23,24 +23,33 @@ export class LayoutService {
   constructor(
     private breakpointService: NzBreakpointService,
   ) { 
-    window.document.body.style.setProperty('--sizebar-width', this.width + 'px')
+    window.document.body.style.setProperty('--sider-width', this.width + 'px')
+
+    this.change$.subscribe(item => {
+      if (!this.isDrawerVisible) {
+        window.document.body.style.setProperty('--sider-width', '0px')
+      } else if (this.isCollapsed){
+        window.document.body.style.setProperty('--sider-width', '60px')
+      } else {
+        window.document.body.style.setProperty('--sider-width', '240px')
+      }
+    })
 
     this.breakpointService
-    .subscribe(siderResponsiveMap, true)
-    .subscribe((map: any) => {
-      if (map['xs']) {
-        this.isDrawerVisible = false;
-      } else {
-        this.isDrawerVisible = true;
-      }
+      .subscribe(siderResponsiveMap, true)
+      .subscribe((map: any) => {
+        if (map['xs']) {
+          this.isDrawerVisible = false;
+        } else {
+          this.isDrawerVisible = true;
+        }
 
-      this.collapseChange(!map['xl']);
-    });
+        this.collapseChange(!map['xl']);
+      });
   }
 
   collapseChange (collapsed: boolean) {
     this.isCollapsed = collapsed;
-
     this._isCollapsed$.next(this.isCollapsed);
   }
 }
