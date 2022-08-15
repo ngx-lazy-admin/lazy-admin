@@ -5,7 +5,7 @@ export const IntroductionMockFields = [
     type: 'code-card',
     className: "d-block mb-3 col-12",
     templateOptions: {
-      title: '基本',
+      title: 'Introduction Example',
       description: '简单的徽章展示，当 nzCount 为 0 时，默认不显示，但是可以使用 nzShowZero 修改为显示。',
     },
     fieldGroup: [
@@ -84,6 +84,26 @@ export const IntroductionMockFields = [
         templateOptions: {
           label: 'Custom inlined',
         },
+      },
+      {
+        type: 'button-group',
+        wrappers: ['form'],
+        templateOptions: {
+          type: 'primary',
+          noColon: true,
+          options: [
+            {
+              text: 'Submit',
+              size: 'default',
+              type: 'primary'
+            },
+            {
+              text: 'Reset',
+              size: 'default',
+              type: 'default'
+            },
+          ]
+        }
       },
       
     ]

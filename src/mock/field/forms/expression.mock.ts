@@ -29,7 +29,22 @@ export const ExpressionMockFields = [
         expressionProperties: {
           'templateOptions.disabled': '!model.text',
         },
-      }
+      },
+      {
+        type: 'button-group',
+        wrappers: ['form'],
+        templateOptions: {
+          type: 'primary',
+          noColon: true,
+          options: [
+            {
+              text: 'Submit',
+              size: 'default',
+              type: 'primary'
+            }
+          ]
+        }
+      },
     ]
   }
 ]

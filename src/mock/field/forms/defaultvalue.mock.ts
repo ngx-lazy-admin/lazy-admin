@@ -51,6 +51,21 @@ Both methods are demonstrated below.`,
           noColon: true
         },
       },
+      {
+        type: 'button-group',
+        wrappers: ['form'],
+        templateOptions: {
+          type: 'primary',
+          noColon: true,
+          options: [
+            {
+              text: 'Submit',
+              size: 'default',
+              type: 'primary'
+            }
+          ]
+        }
+      },
     ]
   }
 ]

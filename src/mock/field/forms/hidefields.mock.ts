@@ -30,6 +30,21 @@ export const HideFieldsMockFields = [
         },
         hideExpression: '!model.name',
       },
+      {
+        type: 'button-group',
+        wrappers: ['form'],
+        templateOptions: {
+          type: 'primary',
+          noColon: true,
+          options: [
+            {
+              text: 'Submit',
+              size: 'default',
+              type: 'primary'
+            }
+          ]
+        }
+      },
     ]
   }
 ]
