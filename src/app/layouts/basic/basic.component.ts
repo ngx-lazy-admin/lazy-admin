@@ -30,7 +30,6 @@ export class LayoutBasicComponent implements OnInit {
   ) {
     this.layout.change$?.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.cd.markForCheck();
-      console.log(1111)
     })
 
     this.menu.change$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
