@@ -213,6 +213,19 @@ export function defineHiddenProp(field: any, prop: string, defaultValue: any) {
   field[prop] = defaultValue;
 }
 
+// console.log(field.parent.parent.fieldGroup[0].formControl.value)
+// console.log(field.parent.parent.formControl.value)
+// 1 找到root， 2. 从root开始遍历。
+
+export function getFieldFormControlByKey(field: any, key: string): any {
+  if (field.key === 'key') {
+    return field.formControl
+  } else {
+    return getFieldFormControlByKey(field.parent, key)
+  }
+}
+
+
 export function wrapProperty<T = any>(
   o: any,
   prop: string,

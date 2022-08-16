@@ -23,6 +23,13 @@ English | [简体中文](README-zh_CN.md)
 
 Thank you to all our backers! 🙏
 
+## reference resources
+
+[Angular Style Guide](https://github.com/johnpapa/angular-styleguide)
+
 ### License
 
 The MIT License (see the [LICENSE](https://github.com/strawbreey/lazy-admin-pro/blob/master/LICENSE) file for the full text)
+
+
+

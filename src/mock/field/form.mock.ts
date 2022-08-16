@@ -46,7 +46,8 @@ export const form = [
             templateOptions: {
               label: '目标描述',
               placeholder: '请输入你的阶段性工作目标',
-              layout : 'vertical'
+              layout : 'vertical',
+              required: true,
             }
           },
           {
@@ -157,17 +158,24 @@ export const form = [
                   size: 'default',
                   type: 'primary',
                   click: `(field, _this) => {
-                    console.log(field.form.root.value);
-                    console.log('111')
-                    _this.verification(field.form)
+                    Object.values(field.parent.formControl.controls).forEach(control => {
+                      if (control.invalid) {
+                        control.markAsDirty();
+                        control.updateValueAndValidity({ onlySelf: true });
+                      }
+                    });
+                    console.log(field.parent.formControl.invalid)
                   }`
                 },
                 {
-                  text: '重置',
+                  text: '重置1',
                   size: 'default',
                   type: 'default',
                   click: `(field, _this) => {
-                    field.options.resetModel();
+                    // field.options.resetModel();
+                    console.log(field)
+                    console.log('6666666')
+                    field.parent.formControl.reset();
                   }`
                 }
               ]
@@ -541,8 +549,8 @@ export const form = [
           },
           {
             key: 'account',
-            type: 'input-number',
-            className: 'col-3 offset-1  d-inline-block',
+            type: 'date-picker',
+            className: 'col-3 offset-1 d-inline-block',
             wrappers: ['form'],
             templateOptions: {
               label: '生效日期',
@@ -1176,7 +1184,8 @@ export const form = [
       },
       {
         type: 'group',
-        className: 'd-flex d-inline-block',
+        key: 'operation',
+        className: 'd-flex d-inline-block my-4',
         templateOptions: {
           bodyClass: 'position-fixed bottom-0 bg-white w-100 border-top d-flex align-items-center justify-content-end right-0 left-0',
           bodyStyle: {
@@ -1190,6 +1199,7 @@ export const form = [
         fieldGroup: [
           {
             type: 'checkbox',
+            key: 'checkAll',
             className: "d-inline-block mx-3 me-auto",
             templateOptions: {
               text: "全选",
@@ -1201,12 +1211,7 @@ export const form = [
             templateOptions: {
               text: "重置",
               click: `(field) => {
-                console.log(field.formControl.root.value)
-                console.log(field.parent.formControl.value)
-                console.log(field.parent.parent.formControl.value)
-                field.formControl.root.reset();
-                
-
+                field.parent.parent.formControl.reset();
               }`
             }
           },

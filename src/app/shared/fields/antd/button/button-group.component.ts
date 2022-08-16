@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 
-import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
+import { ActionTypeInterface, execEval, ShareFieldType } from '../share-field.type';
 
 @Component({
   selector: 'div[button-field]',
@@ -22,7 +22,7 @@ import { ActionTypeInterface, ShareFieldType } from '../share-field.type';
         [nzPopconfirmTitle]="item.popconfirmTitle"
         [nzPopconfirmPlacement]="item.popconfirmPlacement"
 
-        (click)="click(item)"
+        (click)="onClick(item, $event)"
         (nzOnConfirm)="confirm(item)"
         (nzOnCancel)="cancel(item)"
       >
@@ -88,7 +88,16 @@ export class ButtonGroupField extends ShareFieldType implements OnInit {
 
   onClick (item: ActionTypeInterface, $event: Event) {
     if (item.click) {
-      item.click(this.field, this);
+      this.zone.runOutsideAngular(() => {
+        try{
+          if (item.click) {
+            const func = typeof(item.click) == 'string' ? execEval(item.click) : item.click;
+            func(this.field, this, $event)
+          }
+        } catch (err){
+          console.log('click: error', err)
+        }
+      });
     }
   }
 
