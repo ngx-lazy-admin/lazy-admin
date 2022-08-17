@@ -22,21 +22,22 @@ import { isObject } from 'src/app/utils';
   template: `
     <nz-form-item>
       <nz-form-label 
-        *ngIf="to.hideLabel !== true"
+        *ngIf="to.hideLabel !== true && to.label"
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 8 : null"
         [nzNoColon]="nzNoColon" 
-        [nzRequired]="nzNoColon && nzRequired"
+        [nzRequired]="!nzNoColon && nzRequired"
         [ngStyle]="(fixedWidth | fixedWidth)?.label"
         [nzFor]="id" 
         [nzTooltipTitle]="nzTooltipTitle"
         [nzTooltipIcon]="nzTooltipIcon">
-        <span  [innerHTML]="to.label"></span>
+        <span [innerHTML]="to.label"></span>
       </nz-form-label>
 
       <nz-form-control 
         [nzValidateStatus]="formControl" 
         [nzErrorTip]="errorTpl"
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 16 : null"
+        [nzOffset]="controlOffset"
         [ngStyle]="(fixedWidth | fixedWidth)?.control"
         [nzExtra]="nzExtra"
         [nzHasFeedback]="nzHasFeedback">
@@ -64,9 +65,10 @@ export class FormWrapper extends FieldWrapper {
     return this.to.layout || this.to.layout || 'horizontal'
   }
 
+  get controlOffset() : number {
+    return  this.nzLayout === 'vertical' ? 0 : (!this.to.label ? 8 : 0)
+  }
   
-
-
   // const baseStyle = { position: 'absolute', width: `${this.inputWidth}px` };
   // this.datePickerService.arrowLeft =
   //   this.datePickerService.activeInput === 'left'

@@ -971,7 +971,7 @@ export const menu = [
   },
   {
     id: '14',
-    name: '表单专题',
+    name: 'ngx-formly',
     link: '',
     badge: '',
     children: [

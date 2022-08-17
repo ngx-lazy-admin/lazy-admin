@@ -1,4 +1,4 @@
-export const DefaultValueMockFields = [
+export const ModalOptionsMockFields = [
     {
       type: 'code-card',
       className: "d-block mb-3 col-12",
@@ -11,44 +11,32 @@ export const DefaultValueMockFields = [
       },
       fieldGroup: [
         {
-          key: 'firstName',
+          key: 'text',
           type: 'input',
           wrappers: ['form'],
-          defaultValue: 'This is a default value',
           templateOptions: {
-            label: 'First Name (initialized via default value)',
+            label: 'Debounce',
+            layout: 'vertical'
           },
         },
         {
-          key: 'lastName',
+          key: 'updateOnBlur',
           type: 'input',
           wrappers: ['form'],
-          defaultValue: 'This is a default value',
           templateOptions: {
-            label: 'Last Name (initialized via the model)',
+            label: '`updateOn` on Blur',
+            required: true,
+            layout: 'vertical'
           },
         },
         {
-          key: 'candy',
-          type: 'select',
-          wrappers: ['form'],
-          defaultValue: 'milky_way',
-          templateOptions: {
-            label: 'Favorite Candy (initialized via default value',
-            options: [
-              { label: 'Snickers', value: 'snickers' },
-              { label: 'Baby Ruth', value: 'baby_ruth' },
-              { label: 'Milky Way', value: 'milky_way' },
-            ],
-          },
-        },
-        {
-          key: 'agree',
-          type: 'checkbox',
+          key: 'updateOnSubmit',
+          type: 'input',
           wrappers: ['form'],
           templateOptions: {
-            text: 'Agree? (not initialized at all)',
-            noColon: true
+            label: '`updateOn` on Submit *',
+            required: true,
+            layout: 'vertical'
           },
         },
         {
@@ -57,11 +45,15 @@ export const DefaultValueMockFields = [
           templateOptions: {
             type: 'primary',
             noColon: true,
+            layout: 'vertical',
             options: [
               {
                 text: 'Submit',
                 size: 'default',
-                type: 'primary'
+                type: 'primary',
+                click: `() => {
+                  alert('66666666')
+                }`
               }
             ]
           }
