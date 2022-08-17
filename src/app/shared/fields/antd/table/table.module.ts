@@ -12,9 +12,6 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-
-import { IconsProviderModule } from 'src/app/shared/icons-provider.module';
-
 import { SimpleTableField } from './simple-table.component';
 import { TableField } from './table.component';
 import { VirtualTableField } from './virtual-table.component';
@@ -41,7 +38,7 @@ import { FieldPipesModule } from '../../pipe/pipes.module';
     ReactiveFormsModule,
     FormsModule,
     PortalModule,
-    IconsProviderModule,
+    NzIconModule,
     NzToolTipModule,
     NzTableModule,
     NzEmptyModule,

@@ -18,7 +18,7 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 
-import { IconsProviderModule } from '../../shared/icons-provider.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ModalsModule } from 'src/app/shared/modal' ;
 import { FieldTypeModule } from 'src/app/shared/fields/antd';
 import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
@@ -37,7 +37,7 @@ import { PipesModule } from 'src/app/pipes';
 
     PipesModule,
 
-    IconsProviderModule,
+    NzIconModule,
     NzAffixModule,
     NzModalModule,
     NzResultModule,

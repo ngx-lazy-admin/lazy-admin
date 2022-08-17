@@ -6,7 +6,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
-import { IconsProviderModule } from '../icons-provider.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { PreviewContent } from './preview-content.component';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { PreviewContent } from './preview-content.component';
     NzButtonModule,
     NzModalModule,
     DragDropModule,
-    IconsProviderModule,
+    NzIconModule,
   ],
   exports: [
     PreviewContent,

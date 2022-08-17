@@ -20,8 +20,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzMessageModule } from 'ng-zorro-antd/message';
-
-import { IconsProviderModule } from '../shared/icons-provider.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { LayoutBasicComponent } from './basic/basic.component';
 import { LayoutBlankComponent } from './blank/blank.component';
@@ -71,7 +70,7 @@ import { LayoutService } from './layout.service';
     NzDropDownModule,
     NzDrawerModule,
     NzMessageModule,
-    IconsProviderModule,
+    NzIconModule,
     // NgZorroAntdModule
   ],
   providers: [LayoutService]

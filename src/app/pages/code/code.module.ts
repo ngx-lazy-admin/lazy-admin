@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 
 import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
-import { IconsProviderModule } from '../../shared/icons-provider.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { CodeRoutingModule } from './code-routing.module';
 import { CodeComponent } from './code.component';
@@ -23,7 +23,7 @@ import { ApisModule } from 'src/app/services/api/apis.modules';
     ReactiveFormsModule,
     CodeRoutingModule,
     NzCodeEditorModule,
-    IconsProviderModule,
+    NzIconModule,
     FormlyModule.forRoot(),
     // FieldTypeModule,
     FormFieldModule,

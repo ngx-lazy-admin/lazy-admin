@@ -17,7 +17,7 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { GraphqlRoutingModule } from './graphql-routing.module';
 import { GraphqlComponent } from './graphql.component';
 
-import { IconsProviderModule } from '../../shared/icons-provider.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 // import { ModalsModule } from 'src/app/shared/modal' 
 // import { FieldTypeModule } from 'src/app/shared/fields/antd';
@@ -33,7 +33,7 @@ import { IconsProviderModule } from '../../shared/icons-provider.module';
     GraphqlRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    IconsProviderModule,
+    NzIconModule,
     NzAffixModule,
     NzModalModule,
     NzResultModule,

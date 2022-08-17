@@ -10,7 +10,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor'
 
-import { IconsProviderModule } from '../icons-provider.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { CodeEditorContent } from './code-editor-content.component';
 
 import { FieldTypeModule } from 'src/app/shared/fields/antd';
@@ -31,7 +31,7 @@ import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
     NzModalModule,
     NzTabsModule,
     NzCodeEditorModule,
-    IconsProviderModule,
+    NzIconModule,
 
     FormlyModule,
     FieldTypeModule,

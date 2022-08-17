@@ -5,11 +5,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ListField } from './list.component';
 import { VirtualListField } from './virtual-list.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
-import { IconsProviderModule } from 'src/app/shared/icons-provider.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -30,7 +29,7 @@ import { ListItemField } from './list-item.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    IconsProviderModule,
+    NzIconModule,
     NzToolTipModule,
     NzListModule,
     NzEmptyModule,

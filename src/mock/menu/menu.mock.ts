@@ -2,7 +2,7 @@ export const menu = [
   {
     id: '1',
     name: 'Dashboard',
-    icon: 'dashboard',
+    icon: 'trademark',
     link: '',
     badge: '',
     pid: '0',
@@ -12,6 +12,7 @@ export const menu = [
         pid: '1',
         name: '分析页',
         link: '/dashboard/analysis',
+        icon: 'trademark',
         badge: '',
         count: 1
       },

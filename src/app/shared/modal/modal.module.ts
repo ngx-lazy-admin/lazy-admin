@@ -15,7 +15,6 @@ import { NzListModule } from 'ng-zorro-antd/list';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 
-import { IconsProviderModule } from '../icons-provider.module';
 import { FieldTypeModule } from 'src/app/shared/fields/antd';
 import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
@@ -56,7 +55,7 @@ import { NzResizableModule } from 'ng-zorro-antd/resizable';
     NzResizableModule,
     NzAutocompleteModule,
 
-    IconsProviderModule,
+    NzIconModule,
 
     FormlyModule,
     FieldTypeModule,

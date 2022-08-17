@@ -352,14 +352,14 @@ export const dashboard = [
       {
         type: 'group',
         className: 'col-12',
-		templateOptions: {
-			bodyClass: 'row'
-		},
+				templateOptions: {
+					bodyClass: 'row'
+				},
         fieldGroup: [
           {
             type: 'card',
             key: 'name1',
-            className: "col-md-3 col-sm-6 d-inline-block",
+            className: "col-xl-3 col-md-6 col-12 mb-3 d-inline-block",
             templateOptions: {
               label: "总销售额1",
               tooltip: '指标说明1',
@@ -422,7 +422,7 @@ export const dashboard = [
           {
             type: 'card',
             key: 'name2',
-            className: "col-md-3 col-sm-6  d-inline-block",
+            className: "col-xl-3 col-md-6 col-12 mb-3  d-inline-block",
             templateOptions: {
               label: "访问量",
               tooltip: '指标说明',
@@ -485,7 +485,7 @@ export const dashboard = [
           {
             key: 'name3',
             type: 'card',
-            className: "col-md-3 col-sm-6 d-inline-block",
+            className: "col-xl-3 col-md-6 col-12 mb-3  d-inline-block",
             templateOptions: {
               label: "支付笔数",
               tooltip: '指标说明',
@@ -548,7 +548,7 @@ export const dashboard = [
           {
             type: 'card',
             key: 'name4',
-            className: "col-md-3 col-sm-6 d-inline-block",
+            className: "col-xl-3 col-md-6 col-12 mb-3  d-inline-block",
             templateOptions: {
               label: "运营效果",
               tooltip: '指标说明',
@@ -612,14 +612,14 @@ export const dashboard = [
       },
       {
         type: 'group',
-        className: 'col-12 mt-3',
-		templateOptions: {
-			bodyClass: 'row'
-		},
+        className: 'col-12',
+				templateOptions: {
+					bodyClass: 'row'
+				},
         fieldGroup: [ 
           {
             type: 'card-tabs',
-            className: "col-8 mb-3",
+            className: "col-lg-8 col-12 mb-3",
             fieldGroup: [
               {
                 key: 'data1',
@@ -657,7 +657,7 @@ export const dashboard = [
           },
 					{
 						type: 'card',
-						className: "col-4 mb-3",
+						className: "col-lg-4 col-12 mb-3",
 						templateOptions: {
 							nzBodyStyle: {
 								padding: 0

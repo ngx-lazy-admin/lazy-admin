@@ -8,7 +8,6 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
-import { IconsProviderModule } from '../icons-provider.module';
 import { DefaultComponentPortal, FooterComponentPortal, HeaderComponentPortal } from './template.component';
 import { IconPortal } from './icon/icon.template';
 import { InputPortal } from './input/input.template';
@@ -27,7 +26,7 @@ import { buttonPortal } from './button/button.template';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IconsProviderModule,
+    NzIconModule,
     NzButtonModule,
     NzInputModule,
     NzModalModule,

@@ -17,7 +17,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { CardField } from './card.component'
 import { CardTabsField } from './card-tab.component';
 import { CardSmallField } from './card-small.component';
-import { IconsProviderModule } from 'src/app/shared/icons-provider.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { SearchCardField } from './search-card.component';
 import { CardMetaField } from './card-meta.component';
 import { CodeCardField } from './code-card.component';
@@ -41,7 +41,7 @@ import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
     ReactiveFormsModule,
     NzCardModule,
     NzDescriptionsModule,
-    IconsProviderModule,
+    NzIconModule,
     NzToolTipModule,
     NzListModule,
     NzPopconfirmModule,
