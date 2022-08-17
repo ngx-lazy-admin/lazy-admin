@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { NzBreakpointService, siderResponsiveMap } from 'ng-zorro-antd/core/services';
+import { NavigationStart, Router } from '@angular/router';
 
 @Injectable()
 export class LayoutService {
@@ -22,6 +23,7 @@ export class LayoutService {
 
   constructor(
     private breakpointService: NzBreakpointService,
+    private router: Router,
   ) { 
     window.document.body.style.setProperty('--sider-width', this.width + 'px')
 
@@ -38,13 +40,20 @@ export class LayoutService {
     this.breakpointService
       .subscribe(siderResponsiveMap, true)
       .subscribe((map: any) => {
-        if (map['xs']) {
-          this.isDrawerVisible = false;
-        } else {
+        if (!map['sm']) {
           this.isDrawerVisible = true;
+        } else {
+          this.isDrawerVisible = false;
         }
 
         this.collapseChange(!map['xl']);
+      });
+
+      this.router.events.subscribe((event) => {
+        if (event instanceof NavigationStart  && this.isDrawerVisible === true) {
+          this.isCollapsed = true;
+          // this._isCollapsed$.next(this.isCollapsed);
+        }
       });
   }
 

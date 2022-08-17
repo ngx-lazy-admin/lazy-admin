@@ -1,5 +1,5 @@
 <nz-layout>
-  <ng-container *ngIf="layout.isDrawerVisible">
+  <ng-container *ngIf="!layout.isDrawerVisible">
     <nz-sider  
       nzCollapsible
       [nzCollapsedWidth]="layout.collapsedWidth"
@@ -27,7 +27,7 @@
      </ng-template> 
   </ng-container>
 
-  <ng-container *ngIf="!layout.isDrawerVisible">
+  <ng-container *ngIf="layout.isDrawerVisible">
     <nz-drawer
       [nzClosable]="false"
       [nzVisible]="!layout.isCollapsed"
