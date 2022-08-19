@@ -5,8 +5,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: './blank.component.html',
   styleUrls: ['./blank.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
-  
 })
 export class LayoutBlankComponent implements OnInit {
 
@@ -15,5 +13,4 @@ export class LayoutBlankComponent implements OnInit {
   ngOnInit(): void {
     console.log('LayoutBlankComponent')
   }
-
 }

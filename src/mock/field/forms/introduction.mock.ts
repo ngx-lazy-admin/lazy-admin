@@ -15,26 +15,29 @@ export const IntroductionMockFields = [
         wrappers: ['form'],
         templateOptions: {
           label: 'Text',
-          placeholder: 'Formly is terrific!',
-          required: true,
+          placeholder: 'Formly is terrific!'
+        },
+        validators: {
+          validation: ['required'],
         },
       },
       {
-        key: 'nested.story',
-        type: 'textarea',
+        key: 'nestedStory',
+        type: 'input',
         wrappers: ['form'],
         templateOptions: {
           label: 'Some sweet story',
           placeholder: 'It allows you to build and maintain your forms with the ease of JavaScript :-)',
           description: '',
+          required: true,
         },
         expressionProperties: {
           focus: 'formState.awesomeIsForced',
-          // 'templateOptions.description': (model, formState) => {
-          //   if (formState.awesomeIsForced) {
-          //     return 'And look! This field magically got focus!';
-          //   }
-          // },
+          'templateOptions.description': `
+            console.log('formState')
+            console.log(field)
+            console.log(model)
+          `,
         },
       },
       {
@@ -44,17 +47,12 @@ export const IntroductionMockFields = [
         templateOptions: { 
           label: '',
           noColon: true,
+          required: true,
           text: 'Is formly totally awesome? (uncheck this and see what happens)'
         },
         expressionProperties: {
           'templateOptions.disabled': 'formState.awesomeIsForced',
-          // 'templateOptions.label': (model, formState) => {
-          //   if (formState.awesomeIsForced) {
-          //     return 'Too bad, formly is really awesome...';
-          //   } else {
-          //     return 'Is formly totally awesome? (uncheck this and see what happens)';
-          //   }
-          // },
+          'templateOptions.label': `formState.awesomeIsForced ? '1' : '2'`,
         },
       },
       {
@@ -62,19 +60,14 @@ export const IntroductionMockFields = [
         type: 'textarea',
         wrappers: ['form'],
         expressionProperties: {
-          // 'templateOptions.placeholder': (model, formState) => {
-          //   if (formState.awesomeIsForced) {
-          //     return 'Too bad... It really is awesome! Wasn\'t that cool?';
-          //   } else {
-          //     return 'Type in here... I dare you';
-          //   }
-          // },
+          'templateOptions.placeholder': `formState`,
           'templateOptions.disabled': 'formState.awesomeIsForced',
         },
         hideExpression: 'model.awesome',
         templateOptions: {
           label: 'Why Not?',
           placeholder: 'Type in here... I dare you',
+          required: true,
         },
       },
       {
@@ -95,12 +88,23 @@ export const IntroductionMockFields = [
             {
               text: 'Submit',
               size: 'default',
-              type: 'primary'
+              type: 'primary',
+              click: `(field, _this) => {
+                field.options.formState.awesomeIsForced = true
+                Object.values(field.parent.formControl.controls).map(control => {
+                  control.markAsDirty();
+                  control.updateValueAndValidity({ onlySelf: true });
+                });
+              }`
             },
             {
               text: 'Reset',
               size: 'default',
-              type: 'default'
+              type: 'default',
+              click: `(field, _this) => {
+                field.options.formState.awesomeIsForced = false;
+                field.parent.formControl.reset();
+              }`
             },
           ]
         }

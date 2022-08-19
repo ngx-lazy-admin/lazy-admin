@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { FormlyModule } from '@ngx-formly/core';
+
 import { NzCascaderModule } from 'ng-zorro-antd/cascader';
+
 import { CascaderField } from './cascader.component'
 
 @NgModule({
