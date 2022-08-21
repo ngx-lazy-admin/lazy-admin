@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable, forkJoin, observable } from 'rxjs';
 import { debounce, debounceTime } from 'rxjs/operators';
-import { MenuService } from '../services/api/menu/menu.services';
-
+import { MenuService } from '../layouts';
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +19,7 @@ export class RouteGuardGuard implements CanActivate, CanActivateChild, CanDeacti
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log('canActivate')
     return new Observable(observer => {
-      forkJoin([
-        this.menuservice.getMenu()
-      ]).pipe(debounceTime(60)).subscribe((item) => {
-        observer.next(true);
-        observer.complete();
-      }, () => {
-        observer.next(true);
-      });
+      observer.next(true);
     })
   }
 

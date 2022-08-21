@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { MenuService } from 'src/app/services/api/menu';
+import { MenuService } from '../menu.service';
+// import { MenuService } from 'src/app/services/api/menu';
 
 @Component({
   selector: 'app-tabs',

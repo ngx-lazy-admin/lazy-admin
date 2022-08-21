@@ -23,6 +23,7 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzMessageModule} from 'ng-zorro-antd/message'
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   exports: [
@@ -47,7 +48,8 @@ import { NzMessageModule} from 'ng-zorro-antd/message'
     NzStepsModule,
     NzSwitchModule,
     NzTabsModule,
-    NzMessageModule
+    NzMessageModule,
+    NzIconModule,
   ]
 })
 export class NgZorroAntdModule {

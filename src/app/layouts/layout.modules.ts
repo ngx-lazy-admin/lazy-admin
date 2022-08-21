@@ -5,50 +5,32 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ng-zorro
-import { TabsComponent } from './tabs/tabs.component';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzAffixModule } from 'ng-zorro-antd/affix';
-import { NzBackTopModule } from 'ng-zorro-antd/back-top';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { NzCardModule } from 'ng-zorro-antd/card';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzDrawerModule } from 'ng-zorro-antd/drawer';
-import { NzMessageModule } from 'ng-zorro-antd/message';
-import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NgZorroAntdModule } from './ng-zorro-antd.modules';
 
+import { TabsComponent } from './tabs/tabs.component';
 import { LayoutBasicComponent } from './basic/basic.component';
 import { LayoutBlankComponent } from './blank/blank.component';
+
 import { LayoutHeaderComponent } from './basic/header/header.component';
-import { LayoutSearchComponent } from './basic/search/search.component';
-import { LayoutSiderComponent } from './basic/sider/sider.component';
-import { LayoutUserComponent } from './basic/user/user.component';
-import { LayoutMenuComponent } from './basic/menu/menu.component';
-import { LayoutFooterBarComponent } from './basic/footer-bar/footer-bar.component';
 import { LayoutHeaderTabsetComponent } from './basic/header-tabset/header-tabset.component';
-import { SearchItemComponent } from './basic/search/search-item/search-item.component';
+import { LayoutMenuComponent } from './basic/menu/menu.component';
+
 import { LayoutService } from './layout.service';
+import { MenuService } from './menu.service';
+import { FullScreenService } from './full-screen.service';
 
 @NgModule({
   declarations: [
     LayoutBasicComponent,
     LayoutBlankComponent,
     LayoutHeaderComponent,
-    LayoutSearchComponent,
-    LayoutSiderComponent,
-    LayoutUserComponent,
     LayoutMenuComponent,
     TabsComponent,
-    LayoutFooterBarComponent,
     LayoutHeaderTabsetComponent,
-    SearchItemComponent
   ],
-  exports: [],
+  exports: [
+    
+  ],
   imports: [
     BidiModule,
     CommonModule,
@@ -56,23 +38,12 @@ import { LayoutService } from './layout.service';
     FormsModule,
     ReactiveFormsModule,
 
-    NzLayoutModule,
-    NzFormModule,
-    NzAffixModule,
-    NzBackTopModule,
-    NzMenuModule,
-    NzTabsModule,
-    NzAvatarModule,
-    NzCardModule,
-    NzInputModule,
-    NzBreadCrumbModule,
-    NzButtonModule,
-    NzDropDownModule,
-    NzDrawerModule,
-    NzMessageModule,
-    NzIconModule,
-    // NgZorroAntdModule
+    NgZorroAntdModule
   ],
-  providers: [LayoutService]
+  providers: [
+    LayoutService,
+    MenuService,
+    FullScreenService
+  ]
 })
 export class LayoutModule {}

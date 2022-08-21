@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LayoutHeaderTabsetComponent } from './header-tabset.component';
 
-describe('HeaderTabsetComponent', () => {
+describe('LayoutHeaderTabsetComponent', () => {
   let component: LayoutHeaderTabsetComponent;
   let fixture: ComponentFixture<LayoutHeaderTabsetComponent>;
 

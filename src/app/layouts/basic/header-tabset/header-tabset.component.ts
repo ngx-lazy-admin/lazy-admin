@@ -7,13 +7,12 @@ import {
   ViewChild,
   TemplateRef
 } from '@angular/core';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { NzContextMenuService } from 'ng-zorro-antd/dropdown';
 
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
-import { MenuService, MenuType } from 'src/app/services/api/menu';
+import { MenuService, MenuType } from '../../menu.service';
 
 
 export declare type menuOperationType = 'left' | 'right' | 'all' | 'reload' | 'other';
@@ -36,8 +35,6 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   private _destroy$ = new Subject<void>();
 
   constructor(
-    public overlay: Overlay, 
-    public viewContainerRef: ViewContainerRef,
     private contextMenuService: NzContextMenuService,
     private menu: MenuService,
     private cd: ChangeDetectorRef

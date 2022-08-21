@@ -1,60 +1,45 @@
+<nz-tabset
+	[nzSelectedIndex]="selectedIndex"
+	[nzTabBarExtraContent]="extraTemplate"
+	nzLinkRouter
+	nzType="editable-card"
+	nzHideAdd="true"
+	[nzAnimated]="false"
+	class="w-100"
+	(nzAdd)="newTab()"
+	(nzClose)="closeTab($event)">
+	<ng-container *ngFor="let tab of tabs">
+		<nz-tab nzClosable nzType="primary" class="mb-0"  (nzContextmenu)="contextMenu($event, menu)">
+			<div *nzTabLink nz-tab-link [routerLink]="tab?.link" class="d-inline-block ps-3 py-2 flex-nowrap">
+				<i *ngIf="tab?.icon" nz-icon [nzType]="tab?.icon || 'tabs'"  class="me-1" nzTheme="outline"></i>
+				{{tab?.name}}
+			</div>
+		</nz-tab>
 
-	<nz-tabset
-		[nzSelectedIndex]="selectedIndex"
-		[nzTabBarExtraContent]="extraTemplate"
-		nzLinkRouter
-		nzType="editable-card"
-		[nzHideAdd]="true"
-		[nzAnimated]="false"
-		class="w-100"
-		(nzAdd)="newTab()"
-		(nzClose)="closeTab($event)">
-		<ng-container *ngFor="let tab of tabs">
-			<nz-tab nzClosable nzType="primary" class="mb-0"  (nzContextmenu)="contextMenu($event, menu)">
-				<div *nzTabLink nz-tab-link [routerLink]="tab?.link" class="d-inline-block ps-3 py-2 flex-nowrap">
-					<i *ngIf="tab?.icon" nz-icon nzType="tab?.icon"  class="button-group-icon" nzTheme="outline"></i>
-					{{tab?.name}}
-				</div>
-			</nz-tab>
-
-			<nz-dropdown-menu #menu="nzDropdownMenu">
-				<ul nz-menu>
-					<li nz-menu-item (click)="closeMenu(tab)">关闭</li>
-					<li nz-menu-item (click)="closeMenu(tab, 'other')">关闭其他</li>
-					<li nz-menu-item (click)="closeMenu(tab, 'right')">关闭右侧其他</li>
-					<li nz-menu-item (click)="closeMenu(tab, 'all')"> 关闭全部</li>
-					<li nz-menu-item (click)="closeMenu(tab, 'reload')">重新加载</li>
-				</ul>
-			</nz-dropdown-menu>
-		</ng-container>
-	</nz-tabset>
-	<ng-template #extraTemplate>
-		<!-- <nz-button-group class="w-100 ">
-			<button nz-button nzType="text">
-				<i nz-icon nzType="left" class="button-group-icon" nzTheme="outline"></i>
-			</button>
-			<button nz-button nzType="text">
-				<i nz-icon nzType="right" class="button-group-icon" nzTheme="outline"></i>
-			</button>
-			<button nz-button nzType="text">
-				<i nz-icon nzType="redo" class="button-group-icon" nzTheme="outline"></i>
-			</button>
-			<button nz-button nzType="text">
-				<i nz-icon nzType="menu" class="button-group-icon" nzTheme="outline"></i>
-			</button>
-		</nz-button-group> -->
-		<nz-button-group>
-      <button nz-button>
-        <i nz-icon nzType="left"></i>
-      </button>
-			<button nz-button>
-        <i nz-icon nzType="right"></i>
-      </button>
-			<button nz-button>
-        <i nz-icon nzType="redo"></i>
-      </button>
-      <button nz-button>
-        <i nz-icon nzType="menu"></i>
-      </button>
-    </nz-button-group>
-	</ng-template>
+		<nz-dropdown-menu #menu="nzDropdownMenu">
+			<ul nz-menu>
+				<li nz-menu-item (click)="closeMenu(tab)">关闭</li>
+				<li nz-menu-item (click)="closeMenu(tab, 'other')">关闭其他</li>
+				<li nz-menu-item (click)="closeMenu(tab, 'right')">关闭右侧其他</li>
+				<li nz-menu-item (click)="closeMenu(tab, 'all')"> 关闭全部</li>
+				<li nz-menu-item (click)="closeMenu(tab, 'reload')">重新加载</li>
+			</ul>
+		</nz-dropdown-menu>
+	</ng-container>
+</nz-tabset>
+<ng-template #extraTemplate>
+	<nz-button-group>
+		<button nz-button>
+			<i nz-icon nzType="left"></i>
+		</button>
+		<button nz-button>
+			<i nz-icon nzType="right"></i>
+		</button>
+		<button nz-button>
+			<i nz-icon nzType="redo"></i>
+		</button>
+		<button nz-button>
+			<i nz-icon nzType="menu"></i>
+		</button>
+	</nz-button-group>
+</ng-template>

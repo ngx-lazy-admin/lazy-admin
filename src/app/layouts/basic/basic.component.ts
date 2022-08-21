@@ -3,8 +3,8 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { LayoutService } from '../layout.service';
-import { MenuService } from '../../services/api/menu/menu.services';
 import { UserService } from 'src/app/services/api/user';
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'app-layout-basic',
@@ -17,8 +17,6 @@ export class LayoutBasicComponent implements OnInit {
 
   dir: Direction = 'ltr';
 
-  menus: any = null
-
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -28,20 +26,24 @@ export class LayoutBasicComponent implements OnInit {
     private menu: MenuService,
     @Optional() private directionality: Directionality,
   ) {
-    this.layout.change$?.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.cd.markForCheck();
-    })
+    this.layout.change$
+      ?.pipe(takeUntil(this.destroy$))
+      ?.subscribe(() => {
+        this.cd.markForCheck();
+      })
 
-    this.menu.change$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
-      this.menus = item;
-      this.cd.markForCheck();
-    })
+    this.menu.change$
+      ?.pipe(takeUntil(this.destroy$))
+      ?.subscribe(() => {
+        this.cd.markForCheck();
+      })
 
     this.dir = this.directionality.value;
-    this.directionality.change?.pipe(takeUntil(this.destroy$)).subscribe((direction: Direction) => {
-      this.dir = direction;
-    });
-
+    this.directionality.change
+      ?.pipe(takeUntil(this.destroy$))
+      ?.subscribe((direction: Direction) => {
+        this.dir = direction;
+      });
   }
 
   ngOnInit(): void { }

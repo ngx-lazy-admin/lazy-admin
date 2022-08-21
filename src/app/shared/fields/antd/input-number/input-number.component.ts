@@ -53,13 +53,12 @@ export class InputNumberField extends FieldType {
 	private _formatter: (value: number) => string | number = value => value;
 
 	get nzFormatter() {
-		return execFunc(this.to.nzFormatter) || this._formatter;
+		return this.to.nzFormatter && execFunc(this.to.nzFormatter) || this._formatter;
 	}
 
 	private  _parser = (value: string) => value.trim().replace(/。/g, '.').replace(/[^\w\.-]+/g, '');
 
 	get nzParser(): (value: string) => string {
-		console.log(execFunc(this.to.parser))
 		return this.to.nzParser || execFunc(this.to.parser) || this._parser
 	}
 
