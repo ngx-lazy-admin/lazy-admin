@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders, Inject, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -6,14 +6,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatListModule } from '@angular/material/list';
 
 import { FormlyModule } from '@ngx-formly/core';
-
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzModalModule } from 'ng-zorro-antd/modal';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzAlertModule } from 'ng-zorro-antd/alert';
-import { NzListModule } from 'ng-zorro-antd/list';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 
 import { FieldTypeModule } from 'src/app/shared/fields/antd';
 import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
@@ -25,7 +17,16 @@ import { DispatchService } from './dispatch.service';
 import { ModalService } from './modal.service';
 import { BlankModal } from './blank-modal/blank-modal.component';
 
-import { NzResizableModule } from 'ng-zorro-antd/resizable';
+import { NgZorroAntdModule } from './ng-zorro-antd.modules';
+
+// export function defaultFormlyConfig(config: any): any {
+//   return {
+//     types: [
+//       { name: 'formly-group', component: FormlyGroup },
+//       { name: 'formly-template', component: FormlyTemplateType },
+//     ]
+//   };
+// }
 
 @NgModule({
   providers: [
@@ -45,17 +46,7 @@ import { NzResizableModule } from 'ng-zorro-antd/resizable';
     ScrollingModule,
     DragDropModule,
     MatListModule,
-
-    NzAlertModule,
-    NzButtonModule,
-    NzIconModule,
-    NzModalModule,
-    NzListModule,
-    NzInputModule,
-    NzResizableModule,
-    NzAutocompleteModule,
-
-    NzIconModule,
+    NgZorroAntdModule,
 
     FormlyModule,
     FieldTypeModule,
@@ -69,4 +60,40 @@ import { NzResizableModule } from 'ng-zorro-antd/resizable';
     BlankModal
   ]
 })
-export class ModalsModule { }
+export class ModalsModule { 
+  // static forRoot(config: ConfigOption = {}): ModuleWithProviders<FormlyModule> {
+  //   return {
+  //     ngModule: FormlyModule,
+  //     providers: [
+  //       { provide: FORMLY_CONFIG, multi: true, useFactory: defaultFormlyConfig, deps: [FormlyConfig] },
+  //       { provide: FORMLY_CONFIG, useValue: config, multi: true },
+  //       FormlyConfig,
+  //       FormlyFormBuilder,
+  //     ],
+  //   };
+  // }
+
+  // static forChild(
+  //   config: ConfigOption = {}
+  // ): ModuleWithProviders<FormlyModule> {
+  //   return {
+  //     ngModule: FormlyModule,
+  //     providers: [
+  //       { provide: FORMLY_CONFIG, multi: true, useFactory: defaultFormlyConfig, deps: [FormlyConfig] },
+  //       { provide: FORMLY_CONFIG, useValue: config, multi: true },
+  //       FormlyFormBuilder,
+  //     ],
+  //   };
+  // }
+
+  // constructor(
+  //   configService: FormlyConfig, 
+  //   @Optional() @Inject(FORMLY_CONFIG) configs: ConfigOption[] = []
+  // ) {
+  //   if (!configs) {
+  //     return;
+  //   }
+
+  //   configs.forEach((config) => configService.addConfig(config));
+  // }
+}

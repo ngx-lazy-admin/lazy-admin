@@ -4,9 +4,7 @@ import { base64Encode } from "./base64";
 export const loadScript = (path: string, innerContent?: string):  Observable<any> => {
   return new Observable ((observed) => {
 
-    console.log(path)
     const id = base64Encode(path).slice(0, 64)
-    console.log(id)
     const removedScript = document.getElementById(id);
     const successResult = {
       path,
@@ -52,13 +50,13 @@ export const loadScript = (path: string, innerContent?: string):  Observable<any
 export const loadStyle = (path: string, innerContent?: string): Observable<any> => {
   return new Observable ((observed) => {
     const id = base64Encode(path).slice(32);
-    const removedThemeStyle = document.getElementById(id);
+    const themeStyle = document.getElementById(id);
     const successResult = {
       path,
       status: 'ok'
     };
 
-    if (path && removedThemeStyle) {
+    if (path && themeStyle) {
       observed.next(successResult)
       return
     }

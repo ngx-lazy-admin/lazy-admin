@@ -1,20 +1,17 @@
-// @import "ng-zorro-antd/code-editor/style/entry.less";
-
-.editor {
-  height: 200px;
-}
-
-.mGraph-wrapper{
-  width: 100%;
-  height: 500px;
-  background: #fff;
+// 定义全局水印
+.watermark {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.mGraph-wrapper .mGraph{
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+
+.watermark::after {
+	content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+	pointer-events: none;
+  z-index: 9;
+  opacity: 1;
+  background-image: var(--watermark);
 }

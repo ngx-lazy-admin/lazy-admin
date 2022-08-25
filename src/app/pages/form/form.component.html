@@ -8,14 +8,15 @@
 			nzDescription="键盘点击 . , 可以编辑当前页面配置, 点击 M 可以把当前页面转弹窗"
 		></nz-alert>
 
-		<nz-page-header *ngIf="info" class="bg-white mb-3">
-			<nz-page-header-title>{{info?.title}}</nz-page-header-title>
+		<nz-page-header *ngIf="info" class="bg-white mb-3" >
+			<nz-page-header-title>{{info.title}}</nz-page-header-title>
 			<nz-page-header-content>
-			 <div [innerHtml]="info?.content | marked"></div>
+			 <div [innerHtml]="info.content | marked"></div>
 			</nz-page-header-content>
 		</nz-page-header>
-		
-		<form [formGroup]="form" (ngSubmit)="submit()">
+
+
+		<form [formGroup]="form" (ngSubmit)="submit()" [attr.style]="'--watermark: ' + ('水印' | watermark | async) " class="watermark">
 			<formly-form 
 				class="row" 
 				[form]="form" 

@@ -8,9 +8,6 @@ import { watermark } from 'src/app/utils';
 export class WatermarkPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): any {
-    watermark(value).subscribe(item => {
-      console.log(item)
-      return item
-    })
+    return watermark(value)
   }
 }
