@@ -1,4 +1,3 @@
-import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 export function getPercent(min: number, max: number, value: number): number {
   return ((value - min) / (max - min)) * 100;
@@ -20,7 +19,7 @@ export function ensureNumberInRange(num: number, min: number, max: number): numb
   }
 }
 
-export function isNumberFinite(value: NzSafeAny): boolean {
+export function isNumberFinite(value: any): boolean {
   return typeof value === 'number' && isFinite(value);
 }
 

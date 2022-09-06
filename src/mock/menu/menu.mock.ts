@@ -1018,4 +1018,10 @@ export const menu = [
     badge: '',
     link: '/modal'
   },
+  {
+    id: '17',
+    name: '函数库',
+    badge: '',
+    link: '/tools'
+  },
 ]

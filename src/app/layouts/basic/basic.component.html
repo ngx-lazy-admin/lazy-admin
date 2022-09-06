@@ -47,9 +47,7 @@
       <app-layout-header></app-layout-header>
     </nz-header>
 
-    <nz-affix [nzOffsetTop]="0" style="width: 100%;">
-      <app-layout-header-tabset></app-layout-header-tabset>
-    </nz-affix>
+    <app-layout-header-tabset class="position-sticky top-0 sticky-top"></app-layout-header-tabset>
 
     <nz-content class="position-relative">
       <router-outlet></router-outlet>

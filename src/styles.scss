@@ -32,16 +32,63 @@
 
 
 // @import "bootstrap/scss/bootstrap-utilities.scss";
+// 弹窗层级管理 modal 1000  notification 1010
 
-$zindex-dropdown:                   999;
-$zindex-sticky:                     999;
-$zindex-fixed:                      999;
-$zindex-offcanvas-backdrop:         999;
-$zindex-offcanvas:                  999;
-$zindex-modal-backdrop:             999;
-$zindex-modal:                      999;
-$zindex-popover:                    999;
-$zindex-tooltip:                    999;
+$zIndex-dropdown:                   999;
+$zIndex-sticky:                     10;
+$zIndex-fixed:                      999;
+$zIndex-offcanvas-backdrop:         999;
+$zIndex-offcanvas:                  999;
+$zIndex-modal-backdrop:             1000;
+$zIndex-modal:                      1000;
+$zIndex-popover:                    999;
+$zIndex-tooltip:                    999;
+
+// @zindex-badge: auto;
+// @zindex-table-fixed: 2;
+// @zindex-affix: 10;
+// @zindex-back-top: 10;
+// @zindex-picker-panel: 10;
+// @zindex-popup-close: 10;
+// @zindex-modal: 1000;
+// @zindex-modal-mask: 1000;
+// @zindex-message: 1010;
+// @zindex-notification: 1010;
+// @zindex-popover: 1030;
+// @zindex-dropdown: 1050;
+// @zindex-picker: 1050;
+// @zindex-popoconfirm: 1060;
+// @zindex-tooltip: 1070;
+// @zindex-image: 1080;
+
+// z-index list, order by `z-index`
+// @zindex-badge: auto;
+// @zindex-table-fixed: 2;
+// @zindex-affix: 10;
+// @zindex-back-top: 10;
+// @zindex-picker-panel: 10;
+// @zindex-popup-close: 10;
+// @zindex-modal: 1000;
+// @zindex-modal-mask: 1000;
+// @zindex-message: 1010;
+// @zindex-notification: 1010;
+// @zindex-popover: 1030;
+// @zindex-dropdown: 1050;
+// @zindex-picker: 1050;
+// @zindex-popoconfirm: 1060;
+// @zindex-tooltip: 1070;
+// @zindex-image: 1080;
+
+// $zindex-dropdown:                   1000;
+// $zindex-sticky:                     1020;
+// $zindex-fixed:                      1030;
+// $zindex-offcanvas-backdrop:         1040;
+// $zindex-offcanvas:                  1045;
+// $zindex-modal-backdrop:             1050;
+// $zindex-modal:                      1055;
+// $zindex-popover:                    1070;
+// $zindex-tooltip:                    1080;
+// $zindex-toast:                      1090;
 
 $enable-grid-classes: true;
 $enable-cssgrid: true;
@@ -214,7 +261,7 @@ $utilities: () !default;
 // 通用样式
 
 .sticky-top {
-	z-index: 1000;
+	z-index: $zIndex-sticky;
 }
 
 .fixed-bottom {

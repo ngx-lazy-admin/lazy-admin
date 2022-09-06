@@ -22,13 +22,10 @@ export class FieldService {
   private _destroy$ = new Subject();
   private _menu$ = new BehaviorSubject<Array<FieldType|null>|null>(null);
   private _baseFieldUrl = 'api';
-  private _menus: Array<FieldType> = [];
-  private _activeMenu: FieldType|null = null;
 
   private _tabset$ = new BehaviorSubject<Array<FieldType|null>|null>([]);
-  private _tabset:  Array<FieldType> = [];
   public breadcrumb: Array<any> = [];
-
+  
   constructor(
     private http: HttpClient,
   ) {}
@@ -50,38 +47,6 @@ export class FieldService {
   getFieldByOf(): Observable<Array<FormlyFieldConfig>> {
     return of(field)
   }
-
-  // addTabset (menu: any) {
-  //   if (!this._tabset.some(item => item.link === menu.link)) {
-  //     this._tabset = [...this._tabset, menu]
-  //     this._tabset$.next(this._tabset);
-  //   } else {
-  //     this.activeTabset(menu)
-  //   }
-  // }
-
-  // closeTabSet (index: number) {
-  //   if (this._tabset.length === 1) {
-  //     return;
-  //   }
-  //   let selected = this._tabset[index].selected;
-  //   this._tabset.splice(index, 1);
-  //   if (selected) {
-  //     this.activeTabset(this._tabset[index])
-  //   }
-  // }
-
-  // activeTabset (menu: FieldType) {
-  //   this._tabset.forEach(item => {
-  //     item.selected = false
-  //     if (item.link === menu.link) {
-  //       item.selected = true
-  //     }
-  //   })
-  //   this._tabset = [...this._tabset]
-    
-  //   this._tabset$.next(this._tabset);
-  // }
 
   ngOnDestroy() {
     this._destroy$.next();

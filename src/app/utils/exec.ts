@@ -6,8 +6,6 @@ export const execFunc = (func: string | Function) => typeof(func) == 'string' ? 
 
 export const execFunction = (name: string) => (new Function( 'return ' + name))();
 
-  // export declare type FormlyAttributeEvent = (field: FormlyFieldConfig, event?: any) => void;
-
 export const runFunction = (name: string, field?: FormlyFieldConfig, $event?: Event) => {
   try{
     if (name) {

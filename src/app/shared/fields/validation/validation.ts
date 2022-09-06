@@ -1,24 +1,23 @@
 import { AbstractControl, ValidationErrors } from "@angular/forms";
 import { FormlyFieldConfig } from "@ngx-formly/core";
 
-// ip 检验
-const IpValidator = (control: AbstractControl): ValidationErrors => {
-  return !control.value || /(\d{1,3}\.){3}\d{1,3}/.test(control.value) ? {} : { ip: true };
-}
-
-const IpValidatorMessage = (err: any, field: FormlyFieldConfig): string => {
-  return `"${field.formControl?.value}" is not a valid IP Address`;
-}
-
 // 必填
-export function requireValidator(control: AbstractControl): ValidationErrors {
+export const requireValidator = (control: AbstractControl): ValidationErrors  =>{
   return control.value ? { } : { require: true };
 }
 
-export function requireValidatorMessage(control: AbstractControl): string {
+export const requireValidatorMessage = (control: AbstractControl): string => {
   return 'This field is required';
 }
 
+// ip 检验
+export const IpValidator = (control: AbstractControl): ValidationErrors => {
+  return !control.value || /(\d{1,3}\.){3}\d{1,3}/.test(control.value) ? {} : { ip: true };
+}
+
+export const IpValidatorMessage = (err: any, field: FormlyFieldConfig): string => {
+  return `"${field.formControl?.value}" is not a valid IP Address`;
+}
 
 
 export function minValidationMessage(err: any, field: FormlyFieldConfig) {

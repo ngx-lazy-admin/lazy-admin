@@ -1,6 +1,6 @@
 import { TemplateRef } from '@angular/core';
 
-import { IndexableObject, NzSafeAny } from 'ng-zorro-antd/core/types';
+import { IndexableObject } from 'ng-zorro-antd/core/types';
 
 export function isNumber(value: string | number): boolean {
   return ((value != null) && (value !== '') && !isNaN(Number(value.toString())));
@@ -74,11 +74,11 @@ export function shallowEqual(objA?: IndexableObject, objB?: IndexableObject): bo
   return true;
 }
 
-export function isNonEmptyString(value: NzSafeAny): boolean {
+export function isNonEmptyString(value: any): boolean {
   return typeof value === 'string' && value !== '';
 }
 
-export function isTemplateRef(value: NzSafeAny): boolean {
+export function isTemplateRef(value: any): boolean {
   return value instanceof TemplateRef;
 }
 
