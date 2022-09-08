@@ -17,6 +17,11 @@ const modals = {
   'blank': BlankModal
 }
 
+// append class
+const addClassName = (className: string = '', str: string): string => {
+  return  className.split(' ')?.filter(item => item === 'd-none')?.join(' ') + ' ' + str
+} 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +31,8 @@ export class ModalService {
   userSettingsPortal: any
 
   currentIndex: number = 1000
+
+  modalIndex: number = 1000
 
   private renderer: Renderer2;
 
@@ -70,7 +77,6 @@ export class ModalService {
         nzContent: modals[type],
         nzFooter: null,
         nzViewContainerRef: this.viewContainerRef,
-        nzZIndex: this.currentIndex,
         nzMask: false,
         nzBodyStyle: {
           padding: 0
@@ -103,13 +109,18 @@ export class ModalService {
           params.afterClose(modal)
         }
       });
-  
+
       // 监听弹窗点击
-      this.renderer.listen( modal.containerInstance.modalElementRef.nativeElement,'click',(event) => {
-        if ((modal.containerInstance.config.nzZIndex || 0) < this.currentIndex) {
-          modal.containerInstance.config.nzZIndex = ++this.currentIndex;
-        }
-        modal.containerInstance.config.nzZIndex = ++this.currentIndex;
+      this.renderer.listen( modal.containerInstance.modalElementRef.nativeElement, 'mousedown', (event) => {
+
+        // 所有弹窗层级减一
+        this.modal.openModals.forEach(modal => {
+          const zIndex = modal.containerInstance.config.nzZIndex || this.modalIndex
+          modal.containerInstance.config.nzZIndex = zIndex > this.modalIndex ? zIndex - 1 : this.modalIndex
+        })
+
+        // 当前弹窗层级设置最大
+        modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
       })
   
       // 添加样式穿透
@@ -117,6 +128,11 @@ export class ModalService {
         const element = modal.getElement().parentElement?.parentElement
         element?.classList.add('pointer-events-none')
       }
+
+      setTimeout(() => {
+        modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
+      }, 0)
+
     })
   }
 
@@ -150,7 +166,6 @@ export class ModalService {
 
     modal.updateConfig({
       ...config,
-      nzZIndex: 1,
       nzClassName: 'className',
       nzWrapClassName: className + ' d-none'
     })
@@ -168,9 +183,12 @@ export class ModalService {
   }
 
   hideAll () {
-    console.log('modalService: hideAll')
-    this.modal.openModals?.map(modal => {
-      this.hide(modal)
+    this.modal.openModals?.forEach(modal => {
+      const config = modal.getConfig()
+      console.log(addClassName(config.nzWrapClassName, ' d-none'))
+      modal.updateConfig({
+        nzWrapClassName: addClassName(config.nzWrapClassName, ' d-none') 
+      })
     })
   }
 
