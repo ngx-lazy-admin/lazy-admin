@@ -1,6 +1,31 @@
+<ng-template #modalContent>
+  <p>Content one</p>
+  <p>Content two</p>
+  <p>Content three</p>
+</ng-template>
 
-<button nz-button (click)="open($event)"> 打开弹窗 </button>
-<button nz-button (click)="create($event)"> 创建弹窗 </button>
+<ng-template #tplTitle>
+  <span>Title Template</span>
+</ng-template>
+
+<ng-template #titleTemplate>
+  <div class="p-0 d-block "
+    cdkDrag
+    cdkDragHandle
+    cdkDragRootElement=".ant-modal-content"
+    style="cursor: move;">
+    <div class="d-flex justify-content-between">
+      <div>{{ "标题" }} </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="example-portal-outlet">
+  <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+</div>
+
+<button nz-button (click)="create(modalContent)"> 第一个对话框 </button>
+<button nz-button (click)="custom($event)"> 自定义组成部分 </button>
 <button nz-button (click)="close($event)"> 显示全部 </button>
 <button nz-button (click)="search($event)"> search </button>
 <button nz-button (click)="form($event)"> 全局搜索 </button>
@@ -20,3 +45,4 @@ dispatchForm
 <button nz-button (click)="showBlank($event)"> 显示弹窗 </button>
 <button nz-button (click)="hideAllBlank($event)"> 隐藏全部 </button>
 <button nz-button (click)="showAllBlank($event)"> 显示全部 </button>
+

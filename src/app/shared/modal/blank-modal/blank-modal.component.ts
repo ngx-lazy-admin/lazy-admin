@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, TemplateRef, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { DispatchService } from '../dispatch.service';
@@ -12,25 +12,39 @@ import { NzResizeEvent } from 'ng-zorro-antd/resizable';
     <div class="ant-modal-header p-0 d-block "
       cdkDrag
       cdkDragHandle
-      
       cdkDragRootElement=".ant-modal-content"
       style="cursor: move;">
       <div class="d-flex justify-content-between">
         <div class="p-3">{{ nzTitle || "标题" }} </div>
         <div class="d-flex align-items-center" style="cursor: auto">
-          <!-- 最小化页面 -->
           <i class="p-3" nz-icon nzType="minus" nzTheme="outline" (click)="min(id)"></i>
-          <!-- 转页面 -->
           <i class="p-3" nz-icon nzType="fullscreen" nzTheme="outline" (click)="max(id)"></i>
-          <!-- 关闭 -->
           <i class="p-3" nz-icon nzType="close" nzTheme="outline" (click)="close(id)"></i>
         </div>
       </div>
-    </div>111
-    <!-- <div nz-resizable [nzMinWidth]="256" (nzResize)="onResize($event)" style="width: 250px; height: 250px;" class="bg-warning"></div> -->
+    </div>
     <nz-resize-handles [nzDirections]="['right', 'bottom']"></nz-resize-handles>
+    <div>
 
+    </div>
   </div>
+
+  <ng-template #titleTemplate>
+    <div class="ant-modal-header p-0 d-block "
+      cdkDrag
+      cdkDragHandle
+      cdkDragRootElement=".ant-modal-content"
+      style="cursor: move;">
+      <div class="d-flex justify-content-between">
+        <div class="p-3">{{ nzTitle || "标题" }} </div>
+        <div class="d-flex align-items-center" style="cursor: auto">
+          <i class="p-3" nz-icon nzType="minus" nzTheme="outline" (click)="min(id)"></i>
+          <i class="p-3" nz-icon nzType="fullscreen" nzTheme="outline" (click)="max(id)"></i>
+          <i class="p-3" nz-icon nzType="close" nzTheme="outline" (click)="close(id)"></i>
+        </div>
+      </div>
+    </div>
+  </ng-template>
   `,
   styles: [
     `
@@ -66,6 +80,8 @@ export class BlankModal {
   @Output() onMin = new EventEmitter<string>();
   @Output() onMax = new EventEmitter<string>();
   // @Output() click = new EventEmitter<string>();
+
+  @ViewChild('titleTemplate', { read: TemplateRef }) titleTemplateRef!:TemplateRef<any>;
 
   form = new FormGroup({});
   bound: ElementRef<HTMLElement>

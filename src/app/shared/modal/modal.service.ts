@@ -1,4 +1,4 @@
-import { Injectable, Renderer2, ViewContainerRef, RendererFactory2 } from '@angular/core';
+import { Injectable, Renderer2, ViewContainerRef, RendererFactory2, TemplateRef, ViewChild } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { FieldService } from 'src/app/services/api/field';
 import { CacheService } from 'src/app/services/router/cache.service';
@@ -18,8 +18,12 @@ const modals = {
 }
 
 // append class
-const addClassName = (className: string = '', str: string): string => {
-  return  className.split(' ')?.filter(item => item === 'd-none')?.join(' ') + ' ' + str
+const appendClassName = (className: string = '', str: string): string => {
+  return className ? removeClassName(className, str) + ' ' + str : str
+} 
+
+const removeClassName = (className: string = '', str: string): string => {
+  return className.split(' ')?.filter(item => item != str)?.join(' ')
 } 
 
 @Injectable({
@@ -36,6 +40,8 @@ export class ModalService {
 
   private renderer: Renderer2;
 
+  @ViewChild(BlankModal) blank!: BlankModal;
+
   constructor(
     private modal: NzModalService,
     private rendererFactory: RendererFactory2,
@@ -48,7 +54,7 @@ export class ModalService {
       
       const modal = this.find(item?.id)
       if (item.operation === 'open') {
-        this.open(item.type, item.params, item.componentParams).subscribe()
+        this.open(item.type, item.params, item.componentParams)
       } else if (modal){
         if (item.operation === 'close') {
           this.close(modal as NzModalRef<any>)
@@ -69,130 +75,157 @@ export class ModalService {
     })
   }
 
+  // 打开弹窗
   open (type: modalType, params?: any, componentParams?: any) {
-    return new Observable ((observed) => {
-      const id = randomString(32)
-      const modal = this.modal.create({
+    const id = randomString(32)
+
+    let  modal: NzModalRef | null = null
+    modal = this.modal.create({
+      id: id,
+      nzContent: modals[type],
+      nzFooter: null,
+      nzViewContainerRef: this.viewContainerRef,
+      nzMask: false,
+      nzBodyStyle: {
+        padding: 0
+      },
+      nzStyle: {
+        left: ((this.modal.openModals.length) * 20) + 'px',
+        top: ((this.modal.openModals.length) * 20 + 100) + 'px',
+      },
+      nzComponentParams: {
         id: id,
-        nzContent: modals[type],
-        nzFooter: null,
-        nzViewContainerRef: this.viewContainerRef,
-        nzMask: false,
-        nzBodyStyle: {
-          padding: 0
+        close: () => {
+          modal?.destroy()
         },
-        nzStyle: {
-          left: ((this.modal.openModals.length) * 20) + 'px',
-          top: ((this.modal.openModals.length) * 20 + 100) + 'px',
-        },
-        nzComponentParams: {
-          id: id,
-          ...componentParams
-        },
-        nzClosable: false,
-        ...params
-      });
-  
-      // 监听弹窗打开
-      modal.afterOpen.subscribe((result) => {
-        console.log('[afterOpen] emitted!', result)
-        if (params.afterOpen) {
-          params.afterOpen(modal)
-        }
-      });
-  
-      // 监听弹窗关闭
-      modal.afterClose.subscribe(result => {
-        console.log('[afterClose] The result is:', result)
-        observed.next(result)
-        if (params.afterClose) {
-          params.afterClose(modal)
-        }
-      });
+        ...componentParams
+      },
+      nzClosable: false,
+      ...params
+    });
 
-      // 监听弹窗点击
-      this.renderer.listen( modal.containerInstance.modalElementRef.nativeElement, 'mousedown', (event) => {
-
-        // 所有弹窗层级减一
-        this.modal.openModals.forEach(modal => {
-          const zIndex = modal.containerInstance.config.nzZIndex || this.modalIndex
-          modal.containerInstance.config.nzZIndex = zIndex > this.modalIndex ? zIndex - 1 : this.modalIndex
-        })
-
-        // 当前弹窗层级设置最大
-        modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
-      })
-  
-      // 添加样式穿透
-      if (modal) {
-        const element = modal.getElement().parentElement?.parentElement
-        element?.classList.add('pointer-events-none')
+    // 监听弹窗打开
+    modal.afterOpen.subscribe((result) => {
+      console.log('[afterOpen] emitted!', result)
+      if (params.afterOpen) {
+        params.afterOpen(modal)
       }
+    });
 
-      setTimeout(() => {
-        modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
-      }, 0)
+    // 监听弹窗关闭
+    modal.afterClose.subscribe(result => {
+      console.log('[afterClose] The result is:', result)
+      if (params.afterClose) {
+        params.afterClose(modal)
+      }
+    });
 
+    this.listenModal(modal)
+  }
+
+  // 创建弹窗
+  create (templateRef: TemplateRef<any>, params?: any, componentParams?: any) {
+    console.log(templateRef)
+
+    console.log(this.blank)
+    const id = randomString(32)
+    const modal = this.modal.create({
+      id: id,
+      nzContent: templateRef,
+      nzTitle: '1111',
+      nzMask: false,
+      nzViewContainerRef: this.viewContainerRef,
+      nzStyle: {
+        left: ((this.modal.openModals.length) * 20) + 'px',
+        top: ((this.modal.openModals.length) * 20 + 100) + 'px',
+      },
+      nzComponentParams: {
+        id: id,
+        ...componentParams
+      },
+      nzClosable: false,
+      ...params
+    });
+
+    // 监听弹窗打开
+    modal.afterOpen.subscribe((result) => {
+      console.log('[afterOpen] emitted!', result)
+      if (params?.afterOpen) {
+        params.afterOpen(modal)
+      }
+    });
+
+    // 监听弹窗关闭
+    modal.afterClose.subscribe(result => {
+      console.log('[afterClose] The result is:', result)
+      if (params?.afterClose) {
+        params.afterClose(modal)
+      }
+    });
+
+    this.listenModal(modal)
+  }
+
+
+  private listenModal (modal: NzModalRef) {
+    // 监听弹窗点击
+    this.renderer.listen( modal.containerInstance.modalElementRef.nativeElement, 'mousedown', (event) => {
+      // 所有弹窗层级减一
+      this.modal.openModals.forEach(modal => {
+        const zIndex = modal.containerInstance.config.nzZIndex || this.modalIndex
+        modal.containerInstance.config.nzZIndex = zIndex > this.modalIndex ? zIndex - 1 : this.modalIndex
+      })
+
+      // 当前弹窗层级设置最大
+      modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
+    })
+
+    // 添加样式穿透
+    modal?.getElement().parentElement?.parentElement?.classList.add('pointer-events-none')
+
+    // 修改弹窗层级
+    setTimeout(() => {
+      modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
+    }, 0)
+  }
+
+  // 显示弹窗
+  private show (modal: NzModalRef) {
+    modal.updateConfig({nzWrapClassName: removeClassName(modal.getConfig().nzWrapClassName, 'd-none')})
+  }
+
+  // 隐藏弹窗
+  private hide (modal: NzModalRef) {
+    modal.updateConfig({nzWrapClassName: appendClassName(modal.getConfig().nzWrapClassName, 'd-none')})
+  }
+
+  // 显示全部弹窗
+  private showAll () {
+    this.modal.openModals?.forEach(modal => {
+      modal.updateConfig({nzWrapClassName: removeClassName(modal.getConfig().nzWrapClassName, 'd-none')})
     })
   }
 
-  close (modal: NzModalRef) {
+  // 隐藏所有弹窗
+  private hideAll () {
+    this.modal.openModals?.forEach(modal => {
+      modal.updateConfig({nzWrapClassName: appendClassName(modal.getConfig().nzWrapClassName, ' d-none') })
+    })
+  }
+
+  // 查找弹窗
+  private find (id: string) {
+    return id && this.modal.openModals.find(item => item.componentInstance?.id === id)
+  }
+
+  // 销毁弹窗
+  private close (modal: NzModalRef) {
     modal?.destroy()
   }
 
-  show (modal: NzModalRef) {
-    const config = modal.getConfig()
-    const className = config.nzWrapClassName
-      ?.split(' ')
-      ?.filter(item => item !== 'd-none')
-      ?.join(' ')
-
-    if (className === config.nzWrapClassName) {
-      return
-    }
-
-    modal.updateConfig({
-      ...config,
-      nzWrapClassName: className
-    })
-  }
-
-  hide (modal: NzModalRef) {
-    const config = modal.getConfig()
-    const className = config.nzWrapClassName
-      ?.split(' ')
-      ?.filter(item => item === 'd-none')
-      ?.join(' ')
-
-    modal.updateConfig({
-      ...config,
-      nzClassName: 'className',
-      nzWrapClassName: className + ' d-none'
-    })
-  }
-
-  showAll () {
-    console.log('showAll')
-    this.modal.openModals?.map(modal => {
-      this.show(modal)
-    })
-  }
-
-  closeAll () {
+  // 销毁所有弹窗
+  private closeAll () {
     this.modal.closeAll()
   }
-
-  hideAll () {
-    this.modal.openModals?.forEach(modal => {
-      const config = modal.getConfig()
-      console.log(addClassName(config.nzWrapClassName, ' d-none'))
-      modal.updateConfig({
-        nzWrapClassName: addClassName(config.nzWrapClassName, ' d-none') 
-      })
-    })
-  }
-
-  find (id: string) {
-    return id && this.modal.openModals.find(item => item.componentInstance?.id === id)
-  }
 }
+

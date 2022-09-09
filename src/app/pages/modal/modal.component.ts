@@ -1,6 +1,6 @@
 
-import { Component, OnInit, Input, TemplateRef, ViewContainerRef, Renderer2, ElementRef } from '@angular/core';
-import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { Template } from '@angular/compiler/src/render3/r3_ast';
+import { Component, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { ModalService } from 'src/app/shared/modal';
 import { DispatchService } from 'src/app/shared/modal/dispatch.service';
 
@@ -13,13 +13,12 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  @ViewChild('titleTemplate', { read: TemplateRef }) titleTemplateRef!:TemplateRef<any>;
+
   constructor(
-    private renderer: Renderer2,
     private modalService: ModalService,
     private dispatch: DispatchService
-  ) {
-
-  }
+  ) {}
 
   model = {
     email: 'email@gmail.com'
@@ -38,39 +37,26 @@ export class ModalComponent implements OnInit {
     }
   ]
 
-  create($event: any) {
-  //  const modal = this.modalService.create({
-  //     nzWidth: '900px',
-  //     nzWrapClassName: 'dragModal',
-  //     nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
-  //     fields: this.fields,
-  //     model: this.model,
-  //     nzMask: false,
-  //     nzFooter: [
-  //       {
-  //         label: '取消1',
-  //         onClick: () => modal.destroy()
-  //       },
-  //       {
-  //         label: '确定',
-  //         type: 'primary',
-  //         onClick: ($event: any) => {
-  //           return new Promise(resolve => setTimeout(() => {
-  //             console.log($event)
-  //             modal.destroy()
-  //           }, 2000));
-  //         }
-  //       }
-  //     ]
-  //   }, $event)
+  // 创建弹窗
+  create(template: TemplateRef<any>) {
+    this.modalService.create(template, {
+      nzTitle: this.titleTemplateRef
+    })
+  }
+
+  // 自定义组成部分
+  custom (template: TemplateRef<any>) {
+    this.modalService.create(template, {
+      nzTitle: this.titleTemplateRef
+    })
   }
 
   close ($event: any) {
-    this.modalService.closeAll()
+    // this.modalService.closeAll()
   }
 
   open ($event: any) {
-    this.modalService.show($event)
+    // this.modalService.show($event)
   }
 
   search ($event: any) {

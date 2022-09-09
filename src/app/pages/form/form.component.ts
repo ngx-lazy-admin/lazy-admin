@@ -161,28 +161,11 @@ export class FormComponent {
 
     hotkeys('m', (event, handler) => {
       // 转弹窗
-      const modal = this.modalService.open('form', {
-        nzWidth: '900px',
-        nzWrapClassName: 'dragModal',
-        nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+      console.log('mmmm')
+      console.log(this.cacheFields)
+      const modal = this.modalService.open('form', {}, {
         fields: this.cacheFields,
         model: this.model,
-        nzMask: false,
-        nzFooter: [
-          {
-            label: '取消',
-            // onClick: () => modal.destroy()
-          },
-          {
-            label: '确定',
-            type: 'primary',
-            onClick: ($event: any) => {
-              return new Promise(resolve => setTimeout(() => {
-                console.log($event)
-              }, 60));
-            }
-          }
-        ]
       })
     });
   }

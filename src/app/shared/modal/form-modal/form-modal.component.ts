@@ -2,6 +2,7 @@
 import { Component, OnInit, Input, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-form-modal',
@@ -20,7 +21,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
           <!-- 转页面 -->
           <i class="p-3" nz-icon nzType="fullscreen" nzTheme="outline" (click)="max(id)"></i>
           <!-- 关闭 -->
-          <i class="p-3" nz-icon nzType="close" nzTheme="outline" (click)="close(id)"></i>
+          <i class="p-3" nz-icon nzType="close" nzTheme="outline" (click)="closeModal(id)"></i>
         </div>
       </div>
     </div>
@@ -36,10 +37,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   `,
   styles: [
     `
-    .modal-wrap {
-      margin: -24px;
-      cursor: pointer;
-    }
+
     `
   ]
 })
@@ -48,13 +46,15 @@ export class FormModal {
   @Input() fields?: FormlyFieldConfig[];
   @Input() model?: any;
   @Input() nzTitle?: string | TemplateRef<{}>;
-  @Input() modal: any;
+  @Input() modal?: NzModalRef;
   @Input() id: string = '';
   @Input() click?: (type: string, id: any) => void;
+  @Input() close?: () => void;
+
 
   @Output() onMin = new EventEmitter<string>();
   @Output() onMax = new EventEmitter<string>();
-  // @Output() click = new EventEmitter<string>();
+
 
   form = new FormGroup({});
 
@@ -70,9 +70,9 @@ export class FormModal {
     }
   }
 
-  close (id: string) {
-    if (this.click) {
-      this.click('close', id)
+  closeModal (id: string) {
+    if (this.close) {
+      this.close()
     }
   }
 }
