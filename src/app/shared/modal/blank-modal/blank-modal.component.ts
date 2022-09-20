@@ -1,15 +1,16 @@
 
-import { Component, OnInit, Input, TemplateRef, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { DispatchService } from '../dispatch.service';
+import { DispatchService, UsefulService, NeedsService } from '../dispatch.service';
 import { NzResizeEvent } from 'ng-zorro-antd/resizable';
+import { ModalOptions } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'div[app-blank-modal]',
   template: `
   <div class="modal-wrap border" nz-resizable [nzBounds]="bound"  (nzResize)="onResize($event)">
-    <div class="ant-modal-header p-0 d-block "
+    <div class="ant-modal-header p-0 d-block mousedown"
       cdkDrag
       cdkDragHandle
       cdkDragRootElement=".ant-modal-content"
@@ -25,7 +26,6 @@ import { NzResizeEvent } from 'ng-zorro-antd/resizable';
     </div>
     <nz-resize-handles [nzDirections]="['right', 'bottom']"></nz-resize-handles>
     <div>
-
     </div>
   </div>
 
@@ -68,7 +68,7 @@ import { NzResizeEvent } from 'ng-zorro-antd/resizable';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlankModal {
+export class BlankModal implements OnInit, AfterViewInit {
 
   @Input() fields?: FormlyFieldConfig[];
   @Input() model?: any;
@@ -89,16 +89,30 @@ export class BlankModal {
   constructor(
     private cd: ChangeDetectorRef,
     private elRef: ElementRef,
-		private dispatch: DispatchService
+		private dispatch: DispatchService,
+    private NeedsService: NeedsService
   ) {
     this.bound = this.elRef.nativeElement.querySelector('.ant-modal-content')
-    console.log(this.elRef.nativeElement.parentNode)
+    console.log('函数实例化')
+    console.log(this)
+
+  }
+
+  ngOnInit () {
+    console.log('ngOnInit')
+  }
+
+  ngAfterViewInit() {
+    // Called after the constructor and called  after the first ngOnChanges() 
+    console.log(this.titleTemplateRef)
+    this.NeedsService.setTemplate(this.titleTemplateRef) 
   }
 
   min (id: string) {
     if (this.click) {
       this.click('min', id)
     }
+    console.log(this)
   }
 
   max (id: string) {

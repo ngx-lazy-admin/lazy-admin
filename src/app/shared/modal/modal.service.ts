@@ -1,13 +1,13 @@
-import { Injectable, Renderer2, ViewContainerRef, RendererFactory2, TemplateRef, ViewChild } from '@angular/core';
-import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { FieldService } from 'src/app/services/api/field';
-import { CacheService } from 'src/app/services/router/cache.service';
+import { Injectable, Renderer2, ViewContainerRef, RendererFactory2, TemplateRef, ViewChild, Injector } from '@angular/core';
+import { ModalOptions, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { ComponentType, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { randomString } from 'src/app/utils';
 import { FormModal } from './form-modal/form-modal.component';
-import { Observable } from 'rxjs';
 import { SearchModal } from './search-modal/search-modal.component';
-import { DispatchService } from './dispatch.service';
+import { DispatchService, UsefulService, NeedsService } from './dispatch.service';
 import { BlankModal } from './blank-modal/blank-modal.component';
+
 
 type modalType = 'search' | 'form' | 'blank'
 
@@ -25,6 +25,15 @@ const appendClassName = (className: string = '', str: string): string => {
 const removeClassName = (className: string = '', str: string): string => {
   return className.split(' ')?.filter(item => item != str)?.join(' ')
 } 
+
+// const addClassName = (element: Element, className: string) => {
+//   element.classList.add(className);
+// }
+
+// const removeClassName = (element: Element, className: string) => {
+//   element.classList.remove(className);
+// }
+
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +55,8 @@ export class ModalService {
     private modal: NzModalService,
     private rendererFactory: RendererFactory2,
     private dispatch: DispatchService,
+    private injector: Injector,
+    private needsService: NeedsService
   ) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
 
@@ -77,6 +88,10 @@ export class ModalService {
 
   // 打开弹窗
   open (type: modalType, params?: any, componentParams?: any) {
+    // 组件实例化
+    // this.attachModalContainer(params)
+    // 获取template
+    
     const id = randomString(32)
 
     let  modal: NzModalRef | null = null
@@ -110,6 +125,7 @@ export class ModalService {
       if (params.afterOpen) {
         params.afterOpen(modal)
       }
+      console.log(this.needsService.getTemplate())
     });
 
     // 监听弹窗关闭
@@ -125,9 +141,7 @@ export class ModalService {
 
   // 创建弹窗
   create (templateRef: TemplateRef<any>, params?: any, componentParams?: any) {
-    console.log(templateRef)
-
-    console.log(this.blank)
+    // console.log(this.attachModalContainer(params))
     const id = randomString(32)
     const modal = this.modal.create({
       id: id,
@@ -147,9 +161,12 @@ export class ModalService {
       ...params
     });
 
+    // console.log(this.ne)
+
     // 监听弹窗打开
     modal.afterOpen.subscribe((result) => {
       console.log('[afterOpen] emitted!', result)
+      console.log(this.needsService.getTemplate())
       if (params?.afterOpen) {
         params.afterOpen(modal)
       }
@@ -226,6 +243,42 @@ export class ModalService {
   // 销毁所有弹窗
   private closeAll () {
     this.modal.closeAll()
+  }
+
+  // const injector = Injector.create({
+  //   providers:
+  //     [{ provide: NeedsService, deps: [UsefulService] }, { provide: UsefulService, deps: [] }]
+  // });
+  // console.log(' true or false?' , injector.get(NeedsService).service instanceof UsefulService);
+
+  private attachModalContainer(config: ModalOptions): ComponentPortal<BasePortalOutlet> {
+    const userInjector = config && config.nzViewContainerRef && config.nzViewContainerRef.injector;
+    
+    const injector = Injector.create({
+      parent: userInjector || this.injector,
+      providers: [
+        { provide: ModalOptions, useValue: config },
+        { provide: NeedsService, deps: [UsefulService] },
+        { provide: UsefulService, deps: [] }
+      ]
+    });
+
+    const containerPortal = new ComponentPortal<any>(
+      BlankModal,
+      config.nzViewContainerRef,
+      injector,
+    );
+
+    return containerPortal;
+  }
+
+  private createInjector<T, R>(modalRef: NzModalRef<T, R>, config: ModalOptions<T>): Injector {
+    const userInjector = config && config.nzViewContainerRef && config.nzViewContainerRef.injector;
+
+    return Injector.create({
+      parent: userInjector || this.injector,
+      providers: [{ provide: NzModalRef, useValue: modalRef }]
+    });
   }
 }
 

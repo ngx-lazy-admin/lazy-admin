@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { PortalModule } from '@angular/cdk/portal';
+
 import { MatListModule } from '@angular/material/list';
 
 import { FormlyModule } from '@ngx-formly/core';
@@ -16,6 +18,7 @@ import { SearchModal } from './search-modal/search-modal.component';
 import { DispatchService } from './dispatch.service';
 import { ModalService } from './modal.service';
 import { BlankModal } from './blank-modal/blank-modal.component';
+import { ModalTemplateComponent } from './template/template.component';
 
 import { NgZorroAntdModule } from './ng-zorro-antd.modules';
 
@@ -36,7 +39,8 @@ import { NgZorroAntdModule } from './ng-zorro-antd.modules';
   declarations: [
     FormModal,
     SearchModal,
-    BlankModal
+    BlankModal,
+    ModalTemplateComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +51,7 @@ import { NgZorroAntdModule } from './ng-zorro-antd.modules';
     DragDropModule,
     MatListModule,
     NgZorroAntdModule,
+    PortalModule,
 
     FormlyModule,
     FieldTypeModule,
@@ -57,7 +62,11 @@ import { NgZorroAntdModule } from './ng-zorro-antd.modules';
   exports: [
     FormModal,
     SearchModal,
-    BlankModal
+    BlankModal,
+    ModalTemplateComponent
+  ],
+  entryComponents: [
+    ModalTemplateComponent
   ]
 })
 export class ModalsModule { 

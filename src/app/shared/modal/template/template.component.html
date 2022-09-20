@@ -1,0 +1,23 @@
+<!-- 模板容器 -->
+<ng-template #portalTemplateRef>
+  <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+</ng-template>
+
+
+<!-- 标题拖拽模板 -->
+<ng-template #titleTemplateRef let-params="context">
+  <div cdkDrag cdkDragHandle cdkDragRootElement=".ant-modal-content" class="p-0 d-block">
+    <div class="d-flex justify-content-between">
+      {{ params?.nzTitle || 'nzTitle' }}
+    </div>
+  </div>
+</ng-template>
+
+<!-- Formly 容器模板 -->
+<ng-template #formTemplateRef let-ref="modalRef">
+  <formly-form 
+    class="row"
+    [fields]="ref.config.nzComponentParams.field"
+    [(model)]="ref.config.nzComponentParams.model">
+  </formly-form>
+</ng-template>

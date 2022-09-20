@@ -1,8 +1,14 @@
 
 import { Template } from '@angular/compiler/src/render3/r3_ast';
-import { Component, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import { FormlyFormOptions } from '@ngx-formly/core';
 import { ModalService } from 'src/app/shared/modal';
+
 import { DispatchService } from 'src/app/shared/modal/dispatch.service';
+
+import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component'
 
 @Component({
   selector: 'app-modal',
@@ -15,20 +21,35 @@ export class ModalComponent implements OnInit {
 
   @ViewChild('titleTemplate', { read: TemplateRef }) titleTemplateRef!:TemplateRef<any>;
 
+  @ViewChild(ModalTemplateComponent) private modalTemplate!: ModalTemplateComponent;
+  
+
   constructor(
     private modalService: ModalService,
-    private dispatch: DispatchService
+    private dispatch: DispatchService,
+    private _viewContainer: ViewContainerRef
   ) {}
 
   model = {
     email: 'email@gmail.com'
   }
 
-  fields = [
+  field = [
     {
       key: 'email',
       type: 'nz-input',
-      className: 'w-25 mb-2 d-inline-block',
+      className: 'w-100 mb-2 d-inline-block',
+      wrappers: ['form'],
+      templateOptions: {
+        label: 'Email address',
+        placeholder: 'Enter email',
+        required: true,
+      }
+    },
+    {
+      key: 'email',
+      type: 'nz-select',
+      className: 'w-100 mb-2 d-inline-block',
       templateOptions: {
         label: 'Email address',
         placeholder: 'Enter email',
@@ -37,10 +58,21 @@ export class ModalComponent implements OnInit {
     }
   ]
 
+  form = new FormGroup({});
+  options: FormlyFormOptions = {
+    formState: {
+      caches: '1'
+    }
+  };
+
   // 创建弹窗
-  create(template: TemplateRef<any>) {
+  create(template: any) {     
     this.modalService.create(template, {
-      nzTitle: this.titleTemplateRef
+      nzTitle: this.modalTemplate.getTemplateRef({nzTitle: '标题'})
+    }, {
+      field: this.field,
+      form: this.form,
+      model: this.model
     })
   }
 
@@ -57,18 +89,11 @@ export class ModalComponent implements OnInit {
 
   open ($event: any) {
     // this.modalService.show($event)
+    console.log($event)
   }
 
   search ($event: any) {
     this.modalService.open('search')
-  }
-
-  form ($event: any) {
-    const params = {
-      fields: this.fields,
-      model: this.model,
-    }
-    this.modalService.open('form', params)
   }
 
   dispatchSearch ($event: any) {
