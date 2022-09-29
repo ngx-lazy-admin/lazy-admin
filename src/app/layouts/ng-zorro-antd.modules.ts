@@ -52,6 +52,4 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzIconModule,
   ]
 })
-export class NgZorroAntdModule {
-
-}
+export class NgZorroAntdModule {}

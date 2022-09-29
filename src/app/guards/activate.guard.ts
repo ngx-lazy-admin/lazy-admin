@@ -10,7 +10,7 @@ import { MenuService } from '../layouts';
 export class ActivateGuard implements CanActivate {
 
   constructor(
-    private menuservice: MenuService
+    private menuService: MenuService
   ) {}
 
   // 初始化菜单
@@ -21,7 +21,7 @@ export class ActivateGuard implements CanActivate {
     // console.log('canActivate')
     return new Observable(observer => {
       forkJoin([
-        this.menuservice.getMenu()
+        this.menuService.getMenu()
       ]).pipe(debounceTime(60)).subscribe((item) => {
         observer.next(true);
         observer.complete();

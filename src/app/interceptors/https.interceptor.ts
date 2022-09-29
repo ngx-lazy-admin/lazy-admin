@@ -7,7 +7,7 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap, debounceTime } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { MessageService } from '../services/message.service'
 
 @Injectable()
@@ -19,7 +19,6 @@ export class HttpsInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const req = request.clone({setHeaders: {
-      'X-Requested-With': 'XMLHttpRequest',
       'request-id': Math.random().toString(36).slice(-8) +  '-' + new Date().getTime()
     }});
     return next.handle(req).pipe(tap(event => {

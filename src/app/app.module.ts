@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { registerLocaleData } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import zh from '@angular/common/locales/zh';
 
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 
+// mock
 import { HttpClientInMemoryWebApiModule, InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
-
-import { LayoutModule } from './layouts/layout.modules'
-import { HttpsInterceptor } from './interceptors/https.interceptor'
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
 import { MockService } from '../mock/mock.service';
 
+// 布局相关
+import { LayoutModule } from './layouts/layout.modules'
+
+// 拦截器
+import { HttpsInterceptor } from './interceptors/https.interceptor'
+
+// 弹窗
 import { ModalsModule } from './shared/modal';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [
