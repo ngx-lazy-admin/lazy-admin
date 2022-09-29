@@ -23,7 +23,6 @@ export class ModalComponent implements OnInit {
 
   @ViewChild(ModalTemplateComponent) private modalTemplate!: ModalTemplateComponent;
   
-
   constructor(
     private modalService: ModalService,
     private dispatch: DispatchService,

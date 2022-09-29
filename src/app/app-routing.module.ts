@@ -43,12 +43,10 @@ const routes: Routes = [
     canDeactivate: [GlobalDeactivateGuard],
     data: {},
     children: [
+      { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
       { path: 'swagger', loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule) },
       { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
       { path: 'micro', loadChildren: () => import('./pages/micro/micro.module').then(m => m.MicroModule) },
-      { path: 'code', loadChildren: () => import('./pages/code/code.module').then(m => m.CodeModule) },
-      { path: 'graphql', loadChildren: () => import('./pages/graphql/graphql.module').then(m => m.GraphqlModule) },
-      { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
       { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
     ]
   }

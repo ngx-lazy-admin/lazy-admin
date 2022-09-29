@@ -25,10 +25,6 @@ export declare type menuOperationType = 'left' | 'right' | 'all' | 'reload' | 'o
 })
 export class LayoutHeaderTabsetComponent implements OnInit {
 
-  @ViewChild('overlayGlobalTemplate') templateGlobalPortals!: TemplatePortal ;
-
-  @ViewChild('contentmenu') _dialogTemplate!: TemplateRef<any>;
-
   selectedIndex: number = 0;
   tabs: Array<MenuType|null> | null = []
 
@@ -55,8 +51,7 @@ export class LayoutHeaderTabsetComponent implements OnInit {
   }
 
   newTab(): void {
-    // this.tabs.push('New Tab');
-    // this.selectedIndex = this.tabs.length;
+
   }
 
   contextMenu($event: MouseEvent, menu: any): void {

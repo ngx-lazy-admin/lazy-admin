@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 import { inNextTick } from 'ng-zorro-antd/core/util';
 import { NzConfigService } from 'ng-zorro-antd/core/config';
@@ -18,16 +19,18 @@ import { takeUntil, switchMap } from 'rxjs/operators';
 import hotkeys from 'hotkeys-js';
 import { editor } from 'monaco-editor';
 
+import { format } from "prettier/standalone";
+import * as parserBabel from "prettier/parser-babel";
+
 import { FieldService } from 'src/app/services/api/field';
 import { execEval } from 'src/app/shared/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
 import { ModalService } from 'src/app/shared/modal';
 import { PreviewService } from 'src/app/shared/preview';
 
-import { format } from "prettier/standalone";
-import * as parserBabel from "prettier/parser-babel";
+
 import { CodeEditorService } from 'src/app/shared/code-editor';
-import { HttpClient } from '@angular/common/http';
+
 
 export interface headerInfoType {
   title: string,
@@ -72,7 +75,6 @@ export class FormComponent {
   // cache
   codeType = 'json'
 
-  isVisible = false;
   editor?: editor.ICodeEditor;
   code: string = ``;
   cacheFields: string = '';
@@ -120,11 +122,6 @@ export class FormComponent {
       }
     });
 
-    // 
-    this.route.paramMap.subscribe(item => {
-      console.log(item)
-    })
-
     // 初始化编辑器
     const defaultEditorOption = this.nzConfigService.getConfigForComponent('codeEditor')?.defaultEditorOption || {};
     this.nzConfigService.set('codeEditor', {
@@ -142,11 +139,6 @@ export class FormComponent {
       }
     });
 
-    hotkeys('Esc', (event, handler) => {
-      this.isVisible = false
-      this.cd.markForCheck();
-    });
-
     hotkeys('.', (event, handler) => {
       const codeEditor = this.codeEditorService.create({
         nzHeight: '100vh',
@@ -161,8 +153,6 @@ export class FormComponent {
 
     hotkeys('m', (event, handler) => {
       // 转弹窗
-      console.log('mmmm')
-      console.log(this.cacheFields)
       const modal = this.modalService.open('form', {}, {
         fields: this.cacheFields,
         model: this.model,
@@ -237,11 +227,7 @@ export class FormComponent {
     this.previewService.open(url)
   }
 
-  backHome () {
-    this.http.get('web/file/1111').subscribe(item => {
-      console.log('111')
-    })
-  }
+  backHome () {}
 
   ngOnDestroy() {
     if (this.rooterChange) {

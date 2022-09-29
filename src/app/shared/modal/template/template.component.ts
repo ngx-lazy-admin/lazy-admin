@@ -11,7 +11,6 @@ import { Portal, TemplatePortal } from '@angular/cdk/portal';
   selector: 'app-share-template',
   templateUrl: './template.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-
 })
 export class ModalTemplateComponent {
 
