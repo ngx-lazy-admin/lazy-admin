@@ -14,7 +14,6 @@ import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 import { MenuService, MenuType } from '../../menu.service';
 
-
 export declare type menuOperationType = 'left' | 'right' | 'all' | 'reload' | 'other';
 
 @Component({
