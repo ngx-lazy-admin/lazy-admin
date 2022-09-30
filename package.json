@@ -21,7 +21,7 @@
   "dependencies": {
     "@angular-builders/custom-webpack": "^13.0.0",
     "@angular/animations": "^14.2.4",
-    "@angular/cdk": "~13.3.9",
+    "@angular/cdk": "~14.2.3",
     "@angular/common": "^14.2.4",
     "@angular/compiler": "^14.2.4",
     "@angular/core": "^14.2.4",
