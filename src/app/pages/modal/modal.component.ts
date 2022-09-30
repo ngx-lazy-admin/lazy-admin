@@ -1,5 +1,3 @@
-
-import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, Renderer2, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
