@@ -58,23 +58,23 @@ import { TemplateService } from 'src/app/shared/template';
 export class CollapseField extends FieldArrayType implements OnDestroy {
 
 	get nzAccordion(): boolean {
-		return this.to.nzAccordion || false;
+		return this.props.nzAccordion || false;
 	}
 
 	get nzBordered(): boolean {
-		return this.to.nzBordered || false;
+		return this.props.nzBordered || false;
   }
 
   get nzGhost() : boolean {
-		return this.to.nzGhost || false;
+		return this.props.nzGhost || false;
   }
 
   get nzExpandIconPosition() : 'left' | 'right' {
-		return this.to.nzExpandIconPosition || 'right';
+		return this.props.nzExpandIconPosition || 'right';
   }
 
   get headerTemplate(): any {
-    return this.templateService.get(this.to.header)
+    return this.templateService.get(this.props.header)
   }
 
   constructor(

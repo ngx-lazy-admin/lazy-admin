@@ -35,90 +35,90 @@ export class DatePickerField extends FieldType {
   }
 
   get nzId (): string {
-    return this.to.nzId || '';
+    return this.props.nzId || '';
   }
 
   get nzAllowClear (): boolean {
-    return this.to.nzAllowClear || true;
+    return this.props.nzAllowClear || true;
   }
 
   get nzAutoFocus (): boolean{
-    return this.to.nzAutoFocus || false
+    return this.props.nzAutoFocus || false
   }
 
   get nzBackrop (): false {
-    return this.to.nzBackrop || false;
+    return this.props.nzBackrop || false;
   }
 
   get nzDefaultPickerValue(): Date {
-    return this.to.nzDefaultPickerValue 
+    return this.props.nzDefaultPickerValue 
   }
 
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.props.nzDisabled || false;
 	}
 
   get nzDisabledDate(): (d: Date) => boolean {
-    return this.to.nzDisabledDate 
+    return this.props.nzDisabledDate 
   }
 
   get nzDropdownClassName() : string {
-    return this.to.nzDropdownClassName || ''
+    return this.props.nzDropdownClassName || ''
   }
 
   get nzFormat(): string {
-    return this.to.nzFormat || 'yyyy-MM-dd'
+    return this.props.nzFormat || 'yyyy-MM-dd'
   }
 
   get nzInputReadOnly(): boolean {
-    return this.to.nzInputReadOnly || false
+    return this.props.nzInputReadOnly || false
   }
 
   get nzLocale(): NzDatePickerI18nInterface {
-    return this.to.nzLocale() || null
+    return this.props.nzLocale() || null
   }
 
   get nzMode(): NzDateMode  {
-    return this.to.nzMode || this.to.mode || 'date'
+    return this.props.nzMode || this.props.mode || 'date'
   }
 
   get nzPlaceHolder(): string {
-    return this.to.nzPlaceHolder || ''
+    return this.props.nzPlaceHolder || ''
   }
 
   get nzPopupStyle(): object {
-    return this.to.nzPopupStyle || {}
+    return this.props.nzPopupStyle || {}
   }
 
   get nzRenderExtraFooter (): TemplateRef<any> | string | FunctionProp<TemplateRef<any> | string> {
-    return this.to.nzRenderExtraFooter || ''
+    return this.props.nzRenderExtraFooter || ''
   }
 
   get nzSize () : NzDatePickerSizeType {
-    return this.to.nzSize || ''
+    return this.props.nzSize || ''
   }
   get nzSuffixIcon() : string {
-    return this.to.nzSuffixIcon || ''
+    return this.props.nzSuffixIcon || ''
   }
 
   get nzBorderless (): boolean {
-    return this.to.nzBorderless || false
+    return this.props.nzBorderless || false
   }
 
   get nzInline (): boolean {
-    return this.to.nzInline || false
+    return this.props.nzInline || false
   }
 
   // nzOnOpenChange
   onOpenChange ($event: boolean) {
-    if (this.to.nzOnOpenChange) {
-        this.to.nzOnOpenChange(this.field, $event)
+    if (this.props.nzOnOpenChange) {
+        this.props.nzOnOpenChange(this.field, $event)
     }
   }
 
   onModelChange (date: Date) {
-    if (this.to.change) {
-        this.to.change(this.field, date)
+    if (this.props.change) {
+        this.props.change(this.field, date)
     }
 
     // 设定默认格式

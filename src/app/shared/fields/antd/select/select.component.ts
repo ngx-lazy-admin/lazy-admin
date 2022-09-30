@@ -38,166 +38,166 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
   }
 
   get nzId () : string{
-    return this.to.nzId || '';
+    return this.props.nzId || '';
   }
 
   get compareWith (): (o1: any, o2: any) => boolean{
     const compareFn = (o1: any, o2: any) => o1===o2;
-    return this.to.compareWith || compareFn
+    return this.props.compareWith || compareFn
   }
 
   get nzAutoClearSearchValue () : boolean {
-    return this.to.nzAutoClearSearchValue || true;
+    return this.props.nzAutoClearSearchValue || true;
   }
 
   get nzAllowClear () : boolean {
-    return this.to.nzAllowClear || this.to.allowClear || false;
+    return this.props.nzAllowClear || this.props.allowClear || false;
   }
 
   get nzBackdrop (): boolean {
-    return this.to.nzBackdrop || false;
+    return this.props.nzBackdrop || false;
   }
 
   get nzBorderless (): boolean {
-    return this.to.nzBackdrop || false;
+    return this.props.nzBackdrop || false;
   }
 
   get nzOpen (): boolean {
-    return this.to.nzOpen || false;
+    return this.props.nzOpen || false;
   }
 
   get nzAutoFocus (): boolean {
-    return this.to.nzAutoFocus || false;
+    return this.props.nzAutoFocus || false;
   }
 
   get nzDisabled (): boolean {
-    return this.to.nzDisabled || false;
+    return this.props.nzDisabled || false;
   }
 
   get nzDropdownClassName (): string {
-    return this.to.nzDropdownClassName || '';
+    return this.props.nzDropdownClassName || '';
   }
 
   get nzDropdownMatchSelectWidth (): boolean {
-    return this.to.nzDropdownMatchSelectWidth || true;
+    return this.props.nzDropdownMatchSelectWidth || true;
   }
 
   get nzDropdownStyle (): { [key: string]: string; } | null {
-    return this.to.nzDropdownStyle || null;
+    return this.props.nzDropdownStyle || null;
   }
 
   get nzCustomTemplate (): TemplateRef<{ $implicit: NzOptionComponent }> {
-    return this.to.nzCustomTemplate || false;
+    return this.props.nzCustomTemplate || false;
   }
 
   get nzServerSearch (): boolean {
-    return this.to.nzServerSearch || false;
+    return this.props.nzServerSearch || false;
   }
 
   get nzFilterOption (): NzFilterOptionType  {
     const compareFn = (o1: any, o2: any) => {
       return  o2?.nzLabel.toLowerCase().trim().indexOf(o1.toLowerCase().trim()) > -1;
     }
-    return this.to.nzFilterOption || this.to.filterOption || compareFn;
+    return this.props.nzFilterOption || this.props.filterOption || compareFn;
   }
 
   get nzMaxMultipleCount (): number {
-    return this.to.nzMaxMultipleCount | this.to.maxMultipleCount || Infinity;
+    return this.props.nzMaxMultipleCount | this.props.maxMultipleCount || Infinity;
   }
 
   get nzMode (): NzSelectModeType  {
-    return this.to.nzMode || this.to.mode || 'default';
+    return this.props.nzMode || this.props.mode || 'default';
   }
 
   get nzNotFoundContent (): string | TemplateRef<void> {
-    return this.to.nzNotFoundContent || null;
+    return this.props.nzNotFoundContent || null;
   }
 
 
   get nzPlaceHolder (): string {
-    return this.to.nzPlaceHolder || this.to.placeholder || '';
+    return this.props.nzPlaceHolder || this.props.placeholder || '';
   }
 
 
   get nzShowArrow (): boolean {
-    return this.to.nzShowArrow || false;
+    return this.props.nzShowArrow || false;
   }
 
   get nzShowSearch (): boolean {
-    return this.to.nzShowSearch || this.to.showSearch || false;
+    return this.props.nzShowSearch || this.props.showSearch || false;
   }
 
   get nzSize (): NzSelectSizeType  {
-    return this.to.nzSize || 'default';
+    return this.props.nzSize || 'default';
   }
   
   get nzSuffixIcon (): TemplateRef<any> | string {
-    return this.to.nzSuffixIcon || null;
+    return this.props.nzSuffixIcon || null;
   }
   
   get nzRemoveIcon (): 	TemplateRef<any> {
-    return this.to.nzRemoveIcon || null;
+    return this.props.nzRemoveIcon || null;
   }
 
   get nzClearIcon (): TemplateRef<any> {
-    return this.to.nzClearIcon || null;
+    return this.props.nzClearIcon || null;
   }
 
   get nzMenuItemSelectedIcon (): TemplateRef<any> {
-    return this.to.nzMenuItemSelectedIcon || null;
+    return this.props.nzMenuItemSelectedIcon || null;
   }
 
   get nzTokenSeparators (): string[] {
-    return this.to.nzTokenSeparators || [];
+    return this.props.nzTokenSeparators || [];
   }
 
   get nzLoading (): boolean {
-    return this.to.nzLoading || this.to.loading || false;
+    return this.props.nzLoading || this.props.loading || false;
   }
 
   get nzMaxTagCount (): number {
-    return this.to.nzMaxTagCount || this.to.maxTagCount || 3;
+    return this.props.nzMaxTagCount || this.props.maxTagCount || 3;
   }
 
 
   get nzMaxTagPlaceholder (): TemplateRef<{ $implicit: any[] }> {
-    return this.to.nzMaxTagPlaceholder || null;
+    return this.props.nzMaxTagPlaceholder || null;
   }
 
   get nzOptionHeightPx (): number {
-    return this.to.nzOptionHeightPx || 32;
+    return this.props.nzOptionHeightPx || 32;
   }
 
   get nzOptionOverflowSize (): number {
-    return this.to.nzOptionOverflowSize || 8;
+    return this.props.nzOptionOverflowSize || 8;
   }
 
   get nzOptions () : NzSelectOptionInterface[] | any[] {
-    return this.to.nzOptions || this.to.options || []
+    return this.props.nzOptions || this.props.options || []
   }
 
   ngModelChange ($event: Event) {
     // execFunc
-    if (this.to.change) {
-      this.to.change(this.field, $event)
+    if (this.props.change) {
+      this.props.change(this.field, $event)
     }
   }
 
   nzOpenChange ($event: boolean) {
-    if (this.to.nzOpenChange) {
-      this.to.nzOpenChange(this.field, $event)
+    if (this.props.nzOpenChange) {
+      this.props.nzOpenChange(this.field, $event)
     }
   }
 
   nzScrollToBottom ($event: Event) {
-    if (this.to.nzScrollToBottom) {
-      this.to.nzScrollToBottom(this.field, $event)
+    if (this.props.nzScrollToBottom) {
+      this.props.nzScrollToBottom(this.field, $event)
     }
   }
 
   nzOnSearch (value: string) {
-    if (this.to.nzOnSearch) {
-      this.to.nzOnSearch(this.field, value)
+    if (this.props.nzOnSearch) {
+      this.props.nzOnSearch(this.field, value)
     } else {
       this.isLoading = true;
       this.searchChange$.next(value);
@@ -206,14 +206,14 @@ export class SelectField extends ShareFieldType implements OnInit,  OnDestroy {
   }
 
   nzFocus () {
-    if (this.to.focus) {
-      this.to.focus(this.field)
+    if (this.props.focus) {
+      this.props.focus(this.field)
     }
   }
   
   nzBlur () {
-    if (this.to.blur) {
-      this.to.blur(this.field)
+    if (this.props.blur) {
+      this.props.blur(this.field)
     }
   }
 

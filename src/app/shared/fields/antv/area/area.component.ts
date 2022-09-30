@@ -23,11 +23,11 @@ export class AntvAreaField extends FieldType {
   }
 
   get disabled(): boolean {
-		return this.to.disabled || false;
+		return this.props.disabled || false;
 	}
 
   get config(): LineOptions {
-    return this.to.config
+    return this.props.config
   }
 
   ngAfterViewInit() {

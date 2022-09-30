@@ -63,11 +63,11 @@ import { ShareFieldType } from '../share-field.type';
 export class ButtonField extends ShareFieldType {
 
   get disabled(): boolean {
-		return this.to.disabled || false;
+		return this.props.disabled || false;
 	}
 
 	get nzGhost(): boolean {
-		return this.to.nzGhost || this.to.ghost || false;
+		return this.props.nzGhost || this.props.ghost || false;
 	}
 
 	get control() : FormControl {
@@ -75,43 +75,43 @@ export class ButtonField extends ShareFieldType {
   }
 
   get nzShape() : NzButtonShape {
-		return this.to.nzShape || this.to.shape || '';
+		return this.props.nzShape || this.props.shape || '';
   }
 
   get nzLoading(): boolean {
-    return this.to.nzLoading || this.to.loading || false;
+    return this.props.nzLoading || this.props.loading || false;
   }
 
   get nzSize() : NzButtonSize {
-		return this.to.nzSize || this.to.size || 'default';
+		return this.props.nzSize || this.props.size || 'default';
   }
 
   get nzType() : NzButtonType {
-		return this.to.nzType || this.to.type || '';
+		return this.props.nzType || this.props.type || '';
   }
 
   get nzBlock() : boolean {
-		return this.to.nzBlock || this.to.block || false;
+		return this.props.nzBlock || this.props.block || false;
   }
 
 	get nzDanger(): boolean {
-		return this.to.nzDanger || this.to.danger || false;
+		return this.props.nzDanger || this.props.danger || false;
 	}
 
   get text(): string {
-    return this.to.text || ''
+    return this.props.text || ''
   }
 
   get icon(): string {
-    return this.to.icon || ''
+    return this.props.icon || ''
   }
 
   get nzPopconfirmPlacement(): string {
-    return this.to.nzPopconfirmPlacement || 'bottom'
+    return this.props.nzPopconfirmPlacement || 'bottom'
   }
 
   get nzPopconfirmTitle(): string {
-    return this.to.nzPopconfirmTitle || null
+    return this.props.nzPopconfirmTitle || null
   }
 
   private _destroy$ = new Subject<void>();

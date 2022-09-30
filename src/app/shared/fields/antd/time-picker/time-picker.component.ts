@@ -56,110 +56,110 @@ export class TimePickerField extends FieldType {
 	}
 
 	get nzId(): 	string {
-		return this.to.nzId || this.to.id || ''
+		return this.props.nzId || this.props.id || ''
 	}
 
 	get nzAddOn(): TemplateRef<void> {
-		return this.to.nzAddOn || this.to.addOn || ''
+		return this.props.nzAddOn || this.props.addOn || ''
 	}
 
 	get nzAllowEmpty(): boolean {
-		return this.to.nzAllowEmpty || this.to.allowEmpty || false
+		return this.props.nzAllowEmpty || this.props.allowEmpty || false
 	}
 
 	get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || this.to.autoFocus || false
+		return this.props.nzAutoFocus || this.props.autoFocus || false
 	}
 
 	get nzBackdrop(): boolean {
-		return this.to.nzBackdrop || this.to.backdrop || false
+		return this.props.nzBackdrop || this.props.backdrop || false
 	}
 
 	get nzClearText(): string {
-		return this.to.nzClearText ||  this.to.clearText || ''
+		return this.props.nzClearText ||  this.props.clearText || ''
 	}
 
 	get nzNowText(): string {
-		return this.to.nzNowText || this.to.nowText || ''
+		return this.props.nzNowText || this.props.nowText || ''
 	}
 
 	get nzOkText(): string {
-		return this.to.nzOkText || this.to.okText || ''
+		return this.props.nzOkText || this.props.okText || ''
 	}
 
 	get nzDefaultOpenValue(): Date {
-		return this.to.nzDefaultOpenValue || this.to.defaultOpenValue || null
+		return this.props.nzDefaultOpenValue || this.props.defaultOpenValue || null
 	}
 
 	get nzDisabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false
+		return this.props.nzDisabled || this.props.disabled || false
 	}
 
 	get nzDisabledHours(): () => number[] {
-		return this.to.nzDisabledHours ||  execEval(this.to.disabledHours)  || null
+		return this.props.nzDisabledHours ||  execEval(this.props.disabledHours)  || null
 	}
 
 	get nzDisabledMinutes(): () => number[] {
-		return this.to.nzDisabledMinutes || execEval(this.to.disabledMinutes) || null
+		return this.props.nzDisabledMinutes || execEval(this.props.disabledMinutes) || null
 	}
 
 	get nzDisabledSeconds(): (hour: number) => number[] {
-		return this.to.nzDisabledSeconds ||  execEval(this.to.disabledSeconds) || null
+		return this.props.nzDisabledSeconds ||  execEval(this.props.disabledSeconds) || null
 	}
 
 	get nzFormat(): string {
-		return this.to.nzFormat || this.to.format || "HH:mm:ss"
+		return this.props.nzFormat || this.props.format || "HH:mm:ss"
 	}
 
 	get nzHideDisabledOptions(): boolean {
-		return this.to.nzHideDisabledOptions || this.to.hideDisabledOptions || false
+		return this.props.nzHideDisabledOptions || this.props.hideDisabledOptions || false
 	}
 
 	get nzHourStep(): number {
-		return this.to.nzHourStep ||  this.to.hourStep || 1
+		return this.props.nzHourStep ||  this.props.hourStep || 1
 	}
 
 	get nzMinuteStep(): number {
-		return this.to.nzMinuteStep || this.to.minuteStep || 1
+		return this.props.nzMinuteStep || this.props.minuteStep || 1
 	}
 
 	get nzSecondStep(): number {
-		return this.to.nzSecondStep || this.to.secondStep || 1
+		return this.props.nzSecondStep || this.props.secondStep || 1
 	}
 
 	get nzOpen(): boolean {
-		return this.to.nzOpen || this.to.open || false
+		return this.props.nzOpen || this.props.open || false
 	}
 
 	get nzPlaceHolder(): string {
-		return this.to.nzPlaceHolder || this.to.placeHolder || ''
+		return this.props.nzPlaceHolder || this.props.placeHolder || ''
 	}
 
 	get nzPopupClassName(): string {
-		return this.to.nzPopupClassName || this.to.popupClassName || ''
+		return this.props.nzPopupClassName || this.props.popupClassName || ''
 	}
 
 	get nzUse12Hours(): boolean {
-		return this.to.nzUse12Hours || this.to.use12Hours || false
+		return this.props.nzUse12Hours || this.props.use12Hours || false
 	}
 
 	get nzSuffixIcon(): string {
-		return this.to.nzSuffixIcon || this.to.suffixIcon || ''
+		return this.props.nzSuffixIcon || this.props.suffixIcon || ''
 	}
 
 	get nzSize(): string {
-		return this.to.nzSize || this.to.size || 'default'
+		return this.props.nzSize || this.props.size || 'default'
 	}
 
 	ngModelChange ($event: Date) {
-		if (this.to.change) {
-			this.to.change(this.field, $event)
+		if (this.props.change) {
+			this.props.change(this.field, $event)
 		}
 	}
 
 	nzOpenChange ($event: Event) {
-		if (this.to.nzOpenChange) {
-			this.to.nzOpenChange(this.field, $event)
+		if (this.props.nzOpenChange) {
+			this.props.nzOpenChange(this.field, $event)
 		}
 	}
 }

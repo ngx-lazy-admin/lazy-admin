@@ -43,16 +43,16 @@ export class CascaderField extends FieldType {
   }
 
   get nzOptions (): object[] {
-    return this.to['nzOptions'] || this.to.options || [];
+    return this.to['nzOptions'] || this.props.options || [];
   }
 
   get nzSize (): 'large'|'small'|'default' {
-    return this.to.nzSize || this.to['size'] || 'default'
+    return this.props.nzSize || this.to['size'] || 'default'
   }
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-      this.to.change(this.field, $event);
+    if (this.props.change) {
+      this.props.change(this.field, $event);
     }
   }
 }

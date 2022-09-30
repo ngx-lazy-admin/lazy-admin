@@ -28,55 +28,55 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 export class CardTabsField extends FieldType implements OnDestroy {
 
   get nzActions(): Array<TemplateRef<void>> {
-		return this.to.nzActions || this.to.actions || '';
+		return this.props.nzActions || this.props.actions || '';
 	}
 
   get nzBodyStyle(): { [key: string]: string } {
-		return this.to.nzBodyStyle || this.to.bodyStyle || '';
+		return this.props.nzBodyStyle || this.props.bodyStyle || '';
 	}
 
   get nzBorderless(): boolean {
-		return this.to.nzBorderless || this.to.borderless || false;
+		return this.props.nzBorderless || this.props.borderless || false;
 	}
 
 	get nzCover(): TemplateRef<void> {
-		return this.to.nzCover || this.to.cover || '';
+		return this.props.nzCover || this.props.cover || '';
 	}
 
   get nzExtra(): string|TemplateRef<void> {
-		return this.to.nzExtra || this.to.extra || '';
+		return this.props.nzExtra || this.props.extra || '';
 	}
 
   get nzHoverable(): boolean {
-		return this.to.nzHoverable || this.to.hoverable || false;
+		return this.props.nzHoverable || this.props.hoverable || false;
 	}
 
   get nzLoading(): boolean {
-		return this.to.nzLoading || this.to.loading || false;
+		return this.props.nzLoading || this.props.loading || false;
 	}
 
 	get nzTitle(): string|TemplateRef<void> {
-		return this.to.nzTitle || false;
+		return this.props.nzTitle || false;
 	}
 
   get nzBordered() : boolean {
-		return this.to.nzBordered || false;
+		return this.props.nzBordered || false;
   }
 
   get nzColumn() : number | { [key in NzBreakpointEnum]: number } {
-		return this.to.nzColumn || null;
+		return this.props.nzColumn || null;
   }
 
   get nzSize() : NzDescriptionsSize  {
-		return this.to.nzSize || 'default';
+		return this.props.nzSize || 'default';
   }
 
   get nzColon() : boolean {
-		return this.to.nzColon || false;
+		return this.props.nzColon || false;
   }
 
   get extraFields(): FormlyFieldConfig[] {
-    return this.to.extraFields || []
+    return this.props.extraFields || []
   }
 
   trackByFn(index: number, item: any) {
@@ -86,8 +86,8 @@ export class CardTabsField extends FieldType implements OnDestroy {
   ngOnDestroy() {}
 
   onClick($event: any) {
-    if (this.to.click) {
-      this.to.click(this.field, $event)
+    if (this.props.click) {
+      this.props.click(this.field, $event)
     }
   }
 }

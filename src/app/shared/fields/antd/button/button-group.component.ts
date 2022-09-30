@@ -40,11 +40,11 @@ import { ActionTypeInterface, execEval, ShareFieldType } from '../share-field.ty
 export class ButtonGroupField extends ShareFieldType implements OnInit {
 
   get disabled(): boolean {
-		return this.to.disabled || false;
+		return this.props.disabled || false;
 	}
 
 	get nzGhost(): boolean {
-		return this.to.nzGhost || this.to.ghost || false;
+		return this.props.nzGhost || this.props.ghost || false;
 	}
 
 	get control() : FormControl {
@@ -52,35 +52,35 @@ export class ButtonGroupField extends ShareFieldType implements OnInit {
   }
 
   get nzShape() : NzButtonShape {
-		return this.to.nzShape || this.to.shape || '';
+		return this.props.nzShape || this.props.shape || '';
   }
 
   get nzMaxCount() : number {
-    return this.to.nzMaxCount || 99;
+    return this.props.nzMaxCount || 99;
   }
 
   get nzLoading(): boolean {
-    return this.to.nzLoading || this.to.loading || false;
+    return this.props.nzLoading || this.props.loading || false;
   }
 
   get nzSize() : NzButtonSize {
-		return this.to.nzSize || this.to.size || 'default';
+		return this.props.nzSize || this.props.size || 'default';
   }
 
   get nzType() : NzButtonType {
-		return this.to.nzType || this.to.type || '';
+		return this.props.nzType || this.props.type || '';
   }
 
   get nzBlock() : boolean {
-		return this.to.nzBlock || this.to.block || false;
+		return this.props.nzBlock || this.props.block || false;
   }
 
 	get nzDanger(): boolean {
-		return this.to.nzDanger || this.to.danger || false;
+		return this.props.nzDanger || this.props.danger || false;
 	}
 
   get nzOptions(): ActionTypeInterface[] {
-    return this.to.nzOptions || this.to.options || []
+    return this.props.nzOptions || this.props.options || []
   }
 
 

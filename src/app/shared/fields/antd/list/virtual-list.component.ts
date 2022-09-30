@@ -37,59 +37,59 @@ export class VirtualListField extends FieldArrayType implements OnDestroy {
   private destroy$ = new Subject();
 
   get nzSelectedIndex(): number {
-		return this.to.nzSelectedIndex || 0;
+		return this.props.nzSelectedIndex || 0;
 	}
 
   get nzAnimated(): boolean  {
-		return this.to.nzAnimated || false;
+		return this.props.nzAnimated || false;
 	}
 
   get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || 'default';
+		return this.props.nzSize || 'default';
 	}
 
   get nzTabBarExtraContent(): string|TemplateRef<void> {
-		return this.to.nzTabBarExtraContent || false;
+		return this.props.nzTabBarExtraContent || false;
 	}
 
   get nzTabBarStyle():  { [key: string]: string } | null {
-		return this.to.nzTabBarStyle || false;
+		return this.props.nzTabBarStyle || false;
 	}
 
   get nzTabBarGutter():  number {
-		return this.to.nzTabBarGutter || false;
+		return this.props.nzTabBarGutter || false;
 	}
 
   get nzHideAll(): boolean {
-		return this.to.nzHideAll || false;
+		return this.props.nzHideAll || false;
 	}
 
 	get nzLinkRouter(): string|TemplateRef<void> {
-		return this.to.nzLinkRouter || false;
+		return this.props.nzLinkRouter || false;
 	}
 
 	get nzLinkExact(): string|TemplateRef<void> {
-		return this.to.nzLinkExact || '';
+		return this.props.nzLinkExact || '';
   }
 
   get nzCanDeactivate() : boolean {
-		return this.to.nzCanDeactivate || false;
+		return this.props.nzCanDeactivate || false;
   }
 
   get nzCentered() : boolean {
-		return this.to.nzCentered || false;
+		return this.props.nzCentered || false;
   }
 
   get nzHideAdd(): boolean {
-    return this.to.nzHideAdd || false;
+    return this.props.nzHideAdd || false;
   }
 
   get nzAddIcon(): string | TemplateRef<void> {
-    return this.to.nzAddIcon || false;
+    return this.props.nzAddIcon || false;
   }
 
   get nzVirtualItemSize(): number {
-    return this.to.nzVirtualItemSize || 0
+    return this.props.nzVirtualItemSize || 0
   }
 
   trackByFn(index: number, item: any) {
@@ -125,20 +125,20 @@ export class VirtualListField extends FieldArrayType implements OnDestroy {
   }
 
   nzSelectedIndexChange ($event: EventEmitter<number>) {
-    if (this.to.nzSelectedIndexChange) {
-      this.to.nzSelectedIndexChange($event)
+    if (this.props.nzSelectedIndexChange) {
+      this.props.nzSelectedIndexChange($event)
     }
   } 
 
   nzAdd ($event: EventEmitter<{}>) {
-    if (this.to.nzAdd) {
-      this.to.nzAdd($event)
+    if (this.props.nzAdd) {
+      this.props.nzAdd($event)
     }
   }
 
   nzClose ($event: EventEmitter<{ index: number }>) {
-    if (this.to.nzClose) {
-      this.to.nzClose($event)
+    if (this.props.nzClose) {
+      this.props.nzClose($event)
     }
   }
 

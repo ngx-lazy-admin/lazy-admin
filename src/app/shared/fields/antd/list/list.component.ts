@@ -94,98 +94,99 @@ export class ListField extends FieldArrayType implements OnDestroy {
   private destroy$ = new Subject();
 
   get nzSelectedIndex(): number {
-		return this.to.nzSelectedIndex || 0;
+		return this.props.nzSelectedIndex || 0;
 	}
 
   get nzShowPagination() : boolean {
-    return this.to.nzShowPagination || this.to.showPagination || false;
+    return this.props.nzShowPagination || this.props.showPagination || false;
   }
 
   get nzFrontPagination() : boolean {
-    return this.to.nzFrontPagination || this.to.frontPagination || true;
+    return this.props.nzFrontPagination || this.props.frontPagination || true;
   }
 
   get nzAnimated(): boolean  {
-		return this.to.nzAnimated || false;
+		return this.props.nzAnimated || false;
 	}
 
   get nzTitle(): string | TemplateRef<void> {
-    return this.to.title || this.to.nzTitle || ''
+    return this.props.title || this.props.nzTitle || ''
   }
   get nzBordered(): boolean {
-    return this.to.nzBordered || this.to.bordered || false
+    return this.props.nzBordered || this.props.bordered || false
   }
 
   get editor(): boolean {
-    return this.to.editor || false
+    return this.props.editor || false
   }
 
   get nzSize(): NzSizeLDSType {
        console.log('get')
-		return this.to.nzSize || 'default';
+		return this.props.nzSize || 'default';
 	}
 
   get nzTabBarExtraContent(): string|TemplateRef<void> {
-		return this.to.nzTabBarExtraContent || false;
+		return this.props.nzTabBarExtraContent || false;
 	}
 
   get nzTabBarStyle():  { [key: string]: string } | null {
-		return this.to.nzTabBarStyle || false;
+		return this.props.nzTabBarStyle || false;
 	}
 
   get nzTabBarGutter():  number {
-		return this.to.nzTabBarGutter || false;
+		return this.props.nzTabBarGutter || false;
 	}
 
   get nzHideAll(): boolean {
-		return this.to.nzHideAll || false;
+		return this.props.nzHideAll || false;
 	}
 
 	get nzLinkRouter(): string|TemplateRef<void> {
-		return this.to.nzLinkRouter || false;
+		return this.props.nzLinkRouter || false;
 	}
 
 	get nzLinkExact(): string|TemplateRef<void> {
-		return this.to.nzLinkExact || '';
+		return this.props.nzLinkExact || '';
   }
 
   get nzCanDeactivate() : boolean {
-		return this.to.nzCanDeactivate || false;
+		return this.props.nzCanDeactivate || false;
   }
 
   get nzCentered() : boolean {
-		return this.to.nzCentered || false;
+		return this.props.nzCentered || false;
   }
 
   get nzHideAdd(): boolean {
-    return this.to.nzHideAdd || false;
+    return this.props.nzHideAdd || false;
   }
 
   get nzAddIcon(): string | TemplateRef<void> {
-    return this.to.nzAddIcon || false;
+    return this.props.nzAddIcon || false;
   }
 
   get NzWidth(): string {
-    console.log(this.field.fieldArray?.fieldGroup)
-    const number =  this.field.fieldArray?.fieldGroup?.filter(item => !item.hide).map(item =>  {
-      const col = item.className?.split(' ')
-        .find(item => item.includes('col-'))
-        ?.split('-').find(item => isNumber(item))
+    // console.log(this.field.fieldArray?.fieldGroup)
+    // const number =  this.field.fieldArray?.fieldGroup?.filter(item => !item.hide).map(item =>  {
+    //   const col = item.className?.split(' ')
+    //     .find(item => item.includes('col-'))
+    //     ?.split('-').find(item => isNumber(item))
 
-      return col ? Number(col) : 0
-    })?.reduce((num, total) => num + total)
+    //   return col ? Number(col) : 0
+    // })?.reduce((num, total) => num + total)
 
-    if (number && number > 12) {
-      return Number((number / 12).toFixed(2)) * 100 + '%'
-    } else {
-      return '100%'
-    }
+    // if (number && number > 12) {
+    //   return Number((number / 12).toFixed(2)) * 100 + '%'
+    // } else {
+    //   return '100%'
+    // }
+    return '100%'
   }
 
   editCache: { [key: string]: boolean } = {};
 
   get toolbarOptions () : ActionTypeInterface[] {
-    return this.to.toolbarOptions || []
+    return this.props.toolbarOptions || []
   }
 
   // 根据配置生成dom, 然后复制给portal, 再赋值给action
@@ -261,20 +262,20 @@ export class ListField extends FieldArrayType implements OnDestroy {
   }
 
   nzSelectedIndexChange ($event: EventEmitter<number>) {
-    if (this.to.nzSelectedIndexChange) {
-      this.to.nzSelectedIndexChange($event)
+    if (this.props.nzSelectedIndexChange) {
+      this.props.nzSelectedIndexChange($event)
     }
   } 
 
   nzAdd ($event: EventEmitter<{}>) {
-    if (this.to.nzAdd) {
-      this.to.nzAdd($event)
+    if (this.props.nzAdd) {
+      this.props.nzAdd($event)
     }
   }
 
   nzClose ($event: EventEmitter<{ index: number }>) {
-    if (this.to.nzClose) {
-      this.to.nzClose($event)
+    if (this.props.nzClose) {
+      this.props.nzClose($event)
     }
   }
 

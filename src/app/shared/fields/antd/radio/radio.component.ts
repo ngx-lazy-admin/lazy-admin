@@ -25,24 +25,24 @@ export class RadioField extends FieldType {
   }
 
   get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
+		return this.props.nzAutoFocus || false;
 	}
 
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.props.nzDisabled || false;
 	}
 
 	get nzIndeterminate(): boolean {
-		return this.to.nzIndeterminate || false
+		return this.props.nzIndeterminate || false
 	}
 
   get text(): string {
-    return this.to.text || ''
+    return this.props.text || ''
   }
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-        this.to.change(this.field, $event)
+    if (this.props.change) {
+        this.props.change(this.field, $event)
     }
   }
 }

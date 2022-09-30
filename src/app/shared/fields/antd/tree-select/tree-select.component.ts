@@ -37,135 +37,135 @@ export class TreeSelectField extends FieldType  {
   }
 
   get nzId(): boolean {
-		return this.to.nzId || false
+		return this.props.nzId || false
 	}
 
   get nzPlaceHolder(): string {
-    return this.to.nzPlaceHolder || this.to.placeholder || ''
+    return this.props.nzPlaceHolder || this.props.placeholder || ''
   }
 
   get nzDisabled(): boolean {
-    return this.to.nzDisabled || this.to.disabled || false
+    return this.props.nzDisabled || this.props.disabled || false
   }
 
   get nzShowIcon(): boolean {
-    return this.to.nzShowIcon || this.to.showIcon || false
+    return this.props.nzShowIcon || this.props.showIcon || false
   }
 
   get nzShowSearch(): string {
-    return this.to.nzShowSearch || this.to.showSearch || false
+    return this.props.nzShowSearch || this.props.showSearch || false
   }
 
   get nzNotFoundContent(): string {
-    return this.to.nzDisabled || this.to.notFoundContent || ''
+    return this.props.nzDisabled || this.props.notFoundContent || ''
   }
 
   get nzDropdownMatchSelectWidth(): boolean {
-    return this.to.nzDropdownMatchSelectWidth || this.to.dropdownMatchSelectWidth || false
+    return this.props.nzDropdownMatchSelectWidth || this.props.dropdownMatchSelectWidth || false
   }
 
 
   get nzDropdownStyle(): { [key: string]: string; } {
-    return this.to.nzDropdownStyle || this.to.dropdownStyle || {}
+    return this.props.nzDropdownStyle || this.props.dropdownStyle || {}
   }
 
   get nzDropdownClassName(): string {
-    return this.to.nzDropdownClassName || this.to.dropdownClassName || ''
+    return this.props.nzDropdownClassName || this.props.dropdownClassName || ''
   }
 
 
   get nzMultiple(): boolean {
-    return this.to.nzMultiple || this.to.multiple || false
+    return this.props.nzMultiple || this.props.multiple || false
   }
 
   get nzHideUnMatched(): boolean {
-    return this.to.nzHideUnMatched || this.to.nzHideUnMatched || false
+    return this.props.nzHideUnMatched || this.props.nzHideUnMatched || false
   }
 
   get nzSize(): 'large' | 'small' | 'default' {
-    return this.to.nzSize || this.to.nzSize || 'default'
+    return this.props.nzSize || this.props.nzSize || 'default'
   }
 
   get nzStatus(): 'error' | 'warning' {
-    return this.to.nzStatus || this.to.status || ''
+    return this.props.nzStatus || this.props.status || ''
   }
 
   get nzCheckable(): boolean {
-    return this.to.nzCheckable || this.to.nzCheckable || false
+    return this.props.nzCheckable || this.props.nzCheckable || false
   }
 
   get nzShowExpand(): boolean {
-    return this.to.nzShowExpand || this.to.showExpand || false
+    return this.props.nzShowExpand || this.props.showExpand || false
   }
 
   get nzShowLine(): boolean {
-    return this.to.nzShowLine || this.to.nzShowLine || false
+    return this.props.nzShowLine || this.props.nzShowLine || false
   }
 
 
   get nzAsyncData(): boolean {
-    return this.to.nzAsyncData || this.to.nzAsyncData || false
+    return this.props.nzAsyncData || this.props.nzAsyncData || false
   }
 
   get nzNodes(): 	NzTreeNodeOptions[] {
-    return this.to.nzNodes || this.to.nodes || false
+    return this.props.nzNodes || this.props.nodes || false
   }
 
 
   get nzDefaultExpandAll(): boolean {
-    return this.to.nzDefaultExpandAll || this.to.nzDefaultExpandAll || false
+    return this.props.nzDefaultExpandAll || this.props.nzDefaultExpandAll || false
   }
 
 
   get nzExpandedKeys(): string[] {
-    return this.to.nzExpandedKeys || this.to.expandedKeys || []
+    return this.props.nzExpandedKeys || this.props.expandedKeys || []
   }
 
   get nzDisplayWith(): (node: NzTreeNode) => string {
-    return this.to.nzDisplayWith || this.to.nzDisplayWith || false
+    return this.props.nzDisplayWith || this.props.nzDisplayWith || false
   }
 
   get nzMaxTagCount(): number {
-    return this.to.nzMaxTagCount || this.to.nzMaxTagCount || false
+    return this.props.nzMaxTagCount || this.props.nzMaxTagCount || false
   }
 
   get nzMaxTagPlaceholder(): any {
-    return this.to.nzMaxTagPlaceholder || this.to.nzMaxTagPlaceholder || false
+    return this.props.nzMaxTagPlaceholder || this.props.nzMaxTagPlaceholder || false
   }
 
   get nzTreeTemplate(): any {
-    return this.to.nzTreeTemplate || this.to.nzTreeTemplate || false
+    return this.props.nzTreeTemplate || this.props.nzTreeTemplate || false
   }
 
   get nzVirtualHeight(): string {
-    return this.to.nzVirtualHeight || this.to.nzVirtualHeight || false
+    return this.props.nzVirtualHeight || this.props.nzVirtualHeight || false
   }
 
   get nzVirtualItemSize(): number {
-    return this.to.nzVirtualItemSize || this.to.nzVirtualItemSize || false
+    return this.props.nzVirtualItemSize || this.props.nzVirtualItemSize || false
   }
 
   get nzVirtualMaxBufferPx(): number {
-    return this.to.nzVirtualMaxBufferPx || this.to.nzVirtualMaxBufferPx || false
+    return this.props.nzVirtualMaxBufferPx || this.props.nzVirtualMaxBufferPx || false
   }
 
   get nzVirtualMinBufferPx(): number {
-    return this.to.nzVirtualMinBufferPx || this.to.nzVirtualMinBufferPx || false
+    return this.props.nzVirtualMinBufferPx || this.props.nzVirtualMinBufferPx || false
   }
 
   get nzBackdrop(): number {
-    return this.to.nzBackdrop || this.to.nzBackdrop || false
+    return this.props.nzBackdrop || this.props.nzBackdrop || false
   }
 
 	ngModelChange ($event: Date) {
-    if (this.to.change) {
-      this.to.change(this.field, $event)
+    if (this.props.change) {
+      this.props.change(this.field, $event)
     }
   }
 
   nzExpandChange ($event: Event) {
-    if (this.to.expandChange) {
-      this.to.expandChange(this.field, $event)
+    if (this.props.expandChange) {
+      this.props.expandChange(this.field, $event)
     }
 	}
 

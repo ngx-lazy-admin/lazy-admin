@@ -16,7 +16,7 @@ export class TemplateField extends FieldType {
   private destroy$ = new Subject();
 
 	get style(): Object {
-		return this.to.style || {};
+		return this.props.style || {};
 	}
 
 	constructor(

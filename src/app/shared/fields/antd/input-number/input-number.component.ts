@@ -35,72 +35,72 @@ export class InputNumberField extends FieldType {
 	}
 
 	get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || this.to.autoFocus || false;
+		return this.props.nzAutoFocus || this.props.autoFocus || false;
 	}
 
 	get nzDisabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false;
+		return this.props.nzDisabled || this.props.disabled || false;
 	}
 
 	get nzMax(): number {
-		return this.to.nzMax || this.to.max || Infinity
+		return this.props.nzMax || this.props.max || Infinity
 	}
 
 	get nzMin(): number {
-		return this.to.nzMin || this.to.min || -Infinity
+		return this.props.nzMin || this.props.min || -Infinity
 	}
 
 	private _formatter: (value: number) => string | number = value => value;
 
 	get nzFormatter() {
-		return this.to.nzFormatter && execFunc(this.to.nzFormatter) || this._formatter;
+		return this.props.nzFormatter && execFunc(this.props.nzFormatter) || this._formatter;
 	}
 
 	private  _parser = (value: string) => value.trim().replace(/。/g, '.').replace(/[^\w\.-]+/g, '');
 
 	get nzParser(): (value: string) => string {
-		return this.to.nzParser || execFunc(this.to.parser) || this._parser
+		return this.props.nzParser || execFunc(this.props.parser) || this._parser
 	}
 
 	get nzPrecision(): number {
-		return this.to.nzPrecision || this.to.precision || null
+		return this.props.nzPrecision || this.props.precision || null
 	}
 
 	get nzPrecisionMode(): number {
-		return this.to.nzPrecisionMode || this.to.precisionMode || 'toFixed'
+		return this.props.nzPrecisionMode || this.props.precisionMode || 'toFixed'
 	}
 
 	get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || this.to.size || 'default'
+		return this.props.nzSize || this.props.size || 'default'
 	}
 
 	get nzStep(): number {
-		return this.to.nzStep || this.to.step || 1
+		return this.props.nzStep || this.props.step || 1
 	}
 
 	get nzPlaceHolder(): string {
-		return this.to.nzPlaceHolder || this.to.placeHolder || ''
+		return this.props.nzPlaceHolder || this.props.placeHolder || ''
 	}
 
 	get nzId(): string {
-		return this.to.nzId || ''
+		return this.props.nzId || ''
 	}
 
 	ngModelChange ($event: Event) {
-		if (this.to.change) {
-			this.to.change(this.field, $event)
+		if (this.props.change) {
+			this.props.change(this.field, $event)
 		}
 	}
 
 	nzFocus ($event: Event) {
-		if (this.to.focus) {
-			this.to.focus(this.field, $event)
+		if (this.props.focus) {
+			this.props.focus(this.field, $event)
 		}
 	}
 
 	nzBlur ($event: Event) {
-		if (this.to.blur) {
-			this.to.blur(this.field, $event)
+		if (this.props.blur) {
+			this.props.blur(this.field, $event)
 		}
 	}
 }

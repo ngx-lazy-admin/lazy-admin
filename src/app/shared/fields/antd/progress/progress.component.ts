@@ -18,61 +18,61 @@ export class ProgressField extends ShareFieldType {
   }
 
   get disabled(): boolean {
-		return this.to.disabled || false;
+		return this.props.disabled || false;
 	}
 
 	get nzType(): 'line' | 'circle' | 'dashboard' {
-		return this.to.nzType || this.to.type || 'line';
+		return this.props.nzType || this.props.type || 'line';
 	}
 
   get nzFormat() : (percent: number) => string | TemplateRef<{ $implicit: number }> {
-		return this.to.nzFormat || this.to.format || (percent => percent + '%');
+		return this.props.nzFormat || this.props.format || (percent => percent + '%');
   }
 
   get nzPercent(): number {
-    return this.formControl.value?.percent || this.to.nzPercent || this.to.percent || 10;
+    return this.formControl.value?.percent || this.props.nzPercent || this.props.percent || 10;
   }
 
 
   get nzShowInfo(): boolean {
-    return this.to.nzLoading || this.to.loading || false;
+    return this.props.nzLoading || this.props.loading || false;
   }
 
   get nzStatus() : 'success' | 'exception' | 'active' | 'normal' {
-		return this.formControl.value.status || this.to.nzStatus || this.to.status || '';
+		return this.formControl.value.status || this.props.nzStatus || this.props.status || '';
   }
 
   get nzSize(): "small" | "default" {
-    return this.to.nzSize || 'small'
+    return this.props.nzSize || 'small'
   }
 
   get nzStrokeLinecap() : 'round' | 'square' {
-		return this.to.nzStrokeLinecap || this.to.strokeLinecap || 'round';
+		return this.props.nzStrokeLinecap || this.props.strokeLinecap || 'round';
   }
 
   get nzStrokeColor() : string | { from: string; to: string; direction: string; [percent: string]: string } {
-		return this.to.nzBlock || this.to.block || false;
+		return this.props.nzBlock || this.props.block || false;
   }
 
 	get nzSuccessPercent(): number {
-		return this.to.nzDanger || this.to.danger || 0;
+		return this.props.nzDanger || this.props.danger || 0;
 	}
   // todo
 
   get text(): string {
-    return this.to.text || ''
+    return this.props.text || ''
   }
 
   get icon(): string {
-    return this.to.icon || ''
+    return this.props.icon || ''
   }
 
   get nzPopconfirmPlacement(): string {
-    return this.to.nzPopconfirmPlacement || 'bottom'
+    return this.props.nzPopconfirmPlacement || 'bottom'
   }
 
   get nzPopconfirmTitle(): string {
-    return this.to.nzPopconfirmTitle || null
+    return this.props.nzPopconfirmTitle || null
   }
 
   private _destroy$ = new Subject<void>();

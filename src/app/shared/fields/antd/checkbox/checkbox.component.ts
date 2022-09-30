@@ -27,28 +27,28 @@ export class CheckboxField extends ShareFieldType {
   }
 
   get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
+		return this.props.nzAutoFocus || false;
 	}
 
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false;
+		return this.props.nzDisabled || this.props.disabled || false;
 	}
 
 	get nzIndeterminate(): boolean {
-		return this.to.nzIndeterminate || false
+		return this.props.nzIndeterminate || false
 	}
 
   get nzBackfill(): boolean {
-		return this.to.nzBackfill || false
+		return this.props.nzBackfill || false
 	}
 
   get text(): string {
-    return this.to.text || ''
+    return this.props.text || ''
   }
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-        this.to.change(this.field, $event)
+    if (this.props.change) {
+        this.props.change(this.field, $event)
     }
   }
 }

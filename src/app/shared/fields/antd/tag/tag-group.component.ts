@@ -23,12 +23,12 @@ export class TagGroupField extends FieldType {
   }
 
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.props.nzDisabled || false;
 	}
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-      this.to.change(this.field, $event)
+    if (this.props.change) {
+      this.props.change(this.field, $event)
     }
   }
 }

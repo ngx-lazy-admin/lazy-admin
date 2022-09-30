@@ -34,26 +34,26 @@ export class TypographyField extends ShareFieldType {
   }
 
 	get nzControl(): boolean {
-		return this.to.nzControl || this.to.control || false
+		return this.props.nzControl || this.props.control || false
 	}
 
 	get nzSuffix(): string {
-		return this.to.nzSuffix || this.to.suffix || ''
+		return this.props.nzSuffix || this.props.suffix || ''
 	}
 
 	get nzExpandable(): boolean {
-		return this.to.nzExpandable || this.to.expandable || false
+		return this.props.nzExpandable || this.props.expandable || false
 	}
 
 	// get nzEllipsisRows(): number {
-	// 	return this.to.nzEllipsisRows || this.to.ellipsisRows || 1
+	// 	return this.props.nzEllipsisRows || this.props.ellipsisRows || 1
 	// }
 
 	nzEllipsisRows = 1
 
 	nzEllipsis = true
 	// get nzEllipsis(): boolean {
-	// 	return this.to.nzEllipsis || this.to.ellipsis || false
+	// 	return this.props.nzEllipsis || this.props.ellipsis || false
 	// }
 	
 	expandChange (expand: any) {
@@ -63,8 +63,8 @@ export class TypographyField extends ShareFieldType {
 	}
 
 	ngModelChange ($event: Event) {
-		if (this.to.change) {
-			this.to.change(this.field, $event)
+		if (this.props.change) {
+			this.props.change(this.field, $event)
 		}
 	}
 }

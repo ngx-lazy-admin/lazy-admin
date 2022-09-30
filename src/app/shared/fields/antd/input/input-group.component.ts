@@ -35,12 +35,12 @@ export class InputGroupField extends FieldType {
 	@Input()
 	@InputBoolean()
 	get nzBorderless(): boolean {
-		return this.to.nzBorderless || false
+		return this.props.nzBorderless || false
 	}
 
 	@Input()
 	get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || 'default'
+		return this.props.nzSize || 'default'
 	}
 
 	get control() : FormControl {
@@ -48,6 +48,6 @@ export class InputGroupField extends FieldType {
   }
 
 	get type(): string {
-		return this.to.type || 'text'
+		return this.props.type || 'text'
 	}
 }

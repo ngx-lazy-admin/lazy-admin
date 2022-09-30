@@ -73,11 +73,11 @@ export class MentionField extends ShareFieldType {
 	}
 
 	get readOnly (): boolean {
-		return this.to.readOnly || false
+		return this.props.readOnly || false
 	}
 
 	get placeholder(): string {
-		return this.to.placeholder || 'input here'
+		return this.props.placeholder || 'input here'
 	}
 
 	nzOnSelect ($event: Event) {

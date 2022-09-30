@@ -21,7 +21,7 @@ import { ShareFieldType } from '../share-field.type';
 export class AlertField extends ShareFieldType {
 
   get disabled(): boolean {
-		return this.to.disabled || false;
+		return this.props.disabled || false;
 	}
 
 	get control() : FormControl {
@@ -29,31 +29,31 @@ export class AlertField extends ShareFieldType {
   }
 
 	get nzType(): 'success' | 'info' | 'warning' | 'error' {
-		return this.to.nzType || this.to.type || 'info';
+		return this.props.nzType || this.props.type || 'info';
 	}
 
   get nzCloseable() : boolean {
-		return this.to.nzCloseable || this.to.closeable || false;
+		return this.props.nzCloseable || this.props.closeable || false;
   }
 
   get nzCloseText(): string | TemplateRef<void> {
-    return this.to.nzCloseText || this.to.closeText || null;
+    return this.props.nzCloseText || this.props.closeText || null;
   }
 
   get nzDescription() : string | TemplateRef<void> {
-		return this.to.nzDescription || this.to.description || null;
+		return this.props.nzDescription || this.props.description || null;
   }
 
   get nzMessage() : string | TemplateRef<void> {
-		return this.to.nzMessage || this.to.message || null;
+		return this.props.nzMessage || this.props.message || null;
   }
 
 	get nzShowIcon(): boolean {
-		return this.to.nzShowIcon || this.to.showIcon || false;
+		return this.props.nzShowIcon || this.props.showIcon || false;
 	}
 
   get nzIconType(): string {
-    return this.to.nzIconType || this.to.iconType || ''
+    return this.props.nzIconType || this.props.iconType || ''
   }
 
   private _destroy$ = new Subject<void>();

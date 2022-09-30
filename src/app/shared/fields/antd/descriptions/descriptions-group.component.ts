@@ -50,27 +50,27 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 export class DescriptionsGroupField extends FieldType implements OnDestroy {
 
 	get nzTitle(): string|TemplateRef<void> {
-		return this.to.nzTitle || this.to.title || '';
+		return this.props.nzTitle || this.props.title || '';
 	}
 
 	get nzExtra(): string|TemplateRef<void> {
-		return this.to.nzExtra || '';
+		return this.props.nzExtra || '';
   }
 
   get nzBordered() : boolean {
-		return this.to.nzBordered || this.to.bordered || false;
+		return this.props.nzBordered || this.props.bordered || false;
   }
 
   get nzColumn() : number | { [key in NzBreakpointEnum]: number } {
-		return this.to.nzColumn || null;
+		return this.props.nzColumn || null;
   }
 
   get nzSize() : NzDescriptionsSize  {
-		return this.to.nzSize || 'deafult';
+		return this.props.nzSize || 'deafult';
   }
 
   get nzColon() : boolean {
-		return this.to.nzColon || false;
+		return this.props.nzColon || false;
   }
 
   trackByFn(index: number, item: any) {

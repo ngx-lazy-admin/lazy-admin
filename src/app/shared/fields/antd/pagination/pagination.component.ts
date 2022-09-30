@@ -30,35 +30,35 @@ export class PaginationField extends FieldType {
 	}
 
 	get disabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false;
+		return this.props.nzDisabled || this.props.disabled || false;
 	}
 
 	get showQuickJumper(): boolean {
-		return this.to.nzShowQuickJumper ||  this.to.showQuickJumper || false;
+		return this.props.nzShowQuickJumper ||  this.props.showQuickJumper || false;
 	}
 
 	get showSizeChanger(): boolean {
-		return this.to.nzShowSizeChanger ||  this.to.showSizeChanger || false;
+		return this.props.nzShowSizeChanger ||  this.props.showSizeChanger || false;
 	}
 
 	get simple(): boolean {
-		return this.to.nzSimple || this.to.simple || false;
+		return this.props.nzSimple || this.props.simple || false;
 	}
 
 	get size(): 'default' | 'small' {
-		return this.to.nzSize || this.to.size ||  'default';
+		return this.props.nzSize || this.props.size ||  'default';
 	}
 
 	get responsive(): boolean {
-		return this.to.nzResponsive || this.to.responsive || false;
+		return this.props.nzResponsive || this.props.responsive || false;
 	}
 
 	get pageSizeOptions(): number[] {
-		return this.to.nzPageSizeOptions || this.to.pageSizeOptions || [10, 20, 30, 40];
+		return this.props.nzPageSizeOptions || this.props.pageSizeOptions || [10, 20, 30, 40];
 	}
 
 	get hideOnSinglePage(): boolean {
-		return this.to.nzHideOnSinglePage || this.to.hideOnSinglePage  || false;
+		return this.props.nzHideOnSinglePage || this.props.hideOnSinglePage  || false;
 	}
 
 	pageChange ($event: any) {

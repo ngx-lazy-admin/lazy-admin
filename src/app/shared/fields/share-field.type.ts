@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Directive, ChangeDetectorRef, NgZone, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FieldType, FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
-import { FormlyAttributeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
+import { FormlyAttributeEvent } from '@ngx-formly/core/lib/models';
+// import { FormlyAttributeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
 import { NzButtonSize, NzButtonType } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -84,8 +85,8 @@ export abstract class ShareFieldType extends FieldType {
   click (action?: ActionTypeInterface ) {
     if (action) {
       this.clickAction(action, 'click')
-    } else if (this.to.click) {
-      this.clickDefault(this.to.click, 'click')
+    } else if (this.props.click) {
+      this.clickDefault(this.props.click, 'click')
     }
   }
 
@@ -93,8 +94,8 @@ export abstract class ShareFieldType extends FieldType {
   change (action?: ActionTypeInterface) {
     if (action) {
       this.clickAction(action, 'change')
-    } else if (this.to.click) {
-      this.clickDefault(this.to.click, 'change')
+    } else if (this.props.click) {
+      this.clickDefault(this.props.click, 'change')
     }
   }
 
@@ -103,14 +104,14 @@ export abstract class ShareFieldType extends FieldType {
       if (action?.confirm) {
         action.confirm(this.field, this)
       } else if (this.to?.confirm) {
-        this.to.confirm(this.field, this);
+        this.props.confirm(this.field, this);
       }
     });
 
     if (action) {
       this.clickAction(action, 'change')
-    } else if (this.to.click) {
-      this.clickDefault(this.to.click, 'change')
+    } else if (this.props.click) {
+      this.clickDefault(this.props.click, 'change')
     }
   }
 
@@ -120,7 +121,7 @@ export abstract class ShareFieldType extends FieldType {
       if (action?.close) {
         action.close(this.field, this)
       } else if (this.to?.close) {
-        this.to.close(this.field, this);
+        this.props.close(this.field, this);
       }
     });
   }
@@ -131,7 +132,7 @@ export abstract class ShareFieldType extends FieldType {
       if (action?.cancel) {
         action.cancel(this.field, this)
       } else if (this.to?.cancel) {
-        this.to.cancel(this.field, this);
+        this.props.cancel(this.field, this);
       }
     });
   }

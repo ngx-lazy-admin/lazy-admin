@@ -25,28 +25,28 @@ export class TagListField extends FieldType {
   }
 
   get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || false;
+		return this.props.nzAutoFocus || false;
 	}
 
   get disabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false;
+		return this.props.nzDisabled || this.props.disabled || false;
 	}
 
 	get nzIndeterminate(): boolean {
-		return this.to.nzIndeterminate || false
+		return this.props.nzIndeterminate || false
 	}
 
   get nzBackfill(): boolean {
-		return this.to.nzBackfill || false
+		return this.props.nzBackfill || false
 	}
 
   get nzColor(): string {
-    return this.to.nzColor || ''
+    return this.props.nzColor || ''
   }
 
   ngModelChange ($event: boolean) {
-    if (this.to.change) {
-      this.to.change(this.field, $event)
+    if (this.props.change) {
+      this.props.change(this.field, $event)
     }
   }
 }
