@@ -10,13 +10,14 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { InputField } from './input.component';
 import { TextareaField } from './textarea.component';
 import { PasswordField } from './password.component';
-
+import { InputGroupField } from './input-group.component';
 
 @NgModule({
   declarations: [
     InputField,
     TextareaField,
-    PasswordField
+    PasswordField,
+    InputGroupField
   ],
   imports: [
     CommonModule,

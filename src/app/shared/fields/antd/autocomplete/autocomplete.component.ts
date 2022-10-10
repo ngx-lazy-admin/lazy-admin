@@ -115,7 +115,7 @@ export class AutocompleteFields extends FieldType implements OnInit {
 
   change(value: any): void {
     if (value) {
-      const changeFn = execFunc(this.to?.modelChange)
+      const changeFn = execFunc(this.props?.modelChange)
       if (changeFn && changeFn instanceof Function) {
         try {
           this.data = changeFn(value, this.field) || []

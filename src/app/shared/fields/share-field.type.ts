@@ -103,7 +103,7 @@ export abstract class ShareFieldType extends FieldType {
     this.zone.runOutsideAngular(() => {
       if (action?.confirm) {
         action.confirm(this.field, this)
-      } else if (this.to?.confirm) {
+      } else if (this.props?.confirm) {
         this.props.confirm(this.field, this);
       }
     });
@@ -120,7 +120,7 @@ export abstract class ShareFieldType extends FieldType {
     this.zone.runOutsideAngular(() => {
       if (action?.close) {
         action.close(this.field, this)
-      } else if (this.to?.close) {
+      } else if (this.props?.close) {
         this.props.close(this.field, this);
       }
     });
@@ -131,7 +131,7 @@ export abstract class ShareFieldType extends FieldType {
     this.zone.runOutsideAngular(() => {
       if (action?.cancel) {
         action.cancel(this.field, this)
-      } else if (this.to?.cancel) {
+      } else if (this.props?.cancel) {
         this.props.cancel(this.field, this);
       }
     });

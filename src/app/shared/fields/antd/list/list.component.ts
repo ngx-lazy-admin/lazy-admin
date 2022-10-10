@@ -10,6 +10,7 @@ import {
   ChangeDetectorRef,
   SimpleChanges,
   ElementRef,
+  HostBinding,
  } from '@angular/core';
 import { FieldArrayType, FormlyFieldConfig } from '@ngx-formly/core';
 import { BooleanInput, NumberInput, NzSafeAny, NzSizeLDSType } from 'ng-zorro-antd/core/types';
@@ -61,7 +62,7 @@ export interface VirtualDataInterface {
     </div>  -->
 
     <nz-list>
-      <div [class]="field.className">
+      <div [class]="props.bodyClass">
         <ng-container  *ngFor="let data of formControl.value; trackBy: trackByFn; let index = index;">
           <ng-container *ngIf="field.fieldGroup && field.fieldGroup[index]">
             <div [class]="field.fieldGroup[index].className">
@@ -80,16 +81,16 @@ export interface VirtualDataInterface {
   `,
   styles: [
     `
-      .ant-list-item {
+      /* .ant-list-item {
         padding: unset !important;
-      }
+      } */
     `
   ]
 })
 
 export class ListField extends FieldArrayType implements OnDestroy {
 
-  @ViewChild('domPortalContent') domPortalContent?: ElementRef<HTMLElement>;
+  @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
 
   private destroy$ = new Subject();
 

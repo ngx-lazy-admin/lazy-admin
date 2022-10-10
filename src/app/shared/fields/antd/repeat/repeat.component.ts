@@ -1,8 +1,5 @@
 import { Component, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation, Injectable } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
-// import { ShareFieldType } from '../share-field.type';
-// import { FieldArrayType } from './field-array.type';
-
 
 @Injectable({ providedIn: 'root' })
 @Component({

@@ -103,7 +103,7 @@ export interface VirtualDataInterface {
 
 export class TableField extends FieldArrayType implements OnDestroy {
 
-  @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
+  @ViewChild('nzTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
 
   private destroy$ = new Subject();
 

@@ -99,7 +99,7 @@ export class NzAvatarUploaderComponent extends FieldArrayType implements OnInit,
     }
 
     if (fileList.length === 0) {
-      this.formControl.setValue(null);
+      this.formControl.setValue([]);
     }
   }
 
@@ -115,9 +115,9 @@ export class NzAvatarUploaderComponent extends FieldArrayType implements OnInit,
   ngOnDestroy() {
     // 组件销毁时, 删除循环的列表
     if (this.field.fieldGroup && this.field.fieldGroup.length > 0) {
-      this.field.fieldGroup.map((item, index) => {
-        super.remove(index);
-      });
+      // this.field.fieldGroup.map((item, index) => {
+      //   super.remove(index);
+      // });
     }
 
     if (this.onDestroy$) {

@@ -41,32 +41,32 @@ export class MentionField extends ShareFieldType {
 	}
 
 	get nzMentionSuggestion(): TemplateRef<any> | null {
-		return this.to?.nzMentionSuggestion || this.to?.mentionSuggestion || null
+		return this.props?.nzMentionSuggestion || this.props?.mentionSuggestion || null
 	}
 
 	get nzLoading(): boolean {
-		return this.to?.nzLoading ||  this.to?.loading || false
+		return this.props?.nzLoading ||  this.props?.loading || false
 	}
 
 	get nzNotFoundContent(): string {
-		return this.to?.nzNotFoundContent || this.to?.notFoundContent || false
+		return this.props?.nzNotFoundContent || this.props?.notFoundContent || false
 	}
 
 	get nzPlacement(): MentionPlacement {
-		return this.to?.nzPlacement || this.to?.placement || 'bottom'
+		return this.props?.nzPlacement || this.props?.placement || 'bottom'
 	}
 
 	get nzPrefix(): string | string[] {
-		return this.to?.nzPrefix || this.to?.prefix || '@'
+		return this.props?.nzPrefix || this.props?.prefix || '@'
 	}
 
 	get nzSuggestions(): any[] {
-		return this.to?.nzSuggestions || this.to?.suggestions || []
+		return this.props?.nzSuggestions || this.props?.suggestions || []
 	}
 
 	get nzValueWith(): (value: any) => string { 
-		if (this.to?.nzValueWith || this.to?.valueWith) {
-			return this.to?.nzValueWith || this.to?.valueWith
+		if (this.props?.nzValueWith || this.props?.valueWith) {
+			return this.props?.nzValueWith || this.props?.valueWith
 		} else {
 			return value => value
 		}

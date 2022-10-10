@@ -18,8 +18,11 @@ export class GroupField extends ShareFieldType implements OnDestroy, AfterViewIn
   @HostBinding('style') bodyStyle = {}
 
   ngAfterViewInit() {
-    this.className = this.to?.bodyClass;
-    this.bodyStyle = this.to?.bodyStyle;
+    setTimeout(() => {
+      this.className = this.props?.bodyClass;
+      this.bodyStyle = this.props?.bodyStyle;
+      this.cd.markForCheck();
+    }, 0);
   }
 
   trackByFn(index: number, item: any) {
