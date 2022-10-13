@@ -23,6 +23,7 @@ import { ModalsModule } from 'src/app/shared/modal';
 import { FieldTypeModule } from 'src/app/shared/fields/antd';
 import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
     NzAlertModule,
     NzTabsModule,
     PortalModule,
+    ScrollingModule,
     // ModalsModule
 
     FormlyModule,

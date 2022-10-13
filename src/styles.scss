@@ -1,37 +1,15 @@
 // Custom.scss
 // Option B: Include parts of Bootstrap
 
-@import "bootstrap/scss/bootstrap";
+// Custom.scss
+// Option B: Include parts of Bootstrap
 
-// // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-// @import "../node_modules/bootstrap/scss/functions";
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
 
-// // 2. Include any default variable overrides here
+// 2. Include any default variable overrides here
 
-// // 3. Include remainder of required Bootstrap stylesheets
-// @import "../node_modules/bootstrap/scss/variables";
-// @import "../node_modules/bootstrap/scss/mixins";
-// @import "../node_modules/bootstrap/scss/root";
-
-// // 4. Include any optional Bootstrap CSS as needed
-// @import "../node_modules/bootstrap/scss/utilities";
-// @import "bootstrap/scss/utilities";
-// @import "../node_modules/bootstrap/scss/reboot";
-// @import "../node_modules/bootstrap/scss/type";
-// @import "../node_modules/bootstrap/scss/images";
-// @import "../node_modules/bootstrap/scss/containers";
-
-// @import "../node_modules/bootstrap/scss/helpers";
-
-// // 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
-// @import "../node_modules/bootstrap/scss/utilities/api";
-
-// 6. Add additional custom code here
-
-
-
-
-// @import "bootstrap/scss/bootstrap-utilities.scss";
+@import "bootstrap/scss/bootstrap-utilities.scss";
 // 弹窗层级管理 modal 1000  notification 1010
 
 $zIndex-dropdown:                   999;
@@ -96,6 +74,14 @@ $enable-cssgrid: true;
 // Negative margin
 $enable-negative-margins: true;
 
+
+// stylelint-disable-next-line scss/dollar-variable-default
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../node_modules/bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
 
 $utilities-text: map-merge(
@@ -141,20 +127,52 @@ $utilities: map-merge(
   )
 );
 
-// @import "../node_modules/bootstrap/scss/utilities/api";
-// @import "../node_modules/bootstrap/scss/utilities/api";
+$utilities: () !default;
 
-@import "bootstrap/scss/utilities/api";
+$utilities: (
+  "opacity": (
+    property: opacity,
+    values: (
+      0: 0,
+      25: .25,
+      50: .5,
+      75: .75,
+      100: 1,
+    )
+  ),
+	"min-viewport-height": (
+		property: min-height,
+		class: min-vh,
+		values: (
+			50: 50vh,
+			75: 75vh,
+			100: 100vh,
+		)
+	),
+);
+
+
+// 5. Include remainder of required parts
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
 
 .o-0 { opacity: 0; }
 
-// @import "../node_modules/bootstrap/scss/_utilities.scss";
-
-
-
-// "./node_modules/bootstrap/dist/css/bootstrap-utilities.min.css"
-
-// app/index/thing/create-demand/create-demand.component.ts
 
 $box-shadow-sm: 0 .125rem .125rem rgba($black, 0);
 
@@ -262,11 +280,6 @@ $border-light-color:                $gray-300;
     font-size: 21px !important;
 }
 
-
-$utilities: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-
-
 // 通用样式
 
 .sticky-top {
@@ -278,12 +291,12 @@ $utilities: () !default;
 }
 
 .trigger {
-    display: inline-block;
+	display: inline-block;
 }
 
 .trigger:hover {
-    color: #1890ff;
-    background: #f8f8f9;
+	color: #1890ff;
+	background: #f8f8f9;
 }
 
 // 菜单黑暗主体下的描边
@@ -317,7 +330,6 @@ body::-webkit-scrollbar {
 }
 
 // 转场动画
-
 .transition-margin-left {
 	transition: margin-left .3s cubic-bezier(.7,.3,.1,1);
 }
@@ -341,7 +353,6 @@ body::-webkit-scrollbar {
 }
 
 // 通用样式
-
 body {
 	color: #515a6e;
 	overflow-x: visible
@@ -385,15 +396,4 @@ body {
   transition: all 0.3s;
 }
 
-$utilities: (
-  "opacity": (
-    property: opacity,
-    values: (
-      0: 0,
-      25: .25,
-      50: .5,
-      75: .75,
-      100: 1,
-    )
-  )
-);
+

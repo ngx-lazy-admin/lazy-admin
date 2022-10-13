@@ -21,15 +21,7 @@ import { BlankModal } from './blank-modal/blank-modal.component';
 import { ModalTemplateComponent } from './template/template.component';
 
 import { NgZorroAntdModule } from './ng-zorro-antd.modules';
-
-// export function defaultFormlyConfig(config: any): any {
-//   return {
-//     types: [
-//       { name: 'formly-group', component: FormlyGroup },
-//       { name: 'formly-template', component: FormlyTemplateType },
-//     ]
-//   };
-// }
+import { ModalTitleComponent } from './modal-title.component';
 
 @NgModule({
   providers: [
@@ -40,6 +32,7 @@ import { NgZorroAntdModule } from './ng-zorro-antd.modules';
     FormModal,
     SearchModal,
     BlankModal,
+    ModalTitleComponent,
     ModalTemplateComponent
   ],
   imports: [
@@ -55,7 +48,6 @@ import { NgZorroAntdModule } from './ng-zorro-antd.modules';
 
     FormlyModule,
     FieldTypeModule,
-    // AntFieldTypeModule,
     CustomFieldModule,
     FormFieldModule,
   ],
@@ -63,46 +55,11 @@ import { NgZorroAntdModule } from './ng-zorro-antd.modules';
     FormModal,
     SearchModal,
     BlankModal,
-    ModalTemplateComponent
+    ModalTitleComponent,
+    ModalTemplateComponent,
   ],
   entryComponents: [
     ModalTemplateComponent
   ]
 })
-export class ModalsModule { 
-  // static forRoot(config: ConfigOption = {}): ModuleWithProviders<FormlyModule> {
-  //   return {
-  //     ngModule: FormlyModule,
-  //     providers: [
-  //       { provide: FORMLY_CONFIG, multi: true, useFactory: defaultFormlyConfig, deps: [FormlyConfig] },
-  //       { provide: FORMLY_CONFIG, useValue: config, multi: true },
-  //       FormlyConfig,
-  //       FormlyFormBuilder,
-  //     ],
-  //   };
-  // }
-
-  // static forChild(
-  //   config: ConfigOption = {}
-  // ): ModuleWithProviders<FormlyModule> {
-  //   return {
-  //     ngModule: FormlyModule,
-  //     providers: [
-  //       { provide: FORMLY_CONFIG, multi: true, useFactory: defaultFormlyConfig, deps: [FormlyConfig] },
-  //       { provide: FORMLY_CONFIG, useValue: config, multi: true },
-  //       FormlyFormBuilder,
-  //     ],
-  //   };
-  // }
-
-  // constructor(
-  //   configService: FormlyConfig, 
-  //   @Optional() @Inject(FORMLY_CONFIG) configs: ConfigOption[] = []
-  // ) {
-  //   if (!configs) {
-  //     return;
-  //   }
-
-  //   configs.forEach((config) => configService.addConfig(config));
-  // }
-}
+export class ModalsModule { }

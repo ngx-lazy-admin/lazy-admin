@@ -1,17 +1,23 @@
 <!-- 第一个对话框 -->
 
 <!-- 自定义组成部分 -->
-<ng-template #modalTitle>Custom Modal Title</ng-template>
+<ng-template #modalTitle>Custom Modal Title11</ng-template>
 
 
-<button (click)="create(modalTitle)"> 第一个对话框 </button>
+<button nz-button (click)="create(modalTitle)"> 打开一个模板对话框 </button>
+
+<button nz-button (click)="iframe()"> 打开一个iframe </button>
+
+<button nz-button (click)="formly()"> 打开一个formly </button>
+
+<button nz-button (click)="blank(modalTitle)"> 打开一个blank </button>
+
 
 
 <button nz-button (click)="close($event)"> 显示全部 </button>
 <button nz-button (click)="search($event)"> search </button>
 <button nz-button (click)="dispatchSearch($event)"> dispatchSearch </button>
 <button nz-button (click)="dispatchForm($event)"> dispatchForm </button>
-<button nz-button (click)="blank($event)"> 打开空白弹窗 </button>
 
 <button nz-button (click)="openBlank($event)"> 打开弹窗 </button>
 <button nz-button (click)="closeBlank($event)"> 关闭弹窗 </button>
@@ -27,3 +33,10 @@
 
 
 <app-share-template></app-share-template>
+
+<cdk-virtual-scroll-viewport itemSize="23" class="example-viewport">
+  <div *cdkVirtualFor="let item of list" class="example-item">{{item}}
+    <img [src]="item.cover_url">
+  </div>
+</cdk-virtual-scroll-viewport>
+
