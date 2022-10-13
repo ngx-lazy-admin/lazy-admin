@@ -1,6 +1,6 @@
 /**
  * @toast-ui/editor : viewer
- * @version 3.1.7 | Tue May 17 2022
+ * @version 3.2.1 | Thu Sep 29 2022
  * @author NHN Cloud FE Development Lab <dl_javascript@nhn.com>
  * @license MIT
  */
@@ -8,6 +8,7 @@
 import { Plugin, PluginKey, Selection, TextSelection } from 'prosemirror-state';
 import { InputRule, inputRules, undoInputRule } from 'prosemirror-inputrules';
 import { Decoration, DecorationSet } from 'prosemirror-view';
+import { keymap } from 'prosemirror-keymap';
 import { Fragment } from 'prosemirror-model';
 
 /*! *****************************************************************************
@@ -10020,6 +10021,14 @@ function createElementWith(contents, target) {
     }
     return firstChild;
 }
+function removeProseMirrorHackNodes(html) {
+    var reProseMirrorImage = /<img class="ProseMirror-separator" alt="">/g;
+    var reProseMirrorTrailingBreak = / class="ProseMirror-trailingBreak"/g;
+    var resultHTML = html;
+    resultHTML = resultHTML.replace(reProseMirrorImage, '');
+    resultHTML = resultHTML.replace(reProseMirrorTrailingBreak, '');
+    return resultHTML;
+}
 
 /**
  * @fileoverview Check whether the given variable is a function or not.
@@ -11911,7 +11920,7 @@ var MarkdownPreview = /** @class */ (function () {
         return this.el;
     };
     MarkdownPreview.prototype.getHTML = function () {
-        return this.previewContent.innerHTML;
+        return removeProseMirrorHackNodes(this.previewContent.innerHTML);
     };
     MarkdownPreview.prototype.setHTML = function (html) {
         this.previewContent.innerHTML = html;
@@ -12224,22 +12233,40 @@ function mixinTableOffsetMapPrototype(offsetMapMixin, createOffsetMapMixin) {
     return TableOffsetMap;
 }
 
-function execPlugin(plugin, eventEmitter, usageStatistics) {
+function execPlugin(pluginInfo) {
+    var plugin = pluginInfo.plugin, eventEmitter = pluginInfo.eventEmitter, usageStatistics = pluginInfo.usageStatistics, instance = pluginInfo.instance;
     var pmState = { Plugin: Plugin, PluginKey: PluginKey, Selection: Selection, TextSelection: TextSelection };
     var pmView = { Decoration: Decoration, DecorationSet: DecorationSet };
     var pmModel = { Fragment: Fragment };
     var pmRules = { InputRule: InputRule, inputRules: inputRules, undoInputRule: undoInputRule };
-    var context = { eventEmitter: eventEmitter, usageStatistics: usageStatistics, pmState: pmState, pmView: pmView, pmModel: pmModel, pmRules: pmRules, i18n: i18n };
+    var pmKeymap = { keymap: keymap };
+    var context = {
+        eventEmitter: eventEmitter,
+        usageStatistics: usageStatistics,
+        instance: instance,
+        pmState: pmState,
+        pmView: pmView,
+        pmModel: pmModel,
+        pmRules: pmRules,
+        pmKeymap: pmKeymap,
+        i18n: i18n,
+    };
     if (isArray_1(plugin)) {
         var pluginFn = plugin[0], _a = plugin[1], options = _a === void 0 ? {} : _a;
         return pluginFn(context, options);
     }
     return plugin(context);
 }
-function getPluginInfo(plugins, eventEmitter, usageStatistics) {
+function getPluginInfo(pluginsInfo) {
+    var plugins = pluginsInfo.plugins, eventEmitter = pluginsInfo.eventEmitter, usageStatistics = pluginsInfo.usageStatistics, instance = pluginsInfo.instance;
     eventEmitter.listen('mixinTableOffsetMapPrototype', mixinTableOffsetMapPrototype);
     return (plugins !== null && plugins !== void 0 ? plugins : []).reduce(function (acc, plugin) {
-        var pluginInfoResult = execPlugin(plugin, eventEmitter, usageStatistics);
+        var pluginInfoResult = execPlugin({
+            plugin: plugin,
+            eventEmitter: eventEmitter,
+            usageStatistics: usageStatistics,
+            instance: instance,
+        });
         if (!pluginInfoResult) {
             throw new Error('The return value of the executed plugin is empty.');
         }
@@ -12621,7 +12648,12 @@ var ToastUIEditorViewer = /** @class */ (function () {
         }, options);
         this.eventEmitter = new EventEmitter();
         var linkAttributes = sanitizeLinkAttribute(this.options.linkAttributes);
-        var _a = getPluginInfo(this.options.plugins, this.eventEmitter, this.options.usageStatistics) || {}, toHTMLRenderers = _a.toHTMLRenderers, markdownParsers = _a.markdownParsers;
+        var _a = getPluginInfo({
+            plugins: this.options.plugins,
+            eventEmitter: this.eventEmitter,
+            usageStatistics: this.options.usageStatistics,
+            instance: this,
+        }) || {}, toHTMLRenderers = _a.toHTMLRenderers, markdownParsers = _a.markdownParsers;
         var _b = this.options, customHTMLRenderer = _b.customHTMLRenderer, extendedAutolinks = _b.extendedAutolinks, referenceDefinition = _b.referenceDefinition, frontMatter = _b.frontMatter, customHTMLSanitizer = _b.customHTMLSanitizer;
         var rendererOptions = {
             linkAttributes: linkAttributes,
