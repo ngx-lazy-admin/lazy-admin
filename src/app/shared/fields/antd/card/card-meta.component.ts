@@ -38,47 +38,47 @@ import { ShareFieldType } from '../share-field.type';
 export class CardMetaField extends ShareFieldType  implements OnDestroy {
 
   get nzTitle(): string | TemplateRef<void> {
-    return this.formControl.value?.title || this.to.title || this.to.nzTitle || ''
+    return this.formControl.value?.title || this.props.title || this.props.nzTitle || ''
   }
 
   get nzDescription(): string | TemplateRef<void> {
-    return this.formControl.value?.description || this.to.description || this.to.nzDescription || ''
+    return this.formControl.value?.description || this.props.description || this.props.nzDescription || ''
   }
 
   get nzBodyStyle(): { [key: string]: string } {
-		return this.to.nzBodyStyle || this.to.bodyStyle || '';
+		return this.props.nzBodyStyle || this.props.bodyStyle || '';
 	}
 
   get nzIcon(): string | TemplateRef<void> {
-    return this.to.nzIcon || this.to.icon || ''
+    return this.props.nzIcon || this.props.icon || ''
   }
 
   get nzShape(): 'circle' | 'square' {
-    return this.to.nzShape || this.to.shape || 'circle'
+    return this.props.nzShape || this.props.shape || 'circle'
   }
 
   get nzSize(): 'large' | 'small' | 'default' | number {
-    return this.to.nzSize || this.to.size || 'default'
+    return this.props.nzSize || this.props.size || 'default'
   }
 
   get nzGap(): number {
-    return this.to.nzGap || this.to.nzGap || 4
+    return this.props.nzGap || this.props.nzGap || 4
   }
 
   get nzSrc(): string  {
-    return this.formControl.value?.src || this.to.nzSrc || this.to.src || ''
+    return this.formControl.value?.src || this.props.nzSrc || this.props.src || ''
   }
 
   get nzSrcSet(): string {
-    return this.to.srcSet || this.to.nzSrcSet || ''
+    return this.props.srcSet || this.props.nzSrcSet || ''
   }
 
   get nzAlt(): string {
-    return this.to.nzAlt || this.to.alt || ''
+    return this.props.nzAlt || this.props.alt || ''
   }
 
   get nzText(): string {
-    return this.to.nzText || this.to.text || ''
+    return this.props.nzText || this.props.text || ''
   }
 
 
@@ -89,8 +89,8 @@ export class CardMetaField extends ShareFieldType  implements OnDestroy {
   ngOnDestroy() {}
 
   onClick($event: any) {
-    if (this.to.click) {
-      this.to.click(this.field, $event)
+    if (this.props.click) {
+      this.props.click(this.field, $event)
     }
   }
 }

@@ -29,69 +29,69 @@ export class SliderField extends FieldType {
   }
 
 	get nzDisabled(): boolean {
-		return this.to.nzDisabled || false
+		return this.props.nzDisabled || false
 	}
 
 	get nzDots(): boolean {
-		return this.to.nzDots || this.to.dots || false
+		return this.props.nzDots || this.props.dots || false
 	}
 
   get nzIncluded(): boolean {
-		return this.to.nzIncluded || this.to.included || false
+		return this.props.nzIncluded || this.props.included || false
 	}
 
   get nzMarks(): boolean {
-		return this.to.nzMarks || this.to.marks || false
+		return this.props.nzMarks || this.props.marks || false
 	}
 
   get nzMax(): boolean {
-		return this.to.nzMax || this.to.max || false
+		return this.props.nzMax || this.props.max || false
 	}
 
   get nzMin(): boolean {
-		return this.to.nzMin || this.to.min || false
+		return this.props.nzMin || this.props.min || false
 	}
 
   get nzRange(): boolean {
-		return this.to.nzRange || this.to.range || false
+		return this.props.nzRange || this.props.range || false
 	}
 
   get nzStep(): boolean {
-		return this.to.nzStep || this.to.step || false
+		return this.props.nzStep || this.props.step || false
 	}
 
   get nzTipFormatter(): boolean {
-		return this.to.nzTipFormatter || this.to.tipFormatter  || false
+		return this.props.nzTipFormatter || this.props.tipFormatter  || false
 	}
 
   get nzVertical(): boolean {
-		return this.to.nzVertical || this.to.vertical || false
+		return this.props.nzVertical || this.props.vertical || false
 	}
 
   get nzReverse(): boolean {
-		return this.to.nzReverse || this.to.reverse || false
+		return this.props.nzReverse || this.props.reverse || false
 	}
   get nzTooltipVisible(): boolean {
-		return this.to.nzTooltipVisible || this.to.tooltipVisible || false
+		return this.props.nzTooltipVisible || this.props.tooltipVisible || false
 	}
 
   get nzTooltipPlacement(): boolean {
-		return this.to.nzTooltipPlacement || this.to.tooltipPlacement || false
+		return this.props.nzTooltipPlacement || this.props.tooltipPlacement || false
 	}
 
 	get style(): Object {
-		return this.to.style || {}
+		return this.props.style || {}
 	}
 
 	nzOnAfterChange ($event: Event) {
-		if (this.to.nzOnAfterChange) {
-			this.to.nzOnAfterChange(this.field, $event)
+		if (this.props.nzOnAfterChange) {
+			this.props.nzOnAfterChange(this.field, $event)
 		}
 	}
 
 	ngModelChange ($event: Event) {
-		if (this.to.change) {
-			this.to.change(this.field, $event)
+		if (this.props.change) {
+			this.props.change(this.field, $event)
 		}
 	}
 }

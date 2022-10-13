@@ -17,12 +17,10 @@
 
 
 		<form [formGroup]="form" (ngSubmit)="submit()" [attr.style]="'--watermark: ' + ('lazy admin pro' | watermark | async) " class="watermark">
-			<formly-form 
-				class="row" 
-				[form]="form" 
-				[fields]="fields" 
-				[(model)]="model"
-				[options]="options">
+			<formly-form class="row" [form]="form"  [fields]="fields" [(model)]="model" [options]="options">
+				<ng-template formlyTemplate let-field>
+					<formly-field *ngFor="let f of field.fieldGroup" [field]="f"></formly-field>
+				</ng-template>
 			</formly-form>
 		</form>
 	</ng-container>

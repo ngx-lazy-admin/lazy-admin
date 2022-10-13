@@ -74,7 +74,7 @@ export class QuillEditField implements AfterViewInit {
     loadStyle('https://cdn.quilljs.com/1.3.6/quill.snow.css').subscribe(item => {})
     loadScript('https://cdn.quilljs.com/1.3.6/quill.js').subscribe(item => {
       // this.echart = window.echarts.init(this.elRef.nativeElement.querySelector('#echart'));
-      // this.echart.setOption(this.formControl.value || this.to.config);
+      // this.echart.setOption(this.formControl.value || this.props.config);
       const Quill = window.Quill
 
       const font = Quill.import('formats/font');

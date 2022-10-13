@@ -45,34 +45,34 @@ export class TreeField extends FieldType  {
   }
 
   get nzId(): boolean {
-		return this.to.nzId || false
+		return this.props.nzId || false
 	}
 
   get nzExpandedKeys(): string[] {
-		return this.to.nzExpandedKeys || []
+		return this.props.nzExpandedKeys || []
 	}
 
   get nzNodes():  Array<NzTreeNode | NzTreeNodeOptions> {
-		return this.to.nzNodes || this.nodes || []
+		return this.props.nzNodes || this.nodes || []
 	}
 
   get nzSuffixIcon(): boolean {
-		return this.to.nzSuffixIcon || false
+		return this.props.nzSuffixIcon || false
 	}
   
   get nzPlaceHolder(): string {
-    return this.to.nzPlaceHolder || this.to.placeholder || '请选择'
+    return this.props.nzPlaceHolder || this.props.placeholder || '请选择'
   }
     
 	ngModelChange ($event: Date) {
-    if (this.to.change) {
-      this.to.change(this.field, $event)
+    if (this.props.change) {
+      this.props.change(this.field, $event)
     }
   }
 
   nzExpandChange ($event: Event) {
-    if (this.to.nzOpenChange) {
-      this.to.nzExpandChange(this.field, $event)
+    if (this.props.nzOpenChange) {
+      this.props.nzExpandChange(this.field, $event)
     }
 	}
 

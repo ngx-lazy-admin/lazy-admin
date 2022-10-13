@@ -32,15 +32,15 @@ export interface AutoSizeType {
 export class TextareaField extends FieldType {
 
 	get nzBorderless(): boolean {
-		return this.to.nzBorderless || false
+		return this.props.nzBorderless || false
 	}
 
 	get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || 'default'
+		return this.props.nzSize || 'default'
 	}
 
 	get placeholder(): string {
-		return this.to.placeholder || ''
+		return this.props.placeholder || ''
 	}
 
 	get control() : FormControl {
@@ -48,18 +48,18 @@ export class TextareaField extends FieldType {
   }
 
 	get type(): string {
-		return this.to.type || 'text';
+		return this.props.type || 'text';
 	}
 
 	get rows(): number {
-		return this.to.rows || 3
+		return this.props.rows || 3
 	}
 
 	get nzAutosize(): boolean | AutoSizeType {
-		return this.to.nzAutosize || this.to.autosize || false
+		return this.props.nzAutosize || this.props.autosize || false
 	}
 
 	get nzMaxCharacterCount(): number {
-		return this.to.nzMaxCharacterCount || this.to.maxCharacterCount || 100;
+		return this.props.nzMaxCharacterCount || this.props.maxCharacterCount || 100;
 	}
 }

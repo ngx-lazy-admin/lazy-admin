@@ -4,8 +4,16 @@ import {
 	TemplateRef,
 	ViewChild,
   ViewContainerRef,
+  ElementRef,
+  Injector,
+  ApplicationRef,
+  ComponentFactoryResolver,
+  ChangeDetectorRef,
 } from '@angular/core';
-import { Portal, TemplatePortal } from '@angular/cdk/portal';
+import { DomPortalOutlet, Portal, TemplatePortal } from '@angular/cdk/portal';
+import { ModalService } from '../modal.service';
+import { NzModalRef } from 'ng-zorro-antd/modal';
+import { appendClassName } from 'src/app/utils/class-name';
 
 @Component({
   selector: 'app-share-template',
@@ -20,24 +28,88 @@ export class ModalTemplateComponent {
   // 弹窗标题的模板
   @ViewChild('titleTemplateRef') titleTemplateRef!: TemplateRef<any>;
 
-  // 弹窗组件的模板
-  @ViewChild('modalFormContent', { read: TemplateRef }) modalFormContent!: TemplateRef<any>;
+  // iframe template
+  @ViewChild('iframeTemplateRef') iframeTemplateRef!: TemplateRef<any>;
+
+  // form template
+  @ViewChild('formTemplateRef') formTemplateRef!: TemplateRef<any>;
+
+  // blank template
+  @ViewChild('blankTemplateRef') blankTemplateRef!: TemplateRef<any>;
 
   selectedPortal!: Portal<any>;
 
   constructor(
-    private _viewContainerRef: ViewContainerRef
+    private _viewContainerRef: ViewContainerRef,
+    private elementRef: ElementRef,
+    private injector: Injector,
+    private appRef: ApplicationRef,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private modalService: ModalService,
+    private cd: ChangeDetectorRef,
   ) {}
+
+  ngAfterViewInit() {
+    this.addEventListenMessage()
+  }
+
+  open (ref: any, params: any) {
+    console.log(ref, params)
+  }
   
-  // 获取模板
-  public getTemplateRef (params?: any): TemplateRef<any> {
-    this.selectedPortal = new TemplatePortal(this.titleTemplateRef, this._viewContainerRef, {
+
+  // 获取组件模板
+  public getComponentRef (params?: any): TemplateRef<any> {
+
+    const selectedPortal = new TemplatePortal(this.getTemplateRef(params.type), this._viewContainerRef, {
       context: params
     });
+
+    const portalOutlet = new DomPortalOutlet(
+      this.elementRef.nativeElement as HTMLElement,
+      this.componentFactoryResolver,
+      this.appRef,
+      this.injector
+    );
+
+    const embeddedViewRef = portalOutlet.attachTemplatePortal(selectedPortal);
     return this.portalTemplateRef
   }
 
-  open (ref: any) {
-    console.log(ref)
+  // get TemplateRef
+  public getTemplateRef (type?: 'title' | 'blank' | 'iframe' | 'form'): TemplateRef<any> {
+    // 获取template, 填充实例
+    switch (type) {
+      case 'title':
+        return this.titleTemplateRef
+      case 'iframe':
+        return this.iframeTemplateRef
+      case 'blank':
+        return this.blankTemplateRef
+      default:
+        return this.blankTemplateRef
+    }
+  }
+
+
+  // template click
+  templateClick ($event: any, modalRef: NzModalRef) {
+    if ($event.type === 'close') {
+      modalRef.destroy();
+    } else if ($event.type === 'min') {
+      const className = appendClassName(modalRef.getConfig().nzWrapClassName, 'd-none')
+      modalRef.updateConfig({nzWrapClassName: className});
+    }
+    this.cd.detectChanges();
+  }
+
+  // Listen Iframe Event
+  addEventListenMessage () {
+    window.addEventListener('message', (e) => {
+      // console.log(e)
+      if (e.data && e.data.key && e.data.value) {
+        // this.modalService.open(e.data.key, e.data.value);
+      }
+    })
   }
 }

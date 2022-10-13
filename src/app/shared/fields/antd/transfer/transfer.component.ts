@@ -33,15 +33,15 @@ export class TransferField extends FieldType {
 	}
 
 	get nzId(): boolean {
-		return this.to.nzId || false
+		return this.props.nzId || false
 	}
 
 	get nzDisabled(): boolean {
-    return this.to.nzDisabled || this.to.disabled || false
+    return this.props.nzDisabled || this.props.disabled || false
   }
 
 	get nzTitles(): 	string[] {
-    return this.to.nzTitles || this.to.nzTitles || ['', '']
+    return this.props.nzTitles || this.props.nzTitles || ['', '']
   }
 
 	list: TransferItem[] = [];
@@ -68,14 +68,14 @@ export class TransferField extends FieldType {
 	}
 
 	ngModelChange ($event: Date) {
-		if (this.to.change) {
-			this.to.change(this.field, $event)
+		if (this.props.change) {
+			this.props.change(this.field, $event)
 		}
 	}
 
 	nzOpenChange ($event: Event) {
-		if (this.to.nzOpenChange) {
-			this.to.nzOpenChange(this.field, $event)
+		if (this.props.nzOpenChange) {
+			this.props.nzOpenChange(this.field, $event)
 		}
 	}
 }

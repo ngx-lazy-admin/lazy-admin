@@ -42,39 +42,39 @@ export class StepsField extends FieldType {
   }
 
 	get nzType(): 'default' | 'navigation'{
-		return this.to.nzType || 'default';
+		return this.props.nzType || 'default';
 	}
 
 	get nzDirection(): 'vertical' | 'horizontal' {
-		return this.to.nzDirection || 'horizontal';
+		return this.props.nzDirection || 'horizontal';
   }
 
   get nzLabelPlacement() : 'vertical' | 'horizontal' {
-		return this.to.nzBordered || 'horizontal';
+		return this.props.nzBordered || 'horizontal';
   }
 
   get nzProgressDot() : boolean | TemplateRef<{ $implicit: TemplateRef<void>, status: string, index: number }> {
-		return this.to.nzProgressDot || this.to.progressDot || false;
+		return this.props.nzProgressDot || this.props.progressDot || false;
   }
 
   get nzSize() : 'small' | 'default' {
-		return this.to.nzSize || 'default';
+		return this.props.nzSize || 'default';
   }
 
   get nzStatus() : 'wait' | 'process' | 'finish' | 'error' {
-		return this.to.nzStatus || 'process';
+		return this.props.nzStatus || 'process';
   }
 
   get nzStartIndex(): number {
-    return this.to.nzStartIndex || 0
+    return this.props.nzStartIndex || 0
   }
 
   get nzOptions () : StepsOptionInterface[] {
-    return this.to.nzOptions || this.to.options || []
+    return this.props.nzOptions || this.props.options || []
   }
 
   get readonly(): boolean {
-    return this.to.readonly || false
+    return this.props.readonly || false
   }
 
   trackByFn(index: number, item: any) {
@@ -82,8 +82,8 @@ export class StepsField extends FieldType {
   }
 
   nzIndexChange ($event: any) {
-    if (this.to.nzIndexChange) {
-      this.to.nzIndexChange($event)
+    if (this.props.nzIndexChange) {
+      this.props.nzIndexChange($event)
     }
   }
 }

@@ -33,32 +33,32 @@ export class RadioGroupField extends FieldType {
   }
 
   get nzName(): string {
-		return this.to.nzName || this.to.name || '';
+		return this.props.nzName || this.props.name || '';
 	}
 
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false;
+		return this.props.nzDisabled || this.props.disabled || false;
 	}
 
   get nzSize(): 'large' | 'small' | 'default' {
-		return this.to.nzSize || this.to.size || 'default';
+		return this.props.nzSize || this.props.size || 'default';
 	}
 
   get nzButtonStyle(): 'outline' | 'solid' {
-		return this.to.nzButtonStyle || this.to.buttonStyle || 'outline';
+		return this.props.nzButtonStyle || this.props.buttonStyle || 'outline';
 	}
 
   get radioButton(): boolean {
-		return this.to.radioButton || false;
+		return this.props.radioButton || false;
 	}
 
   get nzOptions(): any[] {
-    return this.to.nzOptions || this.to.options || []
+    return this.props.nzOptions || this.props.options || []
   }
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-        this.to.change(this.field, $event)
+    if (this.props.change) {
+        this.props.change(this.field, $event)
     }
   }
 }

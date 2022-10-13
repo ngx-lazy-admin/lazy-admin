@@ -29,18 +29,18 @@ export class RadioWrapperField extends FieldType implements OnDestroy {
   }
 
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.props.nzDisabled || false;
 	}
 
   get nzOptions(): NzCheckBoxOptionInterface[] {
-    return this.to.nzOptions || []
+    return this.props.nzOptions || []
   }
 
   private _destroy$ = new Subject<void>();
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-        this.to.change(this.field, $event)
+    if (this.props.change) {
+        this.props.change(this.field, $event)
     }
   }
 

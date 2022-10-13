@@ -62,11 +62,11 @@ export class FormWrapper extends FieldWrapper {
 
 
   get nzLayout(): NzFormLayoutType  {
-    return this.to.layout || this.to.layout || 'horizontal'
+    return this.props.layout || this.props.layout || 'horizontal'
   }
 
   get controlOffset() : number {
-    return  this.nzLayout === 'vertical' ? 0 : (!this.to.label ? 8 : 0)
+    return  this.nzLayout === 'vertical' ? 0 : (!this.props.label ? 8 : 0)
   }
   
   // const baseStyle = { position: 'absolute', width: `${this.inputWidth}px` };
@@ -88,59 +88,59 @@ export class FormWrapper extends FieldWrapper {
   }
 
   get fixedWidth (): string {
-    return this.to.fixedWidth || ''
+    return this.props.fixedWidth || ''
   }
 
   get nzNoColon(): boolean {
-    return this.to.nzNoColon || this.to.noColon || false
+    return this.props.nzNoColon || this.props.noColon || false
   }
 
   get nzRequired(): boolean {
-    return  (this.to.nzRequired || this.to.required) && this.to.hideRequiredMarker !== true || false
+    return  (this.props.nzRequired || this.props.required) && this.props.hideRequiredMarker !== true || false
   }
 
   get nzTooltipTitle(): string | TemplateRef<void> {
-    return this.to.nzTooltipTitle || this.to.tooltipTitle || ''
+    return this.props.nzTooltipTitle || this.props.tooltipTitle || ''
   }
 
   get nzTooltipIcon(): string | NzFormTooltipIcon {
-    return this.to.NzFormTooltipIcon || { type: 'question-circle', theme: 'outline' }
+    return this.props.NzFormTooltipIcon || { type: 'question-circle', theme: 'outline' }
   }
 
   get nzValidateStatus(): string | NzFormTooltipIcon {
-    return this.to.nzValidateStatus || null
+    return this.props.nzValidateStatus || null
   }
 
   get nzHasFeedback(): boolean {
-    return this.to.nzHasFeedback || false
+    return this.props.nzHasFeedback || false
   }
 
   get nzExtra(): string | TemplateRef<void> {
-    return this.to.nzExtra
+    return this.props.nzExtra
   }
 
   get nzSuccessTip(): string | TemplateRef<void> {
-    return this.to.nzSuccessTip
+    return this.props.nzSuccessTip
   }
 
   get nzWarningTip(): string | TemplateRef<void> {
-    return this.to.nzWarningTip
+    return this.props.nzWarningTip
   }
 
   get nzErrorTip(): string | TemplateRef<void> {
-    return this.to.nzErrorTip
+    return this.props.nzErrorTip
   }
 
   get nzValidatingTip(): string | TemplateRef<void> {
-    return this.to.nzValidatingTip
+    return this.props.nzValidatingTip
   }
 
   get nzAutoTips(): string | TemplateRef<void> {
-    return this.to.nzAutoTips
+    return this.props.nzAutoTips
   }
 
   get nzDisableAutoTips(): string | TemplateRef<void> {
-    return this.to.nzDisableAutoTips
+    return this.props.nzDisableAutoTips
   }
 
   get errorMessage(): any {

@@ -23,11 +23,11 @@ import { MessageService } from 'src/app/services/message.service';
 export class UploadField extends FieldType implements OnInit {
 
   get disabled(): boolean {
-		return this.to.disabled || false;
+		return this.props.disabled || false;
 	}
 
 	get nzGhost(): boolean {
-		return this.to.nzGhost || false;
+		return this.props.nzGhost || false;
 	}
 
 	get control() : FormControl {
@@ -35,27 +35,27 @@ export class UploadField extends FieldType implements OnInit {
   }
 
   get nzShape() : NzButtonShape {
-		return this.to.nzShape || '';
+		return this.props.nzShape || '';
   }
 
   get nzLoading(): boolean {
-    return this.to.nzLoading || false;
+    return this.props.nzLoading || false;
   }
 
   get nzSize() : NzButtonSize {
-		return this.to.nzSize || 'default';
+		return this.props.nzSize || 'default';
   }
 
   get nzType() : NzButtonType {
-		return this.to.nzType || '';
+		return this.props.nzType || '';
   }
 
   get nzBlock() : boolean {
-		return this.to.nzBlock || false;
+		return this.props.nzBlock || false;
   }
 
 	get nzDanger(): boolean {
-		return this.to.nzDanger || false;
+		return this.props.nzDanger || false;
 	}
 
   private _destroy$ = new Subject<void>();
@@ -69,14 +69,14 @@ export class UploadField extends FieldType implements OnInit {
   }
 
   onClick ($event: Event) {
-    if (this.to.click) {
-      this.to.click(this.field, $event);
+    if (this.props.click) {
+      this.props.click(this.field, $event);
     }
   }
 
   ngModelChange (info: NzUploadChangeParam) {
-    if (this.to.change) {
-      this.to.change(this.field, info);
+    if (this.props.change) {
+      this.props.change(this.field, info);
     }
   }
 

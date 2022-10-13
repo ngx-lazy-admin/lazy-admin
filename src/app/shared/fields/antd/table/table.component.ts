@@ -72,7 +72,7 @@ export interface VirtualDataInterface {
     >
       <thead>
         <tr>
-          <ng-container *ngFor="let item of field?.fieldArray?.fieldGroup;">
+          <ng-container *ngFor="let item of fieldGroups;">
             <th *ngIf="!item.hide" [nzWidth]="nzWidth" [nzRight]="item?.templateOptions?.right">
               {{item?.templateOptions?.label}}
 
@@ -103,7 +103,7 @@ export interface VirtualDataInterface {
 
 export class TableField extends FieldArrayType implements OnDestroy {
 
-  @ViewChild('virtualTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
+  @ViewChild('nzTable', { static: false }) nzTableComponent?: NzTableComponent<VirtualDataInterface>;
 
   private destroy$ = new Subject();
 
@@ -115,24 +115,28 @@ export class TableField extends FieldArrayType implements OnDestroy {
     }
   }
 
+  get fieldGroups (): any[] {
+    return (this.field.fieldArray as FormlyFieldConfig).fieldGroup || []
+  }
+
   get nzSelectedIndex(): number {
-		return this.to.nzSelectedIndex || 0;
+		return this.props.nzSelectedIndex || 0;
 	}
 
   get nzShowPagination() : boolean {
-    return this.to.nzShowPagination || this.to.showPagination || false;
+    return this.props.nzShowPagination || this.props.showPagination || false;
   }
 
   get nzFrontPagination() : boolean {
-    return this.to.nzFrontPagination || this.to.frontPagination || true;
+    return this.props.nzFrontPagination || this.props.frontPagination || true;
   }
 
   get nzAnimated(): boolean  {
-		return this.to.nzAnimated || false;
+		return this.props.nzAnimated || false;
 	}
 
   get nzTitle(): string | TemplateRef<void> {
-    return this.to.title || this.to.nzTitle || ''
+    return this.props.title || this.props.nzTitle || ''
   }
 
   get nzWidth(): string {
@@ -140,59 +144,59 @@ export class TableField extends FieldArrayType implements OnDestroy {
   }
 
   get nzBordered(): boolean {
-    return this.to.nzBordered || this.to.bordered || false
+    return this.props.nzBordered || this.props.bordered || false
   }
 
   get editor(): boolean {
-    return this.to.editor || false
+    return this.props.editor || false
   }
 
   get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || 'default';
+		return this.props.nzSize || 'default';
 	}
 
   get nzTabBarExtraContent(): string|TemplateRef<void> {
-		return this.to.nzTabBarExtraContent || false;
+		return this.props.nzTabBarExtraContent || false;
 	}
 
   get nzTabBarStyle():  { [key: string]: string } | null {
-		return this.to.nzTabBarStyle || false;
+		return this.props.nzTabBarStyle || false;
 	}
 
   get nzTabBarGutter():  number {
-		return this.to.nzTabBarGutter || false;
+		return this.props.nzTabBarGutter || false;
 	}
 
   get nzHideAll(): boolean {
-		return this.to.nzHideAll || false;
+		return this.props.nzHideAll || false;
 	}
 
 	get nzLinkRouter(): string|TemplateRef<void> {
-		return this.to.nzLinkRouter || false;
+		return this.props.nzLinkRouter || false;
 	}
 
 	get nzLinkExact(): string|TemplateRef<void> {
-		return this.to.nzLinkExact || '';
+		return this.props.nzLinkExact || '';
   }
 
   get nzCanDeactivate() : boolean {
-		return this.to.nzCanDeactivate || false;
+		return this.props.nzCanDeactivate || false;
   }
 
   get nzCentered() : boolean {
-		return this.to.nzCentered || false;
+		return this.props.nzCentered || false;
   }
 
   get nzHideAdd(): boolean {
-    return this.to.nzHideAdd || false;
+    return this.props.nzHideAdd || false;
   }
 
   get nzAddIcon(): string | TemplateRef<void> {
-    return this.to.nzAddIcon || false;
+    return this.props.nzAddIcon || false;
   }
 
   get actinsOptions () : ActionTypeInterface[] {
-    return this.to.actinsOptions || []
+    return this.props.actinsOptions || []
   }
 
   editCache: { [key: string]: boolean } = {};
@@ -266,20 +270,20 @@ export class TableField extends FieldArrayType implements OnDestroy {
   }
 
   nzSelectedIndexChange ($event: EventEmitter<number>) {
-    if (this.to.nzSelectedIndexChange) {
-      this.to.nzSelectedIndexChange($event)
+    if (this.props.nzSelectedIndexChange) {
+      this.props.nzSelectedIndexChange($event)
     }
   } 
 
   nzAdd ($event: EventEmitter<{}>) {
-    if (this.to.nzAdd) {
-      this.to.nzAdd($event)
+    if (this.props.nzAdd) {
+      this.props.nzAdd($event)
     }
   }
 
   nzClose ($event: EventEmitter<{ index: number }>) {
-    if (this.to.nzClose) {
-      this.to.nzClose($event)
+    if (this.props.nzClose) {
+      this.props.nzClose($event)
     }
   }
 

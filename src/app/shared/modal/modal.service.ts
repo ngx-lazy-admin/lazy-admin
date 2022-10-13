@@ -7,6 +7,7 @@ import { FormModal } from './form-modal/form-modal.component';
 import { SearchModal } from './search-modal/search-modal.component';
 import { DispatchService, UsefulService, NeedsService } from './dispatch.service';
 import { BlankModal } from './blank-modal/blank-modal.component';
+import { appendClassName, removeClassName } from 'src/app/utils/class-name';
 
 
 type modalType = 'search' | 'form' | 'blank'
@@ -16,24 +17,6 @@ const modals = {
   'form': FormModal,
   'blank': BlankModal
 }
-
-// append class
-const appendClassName = (className: string = '', str: string): string => {
-  return className ? removeClassName(className, str) + ' ' + str : str
-} 
-
-const removeClassName = (className: string = '', str: string): string => {
-  return className.split(' ')?.filter(item => item != str)?.join(' ')
-} 
-
-// const addClassName = (element: Element, className: string) => {
-//   element.classList.add(className);
-// }
-
-// const removeClassName = (element: Element, className: string) => {
-//   element.classList.remove(className);
-// }
-
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +28,7 @@ export class ModalService {
 
   currentIndex: number = 1000
 
-  modalIndex: number = 1000
+  modalIndex: number = 900
 
   private renderer: Renderer2;
 
@@ -140,8 +123,9 @@ export class ModalService {
   }
 
   // 创建弹窗
-  create (templateRef: TemplateRef<any>, params?: any, componentParams?: any) {
+  create (templateRef: TemplateRef<any>, params?: any) {
     // console.log(this.attachModalContainer(params))
+    console.log(params)
     const id = randomString(32)
     const modal = this.modal.create({
       id: id,
@@ -149,16 +133,19 @@ export class ModalService {
       nzTitle: '1111',
       nzMask: false,
       nzViewContainerRef: this.viewContainerRef,
+      nzBodyStyle: {
+        padding: 0
+      },
       nzStyle: {
         left: ((this.modal.openModals.length) * 20) + 'px',
         top: ((this.modal.openModals.length) * 20 + 100) + 'px',
       },
+      ...params,
       nzComponentParams: {
         id: id,
-        ...componentParams
+        ...params.nzComponentParams
       },
       nzClosable: false,
-      ...params
     });
 
     // console.log(this.ne)

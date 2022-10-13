@@ -60,35 +60,35 @@ export class StatisticField extends ShareFieldType implements OnInit, OnDestroy 
   }
 
   get nzId () : string{
-    return this.to.nzId || '';
+    return this.props.nzId || '';
   }
 
   get nzPrefix () : any {
-    return this.to.nzPrefix || this.to.prefix || null
+    return this.props.nzPrefix || this.props.prefix || null
   }
 
   get nzPrefixRef () : any {
-    return this.to.prefixRef || null
+    return this.props.prefixRef || null
   }
 
   get nzSuffix () : any {
-    return this.to.nzSuffix || this.to.suffix || null
+    return this.props.nzSuffix || this.props.suffix || null
   }
 
   get nzSuffixRef () : any {
-    return this.template.get(this.to.suffixRef)
+    return this.template.get(this.props.suffixRef)
   }
 
   get nzTitle () : string | TemplateRef<void>	 {
-    return this.to.nzTitle || this.to.title || '';
+    return this.props.nzTitle || this.props.title || '';
   }
 
   get nzValueStyle () : Object {
-    return this.to.nzValueStyle || this.to.valueStyle || null;
+    return this.props.nzValueStyle || this.props.valueStyle || null;
   }
 
   get nzValueTemplate() : TemplateRef<{ $implicit: string | number }> {
-    return this.to.nzValueTemplate || this.to.valueTemplate || null
+    return this.props.nzValueTemplate || this.props.valueTemplate || null
   }
 
   get nzValue () : string | number {
@@ -96,49 +96,49 @@ export class StatisticField extends ShareFieldType implements OnInit, OnDestroy 
   }
 
   get valuePipe (): pipeTokenType {
-    return this.to.valuePipe || ''
+    return this.props.valuePipe || ''
   }
 
   get valuePipeArgs (): Array<any>{
-    return this.to.valuePipeArgs || ''
+    return this.props.valuePipeArgs || ''
   }
 
   private _destroy$ = new Subject<void>();
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-      this.to.change(this.field, $event)
+    if (this.props.change) {
+      this.props.change(this.field, $event)
     }
   }
 
   nzOpenChange ($event: boolean) {
-    if (this.to.nzOpenChange) {
-      this.to.nzOpenChange(this.field, $event)
+    if (this.props.nzOpenChange) {
+      this.props.nzOpenChange(this.field, $event)
     }
   }
 
   nzScrollToBottom ($event: Event) {
-    if (this.to.nzScrollToBottom) {
-      this.to.nzScrollToBottom(this.field, $event)
+    if (this.props.nzScrollToBottom) {
+      this.props.nzScrollToBottom(this.field, $event)
     }
   }
 
   nzOnSearch (value: string) {
-    if (this.to.nzOnSearch) {
-      this.to.nzOnSearch(this.field, value)
+    if (this.props.nzOnSearch) {
+      this.props.nzOnSearch(this.field, value)
     }
     this.cd.markForCheck();
   }
 
   nzFocus () {
-    if (this.to.focus) {
-      this.to.focus(this.field)
+    if (this.props.focus) {
+      this.props.focus(this.field)
     }
   }
   
   nzBlur () {
-    if (this.to.blur) {
-      this.to.blur(this.field)
+    if (this.props.blur) {
+      this.props.blur(this.field)
     }
   }
 

@@ -29,7 +29,7 @@ export class TuiEditorField extends FieldType {
   }
 
   get config(): any {
-		return this.to.config
+		return this.props.config
   }
 
   ngModelChange ($event: any) {

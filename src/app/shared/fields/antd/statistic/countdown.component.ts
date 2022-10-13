@@ -35,23 +35,23 @@ export class CountdownField extends FieldType implements OnInit,  OnDestroy {
   }
 
   get nzId () : string{
-    return this.to.nzId || '';
+    return this.props.nzId || '';
   }
 
   get nzFormat () : string {
-    return this.to.nzFormat || this.to.format || "HH:mm:ss";
+    return this.props.nzFormat || this.props.format || "HH:mm:ss";
   }
 
   get nzPrefix () : string | TemplateRef<void> {
-    return this.to.nzPrefix || this.to.prefix || '';
+    return this.props.nzPrefix || this.props.prefix || '';
   }
 
   get nzSuffix () : string | TemplateRef<void> {
-    return this.to.nzSuffix || this.to.prefix || '';
+    return this.props.nzSuffix || this.props.prefix || '';
   }
 
   get nzTitle () : string | TemplateRef<void>	 {
-    return this.to.nzTitle || this.to.title || '';
+    return this.props.nzTitle || this.props.title || '';
   }
 
   get nzValue () : string | number {
@@ -59,11 +59,11 @@ export class CountdownField extends FieldType implements OnInit,  OnDestroy {
   }
 
   get nzValueStyle () : Object {
-    return this.to.nzValueStyle || this.to.valueStyle || null;
+    return this.props.nzValueStyle || this.props.valueStyle || null;
   }
 
   get nzValueTemplate() : TemplateRef<{ $implicit: string | number }> {
-    return this.to.nzValueTemplate || this.to.valueTemplate || null
+    return this.props.nzValueTemplate || this.props.valueTemplate || null
   }
 
   private _destroy$ = new Subject<void>();
@@ -77,39 +77,39 @@ export class CountdownField extends FieldType implements OnInit,  OnDestroy {
   ngOnInit() { }
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-      this.to.change(this.field, $event)
+    if (this.props.change) {
+      this.props.change(this.field, $event)
     }
   }
 
   nzOpenChange ($event: boolean) {
-    if (this.to.nzOpenChange) {
-      this.to.nzOpenChange(this.field, $event)
+    if (this.props.nzOpenChange) {
+      this.props.nzOpenChange(this.field, $event)
     }
   }
 
   nzScrollToBottom ($event: Event) {
-    if (this.to.nzScrollToBottom) {
-      this.to.nzScrollToBottom(this.field, $event)
+    if (this.props.nzScrollToBottom) {
+      this.props.nzScrollToBottom(this.field, $event)
     }
   }
 
   nzOnSearch (value: string) {
-    if (this.to.nzOnSearch) {
-      this.to.nzOnSearch(this.field, value)
+    if (this.props.nzOnSearch) {
+      this.props.nzOnSearch(this.field, value)
     }
     this.cd.markForCheck();
   }
 
   nzFocus () {
-    if (this.to.focus) {
-      this.to.focus(this.field)
+    if (this.props.focus) {
+      this.props.focus(this.field)
     }
   }
 
   nzBlur () {
-    if (this.to.blur) {
-      this.to.blur(this.field)
+    if (this.props.blur) {
+      this.props.blur(this.field)
     }
   }
 

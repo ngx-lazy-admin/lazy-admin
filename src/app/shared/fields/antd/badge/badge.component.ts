@@ -1,8 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
-
-import { NzButtonShape,  NzButtonType, NzButtonSize} from 'ng-zorro-antd/button';
 import { ShareFieldType } from '../share-field.type';
 
 @Component({
@@ -29,7 +27,7 @@ import { ShareFieldType } from '../share-field.type';
 export class BadgeField extends ShareFieldType {
 
   get disabled(): boolean {
-		return this.to.disabled || false;
+		return this.props.disabled || false;
 	}
 
 	get control() : FormControl {
@@ -37,47 +35,47 @@ export class BadgeField extends ShareFieldType {
   }
 
   get nzColor() : string {
-		return this.to.nzColor || this.to.color;
+		return this.props.nzColor || this.props.color;
   }
 
   get nzCount() : number | TemplateRef<void> {
-		return this.to.nzCount || this.to.count;
+		return this.props.nzCount || this.props.count;
   }
 
   get nzDot() : boolean {
-		return this.to.nzDot || this.to.dot;
+		return this.props.nzDot || this.props.dot;
   }
 
   get nzShowDot() : boolean {
-		return this.to.nzShowDot || this.to.nzShowDot;
+		return this.props.nzShowDot || this.props.nzShowDot;
   }
 
   get nzOverflowCount() : number {
-		return this.to.nzOverflowCount || this.to.overflowCount || 99;
+		return this.props.nzOverflowCount || this.props.overflowCount || 99;
   }
 
   get nzShowZero() : boolean {
-		return this.to.nzShowZero || this.to.showZero;
+		return this.props.nzShowZero || this.props.showZero;
   }
 
   get nzStatus () : 'success' | 'processing' | 'default' | 'error' | 'warning' {
-    return this.to.nzStatus || this.to.status
+    return this.props.nzStatus || this.props.status
   }
 
   get nzText () : string | TemplateRef<void> {
-    return this.to.nzText || this.to.text
+    return this.props.nzText || this.props.text
   }
 
   get nzTitle () : string | null {
-    return this.to.nzTitle || this.to.title
+    return this.props.nzTitle || this.props.title
   }
 
   get nzOffset () : [number, number] {
-    return this.to.nzOffset || this.to.nzOffset
+    return this.props.nzOffset || this.props.nzOffset
   }
 
   get nzStyle () : any {
-    return this.to.style || this.to.nzStyle || {}
+    return this.props.style || this.props.nzStyle || {}
   }
   
   private _destroy$ = new Subject<void>();

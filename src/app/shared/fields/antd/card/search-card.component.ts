@@ -60,67 +60,67 @@ import { ShareFieldType } from '../share-field.type';
 export class SearchCardField extends ShareFieldType  implements OnDestroy {
 
   get nzActions(): Array<TemplateRef<void>> {
-		return this.to.nzActions || this.to.actions || '';
+		return this.props.nzActions || this.props.actions || '';
 	}
 
   get nzBodyStyle(): { [key: string]: string } {
-		return this.to.nzBodyStyle || this.to.bodyStyle || '';
+		return this.props.nzBodyStyle || this.props.bodyStyle || '';
 	}
 
   get nzBodyClass (): string {
-    return this.to.nzBodyClass || this.to.bodyClass || ''
+    return this.props.nzBodyClass || this.props.bodyClass || ''
   }
 
   get nzBorderless(): boolean {
-		return this.to.nzBorderless || this.to.borderless || false;
+		return this.props.nzBorderless || this.props.borderless || false;
 	}
 
 	get nzCover(): TemplateRef<void> {
-		return this.to.nzCover || this.to.cover || '';
+		return this.props.nzCover || this.props.cover || '';
 	}
 
   get nzExtra(): string|TemplateRef<void> {
-		return this.to.nzExtra || this.to.extra || '';
+		return this.props.nzExtra || this.props.extra || '';
 	}
 
   get nzHoverable(): boolean {
-		return this.to.nzHoverable || this.to.hoverable || false;
+		return this.props.nzHoverable || this.props.hoverable || false;
 	}
 
   get nzLoading(): boolean {
-		return this.to.nzLoading || this.to.loading || false;
+		return this.props.nzLoading || this.props.loading || false;
 	}
 
   get nzTitle(): string|TemplateRef<void> {
-		return this.to.nzTitle || this.to.title || '';
+		return this.props.nzTitle || this.props.title || '';
 	}
 
   get nzType(): 'inner' {
-		return this.to.nzType || this.to.type || '';
+		return this.props.nzType || this.props.type || '';
 	}
 
   get nzSize(): 'default'|'small' {
-		return this.to.nzSize || this.to.size || 'default';
+		return this.props.nzSize || this.props.size || 'default';
 	}
 
   get nzBordered() : boolean {
-		return this.to.nzBordered || false;
+		return this.props.nzBordered || false;
   }
 
   get nzColumn() : number | { [key in NzBreakpointEnum]: number } {
-		return this.to.nzColumn || null;
+		return this.props.nzColumn || null;
   }
 
   get nzColon() : boolean {
-		return this.to.nzColon || false;
+		return this.props.nzColon || false;
   }
 
   get extraFields(): FormlyFieldConfig[] {
-    return this.to.extraFields ? this.to.extraFields(this.field) : null
+    return this.props.extraFields ? this.props.extraFields(this.field) : null
   }
 
   get matchRouter(): boolean {
-    return this.to.matchRouter || false;
+    return this.props.matchRouter || false;
   }
 
   trackByFn(index: number, item: any) {
@@ -150,8 +150,8 @@ export class SearchCardField extends ShareFieldType  implements OnDestroy {
   ngOnDestroy() {}
 
   onClick($event: any) {
-    if (this.to.click) {
-      this.to.click(this.field, $event)
+    if (this.props.click) {
+      this.props.click(this.field, $event)
     }
   }
 }

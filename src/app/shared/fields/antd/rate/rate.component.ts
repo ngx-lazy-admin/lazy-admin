@@ -15,64 +15,64 @@ export class RateField extends FieldType {
 	}
 
 	get nzAllowClear (): boolean {
-		return this.to.nzAllowClear || this.to.allowClear || false;
+		return this.props.nzAllowClear || this.props.allowClear || false;
 	}
 
 	get nzAllowHalf (): boolean {
-		return this.to.nzAllowHalf || this.to.allowHalf || false;
+		return this.props.nzAllowHalf || this.props.allowHalf || false;
 	}
 
 	get nzAutoFocus(): boolean {
-		return this.to.nzAutoFocus || this.to.autoFocus || false;
+		return this.props.nzAutoFocus || this.props.autoFocus || false;
 	}
 
 	get nzCharacter(): TemplateRef<void> {
-		return this.to.nzCharacter || null;
+		return this.props.nzCharacter || null;
 	}
 
 	get nzCount (): number {
-		return this.to.nzCount || 5;
+		return this.props.nzCount || 5;
 	}
 
 	get nzDisabled(): boolean {
-		return this.to.nzDisabled || false;
+		return this.props.nzDisabled || false;
 	}
 
 	get nzTooltips(): string[] {
-		return this.to.nzTooltips || this.to.tooltips || []
+		return this.props.nzTooltips || this.props.tooltips || []
 	}
 
 	get text (): string [] {
-		return this.to.text || ''
+		return this.props.text || ''
 	}
 
 	ngModelChange ($event: Event) {
-		if (this.to.change) {
-			this.to.change(this.field, $event)
+		if (this.props.change) {
+			this.props.change(this.field, $event)
 		}
 	}
 
 	nzOnBlur ($event: Event) {
-		if (this.to.blur) {
-			this.to.blur(this.field, $event)
+		if (this.props.blur) {
+			this.props.blur(this.field, $event)
 		}
 	}
 
 	nzOnFocus ($event: Event) {
-		if (this.to.focus) {
-			this.to.focus(this.field, $event)
+		if (this.props.focus) {
+			this.props.focus(this.field, $event)
 		}
 	}
 
 	nzOnHoverChange ($event: number) {
-		if (this.to.onHoverChange) {
-			this.to.onHoverChange(this.field, $event)
+		if (this.props.onHoverChange) {
+			this.props.onHoverChange(this.field, $event)
 		}
 	}
 
 	nzOnKeyDown ($event: Event) {
-		if (this.to.onKeyDown) {
-			this.to.onKeyDown(this.field, $event)
+		if (this.props.onKeyDown) {
+			this.props.onKeyDown(this.field, $event)
 		}
 	}
 }

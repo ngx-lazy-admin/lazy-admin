@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { AbstractControl, FormControl, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 import { FormlyModule, FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
-import { FieldValidatorFn } from '@ngx-formly/core/lib/services/formly.config';
-
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzListModule } from 'ng-zorro-antd/list';

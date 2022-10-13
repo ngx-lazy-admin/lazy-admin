@@ -49,43 +49,43 @@ export class AutocompleteFields extends FieldType implements OnInit {
   }
 
   get nzBorderless(): boolean {
-		return this.to.nzBorderless || false
+		return this.props.nzBorderless || false
 	}
 
   get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || 'default'
+		return this.props.nzSize || 'default'
 	}
 
 	get type(): string {
-		return this.to.type || 'text'
+		return this.props.type || 'text'
 	}
 
   get nzBackfill(): boolean {
-		return this.to.nzBackfill || false
+		return this.props.nzBackfill || false
 	}
 
   // get nzDataSource(): AutocompleteDataSource {
-  //   return this.to.nzDataSource 
+  //   return this.props.nzDataSource 
   // }
 
   get nzDefaultActiveFirstOption(): boolean {
-    return this.to.nzDefaultActiveFirstOption || false
+    return this.props.nzDefaultActiveFirstOption || false
   }
 
   get nzWidth(): number {
-    return this.to.nzWidth
+    return this.props.nzWidth
   }
 
   get nzOverlayClassName (): string {
-    return this.to.nzOverlayClassName
+    return this.props.nzOverlayClassName
   }
 
   get nzOverlayStyle (): string {
-    return this.to.nzOverlayStyle
+    return this.props.nzOverlayStyle
   }
 
   get compareWith(): any {
-    return this.to.compareWith 
+    return this.props.compareWith 
   }
 
   compareFun = (o1: Option | string, o2: Option): boolean => {
@@ -101,21 +101,21 @@ export class AutocompleteFields extends FieldType implements OnInit {
   //   this._options = value;
   // }
   // get nzAutocompleteOptions(): boolean {
-  //   return this.to.options === undefined ? this._options : false;
+  //   return this.props.options === undefined ? this._options : false;
   // }
 
 
   private _options: boolean | undefined;
 
   ngOnInit () {
-    if (this.to.options instanceof Array) {
-      this.data = [...this.to.options];
+    if (this.props.options instanceof Array) {
+      this.data = [...this.props.options];
     }
   }
 
   change(value: any): void {
     if (value) {
-      const changeFn = execFunc(this.to?.modelChange)
+      const changeFn = execFunc(this.props?.modelChange)
       if (changeFn && changeFn instanceof Function) {
         try {
           this.data = changeFn(value, this.field) || []

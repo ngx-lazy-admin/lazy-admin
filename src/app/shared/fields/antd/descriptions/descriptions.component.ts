@@ -51,31 +51,31 @@ import { NzBreakpointEnum } from 'ng-zorro-antd/core/services';
 export class DescriptionsField extends FieldType implements OnDestroy {
 
 	get nzTitle(): string|TemplateRef<void> {
-		return this.to.nzTitle || this.to.title || '';
+		return this.props.nzTitle || this.props.title || '';
 	}
 
 	get nzExtra(): string|TemplateRef<void> {
-		return this.to.nzExtra || '';
+		return this.props.nzExtra || '';
   }
 
   get nzBordered() : boolean {
-		return this.to.nzBordered || this.to.bordered || false;
+		return this.props.nzBordered || this.props.bordered || false;
   }
 
   get nzColumn() : number | { [key in NzBreakpointEnum]: number } {
-		return this.to.nzColumn || this.to.column || null;
+		return this.props.nzColumn || this.props.column || null;
   }
 
   get nzSize() : NzDescriptionsSize  {
-		return this.to.nzSize || this.to.size || 'deafult';
+		return this.props.nzSize || this.props.size || 'deafult';
   }
 
   get nzLayout(): NzDescriptionsLayout {
-    return this.to.nzLayout || this.to.layout || 'horizontal'
+    return this.props.nzLayout || this.props.layout || 'horizontal'
   }
 
   get nzColon() : boolean {
-		return this.to.nzColon || this.to.colon || false;
+		return this.props.nzColon || this.props.colon || false;
   }
 
   trackByFn(index: number, item: any) {

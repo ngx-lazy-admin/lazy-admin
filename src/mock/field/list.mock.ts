@@ -661,7 +661,7 @@ export const list = [
     fields: [
       {
         type: 'search-card',
-        className: "col-12 d-block mb-3",
+        className: "col-12 d-block mb-2",
         templateOptions: {
           bodyClass: 'row',
           bodyStyle: {
@@ -727,8 +727,8 @@ export const list = [
         ]
       },
       {
-        type: 'list',
         key: 'card',
+        type: 'list',
         templateOptions: {
           showPagination: true,
           pageSize: 20,
@@ -779,7 +779,7 @@ export const list = [
         defaultValue: [
           {
             meta: {
-              title: 'alipay',
+              title: 'alipay1',
               description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
@@ -909,7 +909,7 @@ export const list = [
           fieldGroup: [
             {
               type: 'card',
-              className: "col-12 mb-3",
+              className: "col-12",
               templateOptions: {
                 nzBodyStyle: {
                   padding: 0,

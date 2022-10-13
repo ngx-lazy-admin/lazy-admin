@@ -1,19 +1,40 @@
 <ng-template #portalTemplateRef>
-  <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+  <ng-template [cdkPortalOutlet]="selectedPortal" ></ng-template>
 </ng-template>
 
-<ng-template #titleTemplateRef let-params="context">
+<!-- title TemplateRef -->
+<ng-template #titleTemplateRef let-context="context" let-params>
   <div cdkDrag cdkDragHandle cdkDragRootElement=".ant-modal-content" class="p-0 d-block">
     <div class="d-flex justify-content-between">
-      {{ params?.nzTitle || 'nzTitle' }}
+      {{ context?.nzTitle || '标题' }}
     </div>
   </div>
 </ng-template>
 
-<ng-template #formTemplateRef let-ref="modalRef">
-  <formly-form 
-    class="row"
-    [fields]="ref.config.nzComponentParams.field"
-    [(model)]="ref.config.nzComponentParams.model">
-  </formly-form>
+<!-- iframe TemplateRef -->
+<ng-template #iframeTemplateRef let-params let-ref="modalRef">
+  <app-modal-title [nzTitle]="params.nzTitle" [id]="params.id" (clickEvent)="ref.destroy()"></app-modal-title>
+  <div class="d-flex min-vh-75">
+    <iframe class="w-100 h-auto" [src]="params?.url"></iframe>
+  </div>
+</ng-template>
+
+<!-- formly TemplateRef -->
+<ng-template #formTemplateRef let-params let-ref="modalRef">
+  <app-modal-title [nzTitle]="params?.nzTitle" [id]="params.id" (clickEvent)="templateClick($event, ref)"></app-modal-title>
+  <div class="ant-modal-body">
+    <formly-form [fields]="params.field" [(model)]="params.model" [options]="params.options">
+      <ng-template formlyTemplate let-field>
+        <formly-field *ngFor="let f of field.fieldGroup" [field]="f"></formly-field>
+      </ng-template>
+    </formly-form>
+  </div>
+</ng-template>
+
+<!-- blank TemplateRef -->
+<ng-template #blankTemplateRef let-params let-ref="modalRef">
+  <app-modal-title [nzTitle]="params?.nzTitle" [id]="params.id" (clickEvent)="templateClick($event, ref)"></app-modal-title>
+  <div class="ant-modal-body">
+    <ng-container *ngTemplateOutlet="params.nzContent; context: params"></ng-container>
+  </div>
 </ng-template>

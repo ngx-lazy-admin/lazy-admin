@@ -35,11 +35,11 @@ export class EchartsField extends FieldType implements AfterViewInit {
   ngAfterViewInit() {
     loadScript('https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.js').subscribe(item => {
       this.echart = window.echarts.init(this.elRef.nativeElement.querySelector('#echart'));
-      this.echart.setOption(this.formControl.value || this.to.config);
+      this.echart.setOption(this.formControl.value || this.props.config);
     })
 
     this.formControl.valueChanges.subscribe(option => {
-      this.echart?.setOption(option || this.to.config);
+      this.echart?.setOption(option || this.props.config);
     })
 
     this.resizeChange$

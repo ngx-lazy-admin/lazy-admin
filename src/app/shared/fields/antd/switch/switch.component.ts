@@ -33,32 +33,32 @@ export class SwitchField extends ShareFieldType {
   }
 
 	get nzCheckedChildren(): string | TemplateRef<void> | null {
-		return this.to.nzCheckedChildren || this.to.checkedChildren || null
+		return this.props.nzCheckedChildren || this.props.checkedChildren || null
 	}
 
 	get nzUnCheckedChildren(): string | TemplateRef<void> | null  {
-		return this.to.nzUnCheckedChildren || this.to.unCheckedChildren || null
+		return this.props.nzUnCheckedChildren || this.props.unCheckedChildren || null
 	}
 
 	get nzDisabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false
+		return this.props.nzDisabled || this.props.disabled || false
 	}
 
 	get nzSize(): NzSizeDSType {
-		return this.to.nzSize || this.to.size || 'default'
+		return this.props.nzSize || this.props.size || 'default'
 	}
 
 	get nzLoading(): boolean {
-		return this.to.nzLoading || this.to.loading || false
+		return this.props.nzLoading || this.props.loading || false
 	}
 
 	get nzControl(): boolean {
-		return this.to.nzControl || this.to.control || false
+		return this.props.nzControl || this.props.control || false
 	}
 
 	ngModelChange ($event: Event) {
-		if (this.to.change) {
-			this.to.change(this.field, $event)
+		if (this.props.change) {
+			this.props.change(this.field, $event)
 		}
 	}
 }

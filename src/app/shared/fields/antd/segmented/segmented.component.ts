@@ -63,23 +63,23 @@ export class SegmentedField extends FieldType {
   }
 
 	get nzBlock(): boolean {
-		return this.to.nzBlock || this.to.block || false;
+		return this.props.nzBlock || this.props.block || false;
 	}
 
 	get nzDisabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false;
+		return this.props.nzDisabled || this.props.disabled || false;
   }
 
   get nzSize() : 'small' | 'default' | 'large' {
-		return this.to.nzSize || this.to.size || 'default';
+		return this.props.nzSize || this.props.size || 'default';
   }
 
   get nzOptions () : string[] | number[] | Array<{ label: string; value: string | number; icon: string; disabled?: boolean; useTemplate?: boolean }> {
-    return this.to.nzOptions || this.to.options || []
+    return this.props.nzOptions || this.props.options || []
   }
 
   get readonly(): boolean {
-    return this.to.readonly || false
+    return this.props.readonly || false
   }
 
   trackByFn(index: number, item: any) {
@@ -87,8 +87,8 @@ export class SegmentedField extends FieldType {
   }
 
   valueChange ($event: any) {
-    if (this.to.valueChange) {
-      this.to.valueChange($event)
+    if (this.props.valueChange) {
+      this.props.valueChange($event)
     }
   }
 }

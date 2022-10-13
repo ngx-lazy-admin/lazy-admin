@@ -32,18 +32,18 @@ export class CheckboxWrapperField extends ShareFieldType implements OnDestroy {
   }
 
   get nzDisabled(): boolean {
-		return this.to.nzDisabled || this.to.disabled || false;
+		return this.props.nzDisabled || this.props.disabled || false;
 	}
 
   get nzOptions(): NzCheckBoxOptionInterface[] {
-    return this.to.nzOptions || this.to.options || []
+    return this.props.nzOptions || this.props.options || []
   }
 
   private _destroy$ = new Subject<void>();
 
   ngModelChange ($event: Event) {
-    if (this.to.change) {
-        this.to.change(this.field, $event)
+    if (this.props.change) {
+        this.props.change(this.field, $event)
     }
   }
 

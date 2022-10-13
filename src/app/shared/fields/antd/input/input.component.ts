@@ -22,23 +22,23 @@ import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 export class InputField extends FieldType {
 
 	get nzBorderless(): boolean {
-		return this.to.nzBorderless || this.to.borderless || false
+		return this.props.nzBorderless || this.props.borderless || false
 	}
 
 	get nzSize(): NzSizeLDSType {
-		return this.to.nzSize || this.to.size || 'default'
+		return this.props.nzSize || this.props.size || 'default'
 	}
 
 	get nzType(): string {
-		return this.to.nzType || this.to.type || 'text'
+		return this.props.nzType || this.props.type || 'text'
 	}
 
 	get disabled(): boolean {
-		return this.to.disabled || false
+		return this.props.disabled || false
 	}
 
 	get nzPlaceholder(): string {
-		return this.to.nzPlaceholder || this.to.placeholder || '请输入' 
+		return this.props.nzPlaceholder || this.props.placeholder || '请输入' 
 	}
 
 	get control() : FormControl {

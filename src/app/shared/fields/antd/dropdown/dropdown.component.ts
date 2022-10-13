@@ -17,60 +17,60 @@ export class DropdownField extends FieldType {
 	}
 
 	get nzDisabled (): boolean {
-		return this.to.disabled || true;
+		return this.props.disabled || true;
 	}
 
 	get nzPlacement (): boolean {
-		return this.to.placement || false;
+		return this.props.placement || false;
 	}
 
 	get nzTrigger(): boolean {
-		return this.to.trigger || false;
+		return this.props.trigger || false;
 	}
 
 	get nzClickHide(): TemplateRef<void> {
-		return this.to.clickHide || null;
+		return this.props.clickHide || null;
 	}
 
 	get nzVisible (): number {
-		return this.to.visible || 5;
+		return this.props.visible || 5;
 	}
 
 	get nzOverlayClassName(): string[] {
-		return this.to.overlayClassName || []
+		return this.props.overlayClassName || []
 	}
 
 	get nzOverlayStyle (): string [] {
-		return this.to.overlayStyle || ''
+		return this.props.overlayStyle || ''
 	}
 
 	ngModelChange ($event: Event) {
-		if (this.to.change) {
-			this.to.change(this.field, $event)
+		if (this.props.change) {
+			this.props.change(this.field, $event)
 		}
 	}
 
 	nzOnBlur ($event: Event) {
-		if (this.to.blur) {
-			this.to.blur(this.field, $event)
+		if (this.props.blur) {
+			this.props.blur(this.field, $event)
 		}
 	}
 
 	nzOnFocus ($event: Event) {
-		if (this.to.focus) {
-			this.to.focus(this.field, $event)
+		if (this.props.focus) {
+			this.props.focus(this.field, $event)
 		}
 	}
 
 	nzOnHoverChange ($event: number) {
-		if (this.to.onHoverChange) {
-			this.to.onHoverChange(this.field, $event)
+		if (this.props.onHoverChange) {
+			this.props.onHoverChange(this.field, $event)
 		}
 	}
 
 	nzOnKeyDown ($event: Event) {
-		if (this.to.onKeyDown) {
-			this.to.onKeyDown(this.field, $event)
+		if (this.props.onKeyDown) {
+			this.props.onKeyDown(this.field, $event)
 		}
 	}
 }

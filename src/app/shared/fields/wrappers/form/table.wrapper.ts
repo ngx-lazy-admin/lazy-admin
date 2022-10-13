@@ -30,7 +30,7 @@ import { isObject } from 'src/app/utils';
 
 export class TableWrapper extends FieldWrapper {
   get nzLayout(): string {
-    return this.to.nzLayout ? this.to.nzLayout : 'horizontal'
+    return this.props.nzLayout ? this.props.nzLayout : 'horizontal'
   }
 
   get errorState() {
@@ -38,23 +38,23 @@ export class TableWrapper extends FieldWrapper {
   }
 
   get nzNoColon(): boolean {
-    return this.to.nzNoColon || false
+    return this.props.nzNoColon || false
   }
 
   get nzRequired(): boolean {
-    return  (this.to.nzRequired || this.to.required) && this.to.hideRequiredMarker !== true || false
+    return  (this.props.nzRequired || this.props.required) && this.props.hideRequiredMarker !== true || false
   }
 
   get nzTooltipTitle(): string | TemplateRef<void> {
-    return this.to.nzTooltipTitle
+    return this.props.nzTooltipTitle
   }
 
   get nzTooltipIcon(): string | NzFormTooltipIcon {
-    return this.to.NzFormTooltipIcon || null
+    return this.props.NzFormTooltipIcon || null
   }
 
   get nzValidateStatus(): string | NzFormTooltipIcon {
-    return this.to.nzValidateStatus || null
+    return this.props.nzValidateStatus || null
   }
 
   get nzTooltipStatus (): boolean {
@@ -62,36 +62,36 @@ export class TableWrapper extends FieldWrapper {
   }
 
   get nzHasFeedback(): boolean {
-    return this.to.nzHasFeedback() || false
+    return this.props.nzHasFeedback() || false
   }
 
   get nzExtra(): string | TemplateRef<void> {
-    return this.to.nzExtra
+    return this.props.nzExtra
   }
 
   get nzSuccessTip(): string | TemplateRef<void> {
-    return this.to.nzSuccessTip
+    return this.props.nzSuccessTip
   }
 
   get nzWarningTip(): string | TemplateRef<void> {
-    return this.to.nzWarningTip
+    return this.props.nzWarningTip
   }
 
 
   get nzErrorTip(): string | TemplateRef<void> {
-    return this.to.nzErrorTip
+    return this.props.nzErrorTip
   }
 
   get nzValidatingTip(): string | TemplateRef<void> {
-    return this.to.nzValidatingTip
+    return this.props.nzValidatingTip
   }
 
   get nzAutoTips(): string | TemplateRef<void> {
-    return this.to.nzAutoTips
+    return this.props.nzAutoTips
   }
 
   get nzDisableAutoTips(): string | TemplateRef<void> {
-    return this.to.nzDisableAutoTips
+    return this.props.nzDisableAutoTips
   }
 
   get errorMessage(): any {
@@ -171,8 +171,8 @@ export class TableWrapper extends FieldWrapper {
   }
 
   onBtnClick () {
-    if (this.to.buttonClick) {
-      this.to.buttonClick(this.model, this.options);
+    if (this.props.buttonClick) {
+      this.props.buttonClick(this.model, this.options);
     }
   }
 }

@@ -42,8 +42,7 @@ import { CustomModule } from 'src/app/shared/custom.modules';
     NzAlertModule,
     NzTabsModule,
     // ModalsModule
-
-    FormlyModule,
+    FormlyModule.forRoot({extras: { renderFormlyFieldElement: false }}),
     FieldTypeModule,
     // AntFieldTypeModule,
     CustomFieldModule,

@@ -68,15 +68,15 @@ export class ListActionsField extends ShareFieldType implements OnDestroy {
   private destroy$ = new Subject();
 
   get nzSelectedIndex(): number {
-		return this.to.nzSelectedIndex || 0;
+		return this.props.nzSelectedIndex || 0;
 	}
 
   get actionOptions (): ActionTypeInterface[] {
-    return this.to.actionOptions || []
+    return this.props.actionOptions || []
   }
 
   get maxTagCount (): number {
-    return this.to.maxTagCount || 3
+    return this.props.maxTagCount || 3
   }
 
   trackByFn(index: number, item: any) {

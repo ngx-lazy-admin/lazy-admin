@@ -11,6 +11,8 @@
 # dependencies
 /node_modules
 /.angular
+.angular.json
+/src/proxy.config.json
 
 # profiling files
 chrome-profiler-events*.json
