@@ -3,7 +3,6 @@ import { base64Encode } from "./base64";
 
 export const loadScript = (path: string, innerContent?: string):  Observable<any> => {
   return new Observable ((observed) => {
-
     const id = base64Encode(path).slice(0, 64)
     const removedScript = document.getElementById(id);
     const successResult = {

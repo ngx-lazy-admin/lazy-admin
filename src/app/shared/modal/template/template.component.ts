@@ -84,13 +84,14 @@ export class ModalTemplateComponent {
         return this.titleTemplateRef
       case 'iframe':
         return this.iframeTemplateRef
+      case 'form':
+        return this.formTemplateRef
       case 'blank':
         return this.blankTemplateRef
       default:
         return this.blankTemplateRef
     }
   }
-
 
   // template click
   templateClick ($event: any, modalRef: NzModalRef) {
@@ -99,8 +100,14 @@ export class ModalTemplateComponent {
     } else if ($event.type === 'min') {
       const className = appendClassName(modalRef.getConfig().nzWrapClassName, 'd-none')
       modalRef.updateConfig({nzWrapClassName: className});
+    } else if ($event.type === 'max') {
+      const element = modalRef.getElement().querySelector('.ant-modal-content')
+      if (document?.fullscreenElement) {
+        document?.exitFullscreen()
+      } else {
+        element?.requestFullscreen()
+      }
     }
-    this.cd.detectChanges();
   }
 
   // Listen Iframe Event

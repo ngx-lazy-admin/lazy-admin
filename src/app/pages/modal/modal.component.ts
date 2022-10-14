@@ -1,14 +1,14 @@
-import { Component, OnInit, Renderer2, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 import { FormlyFormOptions } from '@ngx-formly/core';
 import { ModalService } from 'src/app/shared/modal';
 
 import { DispatchService } from 'src/app/shared/modal/dispatch.service';
 
 import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component'
-import { DomSanitizer } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-modal',
@@ -26,12 +26,8 @@ export class ModalComponent implements OnInit {
   constructor(
     private modalService: ModalService,
     private dispatch: DispatchService,
-    private _viewContainer: ViewContainerRef,
     private sanitizer: DomSanitizer,
-    private http: HttpClient
-  ) {
-    this.getList()
-  }
+  ) {}
 
   model = {
     email: 'email@gmail.com'
@@ -189,25 +185,5 @@ export class ModalComponent implements OnInit {
 
   showAllBlank ($event: any) {
     this.dispatch.showAll()
-  }
-
-  getList () {
-    // this.http.get('/srv.model/get_detail?project=artcool&schema=product&id=11').subscribe(item => {
-    //   console.log(item)
-    // })
-
-    this.http.post('/srv.model/get_list?schems=product&project=artcool', {
-      filter: [{field: "status", op: "in", value: "1,10"}],
-      include: "id,status,reason,cover_url,like_count,share_count,view_count,company_id,attachment_info",
-      page: 1,
-      page_size: 1000,
-      project: "artcool",
-      schema: "product",
-      sorter: {field: "_ctime", sort: "desc"}
-    }).subscribe((item: any) => {
-      console.log(item)
-      this.list = item?.data?.list
-      console.log(this.list)
-    })
   }
 }

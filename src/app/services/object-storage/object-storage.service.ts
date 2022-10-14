@@ -1,3 +1,4 @@
+// 腾讯云存储
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -8,7 +9,7 @@ import * as COS from 'cos-js-sdk-v5';
 @Injectable({
   providedIn: 'root'
 })
-export class CosService {
+export class ObjectStorageService {
   cos: any = null;
   config = {};
   startTime = null;

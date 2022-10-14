@@ -12,7 +12,7 @@ import { FieldType } from '@ngx-formly/core';
 // import { MessageService } from '../../../services/message.service';
 // import { CosService } from '../../../services/cos.service';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
-import { MessageService } from 'src/app/services/message.service';
+import { MessageService } from 'src/app/services/message/message.service';
 
 @Component({
   selector: 'div[upload-field]',

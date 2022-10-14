@@ -54,7 +54,6 @@ export const watermark = (value: string): Observable<string> => {
         canvas.toDataURL();
         observed.next('url(' + canvas.toDataURL() + ')')
         // observed.next(canvas.toDataURL())
-
       }
     } else {
       // eslint-disable-next-line no-console

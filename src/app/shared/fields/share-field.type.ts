@@ -8,7 +8,7 @@ import { FormlyAttributeEvent } from '@ngx-formly/core/lib/models';
 import { NzButtonSize, NzButtonType } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { FullScreenService } from 'src/app/services/menu/full-screen.service';
+import { FullScreenService } from 'src/app/services/full-screen/full-screen.service';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
 

@@ -22,7 +22,6 @@ import { editor } from 'monaco-editor';
 import { format } from "prettier/standalone";
 import * as parserBabel from "prettier/parser-babel";
 
-import { FieldService } from 'src/app/services/api/field';
 import { execEval } from 'src/app/shared/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
 import { ModalService } from 'src/app/shared/modal';
@@ -30,6 +29,7 @@ import { PreviewService } from 'src/app/shared/preview';
 
 
 import { CodeEditorService } from 'src/app/shared/code-editor';
+import { FieldService } from 'src/app/api/dashboard';
 
 
 export interface headerInfoType {
@@ -97,7 +97,6 @@ export class FormComponent {
     // 监听路由变化
     this.rooterChange = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log(event)
         // 获取当前页面的配置
         this.loading = true
         this.cd.markForCheck();

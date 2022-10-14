@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { field } from 'src/mock/field';
+// import { field } from 'src/mock/field/field.mock';
+import { field } from '../../../mock/field'
 
 export interface FieldType {
 	label: string,
@@ -39,7 +40,7 @@ export class FieldService {
   }
 
   getField(url: string): Observable<any> {
-    return this.http.get<any>(this._baseFieldUrl + url).pipe(tap(field => {
+    return this.http.get<any>(this._baseFieldUrl + url.replace('/blank', '')).pipe(tap(field => {
       // console.log(field)
     }))
   }

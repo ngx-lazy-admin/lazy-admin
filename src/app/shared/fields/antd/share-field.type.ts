@@ -2,7 +2,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Directive, ChangeDetectorRef, NgZone, ElementRef, Inject } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { DOCUMENT } from '@angular/common';
 
 import { FieldType, FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -10,10 +9,10 @@ import { NzButtonSize, NzButtonType } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
-import { FullScreenService } from 'src/app/services/menu/full-screen.service';
 import { isObject } from 'src/app/utils';
 import { TemplateService } from '../../template';
 import { Router } from '@angular/router';
+import { FullScreenService } from 'src/app/services/full-screen/full-screen.service';
 
 export type FieldActionFn = (field: FormlyFieldConfig, that?: any) => boolean;
 

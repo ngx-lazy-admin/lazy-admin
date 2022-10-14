@@ -10,8 +10,8 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { LayoutService } from '../layout.service';
-import { UserService } from 'src/app/services/api/user';
 import { MenuService } from '../menu.service';
+import { UserService } from 'src/app/api/user/user.services';
 
 @Component({
   selector: 'app-layout-basic',

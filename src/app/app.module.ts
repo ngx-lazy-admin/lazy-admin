@@ -13,7 +13,7 @@ import { HttpClientInMemoryWebApiModule, InMemoryBackendConfigArgs } from 'angul
 import { MockService } from '../mock/mock.service';
 
 // 布局相关
-import { LayoutModule } from './layouts/layout.modules'
+import { LayoutModule } from './layouts/layout.modules';
 
 // 拦截器
 import { HttpsInterceptor } from './interceptors/https.interceptor'
