@@ -8,15 +8,7 @@ import { WuJieComponent } from './wujie/wujie.component';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @NgModule({
-  declarations: [
-    IframeComponent,
-    QiankunComponent,
-    WuJieComponent
-  ],
-  imports: [
-    CommonModule,
-    RoutingModule,
-    NzSpinModule
-  ]
+  declarations: [IframeComponent, QiankunComponent, WuJieComponent],
+  imports: [CommonModule, RoutingModule, NzSpinModule]
 })
-export class MicroModule { }
+export class MicroModule {}

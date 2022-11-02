@@ -8,8 +8,8 @@ import { randomString } from 'src/app/utils';
 @Injectable({
   providedIn: 'root'
 })
-export class CodeEditorService   {
-  viewContainerRef!: ViewContainerRef
+export class CodeEditorService {
+  viewContainerRef!: ViewContainerRef;
   private renderer: Renderer2;
   constructor(
     private modal: NzModalService,
@@ -21,13 +21,12 @@ export class CodeEditorService   {
   }
 
   // 创建弹窗
-  create (params: any, $event: any = null): NzDrawerRef {
-    
+  create(params: any, $event: any = null): NzDrawerRef {
     // 阻止事件冒泡
     $event && $event.stopPropagation();
 
     // 生成唯一的id
-    const id = randomString(32)
+    const id = randomString(32);
 
     const drawerRef = this.drawerService.create<CodeEditorContent, { value: string }, string>({
       nzContent: CodeEditorContent,
@@ -38,7 +37,7 @@ export class CodeEditorService   {
         model: params.model,
         modal: this.modal,
         click: (type: string, id: string) => {
-          console.log(type, id)
+          console.log(type, id);
         }
       },
       nzClosable: false,

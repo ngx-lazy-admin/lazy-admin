@@ -1,11 +1,6 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  OnDestroy
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators'
+import { takeUntil } from 'rxjs/operators';
 import { LayoutService } from '../../layout.service';
 import { FullScreenService } from '../../full-screen.service';
 import { MenuService } from '../../menu.service';
@@ -21,7 +16,6 @@ import { MenuService } from '../../menu.service';
   }
 })
 export class LayoutHeaderComponent implements OnDestroy {
-  
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -30,27 +24,21 @@ export class LayoutHeaderComponent implements OnDestroy {
     private cd: ChangeDetectorRef,
     private fullScreenService: FullScreenService
   ) {
+    this.layout.change$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
+      this.cd.markForCheck();
+    });
 
-    this.layout.change$
-      ?.pipe(takeUntil(this.destroy$))
-      .subscribe(item => {
-        this.cd.markForCheck();
-      })
-
-
-    this.menu.tabsetChange$
-      ?.pipe(takeUntil(this.destroy$))
-      .subscribe(item => {
-        this.cd.markForCheck();
-      })
+    this.menu.tabsetChange$?.pipe(takeUntil(this.destroy$)).subscribe(item => {
+      this.cd.markForCheck();
+    });
   }
 
-  collapseChange (isCollapsed: boolean) {
+  collapseChange(isCollapsed: boolean) {
     this.layout.collapseChange(isCollapsed);
   }
 
   fullScreen() {
-    this.fullScreenService.toggle().subscribe(item => {})
+    this.fullScreenService.toggle().subscribe(item => {});
   }
 
   ngAfterViewInit() {}

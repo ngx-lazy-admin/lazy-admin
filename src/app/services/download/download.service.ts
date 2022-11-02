@@ -5,29 +5,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DownloadService {
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  downloadFileByBlob(url: string, filename: string = '') {
+    this.http
+      .get(url, {
+        responseType: 'blob'
+      })
+      .subscribe(resp => {
+        const ContentType = resp?.type;
+        if (ContentType && !filename.substring(0, filename.lastIndexOf('.'))) {
+          const type = ContentType.split('/')[1];
+          filename = filename + '.' + type;
+        }
 
-  downloadFileByBlob (url: string, filename: string = '') {
-    this.http.get(url, {
-      responseType: "blob",
-    }).subscribe(resp=>{
-
-      const ContentType = resp?.type
-      if (ContentType && !filename.substring(0, filename.lastIndexOf("."))) {
-        const type = ContentType.split('/')[1];
-        filename = filename + '.' + type
-      }
-
-      var blob = new Blob([resp], { type: 'application/octet-stream' });
-      const BlobURL = URL.createObjectURL(blob);
-      this.downloadFileByUrl(BlobURL, filename)
-    })
+        var blob = new Blob([resp], { type: 'application/octet-stream' });
+        const BlobURL = URL.createObjectURL(blob);
+        this.downloadFileByUrl(BlobURL, filename);
+      });
   }
 
-  downloadFileByUrl (url: string, filename: string = '') {
+  downloadFileByUrl(url: string, filename: string = '') {
     const eleLink = document.createElement('a');
     eleLink.download = filename;
     eleLink.style.display = 'none';
@@ -41,22 +39,32 @@ export class DownloadService {
   }
 
   // 下载文件
-  downloadFile (url: string, filename: string = '') {
+  downloadFile(url: string, filename: string = '') {
     const mediaTypeArr = [
       // 图片
-      '.png', '.bmp', 'gif', 'jpg', 'jpeg',
+      '.png',
+      '.bmp',
+      'gif',
+      'jpg',
+      'jpeg',
 
       // 视频
-      '.avi', '.mov', '.mpv', '.wmv',
+      '.avi',
+      '.mov',
+      '.mpv',
+      '.wmv',
 
       // 音频
-      '.txt', '.png', '.doc', '.xml'
-    ]
+      '.txt',
+      '.png',
+      '.doc',
+      '.xml'
+    ];
 
     if (mediaTypeArr.some(str => filename.endsWith(str))) {
-      this.downloadFileByBlob(url, filename)
+      this.downloadFileByBlob(url, filename);
     } else {
-      this.downloadFileByBlob(url, filename)
+      this.downloadFileByBlob(url, filename);
     }
   }
 }

@@ -13,51 +13,50 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
-
   // 声明
   private destroy$ = new Subject();
-  private _userChanges = new BehaviorSubject<User|null>(null);
+  private _userChanges = new BehaviorSubject<User | null>(null);
 
   // 构造器初始化
-  constructor(
-    private http: HttpClient,
-    // private messageService: MessageService
-  ) { }
+  constructor(private http: HttpClient) // private messageService: MessageService
+  {}
 
+  private heroesUrl = 'api/user'; // URL to web api
 
-  private heroesUrl = 'api/user';  // URL to web api
-  
   get userChange() {
     // if (!this._user) {
     //   this._user = { ...this.getData(this.KEYS.user) };
     //   this.setData(this.KEYS.user, this._user);
     // }
     // return this._user as U;
-    return this._userChanges.asObservable()
+    return this._userChanges.asObservable();
   }
 
   // action
   getUser(): Observable<User> {
-    return this.http.get<User>(this.heroesUrl).pipe(tap(user => {
-      this._userChanges.next(user)
-    }))
+    return this.http.get<User>(this.heroesUrl).pipe(
+      tap(user => {
+        this._userChanges.next(user);
+      })
+    );
   }
 
   /** POST: add a new hero to the server */
   add(): Observable<User> {
-    return this.http.get<User>(this.heroesUrl).pipe(tap(user => {
-      // this.user = {
-      //   ...this.user,
-      //   id: this.user.id + 1
-      // }
-      // console.log(this.user)
-      this._userChanges.next(user)
-    }))
+    return this.http.get<User>(this.heroesUrl).pipe(
+      tap(user => {
+        // this.user = {
+        //   ...this.user,
+        //   id: this.user.id + 1
+        // }
+        // console.log(this.user)
+        this._userChanges.next(user);
+      })
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 

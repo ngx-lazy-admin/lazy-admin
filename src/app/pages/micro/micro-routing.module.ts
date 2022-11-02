@@ -5,38 +5,38 @@ import { QiankunComponent } from './qiankun/qiankun.component';
 import { WuJieComponent } from './wujie/wujie.component';
 
 const routes: Routes = [
-  { 
-    path: 'iframe', 
+  {
+    path: 'iframe',
     children: [
       {
         path: '**',
-        component: IframeComponent,
+        component: IframeComponent
       }
     ]
   },
-  { 
-    path: 'wujie', 
+  {
+    path: 'wujie',
     children: [
       {
         path: '**',
-        component: WuJieComponent,
+        component: WuJieComponent
       }
     ]
   },
-  { 
-    path: 'qiankun', 
+  {
+    path: 'qiankun',
     children: [
       {
         path: '**',
-        component: QiankunComponent,
+        component: QiankunComponent
       }
     ]
   },
-  { path: '**', component: IframeComponent },
+  { path: '**', component: IframeComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RoutingModule { }
+export class RoutingModule {}

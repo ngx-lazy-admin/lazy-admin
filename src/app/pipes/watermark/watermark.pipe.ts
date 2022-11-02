@@ -6,8 +6,7 @@ import { watermark } from 'src/app/utils';
   pure: true
 })
 export class WatermarkPipe implements PipeTransform {
-
   transform(value: string, ...args: unknown[]): any {
-    return watermark(value)
+    return watermark(value);
   }
 }

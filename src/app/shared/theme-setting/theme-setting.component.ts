@@ -1,5 +1,4 @@
-
-import { 
+import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -25,7 +24,7 @@ import { environment } from 'environments/environment';
 
 enum ThemeType {
   dark = 'dark',
-  default = '',
+  default = ''
 }
 
 @Component({
@@ -35,7 +34,7 @@ enum ThemeType {
   host: {
     '[class.setting-drawer]': 'true',
     '[class.setting-drawer-rtl]': `dir === 'rtl'`
-  },
+  }
 })
 export class ThemeSettingComponent implements OnInit, OnDestroy {
   @Input() autoApplyColor = true;
@@ -97,7 +96,7 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
   genVars(): NzSafeAny {
     const { data, color, validKeys } = this;
     const vars: { [key: string]: string } = {
-      [`@primary-color`]: color 
+      [`@primary-color`]: color
     };
     validKeys.filter(key => key !== 'primary-color').forEach(key => (vars[`@${key}`] = data[key].value));
     return vars;
@@ -109,14 +108,14 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
       return Promise.resolve();
     }
     return this.loadStyle('/assets/styles/custom.less', 'stylesheet/less')
-      .then((res) => {
+      .then(res => {
         const lessConfigNode = document.getElementById('script:less-config-node');
         if (lessConfigNode) {
           this.doc.body.removeChild(lessConfigNode);
         }
 
         const configNode = this.doc.createElement('script');
-        configNode.id = 'script:less-config-node'
+        configNode.id = 'script:less-config-node';
 
         configNode.innerHTML = `
           window.less = {
@@ -133,7 +132,6 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
       });
   }
 
-  
   // 加载css
   loadStyle(path: string, rel: string = 'stylesheet', innerContent?: string) {
     return new Promise(resolve => {
@@ -182,15 +180,15 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
   // 颜色变更
   changeColor(color: string): void {
     this.color = color;
-    Object.keys(DEFAULT_VARS).filter(key => DEFAULT_VARS[key].default === '@primary-color')
+    Object.keys(DEFAULT_VARS).filter(key => DEFAULT_VARS[key].default === '@primary-color');
     this.resetData();
   }
 
-  changeTheme (type: Event): void {
-    this.currentTheme = this.reverseTheme(this.currentTheme)
-    document.querySelector('html')?.setAttribute('data-theme', this.currentTheme)
-    this.loadTheme(this.currentTheme); 
-  } 
+  changeTheme(type: Event): void {
+    this.currentTheme = this.reverseTheme(this.currentTheme);
+    document.querySelector('html')?.setAttribute('data-theme', this.currentTheme);
+    this.loadTheme(this.currentTheme);
+  }
 
   // 改变主题
   reverseTheme(theme: string): ThemeType {
@@ -199,16 +197,19 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
 
   loadTheme(theme: ThemeType) {
     if (theme) {
-      this.loadStyle(`${theme}.css`).then((res) => {
-        this.removeUnusedTheme(this.reverseTheme(theme));
-      }, (err) => {
-        console.log(err)
-      });
+      this.loadStyle(`${theme}.css`).then(
+        res => {
+          this.removeUnusedTheme(this.reverseTheme(theme));
+        },
+        err => {
+          console.log(err);
+        }
+      );
     } else {
       this.removeUnusedTheme(this.reverseTheme(theme));
     }
   }
-  
+
   removeUnusedTheme(theme: ThemeType): void {
     if (theme) {
       document.documentElement.classList.remove(theme);
@@ -218,7 +219,6 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
       }
     }
   }
-
 
   setLayout(name: string, value: NzSafeAny = null): void {
     // this.settingSrv.setLayout(name, value);
@@ -246,7 +246,7 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
     this.resetData();
   }
 
-  changeColorWeek ($event: Event) {
+  changeColorWeek($event: Event) {
     this.doc.body.classList[$event ? 'add' : 'remove']('color-weak');
   }
 

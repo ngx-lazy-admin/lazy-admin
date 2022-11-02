@@ -26,24 +26,10 @@ import { FullScreenService } from './full-screen.service';
     LayoutHeaderComponent,
     LayoutMenuComponent,
     TabsComponent,
-    LayoutHeaderTabsetComponent,
+    LayoutHeaderTabsetComponent
   ],
-  exports: [
-    
-  ],
-  imports: [
-    BidiModule,
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-
-    NgZorroAntdModule
-  ],
-  providers: [
-    LayoutService,
-    MenuService,
-    FullScreenService
-  ]
+  exports: [],
+  imports: [BidiModule, CommonModule, RouterModule, FormsModule, ReactiveFormsModule, NgZorroAntdModule],
+  providers: [LayoutService, MenuService, FullScreenService]
 })
 export class LayoutModule {}

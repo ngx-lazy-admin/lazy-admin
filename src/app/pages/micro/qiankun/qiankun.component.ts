@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit, 
-  ChangeDetectionStrategy, 
-  ElementRef, 
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { loadMicroApp, registerMicroApps, start } from 'qiankun';
 
 @Component({
@@ -14,23 +8,22 @@ import { loadMicroApp, registerMicroApps, start } from 'qiankun';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QiankunComponent implements OnInit {
-
-  constructor(
-    private elRef: ElementRef,
-    private cd: ChangeDetectorRef,
-  ) {}
+  constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    loadMicroApp({
-      name: '',
-      entry: '//localhost:7400',
-      container: '#qiankun',
-    }, {
-      sandbox: {
-        strictStyleIsolation: true,
-        experimentalStyleIsolation: true
-      }  
-    });
+    loadMicroApp(
+      {
+        name: '',
+        entry: '//localhost:7400',
+        container: '#qiankun'
+      },
+      {
+        sandbox: {
+          strictStyleIsolation: true,
+          experimentalStyleIsolation: true
+        }
+      }
+    );
     // const getActiveRule = (hash: any) => (location: any) => location.pathname.startsWith(hash);
     // console.log(location.pathname.startsWith('/micro/qiankun/'))
     // console.log(getActiveRule('/micro/qiankun/'))
@@ -45,7 +38,5 @@ export class QiankunComponent implements OnInit {
     // ]);
   }
 
-  ngAfterViewInit(): void {
-
-  }
+  ngAfterViewInit(): void {}
 }

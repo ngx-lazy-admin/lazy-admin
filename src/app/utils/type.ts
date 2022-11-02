@@ -3,7 +3,7 @@ import { TemplateRef } from '@angular/core';
 import { IndexableObject } from 'ng-zorro-antd/core/types';
 
 export function isNumber(value: string | number): boolean {
-  return ((value != null) && (value !== '') && !isNaN(Number(value.toString())));
+  return value != null && value !== '' && !isNaN(Number(value.toString()));
 }
 
 export function isNullOrUndefined(value: any) {
@@ -19,17 +19,16 @@ export function isBlankString(value: any) {
 }
 
 export function isFunction(value: any) {
-  return typeof(value) === 'function';
+  return typeof value === 'function';
 }
 
 export const isObject = (x: any) => {
   return x != null && typeof x === 'object';
-}
+};
 
 export function isPromise<T>(obj: any): obj is Promise<T> {
   return !!obj && typeof obj.then === 'function' && typeof obj.catch === 'function';
 }
-
 
 export function isNotNil<T>(value: T): value is NonNullable<T> {
   return typeof value !== 'undefined' && value !== null;
@@ -81,4 +80,3 @@ export function isNonEmptyString(value: any): boolean {
 export function isTemplateRef(value: any): boolean {
   return value instanceof TemplateRef;
 }
-

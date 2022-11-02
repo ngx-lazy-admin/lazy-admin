@@ -24,17 +24,8 @@ import { NgZorroAntdModule } from './ng-zorro-antd.modules';
 import { ModalTitleComponent } from './modal-title.component';
 
 @NgModule({
-  providers: [
-    DispatchService,
-    ModalService
-  ],
-  declarations: [
-    FormModal,
-    SearchModal,
-    BlankModal,
-    ModalTitleComponent,
-    ModalTemplateComponent
-  ],
+  providers: [DispatchService, ModalService],
+  declarations: [FormModal, SearchModal, BlankModal, ModalTitleComponent, ModalTemplateComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -49,17 +40,9 @@ import { ModalTitleComponent } from './modal-title.component';
     FormlyModule,
     FieldTypeModule,
     CustomFieldModule,
-    FormFieldModule,
+    FormFieldModule
   ],
-  exports: [
-    FormModal,
-    SearchModal,
-    BlankModal,
-    ModalTitleComponent,
-    ModalTemplateComponent,
-  ],
-  entryComponents: [
-    ModalTemplateComponent
-  ]
+  exports: [FormModal, SearchModal, BlankModal, ModalTitleComponent, ModalTemplateComponent],
+  entryComponents: [ModalTemplateComponent]
 })
-export class ModalsModule { }
+export class ModalsModule {}

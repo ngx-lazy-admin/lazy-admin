@@ -6,19 +6,8 @@ import { MarkedPipe } from './marked/marked.pipe';
 import { WatermarkPipe } from './watermark/watermark.pipe';
 
 @NgModule({
-  declarations: [
-    DynamicPipe,
-    MarkedPipe,
-    WatermarkPipe
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-  ],
-  exports: [
-    DynamicPipe,
-    MarkedPipe,
-    WatermarkPipe
-  ]
+  declarations: [DynamicPipe, MarkedPipe, WatermarkPipe],
+  imports: [CommonModule, ReactiveFormsModule],
+  exports: [DynamicPipe, MarkedPipe, WatermarkPipe]
 })
 export class PipesModule {}

@@ -8,4 +8,4 @@ const routes: Routes = [{ path: '', component: ModalComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ModalRoutingModule { }
+export class ModalRoutingModule {}

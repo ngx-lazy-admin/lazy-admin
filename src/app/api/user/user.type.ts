@@ -1,6 +1,6 @@
-import { SafeAny } from "../apis.type";
+import { SafeAny } from '../apis.type';
 
-export interface User { 
+export interface User {
   id?: number;
   username?: string;
   firstName?: string;

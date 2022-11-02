@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  EventEmitter,
-  Optional
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, EventEmitter, Optional } from '@angular/core';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -21,7 +14,6 @@ import { UserService } from 'src/app/api/user/user.services';
   host: {}
 })
 export class LayoutBasicComponent implements OnInit {
-
   dir: Direction = 'ltr';
 
   private destroy$ = new Subject<void>();
@@ -31,35 +23,29 @@ export class LayoutBasicComponent implements OnInit {
     public layout: LayoutService,
     private cd: ChangeDetectorRef,
     private menu: MenuService,
-    @Optional() private directionality: Directionality,
+    @Optional() private directionality: Directionality
   ) {
-    this.layout.change$
-      ?.pipe(takeUntil(this.destroy$))
-      ?.subscribe(() => {
-        this.cd.markForCheck();
-      })
+    this.layout.change$?.pipe(takeUntil(this.destroy$))?.subscribe(() => {
+      this.cd.markForCheck();
+    });
 
-    this.menu.change$
-      ?.pipe(takeUntil(this.destroy$))
-      ?.subscribe(() => {
-        this.cd.markForCheck();
-      })
+    this.menu.change$?.pipe(takeUntil(this.destroy$))?.subscribe(() => {
+      this.cd.markForCheck();
+    });
 
     this.dir = this.directionality.value;
-    this.directionality.change
-      ?.pipe(takeUntil(this.destroy$))
-      ?.subscribe((direction: Direction) => {
-        this.dir = direction;
-      });
+    this.directionality.change?.pipe(takeUntil(this.destroy$))?.subscribe((direction: Direction) => {
+      this.dir = direction;
+    });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
-  collapsedChange (isCollapsed: boolean) {
+  collapsedChange(isCollapsed: boolean) {
     this.layout.collapseChange(isCollapsed);
   }
 
-  closeDrawer () {
+  closeDrawer() {
     this.layout.collapseChange(!this.layout.isCollapsed);
   }
 

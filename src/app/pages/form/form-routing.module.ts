@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './form.component';
 
 const routes: Routes = [
-  { 
+  {
     canDeactivate: [],
-    path: '', pathMatch: 'full', component: FormComponent, 
+    path: '',
+    pathMatch: 'full',
+    component: FormComponent
   }
 ];
 
@@ -13,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FormRoutingModule { }
+export class FormRoutingModule {}

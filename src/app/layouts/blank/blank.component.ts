@@ -7,10 +7,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutBlankComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    console.log('LayoutBlankComponent')
+    console.log('LayoutBlankComponent');
   }
 }

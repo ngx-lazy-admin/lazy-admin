@@ -8,7 +8,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor'
+import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { CodeEditorContent } from './code-editor-content.component';
@@ -18,9 +18,7 @@ import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 
 @NgModule({
-  declarations: [
-    CodeEditorContent,
-  ],
+  declarations: [CodeEditorContent],
   imports: [
     CommonModule,
     FormsModule,
@@ -37,10 +35,8 @@ import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
     FieldTypeModule,
     // AntFieldTypeModule,
     CustomFieldModule,
-    FormFieldModule,
+    FormFieldModule
   ],
-  exports: [
-    CodeEditorContent,
-  ]
+  exports: [CodeEditorContent]
 })
-export class CodeEditorModule { }
+export class CodeEditorModule {}

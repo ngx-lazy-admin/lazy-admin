@@ -1,18 +1,18 @@
-import { FormlyFieldConfig } from "@ngx-formly/core";
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
-export const execEval = (code: string) => eval('(' + code + ')')
+export const execEval = (code: string) => eval('(' + code + ')');
 
-export const execFunc = (func: string | Function) => typeof(func) == 'string' ? execEval(func) : func
+export const execFunc = (func: string | Function) => (typeof func == 'string' ? execEval(func) : func);
 
-export const execFunction = (name: string) => (new Function( 'return ' + name))();
+export const execFunction = (name: string) => new Function('return ' + name)();
 
 export const runFunction = (name: string, field?: FormlyFieldConfig, $event?: Event) => {
-  try{
+  try {
     if (name) {
-      const func = execFunction(name)
-      func(field, $event)
+      const func = execFunction(name);
+      func(field, $event);
     }
   } catch (err) {
-    console.log(name + ': error', err)
+    console.log(name + ': error', err);
   }
-}
+};

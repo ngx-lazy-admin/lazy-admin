@@ -51,9 +51,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     NzMessageModule,
     NzIconModule,
     NzListModule,
-    NzResizableModule,
+    NzResizableModule
   ]
 })
-export class NgZorroAntdModule {
-
-}
+export class NgZorroAntdModule {}

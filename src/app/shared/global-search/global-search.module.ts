@@ -19,7 +19,7 @@ import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
-    GlobalSearchComponent,
+    GlobalSearchComponent
 
     // NzAutocompleteOptionComponent
   ],
@@ -39,8 +39,6 @@ import { MatListModule } from '@angular/material/list';
     NzListModule,
     NzInputModule
   ],
-  exports: [
-    GlobalSearchComponent
-  ]
+  exports: [GlobalSearchComponent]
 })
 export class GlobalSearchModule {}

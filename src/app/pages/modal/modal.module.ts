@@ -25,11 +25,8 @@ import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
-
 @NgModule({
-  declarations: [
-    ModalComponent,
-  ],
+  declarations: [ModalComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -54,7 +51,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     FieldTypeModule,
     // AntFieldTypeModule,
     CustomFieldModule,
-    FormFieldModule,
+    FormFieldModule
   ]
 })
-export class ModalModule { }
+export class ModalModule {}

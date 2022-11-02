@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'html'
 })
 export class HtmlPipe implements PipeTransform {
-
   transform(value: unknown, ...args: unknown[]): unknown {
     return null;
   }

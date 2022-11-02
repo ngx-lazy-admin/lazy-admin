@@ -8,9 +8,7 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { AlertField } from './alert.component';
 
 @NgModule({
-  declarations: [
-    AlertField,
-  ],
+  declarations: [AlertField],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -20,11 +18,11 @@ import { AlertField } from './alert.component';
       types: [
         {
           name: 'alert',
-          component: AlertField,
+          component: AlertField
         },
         {
           name: 'nz-alert',
-          component: AlertField,
+          component: AlertField
         }
       ]
     })

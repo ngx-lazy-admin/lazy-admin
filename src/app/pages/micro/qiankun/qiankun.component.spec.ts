@@ -8,9 +8,8 @@ describe('QiankunComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QiankunComponent ]
-    })
-    .compileComponents();
+      declarations: [QiankunComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

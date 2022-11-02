@@ -6,12 +6,11 @@ import { NzMessageDataOptions, NzMessageService } from 'ng-zorro-antd/message';
   providedIn: 'root'
 })
 export class MessageService {
-
   private _destroy$ = new Subject();
-  private _loading$ = new BehaviorSubject<boolean|null>(null);
+  private _loading$ = new BehaviorSubject<boolean | null>(null);
 
   get loadingChange$() {
-    return this._loading$.asObservable()
+    return this._loading$.asObservable();
   }
 
   constructor(private message: NzMessageService) {}
@@ -28,14 +27,14 @@ export class MessageService {
     this.message.warning(str);
   }
 
-  loading (msg: string, duration: NzMessageDataOptions = { nzDuration: 0}) {
+  loading(msg: string, duration: NzMessageDataOptions = { nzDuration: 0 }) {
     this._loading$.next(true);
     return this.message.loading(msg, duration).messageId;
   }
 
-  remove (messageId: string) {
+  remove(messageId: string) {
     this._loading$.next(false);
-    this.message.remove(messageId)
+    this.message.remove(messageId);
   }
 
   ngOnDestroy() {

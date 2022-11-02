@@ -31,9 +31,7 @@ const routes: Routes = [
     canActivateChild: [ActivateChildGuard],
     canDeactivate: [GlobalDeactivateGuard],
     data: {},
-    children: [
-      { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
-    ]
+    children: [{ path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) }]
   },
   {
     path: '',
@@ -47,7 +45,7 @@ const routes: Routes = [
       { path: 'swagger', loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule) },
       { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
       { path: 'micro', loadChildren: () => import('./pages/micro/micro.module').then(m => m.MicroModule) },
-      { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) },
+      { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) }
     ]
   }
 ];
@@ -55,11 +53,10 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(
-      routes,
-      // { enableTracing: true } 
+      routes
+      // { enableTracing: true }
     )
   ],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}

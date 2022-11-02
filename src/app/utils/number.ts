@@ -1,4 +1,3 @@
-
 export function getPercent(min: number, max: number, value: number): number {
   return ((value - min) / (max - min)) * 100;
 }

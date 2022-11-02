@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PortalModule } from '@angular/cdk/portal'
+import { PortalModule } from '@angular/cdk/portal';
 import { FormlyModule } from '@ngx-formly/core';
 
 import { NzResultModule } from 'ng-zorro-antd/result';
@@ -22,11 +22,8 @@ import { PipesModule } from 'src/app/pipes';
 import { CustomModule } from 'src/app/shared/custom.modules';
 
 @NgModule({
-  declarations: [
-    FormComponent,
-  ],
+  declarations: [FormComponent],
   imports: [
-
     FormRoutingModule,
     CustomModule,
 
@@ -42,11 +39,11 @@ import { CustomModule } from 'src/app/shared/custom.modules';
     NzAlertModule,
     NzTabsModule,
     // ModalsModule
-    FormlyModule.forRoot({extras: { renderFormlyFieldElement: false }}),
+    FormlyModule.forRoot({ extras: { renderFormlyFieldElement: false } }),
     FieldTypeModule,
     // AntFieldTypeModule,
     CustomFieldModule,
-    FormFieldModule,
+    FormFieldModule
   ]
 })
-export class FormModule { }
+export class FormModule {}

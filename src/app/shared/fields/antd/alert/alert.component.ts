@@ -19,41 +19,40 @@ import { ShareFieldType } from '../share-field.type';
   encapsulation: ViewEncapsulation.None
 })
 export class AlertField extends ShareFieldType {
-
   get disabled(): boolean {
-		return this.props.disabled || false;
-	}
-
-	get control() : FormControl {
-		return this.formControl as FormControl;
+    return this.props.disabled || false;
   }
 
-	get nzType(): 'success' | 'info' | 'warning' | 'error' {
-		return this.props.nzType || this.props.type || 'info';
-	}
+  get control(): FormControl {
+    return this.formControl as FormControl;
+  }
 
-  get nzCloseable() : boolean {
-		return this.props.nzCloseable || this.props.closeable || false;
+  get nzType(): 'success' | 'info' | 'warning' | 'error' {
+    return this.props.nzType || this.props.type || 'info';
+  }
+
+  get nzCloseable(): boolean {
+    return this.props.nzCloseable || this.props.closeable || false;
   }
 
   get nzCloseText(): string | TemplateRef<void> {
     return this.props.nzCloseText || this.props.closeText || null;
   }
 
-  get nzDescription() : string | TemplateRef<void> {
-		return this.props.nzDescription || this.props.description || null;
+  get nzDescription(): string | TemplateRef<void> {
+    return this.props.nzDescription || this.props.description || null;
   }
 
-  get nzMessage() : string | TemplateRef<void> {
-		return this.props.nzMessage || this.props.message || null;
+  get nzMessage(): string | TemplateRef<void> {
+    return this.props.nzMessage || this.props.message || null;
   }
 
-	get nzShowIcon(): boolean {
-		return this.props.nzShowIcon || this.props.showIcon || false;
-	}
+  get nzShowIcon(): boolean {
+    return this.props.nzShowIcon || this.props.showIcon || false;
+  }
 
   get nzIconType(): string {
-    return this.props.nzIconType || this.props.iconType || ''
+    return this.props.nzIconType || this.props.iconType || '';
   }
 
   private _destroy$ = new Subject<void>();

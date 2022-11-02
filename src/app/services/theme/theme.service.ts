@@ -6,19 +6,15 @@ import { NzMessageRef } from 'ng-zorro-antd/message';
   providedIn: 'root'
 })
 export class ThemeService {
-
   theme = '';
-  
-  constructor(
-    private platform: Platform,
-    private renderer: Renderer2,
-  ) { }
+
+  constructor(private platform: Platform, private renderer: Renderer2) {}
 
   initTheme(): void {
     if (!this.platform.isBrowser) {
       return;
     }
-    const theme = (localStorage.getItem('site-theme')) || 'default';
+    const theme = localStorage.getItem('site-theme') || 'default';
     this.onThemeChange(theme, false);
   }
 
@@ -28,7 +24,9 @@ export class ThemeService {
     }
     let loading: NzMessageRef | null = null;
     if (notification) {
-      loading = this.nzMessageService.loading(this.language === 'en' ? `Switching theme...` : `切换主题中...`, { nzDuration: 0 });
+      loading = this.nzMessageService.loading(this.language === 'en' ? `Switching theme...` : `切换主题中...`, {
+        nzDuration: 0
+      });
     }
     this.renderer.addClass(this.document.activeElement, 'preload');
 

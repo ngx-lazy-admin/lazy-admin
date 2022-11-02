@@ -2,47 +2,46 @@ import { Injectable } from '@angular/core';
 import { clone } from 'src/app/utils';
 
 export interface formCacheType {
-  model: any,
-  fields?: any,
-  options?: any,
+  model: any;
+  fields?: any;
+  options?: any;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class CacheService {
+  cache: any = {};
+  history: any = {};
 
-  cache: any = {}
-  history: any = {}
-
-  constructor() { }
+  constructor() {}
 
   // 获取缓存数据
-  get (str: string) {
-    return clone(this.cache[str])
+  get(str: string) {
+    return clone(this.cache[str]);
   }
 
   // 记录路由缓存数据
-  set (url: string, data: formCacheType) {
+  set(url: string, data: formCacheType) {
     this.cache[url] = data;
-    this.recordHistoryPosition(url)
+    this.recordHistoryPosition(url);
   }
 
   // 记录历史位置
-  recordHistoryPosition (url: string) {
+  recordHistoryPosition(url: string) {
     this.history[url] = {
       scrollX: window.scrollX,
-      scrollY: window.scrollY,
-    }
+      scrollY: window.scrollY
+    };
   }
 
   // 恢复历史位置
-  recoveryHistoryPosition (url: string) {
+  recoveryHistoryPosition(url: string) {
     if (this.history[url]) {
-      const state = this.history[url]
+      const state = this.history[url];
       // window.scrollTo(state.scrollX, state.scrollY)
       // document.body.scrollTop = state.scrollY
-      document.documentElement.scrollTop = state.scrollY
+      document.documentElement.scrollTop = state.scrollY;
     }
   }
 }

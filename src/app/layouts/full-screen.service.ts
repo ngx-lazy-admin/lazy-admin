@@ -3,29 +3,28 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class FullScreenService {
-
   isFullscreen: boolean = false;
 
-  request (element?: Element) {
-    return new Observable ((observed: any) => {
-      if (!this.isFullscreen)  {
+  request(element?: Element) {
+    return new Observable((observed: any) => {
+      if (!this.isFullscreen) {
         if (element) {
-          element.requestFullscreen()
+          element.requestFullscreen();
         } else {
-          document.body.requestFullscreen()
+          document.body.requestFullscreen();
         }
-        this.isFullscreen = true
+        this.isFullscreen = true;
       }
-    })
+    });
   }
 
-  exit () {
-    return new Observable ((observed: any) => {
+  exit() {
+    return new Observable((observed: any) => {
       if (this.isFullscreen) {
-        document.exitFullscreen()
-        this.isFullscreen = false
+        document.exitFullscreen();
+        this.isFullscreen = false;
       }
-    })
+    });
   }
 
   toggle(element?: Element) {

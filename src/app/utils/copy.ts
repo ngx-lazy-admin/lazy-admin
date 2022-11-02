@@ -19,4 +19,4 @@ export const copy = (value: string): Promise<string> => {
     }
   });
   return promise;
-} 
+};

@@ -5,72 +5,70 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UsefulService {
-    constructor(){
-        console.log("Useful Service is created");
-    }
+  constructor() {
+    console.log('Useful Service is created');
+  }
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class NeedsService {
-  constructor(public service: UsefulService) { 
-    console.log("NeedsService is created");
-    console.log(this)
+  constructor(public service: UsefulService) {
+    console.log('NeedsService is created');
+    console.log(this);
   }
-  template = {}
-  setTemplate (id: any) {
+  template = {};
+  setTemplate(id: any) {
     this.template = {
       id: id
-    }
-    console.log(id)
+    };
+    console.log(id);
   }
 
-  getTemplate () {
-    return this.template
+  getTemplate() {
+    return this.template;
   }
 }
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class DispatchService   {
-
+export class DispatchService {
   constructor() {}
 
   modal$ = new Subject<any>();
-  templateRef = {}
+  templateRef = {};
 
-  open (type: string, params?: any, componentParams?: any) {
-    this.modal$.next({operation: 'open', type: type, params: params, componentParams: componentParams})
+  open(type: string, params?: any, componentParams?: any) {
+    this.modal$.next({ operation: 'open', type: type, params: params, componentParams: componentParams });
   }
 
-  close (id: string) {
-    this.modal$.next({operation: 'close', id: id})
+  close(id: string) {
+    this.modal$.next({ operation: 'close', id: id });
   }
 
-  closeAll (id: string) {
-    this.modal$.next({operation: 'closeAll'})
+  closeAll(id: string) {
+    this.modal$.next({ operation: 'closeAll' });
   }
 
-  hide (id: string) {
+  hide(id: string) {
     if (id) {
-      this.modal$.next({operation: 'hide', id: id})
+      this.modal$.next({ operation: 'hide', id: id });
     }
   }
 
-  hideAll () {
-    console.log('hideAll')
-    this.modal$.next({operation: 'hideAll'})
+  hideAll() {
+    console.log('hideAll');
+    this.modal$.next({ operation: 'hideAll' });
   }
 
-  show (id: string) {
-    this.modal$.next({operation: 'show', id: id})
+  show(id: string) {
+    this.modal$.next({ operation: 'show', id: id });
   }
 
-  showAll () {
-    this.modal$.next({operation: 'showAll'})
+  showAll() {
+    this.modal$.next({ operation: 'showAll' });
   }
 
   // addTemplateRef (key, templateRef) {

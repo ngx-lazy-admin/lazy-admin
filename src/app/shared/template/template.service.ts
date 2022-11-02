@@ -9,7 +9,6 @@ import { buttonPortal } from './button/button.template';
 
 export const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');
 
-
 @Injectable({
   providedIn: 'root'
 })

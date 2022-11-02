@@ -10,9 +10,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { PreviewContent } from './preview-content.component';
 
 @NgModule({
-  declarations: [
-    PreviewContent,
-  ],
+  declarations: [PreviewContent],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,10 +19,8 @@ import { PreviewContent } from './preview-content.component';
     NzButtonModule,
     NzModalModule,
     DragDropModule,
-    NzIconModule,
+    NzIconModule
   ],
-  exports: [
-    PreviewContent,
-  ]
+  exports: [PreviewContent]
 })
-export class PreviewModule { }
+export class PreviewModule {}

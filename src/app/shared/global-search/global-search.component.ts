@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import hotkeys from 'hotkeys-js';
 
 @Component({
@@ -16,14 +12,9 @@ import hotkeys from 'hotkeys-js';
   }
 })
 export class GlobalSearchComponent {
-
-
   isVisible: boolean = false;
-  searchValue = ''
-  constructor(
-    private cd: ChangeDetectorRef,
-  ) {
-
+  searchValue = '';
+  constructor(private cd: ChangeDetectorRef) {
     hotkeys('ctrl + k', (event, handler) => {
       event.preventDefault();
       this.isVisible = true;
@@ -33,7 +24,7 @@ export class GlobalSearchComponent {
 
   ds = [];
 
-  items = Array.from({length: 100}).map((_, i) => `Item #${i}`);
+  items = Array.from({ length: 100 }).map((_, i) => `Item #${i}`);
 
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 
@@ -41,14 +32,13 @@ export class GlobalSearchComponent {
     this.isVisible = true;
   }
 
-  onChange (value: any): void {
-    console.log(value)
+  onChange(value: any): void {
+    console.log(value);
   }
 
-  handleCancel (): void {
-    console.log('handleCancel')
+  handleCancel(): void {
+    console.log('handleCancel');
     this.isVisible = false;
     this.cd.markForCheck();
   }
-
 }

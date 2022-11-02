@@ -1,7 +1,7 @@
 import { FormlyFieldConfig, FormlyFormOptions, FieldType } from '@ngx-formly/core';
 import { isObservable } from 'rxjs';
 import { TemplateRef, ComponentFactoryResolver, ComponentRef, Injector } from '@angular/core';
-import { AbstractControl,  AsyncValidatorFn, ValidatorFn } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, ValidatorFn } from '@angular/forms';
 import { isBlankString, isFunction, isNullOrUndefined, isObject } from './type';
 
 export interface ExpressionPropertyCache {
@@ -35,7 +35,7 @@ export interface FormlyFieldConfigCache extends FormlyFieldConfig {
   };
 }
 
-export function getFieldId(formId: string, field: FormlyFieldConfig, index: string|number) {
+export function getFieldId(formId: string, field: FormlyFieldConfig, index: string | number) {
   if (field.id) return field.id;
   let type = field.type;
   if (!type && field.template) type = 'template';
@@ -49,7 +49,7 @@ export function getKeyPath(field: FormlyFieldConfigCache): string[] {
 
   /* We store the keyPath in the field for performance reasons. This function will be called frequently. */
   if (!field._keyPath || field._keyPath.key !== field.key) {
-    let path: string[]  = [];
+    let path: string[] = [];
     if (typeof field.key === 'string') {
       const key = field.key.indexOf('[') === -1 ? field.key : field.key.replace(/\[(\w+)\]/g, '.$1');
       path = key.indexOf('.') !== -1 ? key.split('.') : [key];
@@ -90,7 +90,7 @@ export function assignFieldValue(field: FormlyFieldConfigCache, value: any) {
 }
 
 export function assignModelValue(model: any, paths: string[], value: any) {
-  for (let i = 0; i < (paths.length - 1); i++) {
+  for (let i = 0; i < paths.length - 1; i++) {
     const path = paths[i];
     if (!model[path] || !isObject(model[path])) {
       model[path] = /^\d+$/.test(paths[i + 1]) ? [] : {};
@@ -146,18 +146,21 @@ export function reverseDeepMerge(dest: any, ...args: any[]) {
 }
 
 export function objAndSameType(obj1: any, obj2: any) {
-  return isObject(obj1) && isObject(obj2)
-    && Object.getPrototypeOf(obj1) === Object.getPrototypeOf(obj2)
-    && !(Array.isArray(obj1) || Array.isArray(obj2));
+  return (
+    isObject(obj1) &&
+    isObject(obj2) &&
+    Object.getPrototypeOf(obj1) === Object.getPrototypeOf(obj2) &&
+    !(Array.isArray(obj1) || Array.isArray(obj2))
+  );
 }
 
 export function clone(value: any): any {
   if (
-    !isObject(value)
-    || isObservable(value)
-    || (value instanceof TemplateRef)
-    || /* instanceof SafeHtmlImpl */ value.changingThisBreaksApplicationSecurity
-    || ['RegExp', 'FileList', 'File', 'Blob'].indexOf(value.constructor.name) !== -1
+    !isObject(value) ||
+    isObservable(value) ||
+    value instanceof TemplateRef ||
+    /* instanceof SafeHtmlImpl */ value.changingThisBreaksApplicationSecurity ||
+    ['RegExp', 'FileList', 'File', 'Blob'].indexOf(value.constructor.name) !== -1
   ) {
     return value;
   }
@@ -217,17 +220,16 @@ export function defineHiddenProp(field: any, prop: string, defaultValue: any) {
 
 export function getFieldFormControlByKey(field: any, key: string): any {
   if (field.key === 'key') {
-    return field.formControl
+    return field.formControl;
   } else {
-    return getFieldFormControlByKey(field.parent, key)
+    return getFieldFormControlByKey(field.parent, key);
   }
 }
-
 
 export function wrapProperty<T = any>(
   o: any,
   prop: string,
-  setFn: (change: {currentValue: T, previousValue?: T, firstChange: boolean}) => void,
+  setFn: (change: { currentValue: T; previousValue?: T; firstChange: boolean }) => void
 ) {
   if (!o._observers) {
     defineHiddenProp(o, '_observers', {});
@@ -252,7 +254,7 @@ export function wrapProperty<T = any>(
             o[`___$${prop}`] = currentValue;
             fns.forEach(changeFn => changeFn({ previousValue, currentValue, firstChange: false }));
           }
-        },
+        }
       });
     }
   }
@@ -264,14 +266,15 @@ export function reduceFormUpdateValidityCalls(form: any, action: Function) {
   const updateValidity = form._updateTreeValidity.bind(form);
 
   let updateValidityArgs = { called: false, emitEvent: false };
-  form._updateTreeValidity = ({ emitEvent } = { emitEvent: true }) => updateValidityArgs = { called: true, emitEvent: emitEvent || updateValidityArgs.emitEvent };
+  form._updateTreeValidity = ({ emitEvent } = { emitEvent: true }) =>
+    (updateValidityArgs = { called: true, emitEvent: emitEvent || updateValidityArgs.emitEvent });
   action();
 
   updateValidityArgs.called && updateValidity({ emitEvent: updateValidityArgs.emitEvent });
   form._updateTreeValidity = updateValidity;
 }
 
-export function fieldChange (field: FormlyFieldConfigCache, model: any) {
+export function fieldChange(field: FormlyFieldConfigCache, model: any) {
   let i = field.fieldGroup?.length;
   field.model.splice(0, i, ...clone(model));
   (field.options as any)._buildForm();
@@ -279,52 +282,62 @@ export function fieldChange (field: FormlyFieldConfigCache, model: any) {
 
 // 判断类型
 
-
 // 随机字符串
-export const randomString = (e: number) => {    
+export const randomString = (e: number) => {
   e = e || 32;
-  var t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678",
-  a = t.length,
-  n = "";
+  var t = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678',
+    a = t.length,
+    n = '';
   for (let i = 0; i < e; i++) {
     n += t.charAt(Math.floor(Math.random() * a));
   }
-  return n
-}
+  return n;
+};
 
 //遍历删除对象中的空值属性
-export const delNullProperty = (obj: any): any =>{
+export const delNullProperty = (obj: any): any => {
   // 遍历对象中的属性
-  for( let i in obj ){
+  for (let i in obj) {
     // 首先除去常规空数据，用delete关键字
     // console.log(i)
-    if (i === '_keyPath' ||
+    if (
+      i === '_keyPath' ||
       obj[i] === undefined ||
       obj[i] === null ||
-      obj[i] === "" ||
+      obj[i] === '' ||
       JSON.stringify(obj[i]) === '{}' ||
-      JSON.stringify(obj[i]) === '[]'){
-      delete obj[i]
-    } else if(obj[i].constructor === Object) {
+      JSON.stringify(obj[i]) === '[]'
+    ) {
+      delete obj[i];
+    } else if (obj[i].constructor === Object) {
       // 如果发现该属性的值还是一个对象，再判空后进行迭代调用
-      if(Object.keys(obj[i]).length === 0) {
-        delete obj[i] // 判断对象上是否存在属性，如果为空对象则删除
+      if (Object.keys(obj[i]).length === 0) {
+        delete obj[i]; // 判断对象上是否存在属性，如果为空对象则删除
       }
-      delNullProperty(obj[i])
-    } else if(obj[i].constructor === Array){ //对象值如果是数组，判断是否为空数组后进入数据遍历判空逻辑
-      if( obj[i].length === 0 ){ //如果数组为空则删除
-        delete obj[i]
-      }else{
-        for( let index = 0 ; index < obj[i].length ; index++){//遍历数组
-          if(obj[i][index] === undefined || obj[i][index] === null || obj[i][index] === "" || JSON.stringify(obj[i][index]) === "{}" ){
-            obj[i].splice(index,1)//如果数组值为以上空值则修改数组长度，移除空值下标后续值依次提前
-            index--//由于数组当前下标内容已经被替换成下一个值，所以计数器需要自减以抵消之后的自增
+      delNullProperty(obj[i]);
+    } else if (obj[i].constructor === Array) {
+      //对象值如果是数组，判断是否为空数组后进入数据遍历判空逻辑
+      if (obj[i].length === 0) {
+        //如果数组为空则删除
+        delete obj[i];
+      } else {
+        for (let index = 0; index < obj[i].length; index++) {
+          //遍历数组
+          if (
+            obj[i][index] === undefined ||
+            obj[i][index] === null ||
+            obj[i][index] === '' ||
+            JSON.stringify(obj[i][index]) === '{}'
+          ) {
+            obj[i].splice(index, 1); //如果数组值为以上空值则修改数组长度，移除空值下标后续值依次提前
+            index--; //由于数组当前下标内容已经被替换成下一个值，所以计数器需要自减以抵消之后的自增
           }
-          if(obj[i].constructor === Object){//如果发现数组值中有对象，则再次进入迭代
-            delNullProperty(obj[i])
+          if (obj[i].constructor === Object) {
+            //如果发现数组值中有对象，则再次进入迭代
+            delNullProperty(obj[i]);
           }
         }
       }
     }
   }
-}
+};

@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -56,7 +55,7 @@ import { NzPipesModule } from 'ng-zorro-antd/pipes';
     NzTagModule,
     NzToolTipModule,
     NzPipesModule,
-    NzPopconfirmModule,
+    NzPopconfirmModule
   ],
   exports: [
     CommonModule,
@@ -84,7 +83,7 @@ import { NzPipesModule } from 'ng-zorro-antd/pipes';
     NzTagModule,
     NzToolTipModule,
     NzPipesModule,
-    NzPopconfirmModule,
+    NzPopconfirmModule
   ]
 })
 export class CustomModule {}

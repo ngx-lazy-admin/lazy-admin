@@ -1,7 +1,7 @@
-import { 
+import {
   Component,
   OnInit,
-  ChangeDetectionStrategy, 
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   ViewContainerRef,
   ViewChild,
@@ -17,7 +17,6 @@ import { takeUntil, debounceTime } from 'rxjs/operators';
 import { MenuService, MenuType } from '../../menu.service';
 import { ModalService } from 'src/app/shared/modal';
 
-
 export declare type menuOperationType = 'left' | 'right' | 'all' | 'reload' | 'other';
 
 @Component({
@@ -28,15 +27,14 @@ export declare type menuOperationType = 'left' | 'right' | 'all' | 'reload' | 'o
   providers: [ModalService]
 })
 export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
-
   selectedIndex: number = 0;
-  tabs: Array<MenuType|null> | null = []
+  tabs: Array<MenuType | null> | null = [];
 
-  menus: any[] = []
-  modals: any[] = []
+  menus: any[] = [];
+  modals: any[] = [];
 
   private _destroy$ = new Subject<void>();
-  lastModalLength = 0
+  lastModalLength = 0;
 
   constructor(
     private contextMenuService: NzContextMenuService,
@@ -46,30 +44,28 @@ export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
     private modalServe: ModalService
   ) {
     this.menu.tabsetChange$.pipe(takeUntil(this._destroy$), debounceTime(60)).subscribe(tabs => {
-      this.menus = tabs || []
+      this.menus = tabs || [];
       if (this.tabs?.findIndex(item => item?.selected) || this.tabs?.findIndex(item => item?.selected) === 0) {
-        this.selectedIndex = this.tabs?.findIndex(item => item?.selected)
+        this.selectedIndex = this.tabs?.findIndex(item => item?.selected);
       }
       // this.cd.markForCheck();
-      this.updateTabs()
-    })
+      this.updateTabs();
+    });
 
-
-
-    console.log('header-tabset')
-    console.log(this.modal.openModals)
+    console.log('header-tabset');
+    console.log(this.modal.openModals);
   }
 
   ngOnInit(): void {
     this.modalServe.change.subscribe(item => {
-      console.log('header-tabset')
+      console.log('header-tabset');
       // this.updateTabs()
-    })
-    console.log(this.modalServe.change)
+    });
+    console.log(this.modalServe.change);
   }
 
   closeTab({ index }: { index: number }): void {
-    this.menu.closeTabSet(index)
+    this.menu.closeTabSet(index);
   }
 
   newTab(tabs: any): void {
@@ -80,19 +76,19 @@ export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
     // this.cd.markForCheck();
   }
 
-  updateTabs () {
+  updateTabs() {
     const modals = this.modal.openModals.map(modal => {
-      const params = modal.getConfig().nzComponentParams
+      const params = modal.getConfig().nzComponentParams;
       return {
         ...modal.getConfig().nzComponentParams,
         modal,
         name: params?.nzTitle
-      }
-    })
+      };
+    });
 
-    this.tabs = [...this.menus, ...modals]
-    this.selectedIndex = this.tabs?.findIndex(item => item?.selected)
-    this.cd.markForCheck(); 
+    this.tabs = [...this.menus, ...modals];
+    this.selectedIndex = this.tabs?.findIndex(item => item?.selected);
+    this.cd.markForCheck();
   }
 
   contextMenu($event: MouseEvent, menu: any): void {
@@ -110,7 +106,7 @@ export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
   closeMenu(tabs: any, type: menuOperationType = 'all'): void {
     switch (type) {
       case 'all': {
-        console.log('all'); 
+        console.log('all');
         break;
       }
       case 'left': {
