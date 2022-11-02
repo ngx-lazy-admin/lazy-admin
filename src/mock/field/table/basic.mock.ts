@@ -3,16 +3,16 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const TableBasicMockFields = [
   {
     type: 'code-card',
-    className: "d-block mb-3 col-12",
+    className: 'd-block mb-3 col-12',
     templateOptions: {
       title: '按钮类型',
-      description: '按钮有五种类型：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。主按钮在同一个操作区域最多出现一次。',
+      description: '按钮有五种类型：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。主按钮在同一个操作区域最多出现一次。'
     },
     fieldGroup: [
       {
         key: 'list',
         type: 'simple-table',
-        className: "d-block mb-2",
+        className: 'd-block mb-2',
         fieldArray: {
           fieldGroup: [
             {
@@ -47,8 +47,7 @@ export const TableBasicMockFields = [
             }
           ]
         }
-
       }
     ]
   }
-]
+];

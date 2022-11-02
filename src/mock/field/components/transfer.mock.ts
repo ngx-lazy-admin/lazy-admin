@@ -1,6 +1,6 @@
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 
-const list: any[] = []
+const list: any[] = [];
 
 for (let i = 0; i < 20; i++) {
   list.push({
@@ -15,42 +15,41 @@ for (let i = 0; i < 20; i++) {
 export const TransferMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-    },
+    className: 'd-block mb-3 col-6',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '最基本的用法，展示了 nzDataSource 每行的渲染函数 nzRender 以及回调函数 nzChange、nzSelectChange 的用法。',
+          description:
+            '最基本的用法，展示了 nzDataSource 每行的渲染函数 nzRender 以及回调函数 nzChange、nzSelectChange 的用法。'
         },
         fieldGroup: [
           {
             key: 'transfer-1-1-1',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             defaultValue: list,
-            templateOptions: {
-            }
+            templateOptions: {}
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '受控的 transfer',
-          description: '联动 transfer。',
+          description: '联动 transfer。'
         },
         fieldGroup: [
           {
             key: 'checked2',
             type: 'transfer',
-            className: "d-inline-block w-100",
+            className: 'd-inline-block w-100',
             templateOptions: {
-              text: "checked-disabled",
+              text: 'checked-disabled',
               disabled: 'formState.checked2.disabled'
             },
             expressionProperties: {
@@ -59,13 +58,13 @@ export const TransferMockFields = [
           },
           {
             type: 'button',
-            className: "d-inline-block mt-2 ",
+            className: 'd-inline-block mt-2 ',
             templateOptions: {
-              text: "Disabled",
+              text: 'Disabled',
               size: 'small',
               type: 'primary',
               clicks: (_field: FormlyFieldConfig, _this: any) => {
-                _field.formControl?.patchValue(!_field.formControl.value)
+                _field.formControl?.patchValue(!_field.formControl.value);
               },
               click: `(_field, _this) => _field.options.formState.checked2 = {
                   ..._field.options.formState.checked2,
@@ -76,9 +75,9 @@ export const TransferMockFields = [
           },
           {
             type: 'button',
-            className: "d-inline-block mx-2 ",
+            className: 'd-inline-block mx-2 ',
             templateOptions: {
-              text: "Checked",
+              text: 'Checked',
               size: 'small',
               type: 'primary',
               click: `(_field, _this) => _field.form?.get('checked2')?.patchValue(!_field.form?.get('checked2')?.value)`
@@ -88,173 +87,166 @@ export const TransferMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'checked2',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "transfer",
+              text: 'transfer'
             }
           },
           {
             key: 'checked1',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: 'nzDisabled'
             }
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'checked2',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "transfer",
+              text: 'transfer'
             }
           },
           {
             key: 'checked1',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: 'nzDisabled'
             }
           }
         ]
-      },
+      }
     ]
   },
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: 'd-block mb-3 col-6',
     templateOptions: {
       title: '基本',
-      description: '最简单的用法，在浮层中可以选择或者输入日期。',
+      description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         fieldGroup: [
           {
             key: 'checked2',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "transfer",
+              text: 'transfer'
             }
           },
           {
             key: 'checked1',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: 'nzDisabled'
             }
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'checked2',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "transfer",
+              text: 'transfer'
             }
           },
           {
             key: 'checked1',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: 'nzDisabled'
             }
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'checked2',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "transfer",
+              text: 'transfer'
             }
           },
           {
             key: 'checked1',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: 'nzDisabled'
             }
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'checked2',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "transfer",
+              text: 'transfer'
             }
           },
           {
             key: 'checked1',
             type: 'transfer',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "nzDisabled",
-              
+              text: 'nzDisabled'
             }
           }
         ]
-      },
-
+      }
     ]
-  },
-]
+  }
+];

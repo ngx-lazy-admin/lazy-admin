@@ -1,32 +1,29 @@
 export const DatePickerMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-    },
+    className: 'd-block mb-3 col-6',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'week',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "week"
+              mode: 'week'
             }
           },
           {
@@ -34,7 +31,7 @@ export const DatePickerMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "month"
+              mode: 'month'
             }
           },
           {
@@ -42,17 +39,17 @@ export const DatePickerMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "year"
+              mode: 'year'
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
@@ -77,48 +74,46 @@ export const DatePickerMockFields = [
                 {
                   label: 'Year',
                   value: 'year'
-                },
+                }
               ],
               change: `(_field, _this) => 
                 _field.options.formState.selectMode = _field.formControl.value
               `
-            },
+            }
           },
           {
             key: 'date3',
             type: 'date-picker',
             className: 'col-3 mb-3 d-inline-block',
             templateOptions: {
-              mode: "year"
+              mode: 'year'
             },
             expressionProperties: {
-              'templateOptions.mode': 'formState.selectMode',
-            },
+              'templateOptions.mode': 'formState.selectMode'
+            }
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '三种大小',
-          description: '三种大小的输入框，若不设置，则为 default。',
+          description: '三种大小的输入框，若不设置，则为 default。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'week',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "week"
+              mode: 'week'
             }
           },
           {
@@ -126,7 +121,7 @@ export const DatePickerMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "month"
+              mode: 'month'
             }
           },
           {
@@ -134,17 +129,17 @@ export const DatePickerMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "year"
+              mode: 'year'
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '禁用',
-          description: '选择框的不可用状态。',
+          description: '选择框的不可用状态。'
         },
         fieldGroup: [
           {
@@ -161,7 +156,7 @@ export const DatePickerMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "week",
+              mode: 'week',
               disabled: true
             }
           },
@@ -170,7 +165,7 @@ export const DatePickerMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "month",
+              mode: 'month',
               disabled: true
             }
           },
@@ -179,40 +174,38 @@ export const DatePickerMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "year",
+              mode: 'year',
               disabled: true
             }
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: 'd-block mb-3 col-6',
     templateOptions: {
       title: '基本',
-      description: '最简单的用法，在浮层中可以选择或者输入日期。',
+      description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'week',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "week"
+              mode: 'week'
             }
           },
           {
@@ -220,90 +213,79 @@ export const DatePickerMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "month"
+              mode: 'month'
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'year',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "year"
+              mode: 'year'
             }
-          },
+          }
         ]
-      },
-
+      }
     ]
-  },
-]
+  }
+];

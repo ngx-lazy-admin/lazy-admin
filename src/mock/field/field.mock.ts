@@ -1,14 +1,14 @@
-import { FormlyFieldConfig } from "@ngx-formly/core";
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
-export const field: FormlyFieldConfig[] =  [
+export const field: FormlyFieldConfig[] = [
   {
     id: 'dashboard',
     type: 'steps',
     key: 'name',
-    className: "w-50 d-block",
+    className: 'w-50 d-block',
     wrappers: ['inline'],
     templateOptions: {
-      label: "姓名",
+      label: '姓名',
       required: true,
       placeholder: '姓名',
       readonly: true,
@@ -27,7 +27,7 @@ export const field: FormlyFieldConfig[] =  [
         {
           label: 'Waiting',
           description: 'This is a description.'
-        },
+        }
       ]
     }
   },
@@ -36,8 +36,8 @@ export const field: FormlyFieldConfig[] =  [
     templateOptions: {
       text: '下一步',
       click: (field: FormlyFieldConfig, _this: any) => {
-        console.log(field?.formControl?.value)
-        console.log(_this.message.error('hello world'))
+        console.log(field?.formControl?.value);
+        console.log(_this.message.error('hello world'));
       }
     }
   },
@@ -46,11 +46,10 @@ export const field: FormlyFieldConfig[] =  [
     templateOptions: {
       text: '上一步',
       click: (field: any, _this: any) => {
-        _this.http.get('api/user')
-          .subscribe((item: any) => {
-            console.log(item)
-          }); 
+        _this.http.get('api/user').subscribe((item: any) => {
+          console.log(item);
+        });
       }
     }
   }
-]
+];

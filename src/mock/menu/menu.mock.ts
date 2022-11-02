@@ -21,14 +21,14 @@ export const menu = [
         pid: '1',
         name: '监控页',
         link: '/dashboard/monitor',
-        badge: '',
+        badge: ''
       },
       {
         id: '1003',
         pid: '1',
         name: '工作台',
         link: '/dashboard/workplace',
-        badge: '',
+        badge: ''
       }
     ]
   },
@@ -45,28 +45,28 @@ export const menu = [
         pid: '2',
         name: '用户管理',
         link: '/system/user',
-        badge: '',
+        badge: ''
       },
       {
         id: '0202',
         pid: '2',
         name: '菜单管理',
         link: '/system/menu',
-        badge: '',
+        badge: ''
       },
       {
         id: '0203',
         pid: '2',
         name: '角色管理',
         link: '/system/role',
-        badge: '',
+        badge: ''
       },
       {
         id: '0204',
         pid: '2',
         name: '表单管理',
         link: '/system/form',
-        badge: '',
+        badge: ''
       }
     ]
   },
@@ -83,22 +83,22 @@ export const menu = [
         pid: '3',
         name: '基础表单',
         link: '/form/basic-form',
-        badge: '',
+        badge: ''
       },
       {
         id: '0302',
         pid: '3',
         name: '分步表单',
         link: '/form/step-form',
-        badge: '',
+        badge: ''
       },
       {
         id: '0302',
         pid: '3',
         name: '高级表单',
         link: '/form/advanced-form',
-        badge: '',
-      } 
+        badge: ''
+      }
     ]
   },
   {
@@ -121,22 +121,22 @@ export const menu = [
             pid: '0401',
             name: '搜索列表(文章)',
             link: '/list/search/articles',
-            badge: '',
+            badge: ''
           },
           {
             id: '040102',
-            pid: '0401', 
+            pid: '0401',
             name: '搜索列表(项目)',
             link: '/list/search/project',
-            badge: '',
+            badge: ''
           },
           {
             id: '040103',
             pid: '0401',
             name: '搜索列表(应用)',
             link: '/list/search/applications',
-            badge: '',
-          },
+            badge: ''
+          }
         ]
       },
       {
@@ -144,21 +144,21 @@ export const menu = [
         pid: '4',
         name: '查询表格',
         link: '/list/table',
-        badge: '',
+        badge: ''
       },
       {
         id: '0403',
         pid: '4',
         name: '标准卡片',
         link: '/list/basic',
-        badge: '',
+        badge: ''
       },
       {
         id: '0404',
         pid: '4',
         name: '卡片列表',
         link: '/list/card',
-        badge: '',
+        badge: ''
       }
     ]
   },
@@ -175,14 +175,14 @@ export const menu = [
         pid: '5',
         name: '基础详情页',
         link: '/profile/basic',
-        badge: '',
+        badge: ''
       },
       {
         id: '0502',
         pid: '5',
         name: '高级详情页',
         link: '/profile/advanced',
-        badge: '',
+        badge: ''
       }
     ]
   },
@@ -199,15 +199,15 @@ export const menu = [
         pid: '6',
         name: '成功页',
         link: '/result/success',
-        badge: '',
+        badge: ''
       },
       {
         id: '0601',
         pid: '6',
         name: '失败页',
         link: '/result/fail',
-        badge: '',
-      },
+        badge: ''
+      }
     ]
   },
   {
@@ -223,22 +223,22 @@ export const menu = [
         pid: '7',
         name: '403',
         link: '/exception/403',
-        badge: '',
+        badge: ''
       },
       {
         id: '0702',
         pid: '7',
         name: '404',
         link: '/exception/404',
-        badge: '',
+        badge: ''
       },
       {
         id: '0703',
         pid: '7',
         name: '405',
         link: '/exception/405',
-        badge: '',
-      },
+        badge: ''
+      }
     ]
   },
   {
@@ -253,15 +253,15 @@ export const menu = [
         pid: '8',
         name: '个人中心',
         link: '/account/center',
-        badge: '',
+        badge: ''
       },
       {
         id: '0802',
         pid: '8',
         name: '个人设置',
         link: '/account/settings',
-        badge: '',
-      },
+        badge: ''
+      }
     ]
   },
   {
@@ -284,15 +284,15 @@ export const menu = [
             pid: '14',
             name: '使用iframe嵌套首页',
             link: '/micro/iframe/blank/dashboard/analysis',
-            badge: '',
+            badge: ''
           },
           {
             id: '1401',
             pid: '14',
             name: '使用iframe嵌套antd',
             link: '/micro/iframe/blank/components/autocomplete',
-            badge: '',
-          },
+            badge: ''
+          }
         ]
       },
       {
@@ -307,15 +307,15 @@ export const menu = [
             pid: '14',
             name: '使用wujie嵌套空白页',
             link: '/micro/wujie/blank/dashboard/analysis',
-            badge: '',
+            badge: ''
           },
           {
             id: '1401',
             pid: '14',
             name: '使用wujie嵌套antd',
             link: '/micro/wujie/blank/components/autocomplete',
-            badge: '',
-          },
+            badge: ''
+          }
         ]
       },
 
@@ -332,15 +332,15 @@ export const menu = [
             pid: '14',
             name: 'qiankun 1',
             link: '/micro/qiankun/1',
-            badge: '',
+            badge: ''
           },
           {
             id: '140102',
             pid: '14',
             name: 'qiankun 2',
             link: '/micro/qiankun/2',
-            badge: '',
-          },
+            badge: ''
+          }
         ]
       }
     ]
@@ -358,15 +358,15 @@ export const menu = [
         pid: '9',
         name: 'quill 编辑器',
         link: '/editor/editor',
-        badge: '',
+        badge: ''
       },
       {
         id: '0901',
         pid: '9',
         name: 'tui markdown 编辑器',
         link: '/editor/markdown',
-        badge: '',
-      },
+        badge: ''
+      }
     ]
   },
   {
@@ -389,141 +389,141 @@ export const menu = [
             pid: '13',
             name: 'Flowchart',
             link: '/antv/flow-chart',
-            badge: '',
+            badge: ''
           },
           {
             id: '1301',
             pid: '13',
             name: 'Line',
             link: '/antv/line',
-            badge: '',
+            badge: ''
           },
           {
             id: '1302',
             pid: '13',
             name: 'Area Map',
             link: '/antv/area-map',
-            badge: '',
+            badge: ''
           },
           {
             id: '1303',
             pid: '13',
             name: 'Choropleth Map',
             link: '/antv/choropleth-map',
-            badge: '',
+            badge: ''
           },
           {
             id: '1304',
             pid: '13',
             name: 'Dot Map',
             link: '/antv/dot-map',
-            badge: '',
+            badge: ''
           },
           {
             id: '1305',
             pid: '13',
             name: 'Heat Map',
             link: '/antv/heat-map',
-            badge: '',
+            badge: ''
           },
           {
             id: '1306',
             pid: '13',
             name: 'Area',
             link: '/antv/area',
-            badge: '',
+            badge: ''
           },
           {
             id: '1307',
             pid: '13',
             name: 'Column',
             link: '/antv/column',
-            badge: '',
+            badge: ''
           },
           {
             id: '1308',
             pid: '13',
             name: 'Bar',
             link: '/antv/bar',
-            badge: '',
+            badge: ''
           },
           {
             id: '1309',
             pid: '13',
             name: 'Pie',
             link: '/antv/pie',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Dual Axes',
             link: '/antv/dual-axes',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Progress plots',
             link: '/antv/progress-plots',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Scater and Bubble',
             link: '/antv/scater-and-bubble',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Rose',
             link: '/antv/rose',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Relation Plots',
             link: '/antv/relation-plots',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Heatmap',
             link: '/antv/Heatmap',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Tiny Plots',
             link: '/antv/tiny-plots',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'More Plots',
             link: '/antv/more-plots',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Realtion Graph',
             link: '/antv/realtion-graph',
-            badge: '',
+            badge: ''
           },
           {
             id: '1310',
             pid: '13',
             name: 'Dynamic Plots',
             link: '/antv/dynamic-plots',
-            badge: '',
-          },
+            badge: ''
+          }
         ]
       },
       {
@@ -531,15 +531,15 @@ export const menu = [
         pid: '13',
         name: 'Echart',
         link: '/antv/echart',
-        badge: '',
+        badge: ''
       },
       {
         id: '1302',
         pid: '13',
         name: 'hightchart',
         link: '/hightchart/one',
-        badge: '',
-      },
+        badge: ''
+      }
     ]
   },
   {
@@ -554,246 +554,246 @@ export const menu = [
         id: '1101',
         name: 'Autocomplete',
         link: '/components/autocomplete',
-        badge: '',
+        badge: ''
       },
       {
         id: '1102',
         pid: '11',
         name: 'Button',
         link: '/components/button',
-        badge: '',
+        badge: ''
       },
       {
         id: '1131',
         pid: '11',
         name: 'Badge',
         link: '/components/badge',
-        badge: '',
+        badge: ''
       },
       {
         id: '1103',
         pid: '11',
         name: 'Card',
         link: '/components/card',
-        badge: '',
+        badge: ''
       },
       {
         id: '1104',
         pid: '11',
         name: 'Cascader',
         link: '/components/cascader',
-        badge: '',
+        badge: ''
       },
       {
         id: '1105',
         pid: '11',
         name: 'Checkbox',
         link: '/components/checkbox',
-        badge: '',
+        badge: ''
       },
       {
         id: '1106',
         pid: '11',
         name: 'Collapse',
         link: '/components/collapse',
-        badge: '',
+        badge: ''
       },
       {
         id: '1107',
         pid: '11',
         name: 'date-picker',
         link: '/components/date-picker',
-        badge: '',
+        badge: ''
       },
       {
         id: '1108',
         pid: '11',
         name: 'descriptions',
         link: '/components/descriptions',
-        badge: '',
+        badge: ''
       },
       {
         id: '1109',
         pid: '11',
         name: 'dropdown',
         link: '/components/dropdown',
-        badge: '',
+        badge: ''
       },
       {
         id: '1110',
         pid: '11',
         name: 'input',
         link: '/components/input',
-        badge: '',
+        badge: ''
       },
       {
         id: '1111',
         pid: '11',
         name: 'input-number',
         link: '/components/input-number',
-        badge: '',
+        badge: ''
       },
       {
         id: '1112',
         pid: '11',
         name: 'list',
         link: '/components/list',
-        badge: '',
+        badge: ''
       },
       {
         id: '1113',
         pid: '11',
         name: 'mention',
         link: '/components/mention',
-        badge: '',
+        badge: ''
       },
       {
         id: '1140',
         pid: '11',
         name: 'modal',
         link: '/components/modal',
-        badge: '1',
+        badge: '1'
       },
       {
         id: '1114',
         pid: '11',
         name: 'pagination',
         link: '/components/pagination',
-        badge: '',
+        badge: ''
       },
       {
         id: '1115',
         pid: '11',
         name: 'radio',
         link: '/components/radio',
-        badge: '',
+        badge: ''
       },
       {
         id: '1116',
         pid: '11',
         name: 'rate',
         link: '/components/rate',
-        badge: '',
+        badge: ''
       },
       {
         id: '1117',
         pid: '11',
         name: 'repeat',
         link: '/components/repeat',
-        badge: '',
+        badge: ''
       },
       {
         id: '1118',
         pid: '11',
         name: 'result',
         link: '/components/result',
-        badge: '',
+        badge: ''
       },
       {
         id: '1119',
         pid: '11',
         name: 'select',
         link: '/components/select',
-        badge: '',
+        badge: ''
       },
       {
         id: '1120',
         pid: '11',
         name: 'slider',
         link: '/components/slider',
-        badge: '',
+        badge: ''
       },
       {
         id: '1121',
         pid: '11',
         name: 'steps',
         link: '/components/steps',
-        badge: '',
+        badge: ''
       },
       {
         id: '1122',
         pid: '11',
         name: 'switch',
         link: '/components/switch',
-        badge: '',
+        badge: ''
       },
       {
         id: '1123',
         pid: '11',
         name: 'table',
         link: '/components/table',
-        badge: '',
+        badge: ''
       },
       {
         id: '1124',
         pid: '11',
         name: 'tabs',
         link: '/components/tabs',
-        badge: '',
+        badge: ''
       },
       {
         id: '1125',
         pid: '11',
         name: 'tag',
         link: '/components/tag',
-        badge: '',
+        badge: ''
       },
       {
         pid: '11',
         id: '1126',
         name: 'template',
         link: '/components/template',
-        badge: '',
+        badge: ''
       },
       {
         pid: '11',
         id: '1127',
         name: 'time-picker',
         link: '/components/time-picker',
-        badge: '',
+        badge: ''
       },
       {
         pid: '11',
         id: '1128',
         name: 'transfer',
         link: '/components/transfer',
-        badge: '',
+        badge: ''
       },
       {
         id: '1129',
         pid: '11',
         name: 'tree-select',
         link: '/components/tree-select',
-        badge: '',
+        badge: ''
       },
       {
         id: '1130',
         pid: '11',
         name: 'upload',
         link: '/components/upload',
-        badge: '',
+        badge: ''
       },
       {
         id: '1131',
         pid: '11',
         name: 'repeat',
         link: '/components/repeat',
-        badge: '',
+        badge: ''
       },
       {
         id: '1132',
         pid: '11',
         name: 'statistic',
         link: '/components/statistic',
-        badge: '',
+        badge: ''
       },
       {
         id: '1133',
         pid: '11',
         name: 'segmented',
         link: '/components/segmented',
-        badge: '',
-      },
+        badge: ''
+      }
     ]
   },
   {
@@ -808,7 +808,7 @@ export const menu = [
         pid: '12',
         name: 'API',
         link: '/bootstrap/api',
-        badge: '',
+        badge: ''
       },
       {
         id: '1202',
@@ -816,7 +816,7 @@ export const menu = [
 
         name: 'Background',
         link: '/bootstrap/backgrounds',
-        badge: '',
+        badge: ''
       },
       {
         id: '1203',
@@ -824,7 +824,7 @@ export const menu = [
 
         name: 'Borders',
         link: '/bootstrap/borders',
-        badge: '',
+        badge: ''
       },
       {
         id: '1204',
@@ -832,7 +832,7 @@ export const menu = [
 
         name: 'Colors',
         link: '/bootstrap/colors',
-        badge: '',
+        badge: ''
       },
       {
         id: '1205',
@@ -840,7 +840,7 @@ export const menu = [
 
         name: 'Display',
         link: '/bootstrap/display',
-        badge: '',
+        badge: ''
       },
       {
         id: '1206',
@@ -848,7 +848,7 @@ export const menu = [
 
         name: 'Flex',
         link: '/bootstrap/flex',
-        badge: '',
+        badge: ''
       },
       {
         id: '1207',
@@ -856,7 +856,7 @@ export const menu = [
 
         name: 'Float',
         link: '/bootstrap/float',
-        badge: '',
+        badge: ''
       },
       {
         id: '1208',
@@ -864,7 +864,7 @@ export const menu = [
 
         name: 'Interactions',
         link: '/bootstrap/interactions',
-        badge: '',
+        badge: ''
       },
       {
         id: '1209',
@@ -872,7 +872,7 @@ export const menu = [
 
         name: 'Opacity',
         link: '/bootstrap/opacity',
-        badge: '',
+        badge: ''
       },
       {
         id: '1210',
@@ -880,57 +880,57 @@ export const menu = [
 
         name: 'Overflow',
         link: '/bootstrap/overflow',
-        badge: '',
+        badge: ''
       },
       {
         id: '1211',
         pid: '12',
         name: 'Position',
         link: '/bootstrap/position',
-        badge: '',
+        badge: ''
       },
       {
         id: '1212',
         pid: '12',
         name: 'Shadows',
         link: '/bootstrap/shadows',
-        badge: '',
+        badge: ''
       },
       {
         id: '1213',
         pid: '12',
         name: 'Sizing',
         link: '/bootstrap/sizing',
-        badge: '',
+        badge: ''
       },
       {
         id: '1214',
         pid: '12',
         name: 'Spacing',
         link: '/bootstrap/spacing',
-        badge: '',
+        badge: ''
       },
       {
         id: '1215',
         pid: '12',
         name: 'Text',
         link: '/bootstrap/text',
-        badge: '',
+        badge: ''
       },
       {
         id: '1216',
         pid: '12',
         name: 'Vertical align',
         link: '/bootstrap/vertical-align',
-        badge: '',
+        badge: ''
       },
       {
         id: '1217',
         pid: '12',
         name: 'Visibility',
         link: '/bootstrap/visibility',
-        badge: '',
-      },
+        badge: ''
+      }
     ]
   },
   {
@@ -944,29 +944,28 @@ export const menu = [
         pid: '13',
         name: '基本表格',
         link: '/table/basic',
-        badge: '',
+        badge: ''
       },
       {
-
         id: '1302',
         pid: '13',
         name: '虚拟滚动',
         link: '/table/virtual-table',
-        badge: '',
+        badge: ''
       },
       {
         id: '1303',
         pid: '13',
         name: 'Antd table',
         link: '/table/antd-table',
-        badge: '',
+        badge: ''
       },
       {
         id: '1304',
         pid: '13',
         name: 'Pro table',
         link: '/table/pro-table',
-        badge: '',
+        badge: ''
       }
     ]
   },
@@ -981,21 +980,21 @@ export const menu = [
         pid: '14',
         name: 'introduction',
         link: '/forms/introduction',
-        badge: '',
+        badge: ''
       },
       {
         id: '1402',
         pid: '14',
         name: 'expression',
         link: '/forms/expression',
-        badge: '',
+        badge: ''
       },
       {
         id: '1402',
         pid: '14',
         name: 'defaultValue',
         link: '/forms/defaultValue',
-        badge: '',
+        badge: ''
       },
       {
         id: '1402',
@@ -1023,5 +1022,5 @@ export const menu = [
     name: '函数库',
     badge: '',
     link: '/tools'
-  },
-]
+  }
+];

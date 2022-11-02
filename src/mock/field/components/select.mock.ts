@@ -3,13 +3,12 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const SelectMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-    },
+    className: 'd-block mb-3 col-6',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
           description: '简单的 select',
@@ -19,173 +18,197 @@ export const SelectMockFields = [
           {
             key: 'select1',
             type: 'select',
-            className: "d-inline-block  col-3",
+            className: 'd-inline-block  col-3',
             defaultValue: 'lucy',
             templateOptions: {
-              text: "Checkbox",
-              options: [{
-                label: 'Jack',
-                value: 'jack'
-              }, {
-                label: 'Lucy',
-                value: 'lucy'
-              }, {
-                label: 'Disabled',
-                value: 'disabled',
-                disabled: true
-              }]
+              text: 'Checkbox',
+              options: [
+                {
+                  label: 'Jack',
+                  value: 'jack'
+                },
+                {
+                  label: 'Lucy',
+                  value: 'lucy'
+                },
+                {
+                  label: 'Disabled',
+                  value: 'disabled',
+                  disabled: true
+                }
+              ]
             }
           },
           {
             key: 'select2',
             type: 'select',
-            className: "d-inline-block col-3",
+            className: 'd-inline-block col-3',
             defaultValue: 'lucy',
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               disabled: true,
-              options: [{
-                label: 'Jack',
-                value: 'jack'
-              }, {
-                label: 'Lucy',
-                value: 'lucy'
-              }, {
-                label: 'Disabled',
-                value: 'disabled',
-                disabled: true
-              }]
+              options: [
+                {
+                  label: 'Jack',
+                  value: 'jack'
+                },
+                {
+                  label: 'Lucy',
+                  value: 'lucy'
+                },
+                {
+                  label: 'Disabled',
+                  value: 'disabled',
+                  disabled: true
+                }
+              ]
             }
           },
           {
             key: 'select3',
             type: 'select',
-            className: "d-inline-block col-3",
+            className: 'd-inline-block col-3',
             defaultValue: 'lucy',
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               loading: true,
-              options: [{
-                label: 'Jack',
-                value: 'jack'
-              }, {
-                label: 'Lucy',
-                value: 'lucy'
-              }, {
-                label: 'Disabled',
-                value: 'disabled',
-                disabled: true
-              }]
+              options: [
+                {
+                  label: 'Jack',
+                  value: 'jack'
+                },
+                {
+                  label: 'Lucy',
+                  value: 'lucy'
+                },
+                {
+                  label: 'Disabled',
+                  value: 'disabled',
+                  disabled: true
+                }
+              ]
             }
           },
           {
             key: 'select4',
             type: 'select',
-            className: "d-inline-block col-3",
+            className: 'd-inline-block col-3',
             defaultValue: 'lucy',
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               allowClear: true,
               placeholder: 'Choose',
-              options: [{
-                label: 'Jack',
-                value: 'jack'
-              }, {
-                label: 'Lucy',
-                value: 'lucy'
-              }, {
-                label: 'Disabled',
-                value: 'disabled',
-                disabled: true
-              }]
+              options: [
+                {
+                  label: 'Jack',
+                  value: 'jack'
+                },
+                {
+                  label: 'Lucy',
+                  value: 'lucy'
+                },
+                {
+                  label: 'Disabled',
+                  value: 'disabled',
+                  disabled: true
+                }
+              ]
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '多选',
-          description: '多选，从已有条目中选择，例子中通过 nzMaxTagCount 限制最多显示3个选项。',
+          description: '多选，从已有条目中选择，例子中通过 nzMaxTagCount 限制最多显示3个选项。'
         },
         fieldGroup: [
           {
             key: 'selectedMultiple',
             type: 'select',
-            className: "d-inline-block  col-3",
+            className: 'd-inline-block  col-3',
             templateOptions: {
               maxTagCount: 3,
               mode: 'multiple',
               plaseholder: 'Please select',
-              options: [{
-                label: 'Jack',
-                value: 'jack'
-              }, {
-                label: 'Lucy',
-                value: 'lucy'
-              },
-              {
-                label: 'a10',
-                value: 'a10'
-              }, {
-                label: 'a11',
-                value: 'a11',
-              },
-              {
-                label: 'a12',
-                value: 'a12',
-              },]
+              options: [
+                {
+                  label: 'Jack',
+                  value: 'jack'
+                },
+                {
+                  label: 'Lucy',
+                  value: 'lucy'
+                },
+                {
+                  label: 'a10',
+                  value: 'a10'
+                },
+                {
+                  label: 'a11',
+                  value: 'a11'
+                },
+                {
+                  label: 'a12',
+                  value: 'a12'
+                }
+              ]
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '带搜索框',
-          description: '展开后可对选项进行搜索。',
+          description: '展开后可对选项进行搜索。'
         },
         fieldGroup: [
           {
             key: 'select10',
             type: 'select',
-            className: "d-inline-block col-3",
+            className: 'd-inline-block col-3',
             defaultValue: 'lucy',
             templateOptions: {
               showSearch: true,
               allowClear: true,
-              placeHolder: "Select a person",
-              options: [{
-                label: 'Jack',
-                value: 'jack'
-              }, {
-                label: 'Lucy',
-                value: 'lucy'
-              }, {
-                label: 'Disabled',
-                value: 'disabled',
-                disabled: true
-              }]
+              placeHolder: 'Select a person',
+              options: [
+                {
+                  label: 'Jack',
+                  value: 'jack'
+                },
+                {
+                  label: 'Lucy',
+                  value: 'lucy'
+                },
+                {
+                  label: 'Disabled',
+                  value: 'disabled',
+                  disabled: true
+                }
+              ]
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '联动',
-          description: '省市联动是典型的例子。推荐使用 Cascader 组件。',
+          description: '省市联动是典型的例子。推荐使用 Cascader 组件。'
         },
         fieldGroup: [
           {
             key: 'selectedProvince',
             type: 'select',
-            className: "d-inline-block mx-2  col-3",
+            className: 'd-inline-block mx-2  col-3',
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
             }
@@ -193,102 +216,102 @@ export const SelectMockFields = [
           {
             key: 'selectedCity',
             type: 'select',
-            className: "d-inline-block mx-2  col-3",
+            className: 'd-inline-block mx-2  col-3',
             templateOptions: {
-              text: "nzDisabled",
+              text: 'nzDisabled',
+              value: 'value',
+              options: ['Zhejiang', 'Jiangsu']
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    type: 'group',
+    className: 'd-block mb-3 col-6',
+    fieldGroup: [
+      {
+        type: 'code-card',
+        className: 'd-block mb-3 col-12',
+        templateOptions: {
+          title: '带搜索框',
+          description: '展开后可对选项进行搜索。'
+        },
+        fieldGroup: [
+          {
+            key: 'selectedProvince',
+            type: 'select',
+            className: 'd-inline-block mx-2  col-3',
+            templateOptions: {
+              text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
             }
           }
         ]
       },
-    ]
-  },
-  {
-    type: 'group',
-    className: "d-block mb-3 col-6",
-    fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '带搜索框',
-          description: '展开后可对选项进行搜索。',
-        },
-        fieldGroup: [
-          {
-            key: 'selectedProvince',
-            type: 'select',
-            className: "d-inline-block mx-2  col-3",
-            templateOptions: {
-              text: "Checkbox",
-              value: 'value',
-              options: ['Zhejiang', 'Jiangsu']
-            }
-          },
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '三种大小',
-          description: '三种大小的选择框，当 nzSize 分别为 large 和 small 时，输入框高度为 40px 和 24px ，默认高度为 32px。',
+          description:
+            '三种大小的选择框，当 nzSize 分别为 large 和 small 时，输入框高度为 40px 和 24px ，默认高度为 32px。'
         },
         fieldGroup: [
           {
             key: 'selectedProvince',
             type: 'select',
-            className: "d-inline-block mx-2  col-3",
+            className: 'd-inline-block mx-2  col-3',
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '分组',
-          description: '用 nz-option-group 进行选项分组。',
+          description: '用 nz-option-group 进行选项分组。'
         },
         fieldGroup: [
           {
             key: 'selectedProvince',
             type: 'select',
-            className: "d-inline-block mx-2  col-3",
+            className: 'd-inline-block mx-2  col-3',
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '搜索框',
-          description: '搜索和远程数据结合。',
+          description: '搜索和远程数据结合。'
         },
         fieldGroup: [
           {
             key: 'selectedProvince',
             type: 'select',
-            className: "d-inline-block mx-2 col-3",
+            className: 'd-inline-block mx-2 col-3',
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
             }
-          },
+          }
         ]
-      },
-
+      }
     ]
-  },
-]
+  }
+];

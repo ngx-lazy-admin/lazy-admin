@@ -3,38 +3,37 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const SwitchMockFields = [
   {
     type: 'group',
-    className: "d-block col-6",
-    templateOptions: {
-    },
+    className: 'd-block col-6',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '最简单的用法。',
+          description: '最简单的用法。'
         },
         fieldGroup: [
           {
             type: 'switch',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox'
             }
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '文字和图标',
-          description: '带有文字和图标。',
+          description: '带有文字和图标。'
         },
         fieldGroup: [
           {
             type: 'switch',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
               checkedChildren: '开',
               unCheckedChildren: '关'
@@ -42,7 +41,7 @@ export const SwitchMockFields = [
           },
           {
             type: 'switch',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
               checkedChildren: '1',
               unCheckedChildren: '0'
@@ -52,31 +51,30 @@ export const SwitchMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '加载中',
-          description: '标识开关操作仍在执行中。',
+          description: '标识开关操作仍在执行中。'
         },
         fieldGroup: [
           {
             key: 'switchLoading',
             type: 'switch',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             defaultValue: false,
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               loading: true
             }
           },
           {
             key: 'switchLoading2',
             type: 'switch',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             defaultValue: true,
             templateOptions: {
-              text: "Checkbox",
+              text: 'Checkbox',
               loading: true
-              
             }
           }
         ]
@@ -85,19 +83,19 @@ export const SwitchMockFields = [
   },
   {
     type: 'group',
-    className: "d-block col-6",
+    className: 'd-block col-6',
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '不可用',
-          description: 'Switch 失效状态。',
+          description: 'Switch 失效状态。'
         },
         fieldGroup: [
           {
             type: 'switch',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
               disabled: true
             }
@@ -106,38 +104,37 @@ export const SwitchMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '两种大小',
-          description: 'nzSize="small" 表示小号开关。',
+          description: 'nzSize="small" 表示小号开关。'
         },
         fieldGroup: [
           {
             type: 'switch',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
               size: 'small'
             }
           },
           {
             type: 'switch',
-            className: "d-inline-block mx-2",
-            templateOptions: {
-            }
+            className: 'd-inline-block mx-2',
+            templateOptions: {}
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '完整控制',
-          description: 'Switch 的状态完全由用户接管，不再自动根据点击事件改变数据。',
+          description: 'Switch 的状态完全由用户接管，不再自动根据点击事件改变数据。'
         },
         fieldGroup: [
           {
             type: 'switch',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
               size: 'small',
               control: true,
@@ -152,9 +149,9 @@ export const SwitchMockFields = [
                 }, 1000)
               } `
             }
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -227,7 +224,7 @@ export const SwitchMockFields = [
         },
         {
           label: '说明',
-          value: 'describe',
+          value: 'describe'
         },
         {
           label: '类型',
@@ -235,7 +232,7 @@ export const SwitchMockFields = [
         },
         {
           label: '默认值',
-          value: 'default',
+          value: 'default'
         },
         {
           label: '全局配置',
@@ -244,4 +241,4 @@ export const SwitchMockFields = [
       ]
     }
   }
-]
+];

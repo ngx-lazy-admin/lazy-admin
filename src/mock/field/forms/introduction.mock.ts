@@ -3,10 +3,10 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const IntroductionMockFields = [
   {
     type: 'code-card',
-    className: "d-block mb-3 col-12",
+    className: 'd-block mb-3 col-12',
     templateOptions: {
       title: 'Introduction Example',
-      description: '简单的徽章展示，当 nzCount 为 0 时，默认不显示，但是可以使用 nzShowZero 修改为显示。',
+      description: '简单的徽章展示，当 nzCount 为 0 时，默认不显示，但是可以使用 nzShowZero 修改为显示。'
     },
     fieldGroup: [
       {
@@ -18,8 +18,8 @@ export const IntroductionMockFields = [
           placeholder: 'Formly is terrific!'
         },
         validators: {
-          validation: ['required'],
-        },
+          validation: ['required']
+        }
       },
       {
         key: 'nestedStory',
@@ -29,7 +29,7 @@ export const IntroductionMockFields = [
           label: 'Some sweet story',
           placeholder: 'It allows you to build and maintain your forms with the ease of JavaScript :-)',
           description: '',
-          required: true,
+          required: true
         },
         expressionProperties: {
           focus: 'formState.awesomeIsForced',
@@ -37,14 +37,14 @@ export const IntroductionMockFields = [
             console.log('formState')
             console.log(field)
             console.log(model)
-          `,
-        },
+          `
+        }
       },
       {
         key: 'awesome',
         type: 'checkbox',
         wrappers: ['form'],
-        templateOptions: { 
+        templateOptions: {
           label: '',
           noColon: true,
           required: true,
@@ -52,8 +52,8 @@ export const IntroductionMockFields = [
         },
         expressionProperties: {
           'templateOptions.disabled': 'formState.awesomeIsForced',
-          'templateOptions.label': `formState.awesomeIsForced ? '1' : '2'`,
-        },
+          'templateOptions.label': `formState.awesomeIsForced ? '1' : '2'`
+        }
       },
       {
         key: 'whyNot',
@@ -61,22 +61,22 @@ export const IntroductionMockFields = [
         wrappers: ['form'],
         expressionProperties: {
           'templateOptions.placeholder': `formState`,
-          'templateOptions.disabled': 'formState.awesomeIsForced',
+          'templateOptions.disabled': 'formState.awesomeIsForced'
         },
         hideExpression: 'model.awesome',
         templateOptions: {
           label: 'Why Not?',
           placeholder: 'Type in here... I dare you',
-          required: true,
-        },
+          required: true
+        }
       },
       {
         key: 'custom',
         type: 'input',
         wrappers: ['form'],
         templateOptions: {
-          label: 'Custom inlined',
-        },
+          label: 'Custom inlined'
+        }
       },
       {
         type: 'button-group',
@@ -105,11 +105,10 @@ export const IntroductionMockFields = [
                 field.options.formState.awesomeIsForced = false;
                 field.parent.formControl.reset();
               }`
-            },
+            }
           ]
         }
-      },
-      
+      }
     ]
   }
-]
+];

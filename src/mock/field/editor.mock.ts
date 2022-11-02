@@ -1,4 +1,4 @@
-import { EditorMockFields, MarkdownMockFields } from "./editor"
+import { EditorMockFields, MarkdownMockFields } from './editor';
 
 const list100 = [...Array(200).keys()].map((item, index) => {
   return {
@@ -6,10 +6,9 @@ const list100 = [...Array(200).keys()].map((item, index) => {
     key: index,
     name: '🐛 [BUG ' + index + ']无法创建工程npm create umi',
     age: index % 100,
-    address: 'JNew York No. 1 Lake Park',
-  }
-})
-
+    address: 'JNew York No. 1 Lake Park'
+  };
+});
 
 export const editor = [
   {
@@ -28,4 +27,4 @@ export const editor = [
       content: ''
     }
   }
-]
+];

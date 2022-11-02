@@ -3,22 +3,21 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const TableMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-12",
-    templateOptions: {
-    },
+    className: 'd-block mb-3 col-12',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -26,7 +25,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -35,7 +34,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -44,7 +43,7 @@ export const TableMockFields = [
                   type: 'input',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -52,7 +51,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -61,7 +60,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -76,12 +75,13 @@ export const TableMockFields = [
                         click: `(field, _this) => {
                           _this.message.success(field?.model?.name)
                         }`
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -89,16 +89,17 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '选择和操作',
-          description: '第一列是联动的选择框，增加 [nzChecked] 后，th 获得和 nz-checkbox 一样的功能，选择后进行操作，完成后清空选择，请注意：数据逻辑需要自行控制。',
+          description:
+            '第一列是联动的选择框，增加 [nzChecked] 后，th 获得和 nz-checkbox 一样的功能，选择后进行操作，完成后清空选择，请注意：数据逻辑需要自行控制。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -106,7 +107,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -115,7 +116,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -124,7 +125,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -132,7 +133,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -141,7 +142,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -153,12 +154,13 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -166,16 +168,16 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -183,7 +185,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -192,7 +194,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -201,7 +203,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -209,7 +211,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -218,7 +220,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -230,12 +232,13 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -243,16 +246,16 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -260,7 +263,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -269,7 +272,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -278,7 +281,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -286,7 +289,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -295,7 +298,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -307,12 +310,13 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -320,16 +324,16 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -337,7 +341,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -346,7 +350,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -355,7 +359,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -363,7 +367,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -372,7 +376,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -384,12 +388,13 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -397,16 +402,16 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -414,7 +419,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -423,7 +428,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -432,7 +437,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -440,7 +445,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -449,7 +454,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -461,12 +466,13 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -474,16 +480,16 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -491,7 +497,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -500,7 +506,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -509,7 +515,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -517,7 +523,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -526,7 +532,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -538,12 +544,13 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -551,16 +558,16 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -568,7 +575,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -577,7 +584,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -586,7 +593,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -594,7 +601,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -603,7 +610,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -615,12 +622,13 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -628,16 +636,16 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -645,7 +653,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -654,7 +662,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -663,7 +671,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -671,7 +679,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -680,7 +688,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -692,12 +700,13 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
@@ -705,16 +714,16 @@ export const TableMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '简单的表格，最后一列是各种操作。',
+          description: '简单的表格，最后一列是各种操作。'
         },
         fieldGroup: [
           {
             type: 'simple-table',
             key: 'list',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -722,7 +731,7 @@ export const TableMockFields = [
               bordered: false,
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldArray: {
               fieldGroup: [
@@ -731,7 +740,7 @@ export const TableMockFields = [
                   type: 'text',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'id',
+                    label: 'id'
                   },
                   hide: true
                 },
@@ -740,7 +749,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Name',
+                    label: 'Name'
                   }
                 },
                 {
@@ -748,7 +757,7 @@ export const TableMockFields = [
                   type: 'template',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: 'Age',
+                    label: 'Age'
                   }
                 },
                 {
@@ -757,7 +766,7 @@ export const TableMockFields = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: 'Address',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -769,17 +778,18 @@ export const TableMockFields = [
                     actionOptions: [
                       {
                         text: 'Action 一 John Brown'
-                      }, {
+                      },
+                      {
                         text: 'Delete'
                       }
-                    ],
+                    ]
                   }
-                }              
+                }
               ]
             }
           }
         ]
       }
     ]
-  },
-]
+  }
+];

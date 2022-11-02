@@ -3,184 +3,181 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const TimePickerMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-    },
+    className: 'd-block mb-3 col-6',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '点击 nz-time-picker，然后可以在浮层中选择或者输入某一时间。',
+          description: '点击 nz-time-picker，然后可以在浮层中选择或者输入某一时间。'
         },
         fieldGroup: [
           {
             key: 'time1',
             type: 'time-picker',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
+            templateOptions: {}
+          }
+        ]
+      },
+      {
+        type: 'code-card',
+        className: 'd-block mb-3 col-12',
+        templateOptions: {
+          title: '三种大小',
+          description: '联动 checkbox。'
+        },
+        fieldGroup: [
+          {
+            key: 'time2',
+            type: 'time-picker',
+            className: 'd-inline-block m-2',
             templateOptions: {
+              size: 'large'
+            }
+          },
+          {
+            key: 'timer2',
+            type: 'time-picker',
+            className: 'd-inline-block m-2',
+            templateOptions: {}
+          },
+          {
+            key: 'timer3',
+            type: 'time-picker',
+            className: 'd-inline-block m-2',
+            templateOptions: {
+              size: 'small'
             }
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
-        templateOptions: {
-          title: '三种大小',
-          description: '联动 checkbox。',
-        },
-        fieldGroup: [
-          {
-            key: 'time2',
-            type: 'time-picker',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              size: "large",
-            },
-          },
-          {
-            key: 'timer2',
-            type: 'time-picker',
-            className: "d-inline-block m-2",
-            templateOptions: {
-
-            }
-          },
-          {
-            key: 'timer3',
-            type: 'time-picker',
-            className: "d-inline-block m-2",
-            templateOptions: {
-              size: 'small'
-            }
-          },
-        ]
-      },
-      {
-        type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '选择时分',
-          description: 'nz-time-picker 浮层中的列会随着 nzFormat 变化，当略去 nzFormat 中的某部分时，浮层中对应的列也会消失。',
+          description:
+            'nz-time-picker 浮层中的列会随着 nzFormat 变化，当略去 nzFormat 中的某部分时，浮层中对应的列也会消失。'
         },
         fieldGroup: [
           {
             key: 'time3',
             type: 'time-picker',
-            className: "d-inline-block m-2",
+            className: 'd-inline-block m-2',
             templateOptions: {
-              format: "HH:mm"
-            },
-          },
+              format: 'HH:mm'
+            }
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '附加内容',
-          description: '在 nz-time-picker 选择框底部显示自定义的内容。',
+          description: '在 nz-time-picker 选择框底部显示自定义的内容。'
         },
         fieldGroup: [
           {
             key: 'time4',
             type: 'time-picker',
-            className: "d-inline-block m-2",
+            className: 'd-inline-block m-2',
             templateOptions: {
-              format: "HH:mm"
-            },
-          },
+              format: 'HH:mm'
+            }
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '12小时制',
-          description: '12小时制的时间选择器，默认format为 h:mm:ss a',
+          description: '12小时制的时间选择器，默认format为 h:mm:ss a'
         },
         fieldGroup: [
           {
             key: 'time4',
             type: 'time-picker',
-            className: "d-inline-block m-2",
+            className: 'd-inline-block m-2',
             templateOptions: {
-              use12Hours: true,
-            },
+              use12Hours: true
+            }
           },
           {
             key: 'time4',
             type: 'time-picker',
-            className: "d-inline-block m-2",
+            className: 'd-inline-block m-2',
             templateOptions: {
-              format: "h:mm a",
+              format: 'h:mm a',
               use12Hours: true
-            },
-          },
+            }
+          }
         ]
-      },
+      }
     ]
   },
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: 'd-block mb-3 col-6',
     templateOptions: {
       title: '基本',
-      description: '最简单的用法，在浮层中可以选择或者输入日期。',
+      description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '禁用',
-          description: '禁用时间选择。',
+          description: '禁用时间选择。'
         },
         fieldGroup: [
           {
             key: 'time6',
             type: 'time-picker',
-            className: "d-inline-block m-2",
+            className: 'd-inline-block m-2',
             templateOptions: {
               disabled: true
-            },
-          },
+            }
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '步长选项',
-          description: '可以使用 nzHourStepnzMinuteStepnzSecondStep 按步长展示可选的时分秒。',
+          description: '可以使用 nzHourStepnzMinuteStepnzSecondStep 按步长展示可选的时分秒。'
         },
         fieldGroup: [
           {
             key: 'time7',
             type: 'time-picker',
-            className: "d-inline-block m-2",
+            className: 'd-inline-block m-2',
             templateOptions: {
-              format: "HH:mm",
+              format: 'HH:mm',
               minuteStep: 15,
               secondStep: 10
-            },
-          },
+            }
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '禁用部分',
-          description: '禁用部分时间选择。',
+          description: '禁用部分时间选择。'
         },
         fieldGroup: [
           {
             key: 'time8',
             type: 'time-picker',
-            className: "d-inline-block m-2",
+            className: 'd-inline-block m-2',
             templateOptions: {
               disabledHours: `(hour) => [1, 2, 3] `,
               disabledMinutes: `(hour) => {
@@ -197,11 +194,11 @@ export const TimePickerMockFields = [
                                     return [];
                                   }
                                 }
-                              `,
-            },
-          },
+                              `
+            }
+          }
         ]
       }
     ]
-  },
-]
+  }
+];

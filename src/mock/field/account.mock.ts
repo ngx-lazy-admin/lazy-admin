@@ -5,7 +5,7 @@ export const account = [
       {
         key: 'search',
         type: 'card',
-        className: "col-md-4 col-12 mb-3 d-block",
+        className: 'col-md-4 col-12 mb-3 d-block',
         templateOptions: {
           bodyClass: 'row',
           bodyStyle: {
@@ -20,7 +20,7 @@ export const account = [
             wrappers: ['form'],
             templateOptions: {
               label: '用户名',
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '请输入用户名'
             }
           },
@@ -31,7 +31,7 @@ export const account = [
             wrappers: ['form'],
             templateOptions: {
               label: '标签',
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '请输入手机号'
             }
           },
@@ -42,22 +42,21 @@ export const account = [
             wrappers: ['form'],
             templateOptions: {
               label: '团队',
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '请输入邮箱'
             }
-          },
+          }
         ]
       },
       {
         type: 'card',
-        className: "col-md-8 col-12 mb-3 d-block",
-        templateOptions: {
-        },
+        className: 'col-md-8 col-12 mb-3 d-block',
+        templateOptions: {},
         fieldGroup: [
           {
             type: 'tabs',
             key: 'table',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -66,7 +65,7 @@ export const account = [
               nzScroll: { x: '1150px', y: '240px' },
               bodyStyle: {
                 paddingBottom: 0
-              },
+              }
             },
             fieldGroup: [
               {
@@ -80,13 +79,14 @@ export const account = [
                   bordered: false,
                   bodyStyle: {
                     paddingBottom: 0
-                  },
+                  }
                 },
                 defaultValue: [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -97,7 +97,8 @@ export const account = [
                   {
                     meta: {
                       title: '🐛 [BUG]无法创建工程npm create umi',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -108,7 +109,8 @@ export const account = [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -119,7 +121,8 @@ export const account = [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -130,7 +133,8 @@ export const account = [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -141,7 +145,8 @@ export const account = [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -152,7 +157,8 @@ export const account = [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -163,7 +169,8 @@ export const account = [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -174,7 +181,8 @@ export const account = [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -185,7 +193,8 @@ export const account = [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     },
                     progress: {
@@ -205,23 +214,24 @@ export const account = [
                         title: '描述',
                         size: 48,
                         shape: 'square',
-                        description : '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套',
+                        description:
+                          '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套'
                       }
                     },
                     {
                       type: 'progress',
                       key: 'progress',
-                      className: 'col-1 d-block',
+                      className: 'col-1 d-block'
                     },
                     {
                       type: 'progress',
                       key: 'progress',
-                      className: 'col-1 d-block',
+                      className: 'col-1 d-block'
                     },
                     {
                       type: 'progress',
                       key: 'progress',
-                      className: 'col-7  d-block',
+                      className: 'col-7  d-block'
                     },
                     {
                       type: 'list-actions',
@@ -231,12 +241,14 @@ export const account = [
                         actionOptions: [
                           {
                             text: '编辑'
-                          }, {
+                          },
+                          {
                             text: '编辑'
-                          }, {
+                          },
+                          {
                             text: '删除'
                           }
-                        ],
+                        ]
                       }
                     }
                   ]
@@ -263,151 +275,172 @@ export const account = [
                   bordered: false,
                   bodyStyle: {
                     paddingBottom: 0
-                  },
+                  }
                 },
                 defaultValue: [
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
                   },
                   {
                     meta: {
                       title: 'alipay',
-                      description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                      description:
+                        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                     }
-                  },
+                  }
                 ],
                 fieldArray: {
                   className: 'col-3 d-block',
                   fieldGroup: [
                     {
                       type: 'card',
-                      className: "col-12 mb-3",
+                      className: 'col-12 mb-3',
                       templateOptions: {
                         nzBodyStyle: {
-                          padding: 0,
+                          padding: 0
                         },
-                        actions: [{
-                          icon: 'setting',
-                        }, {
-                          icon: 'edit',
-                        }]
+                        actions: [
+                          {
+                            icon: 'setting'
+                          },
+                          {
+                            icon: 'edit'
+                          }
+                        ]
                       },
                       fieldGroup: [
                         {
@@ -417,18 +450,19 @@ export const account = [
                           templateOptions: {
                             title: '描述',
                             size: 48,
-                            description : '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套',
+                            description:
+                              '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套'
                           }
                         }
                       ]
-                    },
+                    }
                   ]
                 }
-              },        
+              }
             ]
           }
         ]
-      },
+      }
     ]
   },
   {
@@ -440,9 +474,9 @@ export const account = [
         fieldGroup: [
           {
             type: 'tabs',
-            className: "d-block",
+            className: 'd-block',
             templateOptions: {
-              nzTabPosition: 'left',
+              nzTabPosition: 'left'
             },
             fieldGroup: [
               {
@@ -535,7 +569,7 @@ export const account = [
                       layout: 'vertical',
                       type: 'primary'
                     }
-                  },
+                  }
                 ]
               },
               {
@@ -710,11 +744,11 @@ export const account = [
                     }
                   }
                 ]
-              },
+              }
             ]
-          },
+          }
         ]
-      },
-    ],
-  },
-]
+      }
+    ]
+  }
+];

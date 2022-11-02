@@ -1,16 +1,15 @@
 export const SegmentedMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-    },
+    className: 'd-block mb-3 col-6',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本',
-          description: '最简单的用法',
+          description: '最简单的用法'
         },
         fieldGroup: [
           {
@@ -25,10 +24,10 @@ export const SegmentedMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '动态数据',
-          description: '动态加载数据。',
+          description: '动态加载数据。'
         },
         fieldGroup: [
           {
@@ -43,10 +42,10 @@ export const SegmentedMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: 'ngModel',
-          description: '通过 ngModel 指定选中的 index',
+          description: '通过 ngModel 指定选中的 index'
         },
         fieldGroup: [
           {
@@ -69,10 +68,10 @@ export const SegmentedMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '三种大小',
-          description: '我们为 Segmented 组件定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。',
+          description: '我们为 Segmented 组件定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。'
         },
         fieldGroup: [
           {
@@ -101,21 +100,21 @@ export const SegmentedMockFields = [
               options: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'],
               size: 'large'
             }
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: 'd-block mb-3 col-6',
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '不可用',
-          description: 'Segmented 不可用。',
+          description: 'Segmented 不可用。'
         },
         fieldGroup: [
           {
@@ -126,15 +125,15 @@ export const SegmentedMockFields = [
               options: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'],
               disabled: true
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '设置图标',
-          description: '给 Segmented Item 设置 Icon。',
+          description: '给 Segmented Item 设置 Icon。'
         },
         fieldGroup: [
           {
@@ -147,15 +146,15 @@ export const SegmentedMockFields = [
                 { label: 'Kanban', value: 'Kanban', icon: 'appstore' }
               ]
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '自定义渲染',
-          description: '使用 nzLabelTemplate 自定义渲染每一个 Segmented Item。',
+          description: '使用 nzLabelTemplate 自定义渲染每一个 Segmented Item。'
         },
         fieldGroup: [
           {
@@ -169,15 +168,15 @@ export const SegmentedMockFields = [
                 { label: 'user3', value: 'user3', useTemplate: true }
               ]
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: 'Block 分段选择器',
-          description: 'nzBlock 属性使其适合父元素宽度。',
+          description: 'nzBlock 属性使其适合父元素宽度。'
         },
         fieldGroup: [
           {
@@ -188,9 +187,9 @@ export const SegmentedMockFields = [
               options: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'],
               block: true
             }
-          },
+          }
         ]
-      },
+      }
     ]
-  },
-]
+  }
+];

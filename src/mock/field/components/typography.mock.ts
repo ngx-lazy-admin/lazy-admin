@@ -3,24 +3,22 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 export const TypographyMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-    },
+    className: 'd-block mb-3 col-6',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本用法',
-          description: '基本标签的用法，可以通过添加 nzMode="closeable" 变为可关闭标签。可关闭标签具有 nzOnClose 事件。',
+          description: '基本标签的用法，可以通过添加 nzMode="closeable" 变为可关闭标签。可关闭标签具有 nzOnClose 事件。'
         },
         fieldGroup: [
           {
             key: 'typography-1-1-1',
             type: 'typography',
-            className: "d-block mb-2",
-            defaultValue: 
-`# Introduction
+            className: 'd-block mb-2',
+            defaultValue: `# Introduction
 In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development.
 After massive project practice and summaries, Ant Design, a design language for backgroundapplications, is refined by Ant UED Team, which aims to uniform the user interface specs for internal background projects, lower the unnecessary cost of design differences and implementation and liberate the resources ofdesign and front-end development .
 
@@ -44,16 +42,16 @@ Press \`Esc\` to exist...
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: 'Switch开关',
-          description: '简单的 tag-check ',
+          description: '简单的 tag-check '
         },
         fieldGroup: [
           {
             key: 'tag-1-2-1',
             type: 'typography',
-            className: "d-block mb-2",
+            className: 'd-block mb-2',
             defaultValue: 3,
             templateOptions: {
               text: 'Tag 1'
@@ -63,16 +61,16 @@ Press \`Esc\` to exist...
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '多选',
-          description: '简单的 tag-check-group',
+          description: '简单的 tag-check-group'
         },
         fieldGroup: [
           {
             key: 'tag-1-3-1',
             type: 'typography',
-            className: "d-block mb-2",
+            className: 'd-block mb-2',
             defaultValue: [
               { label: 'Apple', value: 'Apple', checked: true },
               { label: 'Pear', value: 'Pear', checked: false },
@@ -89,20 +87,21 @@ Press \`Esc\` to exist...
   },
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: 'd-block mb-3 col-6',
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '多彩标签',
-          description: '我们添加了多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。',
+          description:
+            '我们添加了多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。'
         },
         fieldGroup: [
           {
             key: 'tag-2-3-1',
             type: 'typography',
-            className: "d-block mb-2",
+            className: 'd-block mb-2',
             defaultValue: [
               { label: 'magenta', mode: 'default', color: 'magenta' },
               { label: 'red', mode: 'default', color: 'red' },
@@ -118,8 +117,7 @@ Press \`Esc\` to exist...
               { label: '#f50', mode: 'default', color: '#f50' },
               { label: '#2db7f5', mode: 'default', color: '#2db7f5' },
               { label: '#87d068', mode: 'default', color: '#87d068' },
-              { label: '#108ee9', mode: 'default', color: '#108ee9' },
-
+              { label: '#108ee9', mode: 'default', color: '#108ee9' }
             ],
             templateOptions: {
               text: 'Tag 1',
@@ -130,16 +128,16 @@ Press \`Esc\` to exist...
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '可选择',
-          description: '简单的 tag-check-group',
+          description: '简单的 tag-check-group'
         },
         fieldGroup: [
           {
             key: 'tag-2-3-2',
             type: 'tag-check-group',
-            className: "d-block mb-2",
+            className: 'd-block mb-2',
             wrappers: ['form'],
             defaultValue: [
               { label: 'Tag 1', value: 'Tag 1', checked: true },
@@ -153,7 +151,7 @@ Press \`Esc\` to exist...
             }
           }
         ]
-      },
+      }
     ]
-  },
-]
+  }
+];

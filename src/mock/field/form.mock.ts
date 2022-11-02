@@ -1,4 +1,3 @@
-
 // @ts-nocheck
 
 export const form = [
@@ -7,7 +6,7 @@ export const form = [
     fields: [
       {
         type: 'card',
-        className: "col-12  d-block",
+        className: 'col-12  d-block',
         templateOptions: {
           bodyStyle: {
             maxWidth: '600px',
@@ -22,9 +21,9 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '标题',
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '给目标起个名字',
-              required: true,
+              required: true
             }
           },
           {
@@ -34,8 +33,8 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '起止时间',
-              layout : 'vertical',
-              required: true,
+              layout: 'vertical',
+              required: true
             }
           },
           {
@@ -46,8 +45,8 @@ export const form = [
             templateOptions: {
               label: '目标描述',
               placeholder: '请输入你的阶段性工作目标',
-              layout : 'vertical',
-              required: true,
+              layout: 'vertical',
+              required: true
             }
           },
           {
@@ -57,7 +56,7 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '衡量标准',
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '请输入衡量标准'
             }
           },
@@ -69,8 +68,8 @@ export const form = [
             templateOptions: {
               label: '客户<span class="text-black text-opacity-50">（选填）</span>',
               tooltipTitle: '目标的服务对象',
-              layout : 'vertical',
-              placeholder: '请描述你服务的客户，内部客户直接 @姓名／工号',
+              layout: 'vertical',
+              placeholder: '请描述你服务的客户，内部客户直接 @姓名／工号'
             }
           },
           {
@@ -80,7 +79,7 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '邀评人<span class="text-black text-opacity-50">（选填）</span>',
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '请直接 @姓名／工号，最多可邀请 5 人',
               labelTip: '目标的服务对象'
             }
@@ -92,7 +91,7 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '权重<span class="text-black text-opacity-50">（选填）</span>',
-              layout : 'vertical'
+              layout: 'vertical'
             }
           },
           {
@@ -102,7 +101,7 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '目标公开',
-              layout : 'vertical',
+              layout: 'vertical',
               nzExtra: '客户、邀评人默认被分享',
               options: [
                 {
@@ -129,7 +128,7 @@ export const form = [
               hide: 'model.target != "2"'
             },
             templateOptions: {
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '请选择',
               options: [
                 {
@@ -194,7 +193,7 @@ export const form = [
     fields: [
       {
         type: 'card',
-        className: "col-12",
+        className: 'col-12',
         templateOptions: {
           bodyStyle: {
             maxWidth: '960px',
@@ -226,12 +225,12 @@ export const form = [
           },
           {
             type: 'card',
-            className: "col-12",
+            className: 'col-12',
             templateOptions: {
               borderless: true,
               bodyStyle: {
                 maxWidth: '520px',
-                margin: '0 auto',
+                margin: '0 auto'
               }
             },
             fieldGroup: [
@@ -243,7 +242,7 @@ export const form = [
                 templateOptions: {
                   label: '付款账户',
                   required: true,
-                  layout : 'vertical',
+                  layout: 'vertical',
                   placeholder: '请选择',
                   options: [
                     {
@@ -266,7 +265,7 @@ export const form = [
                 templateOptions: {
                   label: '收款账户',
                   required: true,
-                  layout : 'vertical',
+                  layout: 'vertical',
                   placeholder: '请选择',
                   options: [
                     {
@@ -289,8 +288,8 @@ export const form = [
                 templateOptions: {
                   label: '',
                   required: true,
-                  layout : 'vertical',
-                  placeholder: 'test@example.com',
+                  layout: 'vertical',
+                  placeholder: 'test@example.com'
                 },
                 validation: {
                   messages: {
@@ -306,8 +305,8 @@ export const form = [
                 templateOptions: {
                   label: '收款人姓名',
                   required: true,
-                  layout : 'vertical',
-                  placeholder: '请输入收款人姓名',
+                  layout: 'vertical',
+                  placeholder: '请输入收款人姓名'
                 },
                 validation: {
                   messages: {
@@ -323,7 +322,7 @@ export const form = [
                 templateOptions: {
                   label: '转账金额',
                   required: true,
-                  layout : 'vertical',
+                  layout: 'vertical'
                 },
                 validation: {
                   messages: {
@@ -340,12 +339,12 @@ export const form = [
                   type: 'primary',
                   type: 'submit'
                 }
-              },
+              }
             ]
           },
           {
             type: 'card',
-            className: "col-12",
+            className: 'col-12',
             templateOptions: {
               borderless: true,
               bodyStyle: {
@@ -360,7 +359,7 @@ export const form = [
                 templateOptions: {
                   message: '确认转账后，资金将直接打入对方账户，无法退回。',
                   showIcon: true
-                },
+                }
               },
               {
                 type: 'descriptions-group',
@@ -368,19 +367,19 @@ export const form = [
                 defaultValue: [
                   {
                     title: '付款账户',
-                    value: 'ant-design@alipay.com',
+                    value: 'ant-design@alipay.com'
                   },
                   {
                     title: '收款账户',
-                    value: 'test@example.com',
+                    value: 'test@example.com'
                   },
                   {
                     title: '收款人姓名',
-                    value: 'Alex',
+                    value: 'Alex'
                   },
                   {
                     title: '转账金额',
-                    value: '500.00元',
+                    value: '500.00元'
                   }
                 ],
                 templateOptions: {
@@ -397,7 +396,7 @@ export const form = [
                 templateOptions: {
                   label: '支付密码',
                   type: 'password',
-                  layout : 'vertical',
+                  layout: 'vertical'
                 },
                 validation: {
                   messages: {
@@ -419,24 +418,22 @@ export const form = [
                     {
                       text: '下一步',
                       size: 'default'
-                    },
+                    }
                   ]
                 }
-              },
+              }
             ]
           },
           {
             type: 'card',
-            className: "col-12",
+            className: 'col-12',
             templateOptions: {
               bodyStyle: {
                 maxWidth: '520px',
                 margin: '0 auto'
               }
             },
-            fieldGroup: [{
-
-            }]
+            fieldGroup: [{}]
           }
         ]
       }
@@ -452,11 +449,11 @@ export const form = [
       {
         type: 'card',
         key: 'cangku',
-        className: "col-12",
+        className: 'col-12',
 
         templateOptions: {
-          title: "仓库管理",
-          bodyClassName: 'row',
+          title: '仓库管理',
+          bodyClassName: 'row'
         },
         fieldGroup: [
           {
@@ -467,8 +464,8 @@ export const form = [
             templateOptions: {
               label: '仓库名',
               required: true,
-              layout : 'vertical',
-              placeholder: '请输入仓库名称',
+              layout: 'vertical',
+              placeholder: '请输入仓库名称'
             },
             validation: {
               messages: {
@@ -484,8 +481,8 @@ export const form = [
             templateOptions: {
               label: '仓库域名',
               required: true,
-              layout : 'vertical',
-              placeholder: '请输入',
+              layout: 'vertical',
+              placeholder: '请输入'
             },
             validation: {
               messages: {
@@ -501,7 +498,7 @@ export const form = [
             templateOptions: {
               label: '仓库管理员',
               required: true,
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: 'test@example.com',
               options: [
                 {
@@ -511,7 +508,7 @@ export const form = [
                 {
                   value: 'xiao',
                   label: '付小小'
-                },
+                }
               ]
             },
             validation: {
@@ -528,7 +525,7 @@ export const form = [
             templateOptions: {
               label: '审批人',
               required: true,
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '请选择管理员',
               options: [
                 {
@@ -538,7 +535,7 @@ export const form = [
                 {
                   value: 'xiao',
                   label: '付小小'
-                },
+                }
               ]
             },
             validation: {
@@ -555,7 +552,7 @@ export const form = [
             templateOptions: {
               label: '生效日期',
               required: true,
-              layout : 'vertical',
+              layout: 'vertical'
             },
             validation: {
               messages: {
@@ -569,7 +566,7 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '仓库类型',
-              layout : 'vertical',
+              layout: 'vertical',
               options: [
                 {
                   value: 'zhou',
@@ -578,20 +575,20 @@ export const form = [
                 {
                   value: 'xiao',
                   label: '付小小'
-                },
+                }
               ]
             }
-          },
+          }
         ]
       },
       {
         type: 'card',
         key: 'task',
-        className: "col-12 mt-3",
+        className: 'col-12 mt-3',
 
         templateOptions: {
-          title: "任务管理",
-          bodyClassName: 'row',
+          title: '任务管理',
+          bodyClassName: 'row'
         },
         fieldGroup: [
           {
@@ -602,8 +599,8 @@ export const form = [
             templateOptions: {
               label: '任务名',
               required: true,
-              layout : 'vertical',
-              placeholder: '请输入',
+              layout: 'vertical',
+              placeholder: '请输入'
             },
             validation: {
               messages: {
@@ -619,8 +616,8 @@ export const form = [
             templateOptions: {
               label: '任务描述',
               required: true,
-              layout : 'vertical',
-              placeholder: '请输入',
+              layout: 'vertical',
+              placeholder: '请输入'
             },
             validation: {
               messages: {
@@ -636,7 +633,7 @@ export const form = [
             templateOptions: {
               label: '执行人',
               required: true,
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: 'test@example.com',
               options: [
                 {
@@ -646,7 +643,7 @@ export const form = [
                 {
                   value: 'xiao',
                   label: '付小小'
-                },
+                }
               ]
             },
             validation: {
@@ -663,7 +660,7 @@ export const form = [
             templateOptions: {
               label: '责任人',
               required: true,
-              layout : 'vertical',
+              layout: 'vertical',
               placeholder: '请选择管理员',
               options: [
                 {
@@ -673,7 +670,7 @@ export const form = [
                 {
                   value: 'xiao',
                   label: '付小小'
-                },
+                }
               ]
             },
             validation: {
@@ -690,7 +687,7 @@ export const form = [
             templateOptions: {
               label: '生效日期',
               required: true,
-              layout : 'vertical',
+              layout: 'vertical'
             },
             validation: {
               messages: {
@@ -704,7 +701,7 @@ export const form = [
             wrappers: ['form'],
             templateOptions: {
               label: '任务类型',
-              layout : 'vertical',
+              layout: 'vertical',
               options: [
                 {
                   value: 'public',
@@ -713,20 +710,20 @@ export const form = [
                 {
                   value: 'primary',
                   label: '私密'
-                },
+                }
               ]
             }
-          },
+          }
         ]
       },
       {
         type: 'card',
         key: 'people-man',
-        className: "col-12 mt-3",
+        className: 'col-12 mt-3',
         templateOptions: {
-          title: "成员管理",
-          bodyClassName: 'row',
-        },        
+          title: '成员管理',
+          bodyClassName: 'row'
+        },
         fieldGroup: [
           {
             key: 'people',
@@ -735,355 +732,378 @@ export const form = [
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
-              },              {
-                name: 'John Brown',
-                number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
               {
                 name: 'John Brown',
                 number: '	00001',
-                department: 'John Brown',
+                department: 'John Brown'
               },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              },
+              {
+                name: 'John Brown',
+                number: '	00001',
+                department: 'John Brown'
+              }
             ],
             fieldArray: {
               fieldGroup: [
@@ -1094,8 +1114,8 @@ export const form = [
                   templateOptions: {
                     label: '成员姓名',
                     required: true,
-                    layout : 'vertical',
-                    placeholder: '请输入',
+                    layout: 'vertical',
+                    placeholder: '请输入'
                   },
                   validation: {
                     messages: {
@@ -1118,7 +1138,7 @@ export const form = [
                       {
                         value: 'xiao',
                         label: '付小小'
-                      },
+                      }
                     ]
                   },
                   validation: {
@@ -1142,7 +1162,7 @@ export const form = [
                       {
                         value: 'xiao',
                         label: '付小小'
-                      },
+                      }
                     ]
                   },
                   validation: {
@@ -1167,7 +1187,6 @@ export const form = [
                         value: '删除',
                         text: '删除',
                         type: 'link'
-
                       },
                       {
                         value: '取消',
@@ -1176,7 +1195,7 @@ export const form = [
                       }
                     ]
                   }
-                },
+                }
               ]
             }
           }
@@ -1187,7 +1206,8 @@ export const form = [
         key: 'operation',
         className: 'd-flex d-inline-block my-4',
         templateOptions: {
-          bodyClass: 'position-fixed bottom-0 bg-white w-100 border-top d-flex align-items-center justify-content-end right-0 left-0',
+          bodyClass:
+            'position-fixed bottom-0 bg-white w-100 border-top d-flex align-items-center justify-content-end right-0 left-0',
           bodyStyle: {
             height: '50px',
             zIndex: 2,
@@ -1200,16 +1220,16 @@ export const form = [
           {
             type: 'checkbox',
             key: 'checkAll',
-            className: "d-inline-block mx-3 me-auto",
+            className: 'd-inline-block mx-3 me-auto',
             templateOptions: {
-              text: "全选",
+              text: '全选'
             }
           },
           {
             type: 'button',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "重置",
+              text: '重置',
               click: `(field) => {
                 field.parent.parent.formControl.reset();
               }`
@@ -1217,9 +1237,9 @@ export const form = [
           },
           {
             type: 'button',
-            className: "d-inline-block mx-2",
+            className: 'd-inline-block mx-2',
             templateOptions: {
-              text: "提交",
+              text: '提交',
               type: 'primary',
               click: `() => {
                 alert('提交数据')
@@ -1234,5 +1254,4 @@ export const form = [
       content: '高级表单常见于一次性输入和提交大批量数据的场景。'
     }
   }
-]
-
+];

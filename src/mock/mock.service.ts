@@ -5,15 +5,26 @@ import { menu } from './menu';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { system, dashboard, components, profile, form, list, account, antv, editor, table, bootstrap, forms } from './field';
+import {
+  system,
+  dashboard,
+  components,
+  profile,
+  form,
+  list,
+  account,
+  antv,
+  editor,
+  table,
+  bootstrap,
+  forms
+} from './field';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class MockService implements InMemoryDbService {
-
   createDb(reqInfo?: RequestInfo) {
-
     const heroes = [
       { id: 1, name: 'Windstorm' },
       { id: 2, name: 'Bombasto' },
@@ -21,16 +32,16 @@ export class MockService implements InMemoryDbService {
       { id: 4, name: 'Tornado' }
     ];
 
-    const nobodies: any[] = [ ];
+    const nobodies: any[] = [];
 
     // entities with string ids that look like numbers
     const stringers = [
-      { id: '10', name: 'Bob String'},
-      { id: '20', name: 'Jill String'}
+      { id: '10', name: 'Bob String' },
+      { id: '20', name: 'Jill String' }
     ];
 
     // default returnType
-    let returnType  = 'object';
+    let returnType = 'object';
     // let returnType  = 'observable';
     // let returnType  = 'promise';
 
@@ -48,10 +59,10 @@ export class MockService implements InMemoryDbService {
       returnType = body.returnType || 'observable';
     }
 
-    const db = { 
-      heroes, 
-      nobodies, 
-      stringers, 
+    const db = {
+      heroes,
+      nobodies,
+      stringers,
       menu,
       account,
       dashboard,
@@ -64,13 +75,13 @@ export class MockService implements InMemoryDbService {
       antv,
       editor,
       table,
-      forms,
+      forms
     };
 
     switch (returnType) {
-      case ('observable'):
+      case 'observable':
         return of(db).pipe(delay(10));
-      case ('promise'):
+      case 'promise':
         return new Promise(resolve => {
           setTimeout(() => resolve(db), 10);
         });

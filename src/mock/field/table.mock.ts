@@ -1,4 +1,4 @@
-import { AntdTableMockFields, ProTableMockFields, TableBasicMockFields, VirtualTableMockFields } from "./table";
+import { AntdTableMockFields, ProTableMockFields, TableBasicMockFields, VirtualTableMockFields } from './table';
 
 const list100 = [...Array(2000).keys()].map((item, index) => {
   return {
@@ -6,9 +6,9 @@ const list100 = [...Array(2000).keys()].map((item, index) => {
     key: index,
     name: '🐛 [BUG ' + index + ']无法创建工程npm create umi',
     age: index % 100,
-    address: 'JNew York No. 1 Lake Park',
-  }
-})
+    address: 'JNew York No. 1 Lake Park'
+  };
+});
 
 export const table = [
   {
@@ -19,7 +19,8 @@ export const table = [
     },
     info: {
       title: '基础表格( table basic)',
-      content: 'Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.'
+      content:
+        'Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.'
     }
   },
   {
@@ -29,7 +30,7 @@ export const table = [
       list: list100
     },
     info: {
-      title: '虚拟滚动( virtual table)',
+      title: '虚拟滚动( virtual table)'
     }
   },
   {
@@ -44,20 +45,20 @@ export const table = [
       list6: list100,
       list7: list100,
       list8: list100,
-      list9: list100,
+      list9: list100
     },
     info: {
-      title: 'Antd Table( virtual table)',
+      title: 'Antd Table( virtual table)'
     }
   },
   {
     id: 'pro-table',
     fields: ProTableMockFields,
     data: {
-      list1: list100,
+      list1: list100
     },
     info: {
-      title: 'Pro Table( virtual table)',
+      title: 'Pro Table( virtual table)'
     }
   }
-]
+];

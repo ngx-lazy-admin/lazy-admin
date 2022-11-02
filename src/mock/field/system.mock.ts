@@ -5,7 +5,7 @@ export const system = [
       {
         key: 'search',
         type: 'search-card',
-        className: "col-12  d-block",
+        className: 'col-12  d-block',
         templateOptions: {
           matchRouter: true,
           bodyClass: 'row',
@@ -21,7 +21,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '用户名',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入用户名'
             }
           },
@@ -32,7 +32,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '手机号',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入手机号'
             }
           },
@@ -43,7 +43,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '邮箱',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入邮箱'
             }
           },
@@ -54,7 +54,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '性别',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请选择',
               options: [
                 {
@@ -79,8 +79,8 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '登录账号',
-              layout : 'horizontal',
-              placeholder: '请输入登录账号',
+              layout: 'horizontal',
+              placeholder: '请输入登录账号'
             }
           },
           {
@@ -90,8 +90,8 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '用户ID',
-              layout : 'horizontal',
-              placeholder: '请输入用户ID',
+              layout: 'horizontal',
+              placeholder: '请输入用户ID'
             }
           },
           {
@@ -101,7 +101,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '状态',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入用户ID',
               options: [
                 {
@@ -130,22 +130,21 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '创建时间',
-              layout : 'horizontal',
-              placeholder: '请选择创建时间',
+              layout: 'horizontal',
+              placeholder: '请选择创建时间'
             }
-          },
+          }
         ]
       },
       {
         type: 'card',
-        className: "col-12 mt-3",
-        templateOptions: {
-        },
+        className: 'col-12 mt-3',
+        templateOptions: {},
         fieldGroup: [
           {
             type: 'table',
             key: 'table',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -161,34 +160,38 @@ export const system = [
                   type: 'primary',
                   className: 'me-auto',
                   size: 'default',
-                  icon: 'plus',
+                  icon: 'plus'
                 },
                 {
                   type: 'text',
                   icon: 'redo',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '111',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '111',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'text',
                   icon: 'column-height',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '222',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '222',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'text',
                   icon: 'setting',
                   size: 'default',
                   className: 'mx-1'
-                },
+                }
               ]
             },
             defaultValue: [
@@ -198,7 +201,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '2',
@@ -206,7 +209,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '3',
@@ -214,7 +217,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '4',
@@ -222,7 +225,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '5',
@@ -230,7 +233,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '6',
@@ -238,7 +241,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '7',
@@ -246,7 +249,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '8',
@@ -254,7 +257,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '9',
@@ -262,7 +265,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '10',
@@ -270,7 +273,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '11',
@@ -278,7 +281,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '12',
@@ -286,7 +289,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '13',
@@ -294,7 +297,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '14',
@@ -302,7 +305,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '15',
@@ -310,7 +313,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '16',
@@ -318,7 +321,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '17',
@@ -326,7 +329,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '18',
@@ -334,8 +337,8 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
-              },
+                des: 'John Brown'
+              }
             ],
             fieldArray: {
               fieldGroup: [
@@ -348,7 +351,7 @@ export const system = [
                     label: '用户名',
                     tooltipTitle: '目标的服务对象',
                     tooltipIcon: 'question-circle',
-                    layout : 'horizontal',
+                    layout: 'horizontal',
                     placeholder: '给目标起个名字'
                   }
                 },
@@ -359,7 +362,7 @@ export const system = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: '登录账号',
-                    layout : 'horizontal',
+                    layout: 'horizontal',
                     placeholder: '请输入'
                   }
                 },
@@ -369,8 +372,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '手机号',
-
+                    label: '手机号'
                   }
                 },
                 {
@@ -379,7 +381,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '邮箱',
+                    label: '邮箱'
                   }
                 },
                 {
@@ -388,7 +390,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '性别',
+                    label: '性别'
                   }
                 },
                 {
@@ -396,7 +398,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '创建时间',
+                    label: '创建时间'
                   }
                 },
                 {
@@ -404,7 +406,7 @@ export const system = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: '操作',
-                    layout : 'horizontal',
+                    layout: 'horizontal',
                     right: '0',
                     placeholder: '请输入',
                     actionOptions: [
@@ -417,13 +419,12 @@ export const system = [
                       }
                     ]
                   }
-                },
-                
+                }
               ]
             }
           }
         ]
-      },
+      }
     ],
     data: {},
     info: {
@@ -436,9 +437,8 @@ export const system = [
     fields: [
       {
         type: 'card',
-        className: "col-4",
-        templateOptions: {
-        },
+        className: 'col-4',
+        templateOptions: {},
         fieldGroup: [
           {
             key: 'search',
@@ -446,14 +446,14 @@ export const system = [
             className: 'col-12',
             wrappers: ['inline'],
             templateOptions: {
-              label: '说明',
+              label: '说明'
             }
-          },          
+          }
         ]
       },
       {
         type: 'card',
-        className: "col-8",
+        className: 'col-8',
         templateOptions: {
           title: '编辑菜单：带参路由缓存2'
         },
@@ -474,7 +474,6 @@ export const system = [
             templateOptions: {
               label: '标题',
               fixedWidth: '120px'
-
             }
           },
           {
@@ -484,7 +483,6 @@ export const system = [
             templateOptions: {
               label: '副标题',
               fixedWidth: '120px'
-
             }
           },
           {
@@ -494,7 +492,6 @@ export const system = [
             templateOptions: {
               label: '路径',
               fixedWidth: '120px'
-
             }
           },
           {
@@ -513,7 +510,7 @@ export const system = [
                 {
                   label: '当前窗口',
                   value: 'blank'
-                },
+                }
               ]
             }
           },
@@ -583,9 +580,9 @@ export const system = [
                 }
               ]
             }
-          },
+          }
         ]
-      },
+      }
     ],
     info: {
       title: '菜单权限管理',
@@ -598,7 +595,7 @@ export const system = [
       {
         key: 'search',
         type: 'search-card',
-        className: "col-12  d-block",
+        className: 'col-12  d-block',
         templateOptions: {
           bodyClass: 'row',
           bodyStyle: {
@@ -613,7 +610,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '角色名称',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入角色名称'
             }
           },
@@ -624,7 +621,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '说明',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入说明'
             }
           },
@@ -635,7 +632,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '创建时间',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请选择创建时间'
             }
           },
@@ -646,7 +643,7 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '更新时间',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请选择更新时间'
             }
           },
@@ -657,22 +654,21 @@ export const system = [
             wrappers: ['form'],
             templateOptions: {
               label: '是否默认角色',
-              layout : 'horizontal',
-              placeholder: '请选择更新时间',
+              layout: 'horizontal',
+              placeholder: '请选择更新时间'
             }
           }
         ]
       },
       {
         type: 'card',
-        className: "col-12 mt-3",
-        templateOptions: {
-        },
+        className: 'col-12 mt-3',
+        templateOptions: {},
         fieldGroup: [
           {
             type: 'table',
             key: 'table',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -688,44 +684,50 @@ export const system = [
                   type: 'primary',
                   className: 'me-auto',
                   size: 'default',
-                  icon: 'plus',
+                  icon: 'plus'
                 },
                 {
                   type: 'text',
                   icon: 'redo',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '111',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '111',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'text',
                   icon: 'full',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '111',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '111',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'text',
                   icon: 'column-height',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '222',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '222',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'text',
                   icon: 'setting',
                   size: 'default',
                   className: 'mx-1'
-                },
+                }
               ]
             },
             defaultValue: [
@@ -735,7 +737,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '2',
@@ -743,7 +745,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '3',
@@ -751,7 +753,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '4',
@@ -759,7 +761,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '5',
@@ -767,7 +769,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '6',
@@ -775,7 +777,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '7',
@@ -783,7 +785,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '8',
@@ -791,7 +793,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '9',
@@ -799,7 +801,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '10',
@@ -807,7 +809,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '11',
@@ -815,7 +817,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '12',
@@ -823,7 +825,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '13',
@@ -831,7 +833,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '14',
@@ -839,7 +841,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '15',
@@ -847,7 +849,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '16',
@@ -855,7 +857,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '17',
@@ -863,7 +865,7 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '18',
@@ -871,8 +873,8 @@ export const system = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
-              },
+                des: 'John Brown'
+              }
             ],
             fieldArray: {
               fieldGroup: [
@@ -882,7 +884,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '角色名称',
+                    label: '角色名称'
                   }
                 },
                 {
@@ -891,7 +893,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '说明',
+                    label: '说明'
                   }
                 },
                 {
@@ -900,7 +902,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '创建时间',
+                    label: '创建时间'
                   }
                 },
                 {
@@ -909,7 +911,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '更新时间',
+                    label: '更新时间'
                   }
                 },
                 {
@@ -918,7 +920,7 @@ export const system = [
                   className: '',
                   wrappers: ['table'],
                   templateOptions: {
-                    label: '是否默认角色',
+                    label: '是否默认角色'
                   }
                 },
                 {
@@ -940,13 +942,12 @@ export const system = [
                       }
                     ]
                   }
-                },
-                
+                }
               ]
             }
           }
         ]
-      },
+      }
     ],
     info: {
       title: '角色权限管理',
@@ -960,10 +961,10 @@ export const system = [
         id: 'user',
         type: 'steps',
         key: 'name',
-        className: "w-50 d-block",
+        className: 'w-50 d-block',
         wrappers: ['inline'],
         templateOptions: {
-          label: "姓名",
+          label: '姓名',
           required: true,
           placeholder: '姓名',
           readonly: true,
@@ -982,14 +983,14 @@ export const system = [
             {
               label: 'Waiting',
               description: 'This is a description.'
-            },
+            }
           ]
         }
-      },
+      }
     ],
     info: {
       title: '表单管理',
       content: '表单设计和分析'
     }
   }
-]
+];

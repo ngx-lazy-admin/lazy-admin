@@ -27,12 +27,11 @@ import {
   CollapseMockFields,
   DescriptionMockFields,
   ListMockFields
-} from './components'
-import { SegmentedMockFields } from './components/segmented.mock'
-import { StatisticMockFields } from './components/statistic.mock'
-import { TabsMockFields } from './components/tabs.mock'
-import { TypographyMockFields } from './components/typography.mock'
-
+} from './components';
+import { SegmentedMockFields } from './components/segmented.mock';
+import { StatisticMockFields } from './components/statistic.mock';
+import { TabsMockFields } from './components/tabs.mock';
+import { TypographyMockFields } from './components/typography.mock';
 
 const list10 = [...Array(10).keys()].map((item, index) => {
   return {
@@ -40,9 +39,9 @@ const list10 = [...Array(10).keys()].map((item, index) => {
     key: index,
     name: '🐛 [BUG ' + index + ']无法创建工程npm create umi',
     age: index % 100,
-    address: 'JNew York No. 1 Lake Park',
-  }
-})
+    address: 'JNew York No. 1 Lake Park'
+  };
+});
 
 export const components = [
   {
@@ -246,9 +245,7 @@ export const components = [
   {
     id: 'modal',
     fields: ModalMockFields,
-    data: {
-
-    },
+    data: {},
     info: {
       title: 'Modal对话框',
       content: '模态对话框。'
@@ -257,9 +254,7 @@ export const components = [
   {
     id: 'tag',
     fields: TagMockFields,
-    data: {
-
-    },
+    data: {},
     info: {
       title: 'Tag标签',
       content: '进行标记和分类的小标签。'
@@ -294,10 +289,12 @@ export const components = [
           active: true,
           header: 'This is panel header 1',
           disabled: false,
-          children: [{
-            article: `A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
+          children: [
+            {
+              article: `A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
             guest in many households across the world.`
-          }]
+            }
+          ]
         },
         {
           active: false,
@@ -309,7 +306,7 @@ export const components = [
           disabled: true,
           header: 'This is panel header 3'
         }
-      ],
+      ]
     },
     info: {
       title: 'Collapse 折叠面板',
@@ -325,14 +322,14 @@ export const components = [
         telephone: '18100000000',
         live: 'Hangzhou, Zhejiang',
         remark: 'Empty',
-        address: 'No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China',
+        address: 'No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China'
       }
     },
     info: {
       title: 'Descriptions描述列表',
       content: '成组显示多个只读字段。'
     }
-  }, 
+  },
   {
     id: 'list',
     fields: ListMockFields,
@@ -358,9 +355,7 @@ export const components = [
   {
     id: 'typography',
     fields: TypographyMockFields,
-    data: {
-
-    },
+    data: {},
     info: {
       title: 'Typography排版',
       content: '文本的基本格式。'
@@ -369,9 +364,7 @@ export const components = [
   {
     id: 'segmented',
     fields: SegmentedMockFields,
-    data: {
-
-    },
+    data: {},
     info: {
       title: 'Segmented分段控制器',
       content: `#### 何时使用
@@ -383,9 +376,7 @@ export const components = [
   {
     id: 'tabs',
     fields: TabsMockFields,
-    data: [
-
-    ],
+    data: [],
     info: {
       title: 'Tabs标签页',
       content: `选项卡切换组件。
@@ -400,6 +391,4 @@ Ant Design 依次提供了三级选项卡，分别用于不同的场景。
       `
     }
   }
-
-  
-]
+];

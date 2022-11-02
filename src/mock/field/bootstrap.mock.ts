@@ -15,7 +15,7 @@ import {
   TextMockFields,
   VerticalAlignMockFields,
   VisibilityMockFields
-} from './bootstrap'
+} from './bootstrap';
 
 export const bootstrap = [
   {
@@ -24,7 +24,8 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'Borders',
-      content: 'Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.'
+      content:
+        'Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.'
     }
   },
   {
@@ -34,7 +35,7 @@ export const bootstrap = [
     info: {
       title: 'Background',
       content: 'Convey meaning through background-color and add decoration with gradients.'
-    } 
+    }
   },
   {
     id: 'colors',
@@ -43,7 +44,7 @@ export const bootstrap = [
     info: {
       title: 'Background',
       content: 'Convey meaning through background-color and add decoration with gradients.'
-    } 
+    }
   },
   {
     id: 'display',
@@ -51,8 +52,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'Display',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'flex',
@@ -60,8 +62,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'Flex',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'float',
@@ -69,8 +72,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'float',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'interactions',
@@ -78,8 +82,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'Display',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'opacity',
@@ -87,8 +92,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'opacity',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'overflow',
@@ -96,8 +102,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'overflow',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'position',
@@ -105,8 +112,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'position',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'shadows',
@@ -114,8 +122,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'shadows',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'sizing',
@@ -123,8 +132,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'shadows',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'spacing',
@@ -132,8 +142,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'shadows',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'text',
@@ -141,8 +152,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'text',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'vertical-align',
@@ -150,8 +162,9 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'Vertical Align',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   },
   {
     id: 'visibility',
@@ -159,7 +172,8 @@ export const bootstrap = [
     data: {},
     info: {
       title: 'visibility',
-      content: 'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
-    } 
+      content:
+        'Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.'
+    }
   }
-]
+];

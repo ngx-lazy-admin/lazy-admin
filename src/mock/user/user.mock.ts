@@ -1,9 +1,11 @@
 import { Random } from 'mockjs';
 
 const userRandom = () => {
-  return [{
+  return [
+    {
       id: Random.email()
-  }];
+    }
+  ];
 };
 
-export const user = userRandom()
+export const user = userRandom();

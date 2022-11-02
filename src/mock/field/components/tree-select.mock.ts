@@ -23,16 +23,15 @@ const Node = [
 export const TreeSelectMockFields = [
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
-    templateOptions: {
-    },
+    className: 'd-block mb-3 col-6',
+    templateOptions: {},
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '基本',
-          description: '最简单的用法。',
+          description: '最简单的用法。'
         },
         fieldGroup: [
           {
@@ -49,10 +48,10 @@ export const TreeSelectMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '异步数据加载',
-          description: '点击展开节点，动态加载数据，直到执行 addChildren() 方法取消加载状态。',
+          description: '点击展开节点，动态加载数据，直到执行 addChildren() 方法取消加载状态。'
         },
         fieldGroup: [
           {
@@ -81,84 +80,74 @@ export const TreeSelectMockFields = [
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           }
         ]
-      },
+      }
     ]
   },
   {
     type: 'group',
-    className: "d-block mb-3 col-6",
+    className: 'd-block mb-3 col-6',
     templateOptions: {
       title: '基本',
-      description: '最简单的用法，在浮层中可以选择或者输入日期。',
+      description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
     fieldGroup: [
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'week',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "week"
+              mode: 'week'
             }
           },
           {
@@ -166,90 +155,79 @@ export const TreeSelectMockFields = [
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "month"
+              mode: 'month'
             }
-          },
+          }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '切换不同选择器',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           }
         ]
       },
       {
         type: 'code-card',
-        className: "d-block mb-3 col-12",
+        className: 'd-block mb-3 col-12',
         templateOptions: {
           title: '日期格式',
-          description: '最简单的用法，在浮层中可以选择或者输入日期。',
+          description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
         fieldGroup: [
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
-
-            }
+            templateOptions: {}
           },
           {
             key: 'year',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
             templateOptions: {
-              mode: "year"
+              mode: 'year'
             }
-          },
+          }
         ]
-      },
-
+      }
     ]
-  },
-]
+  }
+];

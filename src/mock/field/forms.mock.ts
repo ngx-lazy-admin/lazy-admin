@@ -4,7 +4,7 @@ import {
   HideFieldsMockFields,
   IntroductionMockFields,
   ModalOptionsMockFields
-} from "./forms"
+} from './forms';
 
 export const forms = [
   {
@@ -27,4 +27,4 @@ export const forms = [
     id: 'model-options',
     fields: ModalOptionsMockFields
   }
-]
+];

@@ -1,4 +1,3 @@
-
 // @ts-nocheck
 
 export const list = [
@@ -7,7 +6,7 @@ export const list = [
     fields: [
       {
         type: 'search-card',
-        className: "col-12  d-block",
+        className: 'col-12  d-block',
         templateOptions: {
           bodyClass: 'row',
           bodyStyle: {
@@ -23,7 +22,7 @@ export const list = [
             templateOptions: {
               label: '规则名称',
               tooltipTitle: '目标的服务对象',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '给目标起个名字'
             }
           },
@@ -34,7 +33,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '描述',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入'
             }
           },
@@ -45,7 +44,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '服务调用次数',
-              layout : 'horizontal'
+              layout: 'horizontal'
             }
           },
           {
@@ -55,7 +54,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '状态',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请选择'
             }
           },
@@ -66,23 +65,23 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '上次调度时间',
-              layout : 'horizontal',
-              placeholder: '请输入',
+              layout: 'horizontal',
+              placeholder: '请输入'
             }
-          },
+          }
         ]
       },
       {
         type: 'card',
-        className: "col-12 mt-3",
+        className: 'col-12 mt-3',
         templateOptions: {
-          title: "查询表格",
+          title: '查询表格'
         },
         fieldGroup: [
           {
             type: 'table',
             key: 'table',
-            className: "col-12 d-block",
+            className: 'col-12 d-block',
             templateOptions: {
               showPagination: true,
               pageSize: 20,
@@ -97,7 +96,7 @@ export const list = [
                   type: 'primary',
                   className: 'me-auto',
                   size: 'default',
-                  icon: 'plus',
+                  icon: 'plus'
                 },
                 {
                   type: 'default',
@@ -105,10 +104,12 @@ export const list = [
                   type: 'text',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '111',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '111',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'default',
@@ -116,10 +117,12 @@ export const list = [
                   icon: 'column-height',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '222',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '222',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'default',
@@ -127,7 +130,7 @@ export const list = [
                   icon: 'setting',
                   size: 'default',
                   className: 'mx-1'
-                },
+                }
               ]
             },
             defaultValue: [
@@ -137,7 +140,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '2',
@@ -145,7 +148,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '3',
@@ -153,7 +156,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '4',
@@ -161,7 +164,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '5',
@@ -169,7 +172,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '6',
@@ -177,7 +180,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '7',
@@ -185,7 +188,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '8',
@@ -193,7 +196,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '9',
@@ -201,7 +204,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '10',
@@ -209,7 +212,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '11',
@@ -217,7 +220,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '12',
@@ -225,7 +228,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '13',
@@ -233,7 +236,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '14',
@@ -241,7 +244,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '15',
@@ -249,7 +252,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '16',
@@ -257,7 +260,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '17',
@@ -265,7 +268,7 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
+                des: 'John Brown'
               },
               {
                 id: '18',
@@ -273,8 +276,8 @@ export const list = [
                 status: 'John Brown',
                 date: 'John Brown',
                 timer: '00001',
-                des: 'John Brown',
-              },
+                des: 'John Brown'
+              }
             ],
             fieldArray: {
               fieldGroup: [
@@ -287,7 +290,7 @@ export const list = [
                     label: '规则名称',
                     tooltipTitle: '目标的服务对象',
                     tooltipIcon: 'question-circle',
-                    layout : 'horizontal',
+                    layout: 'horizontal',
                     placeholder: '给目标起个名字'
                   }
                 },
@@ -298,7 +301,7 @@ export const list = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: '描述',
-                    layout : 'horizontal',
+                    layout: 'horizontal',
                     placeholder: '请输入'
                   }
                 },
@@ -309,7 +312,7 @@ export const list = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: '服务调用次数',
-                    layout : 'horizontal'
+                    layout: 'horizontal'
                   }
                 },
                 {
@@ -319,7 +322,7 @@ export const list = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: '状态',
-                    layout : 'horizontal',
+                    layout: 'horizontal',
                     placeholder: '请选择'
                   }
                 },
@@ -330,8 +333,8 @@ export const list = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: '上次调度时间',
-                    layout : 'horizontal',
-                    placeholder: '请输入',
+                    layout: 'horizontal',
+                    placeholder: '请输入'
                   }
                 },
                 {
@@ -340,7 +343,7 @@ export const list = [
                   wrappers: ['table'],
                   templateOptions: {
                     label: '操作',
-                    layout : 'horizontal',
+                    layout: 'horizontal',
                     placeholder: '请输入',
                     options: [
                       {
@@ -351,16 +354,15 @@ export const list = [
                       }
                     ]
                   }
-                },
-                
+                }
               ]
             }
           }
         ]
-      },
+      }
     ],
     info: {
-      title: '查询表格',
+      title: '查询表格'
     }
   },
   {
@@ -368,7 +370,7 @@ export const list = [
     fields: [
       {
         type: 'search-card',
-        className: "col-12  d-block",
+        className: 'col-12  d-block',
         templateOptions: {
           bodyClass: 'row',
           bodyStyle: {
@@ -384,7 +386,7 @@ export const list = [
             templateOptions: {
               label: '规则名称',
               tooltipTitle: '目标的服务对象',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '给目标起个名字'
             }
           },
@@ -395,7 +397,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '描述',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入'
             }
           },
@@ -406,7 +408,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '服务调用次数',
-              layout : 'horizontal'
+              layout: 'horizontal'
             }
           },
           {
@@ -416,7 +418,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '状态',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请选择'
             }
           },
@@ -427,17 +429,16 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '上次调度时间',
-              layout : 'horizontal',
-              placeholder: '请输入',
+              layout: 'horizontal',
+              placeholder: '请输入'
             }
-          },
+          }
         ]
       },
       {
         type: 'card',
-        className: "col-12 mt-3",
-        templateOptions: {
-        },
+        className: 'col-12 mt-3',
+        templateOptions: {},
         fieldGroup: [
           {
             type: 'list',
@@ -456,7 +457,7 @@ export const list = [
                   type: 'primary',
                   className: 'me-auto',
                   size: 'default',
-                  icon: 'plus',
+                  icon: 'plus'
                 },
                 {
                   type: 'default',
@@ -464,10 +465,12 @@ export const list = [
                   type: 'text',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '111',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '111',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'default',
@@ -475,10 +478,12 @@ export const list = [
                   icon: 'column-height',
                   size: 'default',
                   className: 'mx-1',
-                  options: [{
-                    label: '222',
-                    value: '222'
-                  }],
+                  options: [
+                    {
+                      label: '222',
+                      value: '222'
+                    }
+                  ]
                 },
                 {
                   type: 'default',
@@ -486,14 +491,15 @@ export const list = [
                   icon: 'setting',
                   size: 'default',
                   className: 'mx-1'
-                },
+                }
               ]
             },
             defaultValue: [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -504,7 +510,8 @@ export const list = [
               {
                 meta: {
                   title: '🐛 [BUG]无法创建工程npm create umi',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -515,7 +522,8 @@ export const list = [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -526,7 +534,8 @@ export const list = [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -537,7 +546,8 @@ export const list = [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -548,7 +558,8 @@ export const list = [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -559,7 +570,8 @@ export const list = [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -570,7 +582,8 @@ export const list = [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -581,7 +594,8 @@ export const list = [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -592,7 +606,8 @@ export const list = [
               {
                 meta: {
                   title: 'alipay',
-                  description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+                  description:
+                    '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
                   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
                 },
                 progress: {
@@ -612,23 +627,24 @@ export const list = [
                     title: '描述',
                     size: 48,
                     shape: 'square',
-                    description : '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套',
+                    description:
+                      '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套'
                   }
                 },
                 {
                   type: 'progress',
                   key: 'progress',
-                  className: 'col-1 d-block',
+                  className: 'col-1 d-block'
                 },
                 {
                   type: 'progress',
                   key: 'progress',
-                  className: 'col-1 d-block',
+                  className: 'col-1 d-block'
                 },
                 {
                   type: 'progress',
                   key: 'progress',
-                  className: 'col-7  d-block',
+                  className: 'col-7  d-block'
                 },
                 {
                   type: 'list-actions',
@@ -638,22 +654,24 @@ export const list = [
                     actionOptions: [
                       {
                         text: '编辑'
-                      }, {
+                      },
+                      {
                         text: '编辑'
-                      }, {
+                      },
+                      {
                         text: '删除'
                       }
-                    ],
+                    ]
                   }
                 }
               ]
             }
           }
         ]
-      },
+      }
     ],
     info: {
-      title: '标准列表',
+      title: '标准列表'
     }
   },
   {
@@ -661,7 +679,7 @@ export const list = [
     fields: [
       {
         type: 'search-card',
-        className: "col-12 d-block mb-2",
+        className: 'col-12 d-block mb-2',
         templateOptions: {
           bodyClass: 'row',
           bodyStyle: {
@@ -677,7 +695,7 @@ export const list = [
             templateOptions: {
               label: '规则名称',
               tooltipTitle: '目标的服务对象',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '给目标起个名字'
             }
           },
@@ -688,7 +706,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '描述',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请输入'
             }
           },
@@ -699,7 +717,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '服务调用次数',
-              layout : 'horizontal'
+              layout: 'horizontal'
             }
           },
           {
@@ -709,7 +727,7 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '状态',
-              layout : 'horizontal',
+              layout: 'horizontal',
               placeholder: '请选择'
             }
           },
@@ -720,10 +738,10 @@ export const list = [
             wrappers: ['form'],
             templateOptions: {
               label: '上次调度时间',
-              layout : 'horizontal',
-              placeholder: '请输入',
+              layout: 'horizontal',
+              placeholder: '请输入'
             }
-          },
+          }
         ]
       },
       {
@@ -743,7 +761,7 @@ export const list = [
               type: 'primary',
               className: 'me-auto',
               size: 'default',
-              icon: 'plus',
+              icon: 'plus'
             },
             {
               type: 'default',
@@ -751,10 +769,12 @@ export const list = [
               type: 'text',
               size: 'default',
               className: 'mx-1',
-              options: [{
-                label: '111',
-                value: '222'
-              }],
+              options: [
+                {
+                  label: '111',
+                  value: '222'
+                }
+              ]
             },
             {
               type: 'default',
@@ -762,10 +782,12 @@ export const list = [
               icon: 'column-height',
               size: 'default',
               className: 'mx-1',
-              options: [{
-                label: '222',
-                value: '222'
-              }],
+              options: [
+                {
+                  label: '222',
+                  value: '222'
+                }
+              ]
             },
             {
               type: 'default',
@@ -773,152 +795,173 @@ export const list = [
               icon: 'setting',
               size: 'default',
               className: 'mx-1'
-            },
+            }
           ]
         },
         defaultValue: [
           {
             meta: {
               title: 'alipay1',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
           },
           {
             meta: {
               title: 'alipay',
-              description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
+              description:
+                '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一',
               avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
             }
-          },
+          }
         ],
         fieldArray: {
           className: 'col-3 d-block',
           fieldGroup: [
             {
               type: 'card',
-              className: "col-12",
+              className: 'col-12',
               templateOptions: {
                 nzBodyStyle: {
-                  padding: 0,
+                  padding: 0
                 },
-                actions: [{
-                  icon: 'setting',
-                }, {
-                  icon: 'edit',
-                }]
+                actions: [
+                  {
+                    icon: 'setting'
+                  },
+                  {
+                    icon: 'edit'
+                  }
+                ]
               },
               fieldGroup: [
                 {
@@ -928,18 +971,20 @@ export const list = [
                   templateOptions: {
                     title: '描述',
                     size: 48,
-                    description : '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套',
+                    description:
+                      '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套'
                   }
                 }
               ]
-            },
+            }
           ]
         }
       }
     ],
     info: {
       title: '卡片列表',
-      content: '段落示意：蚂蚁金服务设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态， 提供跨越设计与开发的体验解决方案。'
+      content:
+        '段落示意：蚂蚁金服务设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态， 提供跨越设计与开发的体验解决方案。'
     }
   }
-]
+];
