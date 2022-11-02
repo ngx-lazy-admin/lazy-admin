@@ -416,11 +416,7 @@ export const EchartMock = [
 								series: [
 									{
 										data: [120, 200, 150, 80, 70, 110, 130],
-										type: 'bar',
-										showBackground: true,
-										backgroundStyle: {
-											color: 'rgba(180, 180, 180, 0.2)'
-										}
+										type: 'line'
 									}
 								]
 							}
@@ -432,7 +428,7 @@ export const EchartMock = [
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
 				templateOptions: {
-					title: '基础折线图',
+					title: '基础平滑折线图',
 					hoverable: true
 				},
 				fieldGroup: [
@@ -451,10 +447,211 @@ export const EchartMock = [
 								series: [
 									{
 										data: [120, 100, 150, 50, 70, 110, 130],
-										type: 'bar',
-										showBackground: true,
-										backgroundStyle: {
-											color: 'rgba(180, 180, 180, 0.2)'
+										type: 'line',
+										smooth: true,
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '基础面积图',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								xAxis: {
+									type: 'category',
+									boundaryGap: false,
+									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+								},
+								yAxis: {
+									type: 'value'
+								},
+								series: [
+									{
+										data: [820, 932, 901, 934, 1290, 1330, 1320],
+										type: 'line',
+										areaStyle: {}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '折线图堆叠',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								title: {
+									text: 'Stacked Line'
+								},
+								tooltip: {
+									trigger: 'axis'
+								},
+								legend: {
+									data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+								},
+								grid: {
+									left: '3%',
+									right: '4%',
+									bottom: '3%',
+									containLabel: true
+								},
+								toolbox: {
+									feature: {
+										saveAsImage: {}
+									}
+								},
+								xAxis: {
+									type: 'category',
+									boundaryGap: false,
+									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+								},
+								yAxis: {
+									type: 'value'
+								},
+								series: [
+									{
+										name: 'Email',
+										type: 'line',
+										stack: 'Total',
+										data: [120, 132, 101, 134, 90, 230, 210]
+									},
+									{
+										name: 'Union Ads',
+										type: 'line',
+										stack: 'Total',
+										data: [220, 182, 191, 234, 290, 330, 310]
+									},
+									{
+										name: 'Video Ads',
+										type: 'line',
+										stack: 'Total',
+										data: [150, 232, 201, 154, 190, 330, 410]
+									},
+									{
+										name: 'Direct',
+										type: 'line',
+										stack: 'Total',
+										data: [320, 332, 301, 334, 390, 330, 320]
+									},
+									{
+										name: 'Search Engine',
+										type: 'line',
+										stack: 'Total',
+										data: [820, 932, 901, 934, 1290, 1330, 1320]
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '未来一周气温变化',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								title: {
+									text: 'Temperature Change in the Coming Week'
+								},
+								tooltip: {
+									trigger: 'axis'
+								},
+								legend: {},
+								toolbox: {
+									show: true,
+									feature: {
+										dataZoom: {
+											yAxisIndex: 'none'
+										},
+										dataView: { readOnly: false },
+										magicType: { type: ['line', 'bar'] },
+										restore: {},
+										saveAsImage: {}
+									}
+								},
+								xAxis: {
+									type: 'category',
+									boundaryGap: false,
+									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+								},
+								yAxis: {
+									type: 'value',
+									axisLabel: {
+										formatter: '{value} °C'
+									}
+								},
+								series: [
+									{
+										name: 'Highest',
+										type: 'line',
+										data: [10, 11, 13, 11, 12, 12, 9],
+										markPoint: {
+											data: [
+												{ type: 'max', name: 'Max' },
+												{ type: 'min', name: 'Min' }
+											]
+										},
+										markLine: {
+											data: [{ type: 'average', name: 'Avg' }]
+										}
+									},
+									{
+										name: 'Lowest',
+										type: 'line',
+										data: [1, -2, 2, 5, 3, 2, 0],
+										markPoint: {
+											data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
+										},
+										markLine: {
+											data: [
+												{ type: 'average', name: 'Avg' },
+												[
+													{
+														symbol: 'none',
+														x: '90%',
+														yAxis: 'max'
+													},
+													{
+														symbol: 'circle',
+														label: {
+															position: 'start',
+															formatter: 'Max'
+														},
+														type: 'max',
+														name: '最高点'
+													}
+												]
+											]
 										}
 									}
 								]
@@ -467,7 +664,7 @@ export const EchartMock = [
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
 				templateOptions: {
-					title: '基础折线图',
+					title: '折线图区域高亮',
 					hoverable: true
 				},
 				fieldGroup: [
@@ -478,6 +675,79 @@ export const EchartMock = [
 							config: {
 								xAxis: {
 									type: 'category',
+									boundaryGap: false
+								},
+								yAxis: {
+									type: 'value',
+									boundaryGap: [0, '30%']
+								},
+								visualMap: {
+									type: 'piecewise',
+									show: false,
+									dimension: 0,
+									seriesIndex: 0,
+									pieces: [
+										{
+											gt: 1,
+											lt: 3,
+											color: 'rgba(0, 0, 180, 0.4)'
+										},
+										{
+											gt: 5,
+											lt: 7,
+											color: 'rgba(0, 0, 180, 0.4)'
+										}
+									]
+								},
+								series: [
+									{
+										type: 'line',
+										smooth: 0.6,
+										symbol: 'none',
+										lineStyle: {
+											color: '#5470C6',
+											width: 5
+										},
+										markLine: {
+											symbol: ['none', 'none'],
+											label: { show: false },
+											data: [{ xAxis: 1 }, { xAxis: 3 }, { xAxis: 5 }, { xAxis: 7 }]
+										},
+										areaStyle: {},
+										data: [
+											['2019-10-10', 200],
+											['2019-10-11', 560],
+											['2019-10-12', 750],
+											['2019-10-13', 580],
+											['2019-10-14', 250],
+											['2019-10-15', 300],
+											['2019-10-16', 450],
+											['2019-10-17', 300],
+											['2019-10-18', 100]
+										]
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '面积图',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								xAxis: {
+									type: 'category',
+									boundaryGap: false,
 									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 								},
 								yAxis: {
@@ -485,12 +755,108 @@ export const EchartMock = [
 								},
 								series: [
 									{
-										data: [120, 50, 150, 50, 70, 160, 130],
-										type: 'bar',
-										showBackground: true,
-										backgroundStyle: {
-											color: 'rgba(180, 180, 180, 0.2)'
-										}
+										data: [820, 932, 901, 934, 1290, 1330, 1320],
+										type: 'line',
+										areaStyle: {}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '面积图',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								xAxis: {
+									type: 'category',
+									boundaryGap: false,
+									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+								},
+								yAxis: {
+									type: 'value'
+								},
+								series: [
+									{
+										data: [820, 932, 901, 934, 1290, 1330, 1320],
+										type: 'line',
+										areaStyle: {}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '面积图',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								xAxis: {
+									type: 'category',
+									boundaryGap: false,
+									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+								},
+								yAxis: {
+									type: 'value'
+								},
+								series: [
+									{
+										data: [820, 932, 901, 934, 1290, 1330, 1320],
+										type: 'line',
+										areaStyle: {}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				type: 'card',
+				className: "d-inline-block mb-3 col-3",
+				templateOptions: {
+					title: '面积图',
+					hoverable: true
+				},
+				fieldGroup: [
+					{
+						key: 'date',
+						type: 'echarts',
+						templateOptions: {
+							config: {
+								xAxis: {
+									type: 'category',
+									boundaryGap: false,
+									data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+								},
+								yAxis: {
+									type: 'value'
+								},
+								series: [
+									{
+										data: [820, 932, 901, 934, 1290, 1330, 1320],
+										type: 'line',
+										areaStyle: {}
 									}
 								]
 							}

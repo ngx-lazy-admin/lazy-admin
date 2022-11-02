@@ -58,6 +58,12 @@ export class ModalTemplateComponent {
   }
   
 
+// .cdk-overlay-container,
+// .cdk-overlay-backdrop,
+// .ant-modal-wrap  {
+//     pointer-events: none !important;
+// }
+
   // 获取组件模板
   public getComponentRef (params?: any): TemplateRef<any> {
 
@@ -94,7 +100,8 @@ export class ModalTemplateComponent {
   }
 
   // template click
-  templateClick ($event: any, modalRef: NzModalRef) {
+  templateClick ($event: any, modalRef: NzModalRef, params?: any) {
+    console.log(params)
     if ($event.type === 'close') {
       modalRef.destroy();
     } else if ($event.type === 'min') {

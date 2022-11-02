@@ -22,6 +22,11 @@ $zIndex-modal:                      1000;
 $zIndex-popover:                    999;
 $zIndex-tooltip:                    999;
 
+
+$overlay-container-z-index : 1000  !default ;
+$overlay-z-index : 1000  !default ;
+$overlay-backdrop-z-index : 1000  !default ;
+
 // @zindex-badge: auto;
 // @zindex-table-fixed: 2;
 // @zindex-affix: 10;

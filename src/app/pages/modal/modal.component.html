@@ -3,33 +3,20 @@
 <!-- 自定义组成部分 -->
 <ng-template #modalTitle>Custom Modal Title11</ng-template>
 
-
 <button nz-button (click)="create(modalTitle)"> 打开一个模板对话框 </button>
+<button nz-button (click)="createOne(modalTitle)"> 只能打开一个对话框 </button>
 
 <button nz-button (click)="iframe()"> 打开一个iframe </button>
-
 <button nz-button (click)="formly()"> 打开一个formly </button>
-
 <button nz-button (click)="blank(modalTitle)"> 打开一个blank </button>
 
+<!-- 图片预览 -->
+<ng-template #imageRef>
+  <img class="w-100" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" alt="">
+</ng-template>
+<button nz-button (click)="image(imageRef)"> 图片预览 </button>
 
-
-<button nz-button (click)="close($event)"> 显示全部 </button>
-<button nz-button (click)="search($event)"> search </button>
-<button nz-button (click)="dispatchSearch($event)"> dispatchSearch </button>
-<button nz-button (click)="dispatchForm($event)"> dispatchForm </button>
-
-<button nz-button (click)="openBlank($event)"> 打开弹窗 </button>
-<button nz-button (click)="closeBlank($event)"> 关闭弹窗 </button>
-<button nz-button (click)="hideBlank($event)"> 隐藏弹窗 </button>
-<button nz-button (click)="showBlank($event)"> 显示弹窗 </button>
-<button nz-button (click)="hideAllBlank($event)"> 隐藏全部 </button>
-<button nz-button (click)="showAllBlank($event)"> 显示全部 </button>
-
-
-<button nz-button (click)="showAllBlank($event)"> 打开百度 </button>
-<button nz-button (click)="showAllBlank($event)"> 打开淘宝 </button>
-<button nz-button (click)="showAllBlank($event)"> 打开腾讯 </button>
-
+<button nz-button (click)="hideAll($event)"> 隐藏全部弹窗 </button>
+<button nz-button (click)="showAll($event)"> 显示全部弹窗 </button>
 
 <app-share-template></app-share-template>

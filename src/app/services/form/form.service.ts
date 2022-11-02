@@ -1,61 +1,47 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  NgZone,
-  Injectable,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, Injectable } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 
 import { inNextTick } from 'ng-zorro-antd/core/util';
 import { NzConfigService } from 'ng-zorro-antd/core/config';
-
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import hotkeys from 'hotkeys-js';
-
 import { editor } from 'monaco-editor';
-
-import { FieldService } from 'src/app/services/api/field';
-// import { execEval } from 'src/app/fields/types/share-field.type';
+import { format } from 'prettier/standalone';
+import * as parserBabel from 'prettier/parser-babel';
 
 import { CacheService } from 'src/app/services/router/cache.service';
-
-import { format } from "prettier/standalone";
-import * as parserBabel from "prettier/parser-babel";
 import { execEval } from 'src/app/utils';
+import { FieldService } from 'src/app/api/field';
 
 export interface headerInfoType {
-  title: string,
-  content: string,
-  subtitle: string,
+  title: string;
+  content: string;
+  subtitle: string;
 }
 
 export interface errorResultType {
-  status: string,
-  subTitle: string,
+  status: string;
+  subTitle: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
-
   rooterChange?: Subscription;
 
   info?: headerInfoType | null;
 
-  // form params
-
   form = new FormGroup({});
 
   model: any = {
-    name: 1,
-  }
+    name: 1
+  };
 
   options: FormlyFormOptions = {
     formState: {
@@ -63,19 +49,16 @@ export class FormService {
     }
   };
 
-  fields: FormlyFieldConfig[] = []
+  fields: FormlyFieldConfig[] = [];
 
   // lading
-
   loading: boolean = true;
   status = 200;
 
   // cache
-
-  codeType = 'javascript'
+  codeType = 'javascript';
 
   // routeCache: any = {};
-
   private destroy$ = new Subject<void>();
 
   isVisible = false;
@@ -91,21 +74,24 @@ export class FormService {
     private nzConfigService: NzConfigService,
     private routeCache: CacheService
   ) {
-    this.rooterChange = this.router.events.subscribe((event) => {
+    this.rooterChange = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (this.routeCache.get(this.router.url)) {
-          this.render(this.routeCache.get(this.router.url))
-          this.routeCache.recoveryHistoryPosition(this.router.url)
+          this.render(this.routeCache.get(this.router.url));
+          this.routeCache.recoveryHistoryPosition(this.router.url);
         } else {
-          this.loading = true
-          this.fieldService.getField(this.router.url).subscribe(result => {
-            this.routeCache.set(this.router.url, result)
-            this.render(this.routeCache.get(this.router.url))
-          }, err => {
-            this.loading = false;
-            this.status = err?.status
-            this.clearData();
-          })
+          this.loading = true;
+          this.fieldService.getField(this.router.url).subscribe(
+            result => {
+              this.routeCache.set(this.router.url, result);
+              this.render(this.routeCache.get(this.router.url));
+            },
+            err => {
+              this.loading = false;
+              this.status = err?.status;
+              this.clearData();
+            }
+          );
         }
       }
     });
@@ -116,7 +102,7 @@ export class FormService {
     });
 
     hotkeys('Esc', (event, handler) => {
-      this.isVisible = false
+      this.isVisible = false;
       this.cd.markForCheck();
     });
 
@@ -128,11 +114,11 @@ export class FormService {
         minimap: {
           enabled: false
         },
-        language: "php",
+        language: 'php',
         autoIndent: true,
         formatOnPaste: true,
         formatOnType: true,
-        wordwrap: 'on',
+        wordwrap: 'on'
       }
     });
   }
@@ -147,17 +133,17 @@ export class FormService {
         this.model = result?.data;
 
         this.code = format(JSON.stringify(result.fields), {
-          parser: "json",
-          plugins: [parserBabel],
+          parser: 'json',
+          plugins: [parserBabel]
         });
 
         // this.code = result.fields
-        console.log('code')
+        console.log('code');
 
         this.info = result?.info;
       } catch (error) {
-        this.fields = []
-        this.model = {}
+        this.fields = [];
+        this.model = {};
         this.info = null;
       } finally {
         this.status = 200;
@@ -191,15 +177,15 @@ export class FormService {
     this.editor = $event;
     $event.onDidChangeModelContent(() => {
       try {
-        let codes = $event.getValue()
-        this.fields = execEval(codes)
+        let codes = $event.getValue();
+        this.fields = execEval(codes);
         setTimeout(() => {
           this.cd.markForCheck();
         }, 0);
       } catch (error) {
         this.cd.markForCheck();
       }
-    })
+    });
   }
 
   private setup(): void {
@@ -211,10 +197,7 @@ export class FormService {
     this.ngZone.runOutsideAngular(() =>
       inNextTick()
         .pipe(takeUntil(this.destroy$))
-        .subscribe(() => {
-
-        })
+        .subscribe(() => {})
     );
   }
 }
-  

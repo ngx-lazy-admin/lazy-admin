@@ -106,8 +106,8 @@ export class PreviewService   {
     const modal = this.modal.openModals.find(item => item.componentInstance?.id === id)
 
     if (modal) {
-      const rootElment = modal.getElement().parentElement?.parentElement
-      rootElment?.classList.add('pointer-events-none')
+      const element = modal.getElement().parentElement?.parentElement
+      element?.classList.add('pointer-events-none')
     }
   }
 

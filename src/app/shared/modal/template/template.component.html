@@ -13,7 +13,7 @@
 
 <!-- iframe TemplateRef -->
 <ng-template #iframeTemplateRef let-params let-ref="modalRef">
-  <app-modal-title [nzTitle]="params.nzTitle" [id]="params.id" (clickEvent)="ref.destroy()"></app-modal-title>
+  <app-modal-title [nzTitle]="params.nzTitle" [id]="params.id" (clickEvent)="templateClick($event, ref)"></app-modal-title>
   <div class="d-flex min-vh-75">
     <iframe class="w-100 h-auto" [src]="params?.url"></iframe>
   </div>
@@ -33,7 +33,7 @@
 
 <!-- blank TemplateRef -->
 <ng-template #blankTemplateRef let-params let-ref="modalRef">
-  <app-modal-title [nzTitle]="params?.nzTitle" [id]="params.id" (clickEvent)="templateClick($event, ref)"></app-modal-title>
+  <app-modal-title [nzTitle]="params?.nzTitle" [id]="params.id" (clickEvent)="templateClick($event, ref, params)"></app-modal-title>
   <div class="ant-modal-body">
     <ng-container *ngTemplateOutlet="params.nzContent; context: params"></ng-container>
   </div>

@@ -21,17 +21,24 @@ export interface MenuType {
 @Injectable()
 export class MenuService {
 
+  private _menuUrl = 'api/menu';
+
+  private _menuObj: any = {};
+
   private _destroy$ = new Subject();
   private _menu$ = new BehaviorSubject<Array<MenuType|null>|null>(null);
-  private _menuUrl = 'api/menu';
-  public menus: Array<MenuType> = [];
-  private _activeMenu: MenuType|null = null;
-
   private _tabset$ = new BehaviorSubject<Array<MenuType|null>|null>([]);
-  private _tabset:  Array<MenuType> = [];
+
+  protected tabset:  Array<MenuType> = [];
+
+  // 菜单
+  public menus: Array<MenuType> = [];
+  
+  // 页头
   public breadcrumb: Array<any> = [];
+
+
   public tabsMenu: MenuType[] = []; 
-  private _menuObj: any = {};
 
   constructor(
     private http: HttpClient,
@@ -119,7 +126,6 @@ export class MenuService {
   getMenu(menuUrl?: string): Observable<Array<MenuType>> {
     return this.http.get<Array<MenuType>>(menuUrl || this._menuUrl).pipe(tap(menu => {
       this.menus = menu;
-      console.log('getMenu', menu)
       this._menu$.next(this.menus)
     }))
   }
@@ -129,36 +135,37 @@ export class MenuService {
     this._menu$.next(this.menus)
   }
 
-  addTabset (menu?: any) {
-    if (!this._tabset.some(item => item.link === menu.link)) {
-      this._tabset = [...this._tabset, menu]
-      this._tabset$.next(this._tabset);
+  addTabset (tab?: any) {
+    if (!this.tabset.some(item => item.link === tab.link)) {
+      this.tabset = [...this.tabset, tab]
+      this._tabset$.next(this.tabset);
     } else {
-      this.activeTabset(menu)
+      this.activeTabset(tab)
     }
   }
 
   closeTabSet (index: number) {
-    if (this._tabset.length === 1) {
+    if (this.tabset.length === 1) {
       return;
     }
-    let selected = this._tabset[index].selected;
-    this._tabset.splice(index, 1);
+
+    let selected = this.tabset[index].selected;
+    this.tabset.splice(index, 1);
     if (selected) {
-      this.activeTabset(this._tabset[index])
+      const i = index > this.tabset.length ? this.tabset.length : index
+      this.activeTabset(this.tabset[i])
     }
   }
 
   activeTabset (menu: MenuType) {
-    this._tabset.forEach(item => {
-      item.selected = false
-      if (item.link === menu.link) {
-        item.selected = true
+    this.tabset = this.tabset.map(item => {
+      return {
+        ...item,
+        selected: item.link === menu.link ? true : false
       }
     })
-    this._tabset = [...this._tabset]
     
-    this._tabset$.next(this._tabset);
+    this._tabset$.next(this.tabset);
   }
 
   ngOnDestroy() {

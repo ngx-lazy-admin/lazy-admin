@@ -3,14 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { ApiModule } from './swagger';
 
 @NgModule({
-  declarations: [
-
-  ],
-  imports: [
-    ApiModule
-  ],
-  providers: [
-
-  ]
+  declarations: [],
+  imports: [ApiModule],
+  providers: []
 })
-export class ApisModule { }
+export class ApisModule {}

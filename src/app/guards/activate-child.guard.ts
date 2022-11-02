@@ -8,17 +8,14 @@ import { MenuService } from '../layouts';
   providedIn: 'root'
 })
 export class ActivateChildGuard implements CanActivateChild {
-
-  constructor(
-    private menuService: MenuService
-  ) {}
+  constructor(private menuService: MenuService) {}
 
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // console.log('ActivateChildGuard: canActivateChild')
-    return this.menuService.canActive(state.url)
+    return this.menuService.canActive(state.url);
   }
 
   // 处理未保存的更改
@@ -26,8 +23,9 @@ export class ActivateChildGuard implements CanActivateChild {
     component: unknown,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      // console.log('ActivateChildGuard: canDeactivate')
+    nextState?: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    // console.log('ActivateChildGuard: canDeactivate')
     return true;
   }
 }

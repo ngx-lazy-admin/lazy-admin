@@ -6,7 +6,6 @@
 	nzHideAdd="true"
 	[nzAnimated]="false"
 	class="w-100"
-	(nzAdd)="newTab()"
 	(nzClose)="closeTab($event)">
 	<ng-container *ngFor="let tab of tabs">
 		<nz-tab nzClosable nzType="primary" class="mb-0"  (nzContextmenu)="contextMenu($event, menu)">

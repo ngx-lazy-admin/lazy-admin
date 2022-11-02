@@ -7,8 +7,7 @@ import { ModalService } from 'src/app/shared/modal';
 
 import { DispatchService } from 'src/app/shared/modal/dispatch.service';
 
-import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component'
-
+import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component';
 
 @Component({
   selector: 'app-modal',
@@ -16,22 +15,17 @@ import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.c
   styleUrls: ['./modal.component.less']
 })
 export class ModalComponent implements OnInit {
-
   ngOnInit(): void {}
 
-  @ViewChild('titleTemplate', { read: TemplateRef }) titleTemplateRef!:TemplateRef<any>;
+  @ViewChild('titleTemplate', { read: TemplateRef }) titleTemplateRef!: TemplateRef<any>;
 
   @ViewChild(ModalTemplateComponent) private modalTemplate!: ModalTemplateComponent;
-  
-  constructor(
-    private modalService: ModalService,
-    private dispatch: DispatchService,
-    private sanitizer: DomSanitizer,
-  ) {}
+
+  constructor(private modalService: ModalService, private dispatch: DispatchService, private sanitizer: DomSanitizer) {}
 
   model = {
     email: 'email@gmail.com'
-  }
+  };
 
   field = [
     {
@@ -42,10 +36,10 @@ export class ModalComponent implements OnInit {
       templateOptions: {
         label: 'Email address',
         placeholder: 'Enter email',
-        required: true,
+        required: true
       }
     }
-  ]
+  ];
 
   form = new FormGroup({});
   options: FormlyFormOptions = {
@@ -54,16 +48,44 @@ export class ModalComponent implements OnInit {
     }
   };
 
-  list: any[] = []
+  list: any[] = [];
 
-  // 创建弹窗
-  create(template: any) {     
-    this.modalService.create(template)
+  // create modal template
+  create(template: any) {
+    const contentTemplateRef = this.modalTemplate.getTemplateRef('blank');
+
+    const ModalOptions = {
+      nzTitle: null,
+      nzFooter: null,
+      nzWidth: '960px',
+      nzComponentParams: {
+        nzTitle: '这是一个标题1',
+        nzContent: template
+      }
+    };
+
+    this.modalService.create(contentTemplateRef, ModalOptions);
+  }
+
+  createOne(template: any) {
+    const contentTemplateRef = this.modalTemplate.getTemplateRef('blank');
+    const ModalOptions = {
+      id: '99999999',
+      nzTitle: null,
+      nzFooter: null,
+      nzWidth: '960px',
+      nzComponentParams: {
+        nzTitle: '只能打开一个对话框',
+        nzContent: template
+      }
+    };
+
+    this.modalService.create(contentTemplateRef, ModalOptions);
   }
 
   // create iframe modal
-  iframe() {    
-    const contentRef = this.modalTemplate.getTemplateRef('iframe')
+  iframe() {
+    const contentRef = this.modalTemplate.getTemplateRef('iframe');
 
     const modalOptions = {
       nzTitle: null,
@@ -73,17 +95,17 @@ export class ModalComponent implements OnInit {
       nzFooter: null,
       nzComponentParams: {
         nzTitle: 'Iframe',
-        url: this.sanitizer.bypassSecurityTrustResourceUrl('/blank/components/autocomplete')
+        url: this.sanitizer.bypassSecurityTrustResourceUrl('/modal')
       },
       nzWidth: '960px'
-    }
+    };
 
-    this.modalService.create(contentRef, modalOptions)
+    this.modalService.create(contentRef, modalOptions);
   }
 
   // create formly modal
-  formly () {
-    const contentTemplateRef = this.modalTemplate.getTemplateRef('form')
+  formly() {
+    const contentTemplateRef = this.modalTemplate.getTemplateRef('form');
     const ModalOptions = {
       nzTitle: null,
       nzFooter: null,
@@ -94,12 +116,12 @@ export class ModalComponent implements OnInit {
         model: this.model,
         options: this.options
       }
-    }
-    this.modalService.create(contentTemplateRef, ModalOptions) 
+    };
+    this.modalService.create(contentTemplateRef, ModalOptions);
   }
 
-  blank (template: TemplateRef<any>) {
-    const contentTemplateRef = this.modalTemplate.getTemplateRef('blank')
+  blank(template: TemplateRef<any>) {
+    const contentTemplateRef = this.modalTemplate.getTemplateRef('blank');
     const ModalOptions = {
       nzTitle: null,
       nzFooter: null,
@@ -108,82 +130,54 @@ export class ModalComponent implements OnInit {
         nzTitle: '这是一个标题',
         field: this.field,
         model: this.model,
-        options: this.options,
+        options: this.options
       }
-    }
-    this.modalService.create(contentTemplateRef, ModalOptions) 
+    };
+    this.modalService.create(contentTemplateRef, ModalOptions);
   }
 
+  image(imageRef: any) {
+    // 弹窗的 overlay 的层级默认是 1000
+    // 事件穿透之后，弹窗无法向下滚动
+    // 事件不穿透，遮罩层在在弹窗上面
+    // 不修改弹窗层级，多个弹窗无法实现层级替换
+    // 修改弹窗层级，会影响其他的overlay
+
+    const contentTemplateRef = this.modalTemplate.getTemplateRef('blank');
+    const ModalOptions = {
+      nzTitle: null,
+      nzFooter: null,
+      nzWidth: '960px',
+      nzMask: false,
+      nzBodyStyle: {
+        padding: 0
+      },
+      nzComponentParams: {
+        nzTitle: '这是一个标题',
+        nzContent: imageRef
+      }
+    };
+    this.modalService.create(contentTemplateRef, ModalOptions);
+  }
 
   // 自定义组成部分
-  custom (template: TemplateRef<any>) {
+  custom(template: TemplateRef<any>) {
     this.modalService.create(template, {
       nzTitle: this.titleTemplateRef
-    })
+    });
   }
 
-  close ($event: any) {
-    // this.modalService.closeAll()
-  }
-
-  open ($event: any) {
-    // this.modalService.show($event)
-    console.log($event)
-  }
-
-  search ($event: any) {
-    this.modalService.open('search')
-  }
-
-  dispatchSearch ($event: any) {
-    // 需求一个回调, 时间
-    let params = {
-      afterClose: () => {
-        console.log('弹窗关闭了')
-      }
-    }
-    let componentParams = null 
-    this.dispatch.open('search', params, componentParams)
-  }
-
-  dispatchForm ($event: any) {
-    this.dispatch.open('form')
-  }
-
-  // blank ($event: any) {
-  //   this.dispatch.open('blank')
+  // search ($event: any) {
+  //   this.modalService.open('search')
   // }
 
-  modalId: string = ''
-
-  openBlank ($event: any) {
-    let params = {
-      afterOpen: (modal: any) => {
-        console.log('弹窗打开了')
-        console.log(modal)
-        this.modalId = modal.componentInstance.id
-      }
-    }
-    this.dispatch.open('blank', params)
+  // 隐藏全部弹窗
+  hideAll($event: any) {
+    this.modalService.hideAll();
   }
 
-  closeBlank ($event: any) {
-    this.dispatch.close(this.modalId)
-  }
-
-  hideBlank ($event: any) {
-    this.dispatch.hide(this.modalId)
-  }
-
-  showBlank ($event: any) {
-    this.dispatch.open('blank')
-  }
-
-  hideAllBlank ($event: any) {
-    this.dispatch.hideAll()
-  }
-
-  showAllBlank ($event: any) {
-    this.dispatch.showAll()
+  // 显示全部弹窗
+  showAll($event: any) {
+    this.modalService.showAll();
   }
 }

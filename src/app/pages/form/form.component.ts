@@ -1,9 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  NgZone,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -19,28 +14,26 @@ import { takeUntil, switchMap } from 'rxjs/operators';
 import hotkeys from 'hotkeys-js';
 import { editor } from 'monaco-editor';
 
-import { format } from "prettier/standalone";
-import * as parserBabel from "prettier/parser-babel";
+import { format } from 'prettier/standalone';
+import * as parserBabel from 'prettier/parser-babel';
 
 import { execEval } from 'src/app/shared/fields/antd/share-field.type';
 import { CacheService } from 'src/app/services/router/cache.service';
 import { ModalService } from 'src/app/shared/modal';
 import { PreviewService } from 'src/app/shared/preview';
 
-
 import { CodeEditorService } from 'src/app/shared/code-editor';
 import { FieldService } from 'src/app/api/dashboard';
 
-
 export interface headerInfoType {
-  title: string,
-  content: string,
-  subtitle: string,
+  title: string;
+  content: string;
+  subtitle: string;
 }
 
 export interface errorResultType {
-  status: string,
-  subTitle: string,
+  status: string;
+  subTitle: string;
 }
 
 @Component({
@@ -49,19 +42,18 @@ export interface errorResultType {
   styleUrls: ['./form.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'p-3 d-block',
+    class: 'p-3 d-block'
   }
 })
 export class FormComponent {
-
   rooterChange?: Subscription;
 
   info?: headerInfoType | null;
 
   // form params
-  model: any = {}
+  model: any = {};
   form = new FormGroup({});
-  fields: FormlyFieldConfig[] = []
+  fields: FormlyFieldConfig[] = [];
   options: FormlyFormOptions = {
     formState: {
       caches: '1'
@@ -73,7 +65,7 @@ export class FormComponent {
   status = 200;
 
   // cache
-  codeType = 'json'
+  codeType = 'json';
 
   editor?: editor.ICodeEditor;
   code: string = ``;
@@ -95,28 +87,31 @@ export class FormComponent {
     private http: HttpClient
   ) {
     // 监听路由变化
-    this.rooterChange = this.router.events.subscribe((event) => {
+    this.rooterChange = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // 获取当前页面的配置
-        this.loading = true
+        this.loading = true;
         this.cd.markForCheck();
         const resultCache = this.routeCache.get(this.router.url);
         if (resultCache) {
-          this.render(resultCache)
-          this.routeCache.recoveryHistoryPosition(this.router.url)
+          this.render(resultCache);
+          this.routeCache.recoveryHistoryPosition(this.router.url);
         } else {
-          this.loading = true
-          // 组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。 
+          this.loading = true;
+          // 组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。
           // 它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
-          this.fieldService.getField(this.router.url).subscribe(result => {
-            this.routeCache.set(this.router.url, result)
-            this.render(this.routeCache.get(this.router.url))
-          }, err => {
-            this.loading = false;
-            this.status = err?.status
-            this.clearData();
-            this.cd.markForCheck();
-          })
+          this.fieldService.getField(this.router.url).subscribe(
+            result => {
+              this.routeCache.set(this.router.url, result);
+              this.render(this.routeCache.get(this.router.url));
+            },
+            err => {
+              this.loading = false;
+              this.status = err?.status;
+              this.clearData();
+              this.cd.markForCheck();
+            }
+          );
         }
       }
     });
@@ -130,11 +125,11 @@ export class FormComponent {
         minimap: {
           enabled: false
         },
-        language: "javascript",
+        language: 'javascript',
         autoIndent: true,
         formatOnPaste: true,
         formatOnType: true,
-        wordwrap: 'on',
+        wordwrap: 'on'
       }
     });
 
@@ -147,15 +142,15 @@ export class FormComponent {
         fields: this.cacheFields,
         model: this.model,
         nzMask: false
-      })
+      });
     });
 
     hotkeys('m', (event, handler) => {
       // 转弹窗
-      const modal = this.modalService.open('form', {}, {
-        fields: this.cacheFields,
-        model: this.model,
-      })
+      // const modal = this.modalService.open('form', {}, {
+      //   fields: this.cacheFields,
+      //   model: this.model,
+      // })
     });
   }
 
@@ -166,24 +161,24 @@ export class FormComponent {
 
     try {
       // from 重置
-      this.form.reset({}, {onlySelf: false, emitEvent: false} );
+      this.form.reset({}, { onlySelf: false, emitEvent: false });
       this.form = new FormGroup({});
 
-      this.cacheFields = result?.fields
+      this.cacheFields = result?.fields;
       this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
 
       this.model = result?.data;
-      this.options.formState.cacheFields = result.fields
+      this.options.formState.cacheFields = result.fields;
 
       this.code = format(JSON.stringify(result.fields), {
-        parser: "json",
-        plugins: [parserBabel],
+        parser: 'json',
+        plugins: [parserBabel]
       });
     } catch (error) {
-      this.fields = []
-      this.model = {}
+      this.fields = [];
+      this.model = {};
       this.info = null;
-      console.log(error)
+      console.log(error);
     } finally {
       this.status = 200;
       this.loading = false;
@@ -210,9 +205,7 @@ export class FormComponent {
     this.ngZone.runOutsideAngular(() =>
       inNextTick()
         .pipe(takeUntil(this.destroy$))
-        .subscribe(() => {
-
-        })
+        .subscribe(() => {})
     );
   }
 
@@ -222,11 +215,11 @@ export class FormComponent {
     }
   }
 
-  preview (url: string) {
-    this.previewService.open(url)
+  preview(url: string) {
+    this.previewService.open(url);
   }
 
-  backHome () {}
+  backHome() {}
 
   ngOnDestroy() {
     if (this.rooterChange) {
