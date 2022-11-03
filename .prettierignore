@@ -5,4 +5,5 @@ coverage/
 publish/
 schematics/
 package.json
-**/template/*
+
+# **/template/*
