@@ -8,11 +8,10 @@ import zh from '@angular/common/locales/zh';
 
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 
-// mock
-import { HttpClientInMemoryWebApiModule, InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
-import { MockService } from '../mock/mock.service';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
-// 布局相关
+// 布局
 import { LayoutModule } from './layouts/layout.modules';
 
 // 拦截器
@@ -21,8 +20,9 @@ import { HttpsInterceptor } from './interceptors/https.interceptor';
 // 弹窗
 import { ModalsModule } from './shared/modal';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+// mock
+import { HttpClientInMemoryWebApiModule, InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
+import { MockService } from '../mock/mock.service';
 
 /** Http interceptor providers in outside-in order */
 const httpInterceptorProviders = [

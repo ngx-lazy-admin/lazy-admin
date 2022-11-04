@@ -22,7 +22,7 @@ import { appendClassName } from 'src/app/utils/class-name';
 })
 export class ModalTemplateComponent {
 
-  // 弹窗模板
+  // 
   @ViewChild('portalTemplateRef') portalTemplateRef!: TemplateRef<any>;
 
   // 弹窗标题的模板
@@ -101,7 +101,7 @@ export class ModalTemplateComponent {
 
   // template click
   templateClick ($event: any, modalRef: NzModalRef, params?: any) {
-    console.log(params)
+    console.log(params, modalRef)
     if ($event.type === 'close') {
       modalRef.destroy();
     } else if ($event.type === 'min') {
@@ -118,11 +118,11 @@ export class ModalTemplateComponent {
   }
 
   // Listen Iframe Event
-  addEventListenMessage () {
+  addEventListenMessage ()  {
     window.addEventListener('message', (e) => {
       // console.log(e)
       if (e.data && e.data.key && e.data.value) {
-        // this.modalService.open(e.data.key, e.data.value);
+        // this.modalService.open(e.data.key, e.data.value); 
       }
     })
   }

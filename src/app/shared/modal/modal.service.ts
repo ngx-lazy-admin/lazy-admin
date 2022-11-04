@@ -12,7 +12,7 @@ export class ModalService {
 
   currentIndex: number = 1000;
 
-  modalIndex: number = 900;
+  modalIndex: number = 1000;
 
   private renderer: Renderer2;
 
@@ -107,13 +107,18 @@ export class ModalService {
     });
 
     // 添加样式穿透
-    modal?.getElement().parentElement?.parentElement?.classList.add('pointer-events-none');
+    // modal?.getElement().parentElement?.parentElement?.classList.add('pointer-events-none');
 
     // 添加穿透
     // .cdk-overlay-container,
     // .cdk-overlay-backdrop,
     // .ant-modal-wrap  {
     //     pointer-events: none !important;
+    // }
+
+    // 添加滚动
+    // ::ng-deep .ant-modal-wrap {
+    //   overflow: unset;
     // }
 
     // const element = modal.getElement().querySelector('.ant-modal-content')

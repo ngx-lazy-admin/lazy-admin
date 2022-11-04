@@ -12,9 +12,31 @@
 
 <!-- 图片预览 -->
 <ng-template #imageRef>
-  <img class="w-100" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" alt="">
+  <img class="w-100" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" alt="" />
 </ng-template>
 <button nz-button (click)="image(imageRef)"> 图片预览 </button>
+
+<!-- 图片预览 -->
+<ng-template #videoRef>
+  <video controls width="100%" class="d-block">
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+    <a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">MP4</a>
+  </video>
+</ng-template>
+<button nz-button (click)="image(videoRef)"> 视频预览 </button>
+
+<!-- iframe预览 -->
+<ng-template #iframeRef>
+  <iframe
+    id="viewer"
+    name="viewer"
+    allow="fullscreen; xr-spatial-tracking;"
+    src="https://threejs.org/examples/webgl_animation_keyframes.html"
+    class="w-100 d-block"
+    style="height: 500px"
+  ></iframe>
+</ng-template>
+<button nz-button (click)="image(iframeRef)"> 3D预览 </button>
 
 <button nz-button (click)="hideAll($event)"> 隐藏全部弹窗 </button>
 <button nz-button (click)="showAll($event)"> 显示全部弹窗 </button>

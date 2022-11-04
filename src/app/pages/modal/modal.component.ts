@@ -148,12 +148,13 @@ export class ModalComponent implements OnInit {
       nzTitle: null,
       nzFooter: null,
       nzWidth: '960px',
-      nzMask: false,
-      nzBodyStyle: {
-        padding: 0
-      },
+      nzMask: true,
+      nzMaskClosable: false,
       nzComponentParams: {
-        nzTitle: '这是一个标题',
+        nzTitle: null,
+        nzBodyStyle: {
+          padding: 0
+        },
         nzContent: imageRef
       }
     };
