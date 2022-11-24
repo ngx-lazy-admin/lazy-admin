@@ -18,8 +18,9 @@ export class UserService {
   private _userChanges = new BehaviorSubject<User | null>(null);
 
   // 构造器初始化
-  constructor(private http: HttpClient) // private messageService: MessageService
-  {}
+  constructor(
+    private http: HttpClient // private messageService: MessageService
+  ) {}
 
   private heroesUrl = 'api/user'; // URL to web api
 
