@@ -1,0 +1,15 @@
+<cdk-virtual-scroll-viewport
+  appendOnly
+  itemSize="30"
+  class="example-viewport"
+  (scrolledIndexChange)="change($event)"
+  (getRenderedRange)="range($event)"
+>
+  <div
+    *cdkVirtualFor="let item of list; let index = index"
+    class="example-item"
+    [class.example-item-active]="current + 100 > index"
+  >
+    {{ index }}<img [src]="'https://unsplash.it/600/600?random=' + index" />
+  </div>
+</cdk-virtual-scroll-viewport>

@@ -44,6 +44,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard/analysis' },
       { path: 'swagger', loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule) },
       { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
+      { path: 'image', loadChildren: () => import('./pages/image/image.module').then(m => m.ImageModule) },
+
       { path: 'micro', loadChildren: () => import('./pages/micro/micro.module').then(m => m.MicroModule) },
       { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) }
     ]

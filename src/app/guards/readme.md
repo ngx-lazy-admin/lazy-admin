@@ -16,6 +16,6 @@ name	新路由守卫的名称。 string
 选项	         说明	                                              值类型	          默认值
 
 --flat	       如果为 true（默认值），则在当前项目的顶层创建新文件。  boolean	        true
---implements	 指定要实现的接口。                                   array	
---project	     项目的名称。                                         string	
+--implements	 指定要实现的接口。                                  array	
+--project	     项目的名称。                                        string	
 --skip-tests	 不要为新守卫创建 “spec.ts” 测试文件。                boolean          false
