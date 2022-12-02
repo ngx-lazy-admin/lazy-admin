@@ -370,6 +370,10 @@ body {
 	filter: invert(80%);
 }
 
+.gray-theme {
+	filter: grayscale(1);
+}
+
 .pointer-events-none {
     pointer-events: none !important;
 }

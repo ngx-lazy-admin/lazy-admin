@@ -10,8 +10,6 @@ import { appendClassName, removeClassName } from 'src/app/utils/class-name';
 export class ModalService {
   viewContainerRef!: ViewContainerRef;
 
-  currentIndex: number = 1000;
-
   modalIndex: number = 1000;
 
   private renderer: Renderer2;
@@ -106,8 +104,8 @@ export class ModalService {
       modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
     });
 
-    // 添加样式穿透
-    // modal?.getElement().parentElement?.parentElement?.classList.add('pointer-events-none');
+    // 添加样式穿透　1.　弹窗添加样式穿透之后无法滚动　　2.　弹窗取消穿透, 弹窗无法隐藏
+    modal?.getElement().parentElement?.parentElement?.classList.add('pointer-events-none');
 
     // 添加穿透
     // .cdk-overlay-container,
@@ -121,6 +119,8 @@ export class ModalService {
     //   overflow: unset;
     // }
 
+    //
+
     // const element = modal.getElement().querySelector('.ant-modal-content')
 
     // 修改弹窗层级
@@ -129,20 +129,24 @@ export class ModalService {
     }, 0);
   }
 
+  // 显示弹窗
   show(modal: NzModalRef) {
     modal.updateConfig({ nzWrapClassName: removeClassName(modal.getConfig().nzWrapClassName, 'd-none') });
     this.change$.next(3);
   }
 
+  // 显示全部弹窗
   showAll() {
     this.modal.openModals?.map(modal => this.show(modal));
   }
 
+  // 隐藏弹窗
   hide(modal: NzModalRef) {
     modal.updateConfig({ nzWrapClassName: appendClassName(modal.getConfig().nzWrapClassName, 'd-none') });
     this.change$.next(4);
   }
 
+  // 隐藏全部弹窗
   hideAll() {
     this.modal.openModals?.map(modal => this.hide(modal));
   }
@@ -151,14 +155,17 @@ export class ModalService {
     return id && this.modal.openModals.find(item => item.getConfig()?.nzComponentParams?.id === id);
   }
 
+  // 关闭弹窗
   close(modal: NzModalRef) {
     modal?.destroy();
   }
 
+  // 关闭全部弹窗
   closeAll() {
     this.modal.closeAll();
   }
 
+  // 销毁
   destroy(modal: NzModalRef) {
     modal?.destroy();
   }

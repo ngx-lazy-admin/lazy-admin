@@ -8,6 +8,7 @@ import { ModalService } from 'src/app/shared/modal';
 import { DispatchService } from 'src/app/shared/modal/dispatch.service';
 
 import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component';
+import { ThemeSettingService } from 'src/app/shared/theme-setting/theme-setting.service';
 
 @Component({
   selector: 'app-modal',
@@ -21,7 +22,12 @@ export class ModalComponent implements OnInit {
 
   @ViewChild(ModalTemplateComponent) private modalTemplate!: ModalTemplateComponent;
 
-  constructor(private modalService: ModalService, private dispatch: DispatchService, private sanitizer: DomSanitizer) {}
+  constructor(
+    private modalService: ModalService,
+    private dispatch: DispatchService,
+    private sanitizer: DomSanitizer,
+    private themeService: ThemeSettingService
+  ) {}
 
   model = {
     email: 'email@gmail.com'
@@ -180,5 +186,9 @@ export class ModalComponent implements OnInit {
   // 显示全部弹窗
   showAll($event: any) {
     this.modalService.showAll();
+  }
+
+  theme() {
+    this.themeService.open();
   }
 }

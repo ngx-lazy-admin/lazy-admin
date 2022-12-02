@@ -19,8 +19,7 @@ import { takeUntil } from 'rxjs/operators';
 import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
-import { ALAINDEFAULTVAR, DEFAULT_COLORS, DEFAULT_VARS } from './theme-setting.types';
-import { environment } from 'environments/environment';
+import { DEFAULT_COLORS, DEFAULT_VARS } from './theme-setting.types';
 
 enum ThemeType {
   dark = 'dark',
@@ -52,6 +51,7 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
   theme: boolean = false;
   currentTheme = ThemeType.default;
   colorWeek: boolean = false;
+  grayTheme: boolean = false;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -246,8 +246,14 @@ export class ThemeSettingComponent implements OnInit, OnDestroy {
     this.resetData();
   }
 
+  // 色弱模式
   changeColorWeek($event: Event) {
     this.doc.body.classList[$event ? 'add' : 'remove']('color-weak');
+  }
+
+  // 灰色模式
+  setGrayTheme($event: Event) {
+    this.doc.body.classList[$event ? 'add' : 'remove']('gray-theme');
   }
 
   // 复制剪贴板

@@ -3,11 +3,11 @@
   <div class="d-flex">
     <div
       *ngFor="let c of colors"
-      style="width: 36px; height:20px;"
+      style="width: 36px; height: 20px"
       class="d-flex mx-1 justify-content-center align-items-center"
       [style]="{ 'background-color': c.color }"
       (click)="changeColor(c.color)"
-    > 
+    >
       <i *ngIf="color === c.color" nz-icon nzType="check"></i>
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <nz-divider></nz-divider>
 
-<div >
+<div>
   <h3>设置</h3>
   <nz-tabset>
     <nz-tab nzTitle="顶部">
@@ -28,7 +28,10 @@
       <setting-drawer-item class="mb-3" [data]="data['alain-default-aside-wd']"></setting-drawer-item>
       <setting-drawer-item class="mb-3" [data]="data['alain-default-aside-bg']"></setting-drawer-item>
       <setting-drawer-item class="mb-3" [data]="data['alain-default-aside-collapsed-wd']"></setting-drawer-item>
-      <setting-drawer-item class="mb-3" [data]="data['alain-default-aside-nav-padding-top-bottom']"></setting-drawer-item>
+      <setting-drawer-item
+        class="mb-3"
+        [data]="data['alain-default-aside-nav-padding-top-bottom']"
+      ></setting-drawer-item>
     </nz-tab>
     <nz-tab nzTitle="内容">
       <setting-drawer-item class="mb-3" [data]="data['alain-default-content-bg']"></setting-drawer-item>
@@ -49,13 +52,10 @@
 
 <nz-divider></nz-divider>
 
-<div >
+<div>
   <div class="d-flex justify-content-between mb-3">
     固定头和侧边栏
-    <nz-switch
-      nzSize="small"
-      (ngModelChange)="setLayout('fixed')"
-    ></nz-switch>
+    <nz-switch nzSize="small" (ngModelChange)="setLayout('fixed')"></nz-switch>
   </div>
 
   <div class="d-flex justify-content-between mb-3">
@@ -67,14 +67,20 @@
       (ngModelChange)="changeColorWeek($event)"
     ></nz-switch>
   </div>
+
   <div class="d-flex justify-content-between mb-3">
-    深夜模式
+    灰色模式
     <nz-switch
       nzSize="small"
       class="float-right"
-      [(ngModel)]="theme"
-      (ngModelChange)="changeTheme($event)"
+      [(ngModel)]="grayTheme"
+      (ngModelChange)="setGrayTheme($event)"
     ></nz-switch>
+  </div>
+
+  <div class="d-flex justify-content-between mb-3">
+    深夜模式
+    <nz-switch nzSize="small" class="float-right" [(ngModel)]="theme" (ngModelChange)="changeTheme($event)"></nz-switch>
   </div>
 </div>
 
@@ -89,7 +95,3 @@
   class="mt-3"
   nzMessage="配置栏只在开发环境用于预览，生产环境不会展现，请拷贝后手动修改参数配置文件 src/styles/theme.less"
 ></nz-alert>
-
-
-
-

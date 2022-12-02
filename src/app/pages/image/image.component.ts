@@ -1,51 +1,62 @@
-import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
-import { FormlyFormOptions } from '@ngx-formly/core';
-import { ModalService } from 'src/app/shared/modal';
-
-import { DispatchService } from 'src/app/shared/modal/dispatch.service';
-
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component';
-import { CollectionViewer, ListRange } from '@angular/cdk/collections';
-import { Observable, Subject } from 'rxjs';
-import { ScrollDispatcher, ScrollingModule } from '@angular/cdk/scrolling';
-import { number } from 'echarts';
+import { Subject } from 'rxjs';
 import { delay, throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
-  styleUrls: ['./image.component.less']
+  styleUrls: ['./image.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageComponent implements OnInit {
-  ngOnInit(): void {}
-
-  @ViewChild('titleTemplate', { read: TemplateRef }) titleTemplateRef!: TemplateRef<any>;
-
-  @ViewChild(ModalTemplateComponent) private modalTemplate!: ModalTemplateComponent;
-
   source$ = new Subject();
 
-  constructor(
-    private modalService: ModalService,
-    private dispatch: DispatchService,
-    private sanitizer: DomSanitizer,
-    private scrollDispatcher: ScrollDispatcher
-  ) {
-    this.source$
-      .pipe(throttleTime(10))
-      // .pipe(delay(60))
-      .subscribe((index: any) => {
-        this.current = index;
-        console.log(index);
-      });
+  constructor(private cd: ChangeDetectorRef) {
+    this.source$.pipe(throttleTime(100)).subscribe((index: any) => {
+      index = index + 28;
+
+      // if (index - this.current > 0) {
+      //   if (index - this.current >= 0 && index - this.current < 28) {
+      //     const timer = setInterval(() => {
+      //       this.current++;
+
+      //       if (this.current >= index) {
+      //         clearInterval(timer);
+      //         console.log(this.current, index);
+      //       }
+      //     }, 60);
+      //   } else {
+      //     this.current = index;
+      //   }
+      // }
+
+      if (index - this.current > 28) {
+        this.current = index - 28;
+      }
+
+      const timer = setInterval(() => {
+        this.current++;
+
+        if (this.current >= index) {
+          clearInterval(timer);
+        }
+        this.cd.markForCheck();
+        console.log(this.current);
+      }, 60);
+      console.log(index);
+
+      this.cd.markForCheck();
+    });
+
+    this.source$.next(28);
   }
 
   list: any[] = new Array(100);
 
   current: number = 0;
+
+  ngOnInit(): void {}
 
   change($event: any) {
     this.source$.next($event);

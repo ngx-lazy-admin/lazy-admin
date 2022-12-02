@@ -8,8 +8,8 @@
   <div
     *cdkVirtualFor="let item of list; let index = index"
     class="example-item"
-    [class.example-item-active]="current + 100 > index"
+    [class.example-item-active]="current > index"
   >
-    {{ index }}<img [src]="'https://unsplash.it/600/600?random=' + index" />
+    {{ index }} : {{ current + 28 }}<img [src]="'https://unsplash.it/600/600?random=' + index" />
   </div>
 </cdk-virtual-scroll-viewport>

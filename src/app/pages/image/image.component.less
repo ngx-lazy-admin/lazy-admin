@@ -14,13 +14,14 @@
     height: 210px;
     position: relative;
     visibility: hidden;
-    
+    content-visibility: hidden;
 }
 
 
 .example-viewport  .example-item-active {
-    animation: 2s linear show-img;
+    animation: 1s linear show-img;
     animation-fill-mode: forwards;
+    content-visibility: visible;
 }
 
 .example-viewport  .example-item-hidden {
