@@ -1,24 +1,16 @@
-.example-viewport {
-    width: 100%;
-    height: 100vh;
+// 容器没有点击事件
+::ng-deep .cdk-overlay-container,
+::ng-deep .cdk-overlay-backdrop{
+    pointer-events:  none;
 }
 
-::ng-deep .cdk-virtual-scroll-content-wrapper{
-    display: flex;
-    flex-wrap: wrap;
+// 有遮罩层不穿透
+::ng-deep .cdk-overlay-backdrop.ant-modal-mask {
+    pointer-events: auto !important; 
 }
 
-.example-viewport  .example-item {
-    width: 12vw;
-    height: 12vw;
-    position: relative;
-}
-
-.example-viewport img{
-    width: 100%;
-    height: 100%;
-}
-
-body {
-    background-color: black;
+// 有穿透的穿透
+::ng-deep .pointer-events-none,
+::ng-deep .pointer-events-none .ant-modal-wrap  {
+    pointer-events: none !important;
 }

@@ -25,9 +25,14 @@ import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ThemeSettingModule } from 'src/app/shared/theme-setting';
+import { ModalItemComponent } from './components/modal-item.component';
+// import { ModalItemComponent } from './modal.component';
 
 @NgModule({
-  declarations: [ModalComponent],
+  declarations: [
+    ModalComponent,
+    ModalItemComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

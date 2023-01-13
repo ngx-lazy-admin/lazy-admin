@@ -978,30 +978,133 @@ export const menu = [
       {
         id: '1401',
         pid: '14',
-        name: 'introduction',
+        name: 'introduction Example',
         link: '/forms/introduction',
         badge: ''
       },
       {
-        id: '1402',
+        id: '1401',
         pid: '14',
-        name: 'expression',
-        link: '/forms/expression',
-        badge: ''
+        name: 'field options',
+        badge: '',
+        children: [
+          {
+            id: '1401',
+            pid: '14',
+            name: 'expression properties',
+            badge: '',
+            link: '/forms/expression',
+          },
+          {
+            id: '1402',
+            pid: '14',
+            name: 'default value',
+            link: '/forms/defaultValue',
+            badge: '',
+          },
+          {
+            id: '1403',
+            pid: '14',
+            name: 'hide fields',
+            link: '/forms/hide-fields',
+            badge: '',
+          },
+          {
+            id: '1403',
+            pid: '14',
+            name: 'modelOptions',
+            link: '/forms/model-options',
+            badge: '',
+          }
+        ]
       },
       {
-        id: '1402',
+        id: '1401',
         pid: '14',
-        name: 'defaultValue',
-        link: '/forms/defaultValue',
-        badge: ''
+        name: 'form options',
+        badge: '',
+        children: [
+          {
+            id: '1401',
+            pid: '14',
+            name: 'reset Model',
+            badge: '',
+            link: '/forms/reset-options',
+          },
+          {
+            id: '1402',
+            pid: '14',
+            name: 'Form State',
+            badge: '',
+            link: '/forms/form-state',
+          },
+        ]
       },
       {
-        id: '1402',
+        id: '1401',
         pid: '14',
-        name: 'hide fields',
-        link: '/forms/hide-fields',
-        badge: ''
+        name: 'validation options',
+        badge: '',
+        children: [
+          {
+            id: '1401',
+            pid: '14',
+            name: 'built-in validations',
+            badge: '',
+            link: '/forms/built-in-validations',
+          },
+          {
+            id: '1402',
+            pid: '14',
+            name: 'custom validation',
+            badge: '',
+            link: '/forms/custom-validations',
+          },
+        ]
+      },
+      {
+        id: '1401',
+        pid: '14',
+        name: 'advanced',
+        badge: '',
+        children: [
+          {
+            id: '1401',
+            pid: '14',
+            name: 'i18n ngx-translate',
+            badge: '',
+            link: '/forms/i18n',
+          },
+          {
+            id: '1402',
+            pid: '14',
+            name: 'custom validation',
+            badge: 'Repeating Section',
+            link: '/forms/repeating-section',
+          },
+        ]
+      },
+      {
+        id: '1401',
+        pid: '14',
+        name: 'other',
+        badge: '',
+        children: [
+          {
+            id: '1401',
+            pid: '14',
+            name: 'cascaded-select',
+            badge: '',
+            link: '/forms/cascaded-select',
+          },
+          {
+            id: '1402',
+            pid: '14',
+            name: 'custom validation',
+            badge: '',
+            link: '/forms/cascaded-select-json'
+          },
+        ]
       }
     ]
   },

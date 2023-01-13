@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormlyFormOptions } from '@ngx-formly/core';
@@ -8,16 +8,19 @@ import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.c
 import { ThemeSettingService } from 'src/app/shared/theme-setting/theme-setting.service';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.less']
+  selector: 'app-modal-item',
+  template: `
+    嵌套业务组件{{id}}
+  `,
 })
-export class ModalComponent implements OnInit {
+export class ModalItemComponent implements OnInit {
   ngOnInit(): void {}
 
   @ViewChild('titleTemplate', { read: TemplateRef }) titleTemplateRef!: TemplateRef<any>;
 
   @ViewChild(ModalTemplateComponent) private modalTemplate!: ModalTemplateComponent;
+
+  @Input() id?: string;
 
   constructor(
     private modalService: ModalService,
@@ -54,7 +57,9 @@ export class ModalComponent implements OnInit {
 
   // create modal template
   create(template: any, mask: boolean = true) {
+    // 获取空模拟
     const contentTemplateRef = this.modalTemplate.getTemplateRef('blank');
+
     const ModalOptions = {
       nzTitle: null,
       nzFooter: null,
@@ -62,10 +67,7 @@ export class ModalComponent implements OnInit {
       nzMask: mask,
       nzComponentParams: {
         nzTitle: '这是一个标题1',
-        nzContent: template,
-        params: {
-          id: '11'
-        }
+        nzContent: template
       }
     };
 
@@ -74,6 +76,7 @@ export class ModalComponent implements OnInit {
 
   // 创建一个没有遮罩层的弹窗
   createNotMaskModal(template: any, mask: boolean = true) {
+    // 获取空模拟
     const contentTemplateRef = this.modalTemplate.getTemplateRef('blank');
 
     const ModalOptions = {
@@ -207,11 +210,6 @@ export class ModalComponent implements OnInit {
   // 显示全部弹窗
   showAll($event: any) {
     this.modalService.showAll();
-  }
-
-  // 关闭全部
-  closeAll () {
-
   }
 
   theme() {

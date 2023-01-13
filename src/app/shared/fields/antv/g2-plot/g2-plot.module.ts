@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { G2PlotField } from './g2-plot.component';
+
+import { FormlyModule } from '@ngx-formly/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+
 import { G2PlotItem } from './g2-plot-item.component';
+import { G2PlotField } from './g2-plot.component';
 
 @NgModule({
   declarations: [

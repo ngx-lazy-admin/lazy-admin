@@ -1,5 +1,5 @@
 import { Injectable, Renderer2, ViewContainerRef, RendererFactory2, TemplateRef, ViewChild } from '@angular/core';
-import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { ModalOptions, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { randomString } from 'src/app/utils';
 import { appendClassName, removeClassName } from 'src/app/utils/class-name';
@@ -10,7 +10,7 @@ import { appendClassName, removeClassName } from 'src/app/utils/class-name';
 export class ModalService {
   viewContainerRef!: ViewContainerRef;
 
-  modalIndex: number = 1000;
+  modalIndex: number = 800;
 
   private renderer: Renderer2;
 
@@ -39,18 +39,13 @@ export class ModalService {
       }
     }
 
-    let nzComponentParams = {};
-    if (params?.nzComponentParams) {
-      nzComponentParams = params?.nzComponentParams;
-    }
+    const id = params.id || randomString(32);
 
-    let id = params.id || randomString(32);
-
-    const modal = this.modal.create({
+    const config: ModalOptions = {
       id: id,
       nzContent: templateRef,
       nzTitle: null,
-      nzMask: false,
+      nzMask: true,
       nzViewContainerRef: this.viewContainerRef,
       nzBodyStyle: {
         padding: 0
@@ -59,13 +54,15 @@ export class ModalService {
         left: this.modal.openModals.length * 20 + 'px',
         top: this.modal.openModals.length * 20 + 100 + 'px'
       },
+      nzClosable: false,
       ...params,
       nzComponentParams: {
         id: id,
-        ...nzComponentParams
-      },
-      nzClosable: false
-    });
+        ...params?.nzComponentParams
+      }
+    }
+
+    const modal = this.modal.create(config);
 
     // console.log(this.ne)
 
@@ -88,44 +85,37 @@ export class ModalService {
       this.change$.next(2);
     });
 
-    this.listenModal(modal);
+    this.listenModal(modal, config);
   }
 
-  private listenModal(modal: NzModalRef) {
+  private listenModal(modal: NzModalRef, config: ModalOptions) {
     // 监听弹窗点击
     this.renderer.listen(modal.containerInstance.modalElementRef.nativeElement, 'mousedown', event => {
-      // 所有弹窗层级减一
-      this.modal.openModals.forEach(modal => {
-        const zIndex = modal.containerInstance.config.nzZIndex || this.modalIndex;
-        modal.containerInstance.config.nzZIndex = zIndex > this.modalIndex ? zIndex - 1 : this.modalIndex;
-      });
+      if (!config.nzMask) {
+        // 所有弹窗层级减一
+        this.modal.openModals.forEach(modal => {
+          const zIndex = modal.containerInstance.config.nzZIndex || this.modalIndex;
+          modal.containerInstance.config.nzZIndex = zIndex > this.modalIndex ? zIndex - 1 : this.modalIndex;
+        });
 
-      // 当前弹窗层级设置最大
-      modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
+        // 当前弹窗层级设置最大
+        modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
+      }
     });
 
-    // 添加样式穿透　1.　弹窗添加样式穿透之后无法滚动　　2.　弹窗取消穿透, 弹窗无法隐藏
-    modal?.getElement().parentElement?.parentElement?.classList.add('pointer-events-none');
-
-    // 添加穿透
-    // .cdk-overlay-container,
-    // .cdk-overlay-backdrop,
-    // .ant-modal-wrap  {
-    //     pointer-events: none !important;
-    // }
-
-    // 添加滚动
-    // ::ng-deep .ant-modal-wrap {
-    //   overflow: unset;
-    // }
-
-    //
-
+    // 如果有遮罩层, 则不穿透
+    if (!config.nzMask) {
+      // 添加样式穿透　1.　弹窗添加样式穿透之后无法滚动　　2.　弹窗取消穿透, 弹窗无法隐藏
+      modal?.getElement().parentElement?.parentElement?.classList.add('pointer-events-none');
+    }
+    
     // const element = modal.getElement().querySelector('.ant-modal-content')
 
     // 修改弹窗层级
     setTimeout(() => {
-      modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
+      if (!config.nzMask) {
+        modal.containerInstance.config.nzZIndex = this.modalIndex + this.modal.openModals.length;
+      }
     }, 0);
   }
 

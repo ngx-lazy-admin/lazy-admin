@@ -3,8 +3,10 @@ import {
   ExpressionMockFields,
   HideFieldsMockFields,
   IntroductionMockFields,
-  ModalOptionsMockFields
+  ModalOptionsMockFields,
+  ResetModelMockFields
 } from './forms';
+// import { ResetModelMockFields } from './forms/reset-model.mock';
 
 export const forms = [
   {
@@ -26,5 +28,9 @@ export const forms = [
   {
     id: 'model-options',
     fields: ModalOptionsMockFields
+  },
+  {
+    id: 'reset-model',
+    fields: ResetModelMockFields
   }
 ];

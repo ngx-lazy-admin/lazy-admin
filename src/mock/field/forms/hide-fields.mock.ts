@@ -16,7 +16,7 @@ export const HideFieldsMockFields = [
         key: 'name',
         type: 'input',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           label: 'Name',
           placeholder: 'Type in here to display the hidden field',
         },
@@ -25,7 +25,7 @@ export const HideFieldsMockFields = [
         key: 'iLikeTwix',
         type: 'checkbox',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           label: 'I like twix',
         },
         hideExpression: '!model.name',
@@ -33,14 +33,22 @@ export const HideFieldsMockFields = [
       {
         type: 'button-group',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           type: 'primary',
           noColon: true,
           options: [
             {
               text: 'Submit',
               size: 'default',
-              type: 'primary'
+              type: 'primary',
+              click: `(field, _this) => {
+                console.log(field, _this)
+                if (field.form.valid) {
+                  alert('提交成功')
+                } else {
+                  alert('请完成校验')
+                }
+              }`
             }
           ]
         }

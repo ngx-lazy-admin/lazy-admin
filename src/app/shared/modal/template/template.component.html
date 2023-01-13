@@ -1,7 +1,3 @@
-<ng-template #portalTemplateRef>
-  <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
-</ng-template>
-
 <!-- title TemplateRef -->
 <ng-template #titleTemplateRef let-context="context" let-params>
   <div cdkDrag cdkDragHandle cdkDragRootElement=".ant-modal-content" class="p-0 d-block">
@@ -33,10 +29,9 @@
   </div>
 </ng-template>
 
-<!-- blank TemplateRef -->
+<!-- blank Content TemplateRef -->
 <ng-template #blankTemplateRef let-params let-ref="modalRef">
   <app-modal-title
-    *ngIf="params?.nzTitle"
     [nzTitle]="params?.nzTitle"
     [id]="params.id"
     (clickEvent)="templateClick($event, ref, params)"
@@ -54,6 +49,6 @@
   </button>
 
   <div class="ant-modal-body" [ngStyle]="params.nzBodyStyle">
-    <ng-container *ngTemplateOutlet="params.nzContent; context: params"></ng-container>
+    <ng-container *ngTemplateOutlet="params.nzContent; context: {$implicit: params.params}"></ng-container>
   </div>
 </ng-template>

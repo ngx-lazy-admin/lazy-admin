@@ -15,6 +15,7 @@ export const ExpressionMockFields = [
         wrappers: ['form'],
         templateOptions: {
           label: 'Text',
+          required: true,
           placeholder: 'Type here to see the other field become enabled...',
         },
       },
@@ -22,25 +23,34 @@ export const ExpressionMockFields = [
         key: 'text2',
         type: 'input',
         wrappers: ['form'],
-        templateOptions: {
-          label: 'Hey!',
+        props: {
+          label: 'Hey!!',
+          required: true,
           placeholder: 'This one is disabled if there is no text in the other input',
         },
-        expressionProperties: {
-          'templateOptions.disabled': '!model.text',
+        expressions: {
+          'props.disabled': '!model.text',
         },
       },
       {
         type: 'button-group',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           type: 'primary',
           noColon: true,
           options: [
             {
               text: 'Submit',
               size: 'default',
-              type: 'primary'
+              type: 'primary',
+              click: `(field, _this) => {
+                console.log(field, _this)
+                if (field.form.valid) {
+                  alert('提交成功')
+                } else {
+                  alert('请完成校验')
+                }
+              }`
             }
           ]
         }

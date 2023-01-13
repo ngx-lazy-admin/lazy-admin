@@ -3,7 +3,7 @@ export { ExpressionMockFields } from './expression.mock'
 export { HideFieldsMockFields } from './hide-fields.mock'
 export { IntroductionMockFields } from './introduction.mock'
 export { ModalOptionsMockFields } from  './model-options.mock'
-
+export { ResetModelMockFields } from './reset-model.mock' 
 
 
 

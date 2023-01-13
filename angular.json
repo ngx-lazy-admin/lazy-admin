@@ -48,6 +48,8 @@
             "allowedCommonJsDependencies": [
               "lodash",
               "@antv/g2plot",
+              "d3-regression",
+              "fmin",
               "qiankun",
               "prettier",
               "@babel/runtime/regenerator",

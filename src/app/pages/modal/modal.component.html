@@ -1,19 +1,67 @@
-<!-- 自定义组成部分 -->
-<ng-template #modalTitle>Custom Modal Title11</ng-template>
+关于弹窗的一些思考。
 
+1. 模仿windows弹窗的话，拖拽, 关闭，销毁，进而封装了一些基础功能。
+2. 弹窗的
+
+<p class="m-3">1. 有遮罩层，弹窗可以滚动</p>
 <button nz-button (click)="create(modalTitle)"> 打开一个模板对话框 </button>
+<button nz-button (click)="create(testRef)"> 打开一个详情页 </button>
+
+<button nz-button (click)="create(modalLong)"> 这是一个很长的对话框, 可以滚动，可以拖拽，但是无法穿透 </button>
+<button nz-button (click)="createNotMaskModal(modalLong)"> 这个一个没有遮罩层的对话框 </button>
 <button nz-button (click)="createOne(modalTitle)"> 只能打开一个对话框 </button>
 
 <button nz-button (click)="iframe()"> 打开一个iframe </button>
 <button nz-button (click)="formly()"> 打开一个formly </button>
 <button nz-button (click)="blank(modalTitle)"> 打开一个blank </button>
 <button nz-button (click)="theme()"> 打开主题配置 </button>
+<button nz-button (click)="image(iframeRef)"> 3D预览 </button>
+<button nz-button (click)="hideAll($event)"> 隐藏全部弹窗 </button>
+<button nz-button (click)="showAll($event)"> 显示全部弹窗 </button>
+<button nz-button (click)="image(imageRef)"> 图片预览 </button>
+<button nz-button (click)="image(videoRef)"> 视频预览 </button>
+
+<p class="m-3">2. 没有遮罩层，弹窗可以穿透</p>
+<button nz-button (click)="create(testRef, false)"> 打开一个详情页 </button>
+<button nz-button (click)="create(modalTitle, false)"> 打开一个模板对话框 </button>
+<button nz-button (click)="create(modalLong, false)"> 这是一个很长的对话框, 可以拖拽，但是无法滚动 </button>
+<button nz-button (click)="createNotMaskModal(modalLong, false)"> 这个一个没有遮罩层的对话框 </button>
+<button nz-button (click)="createOne(modalTitle, false)"> 只能打开一个对话框 </button>
+<button nz-button (click)="iframe(false)"> 打开一个iframe </button>
+<button nz-button (click)="formly(false)"> 打开一个formly </button>
+<button nz-button (click)="blank(modalTitle, false)"> 打开一个blank </button>
+
+<button nz-button (click)="image(iframeRef, false)"> 3D预览 </button>
+<button nz-button (click)="image(imageRef, false)"> 图片预览 </button>
+<button nz-button (click)="image(videoRef, false)"> 视频预览 </button>
+
+<p class="m-3">3. 关闭弹窗并注册至导航栏</p>
+
+<p class="m-3">3. 其他功能</p>
+<button nz-button (click)="theme()"> 打开主题配置 </button>
+<button nz-button (click)="hideAll($event)"> 隐藏全部弹窗 </button>
+<button nz-button (click)="closeAll()"> 关闭全部弹窗 </button>
+
+<button nz-button (click)="showAll($event)"> 显示全部弹窗 </button>
+
+<ng-template #modalTitle>Custom Modal Title11</ng-template>
+
+<ng-template #modalLong><div class="w-100 bg-danger" style="height: 2000px"></div></ng-template>
+
+<!-- 注册业务模块 -->
+<ng-template #testRef let-params>
+  <app-modal-item [id]="params?.id"></app-modal-item>
+</ng-template>
 
 <!-- 图片预览 -->
 <ng-template #imageRef>
   <img class="w-100" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" alt="" />
 </ng-template>
-<button nz-button (click)="image(imageRef)"> 图片预览 </button>
+
+<!-- 嵌入业务组件 -->
+<ng-template #imageRef>
+  <img class="w-100" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" alt="" />
+</ng-template>
 
 <!-- 图片预览 -->
 <ng-template #videoRef>
@@ -22,7 +70,6 @@
     <a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">MP4</a>
   </video>
 </ng-template>
-<button nz-button (click)="image(videoRef)"> 视频预览 </button>
 
 <!-- iframe预览 -->
 <ng-template #iframeRef>
@@ -35,11 +82,5 @@
     style="height: 500px"
   ></iframe>
 </ng-template>
-<button nz-button (click)="image(iframeRef)"> 3D预览 </button>
-
-<button nz-button (click)="hideAll($event)"> 隐藏全部弹窗 </button>
-<button nz-button (click)="showAll($event)"> 显示全部弹窗 </button>
 
 <app-share-template></app-share-template>
-
-<!-- <app-theme-setting></app-theme-setting> -->

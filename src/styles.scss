@@ -397,4 +397,7 @@ body {
   transition: all 0.3s;
 }
 
-
+.ant-modal-mask .ant-modal-wrap  {
+	pointer-events: auto !important; 
+	background-color: red;
+}

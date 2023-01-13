@@ -15,7 +15,7 @@ Both methods are demonstrated below.`,
         type: 'input',
         wrappers: ['form'],
         defaultValue: 'This is a default value',
-        templateOptions: {
+        props: {
           label: 'First Name (initialized via default value)',
         },
       },
@@ -24,7 +24,7 @@ Both methods are demonstrated below.`,
         type: 'input',
         wrappers: ['form'],
         defaultValue: 'This is a default value',
-        templateOptions: {
+        props: {
           label: 'Last Name (initialized via the model)',
         },
       },
@@ -33,7 +33,7 @@ Both methods are demonstrated below.`,
         type: 'select',
         wrappers: ['form'],
         defaultValue: 'milky_way',
-        templateOptions: {
+        props: {
           label: 'Favorite Candy (initialized via default value',
           options: [
             { label: 'Snickers', value: 'snickers' },
@@ -48,7 +48,8 @@ Both methods are demonstrated below.`,
         wrappers: ['form'],
         templateOptions: {
           text: 'Agree? (not initialized at all)',
-          noColon: true
+          noColon: true,
+          required: true
         },
       },
       {
@@ -61,7 +62,15 @@ Both methods are demonstrated below.`,
             {
               text: 'Submit',
               size: 'default',
-              type: 'primary'
+              type: 'primary',
+              click: `(field, _this) => {
+                console.log(field, _this)
+                if (field.form.valid) {
+                  alert('提交成功')
+                } else {
+                  alert('请完成校验')
+                }
+              }`
             }
           ]
         }

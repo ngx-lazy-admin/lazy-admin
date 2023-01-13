@@ -1,4 +1,4 @@
-export const DefaultValueMockFields = [
+export const ResetModelMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
@@ -11,45 +11,27 @@ export const DefaultValueMockFields = [
     },
     fieldGroup: [
       {
-        key: 'firstName',
+        key: 'text',
         type: 'input',
         wrappers: ['form'],
-        defaultValue: 'This is a default value',
-        templateOptions: {
-          label: 'First Name (initialized via default value)'
-        }
-      },
-      {
-        key: 'lastName',
-        type: 'input',
-        wrappers: ['form'],
-        defaultValue: 'This is a default value',
-        templateOptions: {
-          label: 'Last Name (initialized via the model)'
+        props: {
+          label: 'Some awesome text',
+          placeholder: 'Some sweet text',
+          required: true,
         }
       },
       {
         key: 'candy',
         type: 'select',
         wrappers: ['form'],
-        defaultValue: 'milky_way',
-        templateOptions: {
-          label: 'Favorite Candy (initialized via default value',
+        props: {
+          label: 'Multiple Options',
           options: [
             { label: 'Snickers', value: 'snickers' },
             { label: 'Baby Ruth', value: 'baby_ruth' },
-            { label: 'Milky Way', value: 'milky_way' }
-          ]
-        }
-      },
-      {
-        key: 'agree',
-        type: 'checkbox',
-        wrappers: ['form'],
-        templateOptions: {
-          text: 'Agree? (not initialized at all)',
-          noColon: true
-        }
+            { label: 'Milky Way', value: 'milky_way' },
+          ],
+        },
       },
       {
         type: 'button-group',
@@ -62,6 +44,16 @@ export const DefaultValueMockFields = [
               text: 'Submit',
               size: 'default',
               type: 'primary'
+            },
+            {
+              text: 'Reset',
+              size: 'default',
+              type: 'default'
+            },            
+            {
+              text: 'Update Initial Value',
+              size: 'default',
+              type: 'default'
             }
           ]
         }

@@ -3,14 +3,9 @@ import {
   ChangeDetectionStrategy,
 	TemplateRef,
 	ViewChild,
-  ViewContainerRef,
-  ElementRef,
-  Injector,
-  ApplicationRef,
-  ComponentFactoryResolver,
   ChangeDetectorRef,
 } from '@angular/core';
-import { DomPortalOutlet, Portal, TemplatePortal } from '@angular/cdk/portal';
+import { DomPortalOutlet, Portal, } from '@angular/cdk/portal';
 import { ModalService } from '../modal.service';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { appendClassName } from 'src/app/utils/class-name';
@@ -22,10 +17,7 @@ import { appendClassName } from 'src/app/utils/class-name';
 })
 export class ModalTemplateComponent {
 
-  // 
-  @ViewChild('portalTemplateRef') portalTemplateRef!: TemplateRef<any>;
-
-  // 弹窗标题的模板
+  // title template
   @ViewChild('titleTemplateRef') titleTemplateRef!: TemplateRef<any>;
 
   // iframe template
@@ -37,14 +29,8 @@ export class ModalTemplateComponent {
   // blank template
   @ViewChild('blankTemplateRef') blankTemplateRef!: TemplateRef<any>;
 
-  selectedPortal!: Portal<any>;
 
   constructor(
-    private _viewContainerRef: ViewContainerRef,
-    private elementRef: ElementRef,
-    private injector: Injector,
-    private appRef: ApplicationRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private modalService: ModalService,
     private cd: ChangeDetectorRef,
   ) {}
@@ -57,31 +43,6 @@ export class ModalTemplateComponent {
     console.log(ref, params)
   }
   
-
-// .cdk-overlay-container,
-// .cdk-overlay-backdrop,
-// .ant-modal-wrap  {
-//     pointer-events: none !important;
-// }
-
-  // 获取组件模板
-  public getComponentRef (params?: any): TemplateRef<any> {
-
-    const selectedPortal = new TemplatePortal(this.getTemplateRef(params.type), this._viewContainerRef, {
-      context: params
-    });
-
-    const portalOutlet = new DomPortalOutlet(
-      this.elementRef.nativeElement as HTMLElement,
-      this.componentFactoryResolver,
-      this.appRef,
-      this.injector
-    );
-
-    const embeddedViewRef = portalOutlet.attachTemplatePortal(selectedPortal);
-    return this.portalTemplateRef
-  }
-
   // get TemplateRef
   public getTemplateRef (type?: 'title' | 'blank' | 'iframe' | 'form'): TemplateRef<any> {
     // 获取template, 填充实例
@@ -101,13 +62,16 @@ export class ModalTemplateComponent {
 
   // template click
   templateClick ($event: any, modalRef: NzModalRef, params?: any) {
-    console.log(params, modalRef)
     if ($event.type === 'close') {
       modalRef.destroy();
-    } else if ($event.type === 'min') {
+    }
+    
+    if ($event.type === 'min') {
       const className = appendClassName(modalRef.getConfig().nzWrapClassName, 'd-none')
       modalRef.updateConfig({nzWrapClassName: className});
-    } else if ($event.type === 'max') {
+    } 
+    
+    if ($event.type === 'max') {
       const element = modalRef.getElement().querySelector('.ant-modal-content')
       if (document?.fullscreenElement) {
         document?.exitFullscreen()
