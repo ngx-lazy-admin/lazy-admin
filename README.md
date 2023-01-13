@@ -30,6 +30,3 @@ Thank you to all our backers! 🙏
 ### License
 
 The MIT License (see the [LICENSE](https://github.com/strawbreey/lazy-admin-pro/blob/master/LICENSE) file for the full text)
-
-
-
