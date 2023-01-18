@@ -3,11 +3,15 @@ import { ModalOptions, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { randomString } from 'src/app/utils';
 import { appendClassName, removeClassName } from 'src/app/utils/class-name';
+import { ModalTemplateComponent } from './template/template.component';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
+  @ViewChild(ModalTemplateComponent) private modalTemplate!: ModalTemplateComponent;
+
   viewContainerRef!: ViewContainerRef;
 
   modalIndex: number = 800;
@@ -29,8 +33,16 @@ export class ModalService {
   }
 
   // 创建弹窗
-  create(templateRef: TemplateRef<any>, params?: any) {
+  create(Template: TemplateRef<any> | string, params?: any) {
     // 设置
+
+    let templateRef = Template
+
+    if (Template instanceof String) {
+      console.log(Template)
+      templateRef = this.modalTemplate.getTemplateRef(<string>Template);
+    }
+
     if (params.id) {
       const modal = this.find(params.id);
       if (modal) {

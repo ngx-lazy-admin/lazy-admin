@@ -719,7 +719,7 @@ export const form = [
       {
         type: 'card',
         key: 'people-man',
-        className: 'col-12 mt-3',
+        className: 'col-12 mt-3 mb-5',
         templateOptions: {
           title: '成员管理',
           bodyClassName: 'row'
@@ -1204,10 +1204,9 @@ export const form = [
       {
         type: 'group',
         key: 'operation',
-        className: 'd-flex d-inline-block my-4',
+        className: 'd-flex d-inline-block py-4',
         templateOptions: {
-          bodyClass:
-            'position-fixed bottom-0 bg-white w-100 border-top d-flex align-items-center justify-content-end right-0 left-0',
+          bodyClass: 'position-fixed bottom-0 bg-white w-100 border-top d-flex align-items-center justify-content-end right-0 left-0',
           bodyStyle: {
             height: '50px',
             zIndex: 2,
@@ -1231,6 +1230,7 @@ export const form = [
             templateOptions: {
               text: '重置',
               click: `(field) => {
+                alert('重置')
                 field.parent.parent.formControl.reset();
               }`
             }

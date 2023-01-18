@@ -8,8 +8,8 @@ import { NzConfigService } from 'ng-zorro-antd/core/config';
 
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
-import { of, Subject, Subscription } from 'rxjs';
-import { takeUntil, switchMap } from 'rxjs/operators';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import hotkeys from 'hotkeys-js';
 import { editor } from 'monaco-editor';
@@ -147,10 +147,21 @@ export class FormComponent {
 
     hotkeys('m', (event, handler) => {
       // 转弹窗
-      // const modal = this.modalService.open('form', {}, {
-      //   fields: this.cacheFields,
-      //   model: this.model,
-      // })
+      const ModalOptions = {
+        nzTitle: null,
+        nzFooter: null,
+        nzWidth: '960px',
+        nzComponentParams: {
+          nzTitle: '这是一个标题1',
+          params: {
+            id: '11'
+          },
+          fields: this.cacheFields,
+          model: this.model,
+        }
+      };
+
+      const modal = this.modalService.create('form', ModalOptions)
     });
   }
 

@@ -88,6 +88,8 @@ export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
 
     this.tabs = [...this.menus, ...modals];
     this.selectedIndex = this.tabs?.findIndex(item => item?.selected);
+
+    console.log('updateTabs')
     this.cd.markForCheck();
   }
 

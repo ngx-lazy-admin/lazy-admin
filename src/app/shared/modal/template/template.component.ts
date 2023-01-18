@@ -44,7 +44,7 @@ export class ModalTemplateComponent {
   }
   
   // get TemplateRef
-  public getTemplateRef (type?: 'title' | 'blank' | 'iframe' | 'form'): TemplateRef<any> {
+  public getTemplateRef (type?: 'title' | 'blank' | 'iframe' | 'form' | string): TemplateRef<any> {
     // 获取template, 填充实例
     switch (type) {
       case 'title':
