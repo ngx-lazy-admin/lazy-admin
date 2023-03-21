@@ -25,6 +25,8 @@ import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ThemeSettingModule } from 'src/app/shared/theme-setting';
+
+import { ThemeModule } from 'src/app/shared/theme';
 import { ModalItemComponent } from './components/modal-item.component';
 // import { ModalItemComponent } from './modal.component';
 
@@ -58,7 +60,8 @@ import { ModalItemComponent } from './components/modal-item.component';
     // AntFieldTypeModule,
     CustomFieldModule,
     FormFieldModule,
-    ThemeSettingModule
+    ThemeSettingModule,
+    ThemeModule
   ]
 })
 export class ModalModule {}

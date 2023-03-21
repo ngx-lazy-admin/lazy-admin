@@ -51,7 +51,7 @@ import { isObject } from 'src/app/utils';
           + ', submitted: ' + this.options?.parentForm?.submitted
           + ', show: ' + !!field.validation?.show
       }}  -->
-    </nz-form-item>
+    </nz-form-item>{{to.align}}
   `,
 })
 

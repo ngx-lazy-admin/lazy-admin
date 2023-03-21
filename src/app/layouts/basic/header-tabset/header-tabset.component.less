@@ -44,5 +44,28 @@
         }
       }
     }
+    .ant-tabs-nav-list {
+      .ant-tabs-tab {
+        position: relative;
+        margin-right: 16px;
+        margin-left: 16px;
+        &::before{
+          position: absolute;
+          right: 0;
+          left: 0;
+          background-color: red;
+          width: 10px;
+          height: 10px;
+        }
+      }
+      .ant-tabs-tab::before {
+        position: absolute;
+        right: 0;
+        left: 0;
+        background-color: red;
+        width: 10px;
+        height: 10px;
+      }
+    }
   }
 }

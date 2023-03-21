@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <formly-form class="row" [form]="form" [fields]="fields" [(model)]="model" [options]="options">
+    <ng-template formlyTemplate let-field>
+      <formly-field *ngFor="let f of field.fieldGroup" [field]="f"></formly-field>
+    </ng-template>
+  </formly-form>
+</form>

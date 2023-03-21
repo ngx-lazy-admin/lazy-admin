@@ -106,9 +106,11 @@ export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
   }
 
   closeMenu(tabs: any, type: menuOperationType = 'all'): void {
+    console.log(this.tabs)
     switch (type) {
       case 'all': {
         console.log('all');
+        // this.menu.closeTabSet(tabs.index)
         break;
       }
       case 'left': {

@@ -1,11 +1,12 @@
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FormlyFormOptions } from '@ngx-formly/core';
+
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { ModalService } from 'src/app/shared/modal';
 
 import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component';
-import { ThemeSettingService } from 'src/app/shared/theme-setting/theme-setting.service';
+import { ThemeSettingService } from 'src/app/shared/theme/theme.service';
 
 @Component({
   selector: 'app-modal',
