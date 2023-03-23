@@ -20,6 +20,9 @@ import { FormFieldModule } from 'src/app/shared/fields/wrappers/form';
 import { CustomFieldModule } from 'src/app/shared/fields/custom-type.module';
 import { PipesModule } from 'src/app/pipes';
 import { CustomModule } from 'src/app/shared/custom.modules';
+// import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component';
+
+import { ModalsModule } from 'src/app/shared/modal';
 
 @NgModule({
   declarations: [FormComponent],
@@ -43,7 +46,8 @@ import { CustomModule } from 'src/app/shared/custom.modules';
     FieldTypeModule,
     // AntFieldTypeModule,
     CustomFieldModule,
-    FormFieldModule
+    FormFieldModule,
+    ModalsModule,
   ]
 })
 export class FormModule {}

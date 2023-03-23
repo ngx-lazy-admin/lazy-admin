@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -24,6 +24,11 @@ import { PreviewService } from 'src/app/shared/preview';
 
 import { CodeEditorService } from 'src/app/shared/code-editor';
 import { FieldService } from 'src/app/api/dashboard';
+import { NzDrawerRef } from 'ng-zorro-antd/drawer';
+
+import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component';
+import { clone } from 'src/app/utils';
+
 
 export interface headerInfoType {
   title: string;
@@ -46,6 +51,8 @@ export interface errorResultType {
   }
 })
 export class FormComponent {
+  @ViewChild(ModalTemplateComponent) private modalTemplate!: ModalTemplateComponent;
+  
   rooterChange?: Subscription;
 
   info?: headerInfoType | null;
@@ -70,8 +77,11 @@ export class FormComponent {
   editor?: editor.ICodeEditor;
   code: string = ``;
   cacheFields: string = '';
-
+  cloneFields: string = '';
   private destroy$ = new Subject<void>();
+
+  codeEditor: NzDrawerRef<any, any> | null = null;
+
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -92,9 +102,9 @@ export class FormComponent {
         // 获取当前页面的配置
         this.loading = true;
         this.cd.markForCheck();
-        const resultCache = this.routeCache.get(this.router.url);
-        if (resultCache) {
-          this.render(resultCache);
+        this.cacheFields  = this.routeCache.get(this.router.url);
+        if (this.cacheFields) {
+          this.render(this.cacheFields);
           this.routeCache.recoveryHistoryPosition(this.router.url);
         } else {
           this.loading = true;
@@ -102,6 +112,7 @@ export class FormComponent {
           // 它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
           this.fieldService.getField(this.router.url).subscribe(
             result => {
+              console.log(result)
               this.routeCache.set(this.router.url, result);
               this.render(this.routeCache.get(this.router.url));
             },
@@ -134,40 +145,44 @@ export class FormComponent {
     });
 
     hotkeys('.', (event, handler) => {
-      const codeEditor = this.codeEditorService.create({
-        nzHeight: '100vh',
-        nzPlacement: 'bottom',
-        nzWrapClassName: 'dragModal',
-        nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
-        fields: this.cacheFields,
-        model: this.model,
-        nzMask: false
-      });
+      if (!this.codeEditor) {
+        this.codeEditor = this.codeEditorService.create({
+          nzHeight: '100vh',
+          nzPlacement: 'bottom',
+          nzWrapClassName: 'dragModal',
+          nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+          fields: this.cloneFields,
+          model: this.model,
+          nzMask: false,
+        });
+
+        this.codeEditor.afterClose.subscribe(result => {
+          console.log(result)
+          this.codeEditor = null
+        });
+      }
     });
 
     hotkeys('m', (event, handler) => {
-      // 转弹窗
+      const contentTemplateRef = this.modalTemplate.getTemplateRef('form');
       const ModalOptions = {
         nzTitle: null,
         nzFooter: null,
         nzWidth: '960px',
+        nzMask: true,
         nzComponentParams: {
-          nzTitle: '这是一个标题1',
-          params: {
-            id: '11'
-          },
-          fields: this.cacheFields,
+          nzTitle: '这是一个标题',
+          field: this.cacheFields,
           model: this.model,
+          options: this.options
         }
       };
-
-      const modal = this.modalService.create('form', ModalOptions)
+      this.modalService.create(contentTemplateRef, ModalOptions);
     });
   }
 
   render(result: any) {
     this.loading = true;
-    // this.clearData();
     this.info = result?.info;
 
     try {
@@ -175,11 +190,12 @@ export class FormComponent {
       this.form.reset({}, { onlySelf: false, emitEvent: false });
       this.form = new FormGroup({});
 
-      this.cacheFields = result?.fields;
-      this.fields = typeof result?.fields === 'string' ? execEval(result?.fields) : result.fields;
+      this.cloneFields = clone(result.fields)
+
+      this.fields = typeof result?.fields === 'string' ? execEval(clone(result.fields)) : clone(result.fields);
 
       this.model = result?.data;
-      this.options.formState.cacheFields = result.fields;
+      this.options.formState.cacheFields = this.cacheFields;
 
       this.code = format(JSON.stringify(result.fields), {
         parser: 'json',

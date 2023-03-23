@@ -23,6 +23,7 @@ import { ModalTemplateComponent } from './template/template.component';
 import { NgZorroAntdModule } from './ng-zorro-antd.modules';
 import { ModalTitleComponent } from './modal-title.component';
 
+
 @NgModule({
   providers: [DispatchService, ModalService],
   declarations: [FormModal, SearchModal, BlankModal, ModalTitleComponent, ModalTemplateComponent],

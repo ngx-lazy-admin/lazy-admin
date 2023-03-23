@@ -5,7 +5,7 @@
         nzType="info"
         nzCloseable
         class="mb-3"
-        nzDescription="键盘点击 . , 可以编辑当前页面配置, 点击 M 可以把当前页面转弹窗"
+        nzDescription="键盘点击 . , 可以编辑当前页面配置, 点击 m 可以把当前页面转弹窗"
       ></nz-alert>
 
       <nz-page-header *ngIf="info" class="bg-white mb-3">
@@ -15,7 +15,7 @@
         </nz-page-header-content>
       </nz-page-header>
 
-      <form [formGroup]="form" (ngSubmit)="submit()">
+      <form [formGroup]="form" class="row" (ngSubmit)="submit()">
         <formly-form class="row" [form]="form" [fields]="fields" [(model)]="model" [options]="options">
           <ng-template formlyTemplate let-field>
             <formly-field *ngFor="let f of field.fieldGroup" [field]="f"></formly-field>
@@ -49,3 +49,5 @@
     </ng-container>
   </ng-container>
 </div>
+
+<app-share-template></app-share-template>

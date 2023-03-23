@@ -28,6 +28,7 @@ export class CodeEditorService {
     // 生成唯一的id
     const id = randomString(32);
 
+    console.log(params.fields)
     const drawerRef = this.drawerService.create<CodeEditorContent, { value: string }, string>({
       nzContent: CodeEditorContent,
       nzViewContainerRef: this.viewContainerRef,
