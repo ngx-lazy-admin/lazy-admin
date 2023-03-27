@@ -45,7 +45,7 @@ const routes: Routes = [
       { path: 'swagger', loadChildren: () => import('./pages/swagger/swagger.module').then(m => m.SwaggerModule) },
       { path: 'modal', loadChildren: () => import('./pages/modal/modal.module').then(m => m.ModalModule) },
       { path: 'image', loadChildren: () => import('./pages/image/image.module').then(m => m.ImageModule) },
-
+      { path: 'designer', loadChildren: () => import('./pages/designer/designer.module').then(m => m.DesignerModule) },
       { path: 'micro', loadChildren: () => import('./pages/micro/micro.module').then(m => m.MicroModule) },
       { path: '**', loadChildren: () => import('./pages/form/form.module').then(m => m.FormModule) }
     ]

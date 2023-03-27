@@ -1125,5 +1125,11 @@ export const menu = [
     name: '函数库',
     badge: '',
     link: '/tools'
+  },
+  {
+    id: '18',
+    name: '组件设计器',
+    badge: '',
+    link: '/designer'
   }
 ];

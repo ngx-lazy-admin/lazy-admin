@@ -1,0 +1,87 @@
+<div>
+ 设计器
+</div>
+
+<nz-layout>
+  <nz-sider nzTheme="light">
+    <nz-tabset [nzAnimated]="false">
+      <nz-tab nzTitle="组件库">
+        <nz-collapse nzExpandIconPosition="right">
+          <nz-collapse-panel
+            *ngFor="let panel of panelContainer"
+            [nzHeader]="panel.title"
+            nzActive="true"
+            nzShowArrow="true"
+            
+          >
+            <div nz-row [nzGutter]="['8', '16']">
+              <ng-container *ngFor="let item of fieldConfig.get(panel.type)">
+                <div nz-col  [nzSpan]="12" class="gutter-row">
+                  <button class="w-100" nz-button nzType="default">
+                    <span nz-icon [nzType]="item.icon"></span>
+                    {{item.type}}
+                  </button>
+                </div>
+    
+              </ng-container>
+            </div>
+          </nz-collapse-panel>
+        </nz-collapse>
+      </nz-tab>
+      <nz-tab nzTitle="模板库">
+        <nz-collapse nzExpandIconPosition="right">
+          <nz-collapse-panel
+            *ngFor="let panel of panelContainer"
+            [nzHeader]="panel.title"
+            nzActive="true"
+            nzShowArrow="true"
+            
+          >
+            <div nz-row [nzGutter]="['8', '16']">
+              <ng-container *ngFor="let item of fieldConfig.get(panel.type)">
+                <div nz-col  [nzSpan]="12" class="gutter-row">
+                  <button class="w-100" nz-button nzType="default">
+                    <span nz-icon [nzType]="item.icon"></span>
+                    {{item.type}}
+                  </button>
+                </div>
+    
+              </ng-container>
+            </div>
+          </nz-collapse-panel>
+        </nz-collapse>
+      </nz-tab>
+
+    </nz-tabset>
+
+  </nz-sider>
+  <nz-layout nzTheme="light">
+    <header nzTheme="light">Header</header>
+    <nz-content>Content</nz-content>
+    <nz-footer>Footer</nz-footer>
+  </nz-layout>
+  <nz-sider nzTheme="light">
+    <nz-collapse nzExpandIconPosition="right">
+      <nz-collapse-panel
+        *ngFor="let panel of panelContainer"
+        [nzHeader]="panel.title"
+        nzActive="true"
+        nzShowArrow="true"
+        
+      >
+        <div nz-row [nzGutter]="['8', '16']">
+          <ng-container *ngFor="let item of fieldConfig.get(panel.type)">
+            <div nz-col  [nzSpan]="12" class="gutter-row">
+              <button class="w-100" nz-button nzType="default">
+                <span nz-icon [nzType]="item.icon"></span>
+                {{item.type}}
+              </button>
+            </div>
+
+          </ng-container>
+        </div>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </nz-sider>
+</nz-layout>
+<app-share-template></app-share-template>
