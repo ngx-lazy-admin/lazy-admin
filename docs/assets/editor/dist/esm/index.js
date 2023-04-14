@@ -1,6 +1,6 @@
 /**
  * @toast-ui/editor
- * @version 3.2.1 | Thu Sep 29 2022
+ * @version 3.2.2 | Fri Feb 17 2023
  * @author NHN Cloud FE Development Lab <dl_javascript@nhn.com>
  * @license MIT
  */
@@ -914,14 +914,6 @@ function assign(targetObj, obj) {
 function getSortedNumPair(valueA, valueB) {
     return valueA > valueB ? [valueB, valueA] : [valueA, valueB];
 }
-function isStartWithSpace(text) {
-    var reStartWithSpace = /^\s(\S*)/g;
-    return reStartWithSpace.test(text);
-}
-function isEndWithSpace(text) {
-    var reEndWithSpace = /(\S*)\s$/g;
-    return reEndWithSpace.test(text);
-}
 
 /**
  * @fileoverview Transform the Array-like object to Array.
@@ -1373,7 +1365,6 @@ var reHTMLTag = new RegExp("^" + HTML_TAG, 'i');
 var reBR = /<br\s*\/*>/i;
 var reHTMLComment = /<! ---->|<!--(?:-?[^>-])(?:-?[^-])*-->/;
 var ALTERNATIVE_TAG_FOR_BR = '</p><p>';
-var DEFAULT_TEXT_NOT_START_OR_END_WITH_SPACE = 'a';
 
 function isPositionInBox(style, offsetX, offsetY) {
     var left = parseInt(style.left, 10);
@@ -21174,42 +21165,30 @@ var toMdConvertors = {
             text: node.textContent,
         };
     },
-    strong: function (_a, _b, betweenSpace) {
+    strong: function (_a, _b) {
         var node = _a.node;
         var entering = _b.entering;
         var rawHTML = node.attrs.rawHTML;
-        var delim = '**';
-        if (!betweenSpace) {
-            delim = entering ? '<strong>' : '</strong>';
-        }
         return {
-            delim: delim,
+            delim: '**',
             rawHTML: entering ? getOpenRawHTML(rawHTML) : getCloseRawHTML(rawHTML),
         };
     },
-    emph: function (_a, _b, betweenSpace) {
+    emph: function (_a, _b) {
         var node = _a.node;
         var entering = _b.entering;
         var rawHTML = node.attrs.rawHTML;
-        var delim = '*';
-        if (!betweenSpace) {
-            delim = entering ? '<em>' : '</em>';
-        }
         return {
-            delim: delim,
+            delim: '*',
             rawHTML: entering ? getOpenRawHTML(rawHTML) : getCloseRawHTML(rawHTML),
         };
     },
-    strike: function (_a, _b, betweenSpace) {
+    strike: function (_a, _b) {
         var node = _a.node;
         var entering = _b.entering;
         var rawHTML = node.attrs.rawHTML;
-        var delim = '~~';
-        if (!betweenSpace) {
-            delim = entering ? '<del>' : '</del>';
-        }
         return {
-            delim: delim,
+            delim: '~~',
             rawHTML: entering ? getOpenRawHTML(rawHTML) : getCloseRawHTML(rawHTML),
         };
     },
@@ -21316,7 +21295,7 @@ function createMarkTypeConvertors(convertors) {
     var markTypeConvertors = {};
     var markTypes = Object.keys(markTypeOptions);
     markTypes.forEach(function (type) {
-        markTypeConvertors[type] = function (nodeInfo, entering, betweenSpace) {
+        markTypeConvertors[type] = function (nodeInfo, entering) {
             var markOption = markTypeOptions[type];
             var convertor = convertors[type];
             // There are two ways to call the mark type converter
@@ -21324,9 +21303,7 @@ function createMarkTypeConvertors(convertors) {
             // When calling the converter without using `delim` and `rawHTML` values,
             // the converter is called without parameters.
             var runConvertor = convertor && nodeInfo && !isUndefined_1(entering);
-            var params = runConvertor
-                ? convertor(nodeInfo, { entering: entering }, betweenSpace)
-                : {};
+            var params = runConvertor ? convertor(nodeInfo, { entering: entering }) : {};
             return __assign$1(__assign$1({}, params), markOption);
         };
     });
@@ -21387,20 +21364,10 @@ var ToMdConvertorState = /** @class */ (function () {
     ToMdConvertorState.prototype.isInBlank = function () {
         return /(^|\n)$/.test(this.result);
     };
-    ToMdConvertorState.prototype.isBetweenSpaces = function (parent, index) {
-        var _a, _b;
-        var content = parent.content;
-        var isFrontNodeEndWithSpace = index === 0 ||
-            isEndWithSpace((_a = content.child(index - 1).text) !== null && _a !== void 0 ? _a : DEFAULT_TEXT_NOT_START_OR_END_WITH_SPACE);
-        var isRearNodeStartWithSpace = index >= content.childCount - 1 ||
-            isStartWithSpace((_b = content.child(index + 1).text) !== null && _b !== void 0 ? _b : DEFAULT_TEXT_NOT_START_OR_END_WITH_SPACE);
-        return isFrontNodeEndWithSpace && isRearNodeStartWithSpace;
-    };
     ToMdConvertorState.prototype.markText = function (mark, entering, parent, index) {
         var convertor = this.getMarkConvertor(mark);
         if (convertor) {
-            var betweenSpace = this.isBetweenSpaces(parent, entering ? index : index - 1);
-            var _a = convertor({ node: mark, parent: parent, index: index }, entering, betweenSpace), delim = _a.delim, rawHTML = _a.rawHTML;
+            var _a = convertor({ node: mark, parent: parent, index: index }, entering), delim = _a.delim, rawHTML = _a.rawHTML;
             return rawHTML || delim;
         }
         return '';
