@@ -936,6 +936,7 @@ export const menu = [
   {
     id: '13',
     name: 'Table 专题',
+    icon: 'table',
     link: '',
     badge: '',
     children: [
@@ -965,6 +966,13 @@ export const menu = [
         pid: '13',
         name: 'Pro table',
         link: '/table/pro-table',
+        badge: ''
+      },
+      {
+        id: '1305',
+        pid: '13',
+        name: 'Column table',
+        link: '/table/column-table',
         badge: ''
       }
     ]
@@ -1059,6 +1067,13 @@ export const menu = [
             name: 'custom validation',
             badge: '',
             link: '/forms/custom-validations',
+          },
+          {
+            id: '1403',
+            pid: '14',
+            name: 'async validations',
+            badge: '',
+            link: '/forms/async-validations',
           },
         ]
       },

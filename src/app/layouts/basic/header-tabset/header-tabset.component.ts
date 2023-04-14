@@ -51,17 +51,12 @@ export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
       // this.cd.markForCheck();
       this.updateTabs();
     });
-
-    console.log('header-tabset');
-    console.log(this.modal.openModals);
   }
 
   ngOnInit(): void {
     this.modalServe.change.subscribe(item => {
-      console.log('header-tabset');
       // this.updateTabs()
     });
-    console.log(this.modalServe.change);
   }
 
   closeTab({ index }: { index: number }): void {
@@ -89,7 +84,6 @@ export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
     this.tabs = [...this.menus, ...modals];
     this.selectedIndex = this.tabs?.findIndex(item => item?.selected);
 
-    console.log('updateTabs')
     this.cd.markForCheck();
   }
 
@@ -106,7 +100,6 @@ export class LayoutHeaderTabsetComponent implements OnInit, AfterViewChecked {
   }
 
   closeMenu(tabs: any, type: menuOperationType = 'all'): void {
-    console.log(this.tabs)
     switch (type) {
       case 'all': {
         console.log('all');

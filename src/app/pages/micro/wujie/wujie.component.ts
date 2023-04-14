@@ -10,7 +10,7 @@ import { bus, preloadApp, startApp, destroyApp } from 'wujie';
 
 @Component({
   selector: 'app-wujie',
-  template: `<div id="wujie"></div>`,
+  template: `<div id="wujie" class="w-100 h-100"></div>`,
   styleUrls: ['./wujie.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -20,9 +20,9 @@ export class WuJieComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     startApp({
       name: 'wujie',
-      url: '//localhost:7400',
+      url: '//wujie-micro.github.io/demo-react16/home',
       sync: true,
-      alive: false,
+      alive: true,
       el: this.elRef.nativeElement.querySelector('#wujie'),
       fetch: this.fetch,
       props: {}

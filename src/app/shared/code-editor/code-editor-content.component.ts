@@ -109,7 +109,6 @@ export class CodeEditorContent {
       .pipe(debounceTime(300))
       .pipe(filter(x => !!x))
       .subscribe(code => {
-        console.log('search:' + code);
         try {
           this.field = execEval(code);
         } catch (error) {
@@ -124,7 +123,6 @@ export class CodeEditorContent {
   editorInitialized($event: any) {
     $event.onDidChangeModelContent(() => {
       let code = $event.getValue();
-      console.log('editor:' + code);
       this.searchChange$.next(code);
     });
   }

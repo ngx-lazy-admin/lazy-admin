@@ -29,7 +29,7 @@ import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { ModalTemplateComponent } from 'src/app/shared/modal/template/template.component';
 import { clone } from 'src/app/utils';
 
-import { basicFields, panelContainer, advancedFields, containers, customFields } from './config'
+import {  panelContainer, attributeContainer, basicFields, advancedFields, containers, customFields, layoutField } from './config'
 
 
 export interface headerInfoType {
@@ -49,7 +49,7 @@ export interface errorResultType {
   styleUrls: ['./designer.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'p-3 d-block'
+    class: 'd-block'
   }
 })
 export class DesignerComponent {
@@ -91,8 +91,19 @@ export class DesignerComponent {
     ["customFields", customFields]
   ]);
 
+  templateConfig = new Map<string, any>([
+    ["layoutField", layoutField],
+    ["advancedFields", advancedFields],
+    ["containers", containers],
+    ["customFields", customFields]
+  ]);
+
 
   panelContainer = panelContainer
+
+  attributeContainer = attributeContainer
+
+
   constructor(
     private cd: ChangeDetectorRef,
     private fieldService: FieldService,
@@ -244,6 +255,10 @@ export class DesignerComponent {
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {})
     );
+  }
+
+  change () {
+    console.log('change')
   }
 
   submit() {

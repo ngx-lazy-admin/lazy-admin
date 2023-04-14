@@ -4,10 +4,11 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { FieldWrapper, FormlyConfig } from '@ngx-formly/core';
 import { NzFormTooltipIcon, NzFormLayoutType } from 'ng-zorro-antd/form';
 import { isObservable, Observable, of } from 'rxjs';
-import { startWith, switchMap, tap } from 'rxjs/operators';
+import { catchError, delay, startWith, switchMap, tap, map } from 'rxjs/operators';
 import { isObject } from 'src/app/utils';
 
 @Component({
@@ -32,26 +33,31 @@ import { isObject } from 'src/app/utils';
         [nzTooltipIcon]="nzTooltipIcon">
         <span [innerHTML]="to.label"></span>
       </nz-form-label>
-
+      <!--  
+        'invalid' + field.formControl?.invalid
+        'touched:' +  field.formControl?.touched
+        'show:' + field.validation?.show
+        'submitted:' + this.options?.parentForm?.submitted
+      -->
       <nz-form-control 
         [nzValidateStatus]="formControl" 
         [nzErrorTip]="errorTpl"
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 16 : null"
         [nzOffset]="controlOffset"
         [ngStyle]="(fixedWidth | fixedWidth)?.control"
-        [nzExtra]="nzExtra"
+        [nzExtra]="extraTpl"
         [nzHasFeedback]="nzHasFeedback">
         <ng-container #fieldComponent></ng-container>
+        
         <ng-template #errorTpl let-control>
           <span>{{ errorMessage }}</span>
         </ng-template>
+
+        <ng-template #extraTpl let-control>
+          <span>{{ to.description }}</span>
+        </ng-template>
       </nz-form-control>
-      <!-- {{ 'invalid：' + field.formControl?.invalid  
-          + ', touched: ' +  field.formControl?.touched 
-          + ', submitted: ' + this.options?.parentForm?.submitted
-          + ', show: ' + !!field.validation?.show
-      }}  -->
-    </nz-form-item>{{to.align}}
+    </nz-form-item>
   `,
 })
 
@@ -145,52 +151,97 @@ export class FormWrapper extends FieldWrapper {
 
   get errorMessage(): any {
     // debugger
-    const fieldForm = this.field.formControl;
+    const formControl = this.field.formControl;
 
-    if (fieldForm) {
-      for (const error in fieldForm.errors) {
-        if (fieldForm.errors.hasOwnProperty(error)) {
+    console.log('fieldForm', formControl)
+    if (formControl) {
+      for (const error in formControl.errors) {
+        if (formControl.errors.hasOwnProperty(error)) {
           let message = this.config.getValidatorMessage(error);
-          console.log('getValidatorMessage:' + message)
+          console.log('getValidatorMessage:' + message, this.field.formControl?.value, this.field)
   
-          if (isObject(fieldForm.errors[error])) {
-            if (fieldForm.errors[error].errorPath) {
-              return;
+          // 如果是异步校验, 则注册异步校验，在验证信息
+          if (this.field.validators?.validation.some((item: string) => item == 'async')) {
+            const AsyncValidator = (control: AbstractControl):  Observable<ValidationErrors | null> => {
+              console.log(control.value)
+              return of(control).pipe(delay(10)).pipe(
+                map(control => {
+                  const re = !control.value || /(\d{1,3}\.){3}\d{1,3}/.test(control.value)
+                  console.log('re', re)
+                  return re ? {} : { async: true }
+                }),
+                catchError(() => of(null))
+              )
+            }
+            if (!formControl.hasAsyncValidator(AsyncValidator)) {
+              console.log('1111')
+              formControl.addAsyncValidators(AsyncValidator)
+              formControl.updateValueAndValidity({
+                onlySelf: false,
+                emitEvent: true
+              })
+            }
+
+          }
+          
+          if (isObject(formControl.errors[error])) {
+            if (formControl.errors[error].errorPath) {
+              return '';
             }
   
-            if (fieldForm.errors[error].message) {
-              message = fieldForm.errors[error].message;
+            if (formControl.errors[error].message) {
+              message = formControl.errors[error].message.replace();
               console.log('fieldForm.errors[error].message:' + message)
 
             }
           }
   
           if (this.field.validation?.messages?.[error]) {
-            message = this.field.validation.messages[error];
-            console.log('this.field.validation.messages[error]:' + message)
+            // 如果 pattern 为string，validation?.messages 为string
+            console.log(this.field.validation?.messages, error)
+            if (typeof(this.field.props?.pattern)=='string') { 
+              // const ValidatorFn = Validators.pattern(new RegExp(this.field.props?.pattern))
+              // formControl?.addValidators(ValidatorFn)
+              
+              // 添加自定义正则校验
+              const customRegExp = (nameRe: RegExp): ValidatorFn => {
+                return (control: AbstractControl): ValidationErrors | null => {
+                  const forbidden = false;
+                  return forbidden ? {forbiddenName: {value: control.value}} : null;
+                };
+              }
+               formControl?.addValidators(customRegExp(new RegExp(this.field.props?.patterns)))
+            }
 
+            message = this.field.validation.messages[error];
+            if (typeof(message)=='string') {
+              message = message.replace("{field.formControl.value}'", this.field.formControl?.value)
+            }
+
+            console.log(this.field.validation.messages, error)
           }
   
           if (this.field.validators?.[error]?.message) {
             message = this.field.validators[error].message;
             console.log('this.field.validators[error].message:' + message)
-
           }
   
           if (this.field.asyncValidators?.[error]?.message) {
             message = this.field.asyncValidators[error].message;
             console.log('this.field.asyncValidators[error].message;:' + message)
-
           }
   
           if (typeof message === 'function') {
-            return message(fieldForm.errors[error], this.field);
+            return message(formControl.errors[error], this.field);
           }
+
+          console.log(message)
   
           return message;
         }
       }
     }
+    return 
   }
 
   constructor(

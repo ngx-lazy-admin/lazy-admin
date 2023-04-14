@@ -4,16 +4,36 @@ export const panelContainer = [
     type: 'containers'
   },
   {
-    title: '基础字段',
+    title: '基础组件',
     type: 'basicFields'
   },
   {
-    title: '高级字段',
+    title: '高级组件',
     type: 'advancedFields'
   },
   {
-    title: '自定义扩展字段',
+    title: '自定义组件',
     type: 'customFields'
+  },
+]
+
+// 属性设计器
+export const attributeContainer = [
+  {
+    title: 'Field ',
+    type: 'layoutField'
+  },
+  {
+    title: 'Component',
+    type: 'layoutField'
+  },
+  {
+    title: 'Style',
+    type: 'layoutField'
+  },
+  {
+    title: 'Event',
+    type: 'layoutField'
   },
 ]
 
@@ -1340,7 +1360,71 @@ export const customFields = [
 // }
 
 // 属性设计器
-export const customFields = [
+export const attributeFields = [
+  {
+    type: 'grid',
+    alias: '',  //组件别名，可以自定义
+    category: 'container',
+    icon: 'step-backward',
+    cols: [],
+    options: {
+      name: '',
+      hidden: false,
+      gutter: 12,
+      colHeight: null,  //栅格列统一高度属性，用于解决栅格列设置响应式布局浮动后被挂住的问题！！
+      customClass: '',  //自定义css类名
+    }
+  },
+]
+
+// 布局选择器
+export const layoutField = [
+  {
+    type: 'input',
+    props: {
+      label: '布局'
+    }
+  },
+]
+
+// 组件选择器
+export const componentFields = [
+  {
+    type: 'grid',
+    alias: '',  //组件别名，可以自定义
+    category: 'container',
+    icon: 'step-backward',
+    cols: [],
+    options: {
+      name: '',
+      hidden: false,
+      gutter: 12,
+      colHeight: null,  //栅格列统一高度属性，用于解决栅格列设置响应式布局浮动后被挂住的问题！！
+      customClass: '',  //自定义css类名
+    }
+  },
+]
+
+// 样式选择器
+export const styleFields = [
+  {
+    type: 'grid',
+    alias: '',  //组件别名，可以自定义
+    category: 'container',
+    icon: 'step-backward',
+    cols: [],
+    options: {
+      name: '',
+      hidden: false,
+      gutter: 12,
+      colHeight: null,  //栅格列统一高度属性，用于解决栅格列设置响应式布局浮动后被挂住的问题！！
+      customClass: '',  //自定义css类名
+    }
+  },
+]
+
+// 事件
+export const EventFields = [
   {
     type: 'grid',
     alias: '',  //组件别名，可以自定义

@@ -94,7 +94,6 @@ export class SearchModal {
   }
 
   handleCancel(): void {
-    console.log('handleCancel');
     this.isVisible = false;
     this.cd.markForCheck();
   }

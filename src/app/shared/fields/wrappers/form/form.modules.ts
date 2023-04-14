@@ -16,28 +16,6 @@ import { ListItemWrapper } from './list-item.wrapper';
 
 import { validators, validationMessages } from '../../validation/validation'
 
-
-
-export function minValidationMessage(err: any, field: FormlyFieldConfig) {
-  return `This value should be more than ${field.templateOptions?.min}`;
-}
-
-export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
-  return `This value should be less than ${field.templateOptions?.max}`;
-}
-
-export function IpValidator(control: AbstractControl): ValidationErrors {
-  return !control.value || /(\d{1,3}\.){3}\d{1,3}/.test(control.value) ? {} : { ip: true };
-}
-
-export function requireValidator(control: AbstractControl): ValidationErrors {
-  return control.value ? { } : { require: true };
-}
-
-export function IpValidatorMessage(err: any, field: FormlyFieldConfig) {
-  return `"${field.formControl?.value}" is not a valid IP Address`;
-}
-
 // https://angular.cn/guide/form-validation#defining-custom-validators
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -80,16 +58,9 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
         }
       ],
       validators: [
-        // { name: 'ip', validation: IpValidator },
-        // { name: 'require', validation: requireValidator},
         ...validators
       ],
       validationMessages: [
-        { name: 'ip', message: IpValidatorMessage },
-        { name: 'required', message: 'This field is required' },
-        { name: 'require', message: 'This field is require' },
-        { name: 'min', message: minValidationMessage },
-        { name: 'max', message: maxValidationMessage },
         ...validationMessages
       ],
     }), 

@@ -137,9 +137,6 @@ export class FormService {
           plugins: [parserBabel]
         });
 
-        // this.code = result.fields
-        console.log('code');
-
         this.info = result?.info;
       } catch (error) {
         this.fields = [];
