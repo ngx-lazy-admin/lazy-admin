@@ -1,4 +1,7 @@
 import {
+  AsyncValidationFieldsMockFields,
+  BuiltInValidationsFieldsMockFields,
+  CustomValidationFieldsMockFields,
   DefaultValueMockFields,
   ExpressionMockFields,
   HideFieldsMockFields,
@@ -32,5 +35,17 @@ export const forms = [
   {
     id: 'reset-model',
     fields: ResetModelMockFields
+  },
+  {
+    id: 'built-in-validations',
+    fields: BuiltInValidationsFieldsMockFields
+  },
+  {
+    id: 'custom-validations',
+    fields: CustomValidationFieldsMockFields
+  },
+  {
+    id: 'async-validations',
+    fields: AsyncValidationFieldsMockFields
   }
 ];

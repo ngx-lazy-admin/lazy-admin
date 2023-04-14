@@ -12,7 +12,7 @@ import { ShareFieldType, ActionTypeInterface } from '../share-field.type';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-    <ul nz-list-item-actions>
+    <ul nz-list-item-actions class="d-flex">
       <ng-container *ngFor="let action of actionOptions.slice(0, maxTagCount); let i = index; trackBy: trackByFn">
         <nz-list-item-action>
           <a         

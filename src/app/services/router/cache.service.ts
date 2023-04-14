@@ -18,12 +18,15 @@ export class CacheService {
 
   // 获取缓存数据
   get(str: string) {
-    return clone(this.cache[str]);
+    const field = clone(this.cache[str])
+    console.log(field)
+    return field;
   }
 
   // 记录路由缓存数据
   set(url: string, data: formCacheType) {
-    this.cache[url] = data;
+    this.cache[url] = clone(data);
+
     this.recordHistoryPosition(url);
   }
 

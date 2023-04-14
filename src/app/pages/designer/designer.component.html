@@ -1,0 +1,92 @@
+<div>
+ 设计器
+</div>
+
+<nz-layout>
+  <nz-sider nzTheme="light">
+    <nz-tabset [nzAnimated]="false" >
+      <nz-tab nzTitle="组件库">
+        <nz-collapse nzExpandIconPosition="right">
+          <nz-collapse-panel
+            *ngFor="let panel of panelContainer"
+            [nzHeader]="panel.title"
+            nzActive="true"
+            nzShowArrow="true"
+            
+          >
+            <div nz-row [nzGutter]="['8', '8']">
+              <ng-container *ngFor="let item of fieldConfig.get(panel.type)">
+                <div nz-col  [nzSpan]="12" class="gutter-row">
+                  <button class="w-100 text-start f13" nz-button nzType="dashed">
+                    {{item.type}}
+                  </button>
+                </div>
+              </ng-container>
+            </div>
+          </nz-collapse-panel>
+        </nz-collapse>
+      </nz-tab>
+      <nz-tab nzTitle="模板库">
+        <nz-collapse nzExpandIconPosition="right">
+          <nz-collapse-panel
+            *ngFor="let panel of panelContainer"
+            [nzHeader]="panel.title"
+            nzActive="true"
+            nzShowArrow="true"
+            
+          >
+            <div nz-row [nzGutter]="['8', '8']">
+              <ng-container *ngFor="let item of templateConfig.get(panel.type)">
+                <div nz-col [nzSpan]="12" class="gutter-row">
+                  <button class="w-100 text-start f13" nz-button nzType="dashed">
+                    {{item.type}}
+                  </button>
+                </div>    
+              </ng-container>
+            </div>
+          </nz-collapse-panel>
+        </nz-collapse>
+      </nz-tab>
+
+    </nz-tabset>
+
+  </nz-sider>
+  <nz-layout nzTheme="light">
+    <header nzTheme="light">Header</header>
+    <nz-content>Content</nz-content>
+    <nz-footer>Footer</nz-footer>
+  </nz-layout>
+  <nz-sider nzTheme="light">
+    <nz-collapse nzExpandIconPosition="right">
+      <nz-collapse-panel
+        *ngFor="let panel of attributeContainer"
+        [nzHeader]="panel.title"
+        nzActive="true"
+        nzShowArrow="true"
+        
+      >
+        <div nz-row [nzGutter]="['8', '16']">
+          <!-- <ng-container *ngFor="let item of fieldConfig.get(panel.type)">
+            <div nz-col  [nzSpan]="12" class="gutter-row">
+              <button class="w-100" nz-button nzType="default">
+                <span nz-icon [nzType]="item.icon"></span>
+                {{item.type}}
+              </button>
+            </div>
+
+          </ng-container> -->
+          <!-- <formly-form class="row" [form]="form" [fields]="fieldConfig.get(panel.type)" [(model)]="model" [options]="options">
+            <ng-template formlyTemplate let-field>
+              <formly-field *ngFor="let f of field.fieldGroup" [field]="f"></formly-field>
+            </ng-template>
+          </formly-form> -->
+          <form [formGroup]="form" (ngSubmit)="submit()" (ngModelChange)="change()">
+            <formly-form [model]="model" [fields]="templateConfig.get(panel.type)" [options]="options" [form]="form"></formly-form>
+            <!-- <button type="submit" class="btn btn-primary submit-button">Submit</button> -->
+          </form>
+        </div>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </nz-sider>
+</nz-layout>
+<app-share-template></app-share-template>
