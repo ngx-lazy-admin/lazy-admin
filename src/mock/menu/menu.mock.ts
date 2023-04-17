@@ -303,17 +303,63 @@ export const menu = [
         badge: '',
         children: [
           {
-            id: '1401',
+            id: '140201',
             pid: '14',
-            name: '使用wujie嵌套空白页',
-            link: '/micro/wujie/blank/dashboard/analysis',
+            name: 'react16',
+            link: 'micro/wujie/react16',
+            queryParams: {
+              origin: 'https://wujie-micro.github.io/demo-react16/home'
+            },
             badge: ''
           },
           {
-            id: '1401',
+            id: '140202',
             pid: '14',
-            name: '使用wujie嵌套antd',
-            link: '/micro/wujie/blank/components/autocomplete',
+            name: 'react17',
+            link: 'micro/wujie/react17',
+            queryParams: {
+              origin: 'https://wujie-micro.github.io/demo-react17/home'
+            },
+            badge: ''
+          },
+          {
+            id: '140203',
+            pid: '14',
+            name: 'vue2',
+            link: 'micro/wujie/demo-vue2',
+            queryParams: {
+              origin: 'https://wujie-micro.github.io/demo-vue2/home'
+            },
+            badge: ''
+          },
+          {
+            id: '140204',
+            pid: '14',
+            name: 'vue3',
+            link: 'micro/wujie/demo-vue3',
+            queryParams: {
+              origin: 'https://wujie-micro.github.io/demo-vue3/home'
+            },
+            badge: ''
+          },
+          {
+            id: '140205',
+            pid: '14',
+            name: 'vite',
+            link: 'micro/wujie/demo-vite',
+            queryParams: {
+              origin: 'https://wujie-micro.github.io/demo-vite/home'
+            },
+            badge: ''
+          },
+          {
+            id: '140206',
+            pid: '14',
+            name: 'angular',
+            link: 'micro/wujie/angular',
+            queryParams: {
+              origin: 'https://wujie-micro.github.io/demo-angular12'
+            },
             badge: ''
           }
         ]
