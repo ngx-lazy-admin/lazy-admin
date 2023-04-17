@@ -41,6 +41,7 @@
           nz-menu-item
           [nzMatchRouter]="true"
           [routerLink]="menu.link"
+          [queryParams]="menu.queryParams"
           class=""
           [nzPaddingLeft]="isCollapsed ? 0 : menu.level * 24"
           [nzDisabled]="menu.disabled"

@@ -4,8 +4,12 @@ import {
   ChangeDetectionStrategy,
   ElementRef,
   ChangeDetectorRef,
-  AfterViewInit
+  AfterViewInit,
+  Host
 } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, Routes } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { bus, preloadApp, startApp, destroyApp } from 'wujie';
 
 @Component({
@@ -15,19 +19,18 @@ import { bus, preloadApp, startApp, destroyApp } from 'wujie';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WuJieComponent implements AfterViewInit {
-  constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {}
+  constructor(
+    private elRef: ElementRef,
+    private cd: ChangeDetectorRef,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngAfterViewInit(): void {
-    startApp({
-      name: 'wujie',
-      url: '//wujie-micro.github.io/demo-react16/home',
-      sync: true,
-      alive: true,
-      el: this.elRef.nativeElement.querySelector('#wujie'),
-      fetch: this.fetch,
-      props: {}
-    });
-  }
+  loading = false;
+  iframeObj: any = {};
+  currentIframe: any;
+  private count = 0
+  private destroy$ = new Subject();
 
   // fetch = (url: RequestInfo, options: RequestInit | undefined) => {
   //   console.log('fetch:' + url)
@@ -39,4 +42,31 @@ export class WuJieComponent implements AfterViewInit {
     const includeFlag = false;
     return window.fetch(url, { ...options, credentials: includeFlag ? 'include' : 'omit' });
   };
+
+  ngAfterViewInit(): void {
+    this.init();
+    
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.init();
+      }
+    });
+  }
+
+  init() {
+
+    const origin = this.route.snapshot.queryParams.origin;
+ 
+    if (origin) {
+      startApp({
+        name: 'wujie' + this.count++,
+        url: origin,
+        sync: false,
+        alive: false,
+        el: this.elRef.nativeElement.querySelector('#wujie'),
+        fetch: this.fetch,
+        props: {}
+      });
+    }
+  }
 }
