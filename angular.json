@@ -57,6 +57,7 @@
               "pdfast"
             ],
             "styles": [
+              "node_modules/ng-zorro-antd/ng-zorro-antd.less",
               "src/styles.scss",
               "src/styles.less"
             ],
@@ -144,5 +145,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

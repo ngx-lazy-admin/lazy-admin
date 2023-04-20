@@ -8,7 +8,6 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Optional,
   ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';

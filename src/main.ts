@@ -21,15 +21,18 @@ if (environment.production) {
   enableProdMode()
 }
 
-if (window.__POWERED_BY_WUJIE__) {
-  let instance: any
-  window.__WUJIE_MOUNT = async () => {
-    instance = await platformBrowserDynamic().bootstrapModule(AppModule)
-  }
-  window.__WUJIE_UNMOUNT = () => {
-    instance.destroy()
-  }
-} else {
-  platformBrowserDynamic().bootstrapModule(AppModule)
-    .catch(err => console.error(err))
-}
+// if (window.__POWERED_BY_WUJIE__) {
+//   let instance: any
+//   window.__WUJIE_MOUNT = async () => {
+//     instance = await platformBrowserDynamic().bootstrapModule(AppModule)
+//   }
+//   window.__WUJIE_UNMOUNT = () => {
+//     instance.destroy()
+//   }
+// } else {
+//   platformBrowserDynamic().bootstrapModule(AppModule)
+//     .catch(err => console.error(err))
+// }
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+.catch(err => console.error(err))
