@@ -29,15 +29,9 @@ export class WuJieComponent implements AfterViewInit {
   loading = false;
   iframeObj: any = {};
   currentIframe: any;
-  private count = 0
+  private count = 0;
   private destroy$ = new Subject();
 
-  // fetch = (url: RequestInfo, options: RequestInit | undefined) => {
-  //   console.log('fetch:' + url)
-  //   return window.fetch(url, { ...options, credentials: "include" })
-  // }
-
-  // woa环境携带登录态必须添加credential
   fetch = (url: RequestInfo | string, options: RequestInit | undefined) => {
     const includeFlag = false;
     return window.fetch(url, { ...options, credentials: includeFlag ? 'include' : 'omit' });
@@ -45,7 +39,7 @@ export class WuJieComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.init();
-    
+
     this.router.events.pipe(takeUntil(this.destroy$)).subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.init();
@@ -54,19 +48,19 @@ export class WuJieComponent implements AfterViewInit {
   }
 
   init() {
-
     const origin = this.route.snapshot.queryParams.origin;
- 
+		const name = this.route.snapshot.queryParams.name;
     if (origin) {
       startApp({
-        name: 'wujie' + this.count++,
+        name: name || 'wujie' + this.count++,
         url: origin,
-        sync: false,
-        alive: false,
+        sync: true,
+        alive: true,
         el: this.elRef.nativeElement.querySelector('#wujie'),
         fetch: this.fetch,
         props: {}
       });
+			this.cd.markForCheck();
     }
   }
 }

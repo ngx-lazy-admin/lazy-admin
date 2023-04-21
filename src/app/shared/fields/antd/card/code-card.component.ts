@@ -1,5 +1,5 @@
-import { 
-  Component, 
+import {
+  Component,
   OnDestroy,
   ChangeDetectionStrategy,
   ViewEncapsulation,
@@ -35,8 +35,8 @@ import { copy } from 'src/app/utils';
         <div class="code-box-actions">
           <i
             nz-tooltip
-            [nzTooltipTitle]="!onlineIDELoading ? 
-              (language==='zh' ? '在 CodeSandbox 上打开':'Edit On CodeSandbox') : 
+            [nzTooltipTitle]="!onlineIDELoading ?
+              (language==='zh' ? '在 CodeSandbox 上打开':'Edit On CodeSandbox') :
               (language==='zh'? '加载中...' : 'Loading...')"
             nz-icon
             nzType="code-sandbox"
@@ -110,7 +110,7 @@ import { copy } from 'src/app/utils';
                   />
               </ng-container>
             </ng-container>
-          
+
           </span>
         </div>
       </section>
@@ -118,12 +118,12 @@ import { copy } from 'src/app/utils';
         <div class="f14 position-relative p-3">
         <nz-tabset >
           <nz-tab nzTitle="Fields">
-            <nz-code-editor 
-              [nzEditorOption]="{ 
+            <nz-code-editor
+              [nzEditorOption]="{
                 language: 'json'
-              }" 
+              }"
               class="editor"
-              [(ngModel)]="code"
+              [ngModel]="code"
               (nzEditorInitialized)="editorInitialized($event)">
             </nz-code-editor>
           </nz-tab>
@@ -239,7 +239,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
 
   code: string = ''
 
-  searchChange$ = new BehaviorSubject('');
+  codeChange$ = new BehaviorSubject('');
 
   navigateToFragment(): void {
     console.log('navigateToFragment')
@@ -249,24 +249,34 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   editorInitialized($event: any) {
     $event.onDidChangeModelContent(() => {
       let codes = $event.getValue()
-      this.searchChange$.next(codes)
+      this.codeChange$.next(codes)
     })
   }
 
   // 代码变更
   codeChange (code: string) {
-    console.log(code)
-    const fieldGroup = execEval(code);
-
+		console.log(code)
     try {
-      fieldGroup.forEach((item: any) => {
-        item.options = this.options
-      })
-      this.field.fieldGroup = [...fieldGroup]
-      this.cd.detectChanges();
+			const fieldGroup = execEval(code);
+      // fieldGroup.forEach((item: any) => {
+      //   item.options = this.options
+      // })
+			console.log('codeChange', fieldGroup, this.field.fieldGroup)
+      this.field.fieldGroup = this.field.fieldGroup?.map(field => {
+				let f = {}
+				if (fieldGroup instanceof Array) {
+					f = fieldGroup.find(item => item.id === field.id)
+				}
+				console.log(f)
+				return {
+					...field,
+					...f
+				}
+			})
     } catch (error) {
       console.log(error)
     }
+		this.cd.detectChanges();
   }
 
   // 复制代码
@@ -298,7 +308,7 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   // 初始化code
   initCode () {
     let code = JSON.parse(JSON.stringify(this.field.fieldGroup))
-    // this.delNullProperty(code)
+    this.delNullProperty(code)
     this.code = format(JSON.stringify(code), {
       parser: "json",
       plugins: [parserBabel],
@@ -345,9 +355,9 @@ export class CodeCardField extends ShareFieldType  implements OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.searchChange$
+    this.codeChange$
       .asObservable()
-      .pipe(debounceTime(300))
+      .pipe(debounceTime(60))
       .pipe(filter(x => !!x))
       .subscribe(code => {
         this.codeChange(code)

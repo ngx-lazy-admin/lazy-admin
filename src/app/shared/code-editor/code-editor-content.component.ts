@@ -101,12 +101,12 @@ export class CodeEditorContent {
     this.field = JSON.parse(JSON.stringify(value));
   }
 
-  searchChange$ = new BehaviorSubject('');
+  codeChange$ = new BehaviorSubject('');
 
   constructor(private cd: ChangeDetectorRef) {
-    this.searchChange$
+    this.codeChange$
       .asObservable()
-      .pipe(debounceTime(300))
+      .pipe(debounceTime(60))
       .pipe(filter(x => !!x))
       .subscribe(code => {
         try {
@@ -123,7 +123,7 @@ export class CodeEditorContent {
   editorInitialized($event: any) {
     $event.onDidChangeModelContent(() => {
       let code = $event.getValue();
-      this.searchChange$.next(code);
+      this.codeChange$.next(code);
     });
   }
 }

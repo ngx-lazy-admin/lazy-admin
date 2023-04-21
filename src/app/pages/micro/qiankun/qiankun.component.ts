@@ -1,5 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { loadMicroApp, registerMicroApps, start } from 'qiankun';
+import { Component, OnInit, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { loadMicroApp } from 'qiankun';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-qiankun',
@@ -7,36 +10,34 @@ import { loadMicroApp, registerMicroApps, start } from 'qiankun';
   styleUrls: ['./qiankun.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QiankunComponent implements OnInit {
-  constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {}
+export class QiankunComponent implements AfterViewInit {
+  constructor(
+    private elRef: ElementRef,
+    private router: Router,
+    private route: ActivatedRoute,
+		private cd: ChangeDetectorRef,
+  ) {}
 
-  ngOnInit(): void {
-    loadMicroApp(
-      {
-        name: '',
-        entry: '//localhost:7400',
-        container: '#qiankun'
-      },
-      {
-        sandbox: {
-          strictStyleIsolation: true,
-          experimentalStyleIsolation: true
-        }
+  private destroy$ = new Subject();
+
+  ngAfterViewInit(): void {
+    this.init();
+
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        this.init();
       }
-    );
-    // const getActiveRule = (hash: any) => (location: any) => location.pathname.startsWith(hash);
-    // console.log(location.pathname.startsWith('/micro/qiankun/'))
-    // console.log(getActiveRule('/micro/qiankun/'))
-    // registerMicroApps([
-    //   {
-    //     name: 'app',
-    //     entry: '//localhost:7400',
-    //     container: '#qiankun',
-    //     // activeRule: '/micro/qiankun/app',
-    //     activeRule: getActiveRule('/micro/qiankun/'),
-    //   },
-    // ]);
+    });
   }
 
-  ngAfterViewInit(): void {}
+  init() {
+    const origin = this.route.snapshot.queryParams.origin;
+    if (origin) {
+      loadMicroApp({
+        name: 'qiankun',
+        entry: origin,
+        container: this.elRef.nativeElement.querySelector('#qiankun'),
+      });
+    }
+  }
 }
