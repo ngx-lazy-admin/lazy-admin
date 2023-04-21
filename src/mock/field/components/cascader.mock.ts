@@ -4,12 +4,12 @@ export const CascaderMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本',
           description: '省市区级联。'
         },
@@ -19,7 +19,7 @@ export const CascaderMockFields = [
             type: 'cascader',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               placeholder: 'Basic usage',
               options: [
                 {
@@ -69,7 +69,7 @@ export const CascaderMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '禁用选项',
           description: '通过指定 options 里的 disabled 字段。'
         },
@@ -79,7 +79,7 @@ export const CascaderMockFields = [
             type: 'cascader',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               placeholder: 'Basic usage',
               options: [
                 {
@@ -130,7 +130,7 @@ export const CascaderMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '大小',
           description: '不同大小的级联选择器。'
         },
@@ -140,7 +140,7 @@ export const CascaderMockFields = [
             type: 'cascader',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               size: 'large',
               placeholder: 'Basic usage',
               options: [
@@ -192,7 +192,7 @@ export const CascaderMockFields = [
             type: 'cascader',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               size: 'large',
               placeholder: 'Basic usage',
               options: [
@@ -244,7 +244,7 @@ export const CascaderMockFields = [
             type: 'cascader',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               size: 'small',
               placeholder: 'Basic usage',
               options: [
@@ -308,7 +308,7 @@ export const CascaderMockFields = [
             key: 'input-2-1',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'large size',
               size: 'large'
             }
@@ -317,7 +317,7 @@ export const CascaderMockFields = [
             key: 'input-2-2',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'default size',
               size: 'default'
             }
@@ -326,13 +326,13 @@ export const CascaderMockFields = [
             key: 'input-2-3',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'small size',
               size: 'small'
             }
           }
         ],
-        templateOptions: {
+        props: {
           title: '三种大小',
           description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
           注意： 在表单里面，我们只使用大尺寸的输入框。`

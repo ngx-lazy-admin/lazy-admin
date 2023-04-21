@@ -4,12 +4,12 @@ export const AutocompleteMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '通过 nzDataSource 设置自动完成的数据源'
         },
@@ -19,7 +19,7 @@ export const AutocompleteMockFields = [
             type: 'autocomplete',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               placeholder: 'input here',
               modelChange: `(value) => [value, value + value, value + value + value]`
             }
@@ -29,7 +29,7 @@ export const AutocompleteMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '不区分大小写',
           description: '不区分大小写的 AutoComplete'
         },
@@ -38,7 +38,7 @@ export const AutocompleteMockFields = [
             key: 'autocomplete-1-2-1',
             type: 'autocomplete',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               options: ['Burns Bay Road', 'Downing Street', 'Wall Street'],
               placeholder: 'try to type "b"',
               changeFn: `(value, field) => field.templateOptions.options
@@ -51,7 +51,7 @@ export const AutocompleteMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '查询模式 - 不确定类目',
           description: '查询模式: 不确定类目 示例。'
         },
@@ -60,7 +60,7 @@ export const AutocompleteMockFields = [
             key: 'autocomplete-1-3-1',
             type: 'autocomplete',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               options: ['Burns Bay Road', 'Downing Street', 'Wall Street'],
               placeholder: 'input here',
               changeFn: `(value, field) => field.templateOptions.options
@@ -80,7 +80,7 @@ export const AutocompleteMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '自定义输入组件',
           description: '自定义输入组件。'
         },
@@ -90,7 +90,7 @@ export const AutocompleteMockFields = [
             type: 'autocomplete',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               placeholder: 'input here',
               modelChange: `(value) => [value, value + value, value + value + value]`
             }

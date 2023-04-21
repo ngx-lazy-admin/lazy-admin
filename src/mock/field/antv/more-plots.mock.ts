@@ -388,15 +388,15 @@ export const AntvG2PloatLineMock = [
 	{
 		type: 'group',
 		className: "d-inline-block mb-3 col-12",
-		templateOptions: {
+		props: {
 			bodyClass: 'row'
 		},
 		fieldGroup: [
-			
+
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '基础折线图',
 					hoverable: true
 				},
@@ -405,7 +405,7 @@ export const AntvG2PloatLineMock = [
 						key: 'date',
 						type: 'g2-plot',
 						defaultValue: data,
-						templateOptions: {
+						props: {
 							config: {
 								padding: 'auto',
 								xField: 'Date',
@@ -423,7 +423,7 @@ export const AntvG2PloatLineMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '基础曲线图',
 					hoverable: true
 				},
@@ -433,7 +433,7 @@ export const AntvG2PloatLineMock = [
 						type: 'g2-plot',
 						className: 'p-3',
 						defaultValue: data,
-						templateOptions: {
+						props: {
 							config: {
 								padding: 'auto',
 								xField: 'Date',
@@ -451,7 +451,7 @@ export const AntvG2PloatLineMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '配置折线数据点样式',
 					hoverable: true
 				},
@@ -461,7 +461,7 @@ export const AntvG2PloatLineMock = [
 						type: 'g2-plot',
 						className: 'p-3',
 						defaultValue: data2,
-						templateOptions: {
+						props: {
 							config: {
 								xField: 'year',
 								yField: 'value',
@@ -500,7 +500,7 @@ export const AntvG2PloatLineMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '带缩略轴的折线',
 					hoverable: true
 				},
@@ -510,7 +510,7 @@ export const AntvG2PloatLineMock = [
 						type: 'g2-plot',
 						className: 'p-3',
 						defaultValue: data,
-						templateOptions: {
+						props: {
 							config: {
 								padding: 'auto',
 								xField: 'Date',
@@ -530,7 +530,7 @@ export const AntvG2PloatLineMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '带标准点的折线图',
 					hoverable: true
 				},
@@ -540,7 +540,7 @@ export const AntvG2PloatLineMock = [
 						type: 'g2-plot',
 						className: 'p-3',
 						defaultValue: data,
-						templateOptions: {
+						props: {
 							config: {
 								padding: 'auto',
 								xField: 'Date',
@@ -557,7 +557,7 @@ export const AntvG2PloatLineMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '条件样式折线图',
 					hoverable: true
 				},
@@ -567,7 +567,7 @@ export const AntvG2PloatLineMock = [
 						type: 'g2-plot',
 						className: 'p-3',
 						defaultValue: data,
-						templateOptions: {
+						props: {
 							config: {
 								padding: 'auto',
 								xField: 'Date',
@@ -607,7 +607,7 @@ export const AntvG2PloatLineMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '自定义折线图Maker与交互',
 					hoverable: true
 				},
@@ -617,7 +617,7 @@ export const AntvG2PloatLineMock = [
 						type: 'g2-plot',
 						className: 'p-3',
 						defaultValue: data,
-						templateOptions: {
+						props: {
 							config: {
 								padding: 'auto',
 								xField: 'Date',

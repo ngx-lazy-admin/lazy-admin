@@ -4,12 +4,12 @@ export const TypographyMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '基本标签的用法，可以通过添加 nzMode="closeable" 变为可关闭标签。可关闭标签具有 nzOnClose 事件。'
         },
@@ -31,7 +31,7 @@ We supply a series of design principles, practical patterns and high quality des
 
 Press \`Esc\` to exist...
 `,
-            templateOptions: {
+            props: {
               text: 'Tag 1',
               label: 'Categories',
               suffix: '收起',
@@ -43,7 +43,7 @@ Press \`Esc\` to exist...
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'Switch开关',
           description: '简单的 tag-check '
         },
@@ -53,7 +53,7 @@ Press \`Esc\` to exist...
             type: 'typography',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               text: 'Tag 1'
             }
           }
@@ -62,7 +62,7 @@ Press \`Esc\` to exist...
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '多选',
           description: '简单的 tag-check-group'
         },
@@ -76,7 +76,7 @@ Press \`Esc\` to exist...
               { label: 'Pear', value: 'Pear', checked: false },
               { label: 'Orange', value: 'Orange', checked: false }
             ],
-            templateOptions: {
+            props: {
               text: 'Tag 1',
               label: 'Categories'
             }
@@ -92,7 +92,7 @@ Press \`Esc\` to exist...
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '多彩标签',
           description:
             '我们添加了多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。'
@@ -119,7 +119,7 @@ Press \`Esc\` to exist...
               { label: '#87d068', mode: 'default', color: '#87d068' },
               { label: '#108ee9', mode: 'default', color: '#108ee9' }
             ],
-            templateOptions: {
+            props: {
               text: 'Tag 1',
               label: 'Categories'
             }
@@ -129,7 +129,7 @@ Press \`Esc\` to exist...
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '可选择',
           description: '简单的 tag-check-group'
         },
@@ -144,7 +144,7 @@ Press \`Esc\` to exist...
               { label: 'Tag 2', value: 'Tag 2', checked: false },
               { label: 'Tag 3', value: 'Tag 3', checked: false }
             ],
-            templateOptions: {
+            props: {
               text: 'Tag 1',
               layout: 'inline',
               label: 'Categories'

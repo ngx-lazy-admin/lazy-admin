@@ -4,12 +4,12 @@ export const CollapseMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '折叠面板',
           description: '可以同时展开多个面板，这个例子默认展开了第一个。'
         },
@@ -18,7 +18,7 @@ export const CollapseMockFields = [
             key: 'collapse-1-1-1',
             type: 'collapse',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               header: 'footers'
             },
@@ -29,7 +29,7 @@ export const CollapseMockFields = [
                   type: 'text',
                   className: 'd-inline-block mx-2',
                   defaultValue: false,
-                  templateOptions: {
+                  props: {
                     text: 'Checkbox',
                     disabled: true
                   }
@@ -49,12 +49,12 @@ export const CollapseMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '不可用',
           description: 'checkbox 不可用。'
         },
@@ -64,7 +64,7 @@ export const CollapseMockFields = [
             type: 'checkbox',
             className: 'd-inline-block mx-2',
             defaultValue: false,
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               disabled: true
             }
@@ -74,7 +74,7 @@ export const CollapseMockFields = [
             type: 'checkbox',
             className: 'd-inline-block mx-2',
             defaultValue: true,
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               disabled: true
             }

@@ -4,12 +4,12 @@ export const RepeatMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-12',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '数字输入框'
         },
@@ -18,7 +18,7 @@ export const RepeatMockFields = [
             type: 'repeat',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {},
+            props: {},
             fieldArray: {
               fieldGroup: [
                 {
@@ -26,7 +26,7 @@ export const RepeatMockFields = [
                   type: 'template',
                   className: 'col-3',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '规则名称'
                   }
                 }

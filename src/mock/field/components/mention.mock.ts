@@ -4,12 +4,12 @@ export const MentionMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '基本使用'
         },
@@ -18,7 +18,7 @@ export const MentionMockFields = [
             key: 'mention-1-1-1',
             type: 'mention',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
           }
@@ -27,7 +27,7 @@ export const MentionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '异步加载',
           description: '匹配内容列表为异步返回时。'
         },
@@ -36,7 +36,7 @@ export const MentionMockFields = [
             key: 'mention-1-2-1',
             type: 'mention',
             className: 'd-inline-block w-100',
-            templateOptions: {
+            props: {
               suggestions: [],
               onSearchChange: `(field, _this) => {
                 field.templateOptions.loading = true;
@@ -46,7 +46,7 @@ export const MentionMockFields = [
                   field.templateOptions.suggestions = ['afc163', 'beiCui', 'yiMingHe', 'RaoHai', '中文', 'にほんご'];
                   field.templateOptions.loading = false;
                   _this.cd.detectChanges();
-                }, 500); 
+                }, 500);
               }`
             }
           }
@@ -55,7 +55,7 @@ export const MentionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '自定义触发字符',
           description: '通过 nzPrefix 属性自定义触发字符。默认为 @, 可以定义为数组。'
         },
@@ -64,7 +64,7 @@ export const MentionMockFields = [
             key: 'mention-1-3-1',
             type: 'mention',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご'],
               prefix: ['#', '@'],
               onSearchChange: `(field, _this, {value, prefix}) => {
@@ -86,7 +86,7 @@ export const MentionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '向上展开',
           description: '向上展开建议。'
         },
@@ -95,7 +95,7 @@ export const MentionMockFields = [
             key: 'mention-2-1-1',
             type: 'mention',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               placement: 'top',
               suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
@@ -105,7 +105,7 @@ export const MentionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '自定义建议',
           description: '注意, nzSuggestions 不为 string[] 时，需要提供 nzValueWith。'
         },
@@ -114,7 +114,7 @@ export const MentionMockFields = [
             key: 'mention-2-2-1',
             type: 'mention',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               placement: 'top',
               suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
             }
@@ -124,7 +124,7 @@ export const MentionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '无效或只读',
           description: '通过 disabled 属性设置是否生效。通过 readOnly 属性设置是否只读。'
         },
@@ -133,7 +133,7 @@ export const MentionMockFields = [
             key: 'mention-2-3-1',
             type: 'mention',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               placement: 'top',
               disabled: true,
               suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']
@@ -143,7 +143,7 @@ export const MentionMockFields = [
             key: 'mention-2-3-2',
             type: 'mention',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               placement: 'top',
               readOnly: true,
               suggestions: ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご']

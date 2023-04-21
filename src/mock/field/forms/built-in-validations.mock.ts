@@ -2,7 +2,7 @@ export const BuiltInValidationsFieldsMockFields = [
   {
     type: 'code-card',
     className: "d-block mb-3 col-12",
-    templateOptions: {
+    props: {
       title: '内建验证器',
       description: `
 
@@ -70,7 +70,7 @@ export const BuiltInValidationsFieldsMockFields = [
       {
         type: 'button-group',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           type: 'primary',
           noColon: true,
           options: [

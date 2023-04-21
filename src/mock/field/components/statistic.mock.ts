@@ -6,12 +6,12 @@ export const StatisticMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的展示。',
           bodyClass: 'row'
@@ -22,7 +22,7 @@ export const StatisticMockFields = [
             type: 'statistic',
             className: 'd-inline-block  col-6',
             defaultValue: 112893,
-            templateOptions: {
+            props: {
               title: 'Active Users',
               valuePipe: 'number'
             }
@@ -32,7 +32,7 @@ export const StatisticMockFields = [
             type: 'statistic',
             className: 'd-inline-block  col-6',
             defaultValue: 112893,
-            templateOptions: {
+            props: {
               title: 'Account Balance (CNY)',
               valuePipe: 'number',
               valuePipeArgs: '1.0-2'
@@ -43,7 +43,7 @@ export const StatisticMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '在卡片中使用',
           description: '在卡片中展示统计数值。',
           bodyClass: 'row'
@@ -54,7 +54,7 @@ export const StatisticMockFields = [
             type: 'statistic',
             className: 'd-inline-block col-6',
             defaultValue: 11.28,
-            templateOptions: {
+            props: {
               title: 'Active',
               valuePipe: 'number',
               valuePipeArgs: '1.0-2',
@@ -73,7 +73,7 @@ export const StatisticMockFields = [
             type: 'statistic',
             className: 'd-inline-block col-6',
             defaultValue: 9.3,
-            templateOptions: {
+            props: {
               title: 'Idle',
               valuePipe: 'number',
               valuePipeArgs: '1.0-2',
@@ -98,7 +98,7 @@ export const StatisticMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '带搜索框',
           description: '展开后可对选项进行搜索。'
         },
@@ -108,7 +108,7 @@ export const StatisticMockFields = [
             type: 'statistic',
             className: 'd-inline-block  col-6',
             defaultValue: 1128,
-            templateOptions: {
+            props: {
               title: 'Feedback',
               valuePipe: 'number',
               prefixRef: {
@@ -127,7 +127,7 @@ export const StatisticMockFields = [
             type: 'statistic',
             className: 'd-inline-block  col-6',
             defaultValue: 91,
-            templateOptions: {
+            props: {
               title: 'Unmerged',
               valuePipe: 'number',
               valuePipeArgs: '1.0-2',
@@ -148,7 +148,7 @@ export const StatisticMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '倒计时',
           description: '倒计时组件。'
         },
@@ -158,7 +158,7 @@ export const StatisticMockFields = [
             type: 'countdown',
             className: 'd-inline-block  col-6',
             defaultValue: deadline,
-            templateOptions: {
+            props: {
               title: 'Countdown'
             }
           },
@@ -167,7 +167,7 @@ export const StatisticMockFields = [
             type: 'countdown',
             className: 'd-inline-block  col-6',
             defaultValue: deadline,
-            templateOptions: {
+            props: {
               title: 'Million Seconds',
               format: 'HH:mm:ss:SSS'
             }
@@ -177,7 +177,7 @@ export const StatisticMockFields = [
             type: 'countdown',
             className: 'd-inline-block  col-6',
             defaultValue: deadline,
-            templateOptions: {
+            props: {
               title: 'Day Level',
               format: 'D 天 H 时 m 分 s 秒'
             }

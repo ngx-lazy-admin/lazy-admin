@@ -4,12 +4,12 @@ export const SelectMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的 select',
           bodyClass: 'row'
@@ -20,7 +20,7 @@ export const SelectMockFields = [
             type: 'select',
             className: 'd-inline-block  col-3',
             defaultValue: 'lucy',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               options: [
                 {
@@ -44,7 +44,7 @@ export const SelectMockFields = [
             type: 'select',
             className: 'd-inline-block col-3',
             defaultValue: 'lucy',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               disabled: true,
               options: [
@@ -69,7 +69,7 @@ export const SelectMockFields = [
             type: 'select',
             className: 'd-inline-block col-3',
             defaultValue: 'lucy',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               loading: true,
               options: [
@@ -94,7 +94,7 @@ export const SelectMockFields = [
             type: 'select',
             className: 'd-inline-block col-3',
             defaultValue: 'lucy',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               allowClear: true,
               placeholder: 'Choose',
@@ -120,7 +120,7 @@ export const SelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '多选',
           description: '多选，从已有条目中选择，例子中通过 nzMaxTagCount 限制最多显示3个选项。'
         },
@@ -129,7 +129,7 @@ export const SelectMockFields = [
             key: 'selectedMultiple',
             type: 'select',
             className: 'd-inline-block  col-3',
-            templateOptions: {
+            props: {
               maxTagCount: 3,
               mode: 'multiple',
               plaseholder: 'Please select',
@@ -162,7 +162,7 @@ export const SelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '带搜索框',
           description: '展开后可对选项进行搜索。'
         },
@@ -172,7 +172,7 @@ export const SelectMockFields = [
             type: 'select',
             className: 'd-inline-block col-3',
             defaultValue: 'lucy',
-            templateOptions: {
+            props: {
               showSearch: true,
               allowClear: true,
               placeHolder: 'Select a person',
@@ -198,7 +198,7 @@ export const SelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '联动',
           description: '省市联动是典型的例子。推荐使用 Cascader 组件。'
         },
@@ -207,7 +207,7 @@ export const SelectMockFields = [
             key: 'selectedProvince',
             type: 'select',
             className: 'd-inline-block mx-2  col-3',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
@@ -217,7 +217,7 @@ export const SelectMockFields = [
             key: 'selectedCity',
             type: 'select',
             className: 'd-inline-block mx-2  col-3',
-            templateOptions: {
+            props: {
               text: 'nzDisabled',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
@@ -234,7 +234,7 @@ export const SelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '带搜索框',
           description: '展开后可对选项进行搜索。'
         },
@@ -243,7 +243,7 @@ export const SelectMockFields = [
             key: 'selectedProvince',
             type: 'select',
             className: 'd-inline-block mx-2  col-3',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
@@ -254,7 +254,7 @@ export const SelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '三种大小',
           description:
             '三种大小的选择框，当 nzSize 分别为 large 和 small 时，输入框高度为 40px 和 24px ，默认高度为 32px。'
@@ -264,7 +264,7 @@ export const SelectMockFields = [
             key: 'selectedProvince',
             type: 'select',
             className: 'd-inline-block mx-2  col-3',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
@@ -275,7 +275,7 @@ export const SelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '分组',
           description: '用 nz-option-group 进行选项分组。'
         },
@@ -284,7 +284,7 @@ export const SelectMockFields = [
             key: 'selectedProvince',
             type: 'select',
             className: 'd-inline-block mx-2  col-3',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']
@@ -295,7 +295,7 @@ export const SelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '搜索框',
           description: '搜索和远程数据结合。'
         },
@@ -304,7 +304,7 @@ export const SelectMockFields = [
             key: 'selectedProvince',
             type: 'select',
             className: 'd-inline-block mx-2 col-3',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               value: 'value',
               options: ['Zhejiang', 'Jiangsu']

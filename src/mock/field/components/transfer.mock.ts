@@ -16,12 +16,12 @@ export const TransferMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description:
             '最基本的用法，展示了 nzDataSource 每行的渲染函数 nzRender 以及回调函数 nzChange、nzSelectChange 的用法。'
@@ -32,14 +32,14 @@ export const TransferMockFields = [
             type: 'transfer',
             className: 'd-inline-block mx-2',
             defaultValue: list,
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '受控的 transfer',
           description: '联动 transfer。'
         },
@@ -48,7 +48,7 @@ export const TransferMockFields = [
             key: 'checked2',
             type: 'transfer',
             className: 'd-inline-block w-100',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               disabled: 'formState.checked2.disabled'
             },
@@ -59,7 +59,7 @@ export const TransferMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mt-2 ',
-            templateOptions: {
+            props: {
               text: 'Disabled',
               size: 'small',
               type: 'primary',
@@ -76,7 +76,7 @@ export const TransferMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2 ',
-            templateOptions: {
+            props: {
               text: 'Checked',
               size: 'small',
               type: 'primary',
@@ -88,7 +88,7 @@ export const TransferMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -97,7 +97,7 @@ export const TransferMockFields = [
             key: 'checked2',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'transfer'
             }
           },
@@ -105,7 +105,7 @@ export const TransferMockFields = [
             key: 'checked1',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -114,7 +114,7 @@ export const TransferMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -123,7 +123,7 @@ export const TransferMockFields = [
             key: 'checked2',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'transfer'
             }
           },
@@ -131,7 +131,7 @@ export const TransferMockFields = [
             key: 'checked1',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -142,7 +142,7 @@ export const TransferMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {
+    props: {
       title: '基本',
       description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
@@ -155,7 +155,7 @@ export const TransferMockFields = [
             key: 'checked2',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'transfer'
             }
           },
@@ -163,7 +163,7 @@ export const TransferMockFields = [
             key: 'checked1',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -172,7 +172,7 @@ export const TransferMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '切换不同选择器',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -181,7 +181,7 @@ export const TransferMockFields = [
             key: 'checked2',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'transfer'
             }
           },
@@ -189,7 +189,7 @@ export const TransferMockFields = [
             key: 'checked1',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -198,7 +198,7 @@ export const TransferMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -207,7 +207,7 @@ export const TransferMockFields = [
             key: 'checked2',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'transfer'
             }
           },
@@ -215,7 +215,7 @@ export const TransferMockFields = [
             key: 'checked1',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -224,7 +224,7 @@ export const TransferMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -233,7 +233,7 @@ export const TransferMockFields = [
             key: 'checked2',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'transfer'
             }
           },
@@ -241,7 +241,7 @@ export const TransferMockFields = [
             key: 'checked1',
             type: 'transfer',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }

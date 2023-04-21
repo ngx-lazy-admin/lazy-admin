@@ -4,12 +4,12 @@ export const TreeViewMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '数字输入框'
         },
@@ -19,7 +19,7 @@ export const TreeViewMockFields = [
             type: 'input',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               placeholder: 'Basic usage'
             }
           },
@@ -27,7 +27,7 @@ export const TreeViewMockFields = [
             key: 'input1-2',
             type: 'input',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               placeholder: 'Basic usage',
               disabled: true
             }
@@ -37,7 +37,7 @@ export const TreeViewMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '受控的 Checkbox',
           description: '联动 checkbox。'
         },
@@ -46,7 +46,7 @@ export const TreeViewMockFields = [
             key: 'input1-3',
             type: 'input',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               label: '标签',
               placeholder: 'Basic usage',
               disabled: true
@@ -56,7 +56,7 @@ export const TreeViewMockFields = [
             key: 'input1-4',
             type: 'input',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               label: 'large size',
               placeholder: 'large size',
               size: 'large',
@@ -67,7 +67,7 @@ export const TreeViewMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block w-100',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               disabled: 'formState.checked2.disabled'
             },
@@ -78,7 +78,7 @@ export const TreeViewMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mt-2 ',
-            templateOptions: {
+            props: {
               text: 'Disabled',
               size: 'small',
               type: 'primary',
@@ -95,7 +95,7 @@ export const TreeViewMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2 ',
-            templateOptions: {
+            props: {
               text: 'Checked',
               size: 'small',
               type: 'primary',
@@ -107,7 +107,7 @@ export const TreeViewMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -116,7 +116,7 @@ export const TreeViewMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -124,7 +124,7 @@ export const TreeViewMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -133,7 +133,7 @@ export const TreeViewMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -142,7 +142,7 @@ export const TreeViewMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -150,7 +150,7 @@ export const TreeViewMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -171,7 +171,7 @@ export const TreeViewMockFields = [
             key: 'input-2-1',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'large size',
               size: 'large'
             }
@@ -180,7 +180,7 @@ export const TreeViewMockFields = [
             key: 'input-2-2',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'default size',
               size: 'default'
             }
@@ -189,13 +189,13 @@ export const TreeViewMockFields = [
             key: 'input-2-3',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'small size',
               size: 'small'
             }
           }
         ],
-        templateOptions: {
+        props: {
           title: '三种大小',
           description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
           注意： 在表单里面，我们只使用大尺寸的输入框。`
@@ -204,7 +204,7 @@ export const TreeViewMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '切换不同选择器',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -213,7 +213,7 @@ export const TreeViewMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -221,7 +221,7 @@ export const TreeViewMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -230,7 +230,7 @@ export const TreeViewMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -239,7 +239,7 @@ export const TreeViewMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -247,7 +247,7 @@ export const TreeViewMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -256,7 +256,7 @@ export const TreeViewMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -265,7 +265,7 @@ export const TreeViewMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -273,7 +273,7 @@ export const TreeViewMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }

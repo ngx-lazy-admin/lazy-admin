@@ -4,12 +4,12 @@ export const StepsMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的 checkbox'
         },
@@ -18,7 +18,7 @@ export const StepsMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           }
@@ -27,7 +27,7 @@ export const StepsMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '受控的 Checkbox',
           description: '联动 checkbox。'
         },
@@ -36,7 +36,7 @@ export const StepsMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block w-100',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               disabled: 'formState.checked2.disabled'
             },
@@ -47,7 +47,7 @@ export const StepsMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mt-2 ',
-            templateOptions: {
+            props: {
               text: 'Disabled',
               size: 'small',
               type: 'primary',
@@ -64,7 +64,7 @@ export const StepsMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2 ',
-            templateOptions: {
+            props: {
               text: 'Checked',
               size: 'small',
               type: 'primary',
@@ -76,7 +76,7 @@ export const StepsMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -85,7 +85,7 @@ export const StepsMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -93,7 +93,7 @@ export const StepsMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -102,7 +102,7 @@ export const StepsMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -111,7 +111,7 @@ export const StepsMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -119,7 +119,7 @@ export const StepsMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -130,7 +130,7 @@ export const StepsMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {
+    props: {
       title: '基本',
       description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
@@ -143,7 +143,7 @@ export const StepsMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -151,7 +151,7 @@ export const StepsMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -160,7 +160,7 @@ export const StepsMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '切换不同选择器',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -169,7 +169,7 @@ export const StepsMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -177,7 +177,7 @@ export const StepsMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -186,7 +186,7 @@ export const StepsMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -195,7 +195,7 @@ export const StepsMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -203,7 +203,7 @@ export const StepsMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -212,7 +212,7 @@ export const StepsMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -221,7 +221,7 @@ export const StepsMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -229,7 +229,7 @@ export const StepsMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }

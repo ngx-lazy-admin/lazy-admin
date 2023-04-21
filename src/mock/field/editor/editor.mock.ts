@@ -2,12 +2,12 @@ export const EditorMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'quill 富文本编辑器',
           description: ''
         },
@@ -18,7 +18,7 @@ export const EditorMockFields = [
             type: 'quill',
             defaultValue: '111',
             className: 'd-inline-block mx-2',
-            templateOptions: {}
+            props: {}
           }
         ]
       }
@@ -35,10 +35,10 @@ export const EditorMockFields = [
           {
             type: 'quill',
             className: 'd-inline-block mx-2',
-            templateOptions: {}
+            props: {}
           }
         ],
-        templateOptions: {
+        props: {
           title: '富文本编辑器'
         }
       }

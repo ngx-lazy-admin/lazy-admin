@@ -2,7 +2,7 @@ export const ModalOptionsMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '基本',
       description: ` There are two ways to initialize the form with default values.
     1. Default the model (preferred)
@@ -14,7 +14,7 @@ export const ModalOptionsMockFields = [
         key: 'text',
         type: 'input',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           label: 'Debounce',
           layout: 'vertical'
         }
@@ -23,7 +23,7 @@ export const ModalOptionsMockFields = [
         key: 'updateOnBlur',
         type: 'input',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           label: '`updateOn` on Blur',
           required: true,
           layout: 'vertical'
@@ -33,7 +33,7 @@ export const ModalOptionsMockFields = [
         key: 'updateOnSubmit',
         type: 'input',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           label: '`updateOn` on Submit *',
           required: true,
           layout: 'vertical'
@@ -42,7 +42,7 @@ export const ModalOptionsMockFields = [
       {
         type: 'button-group',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           type: 'primary',
           noColon: true,
           layout: 'vertical',

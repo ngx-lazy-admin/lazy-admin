@@ -4,12 +4,12 @@ export const CheckboxMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的 checkbox'
         },
@@ -18,7 +18,7 @@ export const CheckboxMockFields = [
             key: 'checkbox-1-1-1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           }
@@ -27,7 +27,7 @@ export const CheckboxMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '受控的 Checkbox',
           description: '联动 checkbox。'
         },
@@ -36,7 +36,7 @@ export const CheckboxMockFields = [
             key: 'checkbox-1-2-1',
             type: 'checkbox',
             className: 'd-inline-block w-100',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               disabled: 'formState.checked2.disabled'
             },
@@ -47,7 +47,7 @@ export const CheckboxMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mt-2 ',
-            templateOptions: {
+            props: {
               text: 'Disabled',
               size: 'small',
               type: 'primary',
@@ -64,7 +64,7 @@ export const CheckboxMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2 ',
-            templateOptions: {
+            props: {
               text: 'Checked',
               size: 'small',
               type: 'primary',
@@ -76,7 +76,7 @@ export const CheckboxMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '全选',
           description: '在实现全选效果时，你可能会用到 nzIndeterminate 属性。'
         },
@@ -85,7 +85,7 @@ export const CheckboxMockFields = [
             key: 'checkbox-1-3-1',
             type: 'checkbox',
             className: 'd-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Check All'
               // change: `(F, T) => F.form?.get('checkbox-1-3-2')?.patchValue(F.formControl.value ? ['apple', 'Pear', 'Orange'] : [])`
             }
@@ -94,7 +94,7 @@ export const CheckboxMockFields = [
             key: 'checkbox-1-3-2',
             type: 'checkbox-wrapper',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               options: [
                 {
                   label: 'Apple',
@@ -122,12 +122,12 @@ export const CheckboxMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '不可用',
           description: 'checkbox 不可用。'
         },
@@ -137,7 +137,7 @@ export const CheckboxMockFields = [
             type: 'checkbox',
             className: 'd-inline-block mx-2',
             defaultValue: false,
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               disabled: true
             }
@@ -147,7 +147,7 @@ export const CheckboxMockFields = [
             type: 'checkbox',
             className: 'd-inline-block mx-2',
             defaultValue: true,
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               disabled: true
             }
@@ -157,7 +157,7 @@ export const CheckboxMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'Checkbox 组',
           description: '方便的从数组生成 Checkbox 组。'
         },
@@ -197,7 +197,7 @@ export const CheckboxMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '布局',
           description: 'nz-checkbox-wrapper 内嵌 nz-checkbox 并与 Grid 组件一起使用，可以实现灵活的布局。'
         },
@@ -206,7 +206,7 @@ export const CheckboxMockFields = [
             key: 'checkbox-2-3-1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -214,7 +214,7 @@ export const CheckboxMockFields = [
             key: 'checkbox-2-3-2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }

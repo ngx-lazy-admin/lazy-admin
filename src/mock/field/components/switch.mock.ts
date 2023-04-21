@@ -4,12 +4,12 @@ export const SwitchMockFields = [
   {
     type: 'group',
     className: 'd-block col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '最简单的用法。'
         },
@@ -17,7 +17,7 @@ export const SwitchMockFields = [
           {
             type: 'switch',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           }
@@ -26,7 +26,7 @@ export const SwitchMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '文字和图标',
           description: '带有文字和图标。'
         },
@@ -34,7 +34,7 @@ export const SwitchMockFields = [
           {
             type: 'switch',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               checkedChildren: '开',
               unCheckedChildren: '关'
             }
@@ -42,7 +42,7 @@ export const SwitchMockFields = [
           {
             type: 'switch',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               checkedChildren: '1',
               unCheckedChildren: '0'
             }
@@ -52,7 +52,7 @@ export const SwitchMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '加载中',
           description: '标识开关操作仍在执行中。'
         },
@@ -62,7 +62,7 @@ export const SwitchMockFields = [
             type: 'switch',
             className: 'd-inline-block mx-2',
             defaultValue: false,
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               loading: true
             }
@@ -72,7 +72,7 @@ export const SwitchMockFields = [
             type: 'switch',
             className: 'd-inline-block mx-2',
             defaultValue: true,
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               loading: true
             }
@@ -88,7 +88,7 @@ export const SwitchMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '不可用',
           description: 'Switch 失效状态。'
         },
@@ -96,7 +96,7 @@ export const SwitchMockFields = [
           {
             type: 'switch',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               disabled: true
             }
           }
@@ -105,7 +105,7 @@ export const SwitchMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '两种大小',
           description: 'nzSize="small" 表示小号开关。'
         },
@@ -113,21 +113,21 @@ export const SwitchMockFields = [
           {
             type: 'switch',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               size: 'small'
             }
           },
           {
             type: 'switch',
             className: 'd-inline-block mx-2',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '完整控制',
           description: 'Switch 的状态完全由用户接管，不再自动根据点击事件改变数据。'
         },
@@ -135,7 +135,7 @@ export const SwitchMockFields = [
           {
             type: 'switch',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               size: 'small',
               control: true,
               change: `(_field, _this) => {
@@ -216,7 +216,7 @@ export const SwitchMockFields = [
         config: ''
       }
     ],
-    templateOptions: {
+    props: {
       columns: [
         {
           label: '参数',

@@ -4,12 +4,12 @@ export const ButtonMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '按钮类型',
           description:
             '按钮有五种类型：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。主按钮在同一个操作区域最多出现一次。'
@@ -19,7 +19,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-inline-block mb-2',
 
-            templateOptions: {
+            props: {
               text: 'Primary Button',
               type: 'primary',
               click: `(_field, _this) => {
@@ -35,7 +35,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Default Button',
               type: 'default'
             }
@@ -43,7 +43,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Dashed Button',
               type: 'dashed'
             }
@@ -51,7 +51,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Text Button',
               type: 'text'
             }
@@ -59,7 +59,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Link Button',
               type: 'link'
             }
@@ -69,7 +69,7 @@ export const ButtonMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '按钮尺寸',
           description: `按钮有大、中、小三种尺寸。
           通过设置 nzSize 为 largesmall 分别把按钮设为大、小尺寸。若不设置 nzSize，则尺寸为中。`
@@ -78,7 +78,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2 mb-2',
-            templateOptions: {
+            props: {
               text: 'Large',
               size: 'large',
               type: 'primary'
@@ -88,7 +88,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-inline-block mx-2 mb-2',
 
-            templateOptions: {
+            props: {
               text: 'default',
               type: 'primary'
             }
@@ -96,7 +96,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2 mb-2',
-            templateOptions: {
+            props: {
               text: 'Small',
               type: 'primary',
               size: 'small'
@@ -107,7 +107,7 @@ export const ButtonMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '加载中状态',
           description: '添加 nzLoading 属性即可让按钮处于加载状态，最后两个按钮演示点击后进入加载状态。'
         },
@@ -116,7 +116,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-inline-block m-2',
 
-            templateOptions: {
+            props: {
               // icon: 'poweroff',
               text: 'Loading',
               type: 'primary'
@@ -126,7 +126,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-inline-block m-2',
 
-            templateOptions: {
+            props: {
               size: 'small',
               text: 'Loading',
               loading: true,
@@ -137,7 +137,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-inline-block m-2',
 
-            templateOptions: {
+            props: {
               size: 'small',
               text: 'Loading',
               loading: false,
@@ -154,7 +154,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-inline-block m-2',
 
-            templateOptions: {
+            props: {
               loading: true,
               shape: 'circle'
             }
@@ -163,7 +163,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-inline-block m-2',
 
-            templateOptions: {
+            props: {
               type: 'primary',
               loading: true,
               shape: 'circle'
@@ -174,7 +174,7 @@ export const ButtonMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'Block 按钮',
           description: 'nzBlock 属性将使按钮适合其父宽度。'
         },
@@ -183,7 +183,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-block mb-2',
 
-            templateOptions: {
+            props: {
               block: true,
               text: 'Primary',
               type: 'primary'
@@ -193,7 +193,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-block mb-2',
 
-            templateOptions: {
+            props: {
               block: true,
               text: 'Default',
               type: 'default'
@@ -203,7 +203,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-block mb-2',
 
-            templateOptions: {
+            props: {
               block: true,
               text: 'Dashed',
               type: 'dashed'
@@ -213,7 +213,7 @@ export const ButtonMockFields = [
             type: 'button',
             className: 'd-block mb-2',
 
-            templateOptions: {
+            props: {
               block: true,
               text: 'text',
               type: 'Text'
@@ -222,7 +222,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               block: true,
               text: 'link',
               type: 'link'
@@ -244,7 +244,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'primary',
               text: 'Primary'
             }
@@ -252,7 +252,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'primary',
               text: 'Primary',
               disabled: true
@@ -261,7 +261,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'default',
               text: 'default'
             }
@@ -269,7 +269,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'default',
               text: 'default',
               disabled: true
@@ -278,7 +278,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'dashed',
               text: 'dashed'
             }
@@ -286,7 +286,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'dashed',
               text: 'dashed',
               disabled: true
@@ -295,7 +295,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'text',
               text: 'text'
             }
@@ -303,7 +303,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'text',
               text: 'text',
               disabled: true
@@ -312,7 +312,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'link',
               text: 'link'
             }
@@ -320,7 +320,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'link',
               text: 'link',
               disabled: true
@@ -329,7 +329,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'text',
               danger: true,
               text: 'danger text'
@@ -338,7 +338,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'text',
               text: 'danger text',
               danger: true,
@@ -348,7 +348,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'link',
               danger: true,
               text: 'danger link'
@@ -357,7 +357,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'link',
               danger: true,
               text: 'danger link',
@@ -367,7 +367,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'primary',
               danger: true,
               text: 'danger Primary',
@@ -377,7 +377,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               type: 'primary',
               danger: true,
               text: 'danger Primary',
@@ -385,7 +385,7 @@ export const ButtonMockFields = [
             }
           }
         ],
-        templateOptions: {
+        props: {
           title: '不可用状态',
           description: `添加 disabled 属性即可让按钮处于不可用状态，同时按钮样式也会改变。`
         }
@@ -393,7 +393,7 @@ export const ButtonMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '幽灵按钮',
           description: '添加 nzGhost 属性后，幽灵按钮将其他按钮的内容反色，背景变为透明，常用在有色背景上。',
           bodyClass: 'bg-secondary'
@@ -402,7 +402,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mb-2',
-            templateOptions: {
+            props: {
               text: 'Primary',
               type: 'primary',
               ghost: true
@@ -411,7 +411,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Default',
               type: 'default',
               ghost: true
@@ -420,7 +420,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Dashed',
               type: 'dashed',
               ghost: true
@@ -429,7 +429,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Link',
               type: 'link',
               ghost: true
@@ -440,7 +440,7 @@ export const ButtonMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '危险按钮',
           description: '使用 nzDanger 将按钮标识为危险状态。'
         },
@@ -448,7 +448,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mb-2',
-            templateOptions: {
+            props: {
               text: 'Primary',
               type: 'primary',
               danger: true
@@ -457,7 +457,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Default',
               type: 'default',
               danger: true
@@ -466,7 +466,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Dashed',
               type: 'dashed',
               danger: true
@@ -475,7 +475,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Link',
               type: 'link',
               danger: true
@@ -486,7 +486,7 @@ export const ButtonMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '路由跳转',
           description: '使用 nzDanger 将按钮标识为危险状态。'
         },
@@ -494,7 +494,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mb-2',
-            templateOptions: {
+            props: {
               text: 'Primary',
               type: 'primary',
               danger: true
@@ -505,7 +505,7 @@ export const ButtonMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'http 请求',
           description: 'http 请求'
         },
@@ -513,7 +513,7 @@ export const ButtonMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mb-2',
-            templateOptions: {
+            props: {
               text: 'Primary',
               type: 'primary',
               click: `(_field, _this) => {

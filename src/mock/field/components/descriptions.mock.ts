@@ -4,12 +4,12 @@ export const DescriptionMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-24',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-24',
-        templateOptions: {
+        props: {
           title: '基本',
           description: '简单的展示。'
         },
@@ -18,42 +18,42 @@ export const DescriptionMockFields = [
             key: 'descriptions-1-1-1',
             type: 'descriptions',
             className: 'd-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             },
             fieldGroup: [
               {
                 key: 'username',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'username'
                 }
               },
               {
                 key: 'telephone',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'telephone'
                 }
               },
               {
                 key: 'live',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Live'
                 }
               },
               {
                 key: 'remark',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Remark'
                 }
               },
               {
                 key: 'address',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Address'
                 }
               }
@@ -64,7 +64,7 @@ export const DescriptionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-24',
-        templateOptions: {
+        props: {
           title: '带边框的',
           description: '带边框和背景颜色列表。'
         },
@@ -73,42 +73,42 @@ export const DescriptionMockFields = [
             key: 'descriptions-1-1-1',
             type: 'descriptions',
             className: 'd-block mx-2',
-            templateOptions: {
+            props: {
               bordered: true
             },
             fieldGroup: [
               {
                 key: 'username',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'username'
                 }
               },
               {
                 key: 'telephone',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'telephone'
                 }
               },
               {
                 key: 'live',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Live'
                 }
               },
               {
                 key: 'remark',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Remark'
                 }
               },
               {
                 key: 'address',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Address'
                 }
               }
@@ -119,7 +119,7 @@ export const DescriptionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-24',
-        templateOptions: {
+        props: {
           title: '响应式',
           description: '通过响应式的配置可以实现在小屏幕设备上的完美呈现。'
         },
@@ -128,7 +128,7 @@ export const DescriptionMockFields = [
             key: 'descriptions-1-1-1',
             type: 'descriptions',
             className: 'd-block mx-2',
-            templateOptions: {
+            props: {
               bordered: true,
               column: { xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }
             },
@@ -136,35 +136,35 @@ export const DescriptionMockFields = [
               {
                 key: 'username',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'username'
                 }
               },
               {
                 key: 'telephone',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'telephone'
                 }
               },
               {
                 key: 'live',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Live'
                 }
               },
               {
                 key: 'remark',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Remark'
                 }
               },
               {
                 key: 'address',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Address'
                 }
               }
@@ -175,7 +175,7 @@ export const DescriptionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-24',
-        templateOptions: {
+        props: {
           title: '垂直',
           description: '垂直的列表。'
         },
@@ -184,7 +184,7 @@ export const DescriptionMockFields = [
             key: 'descriptions-1-1-1',
             type: 'descriptions',
             className: 'd-block mx-2',
-            templateOptions: {
+            props: {
               bordered: true,
               layout: 'vertical'
             },
@@ -192,35 +192,35 @@ export const DescriptionMockFields = [
               {
                 key: 'username',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'username'
                 }
               },
               {
                 key: 'telephone',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'telephone'
                 }
               },
               {
                 key: 'live',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Live'
                 }
               },
               {
                 key: 'remark',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Remark'
                 }
               },
               {
                 key: 'address',
                 type: 'text',
-                templateOptions: {
+                props: {
                   label: 'Address'
                 }
               }
@@ -231,7 +231,7 @@ export const DescriptionMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-24',
-        templateOptions: {
+        props: {
           title: '列表表单',
           description: '列表表单'
         },
@@ -240,42 +240,42 @@ export const DescriptionMockFields = [
             key: 'descriptions-1-1-1',
             type: 'descriptions',
             className: 'd-block mx-2',
-            templateOptions: {
+            props: {
               bordered: true
             },
             fieldGroup: [
               {
                 key: 'username',
                 type: 'input',
-                templateOptions: {
+                props: {
                   label: 'username'
                 }
               },
               {
                 key: 'telephone',
                 type: 'input',
-                templateOptions: {
+                props: {
                   label: 'telephone'
                 }
               },
               {
                 key: 'live',
                 type: 'input',
-                templateOptions: {
+                props: {
                   label: 'Live'
                 }
               },
               {
                 key: 'remark',
                 type: 'input',
-                templateOptions: {
+                props: {
                   label: 'Remark'
                 }
               },
               {
                 key: 'address',
                 type: 'input',
-                templateOptions: {
+                props: {
                   label: 'Address'
                 }
               }

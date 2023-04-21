@@ -2,12 +2,12 @@ export const DatePickerMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -16,13 +16,13 @@ export const DatePickerMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'week',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'week'
             }
           },
@@ -30,7 +30,7 @@ export const DatePickerMockFields = [
             key: 'month',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'month'
             }
           },
@@ -38,7 +38,7 @@ export const DatePickerMockFields = [
             key: 'year',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'year'
             }
           }
@@ -47,7 +47,7 @@ export const DatePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '切换不同选择器',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -57,7 +57,7 @@ export const DatePickerMockFields = [
             type: 'select',
             className: 'col-2 me-3 d-inline-block',
             defaultValue: 'date',
-            templateOptions: {
+            props: {
               options: [
                 {
                   label: 'Date',
@@ -76,7 +76,7 @@ export const DatePickerMockFields = [
                   value: 'year'
                 }
               ],
-              change: `(_field, _this) => 
+              change: `(_field, _this) =>
                 _field.options.formState.selectMode = _field.formControl.value
               `
             }
@@ -85,7 +85,7 @@ export const DatePickerMockFields = [
             key: 'date3',
             type: 'date-picker',
             className: 'col-3 mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'year'
             },
             expressionProperties: {
@@ -97,7 +97,7 @@ export const DatePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '三种大小',
           description: '三种大小的输入框，若不设置，则为 default。'
         },
@@ -106,13 +106,13 @@ export const DatePickerMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'week',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'week'
             }
           },
@@ -120,7 +120,7 @@ export const DatePickerMockFields = [
             key: 'month',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'month'
             }
           },
@@ -128,7 +128,7 @@ export const DatePickerMockFields = [
             key: 'year',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'year'
             }
           }
@@ -137,7 +137,7 @@ export const DatePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '禁用',
           description: '选择框的不可用状态。'
         },
@@ -146,7 +146,7 @@ export const DatePickerMockFields = [
             key: 'date4',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'date',
               disabled: true
             }
@@ -155,7 +155,7 @@ export const DatePickerMockFields = [
             key: 'week4',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'week',
               disabled: true
             }
@@ -164,7 +164,7 @@ export const DatePickerMockFields = [
             key: 'month4',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'month',
               disabled: true
             }
@@ -173,7 +173,7 @@ export const DatePickerMockFields = [
             key: 'year4',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'year',
               disabled: true
             }
@@ -185,7 +185,7 @@ export const DatePickerMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {
+    props: {
       title: '基本',
       description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
@@ -198,13 +198,13 @@ export const DatePickerMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'week',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'week'
             }
           },
@@ -212,7 +212,7 @@ export const DatePickerMockFields = [
             key: 'month',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'month'
             }
           }
@@ -221,7 +221,7 @@ export const DatePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '切换不同选择器',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -230,14 +230,14 @@ export const DatePickerMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -246,20 +246,20 @@ export const DatePickerMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -268,19 +268,19 @@ export const DatePickerMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'year',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'year'
             }
           }

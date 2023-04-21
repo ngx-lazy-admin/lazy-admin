@@ -4,12 +4,12 @@ export const RadioMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '最简单的用法。'
         },
@@ -18,7 +18,7 @@ export const RadioMockFields = [
             key: 'radio-1-1-1',
             type: 'radio',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Radio'
             }
           }
@@ -27,7 +27,7 @@ export const RadioMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '单选组合',
           description: '一组互斥的 nz-radio 配合使用。'
         },
@@ -36,7 +36,7 @@ export const RadioMockFields = [
             key: 'radio-1-2-1',
             type: 'radio-group',
             className: 'd-inline-block w-100',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               options: [
                 {
@@ -63,7 +63,7 @@ export const RadioMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'RadioGroup 组合 - 配置方式',
           description: '通过配置 options 参数来渲染单选框。'
         },
@@ -72,7 +72,7 @@ export const RadioMockFields = [
             key: 'radio-1-3-1',
             type: 'radio-group',
             className: 'd-inline-block col-4',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               options: [
                 {
@@ -94,7 +94,7 @@ export const RadioMockFields = [
             key: 'radio-1-3-2',
             type: 'radio-group',
             className: 'd-inline-block col-4',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               options: [
                 {
@@ -116,7 +116,7 @@ export const RadioMockFields = [
             key: 'radio-1-3-3',
             type: 'radio-group',
             className: 'd-inline-block col-4',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               options: [
                 {
@@ -139,7 +139,7 @@ export const RadioMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '填底的按钮样式',
           description: '实色填底的单选按钮样式。'
         },
@@ -149,7 +149,7 @@ export const RadioMockFields = [
             type: 'radio-group',
             className: 'd-inline-block w-100',
             defaultValue: 'C',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               buttonStyle: 'solid',
               radioButton: true,
@@ -185,7 +185,7 @@ export const RadioMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '不可用',
           description: 'nz-radio 不可用。'
         },
@@ -194,7 +194,7 @@ export const RadioMockFields = [
             key: 'radio-2-1-1',
             type: 'radio',
             className: 'd-block mx-2',
-            templateOptions: {
+            props: {
               text: 'disabled'
             }
           },
@@ -202,14 +202,14 @@ export const RadioMockFields = [
             key: 'radio-2-1-2',
             type: 'radio',
             className: 'd-block mx-2',
-            templateOptions: {
+            props: {
               text: 'disabled'
             }
           },
           {
             type: 'button',
             className: 'd-block m-2',
-            templateOptions: {
+            props: {
               text: 'Toggle disabled',
               type: 'primary'
             }
@@ -219,7 +219,7 @@ export const RadioMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'RadioGroup 垂直',
           description: '垂直的 nz-radio-group，配合更多输入框选项。'
         },
@@ -228,7 +228,7 @@ export const RadioMockFields = [
             key: 'radio-1-2-1',
             type: 'radio-group',
             className: 'd-inline-block w-100',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               options: [
                 {
@@ -255,7 +255,7 @@ export const RadioMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '按钮样式',
           description: '按钮样式的单选组合。'
         },
@@ -265,7 +265,7 @@ export const RadioMockFields = [
             type: 'radio-group',
             className: 'd-inline-block w-100 mb-2',
             defaultValue: 'C',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               buttonStyle: 'solid',
               radioButton: true,
@@ -294,7 +294,7 @@ export const RadioMockFields = [
             type: 'radio-group',
             className: 'd-inline-block w-100 mb-2',
             defaultValue: 'C',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               buttonStyle: 'solid',
               radioButton: true,
@@ -324,7 +324,7 @@ export const RadioMockFields = [
             type: 'radio-group',
             className: 'd-inline-block w-100',
             defaultValue: 'C',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               buttonStyle: 'solid',
               radioButton: true,
@@ -354,7 +354,7 @@ export const RadioMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '大小',
           description: '大中小三种组合，可以和表单输入框进行对应配合。'
         },
@@ -364,7 +364,7 @@ export const RadioMockFields = [
             type: 'radio-group',
             className: 'd-inline-block w-100 mb-2',
             defaultValue: 'C',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               buttonStyle: 'solid',
               radioButton: true,
@@ -394,7 +394,7 @@ export const RadioMockFields = [
             type: 'radio-group',
             className: 'd-inline-block w-100 mb-2',
             defaultValue: 'C',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               buttonStyle: 'solid',
               radioButton: true,
@@ -423,7 +423,7 @@ export const RadioMockFields = [
             type: 'radio-group',
             className: 'd-inline-block w-100 mb-2',
             defaultValue: 'C',
-            templateOptions: {
+            props: {
               text: 'checked-disabled',
               buttonStyle: 'solid',
               radioButton: true,

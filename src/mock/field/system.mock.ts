@@ -6,7 +6,7 @@ export const system = [
         key: 'search',
         type: 'search-card',
         className: 'col-12  d-block',
-        templateOptions: {
+        props: {
           matchRouter: true,
           bodyClass: 'row',
           bodyStyle: {
@@ -19,7 +19,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '用户名',
               layout: 'horizontal',
               placeholder: '请输入用户名'
@@ -30,7 +30,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '手机号',
               layout: 'horizontal',
               placeholder: '请输入手机号'
@@ -41,7 +41,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '邮箱',
               layout: 'horizontal',
               placeholder: '请输入邮箱'
@@ -52,7 +52,7 @@ export const system = [
             type: 'select',
             className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '性别',
               layout: 'horizontal',
               placeholder: '请选择',
@@ -77,7 +77,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '登录账号',
               layout: 'horizontal',
               placeholder: '请输入登录账号'
@@ -88,7 +88,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '用户ID',
               layout: 'horizontal',
               placeholder: '请输入用户ID'
@@ -99,7 +99,7 @@ export const system = [
             type: 'select',
             className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '状态',
               layout: 'horizontal',
               placeholder: '请输入用户ID',
@@ -128,7 +128,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-6 col-xl-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '创建时间',
               layout: 'horizontal',
               placeholder: '请选择创建时间'
@@ -139,13 +139,13 @@ export const system = [
       {
         type: 'card',
         className: 'col-12 mt-3',
-        templateOptions: {},
+        props: {},
         fieldGroup: [
           {
             type: 'table',
             key: 'table',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -347,7 +347,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '用户名',
                     tooltipTitle: '目标的服务对象',
                     tooltipIcon: 'question-circle',
@@ -360,7 +360,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '登录账号',
                     layout: 'horizontal',
                     placeholder: '请输入'
@@ -371,7 +371,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '手机号'
                   }
                 },
@@ -380,7 +380,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '邮箱'
                   }
                 },
@@ -389,7 +389,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '性别'
                   }
                 },
@@ -397,14 +397,14 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '创建时间'
                   }
                 },
                 {
                   type: 'list-actions',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '操作',
                     layout: 'horizontal',
                     right: '0',
@@ -438,14 +438,14 @@ export const system = [
       {
         type: 'card',
         className: 'col-4',
-        templateOptions: {},
+        props: {},
         fieldGroup: [
           {
             key: 'search',
             type: 'search-tree',
             className: 'col-12',
             wrappers: ['inline'],
-            templateOptions: {
+            props: {
               label: '说明'
             }
           }
@@ -454,7 +454,7 @@ export const system = [
       {
         type: 'card',
         className: 'col-8',
-        templateOptions: {
+        props: {
           title: '编辑菜单：带参路由缓存2'
         },
         fieldGroup: [
@@ -462,7 +462,7 @@ export const system = [
             key: 'name',
             type: 'input',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '类型',
               fixedWidth: '120px'
             }
@@ -471,7 +471,7 @@ export const system = [
             key: 'title',
             type: 'input',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '标题',
               fixedWidth: '120px'
             }
@@ -480,7 +480,7 @@ export const system = [
             key: 'subtitle',
             type: 'input',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '副标题',
               fixedWidth: '120px'
             }
@@ -489,7 +489,7 @@ export const system = [
             key: 'path',
             type: 'input',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '路径',
               fixedWidth: '120px'
             }
@@ -498,7 +498,7 @@ export const system = [
             key: 'open_type',
             type: 'radio-group',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '打开方式',
               fixedWidth: '120px',
 
@@ -518,7 +518,7 @@ export const system = [
             key: 'divider',
             type: 'switch',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '分割线',
               right: '0',
               fixedWidth: '120px',
@@ -543,7 +543,7 @@ export const system = [
             type: 'input',
 
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '图标',
               fixedWidth: '120px'
             }
@@ -553,7 +553,7 @@ export const system = [
             type: 'input',
 
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '菜单权限',
               tooltipTitle: '详见文档: 权鉴',
               tooltipIcon: 'question-circle',
@@ -565,7 +565,7 @@ export const system = [
             type: 'button-group',
 
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               fixedWidth: '120px',
               noColon: true,
               options: [
@@ -596,7 +596,7 @@ export const system = [
         key: 'search',
         type: 'search-card',
         className: 'col-12  d-block',
-        templateOptions: {
+        props: {
           bodyClass: 'row',
           bodyStyle: {
             paddingBottom: 0
@@ -608,7 +608,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '角色名称',
               layout: 'horizontal',
               placeholder: '请输入角色名称'
@@ -619,7 +619,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '说明',
               layout: 'horizontal',
               placeholder: '请输入说明'
@@ -630,7 +630,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '创建时间',
               layout: 'horizontal',
               placeholder: '请选择创建时间'
@@ -641,7 +641,7 @@ export const system = [
             type: 'select',
             className: 'col-12 col-md-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '更新时间',
               layout: 'horizontal',
               placeholder: '请选择更新时间'
@@ -652,7 +652,7 @@ export const system = [
             type: 'input',
             className: 'col-12 col-md-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '是否默认角色',
               layout: 'horizontal',
               placeholder: '请选择更新时间'
@@ -663,13 +663,13 @@ export const system = [
       {
         type: 'card',
         className: 'col-12 mt-3',
-        templateOptions: {},
+        props: {},
         fieldGroup: [
           {
             type: 'table',
             key: 'table',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -883,7 +883,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '角色名称'
                   }
                 },
@@ -892,7 +892,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '说明'
                   }
                 },
@@ -901,7 +901,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '创建时间'
                   }
                 },
@@ -910,7 +910,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '更新时间'
                   }
                 },
@@ -919,7 +919,7 @@ export const system = [
                   type: 'text',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '是否默认角色'
                   }
                 },
@@ -927,7 +927,7 @@ export const system = [
                   type: 'list-actions',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '操作',
                     right: '0',
                     actionOptions: [
@@ -963,7 +963,7 @@ export const system = [
         key: 'name',
         className: 'w-50 d-block',
         wrappers: ['inline'],
-        templateOptions: {
+        props: {
           label: '姓名',
           required: true,
           placeholder: '姓名',

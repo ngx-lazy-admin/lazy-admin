@@ -4,7 +4,7 @@ export const TabsMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '基本',
       description: '默认选中第一项'
     },
@@ -14,7 +14,7 @@ export const TabsMockFields = [
         type: 'tabs',
         className: 'd-block mb-2',
         defaultValue: 3,
-        templateOptions: {
+        props: {
           placeholder: 'Basic usage'
         },
         fieldGroup: [
@@ -23,7 +23,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Panel',
-            templateOptions: {
+            props: {
               title: 'Tab1'
             }
           },
@@ -32,7 +32,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Pane2',
-            templateOptions: {
+            props: {
               title: 'Tab2'
             }
           },
@@ -41,7 +41,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Pane3',
-            templateOptions: {
+            props: {
               title: 'Tab3'
             }
           }
@@ -52,7 +52,7 @@ export const TabsMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '禁用',
       description: '禁用某一项'
     },
@@ -62,7 +62,7 @@ export const TabsMockFields = [
         type: 'tabs',
         className: 'd-block mb-2',
         defaultValue: 3,
-        templateOptions: {
+        props: {
           placeholder: 'Basic usage'
         },
         fieldGroup: [
@@ -71,7 +71,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Panel',
-            templateOptions: {
+            props: {
               title: 'Tab1'
             }
           },
@@ -80,7 +80,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Pane2',
-            templateOptions: {
+            props: {
               title: 'Tab2',
 
               disabled: true
@@ -91,7 +91,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Pane3',
-            templateOptions: {
+            props: {
               title: 'Tab3'
             }
           }
@@ -102,7 +102,7 @@ export const TabsMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '居中',
       description: '标签居中展示。'
     },
@@ -112,7 +112,7 @@ export const TabsMockFields = [
         type: 'tabs',
         className: 'd-block mb-2',
         defaultValue: 3,
-        templateOptions: {
+        props: {
           center: true
         },
         fieldGroup: [
@@ -121,7 +121,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Panel',
-            templateOptions: {
+            props: {
               title: 'Tab1'
             }
           },
@@ -130,7 +130,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Pane2',
-            templateOptions: {
+            props: {
               title: 'Tab2',
               disabled: true
             }
@@ -140,7 +140,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Pane3',
-            templateOptions: {
+            props: {
               title: 'Tab3'
             }
           }
@@ -151,7 +151,7 @@ export const TabsMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '图标',
       description: '有图标的标签'
     },
@@ -161,7 +161,7 @@ export const TabsMockFields = [
         type: 'tabs',
         className: 'd-block mb-2',
         defaultValue: 3,
-        templateOptions: {
+        props: {
           center: true
         },
         fieldGroup: [
@@ -170,7 +170,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Panel',
-            templateOptions: {
+            props: {
               titleRef: {
                 type: 'icon',
                 icon: 'apple',
@@ -183,7 +183,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of Tab Pane3',
-            templateOptions: {
+            props: {
               titleRef: {
                 type: 'icon',
                 icon: 'android',
@@ -198,7 +198,7 @@ export const TabsMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '附加内容',
       description: '可以在页签右边添加附加操作。'
     },
@@ -208,7 +208,7 @@ export const TabsMockFields = [
         type: 'tabs',
         className: 'd-block mb-2',
         defaultValue: 3,
-        templateOptions: {
+        props: {
           extraRef: {
             type: 'button',
             text: 'Extra Action',
@@ -224,7 +224,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of tab 1',
-            templateOptions: {
+            props: {
               title: 'Tab 1'
             }
           },
@@ -233,7 +233,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of tab 2',
-            templateOptions: {
+            props: {
               title: 'Tab 2'
             }
           },
@@ -242,7 +242,7 @@ export const TabsMockFields = [
             type: 'text',
             className: 'd-block mb-2',
             defaultValue: 'Content of tab 3',
-            templateOptions: {
+            props: {
               title: 'Tab 3'
             }
           }
@@ -253,7 +253,7 @@ export const TabsMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '日期格式',
       description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
@@ -262,7 +262,7 @@ export const TabsMockFields = [
         key: 'checked2',
         type: 'checkbox',
         className: 'd-inline-block mx-2',
-        templateOptions: {
+        props: {
           text: 'Checkbox'
         }
       },
@@ -270,7 +270,7 @@ export const TabsMockFields = [
         key: 'checked1',
         type: 'checkbox',
         className: 'd-inline-block mx-2',
-        templateOptions: {
+        props: {
           text: 'nzDisabled'
         }
       }

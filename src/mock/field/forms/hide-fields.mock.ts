@@ -2,7 +2,7 @@ export const HideFieldsMockFields = [
   {
     type: 'code-card',
     className: "d-block mb-3 col-12",
-    templateOptions: {
+    props: {
       title: '基本',
       description: `
         There are two ways to initialize the form with default values.

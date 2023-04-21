@@ -4,12 +4,12 @@ export const RateMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '最简单的用法。'
         },
@@ -19,14 +19,14 @@ export const RateMockFields = [
             type: 'rate',
             className: 'd-inline-block mx-2',
 
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '文案展现',
           description: '给评分组件加上文案展示。'
         },
@@ -36,7 +36,7 @@ export const RateMockFields = [
             type: 'rate',
             className: 'd-inline-block w-100',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               tooltips: ['terrible', 'bad', 'normal', 'good', 'wonderful']
             }
           }
@@ -45,7 +45,7 @@ export const RateMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '清楚',
           description: '支持允许或者禁用清除。'
         },
@@ -56,7 +56,7 @@ export const RateMockFields = [
             className: 'd-inline-block w-100',
             defaultValue: 3,
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               layout: 'inline',
               label: 'allowClear: true',
               tooltips: ['terrible', 'bad', 'normal', 'good', 'wonderful'],
@@ -70,7 +70,7 @@ export const RateMockFields = [
             className: 'd-inline-block w-100',
             defaultValue: 3,
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: 'allowClear: false',
               layout: 'inline',
               tooltips: ['terrible', 'bad', 'normal', 'good', 'wonderful'],
@@ -89,7 +89,7 @@ export const RateMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本',
           description: '支持选中半星。'
         },
@@ -98,7 +98,7 @@ export const RateMockFields = [
             key: 'rate-2-1-1',
             type: 'rate',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               allowHalf: true
             }
           }
@@ -107,7 +107,7 @@ export const RateMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '只读',
           description: '只读，无法进行鼠标交互。'
         },
@@ -116,7 +116,7 @@ export const RateMockFields = [
             key: 'rate-2-2-1',
             type: 'rate',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               disabled: true
             }
           }
@@ -125,7 +125,7 @@ export const RateMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '其他字符',
           description: '可以将星星替换为其他字符，比如字母，数字，字体图标甚至中文。'
         },
@@ -134,7 +134,7 @@ export const RateMockFields = [
             key: 'rate-2-3-1',
             type: 'rate',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox',
               character: '好'
             }

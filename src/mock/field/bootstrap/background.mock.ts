@@ -2,12 +2,12 @@ export const BackgroundMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '边框',
           description: `# Marked in the browser\n\nRendered by **marked**.`
         },
@@ -72,7 +72,7 @@ export const BackgroundMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '渐变',
           subtitle: '无边框'
         },
@@ -128,7 +128,7 @@ export const BackgroundMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '透明',
           subtitle: '最简单的用法，在浮层中可以选择或者输入日期。'
         },

@@ -4,12 +4,12 @@ export const CardMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-12',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '典型卡片',
           description: '包含标题、内容、操作区域。'
         },
@@ -17,7 +17,7 @@ export const CardMockFields = [
           {
             type: 'card',
             className: 'd-block mb-3',
-            templateOptions: {
+            props: {
               title: 'Card title',
               extraActions: [
                 {
@@ -54,7 +54,7 @@ export const CardMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '无边框',
           description: '在灰色背景上使用无边框的卡片。'
         },
@@ -62,7 +62,7 @@ export const CardMockFields = [
           {
             type: 'card',
             className: 'd-block mb-3',
-            templateOptions: {
+            props: {
               title: 'Card title',
               borderless: true,
               extraActions: [
@@ -100,7 +100,7 @@ export const CardMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '简洁卡片',
           description: '只包含内容区域。',
           borderless: true
@@ -109,7 +109,7 @@ export const CardMockFields = [
           {
             type: 'card',
             className: 'd-block mb-3',
-            templateOptions: {},
+            props: {},
             fieldGroup: [
               {
                 key: 'template1',

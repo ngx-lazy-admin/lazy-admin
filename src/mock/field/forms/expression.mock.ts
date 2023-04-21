@@ -4,7 +4,7 @@ export const ExpressionMockFields = [
   {
     type: 'code-card',
     className: "d-block mb-3 col-12",
-    templateOptions: {
+    props: {
       title: 'expression',
       description: 'Expression Properties allows you to dynamically change many properties of a field.',
     },
@@ -13,7 +13,7 @@ export const ExpressionMockFields = [
         key: 'text',
         type: 'input',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           label: 'Text',
           required: true,
           placeholder: 'Type here to see the other field become enabled...',

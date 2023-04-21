@@ -4,12 +4,12 @@ export const TagMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '基本标签的用法，可以通过添加 nzMode="closeable" 变为可关闭标签。可关闭标签具有 nzOnClose 事件。'
         },
@@ -23,7 +23,7 @@ export const TagMockFields = [
               { label: 'Link', value: 'Link', checked: false },
               { label: 'Tag 2', value: 'Tag 2', mode: 'closeable' }
             ],
-            templateOptions: {
+            props: {
               text: 'Tag 1',
               label: 'Categories'
             }
@@ -33,7 +33,7 @@ export const TagMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'Switch开关',
           description: '简单的 tag-check '
         },
@@ -43,7 +43,7 @@ export const TagMockFields = [
             type: 'tag',
             className: 'd-block mb-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               text: 'Tag 1'
             }
           }
@@ -52,7 +52,7 @@ export const TagMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '多选',
           description: '简单的 tag-check-group'
         },
@@ -66,7 +66,7 @@ export const TagMockFields = [
               { label: 'Pear', value: 'Pear', checked: false },
               { label: 'Orange', value: 'Orange', checked: false }
             ],
-            templateOptions: {
+            props: {
               text: 'Tag 1',
               label: 'Categories'
             }
@@ -76,7 +76,7 @@ export const TagMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '动态添加和删除',
           description: '用数组生成一组标签，可以动态添加和删除。'
         },
@@ -85,7 +85,7 @@ export const TagMockFields = [
           //   key: 'tag-group',
           //   type: 'tag-check-group',
           //   className: "d-block mb-2",
-          //   templateOptions: {
+          //   props: {
           //     label: "标签",
           //     placeholder: 'Basic usage',
           //     disabled: true,
@@ -111,7 +111,7 @@ export const TagMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '多彩标签',
           description:
             '我们添加了多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。'
@@ -138,7 +138,7 @@ export const TagMockFields = [
               { label: '#87d068', mode: 'default', color: '#87d068' },
               { label: '#108ee9', mode: 'default', color: '#108ee9' }
             ],
-            templateOptions: {
+            props: {
               text: 'Tag 1',
               label: 'Categories'
             }
@@ -148,7 +148,7 @@ export const TagMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '可选择',
           description: '简单的 tag-check-group'
         },
@@ -163,7 +163,7 @@ export const TagMockFields = [
               { label: 'Tag 2', value: 'Tag 2', checked: false },
               { label: 'Tag 3', value: 'Tag 3', checked: false }
             ],
-            templateOptions: {
+            props: {
               text: 'Tag 1',
               layout: 'inline',
               label: 'Categories'

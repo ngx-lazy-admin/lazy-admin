@@ -4,7 +4,7 @@ export const ProTableMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '基本用法',
       description: '简单的表格，最后一列是各种操作。'
     },
@@ -13,7 +13,7 @@ export const ProTableMockFields = [
         key: 'list1',
         type: 'pro-table',
         className: 'd-block mb-2',
-        templateOptions: {
+        props: {
           columns: [
             {
               title: 'Name',

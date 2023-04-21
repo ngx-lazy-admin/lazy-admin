@@ -4,12 +4,12 @@ export const ModalMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本使用',
           description: '第一个对话框。'
         },
@@ -17,7 +17,7 @@ export const ModalMockFields = [
           {
             type: 'modal',
             className: 'd-block mb-3 col-4',
-            templateOptions: {
+            props: {
               text: 'showModal'
             },
             fieldGroup: [
@@ -40,7 +40,7 @@ export const ModalMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '自定义组成部分',
           description: `更复杂的例子，自定义了页脚的按钮，点击提交后进入 loading 状态，完成后关闭。
           不需要默认确定取消按钮时，你可以把 nzFooter 设为 null。`
@@ -50,7 +50,7 @@ export const ModalMockFields = [
             key: 'input1-3',
             type: 'modal',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               label: '标签',
               placeholder: 'Basic usage',
               disabled: true
@@ -72,7 +72,7 @@ export const ModalMockFields = [
             key: 'input-2-1',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'large size',
               size: 'large'
             }
@@ -81,7 +81,7 @@ export const ModalMockFields = [
             key: 'input-2-2',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'default size',
               size: 'default'
             }
@@ -90,13 +90,13 @@ export const ModalMockFields = [
             key: 'input-2-3',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'small size',
               size: 'small'
             }
           }
         ],
-        templateOptions: {
+        props: {
           title: '三种大小',
           description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
           注意： 在表单里面，我们只使用大尺寸的输入框。`

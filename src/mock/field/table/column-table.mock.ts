@@ -4,7 +4,7 @@ export const ColumnTableMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '按钮类型',
       description: '按钮有五种类型：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。主按钮在同一个操作区域最多出现一次。'
     },
@@ -13,13 +13,13 @@ export const ColumnTableMockFields = [
         key: 'list',
         type: 'virtual-table',
         className: 'd-block mb-2',
-        templateOptions: {},
+        props: {},
         fieldArray: {
           fieldGroup: [
             {
               key: 'name',
               type: 'input',
-              templateOptions: {
+              props: {
                 label: 'name'
               }
             },
@@ -27,7 +27,7 @@ export const ColumnTableMockFields = [
               key: 'age',
               type: 'template',
 
-              templateOptions: {
+              props: {
                 label: 'age'
               }
             },
@@ -35,14 +35,14 @@ export const ColumnTableMockFields = [
               key: 'address',
               type: 'template',
 
-              templateOptions: {
+              props: {
                 label: 'address'
               }
             },
             {
               key: 'action',
               type: 'template',
-              templateOptions: {
+              props: {
                 label: 'action'
               }
             }

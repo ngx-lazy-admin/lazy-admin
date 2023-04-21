@@ -4,12 +4,12 @@ export const PaginationMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-12',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '基础分页。'
         },
@@ -18,14 +18,14 @@ export const PaginationMockFields = [
             key: 'pagination',
             type: 'pagination',
             className: 'd-inline-block mx-2',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '禁用',
           description: '禁用分页'
         },
@@ -34,7 +34,7 @@ export const PaginationMockFields = [
             key: 'pagination0',
             type: 'pagination',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               disabled: true
             }
           }
@@ -43,7 +43,7 @@ export const PaginationMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '更多',
           description: '更多分页'
         },
@@ -52,14 +52,14 @@ export const PaginationMockFields = [
             key: 'pagination1',
             type: 'pagination',
             className: 'd-inline-block mx-2',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '改变',
           description: '改变每页显示条目数。'
         },
@@ -68,7 +68,7 @@ export const PaginationMockFields = [
             key: 'pagination2',
             type: 'pagination',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               showSizeChanger: true
             }
           }
@@ -77,7 +77,7 @@ export const PaginationMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '跳转',
           description: '快速跳转到某一页。'
         },
@@ -86,7 +86,7 @@ export const PaginationMockFields = [
             key: 'pagination3',
             type: 'pagination',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               showQuickJumper: true
             }
           }
@@ -95,7 +95,7 @@ export const PaginationMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '迷你',
           description: '迷你版本。'
         },
@@ -104,7 +104,7 @@ export const PaginationMockFields = [
             key: 'pagination4',
             type: 'pagination',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               showQuickJumper: true,
               showSizeChanger: true,
               size: 'small'
@@ -115,7 +115,7 @@ export const PaginationMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '简洁',
           description: '简单的翻页。'
         },
@@ -124,7 +124,7 @@ export const PaginationMockFields = [
             key: 'pagination5',
             type: 'pagination',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               simple: true
             }
           }

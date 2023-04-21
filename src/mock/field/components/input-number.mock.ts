@@ -4,12 +4,12 @@ export const InputNumberMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '数字输入框。'
         },
@@ -19,14 +19,14 @@ export const InputNumberMockFields = [
             type: 'input-number',
             className: 'd-inline-block mx-2',
             defaultValue: 3,
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '不可用',
           description: '点击按钮切换可用状态。'
         },
@@ -35,7 +35,7 @@ export const InputNumberMockFields = [
             key: 'checked2',
             type: 'number',
             className: 'd-inline-block',
-            templateOptions: {
+            props: {
               text: 'Toggle Disabled',
               disabled: 'formState.checked2.disabled'
             },
@@ -46,7 +46,7 @@ export const InputNumberMockFields = [
           {
             type: 'button',
             className: 'd-inline-block mx-2 ',
-            templateOptions: {
+            props: {
               text: 'Toggle Disabled',
               size: 'small',
               type: 'primary',
@@ -65,7 +65,7 @@ export const InputNumberMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '格式化展示',
           description: '通过 nzFormatter 格式化数字，以展示具有具体含义的数据，往往需要配合 nzParser 一起使用。'
         },
@@ -74,7 +74,7 @@ export const InputNumberMockFields = [
             key: 'demoValue',
             type: 'number',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               min: 1,
               max: 100,
               step: 1,
@@ -86,7 +86,7 @@ export const InputNumberMockFields = [
             key: 'demoValue',
             type: 'number',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               min: 1,
               max: 100,
               step: 1,
@@ -101,7 +101,7 @@ export const InputNumberMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {
+    props: {
       title: '基本',
       description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
@@ -109,7 +109,7 @@ export const InputNumberMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '三种大小',
           description:
             '三种大小的数字输入框，当 nzSize 分别为 large 和 small 时，输入框高度为 40px 和 24px ，默认高度为 32px。'
@@ -120,7 +120,7 @@ export const InputNumberMockFields = [
             type: 'input-number',
             className: 'd-inline-block mx-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               size: 'large'
             }
           },
@@ -129,7 +129,7 @@ export const InputNumberMockFields = [
             type: 'input-number',
             className: 'd-inline-block mx-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               size: 'default'
             }
           },
@@ -138,7 +138,7 @@ export const InputNumberMockFields = [
             type: 'input-number',
             className: 'd-inline-block mx-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               size: 'small'
             }
           }
@@ -147,7 +147,7 @@ export const InputNumberMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '小数',
           description: '和原生的数字输入框一样，value 的精度由 nzStep 的小数位数决定。'
         },
@@ -157,7 +157,7 @@ export const InputNumberMockFields = [
             type: 'input-number',
             className: 'd-inline-block mx-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               placeHolder: 'Digital',
               min: 1,
               max: 10,
@@ -169,7 +169,7 @@ export const InputNumberMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '精度',
           description: '指定 value 的精度'
         },
@@ -179,7 +179,7 @@ export const InputNumberMockFields = [
             type: 'input-number',
             className: 'd-inline-block mx-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               precision: 2,
               placeHolder: 'toFixed'
             }
@@ -189,7 +189,7 @@ export const InputNumberMockFields = [
             type: 'input-number',
             className: 'd-inline-block mx-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               precision: 2,
               placeHolder: 'cut off'
             }
@@ -199,7 +199,7 @@ export const InputNumberMockFields = [
             type: 'input-number',
             className: 'd-inline-block mx-2',
             defaultValue: 3,
-            templateOptions: {
+            props: {
               precision: 2,
               placeHolder: 'cut off'
             }

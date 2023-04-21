@@ -388,15 +388,15 @@ export const EchartMock = [
 	{
 		type: 'group',
 		className: "d-inline-block mb-3 col-12",
-		templateOptions: {
+		props: {
 			bodyClass: 'row'
 		},
 		fieldGroup: [
-			
+
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '基础折线图',
 					hoverable: true
 				},
@@ -404,7 +404,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								xAxis: {
 									type: 'category',
@@ -427,7 +427,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '基础平滑折线图',
 					hoverable: true
 				},
@@ -435,7 +435,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								xAxis: {
 									type: 'category',
@@ -459,7 +459,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '基础面积图',
 					hoverable: true
 				},
@@ -467,7 +467,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								xAxis: {
 									type: 'category',
@@ -492,7 +492,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '折线图堆叠',
 					hoverable: true
 				},
@@ -500,7 +500,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								title: {
 									text: 'Stacked Line'
@@ -570,7 +570,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '未来一周气温变化',
 					hoverable: true
 				},
@@ -578,7 +578,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								title: {
 									text: 'Temperature Change in the Coming Week'
@@ -663,7 +663,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '折线图区域高亮',
 					hoverable: true
 				},
@@ -671,7 +671,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								xAxis: {
 									type: 'category',
@@ -735,7 +735,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '面积图',
 					hoverable: true
 				},
@@ -743,7 +743,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								xAxis: {
 									type: 'category',
@@ -768,7 +768,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '面积图',
 					hoverable: true
 				},
@@ -776,7 +776,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								xAxis: {
 									type: 'category',
@@ -801,7 +801,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '面积图',
 					hoverable: true
 				},
@@ -809,7 +809,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								xAxis: {
 									type: 'category',
@@ -834,7 +834,7 @@ export const EchartMock = [
 			{
 				type: 'card',
 				className: "d-inline-block mb-3 col-3",
-				templateOptions: {
+				props: {
 					title: '面积图',
 					hoverable: true
 				},
@@ -842,7 +842,7 @@ export const EchartMock = [
 					{
 						key: 'date',
 						type: 'echarts',
-						templateOptions: {
+						props: {
 							config: {
 								xAxis: {
 									type: 'category',

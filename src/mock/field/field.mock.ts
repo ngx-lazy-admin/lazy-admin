@@ -7,7 +7,7 @@ export const field: FormlyFieldConfig[] = [
     key: 'name',
     className: 'w-50 d-block',
     wrappers: ['inline'],
-    templateOptions: {
+    props: {
       label: '姓名',
       required: true,
       placeholder: '姓名',
@@ -33,7 +33,7 @@ export const field: FormlyFieldConfig[] = [
   },
   {
     type: 'button',
-    templateOptions: {
+    props: {
       text: '下一步',
       click: (field: FormlyFieldConfig, _this: any) => {
         console.log(field?.formControl?.value);
@@ -43,7 +43,7 @@ export const field: FormlyFieldConfig[] = [
   },
   {
     type: 'button',
-    templateOptions: {
+    props: {
       text: '上一步',
       click: (field: any, _this: any) => {
         _this.http.get('api/user').subscribe((item: any) => {

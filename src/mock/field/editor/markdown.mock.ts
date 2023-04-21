@@ -2,12 +2,12 @@ export const MarkdownMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-12',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'markdown 编辑器',
           description: ''
         },
@@ -15,7 +15,7 @@ export const MarkdownMockFields = [
           {
             type: 'markdown',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               config: ''
             }
           }
@@ -34,10 +34,10 @@ export const MarkdownMockFields = [
           {
             type: 'markdown',
             className: 'd-inline-block mx-2',
-            templateOptions: {}
+            props: {}
           }
         ],
-        templateOptions: {
+        props: {
           title: 'markdown 编辑器'
         }
       }

@@ -7,7 +7,7 @@ export const list = [
       {
         type: 'search-card',
         className: 'col-12  d-block',
-        templateOptions: {
+        props: {
           bodyClass: 'row',
           bodyStyle: {
             paddingBottom: 0
@@ -19,7 +19,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '规则名称',
               tooltipTitle: '目标的服务对象',
               layout: 'horizontal',
@@ -31,7 +31,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '描述',
               layout: 'horizontal',
               placeholder: '请输入'
@@ -42,7 +42,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '服务调用次数',
               layout: 'horizontal'
             }
@@ -52,7 +52,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '状态',
               layout: 'horizontal',
               placeholder: '请选择'
@@ -63,7 +63,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '上次调度时间',
               layout: 'horizontal',
               placeholder: '请输入'
@@ -74,7 +74,7 @@ export const list = [
       {
         type: 'card',
         className: 'col-12 mt-3',
-        templateOptions: {
+        props: {
           title: '查询表格'
         },
         fieldGroup: [
@@ -82,7 +82,7 @@ export const list = [
             type: 'table',
             key: 'table',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -286,7 +286,7 @@ export const list = [
                   type: 'input',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '规则名称',
                     tooltipTitle: '目标的服务对象',
                     tooltipIcon: 'question-circle',
@@ -299,7 +299,7 @@ export const list = [
                   type: 'input',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '描述',
                     layout: 'horizontal',
                     placeholder: '请输入'
@@ -310,7 +310,7 @@ export const list = [
                   type: 'input',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '服务调用次数',
                     layout: 'horizontal'
                   }
@@ -320,7 +320,7 @@ export const list = [
                   type: 'input',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '状态',
                     layout: 'horizontal',
                     placeholder: '请选择'
@@ -331,7 +331,7 @@ export const list = [
                   type: 'input',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '上次调度时间',
                     layout: 'horizontal',
                     placeholder: '请输入'
@@ -341,7 +341,7 @@ export const list = [
                   type: 'button-group',
                   className: '',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: '操作',
                     layout: 'horizontal',
                     placeholder: '请输入',
@@ -371,7 +371,7 @@ export const list = [
       {
         type: 'search-card',
         className: 'col-12  d-block',
-        templateOptions: {
+        props: {
           bodyClass: 'row',
           bodyStyle: {
             paddingBottom: 0
@@ -383,7 +383,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '规则名称',
               tooltipTitle: '目标的服务对象',
               layout: 'horizontal',
@@ -395,7 +395,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '描述',
               layout: 'horizontal',
               placeholder: '请输入'
@@ -406,7 +406,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '服务调用次数',
               layout: 'horizontal'
             }
@@ -416,7 +416,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '状态',
               layout: 'horizontal',
               placeholder: '请选择'
@@ -427,7 +427,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '上次调度时间',
               layout: 'horizontal',
               placeholder: '请输入'
@@ -438,12 +438,12 @@ export const list = [
       {
         type: 'card',
         className: 'col-12 mt-3',
-        templateOptions: {},
+        props: {},
         fieldGroup: [
           {
             type: 'list',
             key: 'basic',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -623,7 +623,7 @@ export const list = [
                   type: 'card-meta',
                   key: 'meta',
                   className: 'col-4 d-block',
-                  templateOptions: {
+                  props: {
                     title: '描述',
                     size: 48,
                     shape: 'square',
@@ -649,7 +649,7 @@ export const list = [
                 {
                   type: 'list-actions',
                   className: 'col-1 px-3 text-end',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 1,
                     actionOptions: [
                       {
@@ -680,7 +680,7 @@ export const list = [
       {
         type: 'search-card',
         className: 'col-12 d-block mb-2',
-        templateOptions: {
+        props: {
           bodyClass: 'row',
           bodyStyle: {
             paddingBottom: 0
@@ -692,7 +692,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '规则名称',
               tooltipTitle: '目标的服务对象',
               layout: 'horizontal',
@@ -704,7 +704,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '描述',
               layout: 'horizontal',
               placeholder: '请输入'
@@ -715,7 +715,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '服务调用次数',
               layout: 'horizontal'
             }
@@ -725,7 +725,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '状态',
               layout: 'horizontal',
               placeholder: '请选择'
@@ -736,7 +736,7 @@ export const list = [
             type: 'input',
             className: 'col-3',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '上次调度时间',
               layout: 'horizontal',
               placeholder: '请输入'
@@ -747,7 +747,7 @@ export const list = [
       {
         key: 'card',
         type: 'list',
-        templateOptions: {
+        props: {
           showPagination: true,
           pageSize: 20,
           bodyClass: 'row',
@@ -950,7 +950,7 @@ export const list = [
             {
               type: 'card',
               className: 'col-12',
-              templateOptions: {
+              props: {
                 nzBodyStyle: {
                   padding: 0
                 },
@@ -968,7 +968,7 @@ export const list = [
                   type: 'card-meta',
                   key: 'meta',
                   className: 'm-3 p-2 d-block',
-                  templateOptions: {
+                  props: {
                     title: '描述',
                     size: 48,
                     description:

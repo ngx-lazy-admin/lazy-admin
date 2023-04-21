@@ -4,12 +4,12 @@ export const TimePickerMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '点击 nz-time-picker，然后可以在浮层中选择或者输入某一时间。'
         },
@@ -18,14 +18,14 @@ export const TimePickerMockFields = [
             key: 'time1',
             type: 'time-picker',
             className: 'd-inline-block mx-2',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '三种大小',
           description: '联动 checkbox。'
         },
@@ -34,7 +34,7 @@ export const TimePickerMockFields = [
             key: 'time2',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               size: 'large'
             }
           },
@@ -42,13 +42,13 @@ export const TimePickerMockFields = [
             key: 'timer2',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'timer3',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               size: 'small'
             }
           }
@@ -57,7 +57,7 @@ export const TimePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '选择时分',
           description:
             'nz-time-picker 浮层中的列会随着 nzFormat 变化，当略去 nzFormat 中的某部分时，浮层中对应的列也会消失。'
@@ -67,7 +67,7 @@ export const TimePickerMockFields = [
             key: 'time3',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               format: 'HH:mm'
             }
           }
@@ -76,7 +76,7 @@ export const TimePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '附加内容',
           description: '在 nz-time-picker 选择框底部显示自定义的内容。'
         },
@@ -85,7 +85,7 @@ export const TimePickerMockFields = [
             key: 'time4',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               format: 'HH:mm'
             }
           }
@@ -94,7 +94,7 @@ export const TimePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '12小时制',
           description: '12小时制的时间选择器，默认format为 h:mm:ss a'
         },
@@ -103,7 +103,7 @@ export const TimePickerMockFields = [
             key: 'time4',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               use12Hours: true
             }
           },
@@ -111,7 +111,7 @@ export const TimePickerMockFields = [
             key: 'time4',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               format: 'h:mm a',
               use12Hours: true
             }
@@ -123,7 +123,7 @@ export const TimePickerMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {
+    props: {
       title: '基本',
       description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
@@ -131,7 +131,7 @@ export const TimePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '禁用',
           description: '禁用时间选择。'
         },
@@ -140,7 +140,7 @@ export const TimePickerMockFields = [
             key: 'time6',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               disabled: true
             }
           }
@@ -149,7 +149,7 @@ export const TimePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '步长选项',
           description: '可以使用 nzHourStepnzMinuteStepnzSecondStep 按步长展示可选的时分秒。'
         },
@@ -158,7 +158,7 @@ export const TimePickerMockFields = [
             key: 'time7',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               format: 'HH:mm',
               minuteStep: 15,
               secondStep: 10
@@ -169,7 +169,7 @@ export const TimePickerMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '禁用部分',
           description: '禁用部分时间选择。'
         },
@@ -178,7 +178,7 @@ export const TimePickerMockFields = [
             key: 'time8',
             type: 'time-picker',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               disabledHours: `(hour) => [1, 2, 3] `,
               disabledMinutes: `(hour) => {
                                 if (hour === 4) {

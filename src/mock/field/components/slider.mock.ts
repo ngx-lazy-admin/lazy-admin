@@ -4,12 +4,12 @@ export const SliderMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本',
           description: '基本滑动条。当 nzRange 为 true 时，渲染为双滑块。当 nzDisabled 为 true 时，滑块处于不可用状态。'
         },
@@ -25,14 +25,14 @@ export const SliderMockFields = [
             type: 'slider-range',
             className: 'd-block mb-2',
             defaultValue: [10, 50],
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '带 icon 的滑块',
           description: '滑块左右可以设置图标来表达业务含义。'
         },
@@ -41,7 +41,7 @@ export const SliderMockFields = [
             key: 'slider-1-2-1',
             type: 'slider',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               min: 0,
               max: 20
             }
@@ -51,7 +51,7 @@ export const SliderMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '垂直',
           description: '垂直方向的 Slider。'
         },
@@ -60,7 +60,7 @@ export const SliderMockFields = [
             key: 'slider-1-3-1',
             type: 'slider',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               vertical: true,
               min: 0,
               max: 20,
@@ -76,7 +76,7 @@ export const SliderMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '反向',
           description: '设置 nzReverse 可以将滑动条置反。'
         },
@@ -85,7 +85,7 @@ export const SliderMockFields = [
             key: 'slider-1-4-1',
             type: 'slider',
             className: 'd-block mb-2',
-            templateOptions: {
+            props: {
               reverse: true
             }
           }
@@ -101,7 +101,7 @@ export const SliderMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '带输入框的滑块',
           description: '和 数字输入框 组件保持同步。'
         },
@@ -116,7 +116,7 @@ export const SliderMockFields = [
             key: 'slider-2-1-1',
             type: 'input-number',
             className: 'd-inline-block mb-2 col-3',
-            templateOptions: {}
+            props: {}
           }
         ]
       }

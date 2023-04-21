@@ -352,7 +352,7 @@ export const dashboard = [
       {
         type: 'group',
         className: 'col-12',
-        templateOptions: {
+        props: {
           bodyClass: 'row'
         },
         fieldGroup: [
@@ -360,7 +360,7 @@ export const dashboard = [
             type: 'card',
             key: 'name1',
             className: 'col-xl-3 col-md-6 col-12 mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               label: '总销售额1',
               tooltip: '指标说明1'
             },
@@ -370,7 +370,7 @@ export const dashboard = [
                 type: 'statistic',
                 defaultValue: '1949101',
                 className: 'col-12 d-block',
-                templateOptions: {
+                props: {
                   title: '总销售额 ',
                   valuePipe: 'number',
                   pipeArgs: '1.0-2'
@@ -381,7 +381,7 @@ export const dashboard = [
                 type: 'statistic',
                 defaultValue: '12% ',
                 className: 'col-4 d-inline-block',
-                templateOptions: {
+                props: {
                   nzPrefix: '周同比',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -395,7 +395,7 @@ export const dashboard = [
                 type: 'statistic',
                 className: 'col-4 d-inline-block',
                 defaultValue: '12%',
-                templateOptions: {
+                props: {
                   nzPrefix: '周同比',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -409,7 +409,7 @@ export const dashboard = [
                 type: 'statistic',
                 className: 'col-12 mt-2 pt-2 border-top  d-inline-block',
                 defaultValue: '12423',
-                templateOptions: {
+                props: {
                   nzPrefix: '日销售额',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -423,7 +423,7 @@ export const dashboard = [
             type: 'card',
             key: 'name2',
             className: 'col-xl-3 col-md-6 col-12 mb-3  d-inline-block',
-            templateOptions: {
+            props: {
               label: '访问量',
               tooltip: '指标说明'
             },
@@ -433,7 +433,7 @@ export const dashboard = [
                 type: 'statistic',
                 defaultValue: '1949101',
                 className: 'col-12 d-block',
-                templateOptions: {
+                props: {
                   title: '总销售额 ',
                   valuePipe: 'number',
                   pipeArgs: '1.0-2'
@@ -444,7 +444,7 @@ export const dashboard = [
                 type: 'statistic',
                 defaultValue: '12% ',
                 className: 'col-4 d-inline-block',
-                templateOptions: {
+                props: {
                   nzPrefix: '周同比',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -458,7 +458,7 @@ export const dashboard = [
                 type: 'statistic',
                 className: 'col-4 d-inline-block',
                 defaultValue: '12%',
-                templateOptions: {
+                props: {
                   nzPrefix: '周同比',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -472,7 +472,7 @@ export const dashboard = [
                 type: 'statistic',
                 className: 'col-12 mt-2 pt-2 border-top  d-inline-block',
                 defaultValue: '12423',
-                templateOptions: {
+                props: {
                   nzPrefix: '日销售额',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -486,7 +486,7 @@ export const dashboard = [
             key: 'name3',
             type: 'card',
             className: 'col-xl-3 col-md-6 col-12 mb-3  d-inline-block',
-            templateOptions: {
+            props: {
               label: '支付笔数',
               tooltip: '指标说明'
             },
@@ -496,7 +496,7 @@ export const dashboard = [
                 type: 'statistic',
                 defaultValue: '1949101',
                 className: 'col-12 d-block',
-                templateOptions: {
+                props: {
                   title: '总销售额 ',
                   valuePipe: 'number',
                   pipeArgs: '1.0-2'
@@ -507,7 +507,7 @@ export const dashboard = [
                 type: 'statistic',
                 defaultValue: '12% ',
                 className: 'col-4 d-inline-block',
-                templateOptions: {
+                props: {
                   nzPrefix: '周同比',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -521,7 +521,7 @@ export const dashboard = [
                 type: 'statistic',
                 className: 'col-4 d-inline-block',
                 defaultValue: '12%',
-                templateOptions: {
+                props: {
                   nzPrefix: '周同比',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -535,7 +535,7 @@ export const dashboard = [
                 type: 'statistic',
                 className: 'col-12 mt-2 pt-2 border-top  d-inline-block',
                 defaultValue: '12423',
-                templateOptions: {
+                props: {
                   nzPrefix: '日销售额',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -549,7 +549,7 @@ export const dashboard = [
             type: 'card',
             key: 'name4',
             className: 'col-xl-3 col-md-6 col-12 mb-3  d-inline-block',
-            templateOptions: {
+            props: {
               label: '运营效果',
               tooltip: '指标说明'
             },
@@ -559,7 +559,7 @@ export const dashboard = [
                 type: 'statistic',
                 defaultValue: '1949101',
                 className: 'col-12 d-block',
-                templateOptions: {
+                props: {
                   title: '总销售额 ',
                   valuePipe: 'number',
                   pipeArgs: '1.0-2'
@@ -570,7 +570,7 @@ export const dashboard = [
                 type: 'statistic',
                 defaultValue: '12% ',
                 className: 'col-4 d-inline-block',
-                templateOptions: {
+                props: {
                   nzPrefix: '周同比',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -584,7 +584,7 @@ export const dashboard = [
                 type: 'statistic',
                 className: 'col-4 d-inline-block',
                 defaultValue: '12%',
-                templateOptions: {
+                props: {
                   nzPrefix: '周同比',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -598,7 +598,7 @@ export const dashboard = [
                 type: 'statistic',
                 className: 'col-12 mt-2 pt-2 border-top  d-inline-block',
                 defaultValue: '12423',
-                templateOptions: {
+                props: {
                   nzPrefix: '日销售额',
                   nzSuffixIcon: 'caret-down',
                   nzValueStyle: {
@@ -613,7 +613,7 @@ export const dashboard = [
       {
         type: 'group',
         className: 'col-12',
-        templateOptions: {
+        props: {
           bodyClass: 'row'
         },
         fieldGroup: [
@@ -624,7 +624,7 @@ export const dashboard = [
               {
                 key: 'data1',
                 type: 'g2-plot',
-                templateOptions: {
+                props: {
                   title: '销售量',
                   config: {
                     padding: 'auto',
@@ -640,7 +640,7 @@ export const dashboard = [
               {
                 key: 'data2',
                 type: 'g2-plot',
-                templateOptions: {
+                props: {
                   title: '访问量',
                   config: {
                     padding: 'auto',
@@ -658,7 +658,7 @@ export const dashboard = [
           {
             type: 'card',
             className: 'col-lg-4 col-12 mb-3',
-            templateOptions: {
+            props: {
               nzBodyStyle: {
                 padding: 0
               }
@@ -672,21 +672,21 @@ export const dashboard = [
                     {
                       key: 'index',
                       type: 'template',
-                      templateOptions: {
+                      props: {
                         label: '排名'
                       }
                     },
                     {
                       key: 'key',
                       type: 'template',
-                      templateOptions: {
+                      props: {
                         label: '搜索关键字'
                       }
                     },
                     {
                       key: 'views',
                       type: 'template',
-                      templateOptions: {
+                      props: {
                         label: '搜索关键字'
                       }
                     }
@@ -745,7 +745,7 @@ export const dashboard = [
             type: 'card',
             key: 'name1',
             className: 'col-md-9 col-sm-6 d-inline-block',
-            templateOptions: {
+            props: {
               title: '活动实时交易情况'
             },
             fieldGroup: []
@@ -758,7 +758,7 @@ export const dashboard = [
                 type: 'card',
                 key: 'name2',
                 className: 'col-md-12 mb-3 d-inline-block',
-                templateOptions: {
+                props: {
                   title: '活动情况预测',
                   tooltip: '指标说明'
                 },
@@ -768,7 +768,7 @@ export const dashboard = [
                 type: 'card',
                 key: 'name2',
                 className: 'col-md-12 d-inline-block',
-                templateOptions: {
+                props: {
                   title: '券核效率',
                   tooltip: '指标说明'
                 },
@@ -786,14 +786,14 @@ export const dashboard = [
             type: 'card',
             className: 'col-6 mb-3',
             fieldGroup: [],
-            templateOptions: {
+            props: {
               title: '各品类占比'
             }
           },
           {
             type: 'card',
             className: 'col-3 mb-3',
-            templateOptions: {
+            props: {
               title: '热门搜索',
               nzBodyStyle: {
                 padding: 0
@@ -804,7 +804,7 @@ export const dashboard = [
           {
             type: 'card',
             className: 'col-3 mb-3',
-            templateOptions: {
+            props: {
               title: '资源剩余',
 
               nzBodyStyle: {
@@ -832,7 +832,7 @@ export const dashboard = [
             type: 'card',
             key: 'name1',
             className: 'col-md-12 mb-3',
-            templateOptions: {
+            props: {
               title: '进行中的项目'
             },
             fieldGroup: []
@@ -841,7 +841,7 @@ export const dashboard = [
             type: 'card',
             key: 'name1',
             className: 'col-md-12 mb-3',
-            templateOptions: {
+            props: {
               title: '动态'
             },
             fieldGroup: []
@@ -856,14 +856,14 @@ export const dashboard = [
             type: 'card',
             className: 'col-12 mb-3',
             fieldGroup: [],
-            templateOptions: {
+            props: {
               title: '快速开始 / 便捷导航'
             }
           },
           {
             type: 'card',
             className: 'col-12 mb-3',
-            templateOptions: {
+            props: {
               title: 'XX 指数'
             },
             fieldGroup: []
@@ -871,7 +871,7 @@ export const dashboard = [
           {
             type: 'card',
             className: 'col-12 mb-3',
-            templateOptions: {
+            props: {
               title: '团队'
             },
             fieldGroup: []

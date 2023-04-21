@@ -2,7 +2,7 @@ export const AsyncValidationFieldsMockFields = [
   {
     type: 'code-card',
     className: "d-block mb-3 col-12",
-    templateOptions: {
+    props: {
       title: '异步验证器',
       description: `
 
@@ -30,7 +30,7 @@ export const AsyncValidationFieldsMockFields = [
       {
         type: 'button-group',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           type: 'primary',
           noColon: true,
           options: [

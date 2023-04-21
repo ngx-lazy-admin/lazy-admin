@@ -24,12 +24,12 @@ export const TreeSelectMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本',
           description: '最简单的用法。'
         },
@@ -39,7 +39,7 @@ export const TreeSelectMockFields = [
             type: 'tree-select',
             className: 'col-12 mb-3 d-inline-block',
             defaultValue: '1001',
-            templateOptions: {
+            props: {
               nodes: Node,
               expandedKeys: ['100', '1001']
             }
@@ -49,7 +49,7 @@ export const TreeSelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '异步数据加载',
           description: '点击展开节点，动态加载数据，直到执行 addChildren() 方法取消加载状态。'
         },
@@ -59,7 +59,7 @@ export const TreeSelectMockFields = [
             type: 'tree-select',
             className: 'col-12 mb-3 d-inline-block',
             defaultValue: '1001',
-            templateOptions: {
+            props: {
               nodes: Node,
               expandedKeys: ['100', '1001'],
               dropdownMatchSelectWidth: true,
@@ -81,7 +81,7 @@ export const TreeSelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -90,20 +90,20 @@ export const TreeSelectMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -112,13 +112,13 @@ export const TreeSelectMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           }
         ]
       }
@@ -127,7 +127,7 @@ export const TreeSelectMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {
+    props: {
       title: '基本',
       description: '最简单的用法，在浮层中可以选择或者输入日期。'
     },
@@ -140,13 +140,13 @@ export const TreeSelectMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'week',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'week'
             }
           },
@@ -154,7 +154,7 @@ export const TreeSelectMockFields = [
             key: 'month',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'month'
             }
           }
@@ -163,7 +163,7 @@ export const TreeSelectMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '切换不同选择器',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -172,14 +172,14 @@ export const TreeSelectMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -188,20 +188,20 @@ export const TreeSelectMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           }
         ]
       },
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -210,19 +210,19 @@ export const TreeSelectMockFields = [
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'date',
             type: 'date-picker',
             className: 'col-12 mb-3 d-inline-block',
-            templateOptions: {}
+            props: {}
           },
           {
             key: 'year',
             type: 'date-picker',
             className: 'col-12  mb-3 d-inline-block',
-            templateOptions: {
+            props: {
               mode: 'year'
             }
           }

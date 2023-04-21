@@ -4,17 +4,17 @@ export const ListMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-12',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '简单列表',
           description: `列表拥有大、中、小三种尺寸。
 
           通过设置 size 为 largesmall 分别把按钮设为大、小尺寸。若不设置 size，则尺寸为中。
-          
+
           可通过设置 nzHeader 和 nzFooter，来自定义列表头部和尾部。`
         },
         fieldGroup: [
@@ -22,7 +22,7 @@ export const ListMockFields = [
             key: 'list-1-1-1',
             type: 'list',
             className: 'd-block',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             },
             fieldArray: {
@@ -32,13 +32,13 @@ export const ListMockFields = [
                   key: 'name',
                   type: 'text',
                   className: '',
-                  templateOptions: {}
+                  props: {}
                 },
                 {
                   key: 'address',
                   type: 'text',
                   className: '',
-                  templateOptions: {}
+                  props: {}
                 }
               ]
             }
@@ -48,7 +48,7 @@ export const ListMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '栅格列表',
           description: '可以通过设置 nz-list 的 nzGrid 属性来实现栅格列表。'
         },
@@ -57,7 +57,7 @@ export const ListMockFields = [
             key: 'list-1-1-1',
             type: 'list',
             className: 'd-block row',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             },
             fieldArray: {
@@ -66,7 +66,7 @@ export const ListMockFields = [
                 {
                   type: 'card',
                   className: 'd-block col-12',
-                  templateOptions: {
+                  props: {
                     title: 'Title',
                     content: 'Card content'
                   },

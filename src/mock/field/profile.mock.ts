@@ -19,35 +19,35 @@ export const profile: configOptions[] = [
             type: 'descriptions',
             key: 'basic',
             className: 'col-12 d-inline-block pb-4 mb-4 border-bottom border-light',
-            templateOptions: {
+            props: {
               title: '退款申请'
             },
             fieldGroup: [
               {
                 key: 'thing_code',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '取货单号'
                 }
               },
               {
                 key: 'status',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '状态'
                 }
               },
               {
                 key: 'sale_code',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '销售单号'
                 }
               },
               {
                 key: 'sub_order',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '子订单'
                 }
               }
@@ -57,7 +57,7 @@ export const profile: configOptions[] = [
             type: 'descriptions',
             key: 'user_info',
             className: 'col-12 d-inline-block pb-4 mb-4 border-bottom border-light',
-            templateOptions: {
+            props: {
               label: '',
               title: '用户信息'
             },
@@ -65,35 +65,35 @@ export const profile: configOptions[] = [
               {
                 key: 'user',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '用户姓名'
                 }
               },
               {
                 key: 'phone',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '联系电话'
                 }
               },
               {
                 key: 'express',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '常用快递'
                 }
               },
               {
                 key: 'address',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '取货地址'
                 }
               },
               {
                 key: 'remark',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '备注'
                 }
               }
@@ -104,7 +104,7 @@ export const profile: configOptions[] = [
             key: 'goods',
             type: 'table',
             className: 'col-12 d-inline-block mb-4',
-            templateOptions: {
+            props: {
               title: '退货商品'
             },
             fieldArray: {
@@ -112,42 +112,42 @@ export const profile: configOptions[] = [
                 {
                   key: 'goods_number',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品编号'
                   }
                 },
                 {
                   key: 'goods_name',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品名称'
                   }
                 },
                 {
                   key: 'goods_code',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品条码'
                   }
                 },
                 {
                   key: 'price',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '单价'
                   }
                 },
                 {
                   key: 'number',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '数量（件）'
                   }
                 },
                 {
                   key: 'total_price',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '金额'
                   }
                 }
@@ -158,7 +158,7 @@ export const profile: configOptions[] = [
             type: 'table',
             key: 'progress',
             className: 'col-12 d-inline-block mb-4',
-            templateOptions: {
+            props: {
               label: '',
               title: '退货进度'
             },
@@ -167,21 +167,21 @@ export const profile: configOptions[] = [
                 {
                   key: 'time',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '时间'
                   }
                 },
                 {
                   key: 'progress',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '当前进度'
                   }
                 },
                 {
                   key: 'status',
                   type: 'badge',
-                  templateOptions: {
+                  props: {
                     label: '状态',
                     color: '#f50',
                     status: 'success'
@@ -190,14 +190,14 @@ export const profile: configOptions[] = [
                 {
                   key: 'operation_id',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '操作员ID'
                   }
                 },
                 {
                   key: 'take_up_time',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '耗时'
                   }
                 }
@@ -305,13 +305,13 @@ export const profile: configOptions[] = [
         type: 'card',
         key: 'name',
         className: 'col-12',
-        templateOptions: {
+        props: {
           title: '流程进度'
         },
         fieldGroup: [
           {
             type: 'steps',
-            templateOptions: {
+            props: {
               progressDot: true,
               options: [
                 {
@@ -339,7 +339,7 @@ export const profile: configOptions[] = [
         type: 'card',
         key: 'name',
         className: 'col-12 mb-3 mt-3',
-        templateOptions: {
+        props: {
           title: '用户信息'
         },
         fieldGroup: [
@@ -351,35 +351,35 @@ export const profile: configOptions[] = [
               {
                 key: 'thing_code',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '用户姓名'
                 }
               },
               {
                 key: 'status',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '联系电话'
                 }
               },
               {
                 key: 'sale_code',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '常用快递'
                 }
               },
               {
                 key: 'suborder',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '取货地址'
                 }
               },
               {
                 key: 'suborder',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '备注'
                 }
               }
@@ -389,42 +389,42 @@ export const profile: configOptions[] = [
             type: 'descriptions',
             key: 'userInfo',
             className: 'd-block mb-4',
-            templateOptions: {
+            props: {
               title: '信息组'
             },
             fieldGroup: [
               {
                 key: 'thing_code',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '用户姓名'
                 }
               },
               {
                 key: 'status',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '联系电话'
                 }
               },
               {
                 key: 'sale_code',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '常用快递'
                 }
               },
               {
                 key: 'suborder',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '取货地址'
                 }
               },
               {
                 key: 'suborder',
                 type: 'text',
-                templateOptions: {
+                props: {
                   title: '备注'
                 }
               }
@@ -432,7 +432,7 @@ export const profile: configOptions[] = [
           },
           {
             type: 'card',
-            templateOptions: {
+            props: {
               title: '多层级信息组',
               type: 'inner'
             },
@@ -441,42 +441,42 @@ export const profile: configOptions[] = [
                 key: 'thing_code',
                 type: 'descriptions',
                 className: 'd-block pb-4 mb-4 border-bottom border-light',
-                templateOptions: {
+                props: {
                   title: '组名称'
                 },
                 fieldGroup: [
                   {
                     key: 'thing_code',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '负责人'
                     }
                   },
                   {
                     key: 'status',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '角色码'
                     }
                   },
                   {
                     key: 'sale_code',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '所属部门'
                     }
                   },
                   {
                     key: 'suborder',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '过期时间'
                     }
                   },
                   {
                     key: 'suborder',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '描述'
                     }
                   }
@@ -486,42 +486,42 @@ export const profile: configOptions[] = [
                 key: 'status',
                 type: 'descriptions',
                 className: 'd-block pb-4 mb-4 border-bottom border-light',
-                templateOptions: {
+                props: {
                   title: '组名称'
                 },
                 fieldGroup: [
                   {
                     key: 'thing_code',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '负责人'
                     }
                   },
                   {
                     key: 'status',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '角色码'
                     }
                   },
                   {
                     key: 'sale_code',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '所属部门'
                     }
                   },
                   {
                     key: 'suborder',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '过期时间'
                     }
                   },
                   {
                     key: 'suborder',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '描述'
                     }
                   }
@@ -531,42 +531,42 @@ export const profile: configOptions[] = [
                 key: 'sale_code',
                 type: 'descriptions',
                 className: 'd-block mb-4',
-                templateOptions: {
+                props: {
                   title: '组名称'
                 },
                 fieldGroup: [
                   {
                     key: 'thing_code',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '负责人'
                     }
                   },
                   {
                     key: 'status',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '角色码'
                     }
                   },
                   {
                     key: 'sale_code',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '所属部门'
                     }
                   },
                   {
                     key: 'suborder',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '过期时间'
                     }
                   },
                   {
                     key: 'suborder',
                     type: 'text',
-                    templateOptions: {
+                    props: {
                       title: '描述'
                     }
                   }
@@ -580,7 +580,7 @@ export const profile: configOptions[] = [
         type: 'card',
         key: 'name',
         className: 'col-12 mb-3',
-        templateOptions: {
+        props: {
           title: '用户近半年来电记录'
         },
         fieldGroup: [
@@ -593,42 +593,42 @@ export const profile: configOptions[] = [
                 {
                   key: 'thing_code',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品编号'
                   }
                 },
                 {
                   key: 'status',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品名称'
                   }
                 },
                 {
                   key: 'sale_code',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品条码'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '单价'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '数量（件）'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '金额'
                   }
                 }
@@ -647,7 +647,7 @@ export const profile: configOptions[] = [
             type: 'table',
             key: 'table',
             className: 'd-block',
-            templateOptions: {
+            props: {
               title: '操作日志一'
             },
             fieldArray: {
@@ -655,42 +655,42 @@ export const profile: configOptions[] = [
                 {
                   key: 'thing_code',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品编号'
                   }
                 },
                 {
                   key: 'status',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品名称'
                   }
                 },
                 {
                   key: 'sale_code',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品条码'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '单价'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '数量（件）'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '金额'
                   }
                 }
@@ -701,7 +701,7 @@ export const profile: configOptions[] = [
             type: 'table',
             key: 'table',
             className: 'd-block',
-            templateOptions: {
+            props: {
               title: '操作日志二'
             },
             fieldArray: {
@@ -709,42 +709,42 @@ export const profile: configOptions[] = [
                 {
                   key: 'thing_code',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品编号'
                   }
                 },
                 {
                   key: 'status',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品名称'
                   }
                 },
                 {
                   key: 'sale_code',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '商品条码'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '单价'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '数量（件）'
                   }
                 },
                 {
                   key: 'suborder',
                   type: 'text',
-                  templateOptions: {
+                  props: {
                     label: '金额'
                   }
                 }

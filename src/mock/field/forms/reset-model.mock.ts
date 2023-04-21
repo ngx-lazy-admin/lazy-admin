@@ -2,7 +2,7 @@ export const ResetModelMockFields = [
   {
     type: 'code-card',
     className: 'd-block mb-3 col-12',
-    templateOptions: {
+    props: {
       title: '基本',
       description: ` There are two ways to initialize the form with default values.
     1. Default the model (preferred)
@@ -36,7 +36,7 @@ export const ResetModelMockFields = [
       {
         type: 'button-group',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           type: 'primary',
           noColon: true,
           options: [
@@ -49,7 +49,7 @@ export const ResetModelMockFields = [
               text: 'Reset',
               size: 'default',
               type: 'default'
-            },            
+            },
             {
               text: 'Update Initial Value',
               size: 'default',

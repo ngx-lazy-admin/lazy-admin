@@ -2,7 +2,7 @@ export const DefaultValueMockFields = [
   {
     type: 'code-card',
     className: "d-block mb-3 col-12",
-    templateOptions: {
+    props: {
       title: '基本',
       description: ` There are two ways to initialize the form with default values.
   1. Default the model (preferred)
@@ -46,7 +46,7 @@ Both methods are demonstrated below.`,
         key: 'agree',
         type: 'checkbox',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           text: 'Agree? (not initialized at all)',
           noColon: true,
           required: true
@@ -55,7 +55,7 @@ Both methods are demonstrated below.`,
       {
         type: 'button-group',
         wrappers: ['form'],
-        templateOptions: {
+        props: {
           type: 'primary',
           noColon: true,
           options: [

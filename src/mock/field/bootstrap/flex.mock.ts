@@ -2,12 +2,12 @@ export const FlexMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-6',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: 'Display',
           description: `Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.`
         },
@@ -15,7 +15,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'border d-inline mx-2',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -27,7 +27,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'border-top d-inline mx-2',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -41,7 +41,7 @@ export const FlexMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '无边框',
           subtitle: '无边框'
         },
@@ -49,7 +49,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'border-0 d-inline-block mx-2',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -62,7 +62,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'border-top-0 d-inline-block mx-2',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -74,7 +74,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'border-end-0 d-inline-block mx-2',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -86,7 +86,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'border-bottom-0 d-inline-block mx-2',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -98,7 +98,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'border-start-0 d-inline-block mx-2',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -112,7 +112,7 @@ export const FlexMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '边框颜色',
           subtitle: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -120,7 +120,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-primary',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -132,7 +132,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-secondary',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -144,7 +144,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-success',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -156,7 +156,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-danger',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -168,7 +168,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-warning',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -180,7 +180,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-info',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -192,7 +192,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-light',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -204,7 +204,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-dark',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -216,7 +216,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-white',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -230,7 +230,7 @@ export const FlexMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '边界宽度',
           subtitle: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -238,7 +238,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-1',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -250,7 +250,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-2',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -262,7 +262,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-3',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -274,7 +274,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-4',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -286,7 +286,7 @@ export const FlexMockFields = [
           {
             type: 'template',
             className: 'd-inline-block mx-2 border border-5',
-            templateOptions: {
+            props: {
               style: {
                 display: 'block',
                 width: '5rem',
@@ -312,7 +312,7 @@ export const FlexMockFields = [
             key: 'input-2-1',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'large size',
               size: 'large'
             }
@@ -321,7 +321,7 @@ export const FlexMockFields = [
             key: 'input-2-2',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'default size',
               size: 'default'
             }
@@ -330,13 +330,13 @@ export const FlexMockFields = [
             key: 'input-2-3',
             type: 'input',
             className: 'd-inline-block m-2',
-            templateOptions: {
+            props: {
               placeholder: 'small size',
               size: 'small'
             }
           }
         ],
-        templateOptions: {
+        props: {
           title: '三种大小',
           description: `我们为 nz-input 输入框定义了三种尺寸（大、默认、小），高度分别为 40px、32px 和 24px。
           注意： 在表单里面，我们只使用大尺寸的输入框。`
@@ -345,7 +345,7 @@ export const FlexMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '切换不同选择器',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -354,7 +354,7 @@ export const FlexMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -362,7 +362,7 @@ export const FlexMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -371,7 +371,7 @@ export const FlexMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -380,7 +380,7 @@ export const FlexMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -388,7 +388,7 @@ export const FlexMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }
@@ -397,7 +397,7 @@ export const FlexMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '日期格式',
           description: '最简单的用法，在浮层中可以选择或者输入日期。'
         },
@@ -406,7 +406,7 @@ export const FlexMockFields = [
             key: 'checked2',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'Checkbox'
             }
           },
@@ -414,7 +414,7 @@ export const FlexMockFields = [
             key: 'checked1',
             type: 'checkbox',
             className: 'd-inline-block mx-2',
-            templateOptions: {
+            props: {
               text: 'nzDisabled'
             }
           }

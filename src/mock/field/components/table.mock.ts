@@ -4,12 +4,12 @@ export const TableMockFields = [
   {
     type: 'group',
     className: 'd-block mb-3 col-12',
-    templateOptions: {},
+    props: {},
     fieldGroup: [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -18,7 +18,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -33,7 +33,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -42,7 +42,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'input',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -50,7 +50,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -58,7 +58,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -66,7 +66,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -90,7 +90,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '选择和操作',
           description:
             '第一列是联动的选择框，增加 [nzChecked] 后，th 获得和 nz-checkbox 一样的功能，选择后进行操作，完成后清空选择，请注意：数据逻辑需要自行控制。'
@@ -100,7 +100,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -115,7 +115,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -124,7 +124,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -132,7 +132,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -140,7 +140,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -148,7 +148,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -169,7 +169,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -178,7 +178,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -193,7 +193,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -202,7 +202,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -210,7 +210,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -218,7 +218,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -226,7 +226,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -247,7 +247,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -256,7 +256,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -271,7 +271,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -280,7 +280,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -288,7 +288,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -296,7 +296,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -304,7 +304,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -325,7 +325,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -334,7 +334,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -349,7 +349,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -358,7 +358,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -366,7 +366,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -374,7 +374,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -382,7 +382,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -403,7 +403,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -412,7 +412,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -427,7 +427,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -436,7 +436,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -444,7 +444,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -452,7 +452,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -460,7 +460,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -481,7 +481,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -490,7 +490,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -505,7 +505,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -514,7 +514,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -522,7 +522,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -530,7 +530,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -538,7 +538,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -559,7 +559,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -568,7 +568,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -583,7 +583,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -592,7 +592,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -600,7 +600,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -608,7 +608,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -616,7 +616,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -637,7 +637,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -646,7 +646,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -661,7 +661,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -670,7 +670,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -678,7 +678,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -686,7 +686,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -694,7 +694,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [
@@ -715,7 +715,7 @@ export const TableMockFields = [
       {
         type: 'code-card',
         className: 'd-block mb-3 col-12',
-        templateOptions: {
+        props: {
           title: '基本用法',
           description: '简单的表格，最后一列是各种操作。'
         },
@@ -724,7 +724,7 @@ export const TableMockFields = [
             type: 'simple-table',
             key: 'list',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -739,7 +739,7 @@ export const TableMockFields = [
                   key: 'id',
                   type: 'text',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'id'
                   },
                   hide: true
@@ -748,7 +748,7 @@ export const TableMockFields = [
                   key: 'name',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Name'
                   }
                 },
@@ -756,7 +756,7 @@ export const TableMockFields = [
                   key: 'age',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Age'
                   }
                 },
@@ -764,7 +764,7 @@ export const TableMockFields = [
                   key: 'address',
                   type: 'template',
                   wrappers: ['table'],
-                  templateOptions: {
+                  props: {
                     label: 'Address',
                     layout: 'horizontal'
                   }
@@ -772,7 +772,7 @@ export const TableMockFields = [
                 {
                   type: 'list-actions',
                   className: '',
-                  templateOptions: {
+                  props: {
                     maxTagCount: 3,
                     label: 'Action',
                     actionOptions: [

@@ -6,7 +6,7 @@ export const account = [
         key: 'search',
         type: 'card',
         className: 'col-md-4 col-12 mb-3 d-block',
-        templateOptions: {
+        props: {
           bodyClass: 'row',
           bodyStyle: {
             paddingBottom: 0
@@ -18,7 +18,7 @@ export const account = [
             type: 'input',
             className: 'col-12',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '用户名',
               layout: 'vertical',
               placeholder: '请输入用户名'
@@ -29,7 +29,7 @@ export const account = [
             type: 'input',
             className: 'col-12',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '标签',
               layout: 'vertical',
               placeholder: '请输入手机号'
@@ -40,7 +40,7 @@ export const account = [
             type: 'input',
             className: 'col-12',
             wrappers: ['form'],
-            templateOptions: {
+            props: {
               label: '团队',
               layout: 'vertical',
               placeholder: '请输入邮箱'
@@ -51,13 +51,13 @@ export const account = [
       {
         type: 'card',
         className: 'col-md-8 col-12 mb-3 d-block',
-        templateOptions: {},
+        props: {},
         fieldGroup: [
           {
             type: 'tabs',
             key: 'table',
             className: 'col-12 d-block',
-            templateOptions: {
+            props: {
               showPagination: true,
               pageSize: 20,
               bodyClass: 'row',
@@ -71,7 +71,7 @@ export const account = [
               {
                 key: 'basic',
                 type: 'list',
-                templateOptions: {
+                props: {
                   showPagination: true,
                   pageSize: 20,
                   bodyClass: 'row',
@@ -210,7 +210,7 @@ export const account = [
                       type: 'card-meta',
                       key: 'meta',
                       className: 'col-4 d-block',
-                      templateOptions: {
+                      props: {
                         title: '描述',
                         size: 48,
                         shape: 'square',
@@ -236,7 +236,7 @@ export const account = [
                     {
                       type: 'list-actions',
                       className: 'col-1 px-3 text-end',
-                      templateOptions: {
+                      props: {
                         maxTagCount: 1,
                         actionOptions: [
                           {
@@ -258,7 +258,7 @@ export const account = [
                 key: 'basic',
                 type: 'card',
                 className: 'd-block',
-                templateOptions: {
+                props: {
                   title: '应用',
                   borderless: true
                 },
@@ -267,7 +267,7 @@ export const account = [
               {
                 type: 'list',
                 key: 'card',
-                templateOptions: {
+                props: {
                   showPagination: true,
                   title: '项目',
                   pageSize: 20,
@@ -429,7 +429,7 @@ export const account = [
                     {
                       type: 'card',
                       className: 'col-12 mb-3',
-                      templateOptions: {
+                      props: {
                         nzBodyStyle: {
                           padding: 0
                         },
@@ -447,7 +447,7 @@ export const account = [
                           type: 'card-meta',
                           key: 'meta',
                           className: 'm-3 p-2 d-block',
-                          templateOptions: {
+                          props: {
                             title: '描述',
                             size: 48,
                             description:
@@ -475,7 +475,7 @@ export const account = [
           {
             type: 'tabs',
             className: 'd-block',
-            templateOptions: {
+            props: {
               nzTabPosition: 'left'
             },
             fieldGroup: [
@@ -483,7 +483,7 @@ export const account = [
                 key: 'basic',
                 type: 'card',
                 className: 'd-block',
-                templateOptions: {
+                props: {
                   title: '基本设置',
                   borderless: true
                 },
@@ -494,7 +494,7 @@ export const account = [
                     className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     defaultValue: 'antdesign@alipay.com',
-                    templateOptions: {
+                    props: {
                       label: '邮箱',
                       layout: 'vertical'
                     }
@@ -505,7 +505,7 @@ export const account = [
                     className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
                     defaultValue: 'Serati Ma',
-                    templateOptions: {
+                    props: {
                       label: '昵称',
                       layout: 'vertical'
                     }
@@ -515,7 +515,7 @@ export const account = [
                     type: 'textarea',
                     className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
-                    templateOptions: {
+                    props: {
                       label: '个人简介',
                       layout: 'vertical',
                       placeholder: '个人简介'
@@ -526,7 +526,7 @@ export const account = [
                     type: 'input',
                     className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
-                    templateOptions: {
+                    props: {
                       label: '地区/国家',
                       layout: 'vertical'
                     }
@@ -536,7 +536,7 @@ export const account = [
                     type: 'input',
                     className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
-                    templateOptions: {
+                    props: {
                       label: '所在省市',
                       layout: 'vertical'
                     }
@@ -546,7 +546,7 @@ export const account = [
                     type: 'input',
                     className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
-                    templateOptions: {
+                    props: {
                       label: '街道地址',
                       layout: 'vertical'
                     }
@@ -556,7 +556,7 @@ export const account = [
                     type: 'input',
                     className: 'd-block col-12 col-md-6',
                     wrappers: ['form'],
-                    templateOptions: {
+                    props: {
                       label: '联系电话',
                       layout: 'vertical'
                     }
@@ -564,7 +564,7 @@ export const account = [
                   {
                     type: 'button',
                     className: 'd-block col-12 col-md-6',
-                    templateOptions: {
+                    props: {
                       text: '确定',
                       layout: 'vertical',
                       type: 'primary'
@@ -576,7 +576,7 @@ export const account = [
                 key: 'username',
                 type: 'card',
                 className: 'd-block',
-                templateOptions: {
+                props: {
                   title: '安全设置',
                   borderless: true
                 },
@@ -587,7 +587,7 @@ export const account = [
                     className: 'd-block col-12  col-md-6',
                     wrappers: ['list-item'],
                     defaultValue: 'antdesign@alipay.com',
-                    templateOptions: {
+                    props: {
                       title: '账户密码',
                       description: '当前密码强度：强',
                       text: '修改',
@@ -600,7 +600,7 @@ export const account = [
                     className: 'd-block col-12  col-md-6',
                     wrappers: ['list-item'],
                     defaultValue: 'Serati Ma',
-                    templateOptions: {
+                    props: {
                       title: '密保手机',
                       description: '已绑定手机：138****8293',
                       text: '修改',
@@ -612,7 +612,7 @@ export const account = [
                     type: 'button',
                     className: 'd-block col-12 col-md-6',
                     wrappers: ['list-item'],
-                    templateOptions: {
+                    props: {
                       title: '密保问题',
                       description: '未设置密保问题，密保问题可有效保护账户安全',
                       text: '设置',
@@ -624,7 +624,7 @@ export const account = [
                     type: 'button',
                     className: 'd-block col-12  col-md-6',
                     wrappers: ['list-item'],
-                    templateOptions: {
+                    props: {
                       title: '备用邮箱',
                       description: '已绑定邮箱：ant***sign.com',
                       text: '修改',
@@ -636,7 +636,7 @@ export const account = [
                     type: 'button',
                     className: 'd-block col-12',
                     wrappers: ['list-item'],
-                    templateOptions: {
+                    props: {
                       title: 'MFA 设备',
                       description: '未绑定 MFA 设备，绑定后，可以进行二次确认',
                       text: '绑定',
@@ -649,7 +649,7 @@ export const account = [
                 key: 'username',
                 type: 'card',
                 className: 'd-block',
-                templateOptions: {
+                props: {
                   title: '账号绑定',
                   borderless: true
                 },
@@ -660,7 +660,7 @@ export const account = [
                     className: 'd-block col-12',
                     wrappers: ['list-item'],
                     defaultValue: 'antdesign@alipay.com',
-                    templateOptions: {
+                    props: {
                       avatar: '',
                       title: '绑定淘宝',
                       description: '当前未绑定淘宝账号',
@@ -674,7 +674,7 @@ export const account = [
                     className: 'd-block col-12',
                     wrappers: ['list-item'],
                     defaultValue: 'Serati Ma',
-                    templateOptions: {
+                    props: {
                       title: '绑定支付宝',
                       description: '当前未绑定支付宝账号',
                       text: '绑定',
@@ -686,7 +686,7 @@ export const account = [
                     type: 'button',
                     className: 'd-block col-12',
                     wrappers: ['list-item'],
-                    templateOptions: {
+                    props: {
                       title: '绑定钉钉',
                       description: '当前未绑定钉钉账号',
                       text: '绑定',
@@ -699,7 +699,7 @@ export const account = [
                 key: 'username',
                 type: 'card',
                 className: 'd-block',
-                templateOptions: {
+                props: {
                   title: '新消息通知',
                   borderless: true
                 },
@@ -710,7 +710,7 @@ export const account = [
                     className: 'd-block col-12',
                     wrappers: ['list-item'],
                     defaultValue: 'antdesign@alipay.com',
-                    templateOptions: {
+                    props: {
                       avatar: '',
                       title: '账户密码',
                       description: '其他用户的消息将以站内信的形式通知',
@@ -724,7 +724,7 @@ export const account = [
                     className: 'd-block col-12',
                     wrappers: ['list-item'],
                     defaultValue: 'Serati Ma',
-                    templateOptions: {
+                    props: {
                       title: '系统消息',
                       description: '系统消息将以站内信的形式通知',
                       text: '绑定',
@@ -736,7 +736,7 @@ export const account = [
                     type: 'switch',
                     className: 'd-block col-12',
                     wrappers: ['list-item'],
-                    templateOptions: {
+                    props: {
                       title: '待办任务',
                       description: '待办任务将以站内信的形式通知',
                       text: '绑定',
