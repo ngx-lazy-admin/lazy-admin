@@ -33,15 +33,8 @@ export const IntroductionMockFields = [
         },
         expressions: {
           focus: 'formState.awesomeIsForced',
-          'props.description': `({ options: { formState } }) => {
-            console.log('expressions', options)
-            if (formState.awesomeIsForced) {
-              return 'And look! This field magically got focus!';
-            }
-            return '';
-          }`,
         }
-      },  
+      },
       {
         key: 'awesome',
         type: 'checkbox',
@@ -55,8 +48,8 @@ export const IntroductionMockFields = [
         expressions: {
           'props.disabled': 'formState.awesomeIsForced',
           'props.label': `
-            formState.awesomeIsForced ? 
-              'Too bad, formly is really awesome...' 
+            formState.awesomeIsForced ?
+              'Too bad, formly is really awesome...'
               : 'Is formly totally awesome? (uncheck this and see what happens)'
             `,
         }

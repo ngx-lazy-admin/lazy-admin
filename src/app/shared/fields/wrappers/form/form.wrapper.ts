@@ -22,33 +22,33 @@ import { isObject } from 'src/app/utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nz-form-item>
-      <nz-form-label 
+      <nz-form-label
         *ngIf="to.hideLabel !== true && to.label"
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 8 : null"
-        [nzNoColon]="nzNoColon" 
+        [nzNoColon]="nzNoColon"
         [nzRequired]="!nzNoColon && nzRequired"
         [ngStyle]="(fixedWidth | fixedWidth)?.label"
-        [nzFor]="id" 
+        [nzFor]="id"
         [nzTooltipTitle]="nzTooltipTitle"
         [nzTooltipIcon]="nzTooltipIcon">
         <span [innerHTML]="to.label"></span>
       </nz-form-label>
-      <!--  
+      <!--
         'invalid' + field.formControl?.invalid
         'touched:' +  field.formControl?.touched
         'show:' + field.validation?.show
         'submitted:' + this.options?.parentForm?.submitted
       -->
-      <nz-form-control 
-        [nzValidateStatus]="formControl" 
+      <nz-form-control
+        [nzValidateStatus]="formControl"
         [nzErrorTip]="errorTpl"
         [nzSpan]="nzLayout == 'horizontal' && !fixedWidth ? 16 : null"
         [nzOffset]="controlOffset"
         [ngStyle]="(fixedWidth | fixedWidth)?.control"
-        [nzExtra]="extraTpl"
+        [nzExtra]="to.description ? extraTpl : undefined"
         [nzHasFeedback]="nzHasFeedback">
         <ng-container #fieldComponent></ng-container>
-        
+
         <ng-template #errorTpl let-control>
           <span>{{ errorMessage }}</span>
         </ng-template>
@@ -74,7 +74,7 @@ export class FormWrapper extends FieldWrapper {
   get controlOffset() : number {
     return  this.nzLayout === 'vertical' ? 0 : (!this.props.label ? 8 : 0)
   }
-  
+
   // const baseStyle = { position: 'absolute', width: `${this.inputWidth}px` };
   // this.datePickerService.arrowLeft =
   //   this.datePickerService.activeInput === 'left'
@@ -88,7 +88,7 @@ export class FormWrapper extends FieldWrapper {
   // }
 
   get errorState(): boolean {
-    return  !!(this.field.formControl?.invalid && 
+    return  !!(this.field.formControl?.invalid &&
       (this.field.formControl?.touched || this.options?.parentForm?.submitted || !!this.field.validation?.show))
     // return this.showError ? 'error' : '';
   }
@@ -159,7 +159,7 @@ export class FormWrapper extends FieldWrapper {
         if (formControl.errors.hasOwnProperty(error)) {
           let message = this.config.getValidatorMessage(error);
           console.log('getValidatorMessage:' + message, this.field.formControl?.value, this.field)
-  
+
           // 如果是异步校验, 则注册异步校验，在验证信息
           if (this.field.validators?.validation.some((item: string) => item == 'async')) {
             const AsyncValidator = (control: AbstractControl):  Observable<ValidationErrors | null> => {
@@ -183,26 +183,26 @@ export class FormWrapper extends FieldWrapper {
             }
 
           }
-          
+
           if (isObject(formControl.errors[error])) {
             if (formControl.errors[error].errorPath) {
               return '';
             }
-  
+
             if (formControl.errors[error].message) {
               message = formControl.errors[error].message.replace();
               console.log('fieldForm.errors[error].message:' + message)
 
             }
           }
-  
+
           if (this.field.validation?.messages?.[error]) {
             // 如果 pattern 为string，validation?.messages 为string
             console.log(this.field.validation?.messages, error)
-            if (typeof(this.field.props?.pattern)=='string') { 
+            if (typeof(this.field.props?.pattern)=='string') {
               // const ValidatorFn = Validators.pattern(new RegExp(this.field.props?.pattern))
               // formControl?.addValidators(ValidatorFn)
-              
+
               // 添加自定义正则校验
               const customRegExp = (nameRe: RegExp): ValidatorFn => {
                 return (control: AbstractControl): ValidationErrors | null => {
@@ -220,28 +220,28 @@ export class FormWrapper extends FieldWrapper {
 
             console.log(this.field.validation.messages, error)
           }
-  
+
           if (this.field.validators?.[error]?.message) {
             message = this.field.validators[error].message;
             console.log('this.field.validators[error].message:' + message)
           }
-  
+
           if (this.field.asyncValidators?.[error]?.message) {
             message = this.field.asyncValidators[error].message;
             console.log('this.field.asyncValidators[error].message;:' + message)
           }
-  
+
           if (typeof message === 'function') {
             return message(formControl.errors[error], this.field);
           }
 
           console.log(message)
-  
+
           return message;
         }
       }
     }
-    return 
+    return
   }
 
   constructor(
